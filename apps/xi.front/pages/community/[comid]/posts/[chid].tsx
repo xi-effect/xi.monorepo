@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import { observer } from 'mobx-react';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 import { Navigation } from 'kit/Navigation';
 import { Header, Items } from 'components/Community/Posts';
 

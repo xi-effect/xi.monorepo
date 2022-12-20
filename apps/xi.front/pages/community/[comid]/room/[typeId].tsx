@@ -1,6 +1,6 @@
 // import React, { Suspense } from 'react';
 import { observer } from 'mobx-react';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 import { Stack } from '@mui/material';
 
 import { Navigation } from 'kit/Navigation';

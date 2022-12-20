@@ -2,7 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Button, Stack, Typography } from '@mui/material';
-import { Add } from 'icons.add';
+import { Add } from 'pkg.icons.add';
 
 const Header = observer(() => (
   <Stack

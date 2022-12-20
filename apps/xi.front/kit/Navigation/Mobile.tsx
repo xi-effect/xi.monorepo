@@ -5,7 +5,7 @@ import { Stack, Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import { useStore } from "store/connect";
 import { useLocalStorage } from "react-use";
-import { ExitDialog } from "dialogs.exit";
+import { ExitDialog } from "pkg.dialogs.exit";
 import { UserProfile } from "kit/UserProfile";
 import { SidebarSecond } from "./SidebarSecond";
 import Upbar from "./Upbar";

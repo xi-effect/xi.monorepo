@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { Stack, Typography, Box } from "@mui/material";
-import { Avatar } from "data.avatar";
+import { Avatar } from "pkg.data.avatar";
 import TextFieldCustom from "kit/TextFieldCustom";
 
 const Status = observer(() => {

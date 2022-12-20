@@ -3,7 +3,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Box, Typography, Stack } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
-import { Arrow } from 'icons.arrow';
+import { Arrow } from 'pkg.icons.arrow';
 
 type ItemsT = {
   index: number;

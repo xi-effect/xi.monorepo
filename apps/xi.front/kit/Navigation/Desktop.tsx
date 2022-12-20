@@ -5,7 +5,7 @@ import { useStore } from "store/connect";
 import { Stack, Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import { UserProfile } from "kit/UserProfile";
-import { ExitDialog } from "dialogs.exit";
+import { ExitDialog } from "pkg.dialogs.exit";
 import { SidebarSecond } from "./SidebarSecond";
 
 const Sidebar = dynamic(() => import("./Sidebar/Sidebar"), { ssr: false });

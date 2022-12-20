@@ -27,7 +27,16 @@ plugins.push(withPWA);
 const nextConfig = {
   experimental: {
     esmExternals: true,
-    transpilePackages: ["theme.scheme", "components.loading", "data.avatar", "dialogs.exit", "forms.signin", "inputs.button", "layout.pages", "pages.error"],
+    transpilePackages: [
+      "pkg.theme.scheme",
+      "pkg.components.loading",
+      "pkg.data.avatar",
+      "pkg.dialogs.exit",
+      "pkg.forms.signin",
+      "pkg.inputs.button",
+      "pkg.layout.pages",
+      "pkg.pages.error",
+    ],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV !== "development",

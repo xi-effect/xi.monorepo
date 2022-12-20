@@ -1,7 +1,7 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Microphone } from 'icons.microphone';
-import { Camera } from 'icons.camera';
-import { Screenshare } from 'icons.screenshare';
+import { Microphone } from 'pkg.icons.microphone';
+import { Camera } from 'pkg.icons.camera';
+import { Screenshare } from 'pkg.icons.screenshare';
 
 const LeftTools = () => (
   <Stack

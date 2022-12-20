@@ -1,4 +1,4 @@
-import { Error } from 'pages.error';
+import { Error } from 'pkg.pages.error';
 import Image from 'next/image';
 import { useMediaQuery, Theme } from '@mui/material';
 

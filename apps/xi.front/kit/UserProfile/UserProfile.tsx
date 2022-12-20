@@ -5,9 +5,9 @@ import { useStore } from 'store/connect';
 import { TransitionProps } from '@mui/material/transitions';
 import { Dialog, Slide, Stack, IconButton, useMediaQuery, Theme, Typography } from '@mui/material';
 import { observer } from 'mobx-react';
-import { Burger } from 'icons.burger';
-import { Close } from 'icons.close';
-import { Arrow } from 'icons.arrow';
+import { Burger } from 'pkg.icons.burger';
+import { Close } from 'pkg.icons.close';
+import { Arrow } from 'pkg.icons.arrow';
 import Menu from './Menu';
 import Content from './Content';
 

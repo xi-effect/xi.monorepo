@@ -1,8 +1,8 @@
 import { IconButton, Stack, Tooltip, Typography } from '@mui/material';
-import { Grid } from 'icons.grid';
-import { Maximize } from 'icons.maximize';
-import { External } from 'icons.external';
-import { Settings } from 'icons.settings';
+import { Grid } from 'pkg.icons.grid';
+import { Maximize } from 'pkg.icons.maximize';
+import { External } from 'pkg.icons.external';
+import { Settings } from 'pkg.icons.settings';
 
 const RightTool = () => (
   <Stack

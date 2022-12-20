@@ -2,7 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Stack, Typography } from '@mui/material';
-import { Arrow } from 'icons.arrow';
+import { Arrow } from 'pkg.icons.arrow';
 
 const Breadcrumbs = observer(() => (
   <Stack

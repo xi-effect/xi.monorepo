@@ -1,6 +1,6 @@
 import { Stack, useMediaQuery, Theme } from '@mui/material';
 import { observer } from 'mobx-react';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 
 import { Navigation } from 'kit/Navigation';
 // import {

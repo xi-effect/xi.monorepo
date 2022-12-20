@@ -18,10 +18,10 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'styles/globals.css';
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { Loading } from 'components.loading';
+import { Loading } from 'pkg.components.loading';
 import { useStoreInitialized } from 'store/rootStore';
 import createEmotionCache from 'store/createEmotionCache';
-import { getScheme } from 'theme.scheme';
+import { getScheme } from 'pkg.theme.scheme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 config.autoAddCss = false;

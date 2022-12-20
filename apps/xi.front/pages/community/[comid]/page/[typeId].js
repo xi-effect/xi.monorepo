@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Box } from '@mui/material';

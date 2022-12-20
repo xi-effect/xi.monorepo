@@ -6,7 +6,7 @@ import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
 import { useRouter } from 'next/router';
 import { useStore } from 'store/connect';
 import XiLogo from 'kit/XiLogo';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 
 const Email = observer(() => {
   const rootStore = useStore();

@@ -3,7 +3,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { Box, Stack, Button } from "@mui/material";
 import Image from "next/image";
-import { Arrow } from "icons.arrow";
+import { Arrow } from "pkg.icons.arrow";
 
 const items = [0, 0, 0, 0, 0];
 

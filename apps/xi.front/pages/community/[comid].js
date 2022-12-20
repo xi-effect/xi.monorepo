@@ -6,7 +6,7 @@ import { Navigation } from 'kit/Navigation';
 import { useStore } from 'store/connect';
 
 import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 
 const Community = observer(() => {
   const store = useStore();

@@ -7,8 +7,8 @@ import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
 
-import { Eyeoff } from 'icons.eyeoff';
-import { Eyeon } from 'icons.eyeon';
+import { Eyeoff } from 'pkg.icons.eyeoff';
+import { Eyeon } from 'pkg.icons.eyeon';
 import { useStore } from 'store/connect';
 import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
 

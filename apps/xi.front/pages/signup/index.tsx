@@ -5,7 +5,7 @@ import { Link, Divider, Stack, Typography, useMediaQuery } from "@mui/material";
 import Form from "components/Signup/Form";
 import XiLogo from "kit/XiLogo";
 import { useSessionStorage } from "react-use";
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 
 const Tearms = () => (
   <>

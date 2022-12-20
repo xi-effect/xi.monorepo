@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import Form from "components/ResetPassword/Form";
 import XiLogo from "kit/XiLogo";
 import { Stack, Typography, useMediaQuery } from "@mui/material";
-import { LayoutPages } from "layout.pages";
+import { LayoutPages } from "pkg.layout.pages";
 
 const ResetPassword = observer(() => {
   const isMobile: boolean = useMediaQuery("(max-width: 472px)");

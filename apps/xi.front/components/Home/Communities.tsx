@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Stack, Typography } from "@mui/material";
-import { Avatar } from "data.avatar";
+import { Avatar } from "pkg.data.avatar";
 
 const communities = [
   {

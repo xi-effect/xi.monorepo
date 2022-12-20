@@ -1,23 +1,23 @@
-import { observer } from 'mobx-react';
+import { observer } from "mobx-react";
 
-import { Stack, Tooltip, Divider, IconButton } from '@mui/material';
+import { Stack, Tooltip, Divider, IconButton } from "@mui/material";
 
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import dynamic from 'next/dynamic';
-import useListen from 'utils/useListen';
-import { Account } from 'icons.account';
-import { Add } from 'icons.add';
-import { Notification } from 'icons.notification';
-import { Home } from 'icons.home';
-import { Exit } from 'icons.exit';
-import { Scroll } from 'components.scroll';
-import { RegCommunityT } from 'models/dataProfileStore';
-import { useStore } from 'store/connect';
-import { CommunityInSidebar } from 'models/community';
-import CommunityItem from './CommunityItem';
-import IButton from './IButton';
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import dynamic from "next/dynamic";
+import useListen from "utils/useListen";
+import { Account } from "pkg.icons.account";
+import { Add } from "pkg.icons.add";
+import { Notification } from "pkg.icons.notification";
+import { Home } from "pkg.icons.home";
+import { Exit } from "pkg.icons.exit";
+import { Scroll } from "pkg.components.scroll";
+import { RegCommunityT } from "models/dataProfileStore";
+import { useStore } from "store/connect";
+import { CommunityInSidebar } from "models/community";
+import CommunityItem from "./CommunityItem";
+import IButton from "./IButton";
 
-const DialogCreateCommunity = dynamic(() => import('./DialogCreateCommunity'), {
+const DialogCreateCommunity = dynamic(() => import("./DialogCreateCommunity"), {
   ssr: false,
 });
 
@@ -34,19 +34,23 @@ const Sidebar = observer(() => {
   };
 
   const reorderFn = (source, destination) => {
-    const communities: CommunityInSidebar[] = reorder(userSt.user.communities, source, destination);
+    const communities: CommunityInSidebar[] = reorder(
+      userSt.user.communities,
+      source,
+      destination
+    );
 
     rootStore.socket?.emit(
-      'reorder-community',
+      "reorder-community",
       {
-        'source-id': source,
-        'target-index': destination,
+        "source-id": source,
+        "target-index": destination,
       },
       ({ code, message, data }) => {
         console.info(code, message, data);
-      },
+      }
     );
-    userSt.setUser('communities', communities);
+    userSt.setUser("communities", communities);
   };
 
   const onDragEnd = (result) => {
@@ -68,18 +72,25 @@ const Sidebar = observer(() => {
 
   const subReorder = (data) => {
     const newArray = Array.from(userSt.user.communities);
-    const item = newArray.find((i: Community) => i.id === data['source-id']);
-    const itemIndex = newArray.findIndex((i: Community) => i.id === data['source-id']);
+    const item = newArray.find((i: Community) => i.id === data["source-id"]);
+    const itemIndex = newArray.findIndex(
+      (i: Community) => i.id === data["source-id"]
+    );
     newArray.splice(itemIndex, 1);
-    newArray.splice(data['target-index'], 0, item as RegCommunityT);
-    userSt.setUser('communities', newArray);
+    newArray.splice(data["target-index"], 0, item as RegCommunityT);
+    userSt.setUser("communities", newArray);
   };
 
-  useListen(rootStore.socket, 'reorder-community', subReorder, userSt.user.communities);
+  useListen(
+    rootStore.socket,
+    "reorder-community",
+    subReorder,
+    userSt.user.communities
+  );
 
   const addItemtoMenu = (data) => {
     const array = userSt.user.communities;
-    userSt.setUser('communities', [
+    userSt.setUser("communities", [
       {
         name: data.name,
         id: data.id,
@@ -88,13 +99,18 @@ const Sidebar = observer(() => {
     ]);
   };
 
-  useListen(rootStore.socket, 'new-community', addItemtoMenu, userSt.user.communities);
+  useListen(
+    rootStore.socket,
+    "new-community",
+    addItemtoMenu,
+    userSt.user.communities
+  );
 
   const removeItem = (data) => {
     userSt.removeCommunity(data.id);
   };
 
-  useListen(rootStore.socket, 'leave-community', removeItem, userSt);
+  useListen(rootStore.socket, "leave-community", removeItem, userSt);
 
   return (
     <Stack
@@ -106,8 +122,8 @@ const Sidebar = observer(() => {
         pt: 1,
         pb: 1,
         width: 64,
-        height: '100vh',
-        overflow: 'hidden',
+        height: "100vh",
+        overflow: "hidden",
       }}
     >
       <Stack
@@ -136,16 +152,16 @@ const Sidebar = observer(() => {
           <IButton
             tooltip="Создать сообщество"
             icon={<Add color="primary" />}
-            onClick={() => uiSt.setDialogs('communityCreation', true)}
+            onClick={() => uiSt.setDialogs("communityCreation", true)}
             iconColor="#333333"
             iconColorHover="#FFFFFF"
           />
           <Divider
             sx={{
-              height: '1px',
-              width: '40px',
-              borderRadius: '5px',
-              backgroundColor: 'primary.light',
+              height: "1px",
+              width: "40px",
+              borderRadius: "5px",
+              backgroundColor: "primary.light",
             }}
           />
         </Stack>
@@ -185,10 +201,10 @@ const Sidebar = observer(() => {
       >
         <Divider
           sx={{
-            height: '1px',
-            width: '40px',
-            borderRadius: '5px',
-            backgroundColor: 'primary.light',
+            height: "1px",
+            width: "40px",
+            borderRadius: "5px",
+            backgroundColor: "primary.light",
           }}
         />
         <IButton
@@ -201,7 +217,7 @@ const Sidebar = observer(() => {
           tooltip="Профиль"
           href="/profile/profile1"
           icon={<Account color="primary" />}
-          onClick={() => uiSt.setDialogs('userProfile', true)}
+          onClick={() => uiSt.setDialogs("userProfile", true)}
           isBefore
           iconColor="#333333"
           iconColorHover="#FFFFFF"
@@ -209,23 +225,23 @@ const Sidebar = observer(() => {
         <Tooltip placement="right" title="Выйти">
           <IconButton
             onClick={() => {
-              uiSt.setDialogs('exit', true);
+              uiSt.setDialogs("exit", true);
             }}
             sx={{
-              bgcolor: '#FFFFFF',
+              bgcolor: "#FFFFFF",
               width: 48,
               height: 48,
               borderRadius: 24,
               svg: {
-                fill: '#F42D2D',
+                fill: "#F42D2D",
               },
 
-              '&:hover': {
-                borderRadius: '16px',
-                bgcolor: '#F42D2D',
+              "&:hover": {
+                borderRadius: "16px",
+                bgcolor: "#F42D2D",
 
                 svg: {
-                  fill: '#FFFFFF',
+                  fill: "#FFFFFF",
                 },
               },
             }}

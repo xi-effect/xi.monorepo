@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { Stack, Typography } from '@mui/material';
-import { Burger } from 'icons.burger';
+import { Burger } from 'pkg.icons.burger';
 
 type UpbarT = {
   setMenuPosition: (value) => void;
