@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from 'react';
-import { observer } from 'mobx-react';
-import { Stack, Typography } from '@mui/material';
+import React from "react";
+import { observer } from "mobx-react";
+import { Stack, Typography } from "@mui/material";
 
 const SubHeader = observer(() => (
   <Stack
     sx={{
-      width: '100%',
-      height: '16px',
-      mt: '12px',
+      width: "100%",
+      height: "16px",
+      mt: "12px",
     }}
     direction="row"
     justifyContent="flex-start"
@@ -18,9 +18,9 @@ const SubHeader = observer(() => (
       textAlign="left"
       sx={{
         fontWeight: 500,
-        fontSize: '12px',
-        lineHeight: '16px',
-        color: 'grayscale.100',
+        fontSize: "12px",
+        lineHeight: "16px",
+        color: "grayscale.100",
       }}
     >
       4 мая 2022
@@ -28,21 +28,21 @@ const SubHeader = observer(() => (
     <Typography
       textAlign="left"
       sx={{
-        position: 'relative',
-        ml: '11px',
+        position: "relative",
+        ml: "11px",
         fontWeight: 500,
-        fontSize: '12px',
-        lineHeight: '16px',
-        color: 'grayscale.100',
-        '&:before': {
+        fontSize: "12px",
+        lineHeight: "16px",
+        color: "grayscale.100",
+        "&:before": {
           content: "''",
-          bgcolor: 'grayscale.100',
-          position: 'absolute',
-          left: '-7px',
-          top: '7px',
-          height: '3px',
-          width: '3px',
-          borderRadius: '100%',
+          bgcolor: "grayscale.100",
+          position: "absolute",
+          left: "-7px",
+          top: "7px",
+          height: "3px",
+          width: "3px",
+          borderRadius: "100%",
         },
       }}
     >
