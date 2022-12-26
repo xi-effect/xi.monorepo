@@ -1,26 +1,30 @@
-import { Stack, useMediaQuery, Theme } from '@mui/material';
-import { observer } from 'mobx-react';
+import { Stack, useMediaQuery, Theme } from "@mui/material";
+import { observer } from "mobx-react";
 import { LayoutPages } from "pkg.layout.pages";
 
-import { Navigation } from 'kit/Navigation';
-// import {
-//   Header,
-//   SubHeader,
-//   Content,
-//   Breadcrumbs,
-//   Files,
-//   Timeline,
-// } from 'components/Community/Task';
+import { Navigation } from "kit/Navigation";
+import {
+  Header,
+  SubHeader,
+  Content,
+  Breadcrumbs,
+  Files,
+  Timeline,
+} from "components/Community/Task";
 
 const Task = observer(() => {
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
-  const mobileSide = useMediaQuery((theme: Theme) => theme.breakpoints.down(1920));
-  const mobileGrid = useMediaQuery((theme: Theme) => theme.breakpoints.down(1440));
+  const mobileSide = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down(1920)
+  );
+  const mobileGrid = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down(1440)
+  );
 
   const getMinWidth = () => {
-    if (mobile) return '200px';
-    if (mobileSide) return '400px';
-    return '508px';
+    if (mobile) return "200px";
+    if (mobileSide) return "400px";
+    return "508px";
   };
 
   return (
@@ -32,14 +36,14 @@ const Task = observer(() => {
           alignItems="flex-start"
           spacing={1}
           sx={{
-            height: '100vh',
-            width: '100%',
+            height: "100vh",
+            width: "100%",
             p: 4,
-            overflow: 'auto',
+            overflow: "auto",
           }}
         >
           <Stack
-            direction={mobileGrid ? 'column' : 'row'}
+            direction={mobileGrid ? "column" : "row"}
             justifyContent="flex-start"
             alignItems="flex-start"
             spacing={4}
@@ -50,11 +54,10 @@ const Task = observer(() => {
               alignItems="flex-start"
               spacing={2}
             >
-              {/* <Breadcrumbs />
+              <Breadcrumbs />
               <Header />
               <SubHeader />
-              <Content /> */}
-              1
+              <Content />1
             </Stack>
             <Stack
               direction="column"
@@ -62,14 +65,13 @@ const Task = observer(() => {
               alignItems="flex-start"
               spacing={2}
               sx={{
-                width: mobileGrid ? '100%' : '',
-                pt: mobileGrid ? '' : '28px',
+                width: mobileGrid ? "100%" : "",
+                pt: mobileGrid ? "" : "28px",
                 minWidth: getMinWidth(),
               }}
             >
-              {/* <Files />
-              <Timeline /> */}
-              1
+              <Files />
+              <Timeline />1
             </Stack>
           </Stack>
         </Stack>
