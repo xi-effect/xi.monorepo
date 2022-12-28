@@ -53,23 +53,24 @@ RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
 # Copying config files
-COPY --from=builder /app/apps/${APP_NAME}/next.config.js .
-COPY --from=builder /app/apps/${APP_NAME}/package.json .
+COPY --from=builder /app/apps/${APP_NAME}/next.config.js ./
+COPY --from=builder /app/apps/${APP_NAME}/package.json ./package.json
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/.next/static ./apps/${APP_NAME}/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/public ./apps/${APP_NAME}/public
+
+# COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/public/ public/
+# COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/public/* /app/.next/sw.js* /app/.next/worker-*.js /app/.next/workbox-*.js /app/.next/fallback-*.js ./public/
+# COPY --from=builder --chown=nextjs:nodejs /app/apps/${APP_NAME}/styles styles/
 
 # Expose the listening port
 EXPOSE 3000
 
-CMD ["node", "apps/${APP_NAME}/server.js"]
-
-# COPY --from=builder /app/public/ public/
-# COPY --from=builder /app/public/* /app/.next/sw.js* /app/.next/worker-*.js /app/.next/workbox-*.js /app/.next/fallback-*.js ./public/
-# COPY --from=builder /app/styles styles/
-# COPY --from=builder /app/next.config.js ./
+CMD ["node", "apps/xi.front/server.js"]
+# CMD ["npm", "run", "start"]
 
 # apps/xi.front:
 # total 80

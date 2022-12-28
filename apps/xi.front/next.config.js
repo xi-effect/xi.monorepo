@@ -1,4 +1,5 @@
 // Не поддавайтесь соблазну использовать здесь import
+const path = require("path");
 const runtimeCaching = require("next-pwa/cache");
 
 const plugins = [];
@@ -27,6 +28,7 @@ plugins.push(withPWA);
 const nextConfig = {
   experimental: {
     esmExternals: true,
+    outputFileTracingRoot: path.join(__dirname, "../../"),
   },
   transpilePackages: [
     "pkg.theme.scheme",
@@ -82,6 +84,7 @@ const nextConfig = {
       "www.youtube.com",
     ],
   },
+  output: "standalone",
   webpack(config) {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
