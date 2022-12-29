@@ -1,0 +1,14 @@
+name: Development
+
+on:
+  pull_request:
+    branches: [ staging ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    # needs: prepare
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+    with:
+      tag: front-${{ github.run_id }}
+    secrets: inherit
