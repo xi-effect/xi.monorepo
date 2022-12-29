@@ -124,23 +124,29 @@ const Item: React.FC<ItemsT> = observer(({ item, index }) => {
         </Typography>
         {/* <Grid container wrap="nowrap" spacing={2}>
           <Grid item xs zeroMinWidth> */}
-            <Typography
-              align="left"
-              // noWrap
-              sx={{
-                mt: 0.5,
-                fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "22px",
-                lineClamp: 3,
-              }}
-            >
-              Паровая холодильная машина работает по циклу с дросселированием.
-              Температура кипения в испарителе to,температура в конденсаторе tk.
-              В компрессор поступает пар с температурой t1.Рабочее тело перед
-              регулирующим вентилем переохлаждается до tпер.
-            </Typography>
-          {/* </Grid>
+        <Typography
+          align="justify"
+          // noWrap
+          sx={{
+            mt: 0.5,
+            fontWeight: 400,
+            fontSize: "16px",
+            lineHeight: "22px",
+            /* Here's where the line-clamp magic begins. First, we need to hide the content that overflows our desired number of text lines to show */
+            overflow: "hidden",
+            /* Then, we use the old implementation of Flexbox on the paragraph and set its direction to be row */
+            display: "-webkit-box",
+            "-webkit-box-orient": "vertical",
+            /* Finally, we set the desired number of lines we want to show */
+            "-webkit-line-clamp": "3",
+          }}
+        >
+          Паровая холодильная машина работает по циклу с дросселированием.
+          Температура кипения в испарителе to,температура в конденсаторе tk. В
+          компрессор поступает пар с температурой t1.Рабочее тело перед
+          регулирующим вентилем переохлаждается до tпер.
+        </Typography>
+        {/* </Grid>
         </Grid> */}
       </Stack>
     </Stack>

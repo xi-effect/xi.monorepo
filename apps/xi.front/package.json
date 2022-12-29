@@ -21,6 +21,7 @@
     "@prezly/slate-lists": "^0.71.0",
     "crypto-js": "^4.1.1",
     "pkg.components.loading": "*",
+    "pkg.icons.add": "*",
     "pkg.pages.error": "*",
     "pkg.data.avatar": "*",
     "pkg.dialogs.exit": "*",

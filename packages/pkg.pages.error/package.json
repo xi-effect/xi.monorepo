@@ -12,7 +12,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
-    "components.header": "*"
+    "pkg.components.header": "*"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
