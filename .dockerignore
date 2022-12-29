@@ -1,0 +1,30 @@
+# Add everything, that is not supposed to be transfered into the docker image
+
+# git and project
+.git
+.gitignore
+README.md
+.idea
+.vscode
+
+# docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# build outputs
+.next
+.turbo
+out
+build
+
+# local pwa scripts
+sw.js
+worker-*.js
+workbox-*.js
+fallback-*.js
