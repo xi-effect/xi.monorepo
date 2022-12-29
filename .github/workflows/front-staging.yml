@@ -1,0 +1,14 @@
+name: Staging
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    # needs: prepare
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
+    with:
+      tag: front-staging
+    secrets: inherit
