@@ -17,7 +17,7 @@ const Community = observer(() => {
   useEffect(() => {
     const code = getLastCodeFromURL();
     communitySt.getMeta(code);
-  }, [router.query.comid]);
+  }, [communitySt, router.query.comid]);
 
   return (
     <LayoutPages noIndex>

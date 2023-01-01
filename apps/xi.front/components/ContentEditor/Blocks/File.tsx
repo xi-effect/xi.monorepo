@@ -1,8 +1,9 @@
-import React, { useState, MouseEvent } from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import EditorIcon from "kit/MyIcon/Editor";
-import FileMenu, { FileListT } from "../Menus/FileMenu";
-import FileListItem from "../Menus/MenuItem/FileListItem";
+import React, { useState, MouseEvent } from 'react';
+import { Box, Stack, Typography } from '@mui/material';
+import EditorIcon from 'kit/MyIcon/Editor';
+import FileMenu, { FileListT } from '../Menus/FileMenu';
+import FileListItem from '../Menus/MenuItem/FileListItem';
+import Image from 'next/image';
 
 export type AnchorElT = {
   left: number;
@@ -12,7 +13,7 @@ export type AnchorElT = {
 type FileT = {
   icon: string;
   text: string;
-  type: "image" | "video" | "file";
+  type: 'image' | 'video' | 'file';
 };
 
 const File: React.FC<FileT> = ({ icon, text, type }) => {
@@ -28,18 +29,18 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
     const target = e.target as HTMLDivElement;
     const mousePosition = {
       left: e.clientX,
-      top: e.clientY - (type === "file" ? 230 : 290),
+      top: e.clientY - (type === 'file' ? 230 : 290),
     };
 
-    if (type === "file") {
-      if (!target.closest("#file-item")) setAnchorEl(mousePosition);
+    if (type === 'file') {
+      if (!target.closest('#file-item')) setAnchorEl(mousePosition);
     } else {
       setAnchorEl(mousePosition);
     }
   };
 
   return (
-    <div contentEditable={false} style={{ width: "100%", height: "100%" }}>
+    <div contentEditable={false} style={{ width: '100%', height: '100%' }}>
       <Stack
         direction="row"
         id="file-wrapper"
@@ -47,15 +48,14 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
         alignItems="center"
         justifyContent="flex-start"
         sx={{
-          width: "100%",
-          height: "100%",
-          cursor: "pointer",
-          borderRadius: "8px",
-          transition: "background-color 0.3s ease-in-out",
-          border: "1px solid #E6E6E6",
-          p: filePreview || linkPreview || filePreviewList.length ? 0 : "18px",
-          backgroundColor:
-            filePreview || linkPreview ? "#F5F0FF" : "transparent",
+          width: '100%',
+          height: '100%',
+          cursor: 'pointer',
+          borderRadius: '8px',
+          transition: 'background-color 0.3s ease-in-out',
+          border: '1px solid #E6E6E6',
+          p: filePreview || linkPreview || filePreviewList.length ? 0 : '18px',
+          backgroundColor: filePreview || linkPreview ? '#F5F0FF' : 'transparent',
         }}
       >
         {!filePreview && !linkPreview && !filePreviewList.length && (
@@ -64,10 +64,10 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
 
             <Typography
               sx={{
-                ml: "15px",
+                ml: '15px',
                 fontWeight: 500,
-                fontSize: "16px",
-                lineHeight: "20px",
+                fontSize: '16px',
+                lineHeight: '20px',
               }}
             >
               {text}
@@ -76,13 +76,7 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
         )}
 
         {!!filePreviewList.length && (
-          <Stack
-            p={1}
-            width="100%"
-            direction="row"
-            flexWrap="wrap"
-            justifyContent="space-around"
-          >
+          <Stack p={1} width="100%" direction="row" flexWrap="wrap" justifyContent="space-around">
             {filePreviewList.map(({ file, id }) => (
               <FileListItem
                 id={id}
@@ -90,8 +84,8 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
                 file={file}
                 deleteFile={deleteFile}
                 styles={{
-                  maxWidth: "260px",
-                  margin: "5px 0",
+                  maxWidth: '260px',
+                  margin: '5px 0',
                 }}
               />
             ))}
@@ -101,40 +95,32 @@ const File: React.FC<FileT> = ({ icon, text, type }) => {
         {(filePreview || linkPreview) && (
           <Box
             sx={{
-              position: "relative",
-              paddingTop: "36%",
-              width: "100%",
+              position: 'relative',
+              paddingTop: '36%',
+              width: '100%',
 
-              "iframe, img": {
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                top: "0",
-                left: "0",
-                objectFit: "cover",
-                borderRadius: "8px",
+              'iframe, img': {
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: '0',
+                left: '0',
+                objectFit: 'cover',
+                borderRadius: '8px',
               },
             }}
           >
-            {type === "image" ? (
-              <img
+            {type === 'image' ? (
+              <Image
                 alt="file"
-                src={
-                  filePreview
-                    ? window.URL.createObjectURL(filePreview)
-                    : `${linkPreview}`
-                }
+                src={filePreview ? window.URL.createObjectURL(filePreview) : `${linkPreview}`}
               />
             ) : (
               <iframe
                 frameBorder="0"
                 allowFullScreen
-                title={filePreview ? filePreview.name : "video player"}
-                src={
-                  filePreview
-                    ? window.URL.createObjectURL(filePreview)
-                    : `${linkPreview}`
-                }
+                title={filePreview ? filePreview.name : 'video player'}
+                src={filePreview ? window.URL.createObjectURL(filePreview) : `${linkPreview}`}
                 allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
             )}

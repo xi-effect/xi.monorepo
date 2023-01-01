@@ -31,6 +31,7 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, "../../"),
   },
   transpilePackages: [
+    "pkg.eslint-config-custom",
     "pkg.theme.scheme",
     "pkg.components.loading",
     "pkg.data.avatar",

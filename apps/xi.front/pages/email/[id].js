@@ -26,6 +26,7 @@ const Email = observer(() => {
         setOk(false);
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStatus = (value) => {

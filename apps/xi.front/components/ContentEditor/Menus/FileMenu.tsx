@@ -5,6 +5,7 @@ import { Box, Button, Menu, Stack, TextField, Typography } from '@mui/material';
 import { FileMenuButtonS, fileMenuStyles } from 'kit/Editor/common/styles';
 import { AnchorElT } from '../Blocks/File';
 import FileListItem from './MenuItem/FileListItem';
+import Image from 'next/image';
 
 type AddFileMenuT = {
   text: string;
@@ -271,7 +272,7 @@ const FileMenu: React.FC<AddFileMenuT> = (props) => {
       </Box>
 
       {type === 'image' && (
-        <img
+        <Image
           alt="none"
           aria-hidden="true"
           onError={onFileSrcError}
