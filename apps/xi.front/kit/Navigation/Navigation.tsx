@@ -26,6 +26,7 @@ const Navigation = observer((props: NavigationT) => {
 
   React.useEffect(() => {
     setPrevPathname(router.pathname);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname]);
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();

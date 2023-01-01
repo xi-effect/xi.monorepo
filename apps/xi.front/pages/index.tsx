@@ -51,6 +51,7 @@ const Signin = observer(() => {
       uiSt.setLoading("loading", true);
       profileSt.getProfile("login");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
