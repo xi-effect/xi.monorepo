@@ -40,6 +40,8 @@ const StepOneForm = observer(({ control, errors, prevStepHandler }: IStepTwoForm
                 backgroundColor: 'grayscale.0',
                 borderRadius: '8px',
               }}
+              autoComplete="on"
+              name="email"
             />
           )}
         />
@@ -75,6 +77,8 @@ const StepOneForm = observer(({ control, errors, prevStepHandler }: IStepTwoForm
                 backgroundColor: 'grayscale.0',
                 borderRadius: '8px',
               }}
+              autoComplete="new-password"
+              name="new-password"
             />
           )}
         />

@@ -89,6 +89,8 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               }}
             />
           )}
+          autoComplete="on"
+          name="email"
         />
         <Controller
           name="password"
@@ -118,6 +120,8 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
                   </InputAdornment>
                 ),
               }}
+              autoComplete="on"
+              name="password"
             />
           )}
         />
