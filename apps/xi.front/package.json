@@ -67,6 +67,7 @@
     "pkg.icons.task": "*",
     "pkg.icons.users": "*",
     "pkg.inputs.button": "*",
+    "pkg.icons.updates": "*",
     "pkg.layout.pages": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
