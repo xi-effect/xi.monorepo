@@ -1,5 +1,5 @@
 {
-  "name": "pkg.icons.exit",
+  "name": "pkg.icons.copy",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -20,5 +20,7 @@
     "react": "^18.2.0",
     "tsconfig": "*",
     "typescript": "^4.5.2"
-  }
+  },
+  "author": "",
+  "description": ""
 }

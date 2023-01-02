@@ -59,8 +59,6 @@ const PasswordChangeDialog = observer(() => {
     resolver: yupResolver(schema),
   });
 
-  console.log('errors', errors);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };

@@ -64,17 +64,13 @@ export const getScheme = (mode: "light" | "dark") => ({
     fontFamily: "Inter, Arial",
   },
   breakpoints: {
-    keys: ["ax", "xs", "sm", "md", "dl", "lg", "gx", "xl", "lp"],
+    keys: ["xs", "sm", "md", "dl", "lg", "gx", "xl"],
     values: {
-      ax: 0,
-      xs: 240,
-      sm: 480,
-      md: 720,
-      dl: 980,
-      lg: 1200,
-      gx: 1536,
-      xl: 1980,
-      lp: 2200,
+      xs: 0,
+      sm: 350,
+      md: 700,
+      lg: 1440,
+      xl: 1920,
     },
   },
   palette: {
@@ -134,6 +130,7 @@ export const getScheme = (mode: "light" | "dark") => ({
             80: "#333333",
             40: "#999999",
             10: "#E6E6E6",
+            5: "#F5F5F5",
             0: "#FFFFFF",
           },
           success: {

@@ -3,7 +3,7 @@ import { Dayjs } from 'dayjs';
 export type ProfileT = {
     email: string;
     confirmed: boolean | null; // Подтверждён ли email
-    invite: string | null;
+    code: string | null;
     name: string;
     surname: string;
     patronymic: string;

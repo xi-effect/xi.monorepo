@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, SxProps, Theme } from '@mui/material';
 
 type BtnT = {
-  children: string;
+  children: any;
   onClick?: () => void;
   sx?: SxProps<Theme>;
 };

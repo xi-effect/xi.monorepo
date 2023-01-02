@@ -8,6 +8,7 @@ import { Stack } from '@mui/material';
 import { useStore } from 'store/connect';
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
+import { useRouter } from 'next/router';
 
 const schema = yup
   .object({
@@ -31,6 +32,8 @@ type SignupFormValues = {
 };
 
 const Form = observer(({ activeStep, setActiveStep }: ISignupForm) => {
+  const router = useRouter();
+
   const rootStore = useStore();
   const { authorizationSt } = rootStore;
 
@@ -38,10 +41,16 @@ const Form = observer(({ activeStep, setActiveStep }: ISignupForm) => {
     control,
     handleSubmit,
     trigger,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  React.useEffect(() => {
+    if (!router.isReady) return;
+    setValue('code', router.query.invite);
+  }, [router.isReady]);
 
   const nextStepHandler = () => {
     if (activeStep < 1) {

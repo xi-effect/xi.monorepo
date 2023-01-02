@@ -36,6 +36,8 @@ const StepOneForm = observer(({ control, errors, nextStepHandler }: IStepOneForm
                 backgroundColor: 'grayscale.0',
                 borderRadius: '8px',
               }}
+              autoComplete="on"
+              name="username"
             />
           )}
         />
@@ -56,6 +58,8 @@ const StepOneForm = observer(({ control, errors, nextStepHandler }: IStepOneForm
                 backgroundColor: 'grayscale.0',
                 borderRadius: '8px',
               }}
+              autoComplete="on"
+              name="invite code"
             />
           )}
         />
