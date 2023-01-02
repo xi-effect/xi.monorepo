@@ -82,6 +82,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               type="email"
               fullWidth
               placeholder="Электронная почта"
+              autoComplete="on"
               helperText={getEmailError()}
               {...field}
               sx={{
@@ -89,8 +90,6 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               }}
             />
           )}
-          autoComplete="on"
-          name="email"
         />
         <Controller
           name="password"
@@ -102,6 +101,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               error={!!errors.password?.message || !!errorPassword}
               fullWidth
               placeholder="Пароль"
+              autoComplete="on"
               type={showPassword ? "text" : "password"}
               helperText={getPasswordError()}
               {...field}
@@ -120,8 +120,6 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
                   </InputAdornment>
                 ),
               }}
-              autoComplete="on"
-              name="password"
             />
           )}
         />
