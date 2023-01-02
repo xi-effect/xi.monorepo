@@ -47,6 +47,7 @@
     "pkg.icons.check": "*",
     "pkg.icons.clip": "*",
     "pkg.icons.close": "*",
+    "pkg.icons.copy": "*",
     "pkg.icons.endcall": "*",
     "pkg.icons.exit": "*",
     "pkg.icons.external": "*",

@@ -130,6 +130,7 @@ export const getScheme = (mode: "light" | "dark") => ({
             80: "#333333",
             40: "#999999",
             10: "#E6E6E6",
+            5: "#F5F5F5",
             0: "#FFFFFF",
           },
           success: {
