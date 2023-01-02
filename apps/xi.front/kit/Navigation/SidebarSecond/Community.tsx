@@ -33,6 +33,7 @@ const iconsDict = {
   chat: <Chat color="primary" />,
   room: <Camera color="primary" />,
   schedule: <Calendar color="primary" />,
+  page: <Task color="primary" />,
 };
 
 type ChannelT = {
@@ -224,6 +225,7 @@ const MenuCommunity = observer(() => {
     if (valueLS === undefined) {
       setValueLS(true);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
