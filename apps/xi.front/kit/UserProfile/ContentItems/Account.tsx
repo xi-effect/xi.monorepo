@@ -10,6 +10,8 @@ import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { useStore } from 'store/connect';
+import { AvatarEditor } from 'kit/AvatarEditor';
 
 const typographyStyles = {
   fontWeight: 400,
@@ -35,6 +37,9 @@ const schema = yup
   .required();
 
 const Account = observer(() => {
+  const rootStore = useStore();
+  const { userSt } = rootStore;
+
   const mobile1000: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1000));
 
   const {
@@ -71,14 +76,16 @@ const Account = observer(() => {
           padding: '24px 36px',
         }}
       >
+        <AvatarEditor letter={userSt.user.username[0]} />
         <Typography
           sx={{
             fontWeight: 600,
             fontSize: '24px',
             lineHeight: '32px',
+            ml: 2,
           }}
         >
-          Kolipseazer
+          {userSt.user.username}
         </Typography>
       </Stack>
 
