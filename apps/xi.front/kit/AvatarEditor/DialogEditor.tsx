@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { Box, Button, Dialog, IconButton, Slider, Stack, Typography } from '@mui/material';
+import { Box, Button, Dialog, IconButton, Input, Slider, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons.close';
 import AvatarEditor from 'react-avatar-editor';
+import { usePostFiles } from 'utils/useFiles';
+import { useStore } from 'store/connect';
+import { useSnackbar } from 'notistack';
 
 export type DialogEditorT = {
   /**
@@ -12,11 +15,50 @@ export type DialogEditorT = {
 };
 
 const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const rootStore = useStore();
+  const { userSt } = rootStore;
+
+  const { handlePostFile } = usePostFiles();
+
+  const editor = React.useRef(null);
+
   const onClose = () => uiSt.setDialogs('avatarEditor', false);
+  const [isImage, setIsImage] = React.useState(false);
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+
   const [scale, setScale] = React.useState(1);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setScale(newValue as number);
+  };
+
+  const handleChangeInput = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setIsImage(true);
+  };
+
+  const handleNewImage = async () => {
+    if (editor && editor.current) {
+      //@ts-ignore
+      const canvasScaled = editor.current.getImageScaledToCanvas();
+
+      let image = canvasScaled.toDataURL('image/png');
+
+      let newImage = new File([image], `userAvatar${userSt?.user?.id ?? 0}.png`, {
+        type: 'image/png',
+      });
+
+      const data = await handlePostFile(newImage);
+      if (data.id) {
+        userSt.setUser('avatar', data.id);
+        uiSt.setDialogs('avatarEditor', false);
+        enqueueSnackbar('Новая Аватарка успешно сохранена', { variant: 'success' });
+      } else {
+        enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
+      }
+    }
   };
 
   return (
@@ -76,30 +118,65 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
             position: 'relative',
           }}
         >
-          <AvatarEditor
-            image="https://cdn.discordapp.com/attachments/706806130348785718/1059887219722166372/2022-11-23_16.39.51.png"
-            style={{
-              height: '100%',
-              width: '100%',
-              borderRadius: '8px',
-            }}
-            borderRadius={150}
-            color={[0, 0, 0, 0.6]} // RGBA
-            scale={scale}
+          {isImage ? (
+            <AvatarEditor
+              ref={editor}
+              image={selectedFile}
+              style={{
+                height: '100%',
+                width: '100%',
+                borderRadius: '8px',
+              }}
+              borderRadius={150}
+              color={[0, 0, 0, 0.6]} // RGBA
+              scale={scale}
+            />
+          ) : (
+            <Button
+              sx={{
+                width: '310px',
+                height: '300px',
+                border: '1px solid',
+                borderRadius: 4,
+                position: 'relative',
+              }}
+            >
+              <Typography> Загрузить </Typography>
+              <input
+                type="file"
+                accept="image/*,.png,.jpg"
+                onChange={handleChangeInput}
+                style={{
+                  position: 'absolute',
+                  opacity: '0',
+                  width: '310px',
+                  height: '300px',
+                  border: '2px solid',
+                  cursor: 'pointer',
+                }}
+              />
+            </Button>
+          )}
+        </Box>
+        <Box sx={{
+          pl: 2,
+          pr: 2,
+          height: '20px',
+          width: '100%',
+        }}>
+          <Slider
+            aria-label="Temperature"
+            value={scale}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            step={0.1}
+            marks
+            min={1}
+            max={1.5}
           />
         </Box>
-        <Slider
-          aria-label="Temperature"
-          value={scale}
-          onChange={handleChange}
-          valueLabelDisplay="auto"
-          step={0.1}
-          marks
-          min={0.7}
-          max={1.5}
-        />
         <Button
-          onClick={() => uiSt.setDialogs('passwordChange', true)}
+          onClick={handleNewImage}
           variant="contained"
           sx={{
             mt: 3,

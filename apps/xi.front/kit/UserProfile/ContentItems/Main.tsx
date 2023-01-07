@@ -9,6 +9,8 @@ import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
 
+const msgDuration = 1700;
+
 const Main = observer(() => {
   const rootStore = useStore();
   const { profileSt, userSt } = rootStore;
@@ -22,8 +24,7 @@ const Main = observer(() => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const onCopy: () => void = async () => {
     await navigator.clipboard.writeText(getInviteLink());
-    // show success coppy msg
-    const msgDuration = 1700;
+
     enqueueSnackbar('Скопировано в ваш буфер обмена!', { variant: 'success' });
     setTimeout(() => closeSnackbar(), msgDuration);
   };
