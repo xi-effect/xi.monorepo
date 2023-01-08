@@ -71,6 +71,7 @@ const nextConfig = {
     "pkg.icons.users",
     "pkg.icons.copy",
     "pkg.icons.updates",
+    "pkg.icons.photo"
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== "development",

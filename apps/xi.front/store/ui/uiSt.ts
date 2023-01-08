@@ -14,6 +14,8 @@ type DialogsType = {
   exit: boolean;
   passwordChange: boolean;
   emailChange: boolean;
+  avatarEditor: boolean;
+  isSave: boolean;
 };
 
 class UISt {
@@ -77,6 +79,8 @@ class UISt {
     exit: false,
     passwordChange: false,
     emailChange: false,
+    avatarEditor: false,
+    isSave: false,
   };
 
   @action setDialogs = (name: string, value: boolean) => {
@@ -97,6 +101,8 @@ class UISt {
       exit: false,
       passwordChange: false,
       emailChange: false,
+      avatarEditor: false,
+      isSave: false,
     };
   };
 }

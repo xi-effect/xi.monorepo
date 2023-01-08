@@ -111,4 +111,3 @@ const UserProfile = observer(() => {
 });
 
 export default UserProfile;
-

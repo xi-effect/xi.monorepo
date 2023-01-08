@@ -7,10 +7,13 @@ import { useSnackbar } from 'notistack';
 
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
+import { AvatarEditor } from 'kit/AvatarEditor';
+
+const msgDuration = 1700;
 
 const Main = observer(() => {
   const rootStore = useStore();
-  const { profileSt } = rootStore;
+  const { profileSt, userSt } = rootStore;
   const inviteId: string | null = profileSt.profile.code;
 
   const getInviteLink = () => {
@@ -21,8 +24,7 @@ const Main = observer(() => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const onCopy: () => void = async () => {
     await navigator.clipboard.writeText(getInviteLink());
-    // show success coppy msg
-    const msgDuration = 1700;
+
     enqueueSnackbar('Скопировано в ваш буфер обмена!', { variant: 'success' });
     setTimeout(() => closeSnackbar(), msgDuration);
   };
@@ -43,14 +45,16 @@ const Main = observer(() => {
           padding: '24px 36px',
         }}
       >
+        <AvatarEditor letter={userSt.user.username[0]} />
         <Typography
           sx={{
             fontWeight: 600,
             fontSize: '24px',
             lineHeight: '32px',
+            ml: 2,
           }}
         >
-          Kolipseazer
+          {userSt.user.username}
         </Typography>
       </Stack>
 
@@ -137,7 +141,7 @@ const Main = observer(() => {
               justifyContent: 'center',
               fontSize: mobile700 ? '20px' : '26px',
               svg: {
-                fill: "#fff",
+                fill: '#fff',
               },
             }}
           >
@@ -150,4 +154,3 @@ const Main = observer(() => {
 });
 
 export default Main;
-

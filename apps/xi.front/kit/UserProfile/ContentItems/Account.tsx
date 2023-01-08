@@ -4,12 +4,15 @@ import { Stack, Typography, Theme, useMediaQuery, Button } from '@mui/material';
 
 import { observer } from 'mobx-react';
 import dayjs, { Dayjs } from 'dayjs';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { useStore } from 'store/connect';
+import { AvatarEditor } from 'kit/AvatarEditor';
+import { useSnackbar } from 'notistack';
 
 const typographyStyles = {
   fontWeight: 400,
@@ -27,28 +30,68 @@ type FormValues = {
 
 const schema = yup
   .object({
-    username: yup.string().max(100).required(),
-    name: yup.string().max(100).required(),
-    surname: yup.string().max(100).required(),
-    patronymic: yup.string().max(100).required(),
+    username: yup.string().max(100),
+    name: yup.string().max(100),
+    surname: yup.string().max(100),
+    patronymic: yup.string().max(100),
   })
   .required();
 
 const Account = observer(() => {
+  const rootStore = useStore();
+  const { userSt, profileSt } = rootStore;
+  const { profile } = profileSt;
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const formRef = React.useRef(null);
+
   const mobile1000: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1000));
 
   const {
     control,
     handleSubmit,
-    // trigger,
-    // reset,
-    // formState: { errors },
+    watch,
+    trigger,
+    reset,
+    formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (newData) => {
-    console.log('newData', newData);
+  const openSaveConfirm = () => {
+    enqueueSnackbar('saveConfirm', {
+      variant: 'saveConfirm',
+      persist: true,
+      formRef: formRef,
+    });
+  };
+
+  const closeSaveConfirm = () => {
+    closeSnackbar();
+  };
+
+  watch((data, { name, type }) => {
+    // console.log(data, name, type);
+    if (
+      data['name'] !== profile.name ||
+      data['surname'] !== profile.surname ||
+      data['patronymic'] !== profile.patronymic
+    ) {
+      openSaveConfirm();
+    }
+
+    if (
+      data['name'] === profile.name &&
+      data['surname'] === profile.surname &&
+      data['patronymic'] === profile.patronymic
+    ) {
+      closeSaveConfirm();
+    }
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log('data', data);
   };
 
   const [value, setValue] = React.useState<Dayjs | null>(null);
@@ -71,14 +114,16 @@ const Account = observer(() => {
           padding: '24px 36px',
         }}
       >
+        <AvatarEditor letter={userSt.user.username[0]} />
         <Typography
           sx={{
             fontWeight: 600,
             fontSize: '24px',
             lineHeight: '32px',
+            ml: 2,
           }}
         >
-          Kolipseazer
+          {userSt.user.username}
         </Typography>
       </Stack>
 
@@ -105,7 +150,7 @@ const Account = observer(() => {
         <Controller
           name="username"
           control={control}
-          defaultValue=""
+          defaultValue={profile.name}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
@@ -131,7 +176,7 @@ const Account = observer(() => {
         <Controller
           name="name"
           control={control}
-          defaultValue=""
+          defaultValue={profile.name}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
@@ -157,7 +202,7 @@ const Account = observer(() => {
         <Controller
           name="surname"
           control={control}
-          defaultValue=""
+          defaultValue={profile.surname}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
@@ -183,7 +228,7 @@ const Account = observer(() => {
         <Controller
           name="patronymic"
           control={control}
-          defaultValue=""
+          defaultValue={profile.patronymic}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
@@ -224,24 +269,7 @@ const Account = observer(() => {
             maxDate={dayjs()}
           />
         )}
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            width: '160px',
-            height: '56px',
-            borderRadius: '8px',
-            fontWeight: 500,
-            fontSize: '18px',
-            lineHeight: '22px',
-            textTransform: 'capitalize',
-            mt: '56px',
-            boxShadow: 0,
-            '&:hover': {
-              boxShadow: 0,
-            },
-          }}
-        >
+        <Button ref={formRef} sx={{ visibility: 'hidden' }} type="submit">
           Сохранить
         </Button>
       </Stack>

@@ -94,45 +94,34 @@ export const usePostFiles: any = () => {
   const [error, setError] = useState<string>();
   const [notUploaded, setNotUploaded] = useState<any[]>();
 
-  const validate = (files: IFile[]): boolean => {
-    if (!files.length) {
+  const validate = (file: IFile): boolean => {
+    if (!file) {
       setError('Отсутсвуют файлы к отправке');
       return false;
     }
 
-    for (const file of files) {
-      if (file.size > 4 * 1000 ** 2) {
-        setError('Размер файла превышает 4 МБ');
-        return false;
-      }
+    if (file.size > 4 * 1000 ** 2) {
+      setError('Размер файла превышает 4 МБ');
+      return false;
     }
     setError(undefined);
     return true;
   };
 
-  const postFiles = async (files) => {
-    const currentFile = files.shift();
-
-    const data = await postFile(currentFile);
-
-    if (data.error) {
-      setNotUploaded((prevState) => (prevState ? [...prevState, currentFile] : [currentFile]));
-    }
-    if (!files.length) return files;
-
-    return postFiles(files);
-  };
-
-  const handlePostFile = async (filesToPost: IFile[]) => {
-    if (!validate(filesToPost)) {
+  const handlePostFile = async (fileToPost: IFile) => {
+    if (!validate(fileToPost)) {
       return;
     }
 
     setIsUploading(true);
-    const data = await postFiles(filesToPost);
+    const data = await postFile(fileToPost);
+
     if (data.error) {
       setError(data.error);
-    } else setError(undefined);
+    } else {
+      setError(undefined)
+      return data;
+    };
     setIsUploading(false);
   };
 
