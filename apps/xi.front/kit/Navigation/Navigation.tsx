@@ -1,13 +1,13 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { observer } from "mobx-react";
+import React from 'react';
+import { useRouter } from 'next/router';
+import { observer } from 'mobx-react';
 
-import { Slide, Button, useMediaQuery, Theme } from "@mui/material";
-import { useSessionStorage, useBeforeUnload } from "react-use";
-import { useSnackbar } from "notistack";
-import { useStore } from "store/connect";
-import Desktop from "./Desktop";
-import Mobile from "./Mobile";
+import { Slide, Button, useMediaQuery, Theme } from '@mui/material';
+import { useSessionStorage, useBeforeUnload } from 'react-use';
+import { useSnackbar } from 'notistack';
+import { useStore } from 'store/connect';
+import Desktop from './Desktop';
+import Mobile from './Mobile';
 
 type NavigationT = {
   children: React.ReactNode;
@@ -22,11 +22,11 @@ const Navigation = observer((props: NavigationT) => {
   const router = useRouter();
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
 
-  const [prevPathname, setPrevPathname] = useSessionStorage("prevPathname");
+  const [prevPathname, setPrevPathname] = useSessionStorage('prevPathname');
 
   React.useEffect(() => {
     setPrevPathname(router.pathname);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname]);
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -43,18 +43,18 @@ const Navigation = observer((props: NavigationT) => {
   );
 
   const checkSocket = () => {
-    rootStore.socket?.on("connect", () => {
-      console.info("SIO connect", rootStore.socket?.id);
+    rootStore.socket?.on('connect', () => {
+      console.info('SIO connect', rootStore.socket?.id);
     });
-    rootStore.socket?.on("disconnect", () => {
-      console.info("SIO disconnect", rootStore.socket?.id);
+    rootStore.socket?.on('disconnect', () => {
+      console.info('SIO disconnect', rootStore.socket?.id);
     });
-    rootStore.socket?.on("error", () => {
-      enqueueSnackbar("Ошибка соединения", {
+    rootStore.socket?.on('error', () => {
+      enqueueSnackbar('Ошибка соединения', {
         persist: true,
         anchorOrigin: {
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         },
         TransitionComponent: Slide,
         action,
@@ -78,8 +78,8 @@ const Navigation = observer((props: NavigationT) => {
   }, []);
 
   React.useEffect(() => {
-    if (profileSt?.profile.email === "") {
-      uiSt.setLoading("loading", true);
+    if (profileSt?.profile.email === '') {
+      uiSt.setLoading('loading', true);
       userSt?.getUser();
       profileSt?.getProfile();
     }
