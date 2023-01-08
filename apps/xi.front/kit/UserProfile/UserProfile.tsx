@@ -5,7 +5,6 @@ import { useStore } from 'store/connect';
 import { TransitionProps } from '@mui/material/transitions';
 import { Dialog, Slide, Stack, useMediaQuery, Theme, Box } from '@mui/material';
 import { observer } from 'mobx-react';
-// import { useSnackbar } from 'notistack';
 import Menu from './Menu';
 import Content from './Content';
 import Header from './Header';
@@ -20,13 +19,6 @@ const Transition = React.forwardRef(
 );
 
 const UserProfile = observer(() => {
-  // const { enqueueSnackbar } = useSnackbar();
-
-  // enqueueSnackbar('saveConfirm', {
-  //   variant: 'saveConfirm',
-  //   persist: true
-  // });
-
   const rootStore = useStore();
   const { uiSt, profileSt, userSt } = rootStore;
   const { dialogs } = uiSt;

@@ -3,7 +3,7 @@ import { SnackbarContent, CustomContentProps } from 'notistack';
 import { Button, Paper, Stack, Typography } from '@mui/material';
 
 interface ReportCompleteProps extends CustomContentProps {
-  allowDownload: boolean;
+  formRef?: React.RefObject<HTMLButtonElement>;
 }
 
 const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
@@ -11,10 +11,22 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
     // You have access to notistack props and options 👇🏼
     id,
     message,
-    // as well as your own custom props 👇🏼
-    allowDownload,
+    autoHideDuration,
+    anchorOrigin,
+    hideIconVariant,
+    iconVariant,
+    persist,
+    // as well as your own custom props 👇🏼,
+    formRef,
     ...other
   } = props;
+
+  const handleSubmit = () => {
+    if (formRef && formRef.current) {
+      formRef.current.click();
+      console.log('handleSubmit');
+    }
+  };
 
   return (
     <SnackbarContent ref={ref} role="alert" {...other}>
@@ -26,7 +38,6 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
           height: '96px',
           borderRadius: '16px',
           bgcolor: 'grayscale.10',
-          // boxShadow: 'none',
         }}
       >
         <Stack
@@ -70,6 +81,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
             Сбросить
           </Button>
           <Button
+            onClick={handleSubmit}
             variant="contained"
             sx={{
               width: '160px',
