@@ -17,7 +17,7 @@
     "eslint": "^7.32.0",
     "pkg.eslint-config-custom": "*",
     "react": "^18.2.0",
-    "tsconfig": "*",
+    "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
   }
 }
