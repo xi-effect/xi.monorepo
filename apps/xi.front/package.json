@@ -108,7 +108,7 @@
     "@types/react-dom": "^18.0.7",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "7.32.0",
-    "pkg.eslint-config-custom": "*",
+    "pkg.config.eslint": "*",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.3"
   }

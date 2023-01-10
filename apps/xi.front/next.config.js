@@ -31,7 +31,7 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, "../../"),
   },
   transpilePackages: [
-    "pkg.eslint-config-custom",
+    "pkg.config.eslint",
     "pkg.theme.scheme",
     "pkg.components.loading",
     "pkg.data.avatar",
@@ -79,13 +79,11 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      "xieffect.pythonanywhere.com",
       "cdn.discordapp.com",
       "localhost:3000",
       "localhost:5000",
       "xieffect.ru:5000",
       "xieffect.ru",
-      "www.youtube.com",
     ],
   },
   output: "standalone",
