@@ -1,17 +1,17 @@
-import React from "react";
-import H1 from "components/ContentEditor/Blocks/H1";
-import H2 from "components/ContentEditor/Blocks/H2";
-import Text from "components/ContentEditor/Blocks/Text";
-import DividerComp from "components/ContentEditor/Blocks/DividerComp";
-import Quote from "components/ContentEditor/Blocks/Quote";
-import H3 from "components/ContentEditor/Blocks/H3";
-import { RenderElementProps } from "slate-react";
-import { Type } from "kit/Editor/common/withListsPlugin";
-import { CreationMenuConfigT } from "kit/Editor/common/menuConfig";
-import Ol from "../Blocks/Ol";
-import ListItem from "../Blocks/ListItem";
-import Ul from "../Blocks/Ul";
-import File from "../Blocks/File";
+import React from 'react';
+import H1 from 'components/ContentEditor/Blocks/H1';
+import H2 from 'components/ContentEditor/Blocks/H2';
+import Text from 'components/ContentEditor/Blocks/Text';
+import DividerComp from 'components/ContentEditor/Blocks/DividerComp';
+import Quote from 'components/ContentEditor/Blocks/Quote';
+import H3 from 'components/ContentEditor/Blocks/H3';
+import { RenderElementProps } from 'slate-react';
+import { Type } from 'kit/Editor/common/withListsPlugin';
+import { CreationMenuConfigT } from 'kit/Editor/common/menuConfig';
+import Ol from '../Blocks/Ol';
+import ListItem from '../Blocks/ListItem';
+import Ul from '../Blocks/Ul';
+import File from '../Blocks/File';
 
 export type ResultBlockT = RenderElementProps & {
   element: CreationMenuConfigT;
@@ -56,9 +56,7 @@ const ResultBlock: React.FC<ResultBlockT> = (props) => {
       return <div {...attributes}>{children}</div>;
 
     case Type.IMAGE:
-      return (
-        <File type="image" icon="imageMedium" text="Добавить изображение" />
-      );
+      return <File type="image" icon="imageMedium" text="Добавить изображение" />;
 
     case Type.VIDEO:
       return <File type="video" icon="videoMedium" text="Добавить видео" />;

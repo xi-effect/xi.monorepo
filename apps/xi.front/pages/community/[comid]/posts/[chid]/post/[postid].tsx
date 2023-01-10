@@ -1,14 +1,8 @@
-import { Stack } from "@mui/material";
-import { observer } from "mobx-react";
-import { LayoutPages } from "pkg.layout.pages";
-import { Navigation } from "kit/Navigation";
-import {
-  Header,
-  SubHeader,
-  Content,
-  Breadcrumbs,
-  Slider,
-} from "components/Community/Post";
+import { Stack } from '@mui/material';
+import { observer } from 'mobx-react';
+import { LayoutPages } from 'pkg.layout.pages';
+import { Navigation } from 'kit/Navigation';
+import { Header, SubHeader, Content, Breadcrumbs, Slider } from 'components/Community/Post';
 
 const Post = observer(() => (
   <LayoutPages noIndex>
@@ -19,10 +13,10 @@ const Post = observer(() => (
         alignItems="flex-start"
         spacing={0}
         sx={{
-          height: "100vh",
-          width: "100%",
+          height: '100vh',
+          width: '100%',
           p: 4,
-          overflow: "auto",
+          overflow: 'auto',
         }}
       >
         1

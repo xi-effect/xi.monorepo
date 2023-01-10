@@ -110,4 +110,3 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
 });
 
 export default Menu;
-

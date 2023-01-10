@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import Head from "next/head";
+import React, { ReactNode } from 'react';
+import Head from 'next/head';
 
 export type LayoutPagesT = {
   title?: string;
@@ -9,8 +9,7 @@ export type LayoutPagesT = {
 
 const getHostname = () => {
   // @ts-ignore
-  return typeof window !== "undefined" && window.location.hostname ? window.location.hostname
-  : "";
+  return typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : '';
 };
 
 export const LayoutPages = ({ title, noIndex = false, children }: LayoutPagesT) => {
@@ -19,10 +18,8 @@ export const LayoutPages = ({ title, noIndex = false, children }: LayoutPagesT) 
   return (
     <>
       <Head>
-        <title>{`xi.effect ${title ? `| ${title}` : ""}`}</title>
-        {(noIndex || hostname.includes("netlify")) && (
-          <meta name="robots" content="noindex" />
-        )}
+        <title>{`xi.effect ${title ? `| ${title}` : ''}`}</title>
+        {(noIndex || hostname.includes('netlify')) && <meta name="robots" content="noindex" />}
       </Head>
       {children}
     </>

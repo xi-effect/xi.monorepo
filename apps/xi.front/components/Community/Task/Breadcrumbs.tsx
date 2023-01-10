@@ -1,6 +1,6 @@
-import { observer } from "mobx-react";
-import { Stack, Typography } from "@mui/material";
-import { Arrow } from "pkg.icons.arrow";
+import { observer } from 'mobx-react';
+import { Stack, Typography } from '@mui/material';
+import { Arrow } from 'pkg.icons.arrow';
 
 const Breadcrumbs = observer(() => (
   <Stack
@@ -9,16 +9,16 @@ const Breadcrumbs = observer(() => (
     alignItems="center"
     spacing={0.5}
     sx={{
-      width: "100%",
-      height: "16px",
+      width: '100%',
+      height: '16px',
     }}
   >
     <Typography
       sx={{
         fontWeight: 400,
-        fontSize: "14px",
-        lineHeight: "16px",
-        color: "primary.main",
+        fontSize: '14px',
+        lineHeight: '16px',
+        color: 'primary.main',
       }}
     >
       4Д — БЖ
@@ -27,9 +27,9 @@ const Breadcrumbs = observer(() => (
     <Typography
       sx={{
         fontWeight: 400,
-        fontSize: "14px",
-        lineHeight: "16px",
-        color: "primary.main",
+        fontSize: '14px',
+        lineHeight: '16px',
+        color: 'primary.main',
       }}
     >
       Задания

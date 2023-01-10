@@ -1,2 +1,2 @@
-import * as React from "react";
-export * from "./Loading";
+import * as React from 'react';
+export * from './Loading';

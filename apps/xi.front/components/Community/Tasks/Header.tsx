@@ -1,6 +1,6 @@
-import React from "react";
-import { observer } from "mobx-react";
-import { Stack, Typography } from "@mui/material";
+import React from 'react';
+import { observer } from 'mobx-react';
+import { Stack, Typography } from '@mui/material';
 
 const Header = observer(() => {
   return (
@@ -10,15 +10,15 @@ const Header = observer(() => {
       alignItems="center"
       sx={{
         mt: 4,
-        width: "100%",
+        width: '100%',
       }}
     >
       <Typography
         sx={{
           fontWeight: 600,
-          fontSize: "32px",
-          lineHeight: "40px",
-          color: "grayscale.100",
+          fontSize: '32px',
+          lineHeight: '40px',
+          color: 'grayscale.100',
         }}
       >
         Задания

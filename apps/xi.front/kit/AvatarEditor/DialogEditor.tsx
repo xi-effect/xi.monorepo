@@ -158,12 +158,14 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
             </Button>
           )}
         </Box>
-        <Box sx={{
-          pl: 2,
-          pr: 2,
-          height: '20px',
-          width: '100%',
-        }}>
+        <Box
+          sx={{
+            pl: 2,
+            pr: 2,
+            height: '20px',
+            width: '100%',
+          }}
+        >
           <Slider
             aria-label="Temperature"
             value={scale}

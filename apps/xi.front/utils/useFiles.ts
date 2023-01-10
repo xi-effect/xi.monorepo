@@ -119,9 +119,9 @@ export const usePostFiles: any = () => {
     if (data.error) {
       setError(data.error);
     } else {
-      setError(undefined)
+      setError(undefined);
       return data;
-    };
+    }
     setIsUploading(false);
   };
 

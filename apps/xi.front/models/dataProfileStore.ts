@@ -1,4 +1,4 @@
-import { UserT } from "./user";
+import { UserT } from './user';
 
 export type ResponseDataRegT = {
   communities: RegCommunityT[];
@@ -11,4 +11,3 @@ export type RegCommunityT = {
   description?: string;
   id: number;
 };
-

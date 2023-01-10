@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import React from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 // Тип
 type Props = {
@@ -14,8 +14,8 @@ const XiLogo: React.FC<Props> = ({ width = 100, height = 24 }) => {
 
   return (
     <Image
-      style={{ cursor: "pointer" }}
-      onClick={() => router.push({ pathname: "/" })}
+      style={{ cursor: 'pointer' }}
+      onClick={() => router.push({ pathname: '/' })}
       src="/xieffect.svg"
       alt="xi.logo"
       width={width}

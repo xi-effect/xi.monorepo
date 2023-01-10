@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack } from '@mui/material';
 import { observer } from 'mobx-react';
 import { Navigation } from 'kit/Navigation';
-import { LayoutPages } from "pkg.layout.pages";
+import { LayoutPages } from 'pkg.layout.pages';
 import { HomePage } from 'components/Home';
 
 const Home = observer(() => (

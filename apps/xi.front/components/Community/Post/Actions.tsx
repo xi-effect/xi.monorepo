@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from "react";
-import { observer } from "mobx-react";
-import { Button, Stack, Typography } from "@mui/material";
-import { Add } from "pkg.icons.add";
+import React from 'react';
+import { observer } from 'mobx-react';
+import { Button, Stack, Typography } from '@mui/material';
+import { Add } from 'pkg.icons.add';
 
 const Header = observer(() => (
   <Stack
@@ -10,8 +10,8 @@ const Header = observer(() => (
     justifyContent="flex-start"
     alignItems="center"
     sx={{
-      mt: "12px",
-      width: "100%",
+      mt: '12px',
+      width: '100%',
     }}
   >
     <Button
@@ -19,22 +19,22 @@ const Header = observer(() => (
       sx={{
         width: 173,
         height: 40,
-        borderRadius: "4px",
-        bgcolor: "grayscale.0",
+        borderRadius: '4px',
+        bgcolor: 'grayscale.0',
 
-        "&:hover": {
-          bgcolor: "grayscale.0",
+        '&:hover': {
+          bgcolor: 'grayscale.0',
         },
       }}
     >
       <Add />
       <Typography
         sx={{
-          ml: "4px",
+          ml: '4px',
           fontWeight: 500,
-          fontSize: "16px",
-          lineHeight: "20px",
-          color: "grayscale.100",
+          fontSize: '16px',
+          lineHeight: '20px',
+          color: 'grayscale.100',
         }}
       >
         Редактировать
@@ -43,25 +43,25 @@ const Header = observer(() => (
     <Button
       variant="contained"
       sx={{
-        ml: "8px",
+        ml: '8px',
         width: 118,
         height: 40,
-        borderRadius: "4px",
-        bgcolor: "grayscale.0",
+        borderRadius: '4px',
+        bgcolor: 'grayscale.0',
 
-        "&:hover": {
-          bgcolor: "grayscale.0",
+        '&:hover': {
+          bgcolor: 'grayscale.0',
         },
       }}
     >
       <Add />
       <Typography
         sx={{
-          ml: "4px",
+          ml: '4px',
           fontWeight: 500,
-          fontSize: "16px",
-          lineHeight: "20px",
-          color: "grayscale.100",
+          fontSize: '16px',
+          lineHeight: '20px',
+          color: 'grayscale.100',
         }}
       >
         Удалить

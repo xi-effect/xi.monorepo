@@ -1,16 +1,16 @@
-import React from "react";
-import { observer } from "mobx-react";
+import React from 'react';
+import { observer } from 'mobx-react';
 
-import { Stack, Box } from "@mui/material";
-import dynamic from "next/dynamic";
-import { useStore } from "store/connect";
-import { useLocalStorage } from "react-use";
-import { ExitDialog } from "pkg.dialogs.exit";
-import { UserProfile } from "kit/UserProfile";
-import { SidebarSecond } from "./SidebarSecond";
-import Upbar from "./Upbar";
+import { Stack, Box } from '@mui/material';
+import dynamic from 'next/dynamic';
+import { useStore } from 'store/connect';
+import { useLocalStorage } from 'react-use';
+import { ExitDialog } from 'pkg.dialogs.exit';
+import { UserProfile } from 'kit/UserProfile';
+import { SidebarSecond } from './SidebarSecond';
+import Upbar from './Upbar';
 
-const Sidebar = dynamic(() => import("./Sidebar/Sidebar"), { ssr: false });
+const Sidebar = dynamic(() => import('./Sidebar/Sidebar'), { ssr: false });
 
 type MobileT = {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ const Mobile = observer(({ children }: MobileT) => {
   const rootStore = useStore();
   const { uiSt } = rootStore;
 
-  const [valueLS, setValueLS] = useLocalStorage("is-main-menu-open");
+  const [valueLS, setValueLS] = useLocalStorage('is-main-menu-open');
 
   const [menuPosition, setMenuPosition] = React.useState<number>(0);
 
@@ -78,14 +78,14 @@ const Mobile = observer(({ children }: MobileT) => {
       });
     };
 
-    window.addEventListener("touchstart", handleStart);
-    window.addEventListener("touchmove", handleMove);
-    window.addEventListener("touchend", handleEnd);
+    window.addEventListener('touchstart', handleStart);
+    window.addEventListener('touchmove', handleMove);
+    window.addEventListener('touchend', handleEnd);
 
     return () => {
-      window.removeEventListener("touchstart", handleStart);
-      window.removeEventListener("touchmove", handleMove);
-      window.removeEventListener("touchend", handleEnd);
+      window.removeEventListener('touchstart', handleStart);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleEnd);
     };
   }, []);
 
@@ -95,10 +95,10 @@ const Mobile = observer(({ children }: MobileT) => {
       justifyContent="flex-start"
       alignItems="center"
       sx={{
-        position: "relative",
+        position: 'relative',
         zIndex: 0,
-        backgroundColor: "primary.pale",
-        overflow: "hidden",
+        backgroundColor: 'primary.pale',
+        overflow: 'hidden',
       }}
     >
       <UserProfile />
@@ -114,26 +114,26 @@ const Mobile = observer(({ children }: MobileT) => {
         <Box sx={{ width: 64 }}>
           <Sidebar />
         </Box>
-        <Box sx={{ width: 236, borderRadius: "8px" }}>
+        <Box sx={{ width: 236, borderRadius: '8px' }}>
           <SidebarSecond />
         </Box>
       </Stack>
       <Stack
         sx={{
-          position: "absolute",
-          bgcolor: "primary.pale",
-          height: "100vh",
-          width: "100vw",
+          position: 'absolute',
+          bgcolor: 'primary.pale',
+          height: '100vh',
+          width: '100vw',
           zIndex: 20001,
           transform: `translateX(${menuPosition}px)`,
-          transition: "0.4s",
+          transition: '0.4s',
         }}
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
       >
         <Stack
-          sx={{ position: "relative", height: "100vh", width: "100vw", pt: 6 }}
+          sx={{ position: 'relative', height: '100vh', width: '100vw', pt: 6 }}
           direction="column"
           justifyContent="flex-start"
           alignItems="center"

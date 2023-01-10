@@ -1,14 +1,14 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography } from '@mui/material';
 
 export const Avatar = () => {
   const getBgcolor = (v: number) => {
-    if (v === 1) return "#F5F0FF";
-    return "#F5F0FF";
+    if (v === 1) return '#F5F0FF';
+    return '#F5F0FF';
   };
 
   const getTextColor = (v: number) => {
-    if (v === 1) return "#9769FF";
-    return "#9769FF";
+    if (v === 1) return '#9769FF';
+    return '#9769FF';
   };
 
   return (
@@ -26,8 +26,8 @@ export const Avatar = () => {
       <Typography
         sx={{
           fontWeight: 600,
-          fontSize: "20px",
-          lineHeight: "20px",
+          fontSize: '20px',
+          lineHeight: '20px',
           color: getTextColor(1),
         }}
       >

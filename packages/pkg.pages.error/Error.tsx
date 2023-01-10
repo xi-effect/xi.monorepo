@@ -1,15 +1,9 @@
-import React, { ReactNode } from "react";
-import {
-  Button,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { NextRouter, useRouter } from "next/router";
-import { motion } from "framer-motion";
-import { errorCode, errorMessages } from "./texts";
-import { Header } from "pkg.components.header";
+import React, { ReactNode } from 'react';
+import { Button, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { NextRouter, useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import { errorCode, errorMessages } from './texts';
+import { Header } from 'pkg.components.header';
 import {
   buttonFontSize,
   buttonHeight,
@@ -21,7 +15,7 @@ import {
   secondaryFontSize,
   secondaryLineHeight,
   secondaryMarginTop,
-} from "./breakpoints";
+} from './breakpoints';
 
 export type ErrorProps = {
   code: errorCode;
@@ -34,14 +28,14 @@ export function Error({ code, logo }: ErrorProps) {
   const mobile1920: boolean = useMediaQuery(theme.breakpoints.down(1920));
   const mobile1336: boolean = useMediaQuery(theme.breakpoints.down(1336));
   const mobile1000: boolean = useMediaQuery(theme.breakpoints.down(1000));
-  const mobilesm: boolean = useMediaQuery(theme.breakpoints.down("sm"));
+  const mobilesm: boolean = useMediaQuery(theme.breakpoints.down('sm'));
 
   const getDeviceWidth = () => {
-    if (mobilesm) return "min480";
-    if (mobile1000) return "min1000";
-    if (mobile1336) return "min1336";
-    if (mobile1920) return "min1920";
-    return "max1920";
+    if (mobilesm) return 'min480';
+    if (mobile1000) return 'min1000';
+    if (mobile1336) return 'min1336';
+    if (mobile1920) return 'min1920';
+    return 'max1920';
   };
 
   const screenSize: ScreenSize = getDeviceWidth();
@@ -58,17 +52,17 @@ export function Error({ code, logo }: ErrorProps) {
       sx={{
         zIndex: 1,
         margin: 0,
-        overflow: "auto",
-        minHeight: mobilesm ? "calc(100vh - 14px)" : "100vh",
-        height: "100%",
-        bgcolor: "primary.pale",
-        p: mobile1336 ? "20px 16px 20px 16px" : "16px 84px 64px 84px",
+        overflow: 'auto',
+        minHeight: mobilesm ? 'calc(100vh - 14px)' : '100vh',
+        height: '100%',
+        bgcolor: 'primary.pale',
+        p: mobile1336 ? '20px 16px 20px 16px' : '16px 84px 64px 84px',
       }}
     >
       <Header logo={logo} />
       <Typography
         sx={{
-          marginLeft: mobile1336 ? "4px" : "16px",
+          marginLeft: mobile1336 ? '4px' : '16px',
           marginTop: mainMarginTop[screenSize],
           fontSize: mainFontSize[screenSize],
           lineHeight: mainFontSize[screenSize],
@@ -79,7 +73,7 @@ export function Error({ code, logo }: ErrorProps) {
       </Typography>
       <Typography
         sx={{
-          marginLeft: mobile1336 ? "4px" : "16px",
+          marginLeft: mobile1336 ? '4px' : '16px',
           marginTop: secondaryMarginTop[screenSize],
           fontSize: secondaryFontSize[screenSize],
           lineHeight: secondaryLineHeight[screenSize],
@@ -89,23 +83,23 @@ export function Error({ code, logo }: ErrorProps) {
         {errorMessages[code]}
       </Typography>
       <Button
-        onClick={() => router.push("/")}
+        onClick={() => router.push('/')}
         sx={{
-          marginLeft: mobile1336 ? "4px" : "16px",
+          marginLeft: mobile1336 ? '4px' : '16px',
           marginTop: buttonMarginTop[screenSize],
           height: buttonHeight[screenSize],
           width: buttonWidth[screenSize],
           fontSize: buttonFontSize[screenSize],
-          textTransform: "none",
+          textTransform: 'none',
           fontWeight: 500,
-          borderRadius: "8px",
-          color: "grayscale.0",
-          lineHeight: "22px",
-          backgroundColor: "primary.dark",
+          borderRadius: '8px',
+          color: 'grayscale.0',
+          lineHeight: '22px',
+          backgroundColor: 'primary.dark',
 
-          "&:hover": {
-            color: "grayscale.0",
-            backgroundColor: "primary.dark",
+          '&:hover': {
+            color: 'grayscale.0',
+            backgroundColor: 'primary.dark',
           },
         }}
       >

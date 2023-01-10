@@ -1,37 +1,37 @@
-import React from "react";
-import { Grid, Stack, Typography, useMediaQuery } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
-import { Spinner } from "./spinner";
-import { useTheme } from "@mui/material/styles";
+import React from 'react';
+import { Grid, Stack, Typography, useMediaQuery } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Spinner } from './spinner';
+import { useTheme } from '@mui/material/styles';
 
 const quotes = [
   {
-    text: "Задача образования — заменить пустой разум свободным",
-    author: "Малькольм Форбс",
+    text: 'Задача образования — заменить пустой разум свободным',
+    author: 'Малькольм Форбс',
   },
   {
-    text: "Когда мы смотрим в небо и видим звёзды — мы видим лишь отсвет далёкого ядерного синтеза",
-    author: "Карл Саган",
+    text: 'Когда мы смотрим в небо и видим звёзды — мы видим лишь отсвет далёкого ядерного синтеза',
+    author: 'Карл Саган',
   },
   {
-    text: "Люди любят узнавать новое, и это продолжает науку",
-    author: "Ральф Уолдо Эмерсон",
+    text: 'Люди любят узнавать новое, и это продолжает науку',
+    author: 'Ральф Уолдо Эмерсон',
   },
   {
-    text: "Никакое дело не покажется невыполнимым, если разбить его на мелкие части",
-    author: "Генри Форд",
+    text: 'Никакое дело не покажется невыполнимым, если разбить его на мелкие части',
+    author: 'Генри Форд',
   },
   {
-    text: "Каждый великий успех науки имеет своим истоком великую дерзость воображения",
-    author: "Джон Дьюи",
+    text: 'Каждый великий успех науки имеет своим истоком великую дерзость воображения',
+    author: 'Джон Дьюи',
   },
   {
-    text: "Те, кто не помнит своей истории, обречены повторить ее",
-    author: "Джордж Сантаяна",
+    text: 'Те, кто не помнит своей истории, обречены повторить ее',
+    author: 'Джордж Сантаяна',
   },
   {
-    text: "Измеряй измеримое и делай неизмеримое измеримым",
-    author: "Галилео Галилей",
+    text: 'Измеряй измеримое и делай неизмеримое измеримым',
+    author: 'Галилео Галилей',
   },
 ];
 
@@ -44,7 +44,7 @@ export type LoadingProps = {
 export const Loading = ({ loading }: LoadingProps) => {
   const theme = useTheme();
   // @ts-ignore
-  const mobile = useMediaQuery(theme.breakpoints.down("dl"));
+  const mobile = useMediaQuery(theme.breakpoints.down('dl'));
 
   return (
     <AnimatePresence>
@@ -53,16 +53,16 @@ export const Loading = ({ loading }: LoadingProps) => {
           component={motion.div}
           container
           direction="column"
-          justifyContent={mobile ? "flex-start" : "center"}
-          alignItems={mobile ? "center" : "center"}
+          justifyContent={mobile ? 'flex-start' : 'center'}
+          alignItems={mobile ? 'center' : 'center'}
           sx={{
-            p: mobile ? "56px 20px" : "98px 100px",
-            position: "fixed",
-            height: "100vh",
-            width: "100vw",
+            p: mobile ? '56px 20px' : '98px 100px',
+            position: 'fixed',
+            height: '100vh',
+            width: '100vw',
             zIndex: 99999,
-            bgcolor: "primary.pale",
-            overflow: "hidden",
+            bgcolor: 'primary.pale',
+            overflow: 'hidden',
           }}
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
@@ -74,10 +74,10 @@ export const Loading = ({ loading }: LoadingProps) => {
             justifyContent="center"
             alignItems="center"
             sx={{
-              height: "28px",
-              position: "relative",
-              maxWidth: "540px",
-              width: "100%",
+              height: '28px',
+              position: 'relative',
+              maxWidth: '540px',
+              width: '100%',
             }}
           >
             <Spinner />
@@ -86,33 +86,33 @@ export const Loading = ({ loading }: LoadingProps) => {
               justifyContent="center"
               alignItems="center"
               sx={{
-                position: "absolute",
-                top: "66px",
-                maxWidth: "540px",
-                width: "100%",
+                position: 'absolute',
+                top: '66px',
+                maxWidth: '540px',
+                width: '100%',
               }}
             >
               <Typography
-                align={mobile ? "left" : "center"}
+                align={mobile ? 'left' : 'center'}
                 sx={{
-                  width: "100%",
-                  color: "grayscale.80",
-                  fontSize: mobile ? "20px" : "20px",
-                  maxWidth: "540px",
-                  lineHeight: mobile ? "28px" : "28px",
+                  width: '100%',
+                  color: 'grayscale.80',
+                  fontSize: mobile ? '20px' : '20px',
+                  maxWidth: '540px',
+                  lineHeight: mobile ? '28px' : '28px',
                   fontWeight: 500,
                 }}
               >
                 {quotes[randomValue].text}
               </Typography>
               <Typography
-                align={mobile ? "left" : "center"}
+                align={mobile ? 'left' : 'center'}
                 sx={{
-                  width: "100%",
-                  mt: "24px",
-                  color: "grayscale.80",
-                  fontSize: mobile ? "20px" : "20px",
-                  lineHeight: "48px",
+                  width: '100%',
+                  mt: '24px',
+                  color: 'grayscale.80',
+                  fontSize: mobile ? '20px' : '20px',
+                  lineHeight: '48px',
                   fontWeight: 500,
                 }}
               >

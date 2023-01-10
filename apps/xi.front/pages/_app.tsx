@@ -28,7 +28,7 @@ import { SaveConfirm } from 'kit/SaveConfirm';
 declare module 'notistack' {
   interface VariantOverrides {
     saveConfirm: {
-      formRef?: React.RefObject<HTMLButtonElement>
+      formRef?: React.RefObject<HTMLButtonElement>;
     };
   }
 }
