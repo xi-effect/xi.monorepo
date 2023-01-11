@@ -2,17 +2,21 @@
   "name": "pkg.config.eslint",
   "version": "0.0.0",
   "main": "index.js",
+  "files": [
+    "eslint-next.js"
+  ],
   "license": "MIT",
   "dependencies": {
-    "eslint": "^7.23.0",
-    "eslint-config-next": "^12.0.4",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-turbo": "latest",
-    "eslint-plugin-react": "7.31.8",
-    "eslint-plugin-react-hooks": "latest"
-  },
-  "devDependencies": {
-    "typescript": "^4.7.4"
+    "eslint": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint-config-airbnb": "latest",
+    "eslint-config-airbnb-base": "latest",
+    "eslint-config-airbnb-typescript": "latest",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-import-resolver-typescript": "latest",
+    "eslint-plugin-import": "latest"
   },
   "publishConfig": {
     "access": "public"
