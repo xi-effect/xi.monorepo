@@ -8,6 +8,7 @@
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "react": "^18.2.0",
     "react-custom-scrollbars-2": "^4.5.0"
   },
   "devDependencies": {

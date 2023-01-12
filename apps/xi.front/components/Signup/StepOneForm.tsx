@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import { observer } from 'mobx-react';
 import { Button, Link, Stack } from '@mui/material';

@@ -53,7 +53,7 @@ const Task = observer(() => {
               <Breadcrumbs />
               <Header />
               <SubHeader />
-              <Content />1
+              <Content />
             </Stack>
             <Stack
               direction="column"
@@ -67,7 +67,7 @@ const Task = observer(() => {
               }}
             >
               <Files />
-              <Timeline />1
+              <Timeline />
             </Stack>
           </Stack>
         </Stack>

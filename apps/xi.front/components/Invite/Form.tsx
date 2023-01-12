@@ -51,23 +51,24 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
     return (
       <>
         <Typography sx={{ mt: 2 }} variant="h5">
-          {' '}
-          {comm.name}{' '}
+          {comm.name}
         </Typography>
         <Typography sx={{ mt: 1, color: 'text.secondary' }} variant="h6">
-          {' '}
-          Вы не авторизованы{' '}
+          Вы не авторизованы
         </Typography>
         <Typography textAlign="center" sx={{ color: 'text.secondary' }} variant="subtitle1">
-          {' '}
-          войдите или зарегистрируйтесь, чтобы принять приглашение{' '}
+          войдите или зарегистрируйтесь, чтобы принять приглашение
         </Typography>
         <GreenButton
-          sx={{ mt: 3, borderRadius: 4, width: 146, height: 40 }}
+          sx={{
+            mt: 3,
+            borderRadius: 4,
+            width: 146,
+            height: 40,
+          }}
           onClick={() => router.push('/')}
         >
-          {' '}
-          Войти{' '}
+          Войти
         </GreenButton>
       </>
     );
@@ -77,19 +78,21 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
     return (
       <>
         <Typography sx={{ mt: 2 }} variant="h5">
-          {' '}
-          {comm.name}{' '}
+          {comm.name}
         </Typography>
         <Typography sx={{ color: 'text.secondary' }} variant="subtitle1">
-          {' '}
-          Вы уже состоите в этом сообществе{' '}
+          Вы уже состоите в этом сообществе
         </Typography>
         <GreenButton
-          sx={{ mt: 3, borderRadius: 4, width: 200, height: 40 }}
+          sx={{
+            mt: 3,
+            borderRadius: 4,
+            width: 200,
+            height: 40,
+          }}
           onClick={() => router.push(`/community/${comm.id}`)}
         >
-          {' '}
-          Перейти к сообществу{' '}
+          Перейти к сообществу
         </GreenButton>
       </>
     );
@@ -98,12 +101,18 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
   return (
     <>
       <Typography sx={{ mt: 2 }} variant="h5">
-        {' '}
-        {comm.name}{' '}
+        {comm.name}
       </Typography>
-      <GreenButton sx={{ mt: 3, borderRadius: 4, width: 220, height: 60 }} onClick={acceptInvite}>
-        {' '}
-        Присоединиться к сообществу{' '}
+      <GreenButton
+        sx={{
+          mt: 3,
+          borderRadius: 4,
+          width: 220,
+          height: 60,
+        }}
+        onClick={acceptInvite}
+      >
+        Присоединиться к сообществу
       </GreenButton>
     </>
   );

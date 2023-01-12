@@ -193,7 +193,14 @@ const Items = observer(({ index }: ItemsT) => {
           )}
         </Stack>
         {channel.open && (
-          <MenuList sx={{ width: '100%', pl: 0, pr: 0, zIndex: 1 }}>
+          <MenuList
+            sx={{
+              width: '100%',
+              pl: 0,
+              pr: 0,
+              zIndex: 1,
+            }}
+          >
             {channel.children?.map((child, indexCh) => (
               <Channel key={indexCh.toString()} channel={child} />
             ))}

@@ -10,12 +10,12 @@ const Quote: React.FC = ({ children }) => (
       lineHeight: '22px',
       pt: '5px',
       '&::before': {
-        content: `"«"`,
+        content: '"«"',
         color: '#445AFF',
         mr: '4px',
       },
       '&::after': {
-        content: `"»"`,
+        content: '"»"',
         color: '#445AFF',
         ml: '4px',
       },

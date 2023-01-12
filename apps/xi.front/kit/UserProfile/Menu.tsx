@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Button, Stack, ButtonProps, useMediaQuery, Theme, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { observer } from 'mobx-react';

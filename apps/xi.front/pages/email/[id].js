@@ -1,12 +1,14 @@
 import * as React from 'react';
 
-import { Divider, Stack, Button, Typography, useMediaQuery } from '@mui/material';
+import {
+  Divider, Stack, Button, Typography, useMediaQuery,
+} from '@mui/material';
 import { observer } from 'mobx-react';
 import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
 import { useRouter } from 'next/router';
 import { useStore } from 'store/connect';
 import XiLogo from 'kit/XiLogo';
-import { LayoutPages } from "pkg.layout.pages";
+import { LayoutPages } from 'pkg.layout.pages';
 
 const Email = observer(() => {
   const rootStore = useStore();
@@ -74,7 +76,8 @@ const Email = observer(() => {
             }}
           >
             {' '}
-            {getStatus(ok)}{' '}
+            {getStatus(ok)}
+            {' '}
           </Typography>
           <Button
             onClick={() => router.push('/')}

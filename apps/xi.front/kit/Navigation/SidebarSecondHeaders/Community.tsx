@@ -35,6 +35,7 @@ const Community = observer(() => {
     event:
       | MouseEvent<HTMLAnchorElement>
       | MouseEvent<HTMLLIElement>
+      // eslint-disable-next-line no-undef
       | globalThis.MouseEvent
       | TouchEvent,
   ) => {

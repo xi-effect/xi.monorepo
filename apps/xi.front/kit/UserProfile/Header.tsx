@@ -1,4 +1,3 @@
-import React from 'react';
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
@@ -22,7 +21,7 @@ const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
 
   const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео'];
   const getCustomBtn = () => {
-    if (activeContent === null)
+    if (activeContent === null) {
       return (
         <Stack
           direction="row"
@@ -48,6 +47,7 @@ const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
           </IconButton>
         </Stack>
       );
+    }
 
     return (
       <Stack direction="row" alignItems="center">
@@ -62,7 +62,14 @@ const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
         >
           <Arrow />
         </IconButton>
-        <Typography sx={{ ml: '8px', fontWeight: 500, fontSize: '16px', lineHeight: '20px' }}>
+        <Typography
+          sx={{
+            ml: '8px',
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '20px',
+          }}
+        >
           {settingsTitles[activeContent]}
         </Typography>
       </Stack>

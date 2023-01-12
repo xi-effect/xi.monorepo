@@ -19,6 +19,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
+    "@mui/utils": "^5.11.2",
     "@mui/x-date-pickers": "^5.0.11",
     "@prezly/slate-lists": "^0.71.0",
     "crypto-js": "^4.1.1",

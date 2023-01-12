@@ -43,6 +43,7 @@ const Signup = observer(() => {
   const router: NextRouter = useRouter();
 
   const [activeStep, setActiveStep] = useState<number>(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [prevPathname, setPrevPathname] = useSessionStorage('prevPathname');
 
   React.useEffect(() => {

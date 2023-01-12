@@ -133,7 +133,12 @@ const Mobile = observer(({ children }: MobileT) => {
         alignItems="center"
       >
         <Stack
-          sx={{ position: 'relative', height: '100vh', width: '100vw', pt: 6 }}
+          sx={{
+            position: 'relative',
+            height: '100vh',
+            width: '100vw',
+            pt: 6,
+          }}
           direction="column"
           justifyContent="flex-start"
           alignItems="center"

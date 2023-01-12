@@ -1,4 +1,3 @@
-import React from 'react';
 import { observer } from 'mobx-react';
 import Form from 'components/ResetPassword/Form';
 import XiLogo from 'kit/XiLogo';

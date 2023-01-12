@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Communities from './Communities';
 import Header from './Header';
 

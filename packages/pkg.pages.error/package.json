@@ -12,6 +12,8 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
+    "react": "^18.2.0",
+    "framer-motion": "^7.10.2",
     "pkg.components.header": "*"
   },
   "devDependencies": {

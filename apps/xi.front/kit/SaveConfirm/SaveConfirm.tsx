@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { SnackbarContent, CustomContentProps } from 'notistack';
 import { Button, Paper, Stack, Typography } from '@mui/material';
@@ -104,5 +105,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
     </SnackbarContent>
   );
 });
+
+SaveConfirm.displayName = 'SaveConfirm';
 
 export default SaveConfirm;

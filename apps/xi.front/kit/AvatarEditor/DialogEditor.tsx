@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { Box, Button, Dialog, IconButton, Input, Slider, Stack, Typography } from '@mui/material';
+import { Box, Button, Dialog, IconButton, Slider, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons.close';
 import AvatarEditor from 'react-avatar-editor';
 import { usePostFiles } from 'utils/useFiles';
@@ -41,12 +41,12 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
 
   const handleNewImage = async () => {
     if (editor && editor.current) {
-      //@ts-ignore
+      // @ts-ignore
       const canvasScaled = editor.current.getImageScaledToCanvas();
 
-      let image = canvasScaled.toDataURL('image/png');
+      const image = canvasScaled.toDataURL('image/png');
 
-      let newImage = new File([image], `userAvatar${userSt?.user?.id ?? 0}.png`, {
+      const newImage = new File([image], `userAvatar${userSt?.user?.id ?? 0}.png`, {
         type: 'image/png',
       });
 

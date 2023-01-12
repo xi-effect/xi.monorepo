@@ -44,14 +44,26 @@ export default function Menu() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, p: 2, bgcolor: 'background.main', display: 'flex' }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        p: 2,
+        bgcolor: 'background.main',
+        display: 'flex',
+      }}
+    >
       <Tabs
         textColor="inherit"
         orientation="vertical"
         variant="scrollable"
         value={value}
         onChange={handleChange}
-        sx={{ borderRight: 2, borderColor: 'divider', pl: 2, width: 128 }}
+        sx={{
+          borderRight: 2,
+          borderColor: 'divider',
+          pl: 2,
+          width: 128,
+        }}
       >
         <Tab label="Приглашения" {...a11yProps(1)} />
       </Tabs>

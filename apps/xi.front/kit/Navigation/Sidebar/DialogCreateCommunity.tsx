@@ -14,6 +14,7 @@ import { useStore } from 'store/connect';
 
 import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -85,7 +86,12 @@ const DialogCreateCommunity = observer(() => {
       }}
     >
       <IconButton
-        sx={{ color: 'text.secondary', position: 'absolute', top: '12px', right: '12px' }}
+        sx={{
+          color: 'text.secondary',
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+        }}
         onClick={() => setDialogs('communityCreation', false)}
       >
         <CloseIcon />
@@ -107,7 +113,13 @@ const DialogCreateCommunity = observer(() => {
         </Typography>
         <Typography
           textAlign="center"
-          sx={{ mt: '24px', mb: '32px', fontWeight: 400, fontSize: '16px', lineHeight: '20px' }}
+          sx={{
+            mt: '24px',
+            mb: '32px',
+            fontWeight: 400,
+            fontSize: '16px',
+            lineHeight: '20px',
+          }}
         >
           Назовите сообщество. Изменить название можно в любой момент.
         </Typography>

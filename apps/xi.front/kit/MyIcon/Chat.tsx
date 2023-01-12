@@ -1,5 +1,3 @@
-// НЕ ПЕРЕНОСИТЕ ЭТУ ИКОНКУ, ОНА КРАШИТ BIT
-import React from 'react';
 import { SvgIcon } from '@mui/material';
 
 export type ChatProps = {

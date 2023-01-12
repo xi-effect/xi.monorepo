@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Quote: React.FC<Props> = ({ color = '#333' }) => (
-  //@ts-ignore
+  // @ts-ignore
   <IconWrap>
     <svg width="18" height="6" viewBox="0 0 18 6" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

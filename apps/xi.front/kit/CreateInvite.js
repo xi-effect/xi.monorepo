@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -33,7 +34,7 @@ import TextFieldCustom from './TextFieldCustom';
 const steps = [
   {
     label: 'Выберите роль',
-    description: `Выбранная вами роль будет автоматически добавлена пользователю, который присоединиться по этому приглашению`,
+    description: 'Выбранная вами роль будет автоматически добавлена пользователю, который присоединиться по этому приглашению',
   },
   {
     label: 'Задайте время действия',
@@ -41,7 +42,7 @@ const steps = [
   },
   {
     label: 'Добавьте ограничение на использование',
-    description: `Вы можете дополнительно задать количество новых участников, которые могут воспользоваться этим приглашением`,
+    description: 'Вы можете дополнительно задать количество новых участников, которые могут воспользоваться этим приглашением',
   },
 ];
 
@@ -194,33 +195,31 @@ const CreateInvite = observer(() => {
         render={({ field }) => (
           <TextFieldCustom
             {...field}
-            onInput={(e) =>
-              setTrackedDays(
-                e.target.value
-                  .toString()
-                  .replace(/^0*/g, '') // не может начинаться с нуля
-                  .replace(/[^0-9]/g, '')
-                  .slice(0, 2),
-              )
-            }
+            onInput={(e) => setTrackedDays(
+              e.target.value
+                .toString()
+                .replace(/^0*/g, '') // не может начинаться с нуля
+                .replace(/[^0-9]/g, '')
+                .slice(0, 2),
+            )}
             value={trackedDays}
             autoFocus
             variant="filled"
             id="time"
             error={
-              errors?.time?.type === 'number' ||
-              errors?.time?.type === 'integer' ||
-              errors?.time?.type === 'max' ||
-              errors?.time?.type === 'positive'
+              errors?.time?.type === 'number'
+              || errors?.time?.type === 'integer'
+              || errors?.time?.type === 'max'
+              || errors?.time?.type === 'positive'
             }
             fullWidth
             label="Время действия"
             helperText={
-              (errors?.time?.type === 'number' ||
-                errors?.time?.type === 'integer' ||
-                errors?.time?.type === 'max' ||
-                errors?.time?.type === 'positive') &&
-              errors?.time?.message
+              (errors?.time?.type === 'number'
+                || errors?.time?.type === 'integer'
+                || errors?.time?.type === 'max'
+                || errors?.time?.type === 'positive')
+              && errors?.time?.message
             }
           />
         )}
@@ -256,32 +255,30 @@ const CreateInvite = observer(() => {
         render={({ field }) => (
           <TextFieldCustom
             {...field}
-            onInput={(e) =>
-              setTrackedCount(
-                e.target.value
-                  .toString()
-                  .replace(/^0*/g, '') // не может начинаться с нуля
-                  .replace(/[^0-9]/g, ''),
-              )
-            }
+            onInput={(e) => setTrackedCount(
+              e.target.value
+                .toString()
+                .replace(/^0*/g, '') // не может начинаться с нуля
+                .replace(/[^0-9]/g, ''),
+            )}
             value={trackedCount}
             autoFocus
             variant="filled"
             id="time"
             error={
-              errors?.count?.type === 'number' ||
-              errors?.count?.type === 'integer' ||
-              errors?.count?.type === 'max' ||
-              errors?.count?.type === 'positive'
+              errors?.count?.type === 'number'
+              || errors?.count?.type === 'integer'
+              || errors?.count?.type === 'max'
+              || errors?.count?.type === 'positive'
             }
             fullWidth
             label="Количество использований"
             helperText={
-              (errors?.count?.type === 'number' ||
-                errors?.count?.type === 'integer' ||
-                errors?.count?.type === 'max' ||
-                errors?.count?.type === 'positive') &&
-              errors?.count?.message
+              (errors?.count?.type === 'number'
+                || errors?.count?.type === 'integer'
+                || errors?.count?.type === 'max'
+                || errors?.count?.type === 'positive')
+              && errors?.count?.message
             }
           />
         )}
@@ -365,9 +362,9 @@ const CreateInvite = observer(() => {
           <Step key={step.label}>
             <StepLabel
               error={
-                (errors?.role?.message && index === 0) ||
-                (errors?.time?.message && index === 1) ||
-                (errors?.count?.message && index === 2)
+                (errors?.role?.message && index === 0)
+                || (errors?.time?.message && index === 1)
+                || (errors?.count?.message && index === 2)
               }
               optional={
                 index === 2 ? <Typography variant="caption">Последний шаг</Typography> : null

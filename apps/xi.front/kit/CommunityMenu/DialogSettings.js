@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import { Dialog, Button, Stack, IconButton, Typography } from '@mui/material';
+import {
+  Dialog, Button, Stack, IconButton, Typography,
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSnackbar } from 'notistack';
 import Slide from '@mui/material/Slide';
@@ -99,7 +101,7 @@ const DialogSettings = observer(() => {
               color="inherit"
               sx={{
                 width: 178,
-                borderRight: value === index ? `4px solid #fff` : 'none',
+                borderRight: value === index ? '4px solid #fff' : 'none',
                 borderRadius: 0,
               }}
               onClick={() => setValue(index)}

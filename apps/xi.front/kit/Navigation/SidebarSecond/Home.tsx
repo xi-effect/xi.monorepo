@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ListItemIcon, ListItemText, MenuItem, MenuList } from '@mui/material';
 import { Scroll } from 'pkg.components.scroll';
 import { Announce } from 'pkg.icons.announce';
@@ -12,13 +11,13 @@ const iconsDict = {
   update: <Updates color="" />,
 };
 
-type MenuItem = {
+type MenuItemT = {
   id: number;
   type: string;
   name: string;
 };
 
-const menuItems: MenuItem[] = [
+const menuItems: MenuItemT[] = [
   {
     id: 0,
     type: 'posts',
@@ -36,7 +35,7 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-const Channel: React.FC<{ menuItem: MenuItem }> = ({ menuItem }) => {
+const Channel: React.FC<{ menuItem: MenuItemT }> = ({ menuItem }) => {
   const handleChannelClick = () => {
     console.log(`click ${menuItem.name} id: ${menuItem.id}`);
   };

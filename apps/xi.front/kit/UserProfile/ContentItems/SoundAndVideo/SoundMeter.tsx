@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import UserMediaSt from 'store/user/userMediaSt';
 import styled from '@emotion/styled';

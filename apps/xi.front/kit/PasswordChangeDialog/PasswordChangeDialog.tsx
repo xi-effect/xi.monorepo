@@ -14,6 +14,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
@@ -122,7 +123,12 @@ const PasswordChangeDialog = observer(() => {
       }}
     >
       <IconButton
-        sx={{ color: 'text.secondary', position: 'absolute', top: '12px', right: '12px' }}
+        sx={{
+          color: 'text.secondary',
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+        }}
         onClick={() => {
           reset();
           setDialogs('passwordChange', false);
@@ -145,7 +151,14 @@ const PasswordChangeDialog = observer(() => {
         <Typography sx={{ fontWeight: 600, fontSize: '24px', lineHeight: '32px' }}>
           Изменить пароль
         </Typography>
-        <Typography sx={{ mt: '24px', fontWeight: 400, fontSize: '16px', lineHeight: '24px' }}>
+        <Typography
+          sx={{
+            mt: '24px',
+            fontWeight: 400,
+            fontSize: '16px',
+            lineHeight: '24px',
+          }}
+        >
           Введите текущий пароли и новый
         </Typography>
         <Controller

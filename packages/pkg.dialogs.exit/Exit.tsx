@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Button, Dialog, IconButton, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons.close';

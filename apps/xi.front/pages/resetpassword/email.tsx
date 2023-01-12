@@ -1,5 +1,4 @@
 import XiLogo from 'kit/XiLogo';
-
 import { Stack, Typography, useMediaQuery } from '@mui/material';
 import { observer } from 'mobx-react';
 import Form from 'components/ResetPassword/Email';
