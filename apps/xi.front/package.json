@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint kit/** components/** pages/** -c .eslintrc.json --ext js,jsx,ts,tsx"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
@@ -108,7 +108,7 @@
     "@types/react-dom": "^18.0.7",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "7.32.0",
-    "pkg.config.eslint": "*",
+    "eslint-config-custom": "*",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.3"
   }
