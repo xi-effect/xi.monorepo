@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 

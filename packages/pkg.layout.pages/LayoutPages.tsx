@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Head from 'next/head';
 
 export type LayoutPagesT = {
@@ -7,10 +7,10 @@ export type LayoutPagesT = {
   children: ReactNode;
 };
 
-const getHostname = () => {
+const getHostname = () => 
   // @ts-ignore
-  return typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : '';
-};
+   typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''
+;
 
 export const LayoutPages = ({ title, noIndex = false, children }: LayoutPagesT) => {
   const hostname = getHostname();

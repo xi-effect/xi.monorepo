@@ -41,9 +41,9 @@ const Avatar = ({ letter, src }: AvatarT) => {
         {letter.toUpperCase()}
       </Av>
     );
-  } else {
+  } 
     return <Av alt="avatar" src={src} sx={{ width: 72, height: 72 }} />;
-  }
+  
 };
 
 type AvatarEditorT = {

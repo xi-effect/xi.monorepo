@@ -80,7 +80,6 @@ const getBalls = ({ countBalls, frontColor, size, sizeUnit }: any) => {
 export type SpinnerProps = {
   size?: number;
   frontColor?: string;
-  backColor?: string;
   sizeUnit?: string;
 };
 

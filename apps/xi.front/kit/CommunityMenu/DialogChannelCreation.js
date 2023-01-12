@@ -23,6 +23,7 @@ import { grey } from '@mui/material/colors';
 import { useStore } from 'store/connect';
 
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';

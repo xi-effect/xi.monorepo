@@ -8,11 +8,13 @@
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "react": "^18.2.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
-    "pkg.components.header": "*"
+    "pkg.components.header": "*",
+    "framer-motion": "^7.10.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",

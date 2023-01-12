@@ -7,7 +7,7 @@ type Props = {
 };
 
 const File: React.FC<Props> = ({ color = '#333', medium }) => (
-  //@ts-ignore
+  // @ts-ignore
   <IconWrap>
     {medium ? (
       <svg
