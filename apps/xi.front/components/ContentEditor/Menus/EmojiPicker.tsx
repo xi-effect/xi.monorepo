@@ -5,11 +5,7 @@ import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 import 'emoji-mart/css/emoji-mart.css';
 
-type EmojiPickerProps = {
-  onSelect: any;
-};
-
-function EmojiPicker({ onSelect }: EmojiPickerProps) {
+function EmojiPicker({ onSelect }) {
   return <Picker data={data} onEmojiSelect={onSelect} />;
 }
 

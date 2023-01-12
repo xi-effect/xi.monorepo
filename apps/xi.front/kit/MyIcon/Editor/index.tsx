@@ -19,7 +19,7 @@ type EditorIconT = {
   color?: string;
 };
 
-// @ts-ignore
+//@ts-ignore
 export const IconWrap: React.FC = ({ children, ...props }) => (
   <Stack
     justifyContent="center"

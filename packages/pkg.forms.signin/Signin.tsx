@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as yup from 'yup';
 import { useRouter, NextRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
 import { Eyeoff } from 'pkg.icons.eyeoff';

@@ -2,7 +2,8 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Stack, Typography } from '@mui/material';
 
-const Header = observer(() => (
+const Header = observer(() => {
+  return (
     <Stack
       direction="row"
       justifyContent="flex-start"
@@ -23,6 +24,7 @@ const Header = observer(() => (
         Задания
       </Typography>
     </Stack>
-  ));
+  );
+});
 
 export default Header;

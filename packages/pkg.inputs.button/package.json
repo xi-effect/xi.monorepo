@@ -1,5 +1,5 @@
 {
-  "name": "pkg.forms.signin",
+  "name": "pkg.inputs.button",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -10,13 +10,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@hookform/resolvers": "^2.9.10",
-    "@mui/material": "^5.11.0",
-    "pkg.icons.eyeoff": "*",
-    "pkg.icons.eyeon": "*",
-    "pkg.inputs.input": "*",
-    "react-hook-form": "^7.41.0",
-    "yup": "^0.32.11"
+    "@mui/material": "^5.11.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
@@ -26,7 +20,5 @@
     "react": "^18.2.0",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
-  },
-  "description": "form for signin",
-  "author": "xi.effect"
+  }
 }

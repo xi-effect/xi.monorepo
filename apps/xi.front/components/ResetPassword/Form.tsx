@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useRouter, NextRouter } from 'next/router';
 import { observer } from 'mobx-react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';

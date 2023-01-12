@@ -6,7 +6,7 @@ type Props = {
 };
 
 const NumList: React.FC<Props> = ({ color = '#333' }) => (
-  // @ts-ignore
+  //@ts-ignore
   <IconWrap>
     <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

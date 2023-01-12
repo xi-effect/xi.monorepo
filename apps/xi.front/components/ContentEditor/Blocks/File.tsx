@@ -1,9 +1,9 @@
 import React, { useState, MouseEvent } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import EditorIcon from 'kit/MyIcon/Editor';
-import Image from 'next/image';
 import FileMenu, { FileListT } from '../Menus/FileMenu';
 import FileListItem from '../Menus/MenuItem/FileListItem';
+import Image from 'next/image';
 
 export type AnchorElT = {
   left: number;

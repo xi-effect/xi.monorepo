@@ -3,9 +3,9 @@ import React, { useRef, useState, DragEvent, ChangeEvent, KeyboardEvent } from '
 import { v4 } from 'uuid';
 import { Box, Button, Menu, Stack, TextField, Typography } from '@mui/material';
 import { FileMenuButtonS, fileMenuStyles } from 'kit/Editor/common/styles';
-import Image from 'next/image';
 import { AnchorElT } from '../Blocks/File';
 import FileListItem from './MenuItem/FileListItem';
+import Image from 'next/image';
 
 type AddFileMenuT = {
   text: string;

@@ -15,14 +15,12 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { useForm, Controller } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { useSnackbar } from 'notistack';
 import { useStore } from 'store/connect';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const Crypto = require('crypto-js');
 
 type FormValues = {

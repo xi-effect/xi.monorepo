@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Button, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-import { Header } from 'pkg.components.header';
 import { errorCode, errorMessages } from './texts';
+import { Header } from 'pkg.components.header';
 import {
   buttonFontSize,
   buttonHeight,

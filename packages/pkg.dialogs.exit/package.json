@@ -8,14 +8,11 @@
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "react": "^18.2.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
-    "pkg.icons.close": "*",
-    "mobx": "^6.7.0",
-    "mobx-react": "^7.6.0"
+    "pkg.icons.close": "*"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",

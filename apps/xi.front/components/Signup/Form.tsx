@@ -2,14 +2,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@mui/material';
 import { useStore } from 'store/connect';
-import { useRouter } from 'next/router';
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
+import { useRouter } from 'next/router';
 
 const schema = yup
   .object({

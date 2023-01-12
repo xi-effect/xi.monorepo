@@ -1,3 +1,4 @@
+import React, { ReactNode } from 'react';
 import { SvgIcon } from '@mui/material';
 
 export type ClipProps = {

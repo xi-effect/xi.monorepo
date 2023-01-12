@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 // Не поддавайтесь соблазну использовать здесь import
 const path = require("path");
 const runtimeCaching = require("next-pwa/cache");
@@ -32,7 +31,6 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, "../../"),
   },
   transpilePackages: [
-    "pkg.config.typescript",
     "pkg.config.eslint",
     "pkg.theme.scheme",
     "pkg.components.loading",

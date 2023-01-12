@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Stack, Typography, useMediaQuery } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@mui/material/styles';
 import { Spinner } from './spinner';
+import { useTheme } from '@mui/material/styles';
 
 const quotes = [
   {
