@@ -13,6 +13,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "pkg.config.eslint": "*",
     "prettier": "latest",
     "turbo": "latest"
   },
