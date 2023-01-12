@@ -1,52 +1,64 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
   },
-  extends: [
-    'next',
-    'airbnb',
-    'airbnb-typescript',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'prettier',
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-a11y/recommended",
+    // "plugin:react-hooks/recommended",
+    // always put prettier at last
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
   ],
-  plugins: ['@typescript-eslint', 'import'],
-  settings: {
-    next: {
-      rootDir: ['apps/*/', 'packages/*/'],
-    },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-        project: ['apps/*/tsconfig.json'],
-      },
-    },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  rules: {
-    // react
-    'react/function-component-definition': [
-      2,
-      {
-        namedComponents: 'arrow-function',
-      },
-    ],
-
-    // next
-    '@next/next/no-html-link-for-pages': 'off',
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true // enable linting for jsx files
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
   },
-  ignorePatterns: [
-    '**/*.js',
-    '**/*.json',
-    'node_modules',
-    'public',
-    'styles',
-    '.next',
-    'coverage',
-    'dist',
-    '.turbo',
-  ],
-}
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["sw.js", "workbox-*.js", "fallback-*.js"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "semi": "off",
+    "@typescript-eslint/semi": "error",
+    // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
+    "react/react-in-jsx-scope": "off",
+    // NextJs specific fix: allow jsx syntax in js files
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }], // should add ".ts" if typescript project
+    "react/display-name": 1,
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "no-console": "off",
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "no-restricted-syntax": "off",
+    "no-use-before-define": "off",
+    "react/require-default-props": "off",
+    "no-shadow": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"]
+  }
+};
