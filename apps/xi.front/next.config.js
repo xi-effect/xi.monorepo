@@ -36,7 +36,6 @@ const nextConfig = {
     "pkg.data.avatar",
     "pkg.dialogs.exit",
     "pkg.forms.signin",
-    "pkg.inputs.button",
     "pkg.layout.pages",
     "pkg.pages.error",
     "pkg.icons.account",
