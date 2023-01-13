@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
 import Head from 'next/head';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { observer } from 'mobx-react';
@@ -23,14 +22,6 @@ import createEmotionCache from 'store/createEmotionCache';
 import { getScheme } from 'pkg.theme.scheme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'kit/SaveConfirm';
-
-declare module 'notistack' {
-  interface VariantOverrides {
-    saveConfirm: {
-      formRef?: React.RefObject<HTMLButtonElement>;
-    };
-  }
-}
 
 config.autoAddCss = false;
 

@@ -16,7 +16,7 @@ const Home = observer(() => (
     }}
   >
     <Typography
-      variant="h5"
+      variant="xl"
       sx={{
         fontSize: 18,
       }}

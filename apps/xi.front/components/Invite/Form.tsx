@@ -50,7 +50,7 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
   if (!auth) {
     return (
       <>
-        <Typography sx={{ mt: 2 }} variant="h5">
+        <Typography sx={{ mt: 2 }} variant="xl">
           {comm.name}
         </Typography>
         <Typography sx={{ mt: 1, color: 'text.secondary' }} variant="h6">
@@ -77,7 +77,7 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
   if (join) {
     return (
       <>
-        <Typography sx={{ mt: 2 }} variant="h5">
+        <Typography sx={{ mt: 2 }} variant="xl">
           {comm.name}
         </Typography>
         <Typography sx={{ color: 'text.secondary' }} variant="subtitle1">
@@ -100,7 +100,7 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
 
   return (
     <>
-      <Typography sx={{ mt: 2 }} variant="h5">
+      <Typography sx={{ mt: 2 }} variant="xl">
         {comm.name}
       </Typography>
       <GreenButton

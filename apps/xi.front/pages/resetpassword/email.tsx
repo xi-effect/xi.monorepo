@@ -35,7 +35,7 @@ const PassResetEmail = observer(() => {
           </Stack>
           <Typography
             component="h1"
-            variant="h5"
+            variant="xl"
             textAlign="center"
             sx={{
               pb: '16px',

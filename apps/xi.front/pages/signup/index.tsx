@@ -78,7 +78,7 @@ const Signup = observer(() => {
             <XiLogo width={142} height={24} />
           </Stack>
           <Typography
-            variant="h5"
+            variant="xl"
             textAlign="center"
             sx={{
               pb: '16px',

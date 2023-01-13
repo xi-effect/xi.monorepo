@@ -39,7 +39,7 @@ const DialogPrivacy = observer(() => {
           p: 1,
         }}
       >
-        <Typography sx={{ mt: 2, ml: 2, mr: 'auto' }} variant="h5">
+        <Typography sx={{ mt: 2, ml: 2, mr: 'auto' }} variant="xl">
           Настройки конфиденциальности
         </Typography>
       </Stack>

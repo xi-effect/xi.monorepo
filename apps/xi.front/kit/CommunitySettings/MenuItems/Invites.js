@@ -247,7 +247,7 @@ const Invites = observer(() => {
         height: '100%',
       }}
     >
-      <Typography variant="h5">Приглашения Сообщества</Typography>
+      <Typography variant="xl">Приглашения Сообщества</Typography>
       <Divider flexItem />
       <Typography sx={{ mt: 2 }} variant="subtitle1">
         Создание приглашения

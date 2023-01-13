@@ -62,9 +62,58 @@ export const getScheme = (mode: 'light' | 'dark') => ({
   typography: {
     htmlFontSize: 10,
     fontFamily: 'Inter, Arial',
+    textWeight: 500,
+    h1: {
+      fontSize: '56px',
+      lineHeight: '64px',
+    },
+    h2: {
+      fontSize: '48px',
+      lineHeight: '56px',
+    },
+    h3: {
+      fontSize: '40px',
+      lineHeight: '48px',
+    },
+    h4: {
+      fontSize: '36px',
+      lineHeight: '44px',
+    },
+    h5: {
+      fontSize: '32px',
+      lineHeight: '40px',
+    },
+    h6: {
+      fontSize: '28px',
+      lineHeight: '36px',
+    },
+    xl: {
+      fontSize: '24px',
+      lineHeight: '32px',
+    },
+    l: {
+      fontSize: '20px',
+      lineHeight: '28px',
+    },
+    m: {
+      fontSize: '16px',
+      lineHeight: '20px',
+    },
+    s: {
+      fontSize: '14px',
+      lineHeight: '20px',
+    },
+    xs: {
+      fontSize: '12px',
+      lineHeight: '16px',
+    },
+    xxs: {
+      fontSize: '10px',
+      lineHeight: '14px',
+    },
   },
   breakpoints: {
-    keys: ['xs', 'sm', 'md', 'dl', 'lg', 'gx', 'xl'],
+    keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     values: {
       xs: 0,
       sm: 350,
