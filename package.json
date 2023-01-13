@@ -10,9 +10,11 @@
     "build": "turbo run build --no-daemon",
     "dev": "turbo run dev --parallel --no-daemon",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
     "pkg.config.eslint": "*",
     "prettier": "latest",
     "turbo": "latest"
