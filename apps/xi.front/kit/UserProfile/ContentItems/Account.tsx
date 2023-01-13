@@ -5,6 +5,7 @@ import { Stack, Typography, Theme, useMediaQuery, Button } from '@mui/material';
 import { observer } from 'mobx-react';
 import dayjs, { Dayjs } from 'dayjs';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
@@ -52,9 +53,9 @@ const Account = observer(() => {
     control,
     handleSubmit,
     watch,
-    trigger,
-    reset,
-    formState: { errors },
+    // trigger,
+    // reset,
+    // formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
@@ -63,7 +64,7 @@ const Account = observer(() => {
     enqueueSnackbar('saveConfirm', {
       variant: 'saveConfirm',
       persist: true,
-      formRef: formRef,
+      formRef,
     });
   };
 
@@ -71,20 +72,19 @@ const Account = observer(() => {
     closeSnackbar();
   };
 
-  watch((data, { name, type }) => {
-    // console.log(data, name, type);
+  watch((data) => {
     if (
-      data['name'] !== profile.name ||
-      data['surname'] !== profile.surname ||
-      data['patronymic'] !== profile.patronymic
+      data.name !== profile.name ||
+      data.surname !== profile.surname ||
+      data.patronymic !== profile.patronymic
     ) {
       openSaveConfirm();
     }
 
     if (
-      data['name'] === profile.name &&
-      data['surname'] === profile.surname &&
-      data['patronymic'] === profile.patronymic
+      data.name === profile.name &&
+      data.surname === profile.surname &&
+      data.patronymic === profile.patronymic
     ) {
       closeSaveConfirm();
     }

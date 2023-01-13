@@ -3,9 +3,9 @@ import React, { useRef, useState, DragEvent, ChangeEvent, KeyboardEvent } from '
 import { v4 } from 'uuid';
 import { Box, Button, Menu, Stack, TextField, Typography } from '@mui/material';
 import { FileMenuButtonS, fileMenuStyles } from 'kit/Editor/common/styles';
+import Image from 'next/image';
 import { AnchorElT } from '../Blocks/File';
 import FileListItem from './MenuItem/FileListItem';
-import Image from 'next/image';
 
 type AddFileMenuT = {
   text: string;
@@ -33,7 +33,7 @@ const FileMenu: React.FC<AddFileMenuT> = (props) => {
   const [loadMethod, setLoadMethod] = useState<'load' | 'link'>('load');
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const description = file ? `Добавлен: ${file.name}` : `Перенесите файл или нажмите (до 4 Мб)`;
+  const description = file ? `Добавлен: ${file.name}` : 'Перенесите файл или нажмите (до 4 Мб)';
 
   const fileSizeMb = (size: number) => Number((size / 1048576).toFixed(2));
   const deleteFile = (id: string) => setFileList((list) => list.filter((file) => file.id !== id));

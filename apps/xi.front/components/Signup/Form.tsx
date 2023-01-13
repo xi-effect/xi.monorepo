@@ -2,13 +2,14 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Stack } from '@mui/material';
 import { useStore } from 'store/connect';
+import { useRouter } from 'next/router';
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
-import { useRouter } from 'next/router';
 
 const schema = yup
   .object({
@@ -50,7 +51,7 @@ const Form = observer(({ activeStep, setActiveStep }: ISignupForm) => {
   React.useEffect(() => {
     if (!router.isReady) return;
     setValue('code', router.query.invite);
-  }, [router.isReady]);
+  }, [router.isReady, router.query.invite, setValue]);
 
   const nextStepHandler = () => {
     if (activeStep < 1) {

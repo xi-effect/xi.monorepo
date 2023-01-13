@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import Router from "next/router";
-import { observer } from "mobx-react";
-import { useSessionStorage } from "react-use";
-import XiLogo from "kit/XiLogo";
-import { Stack, Typography, Link, Divider, useMediaQuery } from "@mui/material";
-import { LayoutPages } from "pkg.layout.pages";
-import { SignIn } from "pkg.forms.signin";
-import { useStore } from "store/connect";
+import React, { useEffect } from 'react';
+import Router from 'next/router';
+import { observer } from 'mobx-react';
+import { useSessionStorage } from 'react-use';
+import XiLogo from 'kit/XiLogo';
+import { Stack, Typography, Link, Divider, useMediaQuery } from '@mui/material';
+import { LayoutPages } from 'pkg.layout.pages';
+import { SignIn } from 'pkg.forms.signin';
+import { useStore } from 'store/connect';
 
 const Tearms = () => (
   <>
@@ -15,7 +15,7 @@ const Tearms = () => (
       paddingTop="12px"
       paddingBottom="5px"
       sx={{
-        color: "grayscale.40",
+        color: 'grayscale.40',
       }}
     >
       Нажимая «Войти», вы принимаете условия
@@ -23,15 +23,15 @@ const Tearms = () => (
     <Link
       underline="none"
       sx={{
-        cursor: "pointer",
-        mt: "-4px",
-        color: "primary.main",
+        cursor: 'pointer',
+        mt: '-4px',
+        color: 'primary.main',
         fontWeight: 400,
         fontSize: 12,
-        lineHeight: "16px",
+        lineHeight: '16px',
         letterSpacing: 0,
       }}
-      onClick={() => Router.replace("/")}
+      onClick={() => Router.replace('/')}
     >
       пользовательского соглашения
     </Link>
@@ -42,16 +42,16 @@ const Signin = observer(() => {
   const rootStore = useStore();
   const { uiSt, profileSt, authorizationSt } = rootStore;
 
-  const [prevPathname] = useSessionStorage("prevPathname");
+  const [prevPathname] = useSessionStorage('prevPathname');
 
-  const isMobile: boolean = useMediaQuery("(max-width: 472px)");
+  const isMobile: boolean = useMediaQuery('(max-width: 472px)');
 
   useEffect(() => {
-    if (prevPathname !== "/home" && prevPathname !== "/signup") {
-      uiSt.setLoading("loading", true);
-      profileSt.getProfile("login");
+    if (prevPathname !== '/home' && prevPathname !== '/signup') {
+      uiSt.setLoading('loading', true);
+      profileSt.getProfile('login');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -61,41 +61,41 @@ const Signin = observer(() => {
           position="absolute"
           variant="body1"
           sx={{
-            width: "311px",
-            height: "32px",
-            borderRadius: "8px",
-            backgroundColor: "error.pale",
-            pt: "5px",
-            m: "auto",
-            top: isMobile ? "4px" : "32px",
+            width: '311px',
+            height: '32px',
+            borderRadius: '8px',
+            backgroundColor: 'error.pale',
+            pt: '5px',
+            m: 'auto',
+            top: isMobile ? '4px' : '32px',
             left: 0,
             right: 0,
-            color: "error.dark",
-            textAlign: "center",
+            color: 'error.dark',
+            textAlign: 'center',
           }}
         >
           {authorizationSt.signin.error}
         </Typography>
       )}
       <Stack
-        justifyContent={isMobile ? "flex-start" : "center"}
+        justifyContent={isMobile ? 'flex-start' : 'center'}
         alignItems="center"
         sx={{
-          width: "100%",
-          minHeight: isMobile ? "calc(100vh - 96px)" : "100vh",
-          height: "100%",
+          width: '100%',
+          minHeight: isMobile ? 'calc(100vh - 96px)' : '100vh',
+          height: '100%',
         }}
       >
         <Stack
           direction="column"
-          padding={isMobile ? "16px 20px 0 20px" : "32px"}
+          padding={isMobile ? '16px 20px 0 20px' : '32px'}
           spacing={2}
           sx={{
-            width: isMobile ? "100%" : "420px",
-            height: isMobile ? "395px" : "514px",
-            borderRadius: "16px",
-            border: isMobile ? "none" : "1px solid #E6E6E6", // grayscale.10
-            position: "relative",
+            width: isMobile ? '100%' : '420px',
+            height: isMobile ? '395px' : '514px',
+            borderRadius: '16px',
+            border: isMobile ? 'none' : '1px solid #E6E6E6', // grayscale.10
+            position: 'relative',
           }}
         >
           <Stack alignItems="center">
@@ -104,8 +104,8 @@ const Signin = observer(() => {
           <Typography
             variant="h5"
             sx={{
-              pb: "16px",
-              textAlign: "center",
+              pb: '16px',
+              textAlign: 'center',
               fontWeight: 600,
             }}
           >
@@ -119,10 +119,10 @@ const Signin = observer(() => {
               direction="column"
               alignItems="center"
               sx={{
-                position: "absolute",
-                bottom: "-48px",
-                left: "0px",
-                width: "100%",
+                position: 'absolute',
+                bottom: '-48px',
+                left: '0px',
+                width: '100%',
               }}
             >
               <Tearms />
@@ -136,18 +136,18 @@ const Signin = observer(() => {
           justifyContent="flex-start"
           alignItems="center"
           sx={{
-            width: "100%",
-            height: "96px",
+            width: '100%',
+            height: '96px',
           }}
         >
           <Tearms />
           <Divider
             sx={{
               mt: 4,
-              width: "134px",
-              height: "5px",
-              backgroundColor: "grayscale.100",
-              borderRadius: "100px",
+              width: '134px',
+              height: '5px',
+              backgroundColor: 'grayscale.100',
+              borderRadius: '100px',
             }}
           />
         </Stack>

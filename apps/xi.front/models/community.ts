@@ -1,4 +1,4 @@
-import { FileT } from "./common";
+import { FileT } from './common';
 
 export type CommunityInSidebar = {
   name: string;

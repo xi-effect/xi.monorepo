@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from "react";
-import { observer } from "mobx-react";
-import { Stack, Typography } from "@mui/material";
-import { Arrow } from "pkg.icons.arrow";
+import React from 'react';
+import { observer } from 'mobx-react';
+import { Stack, Typography } from '@mui/material';
+import { Arrow } from 'pkg.icons.arrow';
 
 const Breadcrumbs = observer(() => (
   <Stack
@@ -11,16 +11,16 @@ const Breadcrumbs = observer(() => (
     alignItems="center"
     spacing={0.5}
     sx={{
-      width: "100%",
-      height: "16px",
+      width: '100%',
+      height: '16px',
     }}
   >
     <Typography
       sx={{
         fontWeight: 400,
-        fontSize: "14px",
-        lineHeight: "16px",
-        color: "primary.main",
+        fontSize: '14px',
+        lineHeight: '16px',
+        color: 'primary.main',
       }}
     >
       МИПК И.Федорова
@@ -29,9 +29,9 @@ const Breadcrumbs = observer(() => (
     <Typography
       sx={{
         fontWeight: 400,
-        fontSize: "14px",
-        lineHeight: "16px",
-        color: "primary.main",
+        fontSize: '14px',
+        lineHeight: '16px',
+        color: 'primary.main',
       }}
     >
       Объявления

@@ -1,12 +1,12 @@
-import * as React from "react";
-import * as yup from "yup";
-import { useRouter, NextRouter } from "next/router";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Stack, Link, InputAdornment, Box } from "@mui/material";
-import { Eyeoff } from "pkg.icons.eyeoff";
-import { Eyeon } from "pkg.icons.eyeon";
-import { Input } from "pkg.inputs.input";
+import * as React from 'react';
+import * as yup from 'yup';
+import { useRouter, NextRouter } from 'next/router';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
+import { Eyeoff } from 'pkg.icons.eyeoff';
+import { Eyeon } from 'pkg.icons.eyeon';
+import { Input } from 'pkg.inputs.input';
 
 type FormValues = {
   email: string;
@@ -52,13 +52,13 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
   };
 
   const getEmailError = () => {
-    if (errors.email?.message) return "Некорректный email";
-    if (errorEmail) return "Не удалось найти аккаунт";
+    if (errors.email?.message) return 'Некорректный email';
+    if (errorEmail) return 'Не удалось найти аккаунт';
     return null;
   };
 
   const getPasswordError = () => {
-    if (errors.email || errorPassword) return "Неправильный пароль";
+    if (errors.email || errorPassword) return 'Неправильный пароль';
     return null;
   };
 
@@ -86,7 +86,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               helperText={getEmailError()}
               {...field}
               sx={{
-                backgroundColor: "grayscale.0",
+                backgroundColor: 'grayscale.0',
               }}
             />
           )}
@@ -102,17 +102,17 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               fullWidth
               placeholder="Пароль"
               autoComplete="on"
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               helperText={getPasswordError()}
               {...field}
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end" sx={{ mr: "7px" }}>
+                  <InputAdornment position="end" sx={{ mr: '7px' }}>
                     <Box
                       width="24px"
                       height="24px"
                       borderRadius="8px"
-                      sx={{ cursor: "pointer" }}
+                      sx={{ cursor: 'pointer' }}
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {!showPassword ? <Eyeoff /> : <Eyeon />}
@@ -126,34 +126,30 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
         <Link
           underline="none"
           sx={{
-            cursor: "pointer",
-            color: "primary.dark",
+            cursor: 'pointer',
+            color: 'primary.dark',
             fontWeight: 500,
             fontSize: 14,
-            lineHeight: "18px",
+            lineHeight: '18px',
             letterSpacing: 0,
           }}
-          onClick={() => router.push("/resetpassword/email")}
+          onClick={() => router.push('/resetpassword/email')}
         >
           Восстановить пароль
         </Link>
       </Stack>
-      <Stack
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Stack flexDirection="row" justifyContent="space-between" alignItems="center">
         <Link
           underline="none"
           sx={{
-            cursor: "pointer",
-            color: "primary.dark",
+            cursor: 'pointer',
+            color: 'primary.dark',
             fontWeight: 500,
             fontSize: 16,
-            lineHeight: "20px",
+            lineHeight: '20px',
             letterSpacing: 0,
           }}
-          onClick={() => router.push("/signup")}
+          onClick={() => router.push('/signup')}
         >
           Регистрация
         </Link>
@@ -161,13 +157,13 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
           type="submit"
           variant="contained"
           sx={{
-            width: "120px",
-            height: "48px",
-            borderRadius: "8px",
+            width: '120px',
+            height: '48px',
+            borderRadius: '8px',
             fontWeight: 500,
             fontSize: 18,
-            lineHeight: "22px",
-            textTransform: "capitalize",
+            lineHeight: '22px',
+            textTransform: 'capitalize',
           }}
         >
           Войти

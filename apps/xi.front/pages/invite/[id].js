@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import Header from 'components/Invite/Header';
 import Form from 'components/Invite/Form';
-import { LayoutPages } from "pkg.layout.pages";
+import { LayoutPages } from 'pkg.layout.pages';
 
 const InviteCommunity = observer(() => (
   <LayoutPages title="приглашение">

@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-import { Avatar as Av, Stack, useMediaQuery, Theme } from '@mui/material';
+import { Avatar as Av, Stack } from '@mui/material';
 import { Photo } from 'pkg.icons.photo';
 import { useStore } from 'store/connect';
 import DialogEditor from './DialogEditor';
@@ -41,9 +40,8 @@ const Avatar = ({ letter, src }: AvatarT) => {
         {letter.toUpperCase()}
       </Av>
     );
-  } else {
-    return <Av alt="avatar" src={src} sx={{ width: 72, height: 72 }} />;
   }
+  return <Av alt="avatar" src={src} sx={{ width: 72, height: 72 }} />;
 };
 
 type AvatarEditorT = {

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html, Head, Main, NextScript,
+} from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../store/createEmotionCache';
 
@@ -89,18 +91,17 @@ MyDocument.getInitialProps = async (ctx) => {
   // Render app and page and get the context of the page with collected side effects.
   const originalRenderPage = ctx.renderPage;
 
-  // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
+  // You can consider sharing the same emotion cache between
+  // all the SSR requests to speed up performance.
   // However, be aware that it can have global side effects.
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: (App) =>
-        function EnhanceApp(props) {
-          return <App emotionCache={cache} {...props} />;
-        },
-    });
+  ctx.renderPage = () => originalRenderPage({
+    enhanceApp: (App) => function EnhanceApp(props) {
+      return <App emotionCache={cache} {...props} />;
+    },
+  });
 
   const initialProps = await Document.getInitialProps(ctx);
   // This is important. It prevents Emotion to render invalid HTML.

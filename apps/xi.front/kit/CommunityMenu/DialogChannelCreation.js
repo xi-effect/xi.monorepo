@@ -23,6 +23,7 @@ import { grey } from '@mui/material/colors';
 import { useStore } from 'store/connect';
 
 import { useForm, Controller } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import TextFieldCustom from 'kit/TextFieldCustom';
@@ -131,8 +132,7 @@ const Content = observer((props) => {
         </Stack>
       ))}
       <Typography variant="subtitle2" sx={{ color: 'text.secondary', pt: 2, pb: 1 }}>
-        {' '}
-        НАЗВАНИЕ{' '}
+        НАЗВАНИЕ
       </Typography>
       <Box sx={{ width: '100%' }}>
         <Controller

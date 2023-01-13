@@ -49,7 +49,9 @@ const DialogInvite = observer(() => {
         </Typography>
         <Tooltip title="Закрыть">
           <IconButton
-            sx={{ color: 'text.secondary', ml: 'auto', mt: 2, mr: 1 }}
+            sx={{
+              color: 'text.secondary', ml: 'auto', mt: 2, mr: 1,
+            }}
             onClick={() => uiSt.setDialogs('invite', false)}
           >
             <CloseIcon />

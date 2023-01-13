@@ -22,6 +22,7 @@ const Navigation = observer((props: NavigationT) => {
   const router = useRouter();
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [prevPathname, setPrevPathname] = useSessionStorage('prevPathname');
 
   React.useEffect(() => {

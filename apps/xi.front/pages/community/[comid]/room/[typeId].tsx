@@ -1,17 +1,13 @@
-import React, { Suspense } from "react";
-import { observer } from "mobx-react";
-import { LayoutPages } from "pkg.layout.pages";
-import { Stack } from "@mui/material";
+import { observer } from 'mobx-react';
+import { LayoutPages } from 'pkg.layout.pages';
+import { Stack } from '@mui/material';
 
-import { Navigation } from "kit/Navigation";
-import dynamic from "next/dynamic";
+import { Navigation } from 'kit/Navigation';
+import dynamic from 'next/dynamic';
 
-const VideoConference = dynamic(
-  () => import("components/VideoConference/VideoConference"),
-  {
-    loading: () => <div>Loading...</div>,
-  }
-);
+const VideoConference = dynamic(() => import('components/VideoConference/VideoConference'), {
+  loading: () => <div>Loading...</div>,
+});
 
 const RoomPage = observer(() => (
   <LayoutPages noIndex>
@@ -21,10 +17,10 @@ const RoomPage = observer(() => (
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          height: "100vh",
-          width: "100%",
-          p: "8px 16px",
-          overflow: "auto",
+          height: '100vh',
+          width: '100%',
+          p: '8px 16px',
+          overflow: 'auto',
         }}
       >
         <VideoConference />

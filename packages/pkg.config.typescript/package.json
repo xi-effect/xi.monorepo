@@ -1,0 +1,17 @@
+{
+  "name": "pkg.config.typescript",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ],
+  "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

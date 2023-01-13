@@ -8,16 +8,19 @@
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
     "framer-motion": "^7.10.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "eslint": "^7.32.0",
-    "pkg.eslint-config-custom": "*",
+    "eslint-config-custom": "*",
     "react": "^18.2.0",
-    "tsconfig": "*",
+    "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
   }
 }

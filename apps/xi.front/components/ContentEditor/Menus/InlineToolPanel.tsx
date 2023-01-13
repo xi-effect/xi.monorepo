@@ -1,13 +1,5 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
-/* eslint-disable react/prefer-exact-props */
-/* eslint-disable no-undef */
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/function-component-definition */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import React, { useRef, useEffect, PropsWithChildren, LegacyRef } from 'react';
 import { useSlate, useFocused } from 'slate-react';
 import { Editor, Range } from 'slate';
@@ -78,8 +70,10 @@ const Menu = React.forwardRef(
   ),
 );
 
-const Portal = ({ children }) =>
-  typeof document === 'object' ? ReactDOM.createPortal(children, document.body) : null;
+// eslint-disable-next-line react/prop-types
+function Portal({ children }) {
+  return typeof document === 'object' ? ReactDOM.createPortal(children, document.body) : null;
+}
 
 const HoveringToolbar = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -162,6 +156,7 @@ export const toggleFormat = (editor, format) => {
   }
 };
 
+// eslint-disable-next-line react/prop-types
 const FormatButton = ({ format, icon }) => {
   const editor = useSlate();
   const active = isFormatActive(editor, format);

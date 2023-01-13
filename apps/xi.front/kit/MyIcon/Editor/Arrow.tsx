@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Arrow: React.FC<Props> = ({ color = '#333', up }) => (
-  //@ts-ignore
+  // @ts-ignore
   <IconWrap>
     {up ? (
       <svg

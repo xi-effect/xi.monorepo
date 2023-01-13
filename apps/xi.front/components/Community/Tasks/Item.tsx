@@ -2,7 +2,6 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Grid, Box, Typography, Stack, useMediaQuery, Theme } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
-import { Arrow } from 'pkg.icons.arrow';
 import { TaskT } from './types';
 
 type ItemsT = {
@@ -10,23 +9,9 @@ type ItemsT = {
   index: number;
 };
 
-const Item: React.FC<ItemsT> = observer(({ item, index }) => {
+const Item: React.FC<ItemsT> = observer(({ index }) => {
   const router: NextRouter = useRouter();
   const mobile1336: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1336));
-
-  const { mark, title, description } = item;
-
-  const getColor = () => {
-    if (mark === 4 || mark === 5) return '#11743A';
-    if (mark === 3) return '#E75223';
-    return '#F42D2D';
-  };
-
-  const getBgColor = () => {
-    if (mark === 4 || mark === 5) return '#B0F9CE';
-    if (mark === 3) return '#FEF2EB';
-    return '#FEEAEA';
-  };
 
   return (
     <Stack
@@ -121,9 +106,7 @@ const Item: React.FC<ItemsT> = observer(({ item, index }) => {
             fontWeight: 400,
             fontSize: '16px',
             lineHeight: '22px',
-            /* Here's where the line-clamp magic begins. First, we need to hide the content that overflows our desired number of text lines to show */
             overflow: 'hidden',
-            /* Then, we use the old implementation of Flexbox on the paragraph and set its direction to be row */
             display: '-webkit-box',
             '-webkit-box-orient': 'vertical',
             /* Finally, we set the desired number of lines we want to show */

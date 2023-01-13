@@ -23,6 +23,7 @@ import {
 } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { visuallyHidden } from '@mui/utils';
 import { alpha } from '@mui/material/styles';
 import CreateInvite from 'kit/CreateInvite';
@@ -103,7 +104,9 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const {
+    onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort,
+  } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -157,14 +160,17 @@ const EnhancedTableToolbar = (props) => {
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
         ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+          bgcolor: (theme) => {
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity);
+          },
         }),
       }}
     >
       {numSelected > 0 ? (
         <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
-          {numSelected} выбрано
+          {numSelected}
+          {' '}
+          выбрано
         </Typography>
       ) : (
         <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
@@ -187,6 +193,7 @@ const Invites = observer(() => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [page, setPage] = React.useState(0);
 
   const handleRequestSort = (event, property) => {
@@ -293,7 +300,8 @@ const Invites = observer(() => {
                     </TableCell>
                     <TableCell align="left">
                       {' '}
-                      <Chip label={row.role} />{' '}
+                      <Chip label={row.role} />
+                      {' '}
                     </TableCell>
                     <TableCell align="left">{row.limit}</TableCell>
                   </TableRow>

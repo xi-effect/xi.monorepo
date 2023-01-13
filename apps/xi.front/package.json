@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint kit/** components/** pages/** -c .eslintrc.json --ext js,jsx,ts,tsx"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
@@ -19,6 +19,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
+    "@mui/utils": "^5.11.2",
     "@mui/x-date-pickers": "^5.0.11",
     "@prezly/slate-lists": "^0.71.0",
     "crypto-js": "^4.1.1",
@@ -70,7 +71,6 @@
     "pkg.icons.task": "*",
     "pkg.icons.updates": "*",
     "pkg.icons.users": "*",
-    "pkg.inputs.button": "*",
     "pkg.layout.pages": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
@@ -108,8 +108,8 @@
     "@types/react-dom": "^18.0.7",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "7.32.0",
-    "pkg.eslint-config-custom": "*",
-    "pkg.tsconfig": "*",
+    "eslint-config-custom": "*",
+    "pkg.config.typescript": "*",
     "typescript": "^4.5.3"
   }
 }

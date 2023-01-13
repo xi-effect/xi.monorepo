@@ -35,4 +35,3 @@ const Content = ({ activeContent }: ContentProps) => {
 };
 
 export default Content;
-

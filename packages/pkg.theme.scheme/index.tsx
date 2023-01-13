@@ -1,1 +1,1 @@
-export { getScheme } from "./scheme";
+export { getScheme } from './scheme';

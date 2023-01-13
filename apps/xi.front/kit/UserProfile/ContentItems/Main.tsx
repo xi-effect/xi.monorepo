@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 
 import { Copy } from 'pkg.icons.copy';

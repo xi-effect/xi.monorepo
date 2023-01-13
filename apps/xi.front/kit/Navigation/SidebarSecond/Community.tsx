@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import { observer } from "mobx-react";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { observer } from 'mobx-react';
 
 import {
   Box,
@@ -10,20 +10,20 @@ import {
   MenuList,
   ListItemIcon,
   ListItemText,
-} from "@mui/material";
+} from '@mui/material';
 
-import { useStore } from "store/connect";
+import { useStore } from 'store/connect';
 
-import { useLocalStorage } from "react-use";
-import { Scroll } from "pkg.components.scroll";
-import { Announce } from "pkg.icons.announce";
-import { Task } from "pkg.icons.task";
-import { Chat } from "kit/MyIcon/Chat";
-import { Camera } from "pkg.icons.camera";
-import { Calendar } from "pkg.icons.calendar";
+import { useLocalStorage } from 'react-use';
+import { Scroll } from 'pkg.components.scroll';
+import { Announce } from 'pkg.icons.announce';
+import { Task } from 'pkg.icons.task';
+import { Chat } from 'kit/MyIcon/Chat';
+import { Camera } from 'pkg.icons.camera';
+import { Calendar } from 'pkg.icons.calendar';
 
-import Image from "next/image";
-import { ChannelsType } from "store/community/communityChannelsSt";
+import Image from 'next/image';
+import { ChannelsType } from 'store/community/communityChannelsSt';
 
 const iconsDict = {
   posts: <Announce color="primary" />,
@@ -47,58 +47,55 @@ type ItemsT = {
 
 const Channel: React.FC<ChannelT> = observer(({ channel }) => {
   const router = useRouter();
-  const splitPathname = router.pathname.split("/");
+  const splitPathname = router.pathname.split('/');
   const chType = splitPathname[3];
   const chid = router.query.chid ?? null;
 
   const handleChannelClick = () => {
-    router.push(
-      `/community/${router.query.comid}/${channel.type}/${channel.id}/`
-    );
+    router.push(`/community/${router.query.comid}/${channel.type}/${channel.id}/`);
   };
 
-  const isSameChannel =
-    chType === channel.type && chid === channel.id.toString();
+  const isSameChannel = chType === channel.type && chid === channel.id.toString();
 
   return (
     <MenuItem
       onClick={handleChannelClick}
       sx={{
-        width: "calc(100% - 16px)",
+        width: 'calc(100% - 16px)',
         borderRadius: 1,
         height: 36,
         ml: 1,
         mr: 1,
-        pl: "6px",
-        pr: "6px",
-        bgcolor: isSameChannel ? "primary.pale" : null,
+        pl: '6px',
+        pr: '6px',
+        bgcolor: isSameChannel ? 'primary.pale' : null,
 
-        ".MuiListItemText-root": {
-          color: isSameChannel ? "primary.dark" : null,
+        '.MuiListItemText-root': {
+          color: isSameChannel ? 'primary.dark' : null,
         },
 
         svg: {
-          fill: isSameChannel ? "#445AFF" : "",
+          fill: isSameChannel ? '#445AFF' : '',
         },
 
-        "&:hover": {
-          bgcolor: "primary.pale",
+        '&:hover': {
+          bgcolor: 'primary.pale',
 
-          ".MuiListItemText-root": {
-            color: "primary.dark",
+          '.MuiListItemText-root': {
+            color: 'primary.dark',
           },
 
           svg: {
-            fill: "#445AFF",
+            fill: '#445AFF',
           },
         },
       }}
     >
       <ListItemIcon
         sx={{
-          width: "24px",
-          height: "24px",
-          minWidth: "24px !important",
+          width: '24px',
+          height: '24px',
+          minWidth: '24px !important',
         }}
       >
         {iconsDict[channel.type]}
@@ -106,10 +103,10 @@ const Channel: React.FC<ChannelT> = observer(({ channel }) => {
       <ListItemText
         disableTypography
         sx={{
-          pl: "6px",
+          pl: '6px',
           fontWeight: 500,
-          fontSize: "14px",
-          lineHeight: "18px",
+          fontSize: '14px',
+          lineHeight: '18px',
         }}
       >
         {channel.name}
@@ -124,7 +121,7 @@ const Items = observer(({ index }: ItemsT) => {
 
   const channel = communityChannelsSt.channels[index];
 
-  if (channel.type === "category") {
+  if (channel.type === 'category') {
     return (
       <Stack
         key={index.toString()}
@@ -132,42 +129,40 @@ const Items = observer(({ index }: ItemsT) => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          mt: "24px",
-          mb: "2px",
-          width: "100%",
+          mt: '24px',
+          mb: '2px',
+          width: '100%',
         }}
       >
         <Stack
-          onClick={() =>
-            communityChannelsSt.setChannel(index, "open", !channel.open)
-          }
+          onClick={() => communityChannelsSt.setChannel(index, 'open', !channel.open)}
           direction="column"
           justifyContent="flex-start"
           alignItems="flex-start"
           sx={{
-            width: "100%",
-            cursor: "pointer",
-            color: "grayscale.80",
+            width: '100%',
+            cursor: 'pointer',
+            color: 'grayscale.80',
             zIndex: 1,
-            pl: "14px",
-            position: "relative",
+            pl: '14px',
+            position: 'relative',
           }}
           spacing={0.5}
         >
           <Box
             sx={{
-              position: "absolute",
+              position: 'absolute',
               top: 0,
-              left: "4px",
-              width: "7px",
-              height: "2px",
+              left: '4px',
+              width: '7px',
+              height: '2px',
             }}
           >
             <Image
               alt="alt"
               style={{
-                transition: "0.4s",
-                transform: !channel.open ? "rotate(-90deg)" : "",
+                transition: '0.4s',
+                transform: !channel.open ? 'rotate(-90deg)' : '',
               }}
               src="/icons/arrow.svg"
               width={7}
@@ -178,8 +173,8 @@ const Items = observer(({ index }: ItemsT) => {
             variant="subtitle2"
             sx={{
               fontWeight: 400,
-              fontSize: "16px",
-              lineHeight: "20px",
+              fontSize: '16px',
+              lineHeight: '20px',
             }}
           >
             {channel.name}
@@ -189,8 +184,8 @@ const Items = observer(({ index }: ItemsT) => {
               variant="subtitle2"
               sx={{
                 fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "20px",
+                fontSize: '16px',
+                lineHeight: '20px',
               }}
             >
               {channel.subtext}
@@ -198,7 +193,14 @@ const Items = observer(({ index }: ItemsT) => {
           )}
         </Stack>
         {channel.open && (
-          <MenuList sx={{ width: "100%", pl: 0, pr: 0, zIndex: 1 }}>
+          <MenuList
+            sx={{
+              width: '100%',
+              pl: 0,
+              pr: 0,
+              zIndex: 1,
+            }}
+          >
             {channel.children?.map((child, indexCh) => (
               <Channel key={indexCh.toString()} channel={child} />
             ))}
@@ -207,7 +209,7 @@ const Items = observer(({ index }: ItemsT) => {
       </Stack>
     );
   }
-  if (channel.type !== "category") {
+  if (channel.type !== 'category') {
     return <Channel channel={channel} />;
   }
   return null;
@@ -217,26 +219,24 @@ const MenuCommunity = observer(() => {
   const rootStore = useStore();
   const { communityChannelsSt } = rootStore;
 
-  const [valueLS, setValueLS] = useLocalStorage(
-    "second-menu-c-upper-items-position-is-vert"
-  );
+  const [valueLS, setValueLS] = useLocalStorage('second-menu-c-upper-items-position-is-vert');
 
   useEffect(() => {
     if (valueLS === undefined) {
       setValueLS(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <MenuList
       sx={{
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
         pl: 0,
         pr: 0,
         zIndex: 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       }}
     >
       <Scroll>

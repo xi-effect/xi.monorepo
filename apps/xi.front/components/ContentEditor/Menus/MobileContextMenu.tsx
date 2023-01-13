@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
@@ -55,6 +54,7 @@ function MobileContextMenu(props: Props) {
   const { editor, index, open, setOpen } = props;
 
   const [openItemsMenu, setOpenItemsMenu] = React.useState<null | string>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, copyToClipboard] = useCopyToClipboard();
 
   return (
@@ -94,7 +94,14 @@ function MobileContextMenu(props: Props) {
         >
           <Puller />
           <Typography
-            sx={{ pt: 2, pl: 2, pb: 1, color: 'text.secondary', fontSize: 16, userSelect: 'none' }}
+            sx={{
+              pt: 2,
+              pl: 2,
+              pb: 1,
+              color: 'text.secondary',
+              fontSize: 16,
+              userSelect: 'none',
+            }}
           >
             {openItemsMenu === null && 'Меню блока'}
             {openItemsMenu === 'add' && 'Выберите тип нового блока'}

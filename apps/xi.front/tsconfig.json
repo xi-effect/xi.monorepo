@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
   },
-  "extends": "pkg.tsconfig/nextjs.json",
+  "extends": "pkg.config.typescript/nextjs.json",
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

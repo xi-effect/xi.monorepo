@@ -63,7 +63,12 @@ export const useGetFile: any = () => {
     setIsLoading(false);
   };
 
-  return { handleGetFile, downloadURL, error, isLoading };
+  return {
+    handleGetFile,
+    downloadURL,
+    error,
+    isLoading,
+  };
 };
 
 const postFile = async (file) => {
@@ -92,6 +97,7 @@ const postFile = async (file) => {
 export const usePostFiles: any = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [notUploaded, setNotUploaded] = useState<any[]>();
 
   const validate = (file: IFile): boolean => {
@@ -119,13 +125,20 @@ export const usePostFiles: any = () => {
     if (data.error) {
       setError(data.error);
     } else {
-      setError(undefined)
+      setError(undefined);
+      // eslint-disable-next-line consistent-return
       return data;
-    };
+    }
     setIsUploading(false);
   };
 
-  return { handlePostFile, fileSizeFormat, isUploading, error, notUploaded };
+  return {
+    handlePostFile,
+    fileSizeFormat,
+    isUploading,
+    error,
+    notUploaded,
+  };
 };
 
 const deleteFile = async (fileId): Promise<IResult> => {

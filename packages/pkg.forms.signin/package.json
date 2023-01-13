@@ -8,6 +8,7 @@
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "react": "^18.2.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@hookform/resolvers": "^2.9.10",
@@ -16,15 +17,16 @@
     "pkg.icons.eyeon": "*",
     "pkg.inputs.input": "*",
     "react-hook-form": "^7.41.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "next": "^13.0.7"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "eslint": "^7.32.0",
-    "pkg.eslint-config-custom": "*",
+    "eslint-config-custom": "*",
     "react": "^18.2.0",
-    "tsconfig": "*",
+    "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
   },
   "description": "form for signin",
