@@ -219,7 +219,7 @@ function MobileContextMenu(props: Props) {
                   }}
                 >
                   <Stack direction="column" justifyContent="center" alignItems="flex-start">
-                    <Typography variant="h5">{item.label}</Typography>
+                    <Typography variant="xl">{item.label}</Typography>
                   </Stack>
                 </MenuItem>
               ))}
@@ -237,7 +237,7 @@ function MobileContextMenu(props: Props) {
                   }}
                 >
                   <Stack direction="column" justifyContent="center" alignItems="flex-start">
-                    <Typography variant="h5">{item.label}</Typography>
+                    <Typography variant="xl">{item.label}</Typography>
                   </Stack>
                 </MenuItem>
               ))}

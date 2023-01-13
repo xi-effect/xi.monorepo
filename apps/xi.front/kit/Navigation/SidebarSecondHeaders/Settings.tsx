@@ -6,7 +6,7 @@ import { Typography, Stack } from '@mui/material';
 const Settings = observer(() => (
   <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
     <Typography
-      variant="h5"
+      variant="xl"
       sx={{
         fontSize: 18,
       }}

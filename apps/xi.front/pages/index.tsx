@@ -102,7 +102,7 @@ const Signin = observer(() => {
             <XiLogo width={142} height={24} />
           </Stack>
           <Typography
-            variant="h5"
+            variant="xl"
             sx={{
               pb: '16px',
               textAlign: 'center',
