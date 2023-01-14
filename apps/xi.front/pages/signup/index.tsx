@@ -7,7 +7,7 @@ import XiLogo from 'kit/XiLogo';
 import { useSessionStorage } from 'react-use';
 import { LayoutPages } from 'pkg.layout.pages';
 
-const Tearms = () => (
+const Terms = () => (
   <>
     <Typography
       variant="caption"
@@ -100,7 +100,7 @@ const Signup = observer(() => {
                 width: '100%',
               }}
             >
-              <Tearms />
+              <Terms />
             </Stack>
           )}
         </Stack>
@@ -115,7 +115,7 @@ const Signup = observer(() => {
             height: '96px',
           }}
         >
-          {isMobile && activeStep === 1 && <Tearms />}
+          {isMobile && activeStep === 1 && <Terms />}
         </Stack>
       )}
     </LayoutPages>

@@ -8,7 +8,7 @@ import { LayoutPages } from 'pkg.layout.pages';
 import { SignIn } from 'pkg.forms.signin';
 import { useStore } from 'store/connect';
 
-const Tearms = () => (
+const Terms = () => (
   <>
     <Typography
       variant="caption"
@@ -125,7 +125,7 @@ const Signin = observer(() => {
                 width: '100%',
               }}
             >
-              <Tearms />
+              <Terms />
             </Stack>
           )}
         </Stack>
@@ -140,7 +140,7 @@ const Signin = observer(() => {
             height: '96px',
           }}
         >
-          <Tearms />
+          <Terms />
         </Stack>
       )}
     </LayoutPages>
