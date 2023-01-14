@@ -68,7 +68,7 @@ const EmailChangeDialog = observer(() => {
     setEmailError(false);
     setPasswordError(false);
     rootStore
-      .fetchData(`${rootStore.url}/email-change/`, 'POST', {
+      .fetchData(`${rootStore.url}/users/me/email/`, 'POST', {
         password: Crypto.SHA384(password).toString(),
         'new-email': email,
       })

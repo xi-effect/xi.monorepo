@@ -75,14 +75,13 @@ const PasswordChangeDialog = observer(() => {
     }
 
     rootStore
-      .fetchData(`${rootStore.url}/password-change/`, 'POST', {
+      .fetchData(`${rootStore.url}/users/me/password/`, 'POST', {
         password: Crypto.SHA384(password).toString(),
         'new-password': Crypto.SHA384(newPassword).toString(),
       })
       .then((data) => {
         if (data !== undefined) {
           if (data.a === 'Success') {
-            // userId //"Success"
             setDialogs('passwordChange', false);
             enqueueSnackbar('Пароль успешно изменён', {
               variant: 'info',

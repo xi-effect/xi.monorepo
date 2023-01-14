@@ -51,5 +51,6 @@ module.exports = {
     'operator-linebreak': 'off',
     'no-confusing-arrow': 'off',
     'function-paren-newline': 'off',
+    'newline-per-chained-call': 'off',
   },
 };
