@@ -19,7 +19,6 @@ const Post = observer(() => (
           overflow: 'auto',
         }}
       >
-        1
         <Breadcrumbs />
         <Header />
         <SubHeader />

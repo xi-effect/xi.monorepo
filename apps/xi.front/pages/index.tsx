@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { observer } from 'mobx-react';
 import { useSessionStorage } from 'react-use';
 import XiLogo from 'kit/XiLogo';
-import { Stack, Typography, Link, Divider, useMediaQuery } from '@mui/material';
+import { Stack, Typography, Link, useMediaQuery } from '@mui/material';
 import { LayoutPages } from 'pkg.layout.pages';
 import { SignIn } from 'pkg.forms.signin';
 import { useStore } from 'store/connect';
@@ -141,15 +141,6 @@ const Signin = observer(() => {
           }}
         >
           <Tearms />
-          <Divider
-            sx={{
-              mt: 4,
-              width: '134px',
-              height: '5px',
-              backgroundColor: 'grayscale.100',
-              borderRadius: '100px',
-            }}
-          />
         </Stack>
       )}
     </LayoutPages>

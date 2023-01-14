@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from 'react';
 import { observer } from 'mobx-react';
 import { Button, Stack, Typography } from '@mui/material';
 import { Add } from 'pkg.icons.add';
@@ -36,6 +35,10 @@ const Header = observer(() => (
         '&:hover': {
           boxShadow: 0,
           bgcolor: 'grayscale.0',
+        },
+
+        svg: {
+          fill: '#000',
         },
       }}
     >
