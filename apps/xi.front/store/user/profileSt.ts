@@ -79,7 +79,7 @@ class ProfileSt {
     };
   };
 
-  @action postProfile = (data, enqueueSnackbar, closeFn, reset) => {
+  @action postProfile = (data, enqueueSnackbar, closeFn, reset, setError) => {
     console.log('postProfile', data);
     this.rootStore
       .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
@@ -91,9 +91,18 @@ class ProfileSt {
           console.log('this.profile', this.profile);
 
           if (closeFn) {
-            console.log('closeFn');
             closeFn();
           }
+          enqueueSnackbar('Данные успешно сохранены', {
+            variant: 'success',
+            autoHideDuration: 4000,
+          });
+        } else if (answer.a === 'Handle already in use') {
+          enqueueSnackbar('Имя пользователя уже занято, используйте другое', {
+            variant: 'warn',
+            autoHideDuration: 4000,
+          });
+          setError('handle', { type: 'unique' }, { shouldFocus: true });
         } else {
           closeFn();
           enqueueSnackbar(answer.a, {

@@ -63,6 +63,7 @@ const Account = observer(() => {
     // trigger,
     reset,
     formState: { errors },
+    setError,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
@@ -112,7 +113,7 @@ const Account = observer(() => {
       }
     }
     console.log('newData', newData);
-    profileSt.postProfile(newData, enqueueSnackbar, closeSnackbar, reset);
+    profileSt.postProfile(newData, enqueueSnackbar, closeSnackbar, reset, setError);
   };
 
   const [value, setValue] = React.useState<Dayjs | null>(null);
