@@ -74,6 +74,16 @@ class ProfileSt {
       birthday: null,
     };
   };
+
+  @action postProfile = (data) => {
+    this.rootStore
+      .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
+      .then((answer: ResponseDataRegT) => {
+        if (answer.a === 'Success') {
+          console.log('Success');
+        }
+      });
+  };
 }
 
 export default ProfileSt;

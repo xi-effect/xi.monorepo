@@ -23,6 +23,7 @@ const typographyStyles = {
 };
 
 type FormValues = {
+  handle: string;
   username: string;
   name: string;
   surname: string;
@@ -31,6 +32,12 @@ type FormValues = {
 
 const schema = yup
   .object({
+    handle: yup
+      .string()
+      // eslint-disable-next-line no-useless-escape
+      .matches(/[a-z0-9_\-]+/, { excludeEmptyString: true })
+      .max(100)
+      .required(),
     username: yup.string().max(100),
     name: yup.string().max(100),
     surname: yup.string().max(100),
@@ -42,6 +49,7 @@ const Account = observer(() => {
   const rootStore = useStore();
   const { userSt, profileSt } = rootStore;
   const { profile } = profileSt;
+  const { user } = userSt;
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -74,6 +82,8 @@ const Account = observer(() => {
 
   watch((data) => {
     if (
+      data.handle !== user.handle ||
+      data.username !== user.username ||
       data.name !== profile.name ||
       data.surname !== profile.surname ||
       data.patronymic !== profile.patronymic
@@ -82,6 +92,8 @@ const Account = observer(() => {
     }
 
     if (
+      data.handle === user.handle &&
+      data.username === user.username &&
       data.name === profile.name &&
       data.surname === profile.surname &&
       data.patronymic === profile.patronymic
@@ -91,7 +103,15 @@ const Account = observer(() => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const newData = {};
+    for (const key in data) {
+      if (data[key] !== profile[key]) {
+        newData[key] = data[key];
+      }
+    }
     console.log('data', data);
+    console.log('newData', newData);
+    // profileSt.postProfile(data);
   };
 
   const [value, setValue] = React.useState<Dayjs | null>(null);
@@ -145,18 +165,44 @@ const Account = observer(() => {
             ...typographyStyles,
           }}
         >
-          Никнейм
+          Псевдоним
         </Typography>
         <Controller
           name="username"
           control={control}
-          defaultValue={profile.name}
+          defaultValue={user.username}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
               type="text"
               fullWidth
-              placeholder="Никнейм"
+              placeholder="Псевдоним"
+              {...field}
+              sx={{
+                mt: '4px',
+                backgroundColor: 'grayscale.0',
+              }}
+            />
+          )}
+        />
+        <Typography
+          sx={{
+            mt: '24px',
+            ...typographyStyles,
+          }}
+        >
+          Имя пользователя
+        </Typography>
+        <Controller
+          name="username"
+          control={control}
+          defaultValue={user.handle}
+          render={({ field }) => (
+            <TextFieldCustom
+              variant="outlined"
+              type="text"
+              fullWidth
+              placeholder="Имя пользователя"
               {...field}
               sx={{
                 mt: '4px',
