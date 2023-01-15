@@ -37,6 +37,7 @@ declare module 'notistack' {
   interface VariantOverrides {
     saveConfirm: {
       formRef?: React.RefObject<HTMLButtonElement>;
+      reset?: any;
     };
   }
 }

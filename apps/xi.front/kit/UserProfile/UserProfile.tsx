@@ -5,6 +5,7 @@ import { useStore } from 'store/connect';
 import { TransitionProps } from '@mui/material/transitions';
 import { Dialog, Slide, Stack, useMediaQuery, Theme, Box } from '@mui/material';
 import { observer } from 'mobx-react';
+import { useSnackbar } from 'notistack';
 import Menu from './Menu';
 import Content from './Content';
 import Header from './Header';
@@ -34,10 +35,16 @@ const UserProfile = observer(() => {
   const mobile800: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
   const mobile1400: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1400));
 
+  const { closeSnackbar } = useSnackbar();
+
   React.useEffect(() => {
     profileSt.getProfile();
     userSt.getUser();
   }, [profileSt, userSt]);
+
+  React.useEffect(() => () => {
+    closeSnackbar();
+  });
 
   return (
     <Dialog

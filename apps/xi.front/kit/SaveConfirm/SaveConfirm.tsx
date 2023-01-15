@@ -2,9 +2,11 @@
 import * as React from 'react';
 import { SnackbarContent, CustomContentProps } from 'notistack';
 import { Button, Paper, Stack, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 interface ReportCompleteProps extends CustomContentProps {
   formRef?: React.RefObject<HTMLButtonElement>;
+  reset?: any;
 }
 
 const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
@@ -19,14 +21,21 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
     persist,
     // as well as your own custom props 👇🏼,
     formRef,
+    reset,
     ...other
   } = props;
+
+  const { closeSnackbar } = useSnackbar();
 
   const handleSubmit = () => {
     if (formRef && formRef.current) {
       formRef.current.click();
-      console.log('handleSubmit');
     }
+  };
+
+  const handleReset = () => {
+    reset();
+    closeSnackbar();
   };
 
   return (
@@ -61,9 +70,11 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
             }}
           >
             {' '}
-            У вас есть несохраненные изменения{' '}
+            У вас есть несохраненные изменения
+            {' '}
           </Typography>
           <Button
+            onClick={handleReset}
             sx={{
               width: '120px',
               height: '48px',

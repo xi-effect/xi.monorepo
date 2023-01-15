@@ -36,9 +36,8 @@ const schema = yup
       .string()
       // eslint-disable-next-line no-useless-escape
       .matches(/[a-z0-9_\-]+/, { excludeEmptyString: true })
-      .max(100)
-      .required(),
-    username: yup.string().max(100),
+      .max(100),
+    username: yup.string().max(100).required(),
     name: yup.string().max(100),
     surname: yup.string().max(100),
     patronymic: yup.string().max(100),
@@ -62,17 +61,20 @@ const Account = observer(() => {
     handleSubmit,
     watch,
     // trigger,
-    // reset,
-    // formState: { errors },
+    reset,
+    formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
+
+  console.log('errors', errors);
 
   const openSaveConfirm = () => {
     enqueueSnackbar('saveConfirm', {
       variant: 'saveConfirm',
       persist: true,
       formRef,
+      reset,
     });
   };
 
@@ -105,13 +107,12 @@ const Account = observer(() => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const newData = {};
     for (const key in data) {
-      if (data[key] !== profile[key]) {
+      if (data[key] !== profile[key] && data[key] !== user.handle && data[key] !== user.username) {
         newData[key] = data[key];
       }
     }
-    console.log('data', data);
     console.log('newData', newData);
-    // profileSt.postProfile(data);
+    profileSt.postProfile(newData, enqueueSnackbar, closeSnackbar, reset);
   };
 
   const [value, setValue] = React.useState<Dayjs | null>(null);
@@ -177,6 +178,7 @@ const Account = observer(() => {
               type="text"
               fullWidth
               placeholder="Псевдоним"
+              error={!!errors?.username}
               {...field}
               sx={{
                 mt: '4px',
@@ -194,7 +196,7 @@ const Account = observer(() => {
           Имя пользователя
         </Typography>
         <Controller
-          name="username"
+          name="handle"
           control={control}
           defaultValue={user.handle}
           render={({ field }) => (
