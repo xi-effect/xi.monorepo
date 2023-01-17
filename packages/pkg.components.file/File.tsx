@@ -8,7 +8,7 @@ export type FileProps = {
   icon?: string; // File icon (screenshot/image) url
   url: string; // File url
   size: number; // File size in bytes
-  showCloseIcon?: boolean;
+  hideCloseIcon?: boolean;
 };
 
 const formatSize = (size: number): string => {
@@ -21,7 +21,7 @@ const formatSize = (size: number): string => {
   return formattedSize;
 };
 
-export const File = ({ name, size, icon }: FileProps) => (
+export const File = ({ name, size, icon, hideCloseIcon }: FileProps) => (
   <Stack
     sx={{
       maxWidth: '377px',
@@ -80,6 +80,7 @@ export const File = ({ name, size, icon }: FileProps) => (
         {formatSize(size)}
       </Typography>
     </Box>
-    <Close />
+    {!hideCloseIcon && <Close />}
   </Stack>
 );
+
