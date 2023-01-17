@@ -28,7 +28,7 @@ export const File = ({ name, size, icon }: FileProps) => (
       width: '100%',
       minWidth: 0,
       height: '72px',
-      padding: '14px 16px 14px 12px',
+      padding: '8px 14px 8px 12px',
       bgcolor: 'white',
       mt: '20px',
       border: '1px solid #E8E8E8',
@@ -39,8 +39,22 @@ export const File = ({ name, size, icon }: FileProps) => (
     alignItems="center"
   >
     <Stack justifyContent="center" alignItems="center" sx={{ width: '64px', height: '48px' }}>
-      <Box sx={{ maxWidth: '48px', maxHeight: '48px' }}>
-        {(!icon && <FileIcon color="primary" height="100%" width="36px" viewBox="0 0 36 36" />) || (
+      {(!icon && (
+        <Box sx={{ maxWidth: '48px', maxHeight: '48px', height: '100%', width: '100%' }}>
+          <FileIcon
+            color="primary"
+            height="36px"
+            width="36px"
+            preserveAspectRatio="none"
+            sx={{
+              width: '100%',
+              height: '100%',
+              fontSize: '36px',
+            }}
+          />
+        </Box>
+      )) || (
+        <Box sx={{ maxWidth: '48px', maxHeight: '48px' }}>
           <Image
             src={icon || ''}
             alt="test"
@@ -56,8 +70,8 @@ export const File = ({ name, size, icon }: FileProps) => (
               borderRadius: 4,
             }}
           />
-        )}
-      </Box>
+        </Box>
+      )}
     </Stack>
 
     <Box sx={{ textAlign: 'left', width: '100%', m: '0 8px' }}>
@@ -69,4 +83,3 @@ export const File = ({ name, size, icon }: FileProps) => (
     <Close />
   </Stack>
 );
-
