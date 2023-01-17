@@ -4,10 +4,14 @@ import { Box, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 
 export type FileProps = {
-  name: string; // The name of the file
-  icon?: string; // File icon (screenshot/image) url
-  url: string; // File url
-  size: number; // File size in bytes
+  /* File name */
+  name: string;
+  /* File icon (screenshot/image) url */
+  icon?: string;
+  /* File url */
+  url: string;
+  /* File size in bytes */
+  size: number;
   hideCloseIcon?: boolean;
 };
 
@@ -26,7 +30,6 @@ export const File = ({ name, size, icon, hideCloseIcon, url }: FileProps) => (
     <Stack
       sx={{
         width: '100%',
-        minWidth: 0,
         height: '72px',
         padding: '8px 14px 8px 12px',
         bgcolor: 'grayscale.0',
