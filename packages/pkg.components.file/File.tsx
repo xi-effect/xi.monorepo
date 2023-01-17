@@ -26,3 +26,4 @@ export const File = ({ name, url, size }: FileProps) => (
     <Typography>{formatSize(size)}</Typography>
   </Stack>
 );
+
