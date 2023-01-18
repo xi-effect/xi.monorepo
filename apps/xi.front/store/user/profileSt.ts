@@ -88,7 +88,6 @@ class ProfileSt {
         if (answer.a === 'Success') {
           this.rootStore.userSt.setUserAll(data);
           this.setProfileAll(data);
-          console.log('this.profile', this.profile);
 
           if (closeFn) {
             closeFn();

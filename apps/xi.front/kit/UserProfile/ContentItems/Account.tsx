@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { Stack, Typography, Theme, useMediaQuery, Button } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 import { observer } from 'mobx-react';
 import dayjs, { Dayjs } from 'dayjs';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useFormContext, Controller, SubmitHandler } from 'react-hook-form';
 import TextFieldCustom from 'kit/TextFieldCustom';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
 import { useSnackbar } from 'notistack';
@@ -30,20 +26,6 @@ type FormValues = {
   patronymic: string;
 };
 
-const schema = yup
-  .object({
-    handle: yup
-      .string()
-      // eslint-disable-next-line no-useless-escape
-      .matches(/[a-z0-9_\-]+/, { excludeEmptyString: true })
-      .max(100),
-    username: yup.string().max(100).required(),
-    name: yup.string().max(100),
-    surname: yup.string().max(100),
-    patronymic: yup.string().max(100),
-  })
-  .required();
-
 const Account = observer(() => {
   const rootStore = useStore();
   const { userSt, profileSt } = rootStore;
@@ -52,74 +34,32 @@ const Account = observer(() => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const formRef = React.useRef(null);
-
-  const mobile1000: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1000));
-
   const {
     control,
-    handleSubmit,
-    watch,
-    // trigger,
-    reset,
     formState: { errors },
+    handleSubmit,
+    reset,
     setError,
-  } = useForm<FormValues>({
-    resolver: yupResolver(schema),
-  });
+  } = useFormContext();
 
   console.log('errors', errors);
 
-  const openSaveConfirm = () => {
-    enqueueSnackbar('saveConfirm', {
-      variant: 'saveConfirm',
-      persist: true,
-      formRef,
-      reset,
-    });
+  const [value, setValue] = React.useState<Dayjs | null>(null);
+
+  const handleChange = (newValue: Dayjs | null) => {
+    setValue(newValue);
   };
-
-  const closeSaveConfirm = () => {
-    closeSnackbar();
-  };
-
-  watch((data) => {
-    if (
-      data.handle !== user.handle ||
-      data.username !== user.username ||
-      data.name !== profile.name ||
-      data.surname !== profile.surname ||
-      data.patronymic !== profile.patronymic
-    ) {
-      openSaveConfirm();
-    }
-
-    if (
-      data.handle === user.handle &&
-      data.username === user.username &&
-      data.name === profile.name &&
-      data.surname === profile.surname &&
-      data.patronymic === profile.patronymic
-    ) {
-      closeSaveConfirm();
-    }
-  });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log('data', data);
     const newData = {};
     for (const key in data) {
       if (data[key] !== profile[key] && data[key] !== user.handle && data[key] !== user.username) {
         newData[key] = data[key];
       }
     }
-    console.log('newData', newData);
+
     profileSt.postProfile(newData, enqueueSnackbar, closeSnackbar, reset, setError);
-  };
-
-  const [value, setValue] = React.useState<Dayjs | null>(null);
-
-  const handleChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
   };
 
   return (
@@ -151,6 +91,7 @@ const Account = observer(() => {
 
       <Stack
         component="form"
+        id="hook-form"
         onSubmit={handleSubmit(onSubmit)}
         direction="column"
         justifyContent="flex-start"
@@ -300,27 +241,13 @@ const Account = observer(() => {
         >
           Дата рождения
         </Typography>
-        {!mobile1000 && (
-          <DesktopDatePicker
-            inputFormat="DD/MM/YYYY"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextFieldCustom {...params} />}
-            maxDate={dayjs()}
-          />
-        )}
-        {mobile1000 && (
-          <MobileDatePicker
-            inputFormat="DD/MM/YYYY"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextFieldCustom {...params} />}
-            maxDate={dayjs()}
-          />
-        )}
-        <Button ref={formRef} sx={{ visibility: 'hidden' }} type="submit">
-          Сохранить
-        </Button>
+        <DatePicker
+          inputFormat="DD/MM/YYYY"
+          value={value}
+          onChange={handleChange}
+          renderInput={(params) => <TextFieldCustom {...params} />}
+          maxDate={dayjs()}
+        />
       </Stack>
     </>
   );
