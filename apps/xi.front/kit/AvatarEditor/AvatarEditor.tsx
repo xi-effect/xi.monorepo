@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Avatar as Av, Stack } from '@mui/material';
 import { Photo } from 'pkg.icons.photo';
 import { useStore } from 'store/connect';
@@ -41,7 +42,7 @@ const Avatar = ({ letter, src }: AvatarT) => {
       </Av>
     );
   }
-  return <Av alt="avatar" src={src} sx={{ width: 72, height: 72 }} />;
+  return <Image src={src || ''} alt="avatar" width={72} height={72} />;
 };
 
 type AvatarEditorT = {

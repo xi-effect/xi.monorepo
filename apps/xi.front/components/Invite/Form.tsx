@@ -122,7 +122,7 @@ const Form = observer(() => {
   const rootStore = useStore();
 
   const mobile: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('dl' as Breakpoint),
+    theme.breakpoints.down('lg' as Breakpoint),
   );
   const mobileImage: boolean = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('md' as Breakpoint),

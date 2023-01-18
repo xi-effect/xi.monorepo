@@ -32,7 +32,7 @@ const DialogCreateCommunity = observer(() => {
 
   const { dialogs, setDialogs } = uiSt;
   const mobile: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('dl' as Breakpoint),
+    theme.breakpoints.down('lg' as Breakpoint),
   );
 
   const {
