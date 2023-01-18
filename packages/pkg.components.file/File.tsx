@@ -1,6 +1,6 @@
 import { File as FileIcon } from 'pkg.icons.file';
 import { Close } from 'pkg.icons.close';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, Link } from '@mui/material';
 import Image from 'next/image';
 
 export type FileProps = {
@@ -26,22 +26,34 @@ const formatSize = (size: number): string => {
 };
 
 export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
-  <a href={url} download={name} style={{ maxWidth: '377px', width: '100%' }}>
-    <Stack
-      sx={{
+  <Stack
+    sx={{
+      maxWidth: '377px',
+      width: '100%',
+      height: '72px',
+      padding: '8px 14px 8px 12px',
+      bgcolor: 'grayscale.0',
+      mt: '20px',
+      border: '1px solid',
+      borderColor: 'grayscale.10',
+      borderRadius: '8px',
+    }}
+    spacing={1}
+    direction="row"
+    justifyContent="space-between"
+    alignItems="center"
+  >
+    <Link
+      href={url}
+      download={name}
+      style={{
         width: '100%',
-        height: '72px',
-        padding: '8px 14px 8px 12px',
-        bgcolor: 'grayscale.0',
-        mt: '20px',
-        border: '1px solid black',
-        borderColor: 'grayscale.10',
-        borderRadius: '8px',
+        textDecoration: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         gap: '8px',
       }}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
     >
       <Stack
         justifyContent="center"
@@ -78,14 +90,19 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
       </Stack>
 
       <Box sx={{ textAlign: 'left', width: '100%' }}>
-        <Typography sx={{ fontSize: '16px', fontWeight: 500, lineHeight: '22px' }}>
+        <Typography
+          sx={{ fontSize: '16px', fontWeight: 500, lineHeight: '22px', color: 'grayscale.100' }}
+        >
           {name}
         </Typography>
-        <Typography sx={{ fontSize: '14px', fontWeight: 400, lineHeight: '20px' }}>
+        <Typography
+          sx={{ fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: 'grayscale.100' }}
+        >
           {formatSize(size)}
         </Typography>
       </Box>
-      {!hideCloseIcon && <Close />}
-    </Stack>
-  </a>
+    </Link>
+    {!hideCloseIcon && <Close color="red" />}
+  </Stack>
 );
+
