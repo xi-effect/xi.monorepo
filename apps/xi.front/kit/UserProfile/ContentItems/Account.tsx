@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { Stack, Typography, Theme, useMediaQuery, Button } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 import { observer } from 'mobx-react';
 import dayjs, { Dayjs } from 'dayjs';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useFormContext, Controller, SubmitHandler } from 'react-hook-form';
 import TextFieldCustom from 'kit/TextFieldCustom';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
 import { useSnackbar } from 'notistack';
@@ -23,81 +19,40 @@ const typographyStyles = {
 };
 
 type FormValues = {
+  handle: string;
   username: string;
   name: string;
   surname: string;
   patronymic: string;
+  birthday: Dayjs | null;
 };
-
-const schema = yup
-  .object({
-    username: yup.string().max(100),
-    name: yup.string().max(100),
-    surname: yup.string().max(100),
-    patronymic: yup.string().max(100),
-  })
-  .required();
 
 const Account = observer(() => {
   const rootStore = useStore();
   const { userSt, profileSt } = rootStore;
   const { profile } = profileSt;
+  const { user } = userSt;
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const formRef = React.useRef(null);
-
-  const mobile1000: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1000));
-
   const {
     control,
+    formState: { errors },
     handleSubmit,
-    watch,
-    // trigger,
-    // reset,
-    // formState: { errors },
-  } = useForm<FormValues>({
-    resolver: yupResolver(schema),
-  });
-
-  const openSaveConfirm = () => {
-    enqueueSnackbar('saveConfirm', {
-      variant: 'saveConfirm',
-      persist: true,
-      formRef,
-    });
-  };
-
-  const closeSaveConfirm = () => {
-    closeSnackbar();
-  };
-
-  watch((data) => {
-    if (
-      data.name !== profile.name ||
-      data.surname !== profile.surname ||
-      data.patronymic !== profile.patronymic
-    ) {
-      openSaveConfirm();
-    }
-
-    if (
-      data.name === profile.name &&
-      data.surname === profile.surname &&
-      data.patronymic === profile.patronymic
-    ) {
-      closeSaveConfirm();
-    }
-  });
+    reset,
+    setError,
+  } = useFormContext();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log('data', data);
-  };
+    const newData = {};
+    for (const key in data) {
+      if (data[key] !== profile[key] && data[key] !== user.handle && data[key] !== user.username) {
+        newData[key] = data[key];
+      }
+    }
 
-  const [value, setValue] = React.useState<Dayjs | null>(null);
-
-  const handleChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
+    profileSt.postProfile(newData, enqueueSnackbar, closeSnackbar, reset, setError);
   };
 
   return (
@@ -129,6 +84,7 @@ const Account = observer(() => {
 
       <Stack
         component="form"
+        id="hook-form"
         onSubmit={handleSubmit(onSubmit)}
         direction="column"
         justifyContent="flex-start"
@@ -145,18 +101,45 @@ const Account = observer(() => {
             ...typographyStyles,
           }}
         >
-          Никнейм
+          Псевдоним
         </Typography>
         <Controller
           name="username"
           control={control}
-          defaultValue={profile.name}
+          defaultValue={user.username}
           render={({ field }) => (
             <TextFieldCustom
               variant="outlined"
               type="text"
               fullWidth
-              placeholder="Никнейм"
+              placeholder="Псевдоним"
+              error={!!errors?.username}
+              {...field}
+              sx={{
+                mt: '4px',
+                backgroundColor: 'grayscale.0',
+              }}
+            />
+          )}
+        />
+        <Typography
+          sx={{
+            mt: '24px',
+            ...typographyStyles,
+          }}
+        >
+          Имя пользователя
+        </Typography>
+        <Controller
+          name="handle"
+          control={control}
+          defaultValue={user.handle}
+          render={({ field }) => (
+            <TextFieldCustom
+              variant="outlined"
+              type="text"
+              fullWidth
+              placeholder="Имя пользователя"
               {...field}
               sx={{
                 mt: '4px',
@@ -251,27 +234,30 @@ const Account = observer(() => {
         >
           Дата рождения
         </Typography>
-        {!mobile1000 && (
-          <DesktopDatePicker
-            inputFormat="DD/MM/YYYY"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextFieldCustom {...params} />}
-            maxDate={dayjs()}
-          />
-        )}
-        {mobile1000 && (
-          <MobileDatePicker
-            inputFormat="DD/MM/YYYY"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextFieldCustom {...params} />}
-            maxDate={dayjs()}
-          />
-        )}
-        <Button ref={formRef} sx={{ visibility: 'hidden' }} type="submit">
-          Сохранить
-        </Button>
+        <Controller
+          name="birthday"
+          control={control}
+          defaultValue={profile.birthday}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <DatePicker
+              // label="День Рождения"
+              inputFormat="DD-MM-YYYY"
+              value={value}
+              maxDate={dayjs()}
+              onChange={(event) => {
+                onChange(event);
+              }}
+              renderInput={(params) => (
+                <TextFieldCustom
+                  {...params}
+                  error={!!error}
+                  helperText={error?.message}
+                  placeholder="День Рождения"
+                />
+              )}
+            />
+          )}
+        />
       </Stack>
     </>
   );

@@ -1,25 +1,20 @@
 import { observer } from 'mobx-react';
-import { useStore } from 'store/connect';
 import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
 import { Close } from 'pkg.icons.close';
 import { Arrow } from 'pkg.icons.arrow';
 import { Burger } from 'pkg.icons.burger';
 
+const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео'];
+
 type HeaderProps = {
   activeContent: number | null;
-  changeMenuStatus: (boolean) => void;
+  changeMenuStatus: (arg0: boolean) => void;
+  handleCloseProfile: () => void;
 };
 
-const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
-  const rootStore = useStore();
-  const {
-    userMediaSt: { stopStream },
-    uiSt,
-  } = rootStore;
-
+const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }: HeaderProps) => {
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
 
-  const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео'];
   const getCustomBtn = () => {
     if (activeContent === null) {
       return (
@@ -28,7 +23,7 @@ const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
           justifyContent="flex-start"
           alignItems="center"
           sx={{
-            height: '40px',
+            height: '56px',
             width: '100%',
             position: 'relative',
           }}
@@ -81,17 +76,14 @@ const Header = observer(({ activeContent, changeMenuStatus }: HeaderProps) => {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ width: '100%', height: '40px', position: 'relative' }}
+      sx={{ width: '100%', height: '56px', position: 'relative' }}
     >
       {/* custom btn */}
       {mobile700 && getCustomBtn()}
 
       {/* close btn */}
       <IconButton
-        onClick={() => {
-          stopStream();
-          uiSt.setDialogs('userProfile', false);
-        }}
+        onClick={handleCloseProfile}
         sx={{
           width: '40px',
           height: '40px',

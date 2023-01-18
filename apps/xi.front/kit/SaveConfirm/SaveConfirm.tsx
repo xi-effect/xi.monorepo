@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { SnackbarContent, CustomContentProps } from 'notistack';
-import { Button, Paper, Stack, Typography } from '@mui/material';
+import { Button, Paper, Stack, Typography, useMediaQuery, Theme } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 interface ReportCompleteProps extends CustomContentProps {
-  formRef?: React.RefObject<HTMLButtonElement>;
+  reset?: any;
 }
 
 const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
@@ -18,15 +20,17 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
     iconVariant,
     persist,
     // as well as your own custom props 👇🏼,
-    formRef,
+    reset,
     ...other
   } = props;
 
-  const handleSubmit = () => {
-    if (formRef && formRef.current) {
-      formRef.current.click();
-      console.log('handleSubmit');
-    }
+  const isMobile: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+
+  const { closeSnackbar } = useSnackbar();
+
+  const handleReset = () => {
+    reset();
+    closeSnackbar();
   };
 
   return (
@@ -36,20 +40,20 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
         sx={{
           maxWidth: '960px',
           width: '100%',
-          height: '96px',
+          height: isMobile ? '124px' : '96px',
           borderRadius: '16px',
           bgcolor: 'grayscale.10',
         }}
       >
         <Stack
-          direction="row"
+          direction={isMobile ? 'column' : 'row'}
           justifyContent="flex-start"
           alignItems="center"
           sx={{
             p: 2,
             maxWidth: '960px',
             width: '100%',
-            height: '96px',
+            height: isMobile ? '124px' : '96px',
           }}
           spacing={2}
         >
@@ -60,46 +64,56 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
               lineHeight: '24px',
             }}
           >
-            {' '}
-            У вас есть несохраненные изменения{' '}
+            У вас есть несохраненные изменения
           </Typography>
-          <Button
-            sx={{
-              width: '120px',
-              height: '48px',
-              fontWeight: 500,
-              fontSize: '18px',
-              lineHeight: '22px',
-              borderRadius: '8px',
-              color: 'grayscale.80',
-              textTransform: 'capitalize',
-              boxShadow: 0,
-              '&:hover': {
-                boxShadow: 0,
-              },
-            }}
+          <Stack
+            sx={{ width: isMobile ? '100%' : '296px' }}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
           >
-            Сбросить
-          </Button>
-          <Button
-            onClick={handleSubmit}
-            variant="contained"
-            sx={{
-              width: '160px',
-              height: '48px',
-              fontWeight: 500,
-              fontSize: '18px',
-              lineHeight: '22px',
-              borderRadius: '8px',
-              textTransform: 'capitalize',
-              boxShadow: 0,
-              '&:hover': {
+            <Button
+              onClick={handleReset}
+              sx={{
+                width: '120px',
+                height: '48px',
+                fontWeight: 500,
+                fontSize: '18px',
+                lineHeight: '22px',
+                borderRadius: '8px',
+                color: 'grayscale.80',
+                textTransform: 'capitalize',
                 boxShadow: 0,
-              },
-            }}
-          >
-            Сохранить
-          </Button>
+                '&:hover': {
+                  boxShadow: 0,
+                },
+              }}
+            >
+              Сбросить
+            </Button>
+            <Button
+              type="submit"
+              form="hook-form"
+              // onClick={() => handleSubmit()}
+              variant="contained"
+              sx={{
+                width: '160px',
+                height: '48px',
+                fontWeight: 500,
+                fontSize: '18px',
+                lineHeight: '22px',
+                borderRadius: '8px',
+                textTransform: 'capitalize',
+                boxShadow: 0,
+                '&:hover': {
+                  boxShadow: 0,
+                },
+              }}
+            >
+              Сохранить
+            </Button>
+          </Stack>
         </Stack>
       </Paper>
     </SnackbarContent>

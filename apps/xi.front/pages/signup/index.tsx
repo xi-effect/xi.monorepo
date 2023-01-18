@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Router, { useRouter, NextRouter } from 'next/router';
 import { observer } from 'mobx-react';
-import { Link, Divider, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Link, Stack, Typography, useMediaQuery } from '@mui/material';
 import Form from 'components/Signup/Form';
 import XiLogo from 'kit/XiLogo';
 import { useSessionStorage } from 'react-use';
 import { LayoutPages } from 'pkg.layout.pages';
 
-const Tearms = () => (
+const Terms = () => (
   <>
     <Typography
       variant="caption"
@@ -100,7 +100,7 @@ const Signup = observer(() => {
                 width: '100%',
               }}
             >
-              <Tearms />
+              <Terms />
             </Stack>
           )}
         </Stack>
@@ -115,16 +115,7 @@ const Signup = observer(() => {
             height: '96px',
           }}
         >
-          {isMobile && activeStep === 1 && <Tearms />}
-          <Divider
-            sx={{
-              mt: activeStep === 1 ? 4 : 8,
-              width: '134px',
-              height: '5px',
-              backgroundColor: 'grayscale.100',
-              borderRadius: '100px',
-            }}
-          />
+          {isMobile && activeStep === 1 && <Terms />}
         </Stack>
       )}
     </LayoutPages>

@@ -1,7 +1,7 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
 import { Users } from 'pkg.icons.users';
 import { Hand } from 'pkg.icons.hand';
-// import { Chat } from 'kit/MyIcon/Chat';
+import { Chat } from 'pkg.icons.chat';
 
 const BottomBar = () => (
   <Stack
@@ -29,7 +29,7 @@ const BottomBar = () => (
         <Users />
       </IconButton>
     </Tooltip>
-    {/* <Tooltip title="Открыть чат">
+    <Tooltip title="Открыть чат">
       <IconButton
         sx={{
           mr: '2px',
@@ -42,7 +42,7 @@ const BottomBar = () => (
       >
         <Chat />
       </IconButton>
-    </Tooltip> */}
+    </Tooltip>
     <Tooltip title="Поднять руку">
       <IconButton
         sx={{

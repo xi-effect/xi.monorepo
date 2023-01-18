@@ -57,7 +57,11 @@ class ProfileSt {
 
   @action setProfileAll = (data: ResponseDataRegT) => {
     for (const key in data) {
-      if (Object.prototype.hasOwnProperty.call(data, key)) {
+      if (
+        Object.prototype.hasOwnProperty.call(data, key) &&
+        Object.prototype.hasOwnProperty.call(this.profile, key) &&
+        key !== 'a'
+      ) {
         this.setProfile(key, data[key]);
       }
     }
@@ -73,6 +77,40 @@ class ProfileSt {
       patronymic: '',
       birthday: null,
     };
+  };
+
+  @action postProfile = (data, enqueueSnackbar, closeFn, reset, setError) => {
+    console.log('postProfile', data);
+    this.rootStore
+      .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
+      .then((answer: ResponseDataRegT) => {
+        console.log('answer', answer);
+        if (answer.a === 'Success') {
+          this.rootStore.userSt.setUserAll(data);
+          this.setProfileAll(data);
+
+          if (closeFn) {
+            closeFn();
+          }
+          enqueueSnackbar('Данные успешно сохранены', {
+            variant: 'success',
+            autoHideDuration: 4000,
+          });
+        } else if (answer.a === 'Handle already in use') {
+          enqueueSnackbar('Имя пользователя уже занято, используйте другое', {
+            variant: 'warn',
+            autoHideDuration: 4000,
+          });
+          setError('handle', { type: 'unique' }, { shouldFocus: true });
+        } else {
+          closeFn();
+          enqueueSnackbar(answer.a, {
+            variant: 'error',
+            autoHideDuration: 4000,
+          });
+          reset();
+        }
+      });
   };
 }
 

@@ -36,7 +36,7 @@ declare module '@mui/material/Typography' {
 declare module 'notistack' {
   interface VariantOverrides {
     saveConfirm: {
-      formRef?: React.RefObject<HTMLButtonElement>;
+      reset?: any;
     };
   }
 }
