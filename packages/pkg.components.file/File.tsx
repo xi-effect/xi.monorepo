@@ -15,13 +15,13 @@ export type FileProps = {
   hideCloseIcon?: boolean;
 };
 
+const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
+// coefficient bytes to Kb
+const k = 1000;
 const formatSize = (size: number): string => {
-  const sizes = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
-  // coefficient bytes to Kb
-  const k = 1000;
   const n: number = Math.floor(Math.log10(size) / Math.log10(k));
   const formattedSizeNum: number = Math.ceil(size / k ** n);
-  const formattedSize: string = `${formattedSizeNum} ${sizes[n]}`;
+  const formattedSize: string = `${formattedSizeNum} ${FILE_SIZES[n]}`;
   return formattedSize;
 };
 
@@ -102,7 +102,6 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
         </Typography>
       </Box>
     </Link>
-    {!hideCloseIcon && <Close color="red" />}
+    {!hideCloseIcon && <Close />}
   </Stack>
 );
-
