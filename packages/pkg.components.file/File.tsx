@@ -34,7 +34,8 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
         padding: '8px 14px 8px 12px',
         bgcolor: 'grayscale.0',
         mt: '20px',
-        border: '1px solid #E8E8E8',
+        border: '1px solid black',
+        borderColor: 'grayscale.10',
         borderRadius: '8px',
         gap: '8px',
       }}
@@ -51,7 +52,6 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
           <Box sx={{ maxWidth: '48px', maxHeight: '48px', height: '100%', width: '100%' }}>
             <FileIcon
               color="primary"
-              preserveAspectRatio="none"
               sx={{
                 width: '100%',
                 height: '100%',
