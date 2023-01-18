@@ -24,6 +24,7 @@ type FormValues = {
   name: string;
   surname: string;
   patronymic: string;
+  birthday: Dayjs | null;
 };
 
 const Account = observer(() => {
@@ -41,14 +42,6 @@ const Account = observer(() => {
     reset,
     setError,
   } = useFormContext();
-
-  console.log('errors', errors);
-
-  const [value, setValue] = React.useState<Dayjs | null>(null);
-
-  const handleChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
-  };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log('data', data);
@@ -241,12 +234,29 @@ const Account = observer(() => {
         >
           Дата рождения
         </Typography>
-        <DatePicker
-          inputFormat="DD/MM/YYYY"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextFieldCustom {...params} />}
-          maxDate={dayjs()}
+        <Controller
+          name="birthday"
+          control={control}
+          defaultValue={profile.birthday}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <DatePicker
+              // label="День Рождения"
+              inputFormat="DD-MM-YYYY"
+              value={value}
+              maxDate={dayjs()}
+              onChange={(event) => {
+                onChange(event);
+              }}
+              renderInput={(params) => (
+                <TextFieldCustom
+                  {...params}
+                  error={!!error}
+                  helperText={error?.message}
+                  placeholder="День Рождения"
+                />
+              )}
+            />
+          )}
         />
       </Stack>
     </>

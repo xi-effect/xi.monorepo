@@ -12,6 +12,7 @@ import * as yup from 'yup';
 
 import { observer } from 'mobx-react';
 import { useSnackbar } from 'notistack';
+import { Dayjs } from 'dayjs';
 import Menu from './Menu';
 import Content from './Content';
 import Header from './Header';
@@ -27,6 +28,7 @@ const schema = yup
     name: yup.string().max(100),
     surname: yup.string().max(100),
     patronymic: yup.string().max(100),
+    birthday: yup.date(),
   })
   .required();
 
@@ -36,6 +38,7 @@ type FormValues = {
   name: string;
   surname: string;
   patronymic: string;
+  birthday: Dayjs | null;
 };
 
 const Transition = React.forwardRef(
@@ -66,11 +69,6 @@ const UserProfile = observer(() => {
     setIsOpenMenu(status);
   };
 
-  const handleCloseProfile = () => {
-    stopStream();
-    uiSt.setDialogs('userProfile', false);
-  };
-
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
   const mobile800: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
   const mobile1400: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1400));
@@ -91,7 +89,7 @@ const UserProfile = observer(() => {
     resolver: yupResolver(schema),
   });
 
-  const { watch, reset } = methods;
+  const { watch, reset, getValues } = methods;
 
   const openSaveConfirm = () => {
     enqueueSnackbar('saveConfirm', {
@@ -105,17 +103,48 @@ const UserProfile = observer(() => {
     closeSnackbar();
   };
 
+  const handleCloseProfile = () => {
+    const [handle, username, name, surname, patronymic, birthday] = getValues([
+      'handle',
+      'username',
+      'name',
+      'surname',
+      'patronymic',
+      'birthday',
+    ]);
+
+    if (
+      handle !== user.handle ||
+      username !== user.username ||
+      name !== profile.name ||
+      surname !== profile.surname ||
+      patronymic !== profile.patronymic ||
+      birthday !== profile.birthday
+    ) {
+      if (!isMobile) {
+        return;
+      }
+      openSaveConfirm();
+      return;
+    }
+
+    stopStream();
+    uiSt.setDialogs('userProfile', false);
+  };
+
   watch((data) => {
     if (
       data.handle !== user.handle ||
       data.username !== user.username ||
       data.name !== profile.name ||
       data.surname !== profile.surname ||
-      data.patronymic !== profile.patronymic
+      data.patronymic !== profile.patronymic ||
+      data.birthday !== profile.birthday
     ) {
       if (isMobile) {
         return;
       }
+
       openSaveConfirm();
     }
 
@@ -124,11 +153,13 @@ const UserProfile = observer(() => {
       data.username === user.username &&
       data.name === profile.name &&
       data.surname === profile.surname &&
-      data.patronymic === profile.patronymic
+      data.patronymic === profile.patronymic &&
+      data.birthday === profile.birthday
     ) {
       if (isMobile) {
         return;
       }
+
       closeSaveConfirm();
     }
   });
