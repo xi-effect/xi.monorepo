@@ -33,7 +33,6 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
       height: '72px',
       padding: '8px 14px 8px 12px',
       bgcolor: 'grayscale.0',
-      mt: '20px',
       border: '1px solid',
       borderColor: 'grayscale.10',
       borderRadius: '8px',
