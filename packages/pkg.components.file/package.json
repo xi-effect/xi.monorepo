@@ -13,7 +13,8 @@
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
     "pkg.icons.file": "*",
-    "pkg.icons.close": "*"
+    "pkg.icons.close": "*",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
