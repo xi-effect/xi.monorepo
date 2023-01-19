@@ -26,14 +26,14 @@ class ProfileSt {
     birthday: null,
   };
 
-  @action setProfile = (item: string, value: string | number | boolean) => {
+  @action setProfile = (item: string, value: string | number | boolean | null | Date) => {
     this.profile[item] = value;
   };
 
   @action setProfileSecond = (
     item: string,
     secondItem: string,
-    value: string | number | boolean,
+    value: string | number | boolean | null | Date,
   ) => {
     this.profile[item][secondItem] = value;
   };
@@ -62,7 +62,12 @@ class ProfileSt {
         Object.prototype.hasOwnProperty.call(this.profile, key) &&
         key !== 'a'
       ) {
-        this.setProfile(key, data[key]);
+        if (key === 'birthday') {
+          const value = new Date(data[key]);
+          this.setProfile(key, value);
+        } else {
+          this.setProfile(key, data[key]);
+        }
       }
     }
   };
@@ -84,7 +89,6 @@ class ProfileSt {
     this.rootStore
       .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
       .then((answer: ResponseDataRegT) => {
-        console.log('answer', answer);
         if (answer.a === 'Success') {
           this.rootStore.userSt.setUserAll(data);
           this.setProfileAll(data);
