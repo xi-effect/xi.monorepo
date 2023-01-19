@@ -40,7 +40,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
         sx={{
           maxWidth: '960px',
           width: '100%',
-          height: isMobile ? '124px' : '96px',
+          height: isMobile ? '100%' : '96px',
           borderRadius: '16px',
           bgcolor: 'grayscale.10',
         }}
@@ -53,7 +53,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
             p: 2,
             maxWidth: '960px',
             width: '100%',
-            height: isMobile ? '124px' : '96px',
+            height: isMobile ? '100%' : '96px',
           }}
           spacing={2}
         >
@@ -95,7 +95,6 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
             <Button
               type="submit"
               form="hook-form"
-              // onClick={() => handleSubmit()}
               variant="contained"
               sx={{
                 width: '160px',

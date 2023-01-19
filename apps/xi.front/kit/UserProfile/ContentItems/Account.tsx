@@ -240,7 +240,6 @@ const Account = observer(() => {
           defaultValue={profile.birthday}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <DatePicker
-              // label="День Рождения"
               inputFormat="DD-MM-YYYY"
               value={value}
               maxDate={dayjs()}

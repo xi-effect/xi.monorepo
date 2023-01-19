@@ -8,7 +8,7 @@ import XiLogo from 'kit/XiLogo';
 
 const Header = () => {
   const mobile: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('dl' as Breakpoint),
+    theme.breakpoints.down('lg' as Breakpoint),
   );
 
   return (

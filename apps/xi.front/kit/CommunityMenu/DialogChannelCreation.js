@@ -63,7 +63,7 @@ const getType = (num) => {
 const Content = observer((props) => {
   const { communityChannelsSt, uiSt } = props;
 
-  const mobile = useMediaQuery((theme) => theme.breakpoints.down('dl'));
+  const mobile = useMediaQuery((theme) => theme.breakpoints.down('lg'));
   const [channelSelect, setChannelSelect] = React.useState(0);
   const {
     control,
