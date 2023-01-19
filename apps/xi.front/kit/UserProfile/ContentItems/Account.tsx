@@ -3,13 +3,13 @@ import React from 'react';
 import { Stack, Typography } from '@mui/material';
 
 import { observer } from 'mobx-react';
-import dayjs, { Dayjs } from 'dayjs';
 import { useFormContext, Controller, SubmitHandler } from 'react-hook-form';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
 import { useSnackbar } from 'notistack';
+import { isSameDate } from 'utils/isSameDates';
 
 const typographyStyles = {
   fontWeight: 400,
@@ -24,7 +24,7 @@ type FormValues = {
   name: string;
   surname: string;
   patronymic: string;
-  birthday: Dayjs | null;
+  birthday: Date | null;
 };
 
 const Account = observer(() => {
@@ -44,10 +44,19 @@ const Account = observer(() => {
   } = useFormContext();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log('data', data);
-    const newData = {};
+    const newData: any = {};
+
     for (const key in data) {
-      if (data[key] !== profile[key] && data[key] !== user.handle && data[key] !== user.username) {
+      if (data[key] !== profile[key] && data[key] !== user[key]) {
+        if (
+          key === 'birthday' &&
+          data.birthday !== null &&
+          profile.birthday !== null &&
+          isSameDate(data.birthday, profile.birthday)
+        ) {
+          return;
+        }
+
         newData[key] = data[key];
       }
     }
@@ -242,7 +251,7 @@ const Account = observer(() => {
             <DatePicker
               inputFormat="DD-MM-YYYY"
               value={value}
-              maxDate={dayjs()}
+              maxDate={new Date()}
               onChange={(event) => {
                 onChange(event);
               }}

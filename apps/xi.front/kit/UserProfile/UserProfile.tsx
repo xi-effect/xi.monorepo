@@ -12,7 +12,7 @@ import * as yup from 'yup';
 
 import { observer } from 'mobx-react';
 import { useSnackbar } from 'notistack';
-import { Dayjs } from 'dayjs';
+import { isSameDate } from 'utils/isSameDates';
 import Menu from './Menu';
 import Content from './Content';
 import Header from './Header';
@@ -38,7 +38,7 @@ type FormValues = {
   name: string;
   surname: string;
   patronymic: string;
-  birthday: Dayjs | null;
+  birthday: Date | null;
 };
 
 const Transition = React.forwardRef(
@@ -119,7 +119,7 @@ const UserProfile = observer(() => {
       name !== profile.name ||
       surname !== profile.surname ||
       patronymic !== profile.patronymic ||
-      birthday !== profile.birthday
+      (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday))
     ) {
       if (!isMobile) {
         return;
