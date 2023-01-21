@@ -113,14 +113,32 @@ const UserProfile = observer(() => {
       'birthday',
     ]);
 
+    console.log('handle', handle, user.handle);
+    console.log('username', username, user.username);
+    console.log('name', name, profile.name);
+    console.log('surname', surname, profile.surname);
+    console.log('patronymic', patronymic, profile.patronymic);
+
+    console.log(
+      'birthday',
+      birthday && profile.birthday && isSameDate(new Date(birthday), profile.birthday),
+    );
+
     if (
-      handle !== user.handle ||
-      username !== user.username ||
-      name !== profile.name ||
-      surname !== profile.surname ||
-      patronymic !== profile.patronymic ||
-      (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday))
+      handle &&
+      username &&
+      username &&
+      name &&
+      surname &&
+      patronymic &&
+      (handle !== user.handle ||
+        username !== user.username ||
+        name !== profile.name ||
+        surname !== profile.surname ||
+        patronymic !== profile.patronymic ||
+        (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday)))
     ) {
+      console.log('openSaveConfirm');
       if (!isMobile) {
         return;
       }

@@ -25,7 +25,6 @@ const Avatar = ({ letter, filename }: AvatarT) => {
     return '#9769FF';
   };
 
-  console.log('filename', filename);
   if (filename) {
     return (
       <Image

@@ -114,7 +114,7 @@ class RootStore {
         return json;
       }
     } catch (error) {
-      console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+      console.warn('Возникла проблема с вашим fetch запросом: ', error.message);
     }
   };
 
