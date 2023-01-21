@@ -1,15 +1,16 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import { Avatar as Av, Stack } from '@mui/material';
+import Image from 'next/image';
 import { Photo } from 'pkg.icons.photo';
 import { useStore } from 'store/connect';
 import DialogEditor from './DialogEditor';
 
 type AvatarT = {
   letter?: string;
-  src?: string;
+  filename?: string;
 };
 
-const Avatar = ({ letter, src }: AvatarT) => {
+const Avatar = ({ letter, filename }: AvatarT) => {
   const randomNumber = Math.floor(Math.random() * 1);
 
   const getBgcolor = () => {
@@ -24,6 +25,20 @@ const Avatar = ({ letter, src }: AvatarT) => {
     return '#9769FF';
   };
 
+  console.log('filename', filename);
+  if (filename) {
+    return (
+      <Image
+        src={`https://xieffect.ru:5000/files/${filename}`}
+        alt="avatar"
+        width={72}
+        height={72}
+        style={{
+          borderRadius: '50px',
+        }}
+      />
+    );
+  }
   if (letter) {
     return (
       <Av
@@ -42,15 +57,31 @@ const Avatar = ({ letter, src }: AvatarT) => {
       </Av>
     );
   }
-  return <Image src={src || ''} alt="avatar" width={72} height={72} />;
+
+  return (
+    <Av
+      alt="avatar"
+      sx={{
+        width: 72,
+        height: 72,
+        bgcolor: getBgcolor(),
+        color: getTextColor(),
+        fontWeight: 600,
+        fontSize: '24px',
+        lineHeight: '32px',
+      }}
+    >
+      A
+    </Av>
+  );
 };
 
 type AvatarEditorT = {
   letter?: string;
-  src?: string;
+  filename?: string;
 };
 
-const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
+const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
   const rootStore = useStore();
   const { uiSt } = rootStore;
 
@@ -65,7 +96,7 @@ const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
         position: 'relative',
       }}
     >
-      <Avatar letter={letter} src={src} />
+      <Avatar letter={letter} filename={filename} />
       <Stack
         direction="row"
         justifyContent="center"

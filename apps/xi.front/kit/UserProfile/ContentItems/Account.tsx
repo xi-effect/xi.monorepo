@@ -78,7 +78,7 @@ const Account = observer(() => {
           padding: '24px 36px',
         }}
       >
-        <AvatarEditor letter={userSt.user.username[0]} />
+        <AvatarEditor letter={userSt.user.username[0]} filename={userSt?.user?.avatar?.filename} />
         <Typography
           sx={{
             fontWeight: 600,

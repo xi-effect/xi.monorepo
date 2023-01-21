@@ -44,17 +44,29 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
       // @ts-ignore
       const canvasScaled = editor.current.getImageScaledToCanvas();
       canvasScaled.toBlob((blob) => {
-        const file = new File([blob], 'fileName.png', { type: 'image/png' });
+        const file = new File([blob], 'avatar.jpeg', { type: 'image/jpeg' });
         handlePostFile(file).then((data) => {
+          console.log('data', data);
           if (data?.id) {
-            userSt.setUser('avatar', data.id);
-            uiSt.setDialogs('avatarEditor', false);
-            enqueueSnackbar('Новая Аватарка успешно сохранена', { variant: 'success' });
+            rootStore
+              .fetchData(`${rootStore.url}/users/me/avatar/`, 'POST', {
+                'avatar-id': data.id,
+              })
+              .then((answer) => {
+                console.log('data', answer);
+                if (answer?.a) {
+                  userSt.setUser('avatar', data);
+                  uiSt.setDialogs('avatarEditor', false);
+                  enqueueSnackbar('Новая Аватарка успешно сохранена', { variant: 'success' });
+                } else {
+                  enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
+                }
+              });
           } else {
             enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
           }
         });
-      }, 'image/png');
+      }, 'image/jpeg');
     }
   };
 
