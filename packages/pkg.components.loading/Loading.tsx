@@ -44,7 +44,7 @@ export type LoadingProps = {
 export const Loading = ({ loading }: LoadingProps) => {
   const theme = useTheme();
   // @ts-ignore
-  const mobile = useMediaQuery(theme.breakpoints.down('dl'));
+  const mobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   return (
     <AnimatePresence>
@@ -54,9 +54,10 @@ export const Loading = ({ loading }: LoadingProps) => {
           container
           direction="column"
           justifyContent={mobile ? 'flex-start' : 'center'}
-          alignItems={mobile ? 'center' : 'center'}
+          alignItems="center"
           sx={{
-            p: mobile ? '56px 20px' : '98px 100px',
+            p: 2,
+            pt: mobile ? '128px' : 2,
             position: 'fixed',
             height: '100vh',
             width: '100vw',
@@ -74,7 +75,7 @@ export const Loading = ({ loading }: LoadingProps) => {
             justifyContent="center"
             alignItems="center"
             sx={{
-              height: '28px',
+              p: 0.5,
               position: 'relative',
               maxWidth: '540px',
               width: '100%',
@@ -93,7 +94,7 @@ export const Loading = ({ loading }: LoadingProps) => {
               }}
             >
               <Typography
-                align={mobile ? 'left' : 'center'}
+                align="center"
                 sx={{
                   width: '100%',
                   color: 'grayscale.80',
@@ -106,7 +107,7 @@ export const Loading = ({ loading }: LoadingProps) => {
                 {quotes[randomValue].text}
               </Typography>
               <Typography
-                align={mobile ? 'left' : 'center'}
+                align="center"
                 sx={{
                   width: '100%',
                   mt: '24px',

@@ -180,7 +180,7 @@ class AuthorizationSt {
         if (data) {
           if (data.a === 'Success') {
             this.rootStore.uiSt.setLoading('loading', true);
-
+            console.log('data', data);
             this.rootStore.userSt.setUserAll(data);
 
             Router.push('/home');

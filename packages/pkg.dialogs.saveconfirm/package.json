@@ -1,0 +1,30 @@
+{
+  "name": "pkg.dialogs.saveconfirm",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "next": "^13.0.7",
+    "pkg.icons.close": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "react": "^18.2.0",
+    "pkg.config.typescript": "*",
+    "typescript": "^4.5.2"
+  }
+}
+
