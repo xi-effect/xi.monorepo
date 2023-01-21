@@ -44,6 +44,8 @@
     "pkg.forms.signin": "*",
     "pkg.icons.account": "*",
     "pkg.icons.add": "*",
+    "pkg.icons.addchannel": "*",
+    "pkg.icons.addcategory": "*",
     "pkg.icons.announce": "*",
     "pkg.icons.arrow": "*",
     "pkg.icons.burger": "*",

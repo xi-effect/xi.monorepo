@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-bind */
-
 import React, { MouseEvent } from 'react';
 import { observer } from 'mobx-react';
 
@@ -19,7 +18,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import CommunityMenu from 'kit/CommunityMenu';
+import { CommunityMenu } from 'kit/CommunityMenu';
 import { useStore } from 'store/connect';
 import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
@@ -117,9 +116,11 @@ const Community = observer(() => {
                 left: 4,
                 top: 12,
                 width: 228,
-                boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
+                boxShadow: 24,
                 borderRadius: '8px',
-                bgcolor: 'primary.pale',
+                bgcolor: 'grayscale.0',
+                border: '1px solid',
+                borderColor: 'grayscale.40',
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
