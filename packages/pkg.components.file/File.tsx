@@ -82,8 +82,6 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
               style={{
                 width: '100%',
                 height: '100%',
-                maxHeight: '48px',
-                maxWidth: '48px',
                 borderRadius: 4,
               }}
             />
