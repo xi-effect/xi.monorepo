@@ -42,7 +42,10 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
           width: '100%',
           height: isMobile ? '100%' : '96px',
           borderRadius: '16px',
-          bgcolor: 'grayscale.10',
+          boxShadow: 24,
+          bgcolor: 'grayscale.0',
+          border: '1px solid',
+          borderColor: 'grayscale.40',
         }}
       >
         <Stack
