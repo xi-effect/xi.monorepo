@@ -10,20 +10,22 @@ import { FC, FunctionComponent } from 'react';
 
 export type BadgeProps = {
   Icon?: FunctionComponent<SvgIconProps>;
-  iconProps?: SvgIconProps;
   text: string;
+  bgColor:string;
+  size?: 'small' | 'heigh';
   boxProps?: BoxProps;
   typographyProps?: TypographyProps;
-  size?: 'small' | 'heigh';
+  iconProps?: SvgIconProps;
 };
 
 export const Badge: FC<BadgeProps> = ({
   Icon,
-  iconProps,
   text,
-  boxProps,
-  typographyProps,
+  bgColor,
   size = 'heigh',
+  boxProps,
+  iconProps,
+  typographyProps,
 }) => (
   <Box
     component="span"
@@ -35,6 +37,7 @@ export const Badge: FC<BadgeProps> = ({
         height: size === 'heigh' ? '28px' : '20px',
         borderRadius: size === 'heigh' ? '6px' : '4px',
         padding: size === 'heigh' ? '4px 8px 4px 10px ' : '2px 6px',
+        backgroundColor: bgColor,
       }}
     {...boxProps}
   >
