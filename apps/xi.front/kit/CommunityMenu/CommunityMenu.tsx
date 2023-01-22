@@ -18,6 +18,14 @@ const menuListStyles = {
   },
 };
 
+const dividerStyles = {
+  bgcolor: 'primary.light',
+  mt: '4px',
+  mb: '4px',
+  ml: '6px',
+  mr: '6px',
+};
+
 type CommunityMenuProps = {
   open?: boolean;
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -94,10 +102,7 @@ const CommunityMenu = observer(
             <Settings fontSize="small" />
           </Stack>
         </MenuItem>
-        <Divider
-          flexItem
-          sx={{ bgcolor: 'primary.light', mt: '4px', mb: '4px', ml: '6px', mr: '6px' }}
-        />
+        <Divider flexItem sx={{ ...dividerStyles }} />
         <MenuItem
           sx={{
             ...menuListStyles,
@@ -152,10 +157,7 @@ const CommunityMenu = observer(
             <AddCategory fontSize="small" />
           </Stack>
         </MenuItem>
-        <Divider
-          flexItem
-          sx={{ bgcolor: 'primary.light', mt: '4px', mb: '4px', ml: '6px', mr: '6px' }}
-        />
+        <Divider flexItem sx={{ ...dividerStyles }} />
         <MenuItem
           sx={{
             ...menuListStyles,
