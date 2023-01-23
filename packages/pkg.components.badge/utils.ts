@@ -12,8 +12,7 @@ export const getStyles = (size?: string) => {
         height: '12px',
       },
       typography: {
-        fontSize: '12px',
-        lineHeight: '16px',
+        varian: 'xs' as 'xs',
       },
     };
   }
@@ -30,8 +29,7 @@ export const getStyles = (size?: string) => {
       height: '16px',
     },
     typography: {
-      fontSize: '14px',
-      lineHeight: '20px',
+      varian: 's' as 's',
     },
   };
 };

@@ -1,5 +1,5 @@
+import 'pkg.config.muidts';
 import { Typography, TypographyProps, StackProps, SvgIconProps, Stack } from '@mui/material';
-
 import { FC, FunctionComponent } from 'react';
 import { getStyles } from './utils';
 
@@ -50,11 +50,10 @@ export const Badge: FC<BadgeProps> = ({
 
       {text && (
         <Typography
+          variant={styles.typography.varian}
           component="span"
           sx={{
-            fontWeight: '500',
             color: fontColor,
-            ...styles.typography,
           }}
           {...typographyProps}
         >
