@@ -62,7 +62,7 @@ export const getScheme = (mode: 'light' | 'dark') => ({
   typography: {
     htmlFontSize: 10,
     fontFamily: 'Inter, Arial',
-    textWeight: 500,
+    fontWeight: 500,
     h1: {
       fontSize: '56px',
       lineHeight: '64px',
