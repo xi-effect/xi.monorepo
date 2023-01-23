@@ -16,12 +16,24 @@ export type FileProps = {
 };
 
 const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
+// format byte word in right form
+// 1, 5, 6... байт (standart form)
+// 2, 3, 4 байта (changed form)
+const formatByteWord = (size: number): string => {
+  const lastDigit: number = size % 10;
+  /* Size ends with one of this digits => change form */
+  const changeFormNums: number[] = [2, 3, 4];
+  if (changeFormNums.includes(lastDigit)) {
+    return 'байта';
+  }
+  return 'байт';
+};
 // coefficient bytes to Kb
 const k = 1000;
 const formatSize = (size: number): string => {
   const n: number = Math.floor(Math.log10(size) / Math.log10(k));
   const formattedSizeNum: number = Math.ceil(size / k ** n);
-  const formattedSize: string = `${formattedSizeNum} ${FILE_SIZES[n]}`;
+  const formattedSize: string = `${formattedSizeNum} ${!n ? formatByteWord(size) : FILE_SIZES[n]}`;
   return formattedSize;
 };
 
