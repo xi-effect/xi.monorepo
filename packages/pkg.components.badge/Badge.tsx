@@ -4,7 +4,7 @@ import { FC, FunctionComponent } from 'react';
 
 export type BadgeProps = {
   Icon?: FunctionComponent<SvgIconProps>;
-  text: string;
+  text?: string;
   bgColor: string;
   fontColor?: string;
   size?: 'small' | 'heigh';
@@ -24,7 +24,7 @@ export const Badge: FC<BadgeProps> = ({
   typographyProps,
 }) => (
   <Box
-    component="span"
+    component="div"
     sx={{
       display: 'flex',
       alignItems: 'center',
@@ -32,7 +32,7 @@ export const Badge: FC<BadgeProps> = ({
       gap: size === 'heigh' ? '8px' : '7.5px',
       height: size === 'heigh' ? '28px' : '20px',
       borderRadius: size === 'heigh' ? '6px' : '4px',
-      padding: size === 'heigh' ? '4px 8px 4px 10px ' : '2px 6px',
+      padding: size === 'heigh' ? '4px 8px' : '2px 6px',
       backgroundColor: bgColor,
     }}
     {...boxProps}
@@ -46,17 +46,20 @@ export const Badge: FC<BadgeProps> = ({
         {...iconProps}
       />
     )}
-    <Typography
-      component="span"
-      sx={{
-        fontWeight: '500',
-        fontSize: size === 'heigh' ? '14px' : '12px',
-        lineHeight: size === 'heigh' ? '20px' : '16px',
-        color: fontColor,
-      }}
-      {...typographyProps}
-    >
-      {text}
-    </Typography>
+
+    {text && (
+      <Typography
+        component="span"
+        sx={{
+          fontWeight: '500',
+          fontSize: size === 'heigh' ? '14px' : '12px',
+          lineHeight: size === 'heigh' ? '20px' : '16px',
+          color: fontColor,
+        }}
+        {...typographyProps}
+      >
+        {text}
+      </Typography>
+    )}
   </Box>
 );
