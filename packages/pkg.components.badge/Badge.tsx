@@ -35,14 +35,14 @@ export const Badge: FC<BadgeProps> = ({
       sx={{
         width: 'fit-content',
         backgroundColor: bgColor,
-        ...styles.stack,
+        ...styles.stack.sx,
       }}
       {...stackProps}
     >
       {Icon && (
         <Icon
           sx={{
-            ...styles.icon,
+            ...styles.icon.sx,
           }}
           {...iconProps}
         />
