@@ -1,3 +1,5 @@
+import 'pkg.config.typescript/mui-theme';
+
 import React from 'react';
 import { Grid, Stack, Typography, useMediaQuery } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -95,6 +97,7 @@ export const Loading = ({ loading }: LoadingProps) => {
             >
               <Typography
                 align="center"
+                variant="s"
                 sx={{
                   width: '100%',
                   color: 'grayscale.80',
