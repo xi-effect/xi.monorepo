@@ -1,65 +1,66 @@
-import { Typography, TypographyProps, Box, BoxProps, SvgIconProps } from '@mui/material';
+import { Typography, TypographyProps, StackProps, SvgIconProps, Stack } from '@mui/material';
 
 import { FC, FunctionComponent } from 'react';
+import { getStyles } from './utils';
 
 export type BadgeProps = {
-  Icon?: FunctionComponent<SvgIconProps>;
+  icon?: FunctionComponent<SvgIconProps>;
   text?: string;
   bgColor: string;
   fontColor?: string;
   size?: 'small';
-  boxProps?: BoxProps;
+  stackProps?: StackProps;
   typographyProps?: TypographyProps;
   iconProps?: SvgIconProps;
 };
 
 export const Badge: FC<BadgeProps> = ({
-  Icon,
+  icon,
   text,
   bgColor,
   fontColor,
   size,
-  boxProps,
+  stackProps,
   iconProps,
   typographyProps,
-}) => (
-  <Box
-    component="div"
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      width: 'fit-content',
-      gap: size === 'small' ? '7.5px' : '8px',
-      height: size === 'small' ? '20px' : '28px',
-      borderRadius: size === 'small' ? '4px' : '6px',
-      padding: size === 'small' ? '2px 6px' : '4px 8px ',
-      backgroundColor: bgColor,
-    }}
-    {...boxProps}
-  >
-    {Icon && (
-      <Icon
-        sx={{
-          width: size === 'small' ? '12px' : '16px',
-          height: size === 'small' ? '12px' : '16px',
-        }}
-        {...iconProps}
-      />
-    )}
+}) => {
+  const Icon = icon;
 
-    {text && (
-      <Typography
-        component="span"
-        sx={{
-          fontWeight: '500',
-          fontSize: size === 'small' ? '12px' : '14px',
-          lineHeight: size === 'small' ? '16px' : '20px',
-          color: fontColor,
-        }}
-        {...typographyProps}
-      >
-        {text}
-      </Typography>
-    )}
-  </Box>
-);
+  const styles = getStyles(size);
+
+  return (
+    <Stack
+      direction="row"
+      alignItems="center"
+      sx={{
+        width: 'fit-content',
+        backgroundColor: bgColor,
+        ...styles.stack,
+      }}
+      {...stackProps}
+    >
+      {Icon && (
+        <Icon
+          sx={{
+            ...styles.icon,
+          }}
+          {...iconProps}
+        />
+      )}
+
+      {text && (
+        <Typography
+          component="span"
+          sx={{
+            fontWeight: '500',
+            color: fontColor,
+            ...styles.typography,
+          }}
+          {...typographyProps}
+        >
+          {text}
+        </Typography>
+      )}
+    </Stack>
+  );
+};
