@@ -1,4 +1,4 @@
-import 'pkg.config.typescript/mui-theme';
+import 'pkg.config.muidts';
 
 import React from 'react';
 import { Grid, Stack, Typography, useMediaQuery } from '@mui/material';
