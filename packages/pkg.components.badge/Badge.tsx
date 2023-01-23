@@ -6,6 +6,7 @@ export type BadgeProps = {
   Icon?: FunctionComponent<SvgIconProps>;
   text: string;
   bgColor: string;
+  fontColor?: string;
   size?: 'small' | 'heigh';
   boxProps?: BoxProps;
   typographyProps?: TypographyProps;
@@ -16,6 +17,7 @@ export const Badge: FC<BadgeProps> = ({
   Icon,
   text,
   bgColor,
+  fontColor,
   size = 'heigh',
   boxProps,
   iconProps,
@@ -50,6 +52,7 @@ export const Badge: FC<BadgeProps> = ({
         fontWeight: '500',
         fontSize: size === 'heigh' ? '14px' : '12px',
         lineHeight: size === 'heigh' ? '20px' : '16px',
+        color: fontColor,
       }}
       {...typographyProps}
     >
