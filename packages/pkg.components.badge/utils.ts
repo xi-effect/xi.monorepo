@@ -16,7 +16,7 @@ export const getStyles = (size?: string) => {
         },
       },
       typography: {
-        varian: 'xs' as 'xs',
+        variant: 'xs' as 'xs',
       },
     };
   }
@@ -37,7 +37,7 @@ export const getStyles = (size?: string) => {
       },
     },
     typography: {
-      varian: 's' as 's',
+      variant: 's' as 's',
     },
   };
 };

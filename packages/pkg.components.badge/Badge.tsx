@@ -33,7 +33,6 @@ export const Badge: FC<BadgeProps> = ({
       direction="row"
       alignItems="center"
       sx={{
-        width: 'fit-content',
         backgroundColor: bgColor,
         ...styles.stack.sx,
       }}
@@ -50,7 +49,7 @@ export const Badge: FC<BadgeProps> = ({
 
       {text && (
         <Typography
-          variant={styles.typography.varian}
+          variant={styles.typography.variant}
           component="span"
           sx={{
             color: fontColor,
