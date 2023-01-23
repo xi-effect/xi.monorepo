@@ -7,7 +7,7 @@ export type BadgeProps = {
   text?: string;
   bgColor: string;
   fontColor?: string;
-  size?: 'small' | 'heigh';
+  size?: 'small';
   boxProps?: BoxProps;
   typographyProps?: TypographyProps;
   iconProps?: SvgIconProps;
@@ -18,7 +18,7 @@ export const Badge: FC<BadgeProps> = ({
   text,
   bgColor,
   fontColor,
-  size = 'heigh',
+  size,
   boxProps,
   iconProps,
   typographyProps,
@@ -29,10 +29,10 @@ export const Badge: FC<BadgeProps> = ({
       display: 'flex',
       alignItems: 'center',
       width: 'fit-content',
-      gap: size === 'heigh' ? '8px' : '7.5px',
-      height: size === 'heigh' ? '28px' : '20px',
-      borderRadius: size === 'heigh' ? '6px' : '4px',
-      padding: size === 'heigh' ? '4px 8px' : '2px 6px',
+      gap: size === 'small' ? '7.5px' : '8px',
+      height: size === 'small' ? '20px' : '28px',
+      borderRadius: size === 'small' ? '4px' : '6px',
+      padding: size === 'small' ? '2px 6px' : '4px 8px ',
       backgroundColor: bgColor,
     }}
     {...boxProps}
@@ -40,8 +40,8 @@ export const Badge: FC<BadgeProps> = ({
     {Icon && (
       <Icon
         sx={{
-          width: size === 'heigh' ? '16px' : '12px',
-          height: size === 'heigh' ? '16px' : '12px',
+          width: size === 'small' ? '12px' : '16px',
+          height: size === 'small' ? '12px' : '16px',
         }}
         {...iconProps}
       />
@@ -52,8 +52,8 @@ export const Badge: FC<BadgeProps> = ({
         component="span"
         sx={{
           fontWeight: '500',
-          fontSize: size === 'heigh' ? '14px' : '12px',
-          lineHeight: size === 'heigh' ? '20px' : '16px',
+          fontSize: size === 'small' ? '12px' : '14px',
+          lineHeight: size === 'small' ? '16px' : '20px',
           color: fontColor,
         }}
         {...typographyProps}
