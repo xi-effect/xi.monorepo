@@ -36,6 +36,7 @@ const nextConfig = {
     'pkg.components.loading',
     'pkg.components.badge',
     'pkg.components.file',
+    'pkg.components.button',
     'pkg.data.avatar',
     'pkg.dialogs.exit',
     'pkg.forms.signin',
