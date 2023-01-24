@@ -7,7 +7,9 @@ import { useStore } from 'store/connect';
 import { useLocalStorage } from 'react-use';
 import { ExitDialog } from 'pkg.dialogs.exit';
 import { UserProfile } from 'kit/UserProfile';
+import { CommunityProfile } from 'kit/CommunityProfile';
 import { SidebarSecond } from './SidebarSecond';
+
 import Upbar from './Upbar';
 
 const Sidebar = dynamic(() => import('./Sidebar/Sidebar'), { ssr: false });
@@ -101,6 +103,7 @@ const Mobile = observer(({ children }: MobileT) => {
         overflow: 'hidden',
       }}
     >
+      <CommunityProfile />
       <UserProfile />
       <ExitDialog uiSt={uiSt} rootStore={rootStore} />
       <Stack

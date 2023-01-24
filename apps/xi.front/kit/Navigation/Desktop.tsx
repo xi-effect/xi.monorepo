@@ -6,6 +6,7 @@ import { Stack, Box } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { UserProfile } from 'kit/UserProfile';
 import { ExitDialog } from 'pkg.dialogs.exit';
+import { CommunityProfile } from 'kit/CommunityProfile';
 import { SidebarSecond } from './SidebarSecond';
 
 const Sidebar = dynamic(() => import('./Sidebar/Sidebar'), { ssr: false });
@@ -29,6 +30,7 @@ const Desktop = observer(({ children }: DesktopT) => {
         overflow: 'hidden',
       }}
     >
+      <CommunityProfile />
       <UserProfile />
       <ExitDialog uiSt={uiSt} rootStore={rootStore} />
       <Box sx={{ width: 64 }}>

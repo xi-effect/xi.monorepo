@@ -12,10 +12,8 @@ import ProfileSt from './user/profileSt';
 import UserSt from './user/userSt';
 import AuthorizationSt from './user/authorizationSt';
 import CommunitySt from './community/communitySt';
-import CommunityCreationSt from './community/communityCreationSt';
 import CommunityChannelsSt from './community/communityChannelsSt';
-import CommunitiesInvitesSt from './community/communitiesInvitesSt';
-import CommunitySettingsSt from './community/communitySettingsSt';
+import CommunityProfileSt from './community/communityProfileSt';
 import UserMediaSt from './user/userMediaSt';
 
 enableStaticRendering(typeof window === 'undefined');
@@ -39,13 +37,9 @@ class RootStore {
 
   authorizationSt: AuthorizationSt;
 
-  communityCreationSt: CommunityCreationSt;
-
   communityChannelsSt: CommunityChannelsSt;
 
-  communitySettingsSt: CommunitySettingsSt;
-
-  communitiesInvitesSt: CommunitiesInvitesSt;
+  communityProfileSt: CommunityProfileSt;
 
   url = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -60,12 +54,8 @@ class RootStore {
 
     // Community Stores
     this.communitySt = new CommunitySt(this);
-    this.communityCreationSt = new CommunityCreationSt(this);
     this.communityChannelsSt = new CommunityChannelsSt(this);
-    this.communitySettingsSt = new CommunitySettingsSt(this);
-
-    // Communities Stores
-    this.communitiesInvitesSt = new CommunitiesInvitesSt(this);
+    this.communityProfileSt = new CommunityProfileSt(this);
 
     makeObservable(this);
   }

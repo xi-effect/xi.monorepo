@@ -23,7 +23,10 @@ class UserSt {
     communities: [], // Массив Сообществ
   };
 
-  @action setUser = (item: string, value: string | number | boolean | CommunityInSidebar[]) => {
+  @action setUser = (
+    item: string,
+    value: string | number | boolean | CommunityInSidebar[] | null,
+  ) => {
     this.user[item] = value;
   };
 
@@ -64,6 +67,14 @@ class UserSt {
   @action removeCommunity = (lid) => {
     const newArray: CommunityInSidebar[] = this.user.communities;
     this.user.communities = newArray.filter((item) => item.id !== lid);
+  };
+
+  @action deleteAvatar = () => {
+    this.rootStore.fetchData(`${this.rootStore.url}/users/me/avatar/`, 'DELETE').then((data) => {
+      if (data?.a) {
+        this.setUser('avatar', null);
+      }
+    });
   };
 }
 
