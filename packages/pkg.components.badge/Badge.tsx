@@ -24,7 +24,7 @@ export const Badge: FC<BadgeProps> = ({
   iconProps,
   typographyProps,
 }) => {
-  const Icon = icon;
+  const IconComponent = icon as FunctionComponent;
 
   const styles = getStyles(size);
 
@@ -38,8 +38,8 @@ export const Badge: FC<BadgeProps> = ({
       }}
       {...stackProps}
     >
-      {Icon && (
-        <Icon
+      {icon && (
+        <IconComponent
           sx={{
             ...styles.icon.sx,
           }}
