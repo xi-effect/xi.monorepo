@@ -189,3 +189,12 @@ export const getSpinnerPosition = (
   }
   return defaultPosition;
 };
+
+export const getStartIconOpacity = (iconPosition: string, status: string) => {
+  if (iconPosition === 'start' && (status === 'pending' || status === 'completed')) return 0;
+  return 1;
+};
+export const getEndIconOpacity = (iconPosition: string, status: string) => {
+  if ((iconPosition === 'end' && status === 'pending') || status === 'completed') return 0;
+  return 1;
+};

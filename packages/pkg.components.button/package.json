@@ -12,7 +12,8 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
-    "pkg.config.muidts": "*"
+    "pkg.config.muidts": "*",
+    "pkg.icons.check": "*"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",

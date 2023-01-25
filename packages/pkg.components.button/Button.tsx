@@ -1,4 +1,5 @@
 import 'pkg.config.muidts';
+import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
 
@@ -8,7 +9,9 @@ import {
   buttonColorStyle,
   buttonStyle,
   getButtonPadding,
+  getEndIconOpacity,
   getSpinnerPosition,
+  getStartIconOpacity,
   iconStyle,
   spinnerStyle,
   typographyStyle,
@@ -53,7 +56,7 @@ export const Button: FC<ButtonProps> = ({
               mr: '-8px',
               ml: '4px',
               ...iconStyle[size],
-              opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1,
+              opacity: getStartIconOpacity(loadingPosition, state),
             }}
           />
         )
@@ -65,7 +68,7 @@ export const Button: FC<ButtonProps> = ({
               ml: '-8px',
               mr: '4px',
               ...iconStyle[size],
-              opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1,
+              opacity: getEndIconOpacity(loadingPosition, state),
             }}
           />
         )
@@ -103,6 +106,17 @@ export const Button: FC<ButtonProps> = ({
           <CircularProgress size={spinnerStyle[size].size} color="inherit" />
         </Stack>
       )}
+      {state === 'completed' && (
+        <Stack
+          alignItems="center"
+          sx={{
+            position: 'absolute',
+            ...spinnerPosition[size],
+          }}
+        >
+          <Check sx={iconStyle[size]} />
+        </Stack>
+      )}
     </MuiButton>
   );
 };
@@ -116,6 +130,6 @@ type ButtonProps = {
   handleClick: () => void;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  variant: 'contained' | 'outlined' | 'text';
-  color: 'primary' | 'confirm' | 'reject';
+  variant?: 'contained' | 'outlined' | 'text';
+  color?: 'primary' | 'confirm' | 'reject';
 };
