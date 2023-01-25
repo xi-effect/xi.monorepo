@@ -16,7 +16,6 @@ const Overview = observer(() => {
       sx={{
           bgcolor: 'grayscale.0',
           width: '100%',
-          height: '120px',
           borderRadius: '8px',
           padding: '24px 36px',
         }}
