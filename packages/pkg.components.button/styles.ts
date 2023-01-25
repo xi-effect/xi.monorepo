@@ -1,3 +1,5 @@
+import { LoadingPosition, Status } from './types';
+
 export const buttonStyle = {
   large: {
     height: '56px',
@@ -141,7 +143,7 @@ export const getSpinnerPosition = (
   isText: boolean,
   startIcon: boolean,
   endIcon: boolean,
-  loadingPosition: 'start' | 'center' | 'end',
+  loadingPosition: LoadingPosition,
 ) => {
   const defaultPosition = {
     large: {
@@ -190,11 +192,11 @@ export const getSpinnerPosition = (
   return defaultPosition;
 };
 
-export const getStartIconOpacity = (iconPosition: string, status: string) => {
-  if (iconPosition === 'start' && (status === 'pending' || status === 'completed')) return 0;
+export const getStartIconOpacity = (loadingPosition: LoadingPosition, status: Status) => {
+  if (loadingPosition === 'start' && (status === 'pending' || status === 'completed')) return 0;
   return 1;
 };
-export const getEndIconOpacity = (iconPosition: string, status: string) => {
-  if ((iconPosition === 'end' && status === 'pending') || status === 'completed') return 0;
+export const getEndIconOpacity = (loadingPosition: LoadingPosition, status: Status) => {
+  if ((loadingPosition === 'end' && status === 'pending') || status === 'completed') return 0;
   return 1;
 };

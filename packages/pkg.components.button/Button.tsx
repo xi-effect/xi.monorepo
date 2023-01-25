@@ -2,8 +2,8 @@ import 'pkg.config.muidts';
 import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
-
 import { FC, FunctionComponent, useState } from 'react';
+import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
 import {
   buttonColorStyle,
@@ -122,14 +122,14 @@ export const Button: FC<ButtonProps> = ({
 };
 
 type ButtonProps = {
-  status?: 'idle' | 'pending' | 'completed';
-  size?: 'small' | 'medium' | 'large';
-  loadingPosition?: 'start' | 'center' | 'end';
+  status?: Status;
+  size?: Size;
+  loadingPosition?: LoadingPosition;
+  variant?: Variant;
+  color?: Color;
   textColor?: string;
   text?: string;
-  handleClick: () => void;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'confirm' | 'reject';
+  handleClick: () => void;
 };
