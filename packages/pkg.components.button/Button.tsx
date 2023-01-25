@@ -5,6 +5,7 @@ import { Typography, Button as MuiButton, Stack } from '@mui/material';
 import { FC, FunctionComponent, useState } from 'react';
 
 import {
+  buttonColorStyle,
   buttonStyle,
   getButtonPadding,
   getSpinnerPosition,
@@ -17,6 +18,8 @@ export const Button: FC<ButtonProps> = ({
   status = 'idle',
   size = 'medium',
   loadingPosition = 'center',
+  variant = 'contained',
+  color = 'primary',
   textColor,
   text,
   startIcon,
@@ -67,34 +70,17 @@ export const Button: FC<ButtonProps> = ({
           />
         )
       }
-      variant="contained"
+      variant={variant}
       disableRipple
       disableElevation
       sx={{
-        ...buttonStyle[size],
-        ...buttonPadding[size],
         color: textColor,
         textTransform: 'none',
         position: 'relative',
         minWidth: 0,
-        // border: 'none',
-        // textTransform: 'none',
-        // backgroundColor: 'none',
-        '&:hover': {
-          // boxShadow: 'none',
-          // backgroundColor: 'none',
-          // borderColor: 'none',
-        },
-        '&:active': {
-          // boxShadow: 'none',
-          // backgroundColor: 'none',
-          // borderColor: 'none',
-        },
-        '&:focus': {
-          // boxShadow: 'none',
-          // backgroundColor: 'none',
-          // borderColor: 'none',
-        },
+        ...buttonStyle[size],
+        ...buttonPadding[size],
+        ...buttonColorStyle[variant][color],
       }}
     >
       {text && (
@@ -130,4 +116,6 @@ type ButtonProps = {
   handleClick: () => void;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
+  variant: 'contained' | 'outlined' | 'text';
+  color: 'primary' | 'confirm' | 'reject';
 };

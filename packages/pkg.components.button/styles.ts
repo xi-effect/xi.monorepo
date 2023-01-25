@@ -15,6 +15,49 @@ export const buttonStyle = {
     gap: '6px',
   },
 };
+
+export const buttonColorStyle = {
+  contained: {
+    primary: {
+      backgroundColor: '#445AFF',
+      '&:hover': {
+        backgroundColor: '#3546BD',
+      },
+      '&:active': {
+        backgroundColor: '#3546BD',
+      },
+    },
+    confirm: {
+      backgroundColor: '#00A82C',
+      '&:hover': {
+        backgroundColor: '#029127',
+      },
+      '&:active': {
+        backgroundColor: '#029127',
+      },
+    },
+    reject: {
+      backgroundColor: '#00A82C',
+      '&:hover': {
+        backgroundColor: '#029127',
+      },
+      '&:active': {
+        backgroundColor: '#029127',
+      },
+    },
+  },
+  outlined: {
+    primary: {},
+    confirm: {},
+    reject: {},
+  },
+  text: {
+    primary: {},
+    confirm: {},
+    reject: {},
+  },
+};
+
 export const typographyStyle = {
   large: {
     variant: 'l' as 'l',
