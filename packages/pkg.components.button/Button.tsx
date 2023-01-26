@@ -63,7 +63,6 @@ export const Button: FC<ButtonProps> = ({
       onClick={onButtonClick}
       disabled={state === 'pending' || state === 'completed'}
       size={size}
-      variant={variant}
       disableRipple
       disableElevation
       sx={{
@@ -73,7 +72,7 @@ export const Button: FC<ButtonProps> = ({
         minWidth: 0,
 
         '&:disabled':
-          state === 'completed' ? buttonDisabled.contained[color] : buttonDisabled.default,
+          state === 'completed' ? buttonDisabled[variant][color] : buttonDisabled.default,
         '&:active': {
           pt: '1px',
           ...buttonActive[variant][color],

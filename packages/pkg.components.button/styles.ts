@@ -40,9 +40,24 @@ export const buttonVariantsColor = {
     },
   },
   outlined: {
-    primary: {},
-    confirm: {},
-    reject: {},
+    primary: {
+      border: '1px solid #445AFF',
+      '&:hover': {
+        border: '1px solid #3546BD',
+      },
+    },
+    confirm: {
+      border: '1px solid #00A82C',
+      '&:hover': {
+        border: '1px solid #029127',
+      },
+    },
+    reject: {
+      border: '1px solid #DD0D0C',
+      '&:hover': {
+        border: '1px solid #BE0D0C',
+      },
+    },
   },
   text: {
     primary: {},
@@ -64,9 +79,15 @@ export const buttonActive = {
     },
   },
   outlined: {
-    primary: {},
-    confirm: {},
-    reject: {},
+    primary: {
+      border: '1px solid #3546BD',
+    },
+    confirm: {
+      border: '1px solid #029127',
+    },
+    reject: {
+      border: '1px solid #BE0D0C',
+    },
   },
   text: {
     primary: {},
@@ -93,6 +114,22 @@ export const buttonDisabled = {
       backgroundColor: '#BE0D0C',
       color: '#FFFFFF',
     },
+  },
+  outlined: {
+    primary: {
+      border: '1px solid #3546BD',
+    },
+    confirm: {
+      border: '1px solid #029127',
+    },
+    reject: {
+      border: '1px solid #BE0D0C',
+    },
+  },
+  text: {
+    primary: {},
+    confirm: {},
+    reject: {},
   },
 };
 
