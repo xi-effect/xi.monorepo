@@ -2,7 +2,15 @@ import 'pkg.config.muidts';
 import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
-import { FC, FunctionComponent, MouseEvent, useEffect, useRef, useState } from 'react';
+import {
+  FC,
+  FunctionComponent,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+  ButtonHTMLAttributes,
+} from 'react';
 
 import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
@@ -32,6 +40,8 @@ export const Button: FC<ButtonProps> = ({
   endIcon,
   handleButtonClick,
   isSnackbar,
+  iconColor,
+  ...props
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
   const EndIconComponent = endIcon as FunctionComponent<any>;
@@ -84,12 +94,14 @@ export const Button: FC<ButtonProps> = ({
         ...buttonPadding[size],
         ...buttonVariantsColor[variant][color],
       }}
+      {...props}
     >
       {startIcon && (
         <StartIconComponent
           sx={{
             ...iconSizes[size],
             opacity: getIconOpacity(state),
+            color: iconColor,
           }}
         />
       )}
@@ -129,6 +141,7 @@ export const Button: FC<ButtonProps> = ({
           sx={{
             ...iconSizes[size],
             opacity: getIconOpacity(state),
+            color: iconColor,
           }}
         />
       )}
@@ -191,4 +204,5 @@ type ButtonProps = {
   endIcon?: FunctionComponent<any>;
   handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
   isSnackbar?: boolean;
-};
+  iconColor?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
