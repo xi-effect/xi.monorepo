@@ -2,15 +2,7 @@ import 'pkg.config.muidts';
 import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
-import {
-  FC,
-  FunctionComponent,
-  MouseEvent,
-  useLayoutEffect,
-  useRef,
-  useState,
-  ButtonHTMLAttributes,
-} from 'react';
+import { FC, FunctionComponent, MouseEvent, ButtonHTMLAttributes } from 'react';
 
 import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
@@ -27,6 +19,7 @@ import {
   buttonDisabled,
   buttonActive,
 } from './styles';
+import { ButtonSnackbar } from './ButtonSnackbar';
 
 export const Button: FC<ButtonProps> = ({
   status = 'idle',
@@ -47,20 +40,10 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
   const EndIconComponent = endIcon as FunctionComponent<any>;
-  const snackbarRef = useRef<HTMLDivElement>(null);
-
-  const [snackbarWidth, setSnackbarWidth] = useState(0);
 
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
-  const snackbarPadding = getButtonPadding(!!snackbarText, !!startIcon, !!endIcon);
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
   const iconOpacity = getIconOpacity(status);
-
-  useLayoutEffect(() => {
-    if (snackbarRef.current) {
-      setSnackbarWidth(snackbarRef.current.clientWidth);
-    }
-  });
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
@@ -142,53 +125,17 @@ export const Button: FC<ButtonProps> = ({
       )}
 
       {isSnackbar && status !== 'idle' && (
-        <Stack
-          ref={snackbarRef}
-          direction="row"
-          alignItems="center"
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: `-${snackbarWidth + 16}px`,
-            ...buttonSizes[size],
-            ...snackbarPadding[size],
-            ...buttonDisabled[variant],
-          }}
-        >
-          {startIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
-
-          {status === 'pending' && (
-            <Stack
-              sx={{
-                position: 'absolute',
-                ...spinnerPosition[size],
-              }}
-            >
-              <CircularProgress size={spinnerSizes[size]} color="inherit" />
-            </Stack>
-          )}
-
-          {status !== 'pending' && isSnackbarIcon && (
-            <Check
-              sx={{
-                position: 'absolute',
-                ...iconPosition[startIcon ? 'start' : 'end'][size],
-                ...iconSizes[size],
-              }}
-            />
-          )}
-
-          {snackbarText && (
-            <Typography
-              sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
-              variant={typographySizes[size].variant}
-            >
-              {snackbarText}
-            </Typography>
-          )}
-
-          {endIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
-        </Stack>
+        <ButtonSnackbar
+          size={size}
+          variant={variant}
+          isStartIcon={!!startIcon}
+          isEndIcon={!!endIcon}
+          spinnerPosition={spinnerPosition}
+          status={status}
+          snackbarText={snackbarText}
+          isSnackbarIcon={isSnackbarIcon}
+          loadingPosition={loadingPosition}
+        />
       )}
     </MuiButton>
   );
