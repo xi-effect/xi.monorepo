@@ -17,6 +17,7 @@ import {
   typographySizes,
   iconPosition,
   buttonDisabled,
+  buttonActive,
 } from './styles';
 
 export const Button: FC<ButtonProps> = ({
@@ -73,7 +74,10 @@ export const Button: FC<ButtonProps> = ({
 
         '&:disabled':
           state === 'completed' ? buttonDisabled.contained[color] : buttonDisabled.default,
-
+        '&:active': {
+          pt: '1px',
+          ...buttonActive[variant][color],
+        },
         ...buttonSizes[size],
         ...buttonPadding[size],
         ...buttonVariantsColor[variant][color],
@@ -134,6 +138,7 @@ export const Button: FC<ButtonProps> = ({
           alignItems="center"
           sx={{
             position: 'absolute',
+            top: 0,
             right: `-${snackbarWidth + 16}px`,
             backgroundColor: '#E8E8E8',
             ...buttonSizes[size],

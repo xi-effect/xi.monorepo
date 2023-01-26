@@ -25,16 +25,10 @@ export const buttonVariantsColor = {
       '&:hover': {
         backgroundColor: '#3546BD',
       },
-      '&:active': {
-        backgroundColor: '#3546BD',
-      },
     },
     confirm: {
       backgroundColor: '#00A82C',
       '&:hover': {
-        backgroundColor: '#029127',
-      },
-      '&:active': {
         backgroundColor: '#029127',
       },
     },
@@ -43,9 +37,30 @@ export const buttonVariantsColor = {
       '&:hover': {
         backgroundColor: '#BE0D0C',
       },
-      '&:active': {
-        backgroundColor: '#BE0D0C',
-      },
+    },
+  },
+  outlined: {
+    primary: {},
+    confirm: {},
+    reject: {},
+  },
+  text: {
+    primary: {},
+    confirm: {},
+    reject: {},
+  },
+};
+
+export const buttonActive = {
+  contained: {
+    primary: {
+      backgroundColor: '#3546BD',
+    },
+    confirm: {
+      backgroundColor: '#029127',
+    },
+    reject: {
+      backgroundColor: '#BE0D0C',
     },
   },
   outlined: {
