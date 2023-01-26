@@ -2,7 +2,7 @@ import 'pkg.config.muidts';
 import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
-import { FC, FunctionComponent, useEffect, useRef, useState } from 'react';
+import { FC, FunctionComponent, MouseEvent, useEffect, useRef, useState } from 'react';
 
 import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
@@ -50,17 +50,20 @@ export const Button: FC<ButtonProps> = ({
     }
   }, [size]);
 
-  const onButtonClick = () => {
-    handleClick();
+  const onMouseUp = (e: MouseEvent<HTMLButtonElement>) => {
+    handleClick(e);
     setState('pending');
     setTimeout(() => {
       setState('completed');
+      setTimeout(() => {
+        setState('idle');
+      }, 1500);
     }, 1500);
   };
 
   return (
     <MuiButton
-      onClick={onButtonClick}
+      onMouseUp={onMouseUp}
       disabled={state === 'pending' || state === 'completed'}
       size={size}
       disableRipple
@@ -186,6 +189,6 @@ type ButtonProps = {
   text?: string;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  handleClick: () => void;
+  handleClick: (e?: MouseEvent<HTMLButtonElement>) => void;
   isSnackbar?: boolean;
 };
