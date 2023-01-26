@@ -40,6 +40,7 @@ export const Button: FC<ButtonProps> = ({
   endIcon,
   isSnackbar,
   snackbarText,
+  isSnackbarIcon,
   iconColor,
   handleButtonClick,
   ...props
@@ -53,6 +54,7 @@ export const Button: FC<ButtonProps> = ({
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
   const snackbarPadding = getButtonPadding(!!snackbarText, !!startIcon, !!endIcon);
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
+  const iconOpacity = getIconOpacity(status);
 
   useLayoutEffect(() => {
     if (snackbarRef.current) {
@@ -93,7 +95,7 @@ export const Button: FC<ButtonProps> = ({
         <StartIconComponent
           sx={{
             ...iconSizes[size],
-            opacity: getIconOpacity(status),
+            opacity: iconOpacity,
             color: iconColor,
           }}
         />
@@ -133,7 +135,7 @@ export const Button: FC<ButtonProps> = ({
         <EndIconComponent
           sx={{
             ...iconSizes[size],
-            opacity: getIconOpacity(status),
+            opacity: iconOpacity,
             color: iconColor,
           }}
         />
@@ -153,7 +155,7 @@ export const Button: FC<ButtonProps> = ({
             ...buttonDisabled[variant],
           }}
         >
-          <span style={iconSizes[size]} />
+          {startIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
 
           {status === 'pending' && (
             <Stack
@@ -166,7 +168,7 @@ export const Button: FC<ButtonProps> = ({
             </Stack>
           )}
 
-          {status !== 'pending' && (
+          {status !== 'pending' && isSnackbarIcon && (
             <Check
               sx={{
                 position: 'absolute',
@@ -184,6 +186,8 @@ export const Button: FC<ButtonProps> = ({
               {snackbarText}
             </Typography>
           )}
+
+          {endIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
         </Stack>
       )}
     </MuiButton>
@@ -202,6 +206,7 @@ type ButtonProps = {
   endIcon?: FunctionComponent<any>;
   isSnackbar?: boolean;
   snackbarText?: string;
+  isSnackbarIcon?: boolean;
   iconColor?: string;
   handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
