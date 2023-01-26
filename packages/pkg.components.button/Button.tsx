@@ -51,6 +51,7 @@ export const Button: FC<ButtonProps> = ({
   const [snackbarWidth, setSnackbarWidth] = useState(0);
 
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
+  const snackbarPadding = getButtonPadding(!!snackbarText, !!startIcon, !!endIcon);
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
 
   useLayoutEffect(() => {
@@ -148,7 +149,7 @@ export const Button: FC<ButtonProps> = ({
             top: 0,
             right: `-${snackbarWidth + 16}px`,
             ...buttonSizes[size],
-            ...buttonPadding[size],
+            ...snackbarPadding[size],
             ...buttonDisabled[variant],
           }}
         >
@@ -175,12 +176,14 @@ export const Button: FC<ButtonProps> = ({
             />
           )}
 
-          <Typography
-            sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
-            variant={typographySizes[size].variant}
-          >
-            {snackbarText}
-          </Typography>
+          {snackbarText && (
+            <Typography
+              sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
+              variant={typographySizes[size].variant}
+            >
+              {snackbarText}
+            </Typography>
+          )}
         </Stack>
       )}
     </MuiButton>
