@@ -6,7 +6,7 @@ import {
   FC,
   FunctionComponent,
   MouseEvent,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   ButtonHTMLAttributes,
@@ -38,9 +38,10 @@ export const Button: FC<ButtonProps> = ({
   text,
   startIcon,
   endIcon,
-  handleButtonClick,
   isSnackbar,
+  snackbarText,
   iconColor,
+  handleButtonClick,
   ...props
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
@@ -52,30 +53,21 @@ export const Button: FC<ButtonProps> = ({
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
 
-  const [state, setState] = useState(status);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (snackbarRef.current) {
       setSnackbarWidth(snackbarRef.current.clientWidth);
     }
-  }, [size]);
+  });
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (state === 'completed') return;
+    if (status === 'completed') return;
     handleButtonClick(e);
-    setState('pending');
-    setTimeout(() => {
-      setState('completed');
-      setTimeout(() => {
-        setState('idle');
-      }, 1500);
-    }, 1500);
   };
 
   return (
     <MuiButton
       onClick={onButtonClick}
-      disabled={state === 'pending'}
+      disabled={status === 'pending'}
       size={size}
       disableRipple
       disableElevation
@@ -87,7 +79,7 @@ export const Button: FC<ButtonProps> = ({
 
         '&:disabled': buttonDisabled[variant],
         '&:active': {
-          pt: state !== 'completed' ? '1px' : 0,
+          pt: status !== 'completed' ? '1px' : 0,
           ...buttonActive[variant][color],
         },
         ...buttonSizes[size],
@@ -100,7 +92,7 @@ export const Button: FC<ButtonProps> = ({
         <StartIconComponent
           sx={{
             ...iconSizes[size],
-            opacity: getIconOpacity(state),
+            opacity: getIconOpacity(status),
             color: iconColor,
           }}
         />
@@ -108,14 +100,14 @@ export const Button: FC<ButtonProps> = ({
 
       {text && (
         <Typography
-          sx={{ opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1 }}
+          sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
           variant={typographySizes[size].variant}
         >
           {text}
         </Typography>
       )}
 
-      {state === 'pending' && (
+      {status === 'pending' && (
         <Stack
           sx={{
             position: 'absolute',
@@ -126,7 +118,7 @@ export const Button: FC<ButtonProps> = ({
         </Stack>
       )}
 
-      {state === 'completed' && (
+      {status === 'completed' && (
         <Check
           sx={{
             position: 'absolute',
@@ -140,13 +132,13 @@ export const Button: FC<ButtonProps> = ({
         <EndIconComponent
           sx={{
             ...iconSizes[size],
-            opacity: getIconOpacity(state),
+            opacity: getIconOpacity(status),
             color: iconColor,
           }}
         />
       )}
 
-      {isSnackbar && state !== 'idle' && (
+      {isSnackbar && status !== 'idle' && (
         <Stack
           ref={snackbarRef}
           direction="row"
@@ -161,7 +153,8 @@ export const Button: FC<ButtonProps> = ({
           }}
         >
           <span style={iconSizes[size]} />
-          {state === 'pending' && (
+
+          {status === 'pending' && (
             <Stack
               sx={{
                 position: 'absolute',
@@ -171,7 +164,8 @@ export const Button: FC<ButtonProps> = ({
               <CircularProgress size={spinnerSizes[size]} color="inherit" />
             </Stack>
           )}
-          {state !== 'pending' && (
+
+          {status !== 'pending' && (
             <Check
               sx={{
                 position: 'absolute',
@@ -180,11 +174,12 @@ export const Button: FC<ButtonProps> = ({
               }}
             />
           )}
+
           <Typography
-            sx={{ opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1 }}
+            sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
             variant={typographySizes[size].variant}
           >
-            1
+            {snackbarText}
           </Typography>
         </Stack>
       )}
@@ -202,7 +197,8 @@ type ButtonProps = {
   text?: string;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
   isSnackbar?: boolean;
+  snackbarText?: string;
   iconColor?: string;
+  handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
