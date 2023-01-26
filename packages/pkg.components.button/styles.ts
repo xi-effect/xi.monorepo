@@ -60,6 +60,27 @@ export const buttonVariantsColor = {
   },
 };
 
+export const buttonDisabled = {
+  default: {
+    backgroundColor: '#E8E8E8',
+    color: '#FFFFFF',
+  },
+  contained: {
+    primary: {
+      backgroundColor: '#3546BD',
+      color: '#FFFFFF',
+    },
+    confirm: {
+      backgroundColor: '#029127',
+      color: '#FFFFFF',
+    },
+    reject: {
+      backgroundColor: '#029127',
+      color: '#FFFFFF',
+    },
+  },
+};
+
 export const typographySizes = {
   large: {
     variant: 'l' as 'l',

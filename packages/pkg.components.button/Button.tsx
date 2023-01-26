@@ -15,6 +15,7 @@ import {
   spinnerSizes,
   typographySizes,
   iconPosition,
+  buttonDisabled,
 } from './styles';
 
 export const Button: FC<ButtonProps> = ({
@@ -45,11 +46,12 @@ export const Button: FC<ButtonProps> = ({
       setState('completed');
     }, 1500);
   };
+  console.log(buttonDisabled.contained[color]);
 
   return (
     <MuiButton
       onClick={onButtonClick}
-      disabled={state === 'pending'}
+      disabled={state === 'pending' || state === 'completed'}
       size={size}
       variant={variant}
       disableRipple
@@ -60,9 +62,8 @@ export const Button: FC<ButtonProps> = ({
         position: 'relative',
         minWidth: 0,
 
-        '&:disabled': {
-          backgroundColor: '#E8E8E8',
-        },
+        '&:disabled':
+          state === 'completed' ? buttonDisabled.contained[color] : buttonDisabled.default,
 
         ...buttonSizes[size],
         ...buttonPadding[size],
