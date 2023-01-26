@@ -1,6 +1,6 @@
 import { LoadingPosition, Status } from './types';
 
-export const buttonStyle = {
+export const buttonSizes = {
   large: {
     height: '56px',
     borderRadius: '12px',
@@ -18,7 +18,7 @@ export const buttonStyle = {
   },
 };
 
-export const buttonColorStyle = {
+export const buttonVariantsColor = {
   contained: {
     primary: {
       backgroundColor: '#445AFF',
@@ -60,7 +60,7 @@ export const buttonColorStyle = {
   },
 };
 
-export const typographyStyle = {
+export const typographySizes = {
   large: {
     variant: 'l' as 'l',
   },
@@ -71,7 +71,8 @@ export const typographyStyle = {
     variant: 's' as 's',
   },
 };
-export const iconStyle = {
+
+export const iconSizes = {
   large: {
     width: '32px',
     height: '32px',
@@ -86,15 +87,34 @@ export const iconStyle = {
   },
 };
 
-export const spinnerStyle = {
-  large: {
-    size: 32,
+export const spinnerSizes = {
+  large: 32,
+  medium: 24,
+  small: 16,
+};
+
+export const iconPosition = {
+  start: {
+    large: {
+      left: '12px',
+    },
+    medium: {
+      left: '12px',
+    },
+    small: {
+      left: '8px',
+    },
   },
-  medium: {
-    size: 24,
-  },
-  small: {
-    size: 16,
+  end: {
+    large: {
+      right: '12px',
+    },
+    medium: {
+      right: '12px',
+    },
+    small: {
+      right: '8px',
+    },
   },
 };
 
@@ -143,7 +163,7 @@ export const getSpinnerPosition = (
   isText: boolean,
   startIcon: boolean,
   endIcon: boolean,
-  loadingPosition: LoadingPosition,
+  loadingPosition: LoadingPosition = 'center',
 ) => {
   const defaultPosition = {
     large: {
@@ -160,10 +180,11 @@ export const getSpinnerPosition = (
     },
   };
 
-  if (!isText) {
+  if (!isText || loadingPosition === 'center') {
     return defaultPosition;
   }
-  if (startIcon && loadingPosition === 'start') {
+
+  if (startIcon) {
     return {
       large: {
         left: '12px',
@@ -176,7 +197,8 @@ export const getSpinnerPosition = (
       },
     };
   }
-  if (endIcon && loadingPosition === 'end') {
+
+  if (endIcon) {
     return {
       large: {
         right: '12px',
@@ -189,14 +211,11 @@ export const getSpinnerPosition = (
       },
     };
   }
+
   return defaultPosition;
 };
 
-export const getStartIconOpacity = (loadingPosition: LoadingPosition, status: Status) => {
-  if (loadingPosition === 'start' && (status === 'pending' || status === 'completed')) return 0;
-  return 1;
-};
-export const getEndIconOpacity = (loadingPosition: LoadingPosition, status: Status) => {
-  if ((loadingPosition === 'end' && status === 'pending') || status === 'completed') return 0;
+export const getIconOpacity = (status: Status) => {
+  if (status === 'pending' || status === 'completed') return 0;
   return 1;
 };

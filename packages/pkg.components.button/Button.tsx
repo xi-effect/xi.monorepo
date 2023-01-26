@@ -6,15 +6,15 @@ import { FC, FunctionComponent, useState } from 'react';
 import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
 import {
-  buttonColorStyle,
-  buttonStyle,
+  buttonVariantsColor,
+  buttonSizes,
   getButtonPadding,
-  getEndIconOpacity,
+  getIconOpacity,
   getSpinnerPosition,
-  getStartIconOpacity,
-  iconStyle,
-  spinnerStyle,
-  typographyStyle,
+  iconSizes,
+  spinnerSizes,
+  typographySizes,
+  iconPosition,
 } from './styles';
 
 export const Button: FC<ButtonProps> = ({
@@ -32,9 +32,10 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
   const EndIconComponent = endIcon as FunctionComponent<any>;
-
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
+
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
+
   const [state, setState] = useState(status);
 
   const onButtonClick = () => {
@@ -46,116 +47,117 @@ export const Button: FC<ButtonProps> = ({
   };
 
   return (
-    <Stack direction="row">
-      <MuiButton
-        onClick={onButtonClick}
-        disabled={state === 'pending'}
-        size={size}
-        startIcon={
-          startIcon && (
-            <StartIconComponent
-              sx={{
-                mr: '-8px',
-                ml: '4px',
-                ...iconStyle[size],
-                opacity: getStartIconOpacity(loadingPosition, state),
-              }}
-            />
-          )
-        }
-        endIcon={
-          endIcon && (
-            <EndIconComponent
-              sx={{
-                ml: '-8px',
-                mr: '4px',
-                ...iconStyle[size],
-                opacity: getEndIconOpacity(loadingPosition, state),
-              }}
-            />
-          )
-        }
-        variant={variant}
-        disableRipple
-        disableElevation
-        sx={{
-          color: textColor,
-          textTransform: 'none',
-          position: 'relative',
-          minWidth: 0,
-          '&:disabled': {
-            backgroundColor: '#E8E8E8',
-          },
-          ...buttonStyle[size],
-          ...buttonPadding[size],
-          ...buttonColorStyle[variant][color],
-        }}
-      >
-        {text && (
-          <Typography
-            sx={{ opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1 }}
-            variant={typographyStyle[size].variant}
-          >
-            {text}
-          </Typography>
-        )}
+    <MuiButton
+      onClick={onButtonClick}
+      disabled={state === 'pending'}
+      size={size}
+      variant={variant}
+      disableRipple
+      disableElevation
+      sx={{
+        color: textColor,
+        textTransform: 'none',
+        position: 'relative',
+        minWidth: 0,
 
-        {state === 'pending' && (
-          <Stack
-            alignItems="center"
-            sx={{
-              position: 'absolute',
-              ...spinnerPosition[size],
-            }}
-          >
-            <CircularProgress size={spinnerStyle[size].size} color="inherit" />
-          </Stack>
-        )}
-        {state === 'completed' && (
-          <Stack
-            alignItems="center"
-            sx={{
-              position: 'absolute',
-              ...spinnerPosition[size],
-            }}
-          >
-            <Check sx={iconStyle[size]} />
-          </Stack>
-        )}
-      </MuiButton>
+        '&:disabled': {
+          backgroundColor: '#E8E8E8',
+        },
+
+        ...buttonSizes[size],
+        ...buttonPadding[size],
+        ...buttonVariantsColor[variant][color],
+      }}
+    >
+      {startIcon && (
+        <StartIconComponent
+          sx={{
+            ...iconSizes[size],
+            opacity: getIconOpacity(state),
+          }}
+        />
+      )}
+
+      {text && (
+        <Typography
+          sx={{ opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1 }}
+          variant={typographySizes[size].variant}
+        >
+          {text}
+        </Typography>
+      )}
+
+      {state === 'pending' && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            ...spinnerPosition[size],
+          }}
+        >
+          <CircularProgress size={spinnerSizes[size]} color="inherit" />
+        </Stack>
+      )}
+
+      {state === 'completed' && (
+        <Check
+          sx={{
+            position: 'absolute',
+            ...iconPosition[startIcon ? 'start' : 'end'][size],
+            ...iconSizes[size],
+          }}
+        />
+      )}
+
+      {endIcon && (
+        <EndIconComponent
+          sx={{
+            ...iconSizes[size],
+            opacity: getIconOpacity(state),
+          }}
+        />
+      )}
+
       {isSnackbar && (
         <Stack
           direction="row"
           alignItems="center"
-          justifyContent="end"
           sx={{
+            position: 'absolute',
+            right: '-100%',
             backgroundColor: '#E8E8E8',
-            ...buttonStyle[size],
+            ...buttonSizes[size],
             ...buttonPadding[size],
           }}
         >
+          <span style={iconSizes[size]} />
           {state === 'pending' && (
-            <CircularProgress size={spinnerStyle[size].size} color="inherit" />
-          )}
-          {state !== 'pending' && (
             <Stack
-              alignItems="center"
               sx={{
+                position: 'absolute',
                 ...spinnerPosition[size],
               }}
             >
-              <Check sx={iconStyle[size]} />
+              <CircularProgress size={spinnerSizes[size]} color="inherit" />
             </Stack>
+          )}
+          {state !== 'pending' && (
+            <Check
+              sx={{
+                position: 'absolute',
+                ...iconPosition[startIcon ? 'start' : 'end'][size],
+                ...iconSizes[size],
+              }}
+            />
           )}
           <Typography
             sx={{ opacity: loadingPosition === 'center' && state === 'pending' ? 0 : 1 }}
-            variant={typographyStyle[size].variant}
+            variant={typographySizes[size].variant}
           >
             1
           </Typography>
         </Stack>
       )}
-    </Stack>
+    </MuiButton>
   );
 };
 

@@ -13,7 +13,7 @@ const Home = () => (
       status="idle"
       textColor="white"
       text="Кнопка"
-      loadingPosition="start"
+      loadingPosition="center"
       isSnackbar
       handleClick={() => {}}
     />
