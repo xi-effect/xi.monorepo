@@ -39,12 +39,12 @@ export const buttonVariantsColor = {
       },
     },
     reject: {
-      backgroundColor: '#00A82C',
+      backgroundColor: '#DD0D0C',
       '&:hover': {
-        backgroundColor: '#029127',
+        backgroundColor: '#BE0D0C',
       },
       '&:active': {
-        backgroundColor: '#029127',
+        backgroundColor: '#BE0D0C',
       },
     },
   },
@@ -75,7 +75,7 @@ export const buttonDisabled = {
       color: '#FFFFFF',
     },
     reject: {
-      backgroundColor: '#029127',
+      backgroundColor: '#BE0D0C',
       color: '#FFFFFF',
     },
   },
