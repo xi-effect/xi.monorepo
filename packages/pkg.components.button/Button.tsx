@@ -51,6 +51,7 @@ export const Button: FC<ButtonProps> = ({
   }, [size]);
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (state === 'completed') return;
     handleButtonClick(e);
     setState('pending');
     setTimeout(() => {
@@ -64,7 +65,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <MuiButton
       onClick={onButtonClick}
-      disabled={state === 'pending' || state === 'completed'}
+      disabled={state === 'pending'}
       size={size}
       disableRipple
       disableElevation
@@ -74,10 +75,9 @@ export const Button: FC<ButtonProps> = ({
         position: 'relative',
         minWidth: 0,
 
-        '&:disabled':
-          state === 'completed' ? buttonDisabled[variant][color] : buttonDisabled.default[variant],
+        '&:disabled': buttonDisabled[variant],
         '&:active': {
-          pt: '1px',
+          pt: state !== 'completed' ? '1px' : 0,
           ...buttonActive[variant][color],
         },
         ...buttonSizes[size],
@@ -133,7 +133,7 @@ export const Button: FC<ButtonProps> = ({
         />
       )}
 
-      {isSnackbar && (state === 'pending' || state === 'completed') && (
+      {isSnackbar && state !== 'idle' && (
         <Stack
           ref={snackbarRef}
           direction="row"
@@ -144,7 +144,7 @@ export const Button: FC<ButtonProps> = ({
             right: `-${snackbarWidth + 16}px`,
             ...buttonSizes[size],
             ...buttonPadding[size],
-            ...buttonDisabled.default[variant],
+            ...buttonDisabled[variant],
           }}
         >
           <span style={iconSizes[size]} />

@@ -97,42 +97,13 @@ export const buttonActive = {
 };
 
 export const buttonDisabled = {
-  default: {
-    contained: {
-      backgroundColor: '#E8E8E8',
-    },
-    outlined: {
-      border: '1px solid #E8E8E8',
-    },
-    text: {},
-  },
   contained: {
-    primary: {
-      backgroundColor: '#3546BD',
-    },
-    confirm: {
-      backgroundColor: '#029127',
-    },
-    reject: {
-      backgroundColor: '#BE0D0C',
-    },
+    backgroundColor: '#E8E8E8',
   },
   outlined: {
-    primary: {
-      border: '1px solid #3546BD',
-    },
-    confirm: {
-      border: '1px solid #029127',
-    },
-    reject: {
-      border: '1px solid #BE0D0C',
-    },
+    border: '1px solid #E8E8E8',
   },
-  text: {
-    primary: {},
-    confirm: {},
-    reject: {},
-  },
+  text: {},
 };
 
 export const typographySizes = {
