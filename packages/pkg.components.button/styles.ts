@@ -207,8 +207,8 @@ export const getButtonPadding = (isText: boolean, startIcon: boolean, endIcon: b
 
 export const getSpinnerPosition = (
   isText: boolean,
-  startIcon: boolean,
-  endIcon: boolean,
+  startIcon?: boolean,
+  endIcon?: boolean,
   loadingPosition: LoadingPosition = 'center',
 ) => {
   const defaultPosition = {

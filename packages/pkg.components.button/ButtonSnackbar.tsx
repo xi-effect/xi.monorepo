@@ -11,28 +11,39 @@ import {
   iconPosition,
   buttonDisabled,
   getButtonPadding,
+  getSpinnerPosition,
 } from './styles';
 import { LoadingPosition, Size, Status, Variant } from './types';
 
 export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   size,
   variant,
-  isStartIcon,
-  isEndIcon,
-  spinnerPosition,
   status,
   snackbarText,
-  isSnackbarIcon,
-  loadingPosition,
+  isSnackbarIconStart,
+  isSnackbarIconEnd,
+  snackbarLoadingPosition = 'center',
 }) => {
   const snackbarRef = useRef<HTMLDivElement>(null);
   const [snackbarWidth, setSnackbarWidth] = useState(0);
-  const snackbarPadding = getButtonPadding(!!snackbarText, isStartIcon, isEndIcon);
+  const spinnerPosition = getSpinnerPosition(
+    !!snackbarText,
+    isSnackbarIconStart,
+    isSnackbarIconEnd,
+    snackbarLoadingPosition,
+  );
+  const snackbarPadding = getButtonPadding(
+    !!snackbarText,
+    !!isSnackbarIconStart,
+    !!isSnackbarIconEnd,
+  );
+
   useLayoutEffect(() => {
     if (snackbarRef.current) {
       setSnackbarWidth(snackbarRef.current.clientWidth);
     }
-  });
+  }, []);
+
   return (
     <Stack
       ref={snackbarRef}
@@ -45,9 +56,10 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
         ...buttonSizes[size],
         ...snackbarPadding[size],
         ...buttonDisabled[variant],
+        color: '#707070',
       }}
     >
-      {isStartIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
+      {isSnackbarIconStart && <span style={iconSizes[size]} />}
 
       {status === 'pending' && (
         <Stack
@@ -60,11 +72,11 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
         </Stack>
       )}
 
-      {status !== 'pending' && isSnackbarIcon && (
+      {status !== 'pending' && (isSnackbarIconStart || isSnackbarIconEnd) && (
         <Check
           sx={{
             position: 'absolute',
-            ...iconPosition[isStartIcon ? 'start' : 'end'][size],
+            ...iconPosition[isSnackbarIconStart ? 'start' : 'end'][size],
             ...iconSizes[size],
           }}
         />
@@ -72,14 +84,14 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
 
       {snackbarText && (
         <Typography
-          sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
+          sx={{ opacity: snackbarLoadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
           variant={typographySizes[size].variant}
         >
           {snackbarText}
         </Typography>
       )}
 
-      {isEndIcon && isSnackbarIcon && <span style={iconSizes[size]} />}
+      {isSnackbarIconEnd && <span style={iconSizes[size]} />}
     </Stack>
   );
 };
@@ -87,11 +99,9 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
 type ButtonSnackbarProps = {
   size: Size;
   variant: Variant;
-  isStartIcon: boolean;
-  isEndIcon: boolean;
-  spinnerPosition: any;
   status: Status;
   snackbarText?: string;
-  isSnackbarIcon?: boolean;
-  loadingPosition?: LoadingPosition;
+  isSnackbarIconStart?: boolean;
+  isSnackbarIconEnd?: boolean;
+  snackbarLoadingPosition?: LoadingPosition;
 };

@@ -27,15 +27,17 @@ export const Button: FC<ButtonProps> = ({
   loadingPosition = 'center',
   variant = 'contained',
   color = 'primary',
-  textColor,
+  textColor = '#fff',
   text,
   startIcon,
   endIcon,
-  isSnackbar,
-  snackbarText,
-  isSnackbarIcon,
   iconColor,
   handleButtonClick,
+  isSnackbar,
+  snackbarText,
+  isSnackbarIconStart,
+  isSnackbarIconEnd,
+  snackbarLoadingPosition,
   ...props
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
@@ -53,17 +55,17 @@ export const Button: FC<ButtonProps> = ({
   return (
     <MuiButton
       onClick={onButtonClick}
-      disabled={status === 'pending'}
+      disabled={status === 'pending' || status === 'completed'}
       size={size}
       disableRipple
       disableElevation
       sx={{
-        color: textColor,
+        color: '#fff',
         textTransform: 'none',
         position: 'relative',
         minWidth: 0,
-
-        '&:disabled': buttonDisabled[variant],
+        '&:disabled':
+          status !== 'completed' ? buttonDisabled[variant] : buttonActive[variant][color],
         '&:active': {
           pt: status !== 'completed' ? '1px' : 0,
           ...buttonActive[variant][color],
@@ -86,7 +88,10 @@ export const Button: FC<ButtonProps> = ({
 
       {text && (
         <Typography
-          sx={{ opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
+          sx={{
+            color: status === 'pending' ? '#707070' : textColor,
+            opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1,
+          }}
           variant={typographySizes[size].variant}
         >
           {text}
@@ -104,12 +109,13 @@ export const Button: FC<ButtonProps> = ({
         </Stack>
       )}
 
-      {status === 'completed' && (
+      {status === 'completed' && (startIcon || endIcon) && (
         <Check
           sx={{
             position: 'absolute',
             ...iconPosition[startIcon ? 'start' : 'end'][size],
             ...iconSizes[size],
+            color: iconColor,
           }}
         />
       )}
@@ -128,13 +134,11 @@ export const Button: FC<ButtonProps> = ({
         <ButtonSnackbar
           size={size}
           variant={variant}
-          isStartIcon={!!startIcon}
-          isEndIcon={!!endIcon}
-          spinnerPosition={spinnerPosition}
           status={status}
           snackbarText={snackbarText}
-          isSnackbarIcon={isSnackbarIcon}
-          loadingPosition={loadingPosition}
+          isSnackbarIconStart={isSnackbarIconStart}
+          isSnackbarIconEnd={isSnackbarIconEnd}
+          snackbarLoadingPosition={snackbarLoadingPosition}
         />
       )}
     </MuiButton>
@@ -142,18 +146,35 @@ export const Button: FC<ButtonProps> = ({
 };
 
 type ButtonProps = {
+  // button status: pending = spinner appears, completed button disabled with active color
+  // completed and startIcon or endIcon or only icon without text appears check
   status?: Status;
-  size?: Size;
+  size?: Size; // button size
+  // button spinner position: icon above icon and center
   loadingPosition?: LoadingPosition;
+  // button variant
   variant?: Variant;
+  // button color
   color?: Color;
+  // button text color
   textColor?: string;
+  // button text
   text?: string;
+  // start or end button icon if icon without text, icon position will be center
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  isSnackbar?: boolean;
-  snackbarText?: string;
-  isSnackbarIcon?: boolean;
+  // button icon color
   iconColor?: string;
+  // button click handler
   handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
+  // whether to display snackbar
+  isSnackbar?: boolean;
+  // snackbar text
+  snackbarText?: string;
+  // start or end snackbar icon if icon without text, icon position will be center
+  isSnackbarIconStart?: boolean;
+  isSnackbarIconEnd?: boolean;
+  // snackbar spinner position: icon above icon and center
+  snackbarLoadingPosition?: LoadingPosition;
+  // you can also pass the default attributes of the button
 } & ButtonHTMLAttributes<HTMLButtonElement>;
