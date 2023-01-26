@@ -38,14 +38,7 @@ export const Badge: FC<BadgeProps> = ({
       }}
       {...stackProps}
     >
-      {icon && (
-        <IconComponent
-          sx={{
-            ...styles.icon.sx,
-          }}
-          {...iconProps}
-        />
-      )}
+      {icon && <IconComponent sx={styles.icon.sx} {...iconProps} />}
 
       {text && (
         <Typography
