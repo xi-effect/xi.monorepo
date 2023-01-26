@@ -98,21 +98,23 @@ export const buttonActive = {
 
 export const buttonDisabled = {
   default: {
-    backgroundColor: '#E8E8E8',
-    color: '#FFFFFF',
+    contained: {
+      backgroundColor: '#E8E8E8',
+    },
+    outlined: {
+      border: '1px solid #E8E8E8',
+    },
+    text: {},
   },
   contained: {
     primary: {
       backgroundColor: '#3546BD',
-      color: '#FFFFFF',
     },
     confirm: {
       backgroundColor: '#029127',
-      color: '#FFFFFF',
     },
     reject: {
       backgroundColor: '#BE0D0C',
-      color: '#FFFFFF',
     },
   },
   outlined: {

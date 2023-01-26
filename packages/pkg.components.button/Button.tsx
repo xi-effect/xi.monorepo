@@ -30,7 +30,7 @@ export const Button: FC<ButtonProps> = ({
   text,
   startIcon,
   endIcon,
-  handleClick,
+  handleButtonClick,
   isSnackbar,
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
@@ -50,8 +50,8 @@ export const Button: FC<ButtonProps> = ({
     }
   }, [size]);
 
-  const onMouseUp = (e: MouseEvent<HTMLButtonElement>) => {
-    handleClick(e);
+  const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    handleButtonClick(e);
     setState('pending');
     setTimeout(() => {
       setState('completed');
@@ -63,7 +63,7 @@ export const Button: FC<ButtonProps> = ({
 
   return (
     <MuiButton
-      onMouseUp={onMouseUp}
+      onClick={onButtonClick}
       disabled={state === 'pending' || state === 'completed'}
       size={size}
       disableRipple
@@ -75,7 +75,7 @@ export const Button: FC<ButtonProps> = ({
         minWidth: 0,
 
         '&:disabled':
-          state === 'completed' ? buttonDisabled[variant][color] : buttonDisabled.default,
+          state === 'completed' ? buttonDisabled[variant][color] : buttonDisabled.default[variant],
         '&:active': {
           pt: '1px',
           ...buttonActive[variant][color],
@@ -133,7 +133,7 @@ export const Button: FC<ButtonProps> = ({
         />
       )}
 
-      {isSnackbar && (
+      {isSnackbar && (state === 'pending' || state === 'completed') && (
         <Stack
           ref={snackbarRef}
           direction="row"
@@ -142,9 +142,9 @@ export const Button: FC<ButtonProps> = ({
             position: 'absolute',
             top: 0,
             right: `-${snackbarWidth + 16}px`,
-            backgroundColor: '#E8E8E8',
             ...buttonSizes[size],
             ...buttonPadding[size],
+            ...buttonDisabled.default[variant],
           }}
         >
           <span style={iconSizes[size]} />
@@ -189,6 +189,6 @@ type ButtonProps = {
   text?: string;
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  handleClick: (e?: MouseEvent<HTMLButtonElement>) => void;
+  handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
   isSnackbar?: boolean;
 };

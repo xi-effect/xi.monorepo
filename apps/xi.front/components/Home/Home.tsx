@@ -15,7 +15,7 @@ const Home = () => (
       text="Кнопка"
       loadingPosition="center"
       isSnackbar
-      handleClick={() => {}}
+      handleButtonClick={() => {}}
     />
   </>
 );
