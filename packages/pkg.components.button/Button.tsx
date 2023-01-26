@@ -2,7 +2,8 @@ import 'pkg.config.muidts';
 import { Check } from 'pkg.icons.check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
-import { FC, FunctionComponent, useState } from 'react';
+import { FC, FunctionComponent, useEffect, useRef, useState } from 'react';
+
 import { Color, LoadingPosition, Size, Status, Variant } from './types';
 
 import {
@@ -33,11 +34,20 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
   const EndIconComponent = endIcon as FunctionComponent<any>;
-  const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
+  const snackbarRef = useRef<HTMLDivElement>(null);
 
+  const [snackbarWidth, setSnackbarWidth] = useState(0);
+
+  const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
   const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
 
   const [state, setState] = useState(status);
+
+  useEffect(() => {
+    if (snackbarRef.current) {
+      setSnackbarWidth(snackbarRef.current.clientWidth);
+    }
+  }, [size]);
 
   const onButtonClick = () => {
     handleClick();
@@ -46,7 +56,6 @@ export const Button: FC<ButtonProps> = ({
       setState('completed');
     }, 1500);
   };
-  console.log(buttonDisabled.contained[color]);
 
   return (
     <MuiButton
@@ -120,11 +129,12 @@ export const Button: FC<ButtonProps> = ({
 
       {isSnackbar && (
         <Stack
+          ref={snackbarRef}
           direction="row"
           alignItems="center"
           sx={{
             position: 'absolute',
-            right: '-100%',
+            right: `-${snackbarWidth + 16}px`,
             backgroundColor: '#E8E8E8',
             ...buttonSizes[size],
             ...buttonPadding[size],
