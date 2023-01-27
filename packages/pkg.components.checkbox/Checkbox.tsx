@@ -1,12 +1,14 @@
-import { FormControlLabel, Checkbox as MuiCheckbox, Box } from '@mui/material';
+import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
 import { Check } from 'pkg.icons.check';
 
 import {
   CheckboxTypesS,
   CheckedCheckboxTypesS,
   CheckedIconTypesS,
+  ContainerSizesS,
   ChecboxSizesS,
   CheckedIconSizesS,
+  LabelSizesS,
 } from './styles';
 
 type CheckboxTypes = 'warning' | 'error' | 'disabled' | 'default';
@@ -14,6 +16,7 @@ type ChecboxSizes = 's' | 'm' | 'l';
 export type CheckboxProps = {
   size: ChecboxSizes;
   type?: CheckboxTypes;
+  label?: string;
 
   isChecked?: boolean;
   changeCheckedState: () => void;
@@ -22,9 +25,11 @@ export type CheckboxProps = {
 export const Checkbox = ({
   type = 'default',
   size,
+  label = '',
   isChecked = false,
   changeCheckedState,
 }: CheckboxProps) => {
+  /* icons */
   const DefaultIcon = (
     <Box
       sx={{
@@ -37,6 +42,9 @@ export const Checkbox = ({
     />
   );
   const CheckedIcon = <Check sx={{ ...CheckedIconTypesS[type], ...CheckedIconSizesS[size] }} />;
+
+  /* label */
+  const CkecboxLabel = <Typography sx={{ ...LabelSizesS[size] }}>{label}</Typography>;
 
   return (
     <FormControlLabel
@@ -54,7 +62,8 @@ export const Checkbox = ({
           onChange={changeCheckedState}
         />
       }
-      label=""
+      sx={{ ...ContainerSizesS[size] }}
+      label={CkecboxLabel}
     />
   );
 };

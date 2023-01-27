@@ -33,6 +33,17 @@ export const DefaultIconTypesS = {
 };
 
 /* styles according to sizes */
+export const ContainerSizesS = {
+  s: {
+    gap: '4px',
+  },
+  m: {
+    gap: '6px',
+  },
+  l: {
+    gap: '8px',
+  },
+};
 export const ChecboxSizesS = {
   s: {
     borderRadius: '4px',
@@ -59,5 +70,16 @@ export const CheckedIconSizesS = {
   },
   l: {
     fontSize: '20px',
+  },
+};
+export const LabelSizesS = {
+  s: {
+    fontSize: '12px',
+  },
+  m: {
+    fontSize: '14px',
+  },
+  l: {
+    fontSize: '16px',
   },
 };
