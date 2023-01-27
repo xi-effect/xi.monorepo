@@ -48,30 +48,37 @@ export const Checkbox = ({
   /* label */
   const CkecboxLabel = <Typography sx={{ ...LabelSizesS[size] }}>{label}</Typography>;
 
-  return (
-    <FormControlLabel
-      control={
-        <MuiCheckbox
-          sx={{
-            ...CheckboxTypesS[type],
-            '&.Mui-checked': { ...CheckedCheckboxTypesS[type], borderRadius: '4px' },
-            ...ChecboxSizesS[size],
-            padding: 0,
-          }}
-          icon={DefaultIcon}
-          checkedIcon={CheckedIcon}
-          checked={isChecked}
-          onChange={changeCheckedState}
-          disabled={type === 'disabled'}
-        />
-      }
+  /* checkbox */
+  const CustomCheckbox = (
+    <MuiCheckbox
       sx={{
-        ...ContainerTypesS[type],
-        ...ContainerSizesS[size],
-        width: 'max-content',
-        padding: '4px 8px 4px 4px',
+        ...CheckboxTypesS[type],
+        '&.Mui-checked': { ...CheckedCheckboxTypesS[type], borderRadius: '4px' },
+        ...ChecboxSizesS[size],
+        padding: 0,
       }}
-      label={CkecboxLabel}
+      icon={DefaultIcon}
+      checkedIcon={CheckedIcon}
+      checked={isChecked}
+      onChange={changeCheckedState}
+      disabled={type === 'disabled'}
     />
+  );
+
+  return (
+    (!label && CustomCheckbox) || (
+      <FormControlLabel
+        control={CustomCheckbox}
+        sx={{
+          ...ContainerTypesS[type],
+          ...ContainerSizesS[size],
+          width: 'max-content',
+          padding: '4px 8px 4px 4px',
+          border: '1px solid',
+          borderColor: isChecked && type === 'default' ? 'primary.dark' : 'grayscale.5',
+        }}
+        label={CkecboxLabel}
+      />
+    )
   );
 };
