@@ -31,3 +31,33 @@ export const DefaultIconTypesS = {
   error: { bgcolor: 'error.dark' },
   disabled: { bgcolor: 'grayscale.10' },
 };
+
+/* styles according to sizes */
+export const ChecboxSizesS = {
+  s: {
+    borderRadius: '4px',
+    width: '16px',
+    height: '16px',
+  },
+  m: {
+    borderRadius: '4px',
+    width: '20px',
+    height: '20px',
+  },
+  l: {
+    borderRadius: '6px',
+    width: '24px',
+    height: '24px',
+  },
+};
+export const CheckedIconSizesS = {
+  s: {
+    fontSize: '12px',
+  },
+  m: {
+    fontSize: '16px',
+  },
+  l: {
+    fontSize: '20px',
+  },
+};
