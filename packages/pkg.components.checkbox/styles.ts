@@ -1,4 +1,20 @@
 /* styles according to types */
+export const ContainerTypesS = {
+  default: { bgcolor: 'grayscale.5' },
+  warning: {
+    bgcolor: 'grayscale.5',
+  },
+  error: { bgcolor: 'grayscale.5' },
+  disabled: { bgcolor: 'grayscale.10' },
+};
+export const CheckedContainerTypesS = {
+  default: { border: '1px solid primary.dark' },
+  warning: {
+    bgcolor: '1px solid grayscale.5',
+  },
+  error: { bgcolor: '1px solid grayscale.5' },
+  disabled: { bgcolor: '1px solid grayscale.10' },
+};
 export const CheckboxTypesS = {
   default: { color: 'grayscale.40' },
   warning: {
@@ -24,24 +40,28 @@ export const CheckedIconTypesS = {
   disabled: { color: 'grayscale.40' },
 };
 export const DefaultIconTypesS = {
-  default: { border: '1px solid primary.dark' },
+  default: { borderColor: 'primary.dark', bgcolor: 'grayscale.0' },
   warning: {
-    bgcolor: 'warning.dark',
+    borderColor: 'warning.dark',
+    bgcolor: 'grayscale.0',
   },
-  error: { bgcolor: 'error.dark' },
-  disabled: { bgcolor: 'grayscale.10' },
+  error: { borderColor: 'error.dark', bgcolor: 'grayscale.0' },
+  disabled: { borderColor: 'grayscale.10', bgcolor: 'grayscale.10' },
 };
 
 /* styles according to sizes */
 export const ContainerSizesS = {
   s: {
     gap: '4px',
+    borderRadius: '4px',
   },
   m: {
     gap: '6px',
+    borderRadius: '6px',
   },
   l: {
     gap: '8px',
+    borderRadius: '8px',
   },
 };
 export const ChecboxSizesS = {

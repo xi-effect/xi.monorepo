@@ -2,9 +2,11 @@ import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui
 import { Check } from 'pkg.icons.check';
 
 import {
+  ContainerTypesS,
   CheckboxTypesS,
   CheckedCheckboxTypesS,
   CheckedIconTypesS,
+  DefaultIconTypesS,
   ContainerSizesS,
   ChecboxSizesS,
   CheckedIconSizesS,
@@ -33,11 +35,11 @@ export const Checkbox = ({
   const DefaultIcon = (
     <Box
       sx={{
+        ...DefaultIconTypesS[type],
+        border: '1px solid',
         width: '100%',
         height: '100%',
-        border: '1px solid',
         borderRadius: '4px',
-        borderColor: (type === 'disabled' && 'grayscale.10') || '',
       }}
     />
   );
@@ -60,9 +62,15 @@ export const Checkbox = ({
           checkedIcon={CheckedIcon}
           checked={isChecked}
           onChange={changeCheckedState}
+          disabled={type === 'disabled'}
         />
       }
-      sx={{ ...ContainerSizesS[size] }}
+      sx={{
+        ...ContainerTypesS[type],
+        ...ContainerSizesS[size],
+        width: 'max-content',
+        padding: '4px 8px 4px 4px',
+      }}
       label={CkecboxLabel}
     />
   );
