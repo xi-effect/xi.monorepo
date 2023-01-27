@@ -61,6 +61,7 @@
     "pkg.icons.hand": "*",
     "pkg.icons.home": "*",
     "pkg.icons.invite": "*",
+    "pkg.icons.minus": "*",
     "pkg.icons.maximize": "*",
     "pkg.icons.microphone": "*",
     "pkg.icons.notification": "*",

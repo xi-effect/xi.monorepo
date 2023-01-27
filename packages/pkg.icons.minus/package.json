@@ -1,5 +1,5 @@
 {
-  "name": "pkg.components.checkbox",
+  "name": "pkg.icons.minus",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -10,10 +10,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
-    "next": "^13.0.7",
-    "pkg.icons.check": "*",
-    "pkg.icons.minus": "*"
+    "@mui/material": "^5.11.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
@@ -23,8 +20,6 @@
     "react": "^18.2.0",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
-  },
-  "author": "",
-  "description": ""
+  }
 }
 
