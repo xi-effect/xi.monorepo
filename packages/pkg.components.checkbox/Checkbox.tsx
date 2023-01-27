@@ -14,9 +14,17 @@ type ChecboxSizes = 's' | 'm' | 'l';
 export type CheckboxProps = {
   size: ChecboxSizes;
   type?: CheckboxTypes;
+
+  isChecked?: boolean;
+  changeCheckedState: () => void;
 };
 
-export const Checkbox = ({ type = 'default', size }: CheckboxProps) => {
+export const Checkbox = ({
+  type = 'default',
+  size,
+  isChecked = false,
+  changeCheckedState,
+}: CheckboxProps) => {
   const DefaultIcon = (
     <Box
       sx={{
@@ -42,6 +50,8 @@ export const Checkbox = ({ type = 'default', size }: CheckboxProps) => {
           }}
           icon={DefaultIcon}
           checkedIcon={CheckedIcon}
+          checked={isChecked}
+          onChange={changeCheckedState}
         />
       }
       label=""
