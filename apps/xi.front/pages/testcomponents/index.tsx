@@ -3,14 +3,14 @@ import { Stack } from '@mui/material';
 import { Checkbox, CheckboxProps } from 'pkg.components.checkbox';
 
 const TestComponents = () => {
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const changeCheckedState = () => {
     setIsChecked((state) => !state);
   };
 
   const TestChecboxData: CheckboxProps = {
-    size: 'l',
-    icon: 'minus',
+    size: 's',
+    // icon: 'minus',
     type: 'warning',
     label: 'Label',
     isChecked,

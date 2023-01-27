@@ -53,11 +53,11 @@ export const DefaultIconTypesS = {
 export const ContainerSizesS = {
   s: {
     gap: '4px',
-    borderRadius: '4px',
+    borderRadius: '6px',
   },
   m: {
     gap: '6px',
-    borderRadius: '6px',
+    borderRadius: '8px',
   },
   l: {
     gap: '8px',
@@ -71,7 +71,7 @@ export const ChecboxSizesS = {
     height: '16px',
   },
   m: {
-    borderRadius: '4px',
+    borderRadius: '6px',
     width: '20px',
     height: '20px',
   },
