@@ -90,6 +90,7 @@ export const Checkbox = ({
           ...ContainerTypesS[type],
           ...ContainerSizesS[size],
           width: 'max-content',
+          height: 'max-content',
           padding: '4px 8px 4px 4px',
           border: '1px solid',
           borderColor: isChecked && type === 'default' ? 'primary.dark' : 'grayscale.5',

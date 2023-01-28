@@ -18,7 +18,7 @@ const TestComponents = () => {
   };
 
   return (
-    <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }}>
+    <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} direction="row">
       <Checkbox {...TestChecboxData} />
     </Stack>
   );
