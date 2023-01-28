@@ -58,6 +58,13 @@ export const getScheme = (mode: 'light' | 'dark') => ({
         },
       ],
     },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '40px',
+        },
+      },
+    },
   },
   typography: {
     htmlFontSize: 10,

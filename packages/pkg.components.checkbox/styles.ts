@@ -7,14 +7,6 @@ export const ContainerTypesS = {
   error: { bgcolor: 'grayscale.5' },
   disabled: { bgcolor: 'grayscale.10' },
 };
-export const CheckedContainerTypesS = {
-  default: { border: '1px solid primary.dark' },
-  warning: {
-    bgcolor: '1px solid grayscale.5',
-  },
-  error: { bgcolor: '1px solid grayscale.5' },
-  disabled: { bgcolor: '1px solid grayscale.10' },
-};
 export const CheckboxTypesS = {
   default: { color: 'grayscale.40' },
   warning: {
@@ -46,7 +38,7 @@ export const DefaultIconTypesS = {
     bgcolor: 'grayscale.0',
   },
   error: { borderColor: 'error.dark', bgcolor: 'grayscale.0' },
-  disabled: { borderColor: 'grayscale.10', bgcolor: 'grayscale.10' },
+  disabled: { borderColor: 'grayscale.10', bgcolor: 'grayscale.10', color: 'grayscale.10' },
 };
 
 /* styles according to sizes */
