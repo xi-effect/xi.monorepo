@@ -22,8 +22,10 @@ export type CheckboxProps = {
   size: ChecboxSizes;
   type?: CheckboxTypes;
   label?: string;
+  /* checbox checked icon */
   icon?: ChecboxIcons;
 
+  /* default checked state */
   isChecked?: boolean;
   changeCheckedState: () => void;
 };

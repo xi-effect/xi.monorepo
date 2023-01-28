@@ -1,3 +1,4 @@
+/* names created according to: component name + prop + style (S) */
 /* styles according to types */
 export const ContainerTypesS = {
   default: { bgcolor: 'grayscale.5' },
