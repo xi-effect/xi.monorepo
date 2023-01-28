@@ -12,8 +12,9 @@ import {
   buttonDisabled,
   getButtonPadding,
   getSpinnerPosition,
+  getSnackbarCurrentPosition,
 } from './styles';
-import { LoadingPosition, Size, Status, Variant } from './types';
+import { LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
 
 export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   size,
@@ -23,9 +24,11 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   isSnackbarIconStart,
   isSnackbarIconEnd,
   snackbarLoadingPosition = 'center',
+  snackbarPosition = 'right',
 }) => {
   const snackbarRef = useRef<HTMLDivElement>(null);
-  const [snackbarWidth, setSnackbarWidth] = useState(0);
+  const [snackbarSize, setSnackbarSize] = useState(0);
+  const snackbarCurrentPosition = getSnackbarCurrentPosition(snackbarSize, snackbarPosition);
   const spinnerPosition = getSpinnerPosition(
     !!snackbarText,
     isSnackbarIconStart,
@@ -39,10 +42,14 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   );
 
   useLayoutEffect(() => {
-    if (snackbarRef.current) {
-      setSnackbarWidth(snackbarRef.current.clientWidth);
+    if (!snackbarRef.current) return;
+    if (snackbarPosition === 'left' || snackbarPosition === 'right') {
+      setSnackbarSize(snackbarRef.current.clientWidth);
     }
-  }, []);
+    if (snackbarPosition === 'top' || snackbarPosition === 'bottom') {
+      setSnackbarSize(snackbarRef.current.clientHeight);
+    }
+  }, [snackbarPosition]);
 
   return (
     <Stack
@@ -51,8 +58,7 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
       alignItems="center"
       sx={{
         position: 'absolute',
-        top: 0,
-        right: `-${snackbarWidth + 16}px`,
+        ...snackbarCurrentPosition,
         ...buttonSizes[size],
         ...snackbarPadding[size],
         ...buttonDisabled[variant],
@@ -104,4 +110,5 @@ type ButtonSnackbarProps = {
   isSnackbarIconStart?: boolean;
   isSnackbarIconEnd?: boolean;
   snackbarLoadingPosition?: LoadingPosition;
+  snackbarPosition?: SnackbarPosition;
 };

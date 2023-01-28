@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Button as MuiButton, Stack } from '@mui/material';
 import { FC, FunctionComponent, MouseEvent, ButtonHTMLAttributes } from 'react';
 
-import { Color, LoadingPosition, Size, Status, Variant } from './types';
+import { Color, LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
 
 import {
   buttonVariantsColor,
@@ -38,6 +38,7 @@ export const Button: FC<ButtonProps> = ({
   isSnackbarIconStart,
   isSnackbarIconEnd,
   snackbarLoadingPosition,
+  snackbarPosition,
   ...props
 }) => {
   const StartIconComponent = startIcon as FunctionComponent<any>;
@@ -105,7 +106,7 @@ export const Button: FC<ButtonProps> = ({
             ...spinnerPosition[size],
           }}
         >
-          <CircularProgress size={spinnerSizes[size]} color="inherit" />
+          <CircularProgress size={spinnerSizes[size]} sx={{ color: '#707070' }} />
         </Stack>
       )}
 
@@ -139,6 +140,7 @@ export const Button: FC<ButtonProps> = ({
           isSnackbarIconStart={isSnackbarIconStart}
           isSnackbarIconEnd={isSnackbarIconEnd}
           snackbarLoadingPosition={snackbarLoadingPosition}
+          snackbarPosition={snackbarPosition}
         />
       )}
     </MuiButton>
@@ -176,5 +178,7 @@ type ButtonProps = {
   isSnackbarIconEnd?: boolean;
   // snackbar spinner position: icon above icon and center
   snackbarLoadingPosition?: LoadingPosition;
+  // snackbar position: default right
+  snackbarPosition?: SnackbarPosition;
   // you can also pass the default attributes of the button
 } & ButtonHTMLAttributes<HTMLButtonElement>;

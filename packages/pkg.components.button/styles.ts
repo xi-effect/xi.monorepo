@@ -1,4 +1,4 @@
-import { LoadingPosition, Status } from './types';
+import { LoadingPosition, SnackbarPosition, Status } from './types';
 
 export const buttonSizes = {
   large: {
@@ -264,4 +264,18 @@ export const getSpinnerPosition = (
 export const getIconOpacity = (status: Status) => {
   if (status === 'pending' || status === 'completed') return 0;
   return 1;
+};
+
+export const getSnackbarCurrentPosition = (snackbarSize: number, position: SnackbarPosition) => {
+  switch (position) {
+    case 'top':
+      return { top: `-${snackbarSize + 8}px`, right: '50%', transform: 'translateX(50%)' };
+    case 'bottom':
+      return { bottom: `-${snackbarSize + 8}px`, right: '50%', transform: 'translateX(50%)' };
+    case 'left':
+      return { left: `-${snackbarSize + 16}px`, top: 0 };
+    default: {
+      return { right: `-${snackbarSize + 16}px` };
+    }
+  }
 };
