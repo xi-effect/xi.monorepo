@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
 import { Check } from 'pkg.icons.check';
 import { Minus } from 'pkg.icons.minus';
@@ -35,6 +36,14 @@ export const Checkbox = ({
   isChecked = false,
   changeCheckedState,
 }: CheckboxProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const onHover = () => {
+    setIsHovered(true);
+  };
+  const onOutOfHover = () => {
+    setIsHovered(false);
+  };
+
   /* icons */
   const DefaultIcon = (
     <Box
@@ -44,6 +53,8 @@ export const Checkbox = ({
         width: '100%',
         height: '100%',
         borderRadius: '4px',
+        transition: '0.3s',
+        bgcolor: isHovered && type !== 'disabled' ? 'grayscale.5' : DefaultIconTypesS[type].bgcolor,
       }}
     />
   );
@@ -82,8 +93,13 @@ export const Checkbox = ({
           padding: '4px 8px 4px 4px',
           border: '1px solid',
           borderColor: isChecked && type === 'default' ? 'primary.dark' : 'grayscale.5',
+          transition: '0.3s',
+          bgcolor:
+            isHovered && type !== 'disabled' ? 'grayscale.10' : ContainerTypesS[type].bgcolor,
         }}
         label={CkecboxLabel}
+        onMouseEnter={onHover}
+        onMouseLeave={onOutOfHover}
       />
     )
   );

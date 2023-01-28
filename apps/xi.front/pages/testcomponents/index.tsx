@@ -11,7 +11,7 @@ const TestComponents = () => {
   const TestChecboxData: CheckboxProps = {
     size: 'l',
     // icon: 'minus',
-    type: 'disabled',
+    type: 'warning',
     label: 'Label',
     isChecked,
     changeCheckedState,
