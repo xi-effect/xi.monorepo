@@ -97,6 +97,7 @@ export const Checkbox = ({
           transition: '0.3s',
           bgcolor:
             isHovered && type !== 'disabled' ? 'grayscale.10' : ContainerTypesS[type].bgcolor,
+          m: 0,
         }}
         label={CkecboxLabel}
         onMouseEnter={onHover}
