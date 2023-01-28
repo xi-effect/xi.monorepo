@@ -24,7 +24,7 @@ const TestComponents = () => {
     size: 'l',
     icon: 'minus',
     // type: 'warning',
-    label: 'Label',
+    // label: 'Label',
     isChecked: isChecked1,
     changeCheckedState: changeCheckedState1,
   };
@@ -32,7 +32,7 @@ const TestComponents = () => {
     size: 'l',
     // icon: 'minus',
     type: 'warning',
-    label: 'Label',
+    // label: 'Label',
     isChecked: isChecked2,
     changeCheckedState: changeCheckedState2,
   };
@@ -40,7 +40,7 @@ const TestComponents = () => {
     size: 'l',
     // icon: 'minus',
     type: 'error',
-    label: 'Label',
+    // label: 'Label',
     isChecked: isChecked3,
     changeCheckedState: changeCheckedState3,
   };
@@ -48,7 +48,7 @@ const TestComponents = () => {
     size: 'l',
     // icon: 'minus',
     type: 'disabled',
-    label: 'Label',
+    // label: 'Label',
     isChecked: isChecked4,
     changeCheckedState: changeCheckedState4,
   };
