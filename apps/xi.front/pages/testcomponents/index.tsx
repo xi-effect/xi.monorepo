@@ -10,10 +10,12 @@ const TestLink1: LinkProps = {
 const TestLink2: LinkProps = {
   text: 'Ссылка',
   size: 'm',
+  color: 'primary.main',
 };
 const TestLink3: LinkProps = {
   text: 'Ссылка',
   size: 's',
+  color: 'error.dark',
 };
 
 const TestComponents = () => (
