@@ -5,13 +5,14 @@ import { LinkSizesS, IconSizesS, TextSizesS } from './styles';
 
 type LinkSizes = 's' | 'm' | 'l';
 export type LinkProps = {
+  link: string;
   text: string;
   size: LinkSizes;
   isDisabled?: boolean;
   color?: string;
 };
 
-export const Link = ({ text, size, isDisabled, color = 'grayscale.90' }: LinkProps) => (
+export const Link = ({ link, text, size, isDisabled, color = 'grayscale.90' }: LinkProps) => (
   <MuiLink
     sx={{
       ...LinkSizesS[size],
@@ -20,6 +21,7 @@ export const Link = ({ text, size, isDisabled, color = 'grayscale.90' }: LinkPro
       textDecoration: 'underline',
       cursor: 'pointer',
     }}
+    href={link}
   >
     <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
       <LinkIcon viewBox="0 0 16 16" sx={{ ...IconSizesS[size] }} />

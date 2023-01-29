@@ -3,16 +3,19 @@ import { Stack } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
 
 const TestLink1: LinkProps = {
+  link: 'https://images.google.com/',
   text: 'Ссылка',
   size: 'l',
   isDisabled: true,
 };
 const TestLink2: LinkProps = {
+  link: 'https://images.google.com/',
   text: 'Ссылка',
   size: 'm',
   color: 'primary.main',
 };
 const TestLink3: LinkProps = {
+  link: 'https://images.google.com/',
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
