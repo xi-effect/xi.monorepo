@@ -1,5 +1,13 @@
-import { Stack } from '@mui/material';
+import { Link as MuiLink, Stack, Typography } from '@mui/material';
 
-export type LinkProps = {};
+export type LinkProps = {
+  text: string;
+};
 
-export const Link = () => <Stack>Test</Stack>;
+export const Link = ({ text }: LinkProps) => (
+  <MuiLink>
+    <Stack direction="row">
+      <Typography>{text}</Typography>
+    </Stack>
+  </MuiLink>
+);
