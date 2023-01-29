@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
+import { Arrow } from 'pkg.icons.arrow';
 
 const TestLink1: LinkProps = {
   link: 'https://images.google.com/',
@@ -19,6 +20,7 @@ const TestLink3: LinkProps = {
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
+  CustomIcon: Arrow,
 };
 
 const TestComponents = () => (

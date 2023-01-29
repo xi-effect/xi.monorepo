@@ -10,9 +10,17 @@ export type LinkProps = {
   size: LinkSizes;
   isDisabled?: boolean;
   color?: string;
+  CustomIcon?: any;
 };
 
-export const Link = ({ link, text, size, isDisabled, color = 'grayscale.90' }: LinkProps) => (
+export const Link = ({
+  link,
+  text,
+  size,
+  isDisabled,
+  color = 'grayscale.90',
+  CustomIcon,
+}: LinkProps) => (
   <MuiLink
     sx={{
       ...LinkSizesS[size],
@@ -24,7 +32,9 @@ export const Link = ({ link, text, size, isDisabled, color = 'grayscale.90' }: L
     href={link}
   >
     <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
-      <LinkIcon viewBox="0 0 16 16" sx={{ ...IconSizesS[size] }} />
+      {(!!CustomIcon && <CustomIcon sx={{ ...IconSizesS[size] }} />) || (
+        <LinkIcon viewBox="0 0 16 16" sx={{ ...IconSizesS[size] }} />
+      )}
       <Typography sx={{ ...TextSizesS[size] }}>{text}</Typography>
     </Stack>
   </MuiLink>
