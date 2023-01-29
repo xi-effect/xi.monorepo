@@ -5,6 +5,7 @@ import { Link, LinkProps } from 'pkg.components.link';
 const TestLink1: LinkProps = {
   text: 'Ссылка',
   size: 'l',
+  isDisabled: true,
 };
 const TestLink2: LinkProps = {
   text: 'Ссылка',
