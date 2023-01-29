@@ -14,13 +14,14 @@ const TestLink2: LinkProps = {
   text: 'Ссылка',
   size: 'm',
   color: 'primary.main',
+  Icon: true,
 };
 const TestLink3: LinkProps = {
   link: 'https://images.google.com/',
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
-  CustomIcon: Arrow,
+  Icon: Arrow,
 };
 
 const TestComponents = () => (
