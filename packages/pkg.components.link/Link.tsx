@@ -14,9 +14,7 @@ export type LinkProps = {
   Icon?: any | boolean;
   /* styles when link was visited */
   visitedStyles?: any;
-  /* styles when link is focused */
-  focusedStyles?: any;
-  /* styles when link is hovered */
+  /* styles when link is hovered or focused */
   hoverStyles?: any;
   hideUnderline?: boolean;
 };
@@ -29,7 +27,6 @@ export const Link = ({
   color = 'grayscale.90',
   Icon = 'false',
   visitedStyles = '',
-  focusedStyles = '',
   hoverStyles = '',
   hideUnderline = false,
 }: LinkProps) => {
@@ -58,7 +55,7 @@ export const Link = ({
           ...visitedStyles,
         },
         '&:focus': {
-          ...focusedStyles,
+          ...hoverStyles,
           outline: 'none',
           textDecoration: 'underline',
         },
