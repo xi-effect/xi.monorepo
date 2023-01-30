@@ -33,6 +33,7 @@
     "next-sitemap": "^3.1.42",
     "notistack": "^3.0.0-alpha.11",
     "npm": "^9.2.0",
+    "pkg.components.switcher": "*",
     "pkg.components.loading": "*",
     "pkg.components.scroll": "*",
     "pkg.data.avatar": "*",
