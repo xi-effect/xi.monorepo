@@ -7,6 +7,7 @@ const TestComponents = () => {
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
   const [isChecked4, setIsChecked4] = useState(false);
+
   const changeCheckedState1 = () => {
     setIsChecked1((state) => !state);
   };

@@ -15,16 +15,14 @@ import {
   labelSizes,
 } from './styles';
 
-type CheckboxTypes = 'warning' | 'error' | 'disabled' | 'default';
-type ChecboxSizes = 's' | 'm' | 'l';
-type ChecboxIcons = 'check' | 'minus';
+import { ChecboxSizes, CheckboxTypes, ChecboxIcons } from './types';
+
 export type CheckboxProps = {
   size: ChecboxSizes;
   type?: CheckboxTypes;
   label?: string;
   /* checbox checked icon */
   icon?: ChecboxIcons;
-
   /* default checked state */
   isChecked?: boolean;
   handleChecboxChange: () => void;
@@ -39,6 +37,7 @@ export const Checkbox = ({
   handleChecboxChange,
 }: CheckboxProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
   const onHover = () => {
     setIsHovered(true);
   };
