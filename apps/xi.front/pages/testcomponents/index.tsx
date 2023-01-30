@@ -1,16 +1,28 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
-import { Arrow } from 'pkg.icons.arrow';
+
+const testLongAction = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('test long action');
+      resolve('test long action');
+    }, 5000);
+  });
+
+const testShortAction = () => {
+  console.log('test short action');
+};
 
 const TestLink1: LinkProps = {
-  link: 'https://github.com/',
+  action: 'https://github.com/',
   text: 'Ссылка',
   size: 'l',
+  Icon: true,
   isDisabled: true,
 };
 const TestLink2: LinkProps = {
-  link: 'https://images.google.com/',
+  action: testShortAction,
   text: 'Ссылка',
   size: 'm',
   color: 'primary.main',
@@ -20,11 +32,11 @@ const TestLink2: LinkProps = {
   },
 };
 const TestLink3: LinkProps = {
-  link: 'https://github.com/',
+  action: testLongAction,
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
-  Icon: Arrow,
+  Icon: true,
   hideUnderline: true,
 };
 

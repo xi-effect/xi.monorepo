@@ -1,11 +1,14 @@
 import { Link as MuiLink, Stack, Typography } from '@mui/material';
 import { Link as LinkIcon } from 'pkg.icons.link';
+import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { linkSizes, iconSizes, textSizes } from './styles';
 
 type LinkSizes = 's' | 'm' | 'l';
 export type LinkProps = {
-  link: string;
+  /* action or link */
+  action: (() => any | Promise<any>) | string;
   text: string;
   size: LinkSizes;
   isDisabled?: boolean;
@@ -20,7 +23,7 @@ export type LinkProps = {
 };
 
 export const Link = ({
-  link,
+  action,
   text,
   size,
   isDisabled,
@@ -30,6 +33,7 @@ export const Link = ({
   hoverStyles = '',
   hideUnderline = false,
 }: LinkProps) => {
+  const [waitingAction, setWaitingAction] = useState(false);
   /*
     Icon === false => Link without icon
     Icon === true => default icon
@@ -39,6 +43,16 @@ export const Link = ({
     ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...iconSizes[size] }} />) || '')) || (
     <Icon sx={{ ...iconSizes[size] }} />
   );
+
+  const isLink = typeof action === 'string';
+
+  const handleAction = async () => {
+    if (!isLink) {
+      setWaitingAction(true);
+      await action();
+      setWaitingAction(false);
+    }
+  };
 
   return (
     <MuiLink
@@ -64,11 +78,16 @@ export const Link = ({
           textDecoration: 'underline',
         },
       }}
-      href={link}
-      target="_blank"
+      href={isLink ? action : '#'}
+      target={isLink ? '_blank' : ''}
+      onClick={() => !isLink && handleAction()}
     >
       <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
-        {CustomIcon}
+        {waitingAction ? (
+          <CircularProgress sx={{ color }} size={iconSizes[size].fontSize} />
+        ) : (
+          CustomIcon
+        )}
         <Typography sx={{ ...textSizes[size] }}>{text}</Typography>
       </Stack>
     </MuiLink>
