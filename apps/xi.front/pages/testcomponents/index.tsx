@@ -4,7 +4,7 @@ import { Link, LinkProps } from 'pkg.components.link';
 import { Arrow } from 'pkg.icons.arrow';
 
 const TestLink1: LinkProps = {
-  link: 'https://images.google.com/',
+  link: 'https://github.com/',
   text: 'Ссылка',
   size: 'l',
   isDisabled: true,
@@ -15,9 +15,12 @@ const TestLink2: LinkProps = {
   size: 'm',
   color: 'primary.main',
   Icon: true,
+  visitedStyles: {
+    color: 'orange',
+  },
 };
 const TestLink3: LinkProps = {
-  link: 'https://images.google.com/',
+  link: 'https://github.com/',
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',

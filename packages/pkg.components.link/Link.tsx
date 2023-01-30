@@ -1,7 +1,7 @@
 import { Link as MuiLink, Stack, Typography } from '@mui/material';
 import { Link as LinkIcon } from 'pkg.icons.link';
 
-import { LinkSizesS, IconSizesS, TextSizesS } from './styles';
+import { linkSizes, iconSizes, textSizes } from './styles';
 
 type LinkSizes = 's' | 'm' | 'l';
 export type LinkProps = {
@@ -12,6 +12,12 @@ export type LinkProps = {
   color?: string;
   /* Icon component | If true => default icon | false or undefined => without icon */
   Icon?: any | boolean;
+  /* styles when link was visited */
+  visitedStyles?: any;
+  /* styles when link is focused */
+  focusedStyles?: any;
+  /* styles when link is hovered */
+  hoverStyles?: any;
 };
 
 export const Link = ({
@@ -21,26 +27,41 @@ export const Link = ({
   isDisabled,
   color = 'grayscale.90',
   Icon = 'false',
+  visitedStyles = '',
+  focusedStyles = '',
+  hoverStyles = '',
 }: LinkProps) => {
   const CustomIcon = (typeof Icon === 'boolean' &&
-    ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...IconSizesS[size] }} />) || '')) || (
-    <Icon sx={{ ...IconSizesS[size] }} />
+    ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...iconSizes[size] }} />) || '')) || (
+    <Icon sx={{ ...iconSizes[size] }} />
   );
 
   return (
     <MuiLink
       sx={{
-        ...LinkSizesS[size],
+        ...linkSizes[size],
         pointerEvents: isDisabled ? 'none' : 'auto',
         color: isDisabled ? 'grayscale.40' : color,
         textDecoration: 'underline',
+        width: 'max-content',
+        height: 'max-content',
         cursor: 'pointer',
+        '&:visited': {
+          ...visitedStyles,
+        },
+        '&:focus': {
+          ...focusedStyles,
+          outline: 'none',
+        },
+        '&:hover': {
+          ...hoverStyles,
+        },
       }}
       href={link}
     >
       <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
         {CustomIcon}
-        <Typography sx={{ ...TextSizesS[size] }}>{text}</Typography>
+        <Typography sx={{ ...textSizes[size] }}>{text}</Typography>
       </Stack>
     </MuiLink>
   );

@@ -1,5 +1,5 @@
 /* styles by size */
-export const LinkSizesS = {
+export const linkSizes = {
   s: {
     textUnderlineOffset: '3px',
   },
@@ -10,7 +10,7 @@ export const LinkSizesS = {
     textUnderlineOffset: '4px',
   },
 };
-export const IconSizesS = {
+export const iconSizes = {
   s: {
     fontSize: '10px',
   },
@@ -21,7 +21,7 @@ export const IconSizesS = {
     fontSize: '16px',
   },
 };
-export const TextSizesS = {
+export const textSizes = {
   s: {
     fontSize: '12px',
   },
