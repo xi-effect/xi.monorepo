@@ -55,7 +55,7 @@ const CommunityMenu = observer(
         <MenuItem
           sx={{ width: '100%' }}
           onClick={() => {
-            uiSt.setDialogs('communitySettings', true);
+            uiSt.setDialogs('communityProfile', true);
             uiSt.setDialogs('communityMenu', false);
           }}
         >

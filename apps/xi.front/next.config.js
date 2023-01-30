@@ -66,6 +66,7 @@ const nextConfig = {
     'pkg.icons.send',
     'pkg.icons.settings',
     'pkg.icons.task',
+    'pkg.icons.trash',
     'pkg.icons.users',
     'pkg.icons.copy',
     'pkg.icons.updates',
