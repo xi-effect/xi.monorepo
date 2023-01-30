@@ -1,6 +1,6 @@
 /* names created according to: component name + prop + style (S) */
 /* styles according to types */
-export const ContainerTypesS = {
+export const containerTypes = {
   default: { bgcolor: 'grayscale.5' },
   warning: {
     bgcolor: 'grayscale.5',
@@ -8,7 +8,7 @@ export const ContainerTypesS = {
   error: { bgcolor: 'grayscale.5' },
   disabled: { bgcolor: 'grayscale.10' },
 };
-export const CheckboxTypesS = {
+export const checkboxTypes = {
   default: { color: 'grayscale.40' },
   warning: {
     color: 'warning.dark',
@@ -16,7 +16,7 @@ export const CheckboxTypesS = {
   error: { color: 'error.dark' },
   disabled: { color: 'grayscale.10' },
 };
-export const CheckedCheckboxTypesS = {
+export const checkedCheckboxTypes = {
   default: { bgcolor: 'primary.dark' },
   warning: {
     bgcolor: 'warning.dark',
@@ -24,7 +24,7 @@ export const CheckedCheckboxTypesS = {
   error: { bgcolor: 'error.dark' },
   disabled: { bgcolor: 'grayscale.10' },
 };
-export const CheckedIconTypesS = {
+export const checkedIconTypes = {
   default: { color: 'grayscale.0' },
   warning: {
     color: 'grayscale.0',
@@ -32,7 +32,7 @@ export const CheckedIconTypesS = {
   error: { color: 'grayscale.0' },
   disabled: { color: 'grayscale.40' },
 };
-export const DefaultIconTypesS = {
+export const defaultIconTypes = {
   default: { borderColor: 'primary.dark', bgcolor: 'grayscale.0' },
   warning: {
     borderColor: 'warning.dark',
@@ -43,7 +43,7 @@ export const DefaultIconTypesS = {
 };
 
 /* styles according to sizes */
-export const ContainerSizesS = {
+export const containerSizes = {
   s: {
     gap: '4px',
     borderRadius: '6px',
@@ -57,7 +57,7 @@ export const ContainerSizesS = {
     borderRadius: '8px',
   },
 };
-export const ChecboxSizesS = {
+export const checboxSizes = {
   s: {
     borderRadius: '4px',
     width: '16px',
@@ -74,7 +74,7 @@ export const ChecboxSizesS = {
     height: '24px',
   },
 };
-export const CheckedIconSizesS = {
+export const checkedIconSizes = {
   s: {
     fontSize: '12px',
   },
@@ -85,7 +85,7 @@ export const CheckedIconSizesS = {
     fontSize: '20px',
   },
 };
-export const LabelSizesS = {
+export const labelSizes = {
   s: {
     fontSize: '12px',
   },

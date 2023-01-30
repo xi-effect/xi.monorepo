@@ -26,7 +26,7 @@ const TestComponents = () => {
     // type: 'warning',
     // label: 'Label',
     isChecked: isChecked1,
-    changeCheckedState: changeCheckedState1,
+    handleChecboxChange: changeCheckedState1,
   };
   const TestChecbox2: CheckboxProps = {
     size: 'l',
@@ -34,7 +34,7 @@ const TestComponents = () => {
     type: 'warning',
     // label: 'Label',
     isChecked: isChecked2,
-    changeCheckedState: changeCheckedState2,
+    handleChecboxChange: changeCheckedState2,
   };
   const TestChecbox3: CheckboxProps = {
     size: 'l',
@@ -42,7 +42,7 @@ const TestComponents = () => {
     type: 'error',
     // label: 'Label',
     isChecked: isChecked3,
-    changeCheckedState: changeCheckedState3,
+    handleChecboxChange: changeCheckedState3,
   };
   const TestChecbox4: CheckboxProps = {
     size: 'l',
@@ -50,7 +50,7 @@ const TestComponents = () => {
     type: 'disabled',
     // label: 'Label',
     isChecked: isChecked4,
-    changeCheckedState: changeCheckedState4,
+    handleChecboxChange: changeCheckedState4,
   };
 
   return (

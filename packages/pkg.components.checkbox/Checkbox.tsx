@@ -4,15 +4,15 @@ import { Check } from 'pkg.icons.check';
 import { Minus } from 'pkg.icons.minus';
 
 import {
-  ContainerTypesS,
-  CheckboxTypesS,
-  CheckedCheckboxTypesS,
-  CheckedIconTypesS,
-  DefaultIconTypesS,
-  ContainerSizesS,
-  ChecboxSizesS,
-  CheckedIconSizesS,
-  LabelSizesS,
+  containerTypes,
+  checkboxTypes,
+  checkedCheckboxTypes,
+  checkedIconTypes,
+  defaultIconTypes,
+  containerSizes,
+  checboxSizes,
+  checkedIconSizes,
+  labelSizes,
 } from './styles';
 
 type CheckboxTypes = 'warning' | 'error' | 'disabled' | 'default';
@@ -27,7 +27,7 @@ export type CheckboxProps = {
 
   /* default checked state */
   isChecked?: boolean;
-  changeCheckedState: () => void;
+  handleChecboxChange: () => void;
 };
 
 export const Checkbox = ({
@@ -36,7 +36,7 @@ export const Checkbox = ({
   label = '',
   icon = 'check',
   isChecked = false,
-  changeCheckedState,
+  handleChecboxChange,
 }: CheckboxProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const onHover = () => {
@@ -50,36 +50,36 @@ export const Checkbox = ({
   const DefaultIcon = (
     <Box
       sx={{
-        ...DefaultIconTypesS[type],
+        ...defaultIconTypes[type],
         border: '1px solid',
         width: '100%',
         height: '100%',
         borderRadius: '4px',
         transition: '0.3s',
-        bgcolor: isHovered && type !== 'disabled' ? 'grayscale.5' : DefaultIconTypesS[type].bgcolor,
+        bgcolor: isHovered && type !== 'disabled' ? 'grayscale.5' : defaultIconTypes[type].bgcolor,
       }}
     />
   );
-  const CheckIcon = <Check sx={{ ...CheckedIconTypesS[type], ...CheckedIconSizesS[size] }} />;
-  const MinusIcon = <Minus sx={{ ...CheckedIconTypesS[type], ...CheckedIconSizesS[size] }} />;
+  const CheckIcon = <Check sx={{ ...checkedIconTypes[type], ...checkedIconSizes[size] }} />;
+  const MinusIcon = <Minus sx={{ ...checkedIconTypes[type], ...checkedIconSizes[size] }} />;
   const CheckedIcon = icon === 'check' ? CheckIcon : MinusIcon;
 
   /* label */
-  const CkecboxLabel = <Typography sx={{ ...LabelSizesS[size] }}>{label}</Typography>;
+  const CkecboxLabel = <Typography sx={{ ...labelSizes[size] }}>{label}</Typography>;
 
   /* checkbox */
   const CustomCheckbox = (
     <MuiCheckbox
       sx={{
-        ...CheckboxTypesS[type],
-        '&.Mui-checked': { ...CheckedCheckboxTypesS[type], borderRadius: '4px' },
-        ...ChecboxSizesS[size],
+        ...checkboxTypes[type],
+        '&.Mui-checked': { ...checkedCheckboxTypes[type], borderRadius: '4px' },
+        ...checboxSizes[size],
         padding: 0,
       }}
       icon={DefaultIcon}
       checkedIcon={CheckedIcon}
       checked={isChecked}
-      onChange={changeCheckedState}
+      onChange={handleChecboxChange}
       disabled={type === 'disabled'}
     />
   );
@@ -89,16 +89,15 @@ export const Checkbox = ({
       <FormControlLabel
         control={CustomCheckbox}
         sx={{
-          ...ContainerTypesS[type],
-          ...ContainerSizesS[size],
+          ...containerTypes[type],
+          ...containerSizes[size],
           width: 'max-content',
           height: 'max-content',
           padding: '4px 8px 4px 4px',
           border: '1px solid',
           borderColor: isChecked && type === 'default' ? 'primary.dark' : 'grayscale.5',
           transition: '0.3s',
-          bgcolor:
-            isHovered && type !== 'disabled' ? 'grayscale.10' : ContainerTypesS[type].bgcolor,
+          bgcolor: isHovered && type !== 'disabled' ? 'grayscale.10' : containerTypes[type].bgcolor,
           m: 0,
         }}
         label={CkecboxLabel}
