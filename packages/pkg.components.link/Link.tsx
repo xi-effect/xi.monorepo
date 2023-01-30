@@ -58,6 +58,7 @@ export const Link = ({
         },
       }}
       href={link}
+      target="_blank"
     >
       <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
         {CustomIcon}
