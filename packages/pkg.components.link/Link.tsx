@@ -1,10 +1,10 @@
 import { Link as MuiLink, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { linkSizes, iconSizes, textSizes } from './styles';
+import { LinkSizes } from './types';
 
-type LinkSizes = 's' | 'm' | 'l';
 export type LinkProps = {
   /* action or link */
   action: (() => any | Promise<any>) | string;
@@ -42,8 +42,9 @@ export const Link = ({
 
   const isLink = typeof action === 'string';
 
-  const handleAction = async () => {
+  const handleAction = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (!isLink) {
+      event.preventDefault();
       setWaitingAction(true);
       await action();
       setWaitingAction(false);
@@ -76,7 +77,7 @@ export const Link = ({
       }}
       href={isLink ? action : '#'}
       target={isLink ? '_blank' : ''}
-      onClick={() => !isLink && handleAction()}
+      onClick={(e) => handleAction(e)}
     >
       <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
         {CustomIcon}

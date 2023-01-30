@@ -20,7 +20,7 @@ const TestLink1: LinkProps = {
   text: 'Ссылка',
   size: 'l',
   Icon: LinkIcon,
-  isDisabled: true,
+  // isDisabled: true,
 };
 const TestLink2: LinkProps = {
   action: testShortAction,
