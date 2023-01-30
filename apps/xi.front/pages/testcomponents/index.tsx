@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
+import { Link as LinkIcon } from 'pkg.icons.link';
 
 const testLongAction = () =>
   new Promise((resolve) => {
@@ -18,7 +19,7 @@ const TestLink1: LinkProps = {
   action: 'https://github.com/',
   text: 'Ссылка',
   size: 'l',
-  Icon: true,
+  Icon: LinkIcon,
   isDisabled: true,
 };
 const TestLink2: LinkProps = {
@@ -26,7 +27,6 @@ const TestLink2: LinkProps = {
   text: 'Ссылка',
   size: 'm',
   color: 'primary.main',
-  Icon: true,
   visitedStyles: {
     color: 'primary.dark',
   },
@@ -36,7 +36,7 @@ const TestLink3: LinkProps = {
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
-  Icon: true,
+  Icon: LinkIcon,
   hideUnderline: true,
 };
 

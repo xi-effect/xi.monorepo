@@ -1,5 +1,4 @@
 import { Link as MuiLink, Stack, Typography } from '@mui/material';
-import { Link as LinkIcon } from 'pkg.icons.link';
 import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -13,8 +12,7 @@ export type LinkProps = {
   size: LinkSizes;
   isDisabled?: boolean;
   color?: string;
-  /* Icon component | If true => default icon | false or undefined => without icon */
-  Icon?: any | boolean;
+  Icon?: any;
   /* styles when link was visited */
   visitedStyles?: any;
   /* styles when link is hovered or focused */
@@ -28,21 +26,19 @@ export const Link = ({
   size,
   isDisabled,
   color = 'grayscale.90',
-  Icon = 'false',
+  Icon,
   visitedStyles = '',
   hoverStyles = '',
   hideUnderline = false,
 }: LinkProps) => {
   const [waitingAction, setWaitingAction] = useState(false);
-  /*
-    Icon === false => Link without icon
-    Icon === true => default icon
-    Icon === component => custom icon
-  */
-  const CustomIcon = (typeof Icon === 'boolean' &&
-    ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...iconSizes[size] }} />) || '')) || (
-    <Icon sx={{ ...iconSizes[size] }} />
-  );
+
+  const CustomIcon =
+    (!!Icon && waitingAction && (
+      <CircularProgress sx={{ color }} size={iconSizes[size].fontSize} />
+    )) ||
+    (!!Icon && <Icon sx={{ ...iconSizes[size] }} />) ||
+    '';
 
   const isLink = typeof action === 'string';
 
@@ -83,11 +79,7 @@ export const Link = ({
       onClick={() => !isLink && handleAction()}
     >
       <Stack direction="row" alignItems="center" spacing={(size === 'l' && 0.5) || 0.25}>
-        {waitingAction ? (
-          <CircularProgress sx={{ color }} size={iconSizes[size].fontSize} />
-        ) : (
-          CustomIcon
-        )}
+        {CustomIcon}
         <Typography sx={{ ...textSizes[size] }}>{text}</Typography>
       </Stack>
     </MuiLink>
