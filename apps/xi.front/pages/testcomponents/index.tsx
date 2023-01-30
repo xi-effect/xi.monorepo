@@ -16,7 +16,7 @@ const TestLink2: LinkProps = {
   color: 'primary.main',
   Icon: true,
   visitedStyles: {
-    color: 'orange',
+    color: 'primary.dark',
   },
 };
 const TestLink3: LinkProps = {

@@ -33,6 +33,11 @@ export const Link = ({
   hoverStyles = '',
   hideUnderline = false,
 }: LinkProps) => {
+  /*
+    Icon === false => Link without icon
+    Icon === true => default icon
+    Icon === component => custom icon
+  */
   const CustomIcon = (typeof Icon === 'boolean' &&
     ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...iconSizes[size] }} />) || '')) || (
     <Icon sx={{ ...iconSizes[size] }} />
@@ -48,6 +53,7 @@ export const Link = ({
         width: 'max-content',
         height: 'max-content',
         cursor: 'pointer',
+        transition: '0.3s',
         '&:visited': {
           ...visitedStyles,
         },
