@@ -18,6 +18,7 @@ export type LinkProps = {
   focusedStyles?: any;
   /* styles when link is hovered */
   hoverStyles?: any;
+  hideUnderline?: boolean;
 };
 
 export const Link = ({
@@ -30,6 +31,7 @@ export const Link = ({
   visitedStyles = '',
   focusedStyles = '',
   hoverStyles = '',
+  hideUnderline = false,
 }: LinkProps) => {
   const CustomIcon = (typeof Icon === 'boolean' &&
     ((Icon && <LinkIcon viewBox="0 0 16 16" sx={{ ...iconSizes[size] }} />) || '')) || (
@@ -42,7 +44,7 @@ export const Link = ({
         ...linkSizes[size],
         pointerEvents: isDisabled ? 'none' : 'auto',
         color: isDisabled ? 'grayscale.40' : color,
-        textDecoration: 'underline',
+        textDecoration: hideUnderline ? 'none' : 'underline',
         width: 'max-content',
         height: 'max-content',
         cursor: 'pointer',
@@ -52,9 +54,11 @@ export const Link = ({
         '&:focus': {
           ...focusedStyles,
           outline: 'none',
+          textDecoration: 'underline',
         },
         '&:hover': {
           ...hoverStyles,
+          textDecoration: 'underline',
         },
       }}
       href={link}

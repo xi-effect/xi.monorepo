@@ -25,6 +25,7 @@ const TestLink3: LinkProps = {
   size: 's',
   color: 'error.dark',
   Icon: Arrow,
+  hideUnderline: true,
 };
 
 const TestComponents = () => (
