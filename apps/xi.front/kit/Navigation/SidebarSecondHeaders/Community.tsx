@@ -20,6 +20,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CloseIcon from '@mui/icons-material/Close';
 
 import CommunityMenu from 'kit/CommunityMenu';
+import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
 import { useStore } from 'store/connect';
 
 const Community = observer(() => {
@@ -59,7 +60,7 @@ const Community = observer(() => {
   const prevOpen = React.useRef(open);
 
   React.useEffect(() => {
-    if (anchorRef && anchorRef.current && prevOpen.current === true && open === false) {
+    if (anchorRef && anchorRef.current && prevOpen.current && !open) {
       anchorRef.current.focus();
     }
 
@@ -147,6 +148,7 @@ const Community = observer(() => {
                     handleListKeyDown={handleListKeyDown}
                     handleClose={handleClose}
                   />
+                  <DialogChannelCreation />
                 </Box>
               </ClickAwayListener>
             </Paper>

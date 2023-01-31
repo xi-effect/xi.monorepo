@@ -82,6 +82,7 @@ const CommunityMenu = observer(
           sx={{ width: '100%' }}
           onClick={() => {
             uiSt.setDialogs('channelCreation', true);
+
             if (setOpen) setOpen(false);
           }}
         >
