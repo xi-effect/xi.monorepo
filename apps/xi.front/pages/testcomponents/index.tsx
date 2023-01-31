@@ -2,6 +2,7 @@ import React from 'react';
 import { Stack } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
 import { Link as LinkIcon } from 'pkg.icons.link';
+import { Arrow } from 'pkg.icons.arrow';
 
 const testLongAction = () =>
   new Promise((resolve) => {
@@ -20,7 +21,7 @@ const TestLink1: LinkProps = {
   text: 'Ссылка',
   size: 'l',
   Icon: LinkIcon,
-  // isDisabled: true,
+  isDisabled: true,
 };
 const TestLink2: LinkProps = {
   action: testShortAction,
@@ -40,13 +41,14 @@ const TestLink3: LinkProps = {
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
+  Icon: Arrow,
   hideUnderline: true,
 };
 
 const TestComponents = () => (
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }}>
-    <Link {...TestLink1} />
     <Link {...TestLink2} />
+    <Link {...TestLink1} />
     <Link {...TestLink3} />
   </Stack>
 );

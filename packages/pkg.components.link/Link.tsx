@@ -84,6 +84,7 @@ export const Link = ({
         },
       }}
       href={isLink ? action : '#'}
+      tabIndex={isDisabled ? -1 : 0}
       target={isLink ? '_blank' : ''}
       onClick={(e) => handleAction(e)}
       onMouseEnter={onHover}
@@ -102,8 +103,8 @@ export const Link = ({
               position: 'absolute',
               right: 0,
               bottom: 0,
-              bgcolor: isDisabled ? 'grayscale.40' : color,
-              display: hideUnderline && !isHovered ? 'none' : 'inline-block',
+              bgcolor: color,
+              display: (hideUnderline && !isHovered) || isDisabled ? 'none' : 'inline-block',
               width: '100%',
               height: '1px',
               opacity: isHovered ? '1' : '0.4',
