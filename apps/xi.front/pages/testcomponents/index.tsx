@@ -27,7 +27,11 @@ const TestLink2: LinkProps = {
   text: 'Ссылка',
   size: 'm',
   color: 'primary.main',
+  Icon: LinkIcon,
   visitedStyles: {
+    color: 'primary.dark',
+  },
+  hoverStyles: {
     color: 'primary.dark',
   },
 };
@@ -36,7 +40,6 @@ const TestLink3: LinkProps = {
   text: 'Ссылка',
   size: 's',
   color: 'error.dark',
-  Icon: LinkIcon,
   hideUnderline: true,
 };
 
