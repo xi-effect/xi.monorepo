@@ -3,6 +3,7 @@ import RootStore from '../rootStore';
 
 type DialogsType = {
   communityCreation: boolean;
+  communityInvite: boolean;
   categoryCreation: boolean;
   channelCreation: boolean;
   invite: boolean;
@@ -69,6 +70,7 @@ class UISt {
 
   @observable dialogs: DialogsType = {
     communityCreation: false,
+    communityInvite: false,
     categoryCreation: false,
     channelCreation: false,
     invite: false,
@@ -92,6 +94,7 @@ class UISt {
   @action setDialogsFalse = () => {
     this.dialogs = {
       communityCreation: false,
+      communityInvite: false,
       categoryCreation: false,
       channelCreation: false,
       invite: false,

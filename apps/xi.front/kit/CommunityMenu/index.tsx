@@ -20,11 +20,6 @@ const CommunityMenu = observer(
     const rootStore = useStore();
     const { uiSt } = rootStore;
 
-    const onInviteClick = () => {
-      uiSt.setDialogs('invite', true);
-      if (setOpen) setOpen(false);
-    };
-
     return (
       <MenuList
         autoFocusItem={open}
@@ -33,7 +28,7 @@ const CommunityMenu = observer(
         onKeyDown={handleListKeyDown}
         sx={{ width: '100%' }}
       >
-        <MenuItem sx={{ width: '100%' }} onClick={onInviteClick}>
+        <MenuItem sx={{ width: '100%' }} onClick={() => uiSt.setDialogs('communityInvite', true)}>
           <Stack
             direction="row"
             justifyContent="space-between"
