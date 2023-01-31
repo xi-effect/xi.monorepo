@@ -57,7 +57,7 @@ export const typographyVariants = {
 };
 
 export const groupSizes = {
-  large: { borderRadius: '8px', p: '3px' },
-  medium: { borderRadius: '8px', p: '3px' },
-  small: { borderRadius: '6px', p: '2px' },
+  large: { borderRadius: '8px' },
+  medium: { borderRadius: '8px' },
+  small: { borderRadius: '6px' },
 };

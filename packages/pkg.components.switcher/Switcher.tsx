@@ -33,6 +33,7 @@ export const Switcher: FC<SwitcherProps> = ({
   return (
     <ToggleButtonGroup
       sx={{
+        width: 'fit-content',
         border: '2px solid',
         borderColor: isError ? 'error.dark' : 'transparent',
         backgroundColor: groupBackgroundColor || 'transparent',
@@ -54,12 +55,12 @@ export const Switcher: FC<SwitcherProps> = ({
             ...buttonStyle[color],
             ...buttonStyle.default,
             '&.MuiToggleButtonGroup-grouped:not(:first-of-type)': {
-              borderRadius: buttonBorderRadius[size],
-              marginLeft: 0,
-              borderLeft: 'none',
+              borderRadius: `${buttonBorderRadius[size]} !important`,
+              marginLeft: '0 !important',
+              borderLeft: 'none !important',
             },
             '&.MuiToggleButtonGroup-grouped:not(:last-of-type)': {
-              borderRadius: buttonBorderRadius[size],
+              borderRadius: `${buttonBorderRadius[size]} !important`,
             },
             borderRadius: buttonBorderRadius[size],
           }}
@@ -83,5 +84,5 @@ type SwitcherProps = {
   defaultValue?: string | number;
   disabledValue?: string | number;
   isError?: boolean;
-  onChangeHandler: (newAlignment?: string, event?: MouseEvent<HTMLElement>) => void;
+  onChangeHandler: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
 };
