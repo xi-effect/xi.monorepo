@@ -1,10 +1,11 @@
+import React from 'react';
 import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { observer } from 'mobx-react';
-import { Button, Dialog, IconButton, Stack, Typography } from '@mui/material';
+import { Button, Dialog, IconButton, MenuItem, Select, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons.close';
 import { useStore } from 'store/connect';
 import { Input } from 'pkg.inputs.input';
@@ -13,6 +14,7 @@ import TextFieldCustom from 'kit/TextFieldCustom';
 type FormValues = {
   limit: number;
   date: Date | null;
+  time: string;
   roles: string[];
 };
 
@@ -20,6 +22,7 @@ const schema = yup
   .object({
     limit: yup.number(),
     date: yup.date(),
+    time: yup.string(),
     roles: yup.array(),
   })
   .required();
@@ -113,20 +116,65 @@ const DialogInvite = observer(() => {
         >
           Для приглашения без ограничения оставить пустым
         </Typography>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={1}
+          sx={{ width: '100%' }}
+        >
+          <Controller
+            name="date"
+            defaultValue={null}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <DatePicker
+                inputFormat="DD-MM-YYYY"
+                value={value}
+                onChange={(event) => {
+                  onChange(event);
+                }}
+                renderInput={(params) => (
+                  <TextFieldCustom
+                    {...params}
+                    sx={{ width: '100%' }}
+                    placeholder="Ограничение по времени"
+                  />
+                )}
+              />
+            )}
+          />
+          <Controller
+            name="time"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TimePicker
+                value={value}
+                onChange={(event) => {
+                  onChange(event);
+                }}
+                renderInput={(params) => (
+                  <TextFieldCustom
+                    {...params}
+                    sx={{ width: '180px' }}
+                    placeholder="Ограничение по времени"
+                  />
+                )}
+              />
+            )}
+          />
+        </Stack>
+        <Typography variant="m" textAlign="left" sx={{ mt: 3, width: '100%' }}>
+          Роль
+        </Typography>
         <Controller
-          name="date"
+          name="roles"
           control={control}
-          render={({ field: { onChange, value } }) => (
-            <DatePicker
-              inputFormat="DD-MM-YYYY"
-              value={value}
-              onChange={(event) => {
-                onChange(event);
-              }}
-              renderInput={(params) => (
-                <TextFieldCustom {...params} placeholder="Ограничение по времени" />
-              )}
-            />
+          render={({ field }) => (
+            <Select labelId="level-label" {...field} sx={{ width: '100%' }}>
+              <MenuItem value={0}>0</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+            </Select>
           )}
         />
         <Button
