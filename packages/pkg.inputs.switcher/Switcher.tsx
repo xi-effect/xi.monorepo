@@ -1,6 +1,6 @@
 import 'pkg.config.muidts';
 import { ToggleButtonGroup, ToggleButton, Typography } from '@mui/material';
-import { FC, MouseEvent, useState } from 'react';
+import { FC, MouseEvent } from 'react';
 
 import {
   buttonSizes,
@@ -11,27 +11,22 @@ import {
 } from './styles';
 
 export const Switcher: FC<SwitcherProps> = ({
+  currentValue,
   values,
   size = 'large',
   color = 'primary',
   groupBackgroundColor,
-  defaultValue,
   disabledValue,
   isError,
   onChangeHandler,
 }) => {
-  const foundIndex = values.findIndex((value) => value === defaultValue);
-  const currentDefaultValue = foundIndex > -1 ? values[foundIndex] : '';
-
-  const [alignment, setAlignment] = useState(currentDefaultValue);
-
-  const handleChange = (event: MouseEvent<HTMLElement>, newAlignment: string) => {
-    setAlignment(newAlignment);
-    onChangeHandler(newAlignment, event);
+  const handleChange = (event: MouseEvent<HTMLElement>, value: string) => {
+    onChangeHandler(value, event);
   };
 
   return (
     <ToggleButtonGroup
+      value={currentValue}
       sx={{
         width: 'fit-content',
         border: '2px solid',
@@ -40,12 +35,12 @@ export const Switcher: FC<SwitcherProps> = ({
         ...groupSizes[size],
       }}
       color="primary"
-      value={alignment}
       onChange={handleChange}
       exclusive
     >
       {values.map((value, i) => (
         <ToggleButton
+          value={value}
           disableFocusRipple
           disableRipple
           disabled={disabledValue === value}
@@ -65,7 +60,6 @@ export const Switcher: FC<SwitcherProps> = ({
             borderRadius: buttonBorderRadius[size],
           }}
           key={`${i}`}
-          value={value}
         >
           <Typography variant={typographyVariants[size]} sx={{ lineHeight: '0' }}>
             {value}
@@ -77,11 +71,11 @@ export const Switcher: FC<SwitcherProps> = ({
 };
 
 type SwitcherProps = {
+  currentValue: string | number;
   values: string[] | number[];
   size?: 'large' | 'medium' | 'small';
   color?: 'primary' | 'white';
   groupBackgroundColor?: string;
-  defaultValue?: string | number;
   disabledValue?: string | number;
   isError?: boolean;
   onChangeHandler: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
