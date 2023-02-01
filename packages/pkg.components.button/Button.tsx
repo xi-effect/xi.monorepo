@@ -1,8 +1,7 @@
 import 'pkg.config.muidts';
-import { Check } from 'pkg.icons.check';
-import CircularProgress from '@mui/material/CircularProgress';
-import { Typography, Button as MuiButton, Stack } from '@mui/material';
-import { FC, FunctionComponent, MouseEvent, ButtonHTMLAttributes } from 'react';
+
+import { Typography, Button as MuiButton, darken, useTheme, ButtonProps } from '@mui/material';
+import { FC, FunctionComponent, MouseEvent } from 'react';
 
 import { Color, LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
 
@@ -10,28 +9,24 @@ import {
   buttonVariantsColor,
   buttonSizes,
   getButtonPadding,
-  getIconOpacity,
-  getSpinnerPosition,
-  iconSizes,
-  spinnerSizes,
-  typographySizes,
-  iconPosition,
   buttonDisabled,
-  buttonActive,
+  getActionButtonStyle,
+  typographyVariants,
+  clickedPadding,
 } from './styles';
 import { ButtonSnackbar } from './ButtonSnackbar';
+import { IconContainer } from './IconContainer';
+import { Loading } from './Loading';
 
-export const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonPropsType> = ({
   status = 'idle',
   size = 'medium',
   loadingPosition = 'center',
   variant = 'contained',
   color = 'primary',
-  textColor = '#fff',
   text,
   startIcon,
   endIcon,
-  iconColor,
   handleButtonClick,
   isSnackbar,
   snackbarText,
@@ -41,12 +36,10 @@ export const Button: FC<ButtonProps> = ({
   snackbarPosition,
   ...props
 }) => {
-  const StartIconComponent = startIcon as FunctionComponent<any>;
-  const EndIconComponent = endIcon as FunctionComponent<any>;
+  const theme = useTheme();
 
+  const actionButtonStyle = getActionButtonStyle(variant, darken(theme.palette[color].dark, 0.2));
   const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
-  const spinnerPosition = getSpinnerPosition(!!text, !!startIcon, !!endIcon, loadingPosition);
-  const iconOpacity = getIconOpacity(status);
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
@@ -61,74 +54,59 @@ export const Button: FC<ButtonProps> = ({
       disableRipple
       disableElevation
       sx={{
-        color: '#fff',
         textTransform: 'none',
         position: 'relative',
         minWidth: 0,
-        '&:disabled':
-          status !== 'completed' ? buttonDisabled[variant] : buttonActive[variant][color],
+        width: 'fit-content',
+        '&:hover': {
+          ...actionButtonStyle,
+        },
+        '&:disabled': status !== 'completed' ? buttonDisabled[variant] : actionButtonStyle,
         '&:active': {
-          pt: status !== 'completed' ? '1px' : 0,
-          ...buttonActive[variant][color],
+          ...actionButtonStyle,
+          pt: clickedPadding[size].pt,
+          pb: clickedPadding[size].pb,
         },
         ...buttonSizes[size],
-        ...buttonPadding[size],
         ...buttonVariantsColor[variant][color],
+        ...buttonPadding[size],
       }}
       {...props}
     >
       {startIcon && (
-        <StartIconComponent
-          sx={{
-            ...iconSizes[size],
-            opacity: iconOpacity,
-            color: iconColor,
-          }}
+        <IconContainer
+          icon={startIcon}
+          size={size}
+          order={0}
+          status={status}
+          isLoadingIcon={loadingPosition !== 'center'}
+        />
+      )}
+      {endIcon && (
+        <IconContainer
+          icon={endIcon}
+          size={size}
+          order={2}
+          status={status}
+          isLoadingIcon={loadingPosition !== 'center'}
         />
       )}
 
       {text && (
         <Typography
+          order={1}
+          variant={typographyVariants[size]}
           sx={{
-            color: status === 'pending' ? '#707070' : textColor,
+            color: 'inherit',
             opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1,
           }}
-          variant={typographySizes[size].variant}
         >
           {text}
         </Typography>
       )}
 
-      {status === 'pending' && (
-        <Stack
-          sx={{
-            position: 'absolute',
-            ...spinnerPosition[size],
-          }}
-        >
-          <CircularProgress size={spinnerSizes[size]} sx={{ color: '#707070' }} />
-        </Stack>
-      )}
-
-      {status === 'completed' && (startIcon || endIcon) && (
-        <Check
-          sx={{
-            position: 'absolute',
-            ...iconPosition[startIcon ? 'start' : 'end'][size],
-            ...iconSizes[size],
-            color: iconColor,
-          }}
-        />
-      )}
-
-      {endIcon && (
-        <EndIconComponent
-          sx={{
-            ...iconSizes[size],
-            opacity: iconOpacity,
-            color: iconColor,
-          }}
-        />
+      {status === 'pending' && loadingPosition === 'center' && (
+        <Loading top="50%" left="50%" transform="translate(-50%,-50%)" size={size} />
       )}
 
       {isSnackbar && status !== 'idle' && (
@@ -147,7 +125,7 @@ export const Button: FC<ButtonProps> = ({
   );
 };
 
-type ButtonProps = {
+type ButtonPropsType = {
   // button status: pending = spinner appears, completed button disabled with active color
   // completed and startIcon or endIcon or only icon without text appears check
   status?: Status;
@@ -158,16 +136,12 @@ type ButtonProps = {
   variant?: Variant;
   // button color
   color?: Color;
-  // button text color
-  textColor?: string;
   // button text
   text?: string;
   // start or end button icon if icon without text, icon position will be center
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
   // button icon color
-  iconColor?: string;
-  // button click handler
   handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
   // whether to display snackbar
   isSnackbar?: boolean;
@@ -180,5 +154,5 @@ type ButtonProps = {
   snackbarLoadingPosition?: LoadingPosition;
   // snackbar position: default right
   snackbarPosition?: SnackbarPosition;
-  // you can also pass the default attributes of the button
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  // you can also pass default mui button attributes
+} & Omit<ButtonProps, 'startIcon' | 'endIcon'>;

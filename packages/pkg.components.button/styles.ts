@@ -1,4 +1,4 @@
-import { LoadingPosition, SnackbarPosition, Status } from './types';
+import { SnackbarPosition, Variant } from './types';
 
 export const buttonSizes = {
   large: {
@@ -21,101 +21,67 @@ export const buttonSizes = {
 export const buttonVariantsColor = {
   contained: {
     primary: {
-      backgroundColor: '#445AFF',
-      '&:hover': {
-        backgroundColor: '#3546BD',
-      },
+      bgcolor: 'primary.dark',
+      color: 'grayscale.0',
     },
-    confirm: {
-      backgroundColor: '#00A82C',
-      '&:hover': {
-        backgroundColor: '#029127',
-      },
+    success: {
+      bgcolor: 'success.dark',
+      color: 'grayscale.0',
     },
-    reject: {
-      backgroundColor: '#DD0D0C',
-      '&:hover': {
-        backgroundColor: '#BE0D0C',
-      },
+    error: {
+      bgcolor: 'error.dark',
+      color: 'grayscale.0',
     },
   },
   outlined: {
     primary: {
-      border: '1px solid #445AFF',
-      '&:hover': {
-        border: '1px solid #3546BD',
-      },
+      border: '1px solid',
+      borderColor: 'primary.dark',
+      color: 'primary.dark',
     },
-    confirm: {
-      border: '1px solid #00A82C',
-      '&:hover': {
-        border: '1px solid #029127',
-      },
+    success: {
+      border: '1px solid',
+      borderColor: 'success.dark',
+      color: 'success.dark',
     },
-    reject: {
-      border: '1px solid #DD0D0C',
-      '&:hover': {
-        border: '1px solid #BE0D0C',
-      },
+    error: {
+      border: '1px solid',
+      borderColor: 'error.dark',
+      color: 'error.dark',
     },
   },
   text: {
-    primary: {},
-    confirm: {},
-    reject: {},
-  },
-};
-
-export const buttonActive = {
-  contained: {
-    primary: {
-      backgroundColor: '#3546BD',
-    },
-    confirm: {
-      backgroundColor: '#029127',
-    },
-    reject: {
-      backgroundColor: '#BE0D0C',
-    },
-  },
-  outlined: {
-    primary: {
-      border: '1px solid #3546BD',
-    },
-    confirm: {
-      border: '1px solid #029127',
-    },
-    reject: {
-      border: '1px solid #BE0D0C',
-    },
-  },
-  text: {
-    primary: {},
-    confirm: {},
-    reject: {},
+    primary: { color: 'primary.dark' },
+    success: { color: 'success.dark' },
+    error: { color: 'error.dark' },
   },
 };
 
 export const buttonDisabled = {
   contained: {
-    backgroundColor: '#E8E8E8',
+    backgroundColor: 'grayscale.10',
+    color: 'grayscale.40',
   },
   outlined: {
-    border: '1px solid #E8E8E8',
+    border: '1px solid',
+    borderColor: 'grayscale.10',
+    color: 'grayscale.40',
   },
-  text: {},
+  text: {
+    color: 'grayscale.40',
+  },
 };
 
-export const typographySizes = {
-  large: {
-    variant: 'l' as 'l',
-  },
-  medium: {
-    variant: 'm' as 'm',
-  },
-  small: {
-    variant: 's' as 's',
-  },
+export const clickedPadding = {
+  large: { pt: '14px', pb: '12px' },
+  medium: { pt: '13px', pb: '11px' },
+  small: { pt: '9px', pb: '7px' },
+};
+
+export const typographyVariants = {
+  large: 'l' as 'l',
+  medium: 'm' as 'm',
+  small: 's' as 's',
 };
 
 export const iconSizes = {
@@ -139,131 +105,45 @@ export const spinnerSizes = {
   small: 16,
 };
 
-export const iconPosition = {
-  start: {
-    large: {
-      left: '12px',
-    },
-    medium: {
-      left: '12px',
-    },
-    small: {
-      left: '8px',
-    },
-  },
-  end: {
-    large: {
-      right: '12px',
-    },
-    medium: {
-      right: '12px',
-    },
-    small: {
-      right: '8px',
-    },
-  },
-};
-
 export const getButtonPadding = (isText: boolean, startIcon: boolean, endIcon: boolean) => {
   const isTextIconButton = isText && (startIcon || endIcon);
   const isIconButton = !isText && (startIcon || endIcon);
 
   const style = {
     large: {
-      padding: '0 32px',
+      padding: '13px 32px',
     },
     medium: {
-      padding: '0 24px',
+      padding: '12px 24px',
     },
     small: {
-      padding: '0 16px',
+      padding: '8px 16px',
     },
   };
 
   if (isTextIconButton) {
     if (startIcon) {
-      style.large.padding = '0 24px 0 12px';
-      style.medium.padding = '0 16px 0 12px';
-      style.small.padding = '0 12px 0 8px';
+      style.large.padding = '13px 24px 13px 12px';
+      style.medium.padding = '12px 16px 12px 12px';
+      style.small.padding = '8px 12px 8px 8px';
       return style;
     }
     if (endIcon) {
-      style.large.padding = '0 12px 0 24px';
-      style.medium.padding = '0 12px 0 16px';
-      style.small.padding = '0 8px 0 12px';
+      style.large.padding = '13px 12px 13px 24px';
+      style.medium.padding = '12px 12px 12px 16px';
+      style.small.padding = '8px 8px 8px 12px';
       return style;
     }
   }
 
   if (isIconButton) {
-    style.large.padding = '0 12px';
-    style.medium.padding = '0 12px';
-    style.small.padding = '0 8px';
+    style.large.padding = '13px 12px';
+    style.medium.padding = '12px 12px';
+    style.small.padding = '8px 8px';
     return style;
   }
 
   return style;
-};
-
-export const getSpinnerPosition = (
-  isText: boolean,
-  startIcon?: boolean,
-  endIcon?: boolean,
-  loadingPosition: LoadingPosition = 'center',
-) => {
-  const defaultPosition = {
-    large: {
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
-    medium: {
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
-    small: {
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
-  };
-
-  if (!isText || loadingPosition === 'center') {
-    return defaultPosition;
-  }
-
-  if (startIcon) {
-    return {
-      large: {
-        left: '12px',
-      },
-      medium: {
-        left: '12px',
-      },
-      small: {
-        left: '8px',
-      },
-    };
-  }
-
-  if (endIcon) {
-    return {
-      large: {
-        right: '12px',
-      },
-      medium: {
-        right: '12px',
-      },
-      small: {
-        right: '8px',
-      },
-    };
-  }
-
-  return defaultPosition;
-};
-
-export const getIconOpacity = (status: Status) => {
-  if (status === 'pending' || status === 'completed') return 0;
-  return 1;
 };
 
 export const getSnackbarCurrentPosition = (snackbarSize: number, position: SnackbarPosition) => {
@@ -277,5 +157,18 @@ export const getSnackbarCurrentPosition = (snackbarSize: number, position: Snack
     default: {
       return { right: `-${snackbarSize + 16}px` };
     }
+  }
+};
+
+export const getActionButtonStyle = (variant: Variant, color: string) => {
+  switch (variant) {
+    case 'contained':
+      return { bgcolor: color, color: 'grayscale.0' };
+    case 'outlined':
+      return { borderColor: color, color };
+    default:
+      return {
+        color,
+      };
   }
 };

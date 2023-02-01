@@ -1,20 +1,16 @@
-import { Check } from 'pkg.icons.check';
-import CircularProgress from '@mui/material/CircularProgress';
 import { Typography, Stack } from '@mui/material';
 import { FC, useLayoutEffect, useRef, useState } from 'react';
 
 import {
   buttonSizes,
-  iconSizes,
-  spinnerSizes,
-  typographySizes,
-  iconPosition,
+  typographyVariants,
   buttonDisabled,
   getButtonPadding,
-  getSpinnerPosition,
   getSnackbarCurrentPosition,
 } from './styles';
 import { LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
+import { IconContainer } from './IconContainer';
+import { Loading } from './Loading';
 
 export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   size,
@@ -29,12 +25,7 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   const snackbarRef = useRef<HTMLDivElement>(null);
   const [snackbarSize, setSnackbarSize] = useState(0);
   const snackbarCurrentPosition = getSnackbarCurrentPosition(snackbarSize, snackbarPosition);
-  const spinnerPosition = getSpinnerPosition(
-    !!snackbarText,
-    isSnackbarIconStart,
-    isSnackbarIconEnd,
-    snackbarLoadingPosition,
-  );
+
   const snackbarPadding = getButtonPadding(
     !!snackbarText,
     !!isSnackbarIconStart,
@@ -49,7 +40,7 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
     if (snackbarPosition === 'top' || snackbarPosition === 'bottom') {
       setSnackbarSize(snackbarRef.current.clientHeight);
     }
-  }, [snackbarPosition]);
+  }, [snackbarPosition, size]);
 
   return (
     <Stack
@@ -62,42 +53,37 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
         ...buttonSizes[size],
         ...snackbarPadding[size],
         ...buttonDisabled[variant],
-        color: '#707070',
       }}
     >
-      {isSnackbarIconStart && <span style={iconSizes[size]} />}
-
-      {status === 'pending' && (
-        <Stack
-          sx={{
-            position: 'absolute',
-            ...spinnerPosition[size],
-          }}
-        >
-          <CircularProgress size={spinnerSizes[size]} color="inherit" />
-        </Stack>
+      {status === 'pending' && snackbarLoadingPosition === 'center' && (
+        <Loading top="50%" left="50%" transform="translate(-50%,-50%)" size={size} />
       )}
-
-      {status !== 'pending' && (isSnackbarIconStart || isSnackbarIconEnd) && (
-        <Check
-          sx={{
-            position: 'absolute',
-            ...iconPosition[isSnackbarIconStart ? 'start' : 'end'][size],
-            ...iconSizes[size],
-          }}
+      {isSnackbarIconStart && (
+        <IconContainer
+          size={size}
+          order={0}
+          status={status}
+          isLoadingIcon={snackbarLoadingPosition !== 'center'}
+        />
+      )}
+      {isSnackbarIconEnd && (
+        <IconContainer
+          size={size}
+          order={2}
+          status={status}
+          isLoadingIcon={snackbarLoadingPosition !== 'center'}
         />
       )}
 
       {snackbarText && (
         <Typography
+          color="inherit"
           sx={{ opacity: snackbarLoadingPosition === 'center' && status === 'pending' ? 0 : 1 }}
-          variant={typographySizes[size].variant}
+          variant={typographyVariants[size]}
         >
           {snackbarText}
         </Typography>
       )}
-
-      {isSnackbarIconEnd && <span style={iconSizes[size]} />}
     </Stack>
   );
 };
