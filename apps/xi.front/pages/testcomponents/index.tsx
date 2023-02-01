@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Stack } from '@mui/material';
-import { Checkbox, CheckboxProps } from 'pkg.components.checkbox';
+import { Checkbox, CheckboxProps } from 'pkg.inputs.checkbox';
 
 const TestComponents = () => {
   const [isChecked1, setIsChecked1] = useState(false);
