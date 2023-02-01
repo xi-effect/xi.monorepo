@@ -16,13 +16,13 @@ type CommunityMenuProps = {
 };
 
 const CommunityMenu = observer(
-  ({ open, setOpen, handleClose, handleListKeyDown }: CommunityMenuProps) => {
+  ({ setOpen, handleClose, handleListKeyDown }: CommunityMenuProps) => {
     const rootStore = useStore();
     const { uiSt } = rootStore;
 
     return (
       <MenuList
-        autoFocusItem={open}
+        autoFocusItem={uiSt.dialogs.communityInvite}
         id="composition-menu"
         aria-labelledby="composition-button"
         onKeyDown={handleListKeyDown}

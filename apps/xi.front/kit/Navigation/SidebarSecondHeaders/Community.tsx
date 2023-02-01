@@ -25,12 +25,12 @@ import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
 const Community = observer(() => {
   const rootStore = useStore();
-  const { communitySt } = rootStore;
+  const { communitySt, uiSt } = rootStore;
+  const { dialogs } = uiSt;
 
-  const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleToggle = () => setOpen((prevOpen) => !prevOpen);
+  const handleToggle = () => uiSt.setDialogs('communityMenu', !dialogs.communityMenu);
 
   const handleClose = (
     event:
@@ -44,28 +44,17 @@ const Community = observer(() => {
       return;
     }
 
-    setOpen(false);
+    uiSt.setDialogs('communityMenu', false);
   };
 
   const handleListKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
     if (event.key === 'Tab') {
       event.preventDefault();
-      setOpen(false);
+      uiSt.setDialogs('communityMenu', false);
     } else if (event.key === 'Escape') {
-      setOpen(false);
+      uiSt.setDialogs('communityMenu', false);
     }
   };
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-
-  React.useEffect(() => {
-    if (anchorRef && anchorRef.current && prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
 
   return (
     <Stack
@@ -77,9 +66,9 @@ const Community = observer(() => {
         borderBottom: '1px solid #ECEFFF',
         borderRadius: '8px',
         p: 1,
-        bgcolor: open ? 'primary.light' : 'grayscale.0',
+        bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
         '&:hover': {
-          bgcolor: open ? 'primary.light' : 'grayscale.0',
+          bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
           cursor: 'pointer',
         },
       }}
@@ -99,20 +88,20 @@ const Community = observer(() => {
         <IconButton
           ref={anchorRef}
           id="composition-button"
-          aria-controls={open ? 'composition-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
+          aria-controls={dialogs.communityMenu ? 'composition-menu' : undefined}
+          aria-expanded={dialogs.communityMenu ? 'true' : undefined}
           aria-haspopup="true"
           sx={{
             height: 36,
             width: 36,
           }}
         >
-          {!open && <KeyboardArrowDownIcon />}
-          {open && <CloseIcon />}
+          {!dialogs.communityMenu && <KeyboardArrowDownIcon />}
+          {dialogs.communityMenu && <CloseIcon />}
         </IconButton>
       </Tooltip>
       <Popper
-        open={open}
+        open={dialogs.communityMenu}
         anchorEl={anchorRef.current}
         placement="bottom-end"
         transition
@@ -143,12 +132,7 @@ const Community = observer(() => {
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Box>
-                  <CommunityMenu
-                    open={open}
-                    setOpen={setOpen}
-                    handleListKeyDown={handleListKeyDown}
-                    handleClose={handleClose}
-                  />
+                  <CommunityMenu handleListKeyDown={handleListKeyDown} handleClose={handleClose} />
                 </Box>
               </ClickAwayListener>
             </Paper>
