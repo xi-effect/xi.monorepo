@@ -7,6 +7,7 @@ export type BadgeProps = {
   icon?: FunctionComponent<SvgIconProps>;
   text?: string;
   bgColor: string;
+  iconColor?: string;
   fontColor?: string;
   size?: 'small';
   stackProps?: StackProps;
@@ -18,6 +19,7 @@ export const Badge: FC<BadgeProps> = ({
   icon,
   text,
   bgColor,
+  iconColor,
   fontColor,
   size,
   stackProps = { sx: {} },
@@ -42,7 +44,12 @@ export const Badge: FC<BadgeProps> = ({
       }}
       {...otherStackProps}
     >
-      {icon && <IconComponent sx={{ ...styles.icon.sx, ...iconSx }} {...otherIconProps} />}
+      {icon && (
+        <IconComponent
+          sx={{ color: iconColor, ...styles.icon.sx, ...iconSx }}
+          {...otherIconProps}
+        />
+      )}
 
       {text && (
         <Typography
