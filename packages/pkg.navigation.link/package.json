@@ -1,5 +1,5 @@
 {
-  "name": "pkg.components.link",
+  "name": "pkg.navigation.link",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
