@@ -93,6 +93,7 @@ const nextConfig = {
     });
     return config;
   },
+
 };
 
 module.exports = () => plugins.reduce((acc, next) => next(acc), nextConfig);

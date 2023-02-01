@@ -13,58 +13,109 @@ import {
   DialogContent,
   useMediaQuery,
 } from '@mui/material';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
+import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
+import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
+import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 
 import MobileDialog from 'kit/MobileDialog';
 import CloseIcon from '@mui/icons-material/Close';
-import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-import ForumIcon from '@mui/icons-material/Forum';
-import ArticleIcon from '@mui/icons-material/Article';
-import { grey } from '@mui/material/colors';
+
 import { useStore } from 'store/connect';
 
 import { useForm, Controller } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import TextFieldCustom from 'kit/TextFieldCustom';
+
+// import { Input } from 'pkg.inputs.input';
+import { styled } from '@mui/material/styles';
+
+import TextFieldCustom from '../TextFieldCustom';
 
 const schema = yup
   .object({
     name: yup.string().min(0).max(100).required(),
   })
   .required();
+const BpIcon = styled('span')(({ theme }) => ({
+  borderRadius: '50%',
+  width: 16,
+  height: 16,
+  boxShadow:
+    theme.palette.mode === 'dark'
+      ? '0 0 0 1px rgb(16 22 26 / 40%)'
+      : 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+  backgroundColor: theme.palette.mode === 'dark' ? '#394b59' : '#f5f8fa',
+  backgroundImage:
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))'
+      : 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
+  '.Mui-focusVisible &': {
+    outline: '2px auto rgba(19,124,189,.6)',
+    outlineOffset: 2,
+  },
+  'input:hover ~ &': {
+    backgroundColor: theme.palette.mode === 'dark' ? '#30404d' : '#ebf1f5',
+  },
+  'input:disabled ~ &': {
+    boxShadow: 'none',
+    background:
+      theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
+  },
+}));
+const BpCheckedIcon = styled(BpIcon)({
+  backgroundColor: '#137cbd',
+  backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
+  '&:before': {
+    display: 'block',
+    width: 16,
+    height: 16,
+    backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
+    content: '""',
+  },
+  'input:hover ~ &': {
+    backgroundColor: '#106ba3',
+  },
+});
 
 const content = [
   {
-    label: 'Текстовый канал',
-    description: 'Отправляйте сообщения, изображения, эмодзи',
-    icon: <ForumIcon sx={{ fontSize: 30 }} />,
+    label: 'Объявления',
+    description: 'Держите ваших студентов в курсе всех новостей по курсу',
+    icon: <CampaignOutlinedIcon sx={{ fontSize: 18 }} />,
   },
   {
-    label: 'Голосовой канал',
+    label: 'Задания',
     description:
-      'Совершайте групповые звонки с возможностью использовать видеосвязь и демонстрацию экрана',
-    icon: <RecordVoiceOverIcon sx={{ fontSize: 30 }} />,
+      'Создавайте задания, тесты, получайте ответы от учеников, оценивайте и улучшайте знания',
+    icon: <AssignmentTurnedInOutlinedIcon sx={{ fontSize: 18 }} />,
   },
   {
-    label: 'Страница',
-    description: 'Создавайте и делитесь контентом. Например, это может быть конспект к уроку',
-    icon: <ArticleIcon sx={{ fontSize: 30 }} />,
+    label: 'Видеоконференции',
+    description: 'Проводите уроки онлайн, проводите активности, работайте со студентами из любой точки мира',
+    icon: <VideocamOutlinedIcon sx={{ fontSize: 18 }} />,
+  },
+  {
+    label: 'Чат со студентами',
+    description: 'Общайтесь, отвечайте на вопросы, объясняйте непонятные моменты',
+    icon: <CommentOutlinedIcon sx={{ fontSize: 18 }} />,
   },
 ];
 
 const getType = (num) => {
-  if (num === 0) return 'chat';
-  if (num === 1) return 'room';
-  if (num === 2) return 'page';
-  return 'room';
+  if (num === 0) return 'announcement';
+  if (num === 1) return 'task';
+  if (num === 2) return 'video';
+  if (num === 3) return 'chat';
+  return 'announcement';
 };
 
 const Content = observer((props) => {
   const { communityChannelsSt, uiSt } = props;
 
   const mobile = useMediaQuery((theme) => theme.breakpoints.down('lg'));
-  const [channelSelect, setChannelSelect] = React.useState(0);
+  const [channelSelect, setChannelSelect] = React.useState(2);
   const {
     control,
     handleSubmit,
@@ -87,24 +138,51 @@ const Content = observer((props) => {
       justifyContent="flex-start"
       alignItems="flex-start"
       sx={{
-        height: 500,
         width: '100%',
       }}
-      spacing={1}
+      spacing={2}
     >
+      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pb: 1 }}>
+        Название
+      </Typography>
+      <Controller
+        name="name"
+        control={control}
+        defaultValue=""
+        render={({ field }) => (
+          // <Input
+          //   variant="outlined"
+          //   error={errors?.email?.type === 'email'}
+          //   type="text"
+          //   placeholder="Название канала"
+          //   fullWidth
+          //   {...field}
+          // />
+          <TextFieldCustom
+            variant="outlined"
+            error={errors?.email?.type === 'email'}
+            type="text"
+            fullWidth
+            placeholder="Название канала"
+            {...field}
+          />
+        )}
+      />
+      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pt: 3, pb: 1 }}>
+        Тип
+      </Typography>
       {content.map((item, index) => (
         <Stack
           key={index.toString()}
           onClick={() => setChannelSelect(index)}
           direction="row"
           justifyContent="center"
-          alignItems="center"
+          alignItems="start"
           sx={{
             p: 1,
             minHeight: 96,
             width: '100%',
-            boxShadow: 12,
-            bgcolor: channelSelect === index ? grey[700] : grey[800],
+            border: 1,
             borderRadius: 2,
             cursor: 'pointer',
           }}
@@ -113,43 +191,26 @@ const Content = observer((props) => {
           <Box sx={{ p: 1 }}>{item.icon}</Box>
           <Stack
             direction="column"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="flex-start"
             spacing={0.5}
             sx={{
               width: '100%',
             }}
           >
-            <Typography variant="h6" component="p" sx={{ fontWeight: '700' }}>
+            <Typography variant="h6" component="p" sx={{ fontSize: 20, fontWeight: 600 }}>
               {item.label}
             </Typography>
             <Typography variant="subtitle1" component="p" sx={{ lineHeight: '1.35' }}>
               {item.description}
             </Typography>
           </Stack>
-
-          <Radio checked={channelSelect === index} color="default" />
+          <Box sx={{ p: 3, pr: 0 }}>
+            <Radio checked={channelSelect === index} checkedIcon={<BpCheckedIcon />} />
+          </Box>
         </Stack>
       ))}
-      <Typography variant="subtitle2" sx={{ color: 'text.secondary', pt: 2, pb: 1 }}>
-        НАЗВАНИЕ
-      </Typography>
       <Box sx={{ width: '100%' }}>
-        <Controller
-          name="name"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextFieldCustom
-              variant="filled"
-              error={errors?.email?.type === 'email'}
-              type="text"
-              fullWidth
-              label="Название канала"
-              {...field}
-            />
-          )}
-        />
         <Stack
           direction="row"
           justifyContent="center"
@@ -157,23 +218,6 @@ const Content = observer((props) => {
           sx={{ width: '100%', pt: 2, pb: 4 }}
           spacing={2}
         >
-          <Button
-            size="large"
-            onClick={() => uiSt.setDialogs('channelCreation', false)}
-            sx={{
-              '&.MuiButton-root': {
-                fontSize: '15px',
-                lineHeight: '26px',
-                letterSpacing: '0.46000000834465027px',
-                width: mobile ? '140px' : '140px',
-                height: mobile ? '42px' : '42px',
-                color: 'text.primary',
-                borderRadius: mobile ? '62px' : '88px',
-              },
-            }}
-          >
-            Отмена
-          </Button>
           <Button
             variant="contained"
             size="large"
@@ -183,19 +227,13 @@ const Content = observer((props) => {
                 fontSize: '15px',
                 lineHeight: '26px',
                 letterSpacing: '0.46000000834465027px',
-                width: mobile ? '196px' : '196px',
+                width: '100%',
                 height: mobile ? '42px' : '42px',
-                color: 'text.primary',
-                bgcolor: 'secondary.main',
-                borderRadius: mobile ? '62px' : '88px',
-                '&:hover': {
-                  bgcolor: 'secondary.dark',
-                },
                 boxShadow: 2,
               },
             }}
           >
-            Готово
+            Создать
           </Button>
         </Stack>
       </Box>
@@ -207,7 +245,6 @@ const DialogChannelCreation = observer(() => {
   const rootStore = useStore();
   const { communityChannelsSt, uiSt } = rootStore;
   const fullScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
-
   return (
     <>
       {!fullScreen && (
@@ -228,20 +265,19 @@ const DialogChannelCreation = observer(() => {
           }}
         >
           <Stack
-            direction="row"
+            direction="column"
             justifyContent="center"
-            alignItems="center"
+            alignItems="end"
             sx={{
-              height: 64,
               width: '100%',
               p: 1,
             }}
           >
-            <Typography sx={{ mt: 2, ml: 2, mr: 'auto' }} variant="h6">
+            <Typography sx={{ pt: 3, m: '0 auto', textAlign: 'center', fontSize: 24 }} variant="h6">
               Создать канал
             </Typography>
-            <IconButton onClick={() => uiSt.setDialogs('channelCreation', false)} sx={{ mt: 2 }}>
-              <CloseIcon sx={{ fontSize: 32, color: 'text.secondary' }} />
+            <IconButton onClick={() => uiSt.setDialogs('channelCreation', false)} sx={{ mr: 2, p: 0 }}>
+              <CloseIcon sx={{ fontSize: 14, color: 'text.secondary' }} />
             </IconButton>
           </Stack>
           <DialogContent>

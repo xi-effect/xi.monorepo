@@ -60,7 +60,7 @@ const Community = observer(() => {
   const prevOpen = React.useRef(open);
 
   React.useEffect(() => {
-    if (anchorRef && anchorRef.current && prevOpen.current && !open) {
+    if (anchorRef && anchorRef.current && prevOpen.current && open === false) {
       anchorRef.current.focus();
     }
 

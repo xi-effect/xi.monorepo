@@ -82,8 +82,8 @@ const CommunityMenu = observer(
           sx={{ width: '100%' }}
           onClick={() => {
             uiSt.setDialogs('channelCreation', true);
-
-            if (setOpen) setOpen(false);
+            uiSt.setDialogs('communityMenu', false);
+              if (setOpen) setOpen(false);
           }}
         >
           <Stack
