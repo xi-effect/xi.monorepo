@@ -1,55 +1,20 @@
 import React from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { Link, LinkProps } from 'pkg.components.link';
-import { Link as LinkIcon } from 'pkg.icons.link';
-import { Arrow } from 'pkg.icons.arrow';
-
-const testLongAction = () =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      console.log('test long action');
-      resolve('test long action');
-    }, 5000);
-  });
-
-const testShortAction = () => {
-  console.log('test short action');
-};
-
-const TestLink1: LinkProps = {
-  action: 'https://github.com/',
-  text: 'Ссылка',
-  size: 'l',
-  Icon: LinkIcon,
-  isDisabled: true,
-};
-const TestLink2: LinkProps = {
-  action: testShortAction,
-  text: 'Ссылка',
-  size: 'm',
-  color: 'primary.main',
-  Icon: LinkIcon,
-  visitedStyles: {
-    color: 'primary.dark',
-  },
-  hoverStyles: {
-    color: 'primary.dark',
-  },
-};
-const TestLink3: LinkProps = {
-  action: testLongAction,
-  text: 'Ссылка',
-  size: 's',
-  color: 'error.dark',
-  Icon: Arrow,
-  hideUnderline: true,
-};
+import { TestLinksData, TestLinksDataT } from './data';
 
 const TestComponents = () => (
-  <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }}>
-    <Link {...TestLink2} />
-    <Link {...TestLink1} />
-    <Link {...TestLink3} />
+  <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} spacing={4}>
+    {TestLinksData.map((group: TestLinksDataT) => (
+      <Stack spacing={1}>
+        <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
+        <Stack direction="row" spacing={2}>
+          {group.data.map((data: LinkProps) => (
+            <Link {...data} />
+          ))}
+        </Stack>
+      </Stack>
+    ))}
   </Stack>
 );
 
