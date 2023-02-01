@@ -1,7 +1,6 @@
 import React from 'react';
 import { Stack } from '@mui/material';
-import { TestComponent } from './TestComponent';
-import { TestComponentsData } from './data';
+import { TestComponentsData, TestComponent } from 'components/TestComponents';
 
 const TestComponents = () => (
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} direction="column" spacing={2}>
