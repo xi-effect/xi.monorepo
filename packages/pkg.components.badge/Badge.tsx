@@ -20,13 +20,16 @@ export const Badge: FC<BadgeProps> = ({
   bgColor,
   fontColor,
   size,
-  stackProps,
-  iconProps,
+  stackProps = { sx: {} },
+  iconProps = { sx: {} },
   typographyProps,
 }) => {
-  const IconComponent = icon as FunctionComponent;
+  const IconComponent = icon as FunctionComponent<any>;
 
   const styles = getStyles(size);
+
+  const { sx: iconSx, ...otherIconProps } = iconProps;
+  const { sx: stackSx, ...otherStackProps } = stackProps;
 
   return (
     <Stack
@@ -35,10 +38,11 @@ export const Badge: FC<BadgeProps> = ({
       sx={{
         backgroundColor: bgColor,
         ...styles.stack.sx,
+        ...stackSx,
       }}
-      {...stackProps}
+      {...otherStackProps}
     >
-      {icon && <IconComponent sx={styles.icon.sx} {...iconProps} />}
+      {icon && <IconComponent sx={{ ...styles.icon.sx, ...iconSx }} {...otherIconProps} />}
 
       {text && (
         <Typography
