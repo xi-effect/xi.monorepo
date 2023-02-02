@@ -3,7 +3,7 @@ import { Stack, useTheme } from '@mui/material';
 import { LayoutPages } from 'pkg.layout.pages';
 import { Navigation } from 'kit/Navigation';
 
-import { Items, Header } from 'components/Home/Updates';
+import { Items, Header, Footer } from 'components/Home/Updates';
 
 const Updates = observer(() => {
   const { breakpoints } = useTheme();
@@ -35,6 +35,7 @@ const Updates = observer(() => {
         >
           <Header />
           <Items />
+          <Footer />
         </Stack>
       </Navigation>
     </LayoutPages>
