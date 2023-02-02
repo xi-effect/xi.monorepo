@@ -16,9 +16,10 @@ const testShortAction = () => {
   console.log('test short action');
 };
 
-export type TestLinksDataT = { data: LinkProps[]; comments: string };
+export type TestLinksDataT = { data: LinkProps[]; comments: string; id: string };
 const TestLinksData: TestLinksDataT[] = [
   {
+    id: 'group1',
     data: [
       {
         action: 'https://github.com/',
@@ -54,6 +55,7 @@ const TestLinksData: TestLinksDataT[] = [
     comments: 'Disabled link:',
   },
   {
+    id: 'group2',
     data: [
       {
         action: testShortAction,
@@ -89,6 +91,7 @@ const TestLinksData: TestLinksDataT[] = [
     comments: 'Ссылка с коротким действием:',
   },
   {
+    id: 'group3',
     data: [
       {
         action: testLongAction,
@@ -118,6 +121,7 @@ const TestLinksData: TestLinksDataT[] = [
     comments: 'Ссылка с длинным действием и кастомной иконкой:',
   },
   {
+    id: 'group4',
     data: [
       {
         action: 'https://github.com/',
@@ -157,11 +161,11 @@ const TestLinksData: TestLinksDataT[] = [
 const TestComponents = () => (
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} spacing={4}>
     {TestLinksData.map((group: TestLinksDataT) => (
-      <Stack spacing={1}>
+      <Stack spacing={1} key={group.id}>
         <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
         <Stack direction="row" spacing={2}>
           {group.data.map((data: LinkProps) => (
-            <Link {...data} />
+            <Link {...data} key={`${group.id}-${data.size}`} />
           ))}
         </Stack>
       </Stack>
