@@ -25,6 +25,7 @@ const TestComponents = () => {
     setIsError(false);
     setValue4(value);
   };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '10px' }}>
       <Switcher size="small" currentValue={value1} values={arr1} onChange={onChangeValue1} />

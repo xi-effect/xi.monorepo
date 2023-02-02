@@ -24,7 +24,7 @@ export const Button: FC<ButtonPropsType> = ({
   loadingPosition = 'center',
   variant = 'contained',
   color = 'primary',
-  text,
+  children,
   startIcon,
   endIcon,
   handleButtonClick,
@@ -39,7 +39,7 @@ export const Button: FC<ButtonPropsType> = ({
   const theme = useTheme();
 
   const actionButtonStyle = getActionButtonStyle(variant, darken(theme.palette[color].dark, 0.2));
-  const buttonPadding = getButtonPadding(!!text, !!startIcon, !!endIcon);
+  const buttonPadding = getButtonPadding(!!children, !!startIcon, !!endIcon);
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
@@ -92,7 +92,7 @@ export const Button: FC<ButtonPropsType> = ({
         />
       )}
 
-      {text && (
+      {children && (
         <Typography
           order={1}
           variant={typographyVariants[size]}
@@ -101,7 +101,7 @@ export const Button: FC<ButtonPropsType> = ({
             opacity: loadingPosition === 'center' && status === 'pending' ? 0 : 1,
           }}
         >
-          {text}
+          {children}
         </Typography>
       )}
 
@@ -136,8 +136,6 @@ type ButtonPropsType = {
   variant?: Variant;
   // button color
   color?: Color;
-  // button text
-  text?: string;
   // start or end button icon if icon without text, icon position will be center
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
