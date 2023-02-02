@@ -38,7 +38,9 @@ const Item = observer((data: UpdateT) => {
   return (
     <Stack sx={{ bgcolor: 'grayscale.0', borderRadius: '16px', p: '24px' }} spacing={2}>
       <Stack spacing={0.5}>
-        <Typography variant="h4">{data.title}</Typography>
+        <Typography variant="h4" sx={{ fontWeight: 600 }}>
+          {data.title}
+        </Typography>
         <Typography sx={{ color: 'grayscale.80', fontSize: '18px', lineHeight: '24px' }}>
           {data.description}
         </Typography>

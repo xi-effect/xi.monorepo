@@ -16,7 +16,7 @@ const contentArray: UpdateT[] = [
 ];
 
 const Items = observer(() => (
-  <Box sx={{ width: '100%', mt: '24px' }}>
+  <Box sx={{ width: '100%', mt: '32px' }}>
     <Grid sx={{ width: '100%' }} container spacing={2}>
       {contentArray.map((item, index) => (
         <Grid item xs key={index}>
