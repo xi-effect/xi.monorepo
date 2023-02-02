@@ -3,7 +3,7 @@ import { Stack, useTheme } from '@mui/material';
 import { LayoutPages } from 'pkg.layout.pages';
 import { Navigation } from 'kit/Navigation';
 
-import { Items } from 'components/Home/Updates';
+import { Items, Header } from 'components/Home/Updates';
 
 const Updates = observer(() => {
   const { breakpoints } = useTheme();
@@ -33,6 +33,7 @@ const Updates = observer(() => {
             overflow: 'auto',
           }}
         >
+          <Header />
           <Items />
         </Stack>
       </Navigation>
