@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, MouseEvent } from 'react';
+import React, { MouseEvent } from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -12,145 +12,148 @@ type CommunityMenuProps = {
   open?: boolean;
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   handleClose?: (e: MouseEvent<HTMLAnchorElement> | MouseEvent<HTMLLIElement>) => void;
-  handleListKeyDown?: (e: KeyboardEvent<HTMLUListElement>) => void;
+  // handleListKeyDown?: (e: KeyboardEvent<HTMLUListElement>) => void;
 };
 
-const CommunityMenu = observer(
-  ({ setOpen, handleClose, handleListKeyDown }: CommunityMenuProps) => {
-    const rootStore = useStore();
-    const { uiSt } = rootStore;
+const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) => {
+  const rootStore = useStore();
+  const { uiSt } = rootStore;
 
-    return (
-      <MenuList
-        autoFocusItem={uiSt.dialogs.communityInvite}
-        id="composition-menu"
-        aria-labelledby="composition-button"
-        onKeyDown={handleListKeyDown}
+  return (
+    <MenuList
+      id="composition-menu"
+      aria-labelledby="composition-button"
+      // onKeyDown={handleListKeyDown}
+      sx={{ width: '100%' }}
+    >
+      <MenuItem
         sx={{ width: '100%' }}
+        onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
+          uiSt.setDialogs('communityInvite', true);
+        }}
       >
-        <MenuItem sx={{ width: '100%' }} onClick={() => uiSt.setDialogs('communityInvite', true)}>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
-          >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Пригласить людей
-            </Typography>
-            <PersonAddAlt1Icon fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <MenuItem
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ width: '100%' }}
-          onClick={() => {
-            uiSt.setDialogs('communityProfile', true);
-            uiSt.setDialogs('communityMenu', false);
-          }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Настройки сообщества
-            </Typography>
-            <SettingsIcon fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <Divider flexItem />
-        <MenuItem
+            Пригласить людей
+          </Typography>
+          <PersonAddAlt1Icon fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <MenuItem
+        sx={{ width: '100%' }}
+        onClick={() => {
+          uiSt.setDialogs('communityProfile', true);
+          uiSt.setDialogs('communityMenu', false);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ width: '100%' }}
-          onClick={() => {
-            uiSt.setDialogs('channelCreation', true);
-            if (setOpen) setOpen(false);
-          }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Создать канал
-            </Typography>
-            <AddCircleIcon fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <MenuItem
+            Настройки сообщества
+          </Typography>
+          <SettingsIcon fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <Divider flexItem />
+      <MenuItem
+        sx={{ width: '100%' }}
+        onClick={() => {
+          uiSt.setDialogs('channelCreation', true);
+          if (setOpen) setOpen(false);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ width: '100%' }}
-          onClick={() => {
-            uiSt.setDialogs('categoryCreation', true);
-            if (setOpen) setOpen(false);
-          }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Создать категорию
-            </Typography>
-            <CreateNewFolderIcon fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <Divider flexItem />
-        <MenuItem
+            Создать канал
+          </Typography>
+          <AddCircleIcon fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <MenuItem
+        sx={{ width: '100%' }}
+        onClick={() => {
+          uiSt.setDialogs('categoryCreation', true);
+          if (setOpen) setOpen(false);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
           sx={{ width: '100%' }}
-          onClick={(e) => {
-            if (handleClose) handleClose(e);
-          }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%', color: 'error.main' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Покинуть сообщество
-            </Typography>
-            <LogoutIcon sx={{ color: 'error.main' }} fontSize="small" />
-          </Stack>
-        </MenuItem>
-      </MenuList>
-    );
-  },
-);
+            Создать категорию
+          </Typography>
+          <CreateNewFolderIcon fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <Divider flexItem />
+      <MenuItem
+        sx={{ width: '100%' }}
+        onClick={(e) => {
+          if (handleClose) handleClose(e);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%', color: 'error.main' }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
+          >
+            Покинуть сообщество
+          </Typography>
+          <LogoutIcon sx={{ color: 'error.main' }} fontSize="small" />
+        </Stack>
+      </MenuItem>
+    </MenuList>
+  );
+});
 
 export default CommunityMenu;
