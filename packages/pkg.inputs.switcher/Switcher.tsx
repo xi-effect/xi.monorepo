@@ -18,10 +18,10 @@ export const Switcher: FC<SwitcherProps> = ({
   groupBackgroundColor,
   disabledValue,
   isError,
-  onChangeHandler,
+  onChange,
 }) => {
-  const handleChange = (event: MouseEvent<HTMLElement>, value: string) => {
-    onChangeHandler(value, event);
+  const handleChange = (event: MouseEvent<HTMLElement>, value: any) => {
+    onChange(value, event);
   };
 
   return (
@@ -78,5 +78,5 @@ type SwitcherProps = {
   groupBackgroundColor?: string;
   disabledValue?: string | number;
   isError?: boolean;
-  onChangeHandler: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
+  onChange: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
 };

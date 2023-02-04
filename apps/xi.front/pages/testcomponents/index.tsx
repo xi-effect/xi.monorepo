@@ -23,7 +23,7 @@ const TestComponents = () => {
         size="medium"
         currentValue={value1}
         values={arr1}
-        onChangeHandler={onChangeValue1}
+        onChange={onChangeValue1}
         disabledValue="Четвёртый"
       />
 
@@ -33,7 +33,7 @@ const TestComponents = () => {
         groupBackgroundColor="grayscale.10"
         values={arr2}
         color="white"
-        onChangeHandler={onChangeValue2}
+        onChange={onChangeValue2}
         isError={isError}
         disabledValue="IV"
       />
