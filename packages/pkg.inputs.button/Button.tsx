@@ -1,9 +1,9 @@
 import 'pkg.config.muidts';
 
-import { Typography, Button as MuiButton, darken, useTheme, ButtonProps } from '@mui/material';
-import { FC, FunctionComponent, MouseEvent } from 'react';
+import { Typography, Button as MuiButton, darken, useTheme } from '@mui/material';
+import { FC, MouseEvent } from 'react';
 
-import { Color, LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
+import { ButtonPropsType } from './types';
 
 import {
   buttonVariantsColor,
@@ -124,33 +124,3 @@ export const Button: FC<ButtonPropsType> = ({
     </MuiButton>
   );
 };
-
-type ButtonPropsType = {
-  // button status: pending = spinner appears, completed button disabled with active color
-  // completed and startIcon or endIcon or only icon without text appears check
-  status?: Status;
-  size?: Size; // button size
-  // button spinner position: icon above icon and center
-  loadingPosition?: LoadingPosition;
-  // button variant
-  variant?: Variant;
-  // button color
-  color?: Color;
-  // start or end button icon if icon without text, icon position will be center
-  startIcon?: FunctionComponent<any>;
-  endIcon?: FunctionComponent<any>;
-  // button icon color
-  handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
-  // whether to display snackbar
-  isSnackbar?: boolean;
-  // snackbar text
-  snackbarText?: string;
-  // start or end snackbar icon if icon without text, icon position will be center
-  isSnackbarIconStart?: boolean;
-  isSnackbarIconEnd?: boolean;
-  // snackbar spinner position: icon above icon and center
-  snackbarLoadingPosition?: LoadingPosition;
-  // snackbar position: default right
-  snackbarPosition?: SnackbarPosition;
-  // you can also pass default mui button attributes
-} & Omit<ButtonProps, 'startIcon' | 'endIcon'>;
