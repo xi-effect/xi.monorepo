@@ -10,6 +10,17 @@ import {
   groupSizes,
 } from './styles';
 
+export type SwitcherProps = {
+  currentValue: string | number;
+  values: string[] | number[];
+  size?: 'large' | 'medium' | 'small';
+  color?: 'primary' | 'white';
+  groupBackgroundColor?: string;
+  disabledValue?: string | number;
+  isError?: boolean;
+  onChange: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
+};
+
 export const Switcher: FC<SwitcherProps> = ({
   currentValue,
   values,
@@ -68,15 +79,4 @@ export const Switcher: FC<SwitcherProps> = ({
       ))}
     </ToggleButtonGroup>
   );
-};
-
-type SwitcherProps = {
-  currentValue: string | number;
-  values: string[] | number[];
-  size?: 'large' | 'medium' | 'small';
-  color?: 'primary' | 'white';
-  groupBackgroundColor?: string;
-  disabledValue?: string | number;
-  isError?: boolean;
-  onChange: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
 };
