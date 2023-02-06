@@ -1,15 +1,17 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import { Avatar as Av, Stack } from '@mui/material';
+import Image from 'next/image';
 import { Photo } from 'pkg.icons.photo';
+import { Trash } from 'pkg.icons.trash';
 import { useStore } from 'store/connect';
 import DialogEditor from './DialogEditor';
 
 type AvatarT = {
   letter?: string;
-  src?: string;
+  filename?: string;
 };
 
-const Avatar = ({ letter, src }: AvatarT) => {
+const Avatar = ({ letter, filename }: AvatarT) => {
   const randomNumber = Math.floor(Math.random() * 1);
 
   const getBgcolor = () => {
@@ -24,17 +26,30 @@ const Avatar = ({ letter, src }: AvatarT) => {
     return '#9769FF';
   };
 
+  if (filename) {
+    return (
+      <Image
+        src={`https://xieffect.ru:5000/files/${filename}`}
+        alt="avatar"
+        width={128}
+        height={128}
+        style={{
+          borderRadius: '64px',
+        }}
+      />
+    );
+  }
   if (letter) {
     return (
       <Av
         alt="avatar"
         sx={{
-          width: 72,
-          height: 72,
+          width: 128,
+          height: 128,
           bgcolor: getBgcolor(),
           color: getTextColor(),
           fontWeight: 600,
-          fontSize: '24px',
+          fontSize: '48px',
           lineHeight: '32px',
         }}
       >
@@ -42,17 +57,33 @@ const Avatar = ({ letter, src }: AvatarT) => {
       </Av>
     );
   }
-  return <Image src={src || ''} alt="avatar" width={72} height={72} />;
+
+  return (
+    <Av
+      alt="avatar"
+      sx={{
+        width: 128,
+        height: 128,
+        bgcolor: getBgcolor(),
+        color: getTextColor(),
+        fontWeight: 600,
+        fontSize: '24px',
+        lineHeight: '32px',
+      }}
+    >
+      A
+    </Av>
+  );
 };
 
 type AvatarEditorT = {
   letter?: string;
-  src?: string;
+  filename?: string;
 };
 
-const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
+const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
   const rootStore = useStore();
-  const { uiSt } = rootStore;
+  const { uiSt, userSt } = rootStore;
 
   return (
     <Stack
@@ -60,12 +91,12 @@ const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
       justifyContent="center"
       alignItems="center"
       sx={{
-        width: 72,
-        height: 72,
+        width: 128,
+        height: 128,
         position: 'relative',
       }}
     >
-      <Avatar letter={letter} src={src} />
+      <Avatar letter={letter} filename={filename} />
       <Stack
         direction="row"
         justifyContent="center"
@@ -79,7 +110,7 @@ const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
           bgcolor: 'primary.dark',
           borderRadius: 18,
           bottom: -4,
-          right: -4,
+          left: -4,
           svg: {
             fill: '#FFF',
           },
@@ -88,6 +119,29 @@ const AvatarEditor = ({ letter, src }: AvatarEditorT) => {
         onClick={() => uiSt.setDialogs('avatarEditor', true)}
       >
         <Photo fontSize="inherit" />
+      </Stack>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          cursor: 'pointer',
+          width: 36,
+          height: 36,
+          border: '2px solid white',
+          position: 'absolute',
+          bgcolor: 'error.dark',
+          borderRadius: 18,
+          bottom: -4,
+          right: -4,
+          svg: {
+            fill: '#FFF',
+          },
+          fontSize: 20,
+        }}
+        onClick={() => userSt.deleteAvatar()}
+      >
+        <Trash fontSize="inherit" />
       </Stack>
       <DialogEditor uiSt={uiSt} />
     </Stack>

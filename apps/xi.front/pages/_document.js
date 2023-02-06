@@ -1,7 +1,5 @@
 import * as React from 'react';
-import Document, {
-  Html, Head, Main, NextScript,
-} from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../store/createEmotionCache';
 
@@ -46,12 +44,14 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#5d74a6" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#5d74a6" />
-          <script
-            async
-            defer
-            data-website-id="e9570b38-1176-44ac-854c-5b7ad4380a47"
-            src="https://analytics.xieffect.ru/umami.js"
-          />
+          {process.env.NODE_ENV === 'development' && (
+            <script
+              async
+              defer
+              data-website-id="e9570b38-1176-44ac-854c-5b7ad4380a47"
+              src="https://analytics.xieffect.ru/umami.js"
+            />
+          )}
           {this.props.emotionStyleTags}
         </Head>
         <body>
@@ -97,11 +97,13 @@ MyDocument.getInitialProps = async (ctx) => {
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  ctx.renderPage = () => originalRenderPage({
-    enhanceApp: (App) => function EnhanceApp(props) {
-      return <App emotionCache={cache} {...props} />;
-    },
-  });
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) =>
+        function EnhanceApp(props) {
+          return <App emotionCache={cache} {...props} />;
+        },
+    });
 
   const initialProps = await Document.getInitialProps(ctx);
   // This is important. It prevents Emotion to render invalid HTML.

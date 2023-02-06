@@ -3,6 +3,7 @@ import RootStore from '../rootStore';
 
 type DialogsType = {
   communityCreation: boolean;
+  communityInvite: boolean;
   categoryCreation: boolean;
   channelCreation: boolean;
   invite: boolean;
@@ -16,6 +17,7 @@ type DialogsType = {
   emailChange: boolean;
   avatarEditor: boolean;
   isSave: boolean;
+  communityProfile: boolean;
 };
 
 class UISt {
@@ -68,6 +70,7 @@ class UISt {
 
   @observable dialogs: DialogsType = {
     communityCreation: false,
+    communityInvite: false,
     categoryCreation: false,
     channelCreation: false,
     invite: false,
@@ -81,6 +84,7 @@ class UISt {
     emailChange: false,
     avatarEditor: false,
     isSave: false,
+    communityProfile: false,
   };
 
   @action setDialogs = (name: string, value: boolean) => {
@@ -90,6 +94,7 @@ class UISt {
   @action setDialogsFalse = () => {
     this.dialogs = {
       communityCreation: false,
+      communityInvite: false,
       categoryCreation: false,
       channelCreation: false,
       invite: false,
@@ -103,6 +108,7 @@ class UISt {
       emailChange: false,
       avatarEditor: false,
       isSave: false,
+      communityProfile: false,
     };
   };
 }

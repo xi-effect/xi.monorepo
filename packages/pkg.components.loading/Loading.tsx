@@ -1,3 +1,5 @@
+import 'pkg.config.muidts';
+
 import React from 'react';
 import { Grid, Stack, Typography, useMediaQuery } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -43,7 +45,6 @@ export type LoadingProps = {
 
 export const Loading = ({ loading }: LoadingProps) => {
   const theme = useTheme();
-  // @ts-ignore
   const mobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   return (
@@ -75,7 +76,7 @@ export const Loading = ({ loading }: LoadingProps) => {
             justifyContent="center"
             alignItems="center"
             sx={{
-              p: 0.5,
+              p: 1,
               position: 'relative',
               maxWidth: '540px',
               width: '100%',
@@ -95,26 +96,22 @@ export const Loading = ({ loading }: LoadingProps) => {
             >
               <Typography
                 align="center"
+                variant="xl"
                 sx={{
                   width: '100%',
                   color: 'grayscale.80',
-                  fontSize: mobile ? '20px' : '20px',
                   maxWidth: '540px',
-                  lineHeight: mobile ? '28px' : '28px',
-                  fontWeight: 500,
                 }}
               >
                 {quotes[randomValue].text}
               </Typography>
               <Typography
                 align="center"
+                variant="l"
                 sx={{
                   width: '100%',
                   mt: '24px',
                   color: 'grayscale.80',
-                  fontSize: mobile ? '20px' : '20px',
-                  lineHeight: '48px',
-                  fontWeight: 500,
                 }}
               >
                 {`© ${quotes[randomValue ?? 0].author}`}

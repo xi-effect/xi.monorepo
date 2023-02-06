@@ -73,12 +73,12 @@ const Account = observer(() => {
         sx={{
           bgcolor: 'grayscale.0',
           width: '100%',
-          height: '120px',
+          height: '204px',
           borderRadius: '8px',
           padding: '24px 36px',
         }}
       >
-        <AvatarEditor letter={userSt.user.username[0]} />
+        <AvatarEditor letter={userSt.user.username[0]} filename={userSt?.user?.avatar?.filename} />
         <Typography
           sx={{
             fontWeight: 600,

@@ -1,4 +1,4 @@
 export type FileT = {
-  id: number;
+  id: string;
   filename: string;
 };

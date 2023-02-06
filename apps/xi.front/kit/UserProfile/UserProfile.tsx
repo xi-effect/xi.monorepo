@@ -114,12 +114,18 @@ const UserProfile = observer(() => {
     ]);
 
     if (
-      handle !== user.handle ||
-      username !== user.username ||
-      name !== profile.name ||
-      surname !== profile.surname ||
-      patronymic !== profile.patronymic ||
-      (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday))
+      handle &&
+      username &&
+      username &&
+      name &&
+      surname &&
+      patronymic &&
+      (handle !== user.handle ||
+        username !== user.username ||
+        name !== profile.name ||
+        surname !== profile.surname ||
+        patronymic !== profile.patronymic ||
+        (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday)))
     ) {
       if (!isMobile) {
         return;

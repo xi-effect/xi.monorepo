@@ -12,7 +12,8 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
-    "framer-motion": "^7.10.2"
+    "framer-motion": "^7.10.2",
+    "pkg.config.muidts": "*"
   },
   "devDependencies": {
     "@types/react": "^17.0.37",
@@ -20,7 +21,7 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "react": "^18.2.0",
-    "pkg.config.typescript": "*",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "pkg.config.typescript": "*"
   }
 }

@@ -43,21 +43,28 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
     if (editor && editor.current) {
       // @ts-ignore
       const canvasScaled = editor.current.getImageScaledToCanvas();
-
-      const image = canvasScaled.toDataURL('image/png');
-
-      const newImage = new File([image], `userAvatar${userSt?.user?.id ?? 0}.png`, {
-        type: 'image/png',
-      });
-
-      const data = await handlePostFile(newImage);
-      if (data.id) {
-        userSt.setUser('avatar', data.id);
-        uiSt.setDialogs('avatarEditor', false);
-        enqueueSnackbar('Новая Аватарка успешно сохранена', { variant: 'success' });
-      } else {
-        enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
-      }
+      canvasScaled.toBlob((blob) => {
+        const file = new File([blob], 'avatar.jpeg', { type: 'image/jpeg' });
+        handlePostFile(file).then((data) => {
+          if (data?.id) {
+            rootStore
+              .fetchData(`${rootStore.url}/users/me/avatar/`, 'POST', {
+                'avatar-id': data.id,
+              })
+              .then((answer) => {
+                if (answer?.a) {
+                  userSt.setUser('avatar', data);
+                  uiSt.setDialogs('avatarEditor', false);
+                  enqueueSnackbar('Новая Аватарка успешно сохранена', { variant: 'success' });
+                } else {
+                  enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
+                }
+              });
+          } else {
+            enqueueSnackbar('Что-то пошло не так', { variant: 'error' });
+          }
+        });
+      }, 'image/jpeg');
     }
   };
 
