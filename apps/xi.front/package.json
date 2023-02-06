@@ -43,6 +43,7 @@
     "pkg.data.avatar": "*",
     "pkg.dialogs.exit": "*",
     "pkg.forms.signin": "*",
+    "pkg.inputs.toggle": "*",
     "pkg.icons.account": "*",
     "pkg.icons.add": "*",
     "pkg.icons.addcategory": "*",
