@@ -11,7 +11,7 @@ import {
   IconButton,
   Dialog,
   DialogContent,
-  useMediaQuery,
+  useMediaQuery, Theme,
 } from '@mui/material';
 
 import MobileDialog from 'kit/MobileDialog';
@@ -31,14 +31,11 @@ import { Announce } from 'pkg.icons.announce';
 import { Camera } from 'pkg.icons.camera';
 import { Chat } from 'pkg.icons.chat';
 import { Task } from 'pkg.icons.task';
+import RootStore from '../../store/rootStore';
 
 // import TextFieldCustom from '../TextFieldCustom';
 
-const schema = yup
-  .object({
-    name: yup.string().min(0).max(100).required(),
-  })
-  .required();
+// style checkbox
 const BpIcon = styled('span')(({ theme }) => ({
   borderRadius: '50%',
   width: 16,
@@ -80,7 +77,13 @@ const BpCheckedIcon = styled(BpIcon)({
   },
 });
 
-const content = [
+type ContentType={
+  label:string,
+  description:string,
+  icon:React.ReactNode
+};
+
+const content:ContentType[] = [
   {
     label: 'Объявления',
     description: 'Держите ваших студентов в курсе всех новостей по курсу',
@@ -111,22 +114,33 @@ const getType = (num) => {
   if (num === 3) return 'chat';
   return 'announcement';
 };
+interface IFormInput {
+ name:string
+}
+
+const schema = yup
+  .object({
+    name: yup.string().min(0).max(100).required(),
+  })
+  .required();
+
+type ChannelSelectType=0|1|2|3;
 
 const Content = observer((props) => {
   const { communityChannelsSt, uiSt } = props;
 
-  const mobile = useMediaQuery((theme) => theme.breakpoints.down('lg'));
-  const [channelSelect, setChannelSelect] = React.useState(2);
+  const mobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('lg'));
+  const [channelSelect, setChannelSelect] = React.useState<ChannelSelectType>(2);
   const {
     control,
     handleSubmit,
     trigger,
     formState: { errors },
-  } = useForm({
+  } = useForm<IFormInput>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:IFormInput) => {
     trigger();
     const type = getType(channelSelect);
     communityChannelsSt.pushNewChannel({ ...data, type });
@@ -176,7 +190,7 @@ const Content = observer((props) => {
       {content.map((item, index) => (
         <Stack
           key={index.toString()}
-          onClick={() => setChannelSelect(index)}
+          onClick={() => setChannelSelect(index as ChannelSelectType)}
           direction="row"
           justifyContent="center"
           alignItems="start"
@@ -217,7 +231,7 @@ const Content = observer((props) => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          sx={{ width: '100%', pt: 2, pb: 4 }}
+          sx={{ width: '100%', pt: 2, pb: 3 }}
           spacing={2}
         >
           <Button
@@ -244,9 +258,9 @@ const Content = observer((props) => {
 });
 
 const DialogChannelCreation = observer(() => {
-  const rootStore = useStore();
+  const rootStore:RootStore = useStore();
   const { communityChannelsSt, uiSt } = rootStore;
-  const fullScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
   return (
     <>
       {!fullScreen && (
@@ -275,7 +289,7 @@ const DialogChannelCreation = observer(() => {
               p: 1,
             }}
           >
-            <Typography sx={{ pt: 3, m: '0 auto', textAlign: 'center', fontSize: 24 }} variant="h6">
+            <Typography sx={{ pt: 2, m: '0 auto', textAlign: 'center', fontSize: 24 }} variant="h6">
               Создать канал
             </Typography>
             <IconButton onClick={() => uiSt.setDialogs('channelCreation', false)} sx={{ mr: 2, p: 0 }}>
@@ -302,4 +316,4 @@ const DialogChannelCreation = observer(() => {
   );
 });
 
- export default DialogChannelCreation;
+export default DialogChannelCreation;

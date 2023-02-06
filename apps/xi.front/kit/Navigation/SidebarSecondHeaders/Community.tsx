@@ -20,8 +20,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CloseIcon from '@mui/icons-material/Close';
 
 import CommunityMenu from 'kit/CommunityMenu';
-import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
+
 import { useStore } from 'store/connect';
+import DialogChannelCreation from '../../CommunityMenu/DialogChannelCreator';
 
 const Community = observer(() => {
   const rootStore = useStore();
