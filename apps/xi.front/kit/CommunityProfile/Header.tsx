@@ -83,7 +83,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ width: '100%', height: '56px', position: 'relative' }}
+      sx={{ width: '100%', height: '56px', position: 'sticky', top: 0 }}
     >
       {/* custom btn */}
       {mobile700 && getCustomBtn()}
