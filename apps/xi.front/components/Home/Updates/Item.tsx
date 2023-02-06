@@ -33,11 +33,9 @@ const Item = observer((data: UpdateT) => {
   const rootStore = useStore();
   const { userSt } = rootStore;
   const { user } = userSt;
-  console.log(user.avatar);
 
   const Content = data.content;
 
-  // const mobile1440: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1440));
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
   const mobile375: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(375));
 
@@ -46,7 +44,6 @@ const Item = observer((data: UpdateT) => {
     if (mobile700) return 'min700px';
     return 'min1440px';
   };
-  getScreenWidth();
 
   return (
     <Stack sx={{ bgcolor: 'grayscale.0', borderRadius: '16px', p: '24px' }} spacing={2}>
