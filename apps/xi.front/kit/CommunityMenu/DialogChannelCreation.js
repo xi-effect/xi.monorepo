@@ -13,10 +13,6 @@ import {
   DialogContent,
   useMediaQuery,
 } from '@mui/material';
-import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
-import AssignmentTurnedInOutlinedIcon from '@mui/icons-material/AssignmentTurnedInOutlined';
-import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
-import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 
 import MobileDialog from 'kit/MobileDialog';
 import CloseIcon from '@mui/icons-material/Close';
@@ -28,10 +24,15 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-// import { Input } from 'pkg.inputs.input';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Input } from 'pkg.inputs.input';
 import { styled } from '@mui/material/styles';
+import { Announce } from 'pkg.icons.announce';
+import { Camera } from 'pkg.icons.camera';
+import { Chat } from 'pkg.icons.chat';
+import { Task } from 'pkg.icons.task';
 
-import TextFieldCustom from '../TextFieldCustom';
+// import TextFieldCustom from '../TextFieldCustom';
 
 const schema = yup
   .object({
@@ -83,23 +84,23 @@ const content = [
   {
     label: 'Объявления',
     description: 'Держите ваших студентов в курсе всех новостей по курсу',
-    icon: <CampaignOutlinedIcon sx={{ fontSize: 18 }} />,
+    icon: <Announce sx={{ fontSize: 20 }} />,
   },
   {
     label: 'Задания',
     description:
       'Создавайте задания, тесты, получайте ответы от учеников, оценивайте и улучшайте знания',
-    icon: <AssignmentTurnedInOutlinedIcon sx={{ fontSize: 18 }} />,
+    icon: <Task sx={{ fontSize: 20 }} />,
   },
   {
     label: 'Видеоконференции',
     description: 'Проводите уроки онлайн, проводите активности, работайте со студентами из любой точки мира',
-    icon: <VideocamOutlinedIcon sx={{ fontSize: 18 }} />,
+    icon: <Camera sx={{ fontSize: 20 }} />,
   },
   {
     label: 'Чат со студентами',
     description: 'Общайтесь, отвечайте на вопросы, объясняйте непонятные моменты',
-    icon: <CommentOutlinedIcon sx={{ fontSize: 18 }} />,
+    icon: <Chat sx={{ fontSize: 20 }} />,
   },
 ];
 
@@ -139,10 +140,11 @@ const Content = observer((props) => {
       alignItems="flex-start"
       sx={{
         width: '100%',
+        px: 2,
       }}
       spacing={2}
     >
-      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pb: 1 }}>
+      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 500, lineHeight: '20px', pb: 0, mb: 0 }}>
         Название
       </Typography>
       <Controller
@@ -150,25 +152,25 @@ const Content = observer((props) => {
         control={control}
         defaultValue=""
         render={({ field }) => (
-          // <Input
+          <Input
+            variant="outlined"
+            error={errors?.name?.type === 'name'}
+            type="text"
+            placeholder="Название канала"
+            fullWidth
+            {...field}
+          />
+          // <TextFieldCustom
           //   variant="outlined"
           //   error={errors?.email?.type === 'email'}
           //   type="text"
-          //   placeholder="Название канала"
           //   fullWidth
+          //   placeholder="Название канала"
           //   {...field}
           // />
-          <TextFieldCustom
-            variant="outlined"
-            error={errors?.email?.type === 'email'}
-            type="text"
-            fullWidth
-            placeholder="Название канала"
-            {...field}
-          />
         )}
       />
-      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pt: 3, pb: 1 }}>
+      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pt: 2 }}>
         Тип
       </Typography>
       {content.map((item, index) => (
