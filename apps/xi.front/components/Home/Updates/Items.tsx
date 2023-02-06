@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Theme, useMediaQuery } from '@mui/material';
 import { observer } from 'mobx-react';
 import { UpdateT } from './types';
 
@@ -15,16 +15,29 @@ const contentArray: UpdateT[] = [
   },
 ];
 
-const Items = observer(() => (
-  <Box sx={{ width: '100%', mt: '32px' }}>
-    <Grid sx={{ width: '100%' }} container spacing={2}>
-      {contentArray.map((item, index) => (
-        <Grid item xs key={index}>
-          <Item {...item} />
-        </Grid>
-      ))}
-    </Grid>
-  </Box>
-));
+const Items = observer(() => {
+  const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
+  const mobile375: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(375));
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Grid
+        sx={{
+          width: '100%',
+          pt: mobile700 ? '12px' : '',
+          pl: mobile375 ? '4px' : `${mobile700 ? '12px' : ''}`,
+        }}
+        container
+        spacing={2}
+      >
+        {contentArray.map((item, index) => (
+          <Grid item xs key={index}>
+            <Item {...item} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+});
 
 export default Items;

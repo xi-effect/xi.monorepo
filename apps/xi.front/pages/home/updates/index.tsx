@@ -9,7 +9,7 @@ const Updates = observer(() => {
   const { breakpoints } = useTheme();
 
   return (
-    <LayoutPages>
+    <LayoutPages title="Обновления">
       <Navigation>
         <Stack
           direction="column"
@@ -19,8 +19,8 @@ const Updates = observer(() => {
             height: '100vh',
             width: '100%',
             [breakpoints.up('xs')]: {
-              p: 2,
-              pr: 1.5,
+              p: 3,
+              pr: 0,
             },
             [breakpoints.up('md')]: {
               p: 3,
