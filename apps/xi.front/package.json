@@ -71,6 +71,7 @@
     "pkg.icons.task": "*",
     "pkg.icons.updates": "*",
     "pkg.icons.users": "*",
+    "pkg.inputs.select": "*",
     "pkg.layout.pages": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
