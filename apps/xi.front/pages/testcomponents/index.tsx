@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Stack } from '@mui/material';
 import { Select, SelectProps } from 'pkg.inputs.select';
+import { v4 } from 'uuid';
 
 const TestComponents = () => {
   const [value, setValue] = useState('');
@@ -10,8 +11,9 @@ const TestComponents = () => {
   };
 
   const testSelect: SelectProps = {
+    id: v4(),
     items: ['Item1', 'Item2', 'Item3'],
-    size: 's',
+    size: 'm',
     // type: 'disabled',
     value,
     changeValue,

@@ -27,3 +27,15 @@ export const selectTypes: { [key in TypesT]: any } = {
     bgcolor: 'grayscale.40',
   },
 };
+
+export const selectRoot = {
+  p: '4px',
+};
+export const selectPaper = {
+  bgcolor: 'grayscale.0',
+  border: '1px solid',
+  borderColor: 'grayscale.10',
+  boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
+  borderRadius: '8px',
+  mt: '4px',
+};

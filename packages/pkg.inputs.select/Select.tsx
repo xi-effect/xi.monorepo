@@ -1,8 +1,10 @@
-import { MenuItem, Select as MuiSelect } from '@mui/material';
+import { FormControl, MenuItem, Select as MuiSelect } from '@mui/material';
 import { SizesT, TypesT } from './types';
-import { selectSizes, selectTypes } from './style';
+import { selectSizes, selectTypes, selectPaper, selectRoot } from './style';
 
 export type SelectProps = {
+  /* unique id */
+  id: string;
   /* select items */
   items: string[];
   /* select sized */
@@ -18,6 +20,7 @@ export type SelectProps = {
 };
 
 export const Select = ({
+  id,
   items,
   size,
   type = 'default',
@@ -31,28 +34,41 @@ export const Select = ({
   };
 
   return (
-    <MuiSelect
-      sx={{
-        ...selectSizes[size],
-        border: '1.5px solid',
-        ...selectTypes[type],
-        borderRadius: '8px',
-        width,
-        transition: '0.3s',
-        '& .MuiOutlinedInput-notchedOutline': {
-          border: 'none',
-        },
-        color: !value ? 'grayscale.40' : 'grayscale.80',
-      }}
-      disabled={type === 'disabled'}
-      onChange={onChangeValue}
-      value={value}
-    >
-      {items.map((item, index) => (
-        <MenuItem value={item} key={`${item}_${index}`}>
-          {item}
-        </MenuItem>
-      ))}
-    </MuiSelect>
+    <FormControl sx={{ position: 'relative' }}>
+      <MuiSelect
+        labelId={id}
+        sx={{
+          ...selectSizes[size],
+          border: '1.5px solid',
+          ...selectTypes[type],
+          borderRadius: '8px',
+          width,
+          transition: '0.3s',
+          '& .MuiOutlinedInput-notchedOutline': {
+            border: 'none',
+          },
+          color: !value ? 'grayscale.40' : 'grayscale.80',
+        }}
+        disabled={type === 'disabled'}
+        onChange={onChangeValue}
+        value={value}
+        MenuProps={{
+          sx: { '.MuiMenu-paper': { ...selectPaper }, '&.MuiMenu-root': { ...selectRoot } },
+        }}
+      >
+        {items.map((item, index) => (
+          <MenuItem
+            value={item}
+            key={`${item}_${index}`}
+            sx={{
+              borderRadius: '4px',
+              '&.Mui-selected': { bgcolor: 'primary.pale', color: 'primary.dark' },
+            }}
+          >
+            {item}
+          </MenuItem>
+        ))}
+      </MuiSelect>
+    </FormControl>
   );
 };
