@@ -1,9 +1,16 @@
 import { MenuItem, Select as MuiSelect } from '@mui/material';
 
-export const Select = () => (
+export type SelectProps = {
+  /* select items */
+  items: string[];
+};
+
+export const Select = ({ items }: SelectProps) => (
   <MuiSelect>
-    <MenuItem>1</MenuItem>
-    <MenuItem>2</MenuItem>
-    <MenuItem>3</MenuItem>
+    {items.map((item, index) => (
+      <MenuItem value={item} key={`${item}_${index}`}>
+        {item}
+      </MenuItem>
+    ))}
   </MuiSelect>
 );
