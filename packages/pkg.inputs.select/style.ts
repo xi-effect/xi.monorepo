@@ -28,14 +28,16 @@ export const selectTypes: { [key in TypesT]: any } = {
   },
 };
 
-export const selectRoot = {
-  p: '4px',
-};
-export const selectPaper = {
-  bgcolor: 'grayscale.0',
-  border: '1px solid',
-  borderColor: 'grayscale.10',
-  boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
-  borderRadius: '8px',
-  mt: '4px',
+export const MenuProps = {
+  '& .MuiMenu-paper': {
+    border: '1px solid',
+    borderColor: 'grayscale.10',
+    boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
+    borderRadius: '8px',
+    mt: '4px',
+  },
+  '& .MuiMenu-list': {
+    p: '4px',
+    bgcolor: 'grayscale.0',
+  },
 };

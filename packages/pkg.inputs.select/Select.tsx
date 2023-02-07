@@ -1,6 +1,6 @@
 import { FormControl, MenuItem, Select as MuiSelect } from '@mui/material';
 import { SizesT, TypesT } from './types';
-import { selectSizes, selectTypes, selectPaper, selectRoot } from './style';
+import { selectSizes, selectTypes, MenuProps } from './style';
 
 export type SelectProps = {
   /* unique id */
@@ -53,9 +53,7 @@ export const Select = ({
         disabled={type === 'disabled'}
         onChange={onChangeValue}
         value={value}
-        MenuProps={{
-          sx: { '.MuiMenu-paper': { ...selectPaper }, '&.MuiMenu-root': { ...selectRoot } },
-        }}
+        MenuProps={{ sx: { ...MenuProps } }}
         inputProps={{ 'aria-label': 'Without label' }}
         displayEmpty
       >
@@ -73,6 +71,8 @@ export const Select = ({
             sx={{
               borderRadius: '4px',
               '&.Mui-selected': { bgcolor: 'primary.pale', color: 'primary.dark' },
+              '&:hover': { bgcolor: 'grayscale.5' },
+              transition: '0.3s',
             }}
           >
             {item}
