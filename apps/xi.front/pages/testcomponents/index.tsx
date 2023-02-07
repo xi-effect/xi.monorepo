@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Stack } from '@mui/material';
 import { Select, SelectProps } from 'pkg.inputs.select';
 import { v4 } from 'uuid';
-// import { File } from 'pkg.icons.file';
+import { Folder } from 'pkg.icons.folder';
 
 const TestComponents = () => {
   const [value, setValue] = useState('');
@@ -16,7 +16,7 @@ const TestComponents = () => {
     items: ['Item1', 'Item2', 'Item3'],
     size: 'm',
     // type: 'disabled',
-    // Icon: File,
+    Icon: Folder,
     value,
     changeValue,
   };

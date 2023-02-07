@@ -62,7 +62,7 @@ export const Select = ({
       >
         <MenuItem disabled value="" sx={{ display: 'none' }}>
           <Stack direction="row" alignItems="center" spacing={1}>
-            {Icon && <Icon />}
+            {Icon && <Icon sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }} />}
             <Typography sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}>
               {label}
             </Typography>
