@@ -1,4 +1,4 @@
-import { SizesT } from './types';
+import { SizesT, TypesT } from './types';
 
 export const selectSizes: { [key in SizesT]: any } = {
   m: {
@@ -6,5 +6,24 @@ export const selectSizes: { [key in SizesT]: any } = {
   },
   s: {
     height: '32px',
+  },
+};
+
+export const selectTypes: { [key in TypesT]: any } = {
+  default: {
+    borderColor: 'grayscale.10',
+    '&:hover': {
+      borderColor: 'grayscale.40',
+    },
+  },
+  warning: {
+    borderColor: 'orange',
+  },
+  error: {
+    borderColor: 'error.main',
+  },
+  disabled: {
+    borderColor: 'grayscale.10',
+    bgcolor: 'grayscale.10',
   },
 };

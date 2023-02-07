@@ -5,6 +5,7 @@ import { Select, SelectProps } from 'pkg.inputs.select';
 const testSelect: SelectProps = {
   items: ['Item1', 'Item2', 'Item3'],
   size: 's',
+  type: 'disabled',
 };
 
 const TestComponents = () => (
