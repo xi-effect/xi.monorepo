@@ -1,4 +1,4 @@
-import { FormControl, MenuItem, Select as MuiSelect } from '@mui/material';
+import { FormControl, MenuItem, Select as MuiSelect, Typography } from '@mui/material';
 import { SizesT, TypesT } from './types';
 import { selectSizes, selectTypes, MenuProps } from './style';
 
@@ -57,12 +57,10 @@ export const Select = ({
         inputProps={{ 'aria-label': 'Without label' }}
         displayEmpty
       >
-        <MenuItem
-          disabled
-          value=""
-          sx={{ display: 'none', color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}
-        >
-          <em>{label}</em>
+        <MenuItem disabled value="" sx={{ display: 'none' }}>
+          <Typography sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}>
+            {label}
+          </Typography>
         </MenuItem>
         {items.map((item, index) => (
           <MenuItem
