@@ -1,4 +1,4 @@
-import { FormControl, MenuItem, Select as MuiSelect, Typography } from '@mui/material';
+import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { SizesT, TypesT } from './types';
 import { selectSizes, selectTypes, MenuProps } from './style';
 
@@ -13,6 +13,8 @@ export type SelectProps = {
   /* select custom width */
   width?: string;
   label?: string;
+  /* Icon in placeholder */
+  Icon?: any;
 
   /* selected value */
   value: string;
@@ -27,6 +29,7 @@ export const Select = ({
   type = 'default',
   width = '250px',
   label = 'Выберите',
+  Icon,
   value,
   changeValue,
 }: SelectProps) => {
@@ -58,9 +61,12 @@ export const Select = ({
         displayEmpty
       >
         <MenuItem disabled value="" sx={{ display: 'none' }}>
-          <Typography sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}>
-            {label}
-          </Typography>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            {Icon && <Icon />}
+            <Typography sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}>
+              {label}
+            </Typography>
+          </Stack>
         </MenuItem>
         {items.map((item, index) => (
           <MenuItem
