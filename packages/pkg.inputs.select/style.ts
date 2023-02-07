@@ -11,9 +11,9 @@ export const selectSizes: { [key in SizesT]: any } = {
 
 export const selectTypes: { [key in TypesT]: any } = {
   default: {
-    borderColor: 'grayscale.10',
+    borderColor: 'grayscale.40',
     '&:hover': {
-      borderColor: 'grayscale.40',
+      borderColor: 'grayscale.60',
     },
   },
   warning: {
@@ -23,7 +23,7 @@ export const selectTypes: { [key in TypesT]: any } = {
     borderColor: 'error.main',
   },
   disabled: {
-    borderColor: 'grayscale.10',
-    bgcolor: 'grayscale.10',
+    borderColor: 'grayscale.40',
+    bgcolor: 'grayscale.40',
   },
 };
