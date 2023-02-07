@@ -2,7 +2,6 @@ import { observer } from 'mobx-react';
 
 import { Stack, Tooltip, Divider, IconButton } from '@mui/material';
 
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import dynamic from 'next/dynamic';
 import useListen from 'utils/useListen';
 import { Account } from 'pkg.icons.account';
@@ -14,8 +13,12 @@ import { Scroll } from 'pkg.components.scroll';
 import { RegCommunityT } from 'models/dataProfileStore';
 import { useStore } from 'store/connect';
 import { CommunityInSidebar } from 'models/community';
-import CommunityItem from './CommunityItem';
+
+import { DndContext, UniqueIdentifier } from '@dnd-kit/core';
+import React from 'react';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import IButton from './IButton';
+import CommunityItem from './CommunityItem';
 
 const DialogCreateCommunity = dynamic(() => import('./DialogCreateCommunity'), {
   ssr: false,
@@ -24,6 +27,7 @@ const DialogCreateCommunity = dynamic(() => import('./DialogCreateCommunity'), {
 const Sidebar = observer(() => {
   const rootStore = useStore();
   const { uiSt, userSt } = rootStore;
+  const { user } = userSt;
 
   const reorder = (list, startIndex, endIndex) => {
     const result: CommunityInSidebar[] = Array.from(list);
@@ -34,12 +38,14 @@ const Sidebar = observer(() => {
   };
 
   const reorderFn = (source, destination) => {
-    const communities: CommunityInSidebar[] = reorder(userSt.user.communities, source, destination);
+    console.log('user.communities', user.communities);
+    const communities: CommunityInSidebar[] = reorder(user.communities, source, destination);
+    console.log('communities', communities);
 
     rootStore.socket?.emit(
       'reorder-community',
       {
-        'source-id': source,
+        'source-id': user.communities[source].id,
         'target-index': destination,
       },
       ({ code, message, data }) => {
@@ -49,25 +55,13 @@ const Sidebar = observer(() => {
     userSt.setUser('communities', communities);
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-
-    if (result.destination.index === result.source.index) {
-      return;
-    }
-
-    reorderFn(result.source.index, result.destination.index);
-  };
-
   type Community = {
     id: number;
     name: string;
   };
 
   const subReorder = (data) => {
-    const newArray = Array.from(userSt.user.communities);
+    const newArray = Array.from(user.communities);
     const item = newArray.find((i: Community) => i.id === data['source-id']);
     const itemIndex = newArray.findIndex((i: Community) => i.id === data['source-id']);
     newArray.splice(itemIndex, 1);
@@ -75,10 +69,10 @@ const Sidebar = observer(() => {
     userSt.setUser('communities', newArray);
   };
 
-  useListen(rootStore.socket, 'reorder-community', subReorder, userSt.user.communities);
+  useListen(rootStore.socket, 'reorder-community', subReorder, user.communities);
 
   const addItemtoMenu = (data) => {
-    const array = userSt.user.communities;
+    const array = user.communities;
     userSt.setUser('communities', [
       {
         name: data.name,
@@ -88,13 +82,18 @@ const Sidebar = observer(() => {
     ]);
   };
 
-  useListen(rootStore.socket, 'new-community', addItemtoMenu, userSt.user.communities);
+  useListen(rootStore.socket, 'new-community', addItemtoMenu, user.communities);
 
   const removeItem = (data) => {
     userSt.removeCommunity(data.id);
   };
 
   useListen(rootStore.socket, 'leave-community', removeItem, userSt);
+
+  const [activeId, setActiveId] = React.useState<UniqueIdentifier | null>(null);
+
+  const getIndex = (id: UniqueIdentifier) => user.communities.map((e) => e.id).indexOf(Number(id));
+  const activeIndex = activeId ? getIndex(activeId) : -1;
 
   return (
     <Stack
@@ -150,32 +149,45 @@ const Sidebar = observer(() => {
           />
         </Stack>
       </Stack>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="sidebar-communities-list">
-          {(provided) => (
-            <Scroll>
-              <Stack
-                direction="column"
-                justifyContent="flex-start"
-                alignItems="center"
-                spacing={1}
-                sx={{
-                  pt: 1,
-                  pb: 1,
-                  width: 64,
-                }}
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
-                {userSt.user.communities.map((item, index) => (
-                  <CommunityItem item={item} index={index} key={item.id} />
-                ))}
-                {provided.placeholder}
-              </Stack>
-            </Scroll>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <DndContext
+        onDragStart={({ active }) => {
+          if (!active) {
+            return;
+          }
+
+          setActiveId(active.id);
+        }}
+        onDragEnd={({ over }) => {
+          setActiveId(null);
+
+          if (over) {
+            const overIndex = getIndex(over.id);
+            if (activeIndex !== overIndex) {
+              reorderFn(activeIndex, overIndex);
+            }
+          }
+        }}
+        onDragCancel={() => setActiveId(null)}
+      >
+        <Scroll>
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="center"
+            sx={{
+              pt: 1,
+              pb: 1,
+              width: 64,
+            }}
+          >
+            <SortableContext items={user.communities} strategy={verticalListSortingStrategy}>
+              {user.communities.map((item, index) => (
+                <CommunityItem item={item} index={index} key={item.id} />
+              ))}
+            </SortableContext>
+          </Stack>
+        </Scroll>
+      </DndContext>
       <Stack
         sx={{ width: 64 }}
         direction="column"
