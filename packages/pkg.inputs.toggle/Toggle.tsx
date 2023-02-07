@@ -3,14 +3,7 @@ import { ChangeEvent, FC } from 'react';
 import { Switch, Stack, Typography } from '@mui/material';
 import { colorStyle, sizeStyle, stackGap, typographyVariants } from './style';
 
-export const Toggle: FC<ToggleProps> = ({
-  size = 'large',
-  color = 'primary',
-  checked,
-  disabled,
-  text,
-  onChange,
-}) => {
+export const Toggle: FC<ToggleProps> = ({ size = 'large', checked, disabled, text, onChange }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
     onChange(checked, event);
   };
@@ -29,10 +22,10 @@ export const Toggle: FC<ToggleProps> = ({
             transitionDuration: '300ms',
             '&.Mui-checked': {
               ...sizeStyle[size]['&.Mui-checked'],
-              color: colorStyle[color].checked.color,
+              color: colorStyle.checked.color,
               '& + .MuiSwitch-track': {
                 opacity: 1,
-                backgroundColor: colorStyle[color].checked.backgroundColor,
+                backgroundColor: colorStyle.checked.backgroundColor,
               },
               '&.Mui-disabled + .MuiSwitch-track': {
                 backgroundColor: colorStyle.disabled.backgroundColor,
@@ -70,7 +63,6 @@ export const Toggle: FC<ToggleProps> = ({
 
 export type ToggleProps = {
   size?: 'small' | 'medium' | 'large';
-  color?: 'primary' | 'error' | 'success';
   checked: boolean;
   disabled?: boolean;
   text?: string;

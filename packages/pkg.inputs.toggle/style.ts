@@ -62,15 +62,7 @@ export const sizeStyle = {
 export const colorStyle = {
   initial: { backgroundColor: 'grayscale.40' },
   disabled: { backgroundColor: 'grayscale.10', color: 'grayscale.40' },
-  primary: {
-    checked: { color: 'grayscale.0', backgroundColor: 'primary.dark' },
-  },
-  error: {
-    checked: { color: 'grayscale.0', backgroundColor: 'error.dark' },
-  },
-  success: {
-    checked: { color: 'grayscale.0', backgroundColor: 'success.dark' },
-  },
+  checked: { color: 'grayscale.0', backgroundColor: 'primary.dark' },
 };
 
 export const typographyVariants = {
