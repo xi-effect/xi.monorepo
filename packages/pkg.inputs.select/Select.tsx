@@ -12,6 +12,7 @@ export type SelectProps = {
   type?: TypesT;
   /* select custom width */
   width?: string;
+  label?: string;
 
   /* selected value */
   value: string;
@@ -25,6 +26,7 @@ export const Select = ({
   size,
   type = 'default',
   width = '250px',
+  label = 'Выберите',
   value,
   changeValue,
 }: SelectProps) => {
@@ -47,7 +49,6 @@ export const Select = ({
           '& .MuiOutlinedInput-notchedOutline': {
             border: 'none',
           },
-          color: !value ? 'grayscale.40' : 'grayscale.80',
         }}
         disabled={type === 'disabled'}
         onChange={onChangeValue}
@@ -55,7 +56,16 @@ export const Select = ({
         MenuProps={{
           sx: { '.MuiMenu-paper': { ...selectPaper }, '&.MuiMenu-root': { ...selectRoot } },
         }}
+        inputProps={{ 'aria-label': 'Without label' }}
+        displayEmpty
       >
+        <MenuItem
+          disabled
+          value=""
+          sx={{ display: 'none', color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }}
+        >
+          <em>{label}</em>
+        </MenuItem>
         {items.map((item, index) => (
           <MenuItem
             value={item}
