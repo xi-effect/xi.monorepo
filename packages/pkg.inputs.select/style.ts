@@ -23,8 +23,8 @@ export const selectTypes: { [key in TypesT]: any } = {
     borderColor: 'error.main',
   },
   disabled: {
-    borderColor: 'grayscale.40',
-    bgcolor: 'grayscale.40',
+    borderColor: 'grayscale.10',
+    bgcolor: 'grayscale.10',
   },
 };
 

@@ -60,6 +60,7 @@ export const Select = ({
         inputProps={{ 'aria-label': 'Without label' }}
         displayEmpty
       >
+        {/* placeholder */}
         <MenuItem disabled value="" sx={{ display: 'none' }}>
           <Stack direction="row" alignItems="center" spacing={1}>
             {Icon && <Icon sx={{ color: value.length === 0 ? 'grayscale.40' : 'grayscale.80' }} />}
@@ -68,6 +69,8 @@ export const Select = ({
             </Typography>
           </Stack>
         </MenuItem>
+
+        {/* items list / dropdown menu  */}
         {items.map((item, index) => (
           <MenuItem
             value={item}

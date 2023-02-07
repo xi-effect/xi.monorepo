@@ -15,7 +15,7 @@ const TestComponents = () => {
     id: v4(),
     items: ['Item1', 'Item2', 'Item3'],
     size: 'm',
-    // type: 'disabled',
+    type: 'disabled',
     Icon: Folder,
     value,
     changeValue,
