@@ -3,9 +3,31 @@ import { SizesT, TypesT } from './types';
 export const selectSizes: { [key in SizesT]: any } = {
   m: {
     height: '48px',
+    p: '0px 14px 0 10px',
+    borderRadius: '8px',
+    fontSize: '16px',
   },
   s: {
     height: '32px',
+    p: '0px 9px 0 7px',
+    borderRadius: '6px',
+    fontSize: '14px',
+  },
+};
+export const placeholderIconSizes: { [key in SizesT]: any } = {
+  m: {
+    fonSize: '24px',
+  },
+  s: {
+    fontSize: '16px',
+  },
+};
+export const placeholderTextSizes: { [key in SizesT]: any } = {
+  m: {
+    fonSize: '16px',
+  },
+  s: {
+    fontSize: '14px',
   },
 };
 
@@ -39,5 +61,15 @@ export const MenuProps = {
   '& .MuiMenu-list': {
     p: '4px',
     bgcolor: 'grayscale.0',
+  },
+};
+
+/* change classes styles */
+export const selectClasses = {
+  '& .MuiOutlinedInput-notchedOutline': {
+    border: 'none',
+  },
+  '& .MuiSelect-outlined': {
+    padding: 0,
   },
 };
