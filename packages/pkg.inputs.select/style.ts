@@ -57,11 +57,22 @@ export const MenuProps = {
     boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
     borderRadius: '8px',
     mt: '4px',
+    width: '100%,',
   },
   '& .MuiMenu-list': {
-    p: '4px',
+    p: '3px',
     bgcolor: 'grayscale.0',
   },
+};
+
+export const menuItemStyles = {
+  borderRadius: '4px',
+  '&.Mui-selected': { bgcolor: 'primary.pale', color: 'primary.dark' },
+  '&:hover': { bgcolor: 'grayscale.5' },
+  transition: '0.3s',
+  fontSize: '14px',
+  lineHeight: '20px',
+  p: '8px 12px',
 };
 
 /* change classes styles */

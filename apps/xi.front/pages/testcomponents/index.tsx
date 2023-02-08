@@ -14,6 +14,7 @@ const TestComponents = () => {
   const testSelect: SelectProps = {
     id: v4(),
     items: ['Item1', 'Item2', 'Item3'],
+    cancelItem: 'Item',
     size: 's',
     type: 'error',
     Icon: Folder,

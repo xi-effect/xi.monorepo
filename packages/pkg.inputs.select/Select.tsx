@@ -9,6 +9,7 @@ import {
   selectClasses,
   placeholderIconSizes,
   placeholderTextSizes,
+  menuItemStyles,
 } from './style';
 
 export type SelectProps = {
@@ -16,6 +17,8 @@ export type SelectProps = {
   id: string;
   /* select items */
   items: string[];
+  /* cancel your previus choose  */
+  cancelItem?: string;
   /* select sized */
   size: SizesT;
   type?: TypesT;
@@ -44,6 +47,7 @@ const OpenIcon = (isOpen: boolean, size: SizesT) => (
 export const Select = ({
   id,
   items,
+  cancelItem,
   size,
   type = 'default',
   width = '250px',
@@ -62,6 +66,7 @@ export const Select = ({
   };
 
   const onChangeValue = (e: any) => {
+    console.log(e.target);
     const newValue = e.target.value;
     changeValue(newValue);
   };
@@ -90,7 +95,7 @@ export const Select = ({
         open={isOpen}
       >
         {/* placeholder */}
-        <MenuItem disabled value="" sx={{ display: 'none' }}>
+        <MenuItem disabled value="" sx={{ display: 'none' }} key="disabled_item">
           <Stack direction="row" alignItems="center" spacing={1}>
             {Icon && (
               <Icon
@@ -111,18 +116,39 @@ export const Select = ({
           </Stack>
         </MenuItem>
 
+        {/* cancel choose item */}
+        {cancelItem && (
+          <MenuItem
+            key="cancel_item"
+            value={cancelItem}
+            sx={{
+              ...menuItemStyles,
+              position: 'relative',
+              mb: '5px',
+              '&:after': {
+                content: "''",
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                bottom: '-3px',
+                disaply: 'inline-block',
+                width: '90%',
+                height: '1px',
+                bgcolor: 'grayscale.10',
+              },
+            }}
+          >
+            {cancelItem}
+          </MenuItem>
+        )}
+
         {/* items list / dropdown menu  */}
         {items.map((item, index) => (
           <MenuItem
             value={item}
             key={`${item}_${index}`}
             sx={{
-              borderRadius: '4px',
-              '&.Mui-selected': { bgcolor: 'primary.pale', color: 'primary.dark' },
-              '&:hover': { bgcolor: 'grayscale.5' },
-              transition: '0.3s',
-              fontSize: '14px',
-              lineHeight: '20px',
+              ...menuItemStyles,
             }}
           >
             {item}
