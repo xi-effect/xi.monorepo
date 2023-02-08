@@ -36,6 +36,7 @@ const IButton: React.FC<Props> = (props) => {
       return onClick();
     }
     if (href) {
+      console.log('router.push(href)', href);
       return router.push(href);
     }
     return null;
@@ -56,6 +57,7 @@ const IButton: React.FC<Props> = (props) => {
   return (
     <Tooltip placement="right" title={tooltip}>
       <IconButton
+        id="community-menu"
         onClick={handleClick}
         sx={{
           bgcolor: isActive ? 'primary.dark' : 'grayscale.0',

@@ -14,7 +14,16 @@ import { RegCommunityT } from 'models/dataProfileStore';
 import { useStore } from 'store/connect';
 import { CommunityInSidebar } from 'models/community';
 
-import { DndContext, UniqueIdentifier } from '@dnd-kit/core';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import {
+  DndContext,
+  UniqueIdentifier,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
 import React from 'react';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import IButton from './IButton';
@@ -38,9 +47,7 @@ const Sidebar = observer(() => {
   };
 
   const reorderFn = (source, destination) => {
-    console.log('user.communities', user.communities);
     const communities: CommunityInSidebar[] = reorder(user.communities, source, destination);
-    console.log('communities', communities);
 
     rootStore.socket?.emit(
       'reorder-community',
@@ -94,6 +101,23 @@ const Sidebar = observer(() => {
 
   const getIndex = (id: UniqueIdentifier) => user.communities.map((e) => e.id).indexOf(Number(id));
   const activeIndex = activeId ? getIndex(activeId) : -1;
+
+  const mouseSensor = useSensor(MouseSensor, {
+    // Require the mouse to move by 10 pixels before activating
+    activationConstraint: {
+      distance: 6,
+    },
+  });
+  const touchSensor = useSensor(TouchSensor, {
+    // Press delay of 250ms, with tolerance of 5px of movement
+    activationConstraint: {
+      delay: 250,
+      tolerance: 5,
+    },
+  });
+  const keyboardSensor = useSensor(KeyboardSensor);
+
+  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
   return (
     <Stack
@@ -168,6 +192,8 @@ const Sidebar = observer(() => {
           }
         }}
         onDragCancel={() => setActiveId(null)}
+        modifiers={[restrictToVerticalAxis]}
+        sensors={sensors}
       >
         <Scroll>
           <Stack
