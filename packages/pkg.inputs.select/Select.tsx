@@ -95,20 +95,20 @@ export const Select = ({
         open={isOpen}
       >
         {/* placeholder */}
-        <MenuItem disabled value="" sx={{ display: 'none' }} key="disabled_item">
+        <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
           <Stack direction="row" alignItems="center" spacing={1}>
             {Icon && (
               <Icon
                 sx={{
                   ...placeholderIconSizes[size],
-                  color: value.length === 0 ? 'grayscale.40' : 'grayscale.80',
+                  color: 'grayscale.40',
                 }}
               />
             )}
             <Typography
               sx={{
                 ...placeholderTextSizes[size],
-                color: value.length === 0 ? 'grayscale.40' : 'grayscale.80',
+                color: 'grayscale.40',
               }}
             >
               {label}
@@ -121,6 +121,7 @@ export const Select = ({
           <MenuItem
             key="cancel_item"
             value={cancelItem}
+            defaultChecked={false}
             sx={{
               ...menuItemStyles,
               position: 'relative',
