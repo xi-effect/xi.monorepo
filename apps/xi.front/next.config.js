@@ -40,6 +40,7 @@ const nextConfig = {
     'pkg.forms.signin',
     'pkg.layout.pages',
     'pkg.pages.error',
+    'pkg.inputs.radio',
     'pkg.icons.addchannel',
     'pkg.icons.addcategory',
     'pkg.icons.account',
