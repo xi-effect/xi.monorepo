@@ -81,12 +81,12 @@ const Communities = () => {
                 key={i}
                 sx={{
                   p: '8px 12px',
-                  color: '#000',
                   flex: '0 0 50%',
                   fontWeight: 500,
                   fontSize: '18px',
                   lineHeight: '24px',
                   borderRadius: '12px',
+                  color: 'grayscale.100',
                   backgroundColor: 'transparent',
                   mb: i !== item.categories.length - 1 ? '12px' : 0,
                   transition: 'background 0.2s ease-in, color 0.2s ease-in',
