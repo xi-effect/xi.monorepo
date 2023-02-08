@@ -15,8 +15,9 @@ const TestComponents = () => {
     id: v4(),
     items: ['Item1', 'Item2', 'Item3'],
     size: 'm',
-    type: 'disabled',
+    type: 'error',
     Icon: Folder,
+    label: 'Список',
     value,
     changeValue,
   };
