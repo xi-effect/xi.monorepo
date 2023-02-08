@@ -63,7 +63,7 @@ const Communities = () => {
               borderRadius: '12px',
               backgroundColor: 'transparent',
               transition: 'background 0.2s ease-in',
-              '&:hover': { backgroundColor: '#F5F5F5' },
+              '&:hover': { backgroundColor: 'grayscale.5' },
             }}
           >
             <Box mr="12px" width="48px" height="48px" sx={{ div: { borderRadius: '12px' } }}>
@@ -90,7 +90,7 @@ const Communities = () => {
                   backgroundColor: 'transparent',
                   mb: i !== item.categories.length - 1 ? '12px' : 0,
                   transition: 'background 0.2s ease-in, color 0.2s ease-in',
-                  '&:hover': { backgroundColor: '#ECEFFF', color: '#445AFF' },
+                  '&:hover': { backgroundColor: 'primary.pale', color: 'primary.dark' },
                 }}
               >
                 {k}
@@ -103,11 +103,11 @@ const Communities = () => {
                   p: '8px 12px',
                   fontWeight: 500,
                   fontSize: '18px',
-                  color: '#445AFF',
+                  color: 'primary.dark',
                   borderRadius: '12px',
                   backgroundColor: 'transparent',
                   transition: 'background 0.2s ease-in, color 0.2s ease-in',
-                  '&:hover': { backgroundColor: '#445AFF', color: '#fff' },
+                  '&:hover': { backgroundColor: 'primary.dark', color: 'grayscale.0' },
                 }}
               >
                 Перейти
