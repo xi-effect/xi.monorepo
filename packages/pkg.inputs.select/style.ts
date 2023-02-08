@@ -63,6 +63,9 @@ export const MenuProps = {
     p: '3px',
     bgcolor: 'grayscale.0',
   },
+  '& .MuiBackdrop-root': {
+    bgcolor: 'unset',
+  },
 };
 
 export const menuItemStyles = {
