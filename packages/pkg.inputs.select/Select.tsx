@@ -96,7 +96,7 @@ export const Select = ({
       >
         {/* placeholder */}
         <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
-          <Stack direction="row" alignItems="center" spacing={1}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '110%' }}>
             {Icon && (
               <Icon
                 sx={{
@@ -109,6 +109,8 @@ export const Select = ({
               sx={{
                 ...placeholderTextSizes[size],
                 color: 'grayscale.40',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
               }}
             >
               {label}

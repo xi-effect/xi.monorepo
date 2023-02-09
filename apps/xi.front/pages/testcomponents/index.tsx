@@ -18,7 +18,7 @@ const TestComponents = () => {
     size: 's',
     type: 'error',
     Icon: Folder,
-    label: 'Список',
+    label: 'Список Список Список Список Список Список',
     value,
     changeValue,
   };
