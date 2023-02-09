@@ -39,7 +39,7 @@ export const selectTypes: { [key in TypesT]: any } = {
     },
   },
   warning: {
-    borderColor: 'orange',
+    borderColor: 'warning.dark',
   },
   error: {
     borderColor: 'error.main',

@@ -170,6 +170,12 @@ export const getScheme = (mode: 'light' | 'dark') => ({
             light: '#FBABAB',
             pale: '#FEEAEA',
           },
+          warning: {
+            dark: '#F67A33',
+            main: '#F8955C',
+            light: '#FBCAAD',
+            pale: '#FEF2EB',
+          },
         }
       : {
           mode: 'dark',
@@ -205,6 +211,12 @@ export const getScheme = (mode: 'light' | 'dark') => ({
             main: '#F65757',
             light: '#FBABAB',
             pale: '#FEEAEA',
+          },
+          warning: {
+            dark: '#F67A33',
+            main: '#F8955C',
+            light: '#FBCAAD',
+            pale: '#FEF2EB',
           },
         }),
   },

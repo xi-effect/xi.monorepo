@@ -18,7 +18,7 @@ const TestComponents = () => {
     items,
     cancelItem: 'Item',
     size: 's',
-    type: 'error',
+    type: 'warning',
     Icon: Folder,
     label: 'Список Список Список Список Список Список',
     value,

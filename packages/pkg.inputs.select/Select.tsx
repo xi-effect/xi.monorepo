@@ -73,7 +73,6 @@ export const Select = ({
   };
 
   const onChangeValue = (e: any) => {
-    console.log(e.target);
     const newValue = e.target.value;
     changeValue(newValue);
   };
