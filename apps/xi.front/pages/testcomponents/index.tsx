@@ -172,7 +172,7 @@ const TestComponents = () => (
     <Box sx={{ width: '100vw', height: '100vh', p: '50px' }}>
       <File {...TestFileData} />
     </Box>
-  
+
     {TestLinksData.map((group: TestLinksDataT) => (
       <Stack spacing={1} key={group.id}>
         <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
@@ -184,6 +184,6 @@ const TestComponents = () => (
       </Stack>
     ))}
   </Stack>
-)
+);
 
 export default TestComponents;
