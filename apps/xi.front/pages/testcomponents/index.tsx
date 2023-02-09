@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
 import { Select, SelectProps } from 'pkg.inputs.select';
 import { v4 } from 'uuid';
 import { Folder } from 'pkg.icons.folder';
+
+const items = ['Item1', 'Item2', 'Item3'];
 
 const TestComponents = () => {
   const [value, setValue] = useState('');
@@ -11,9 +13,13 @@ const TestComponents = () => {
     setValue(newVal);
   };
 
+  useEffect(() => {
+    setValue(items[2]);
+  }, []);
+
   const testSelect: SelectProps = {
     id: v4(),
-    items: ['Item1', 'Item2', 'Item3'],
+    items,
     cancelItem: 'Item',
     size: 's',
     type: 'error',
