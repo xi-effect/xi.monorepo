@@ -86,4 +86,7 @@ export const selectClasses = {
   '& .MuiSelect-outlined': {
     padding: 0,
   },
+  '&.Mui-focused': {
+    borderColor: 'grayscale.80',
+  },
 };

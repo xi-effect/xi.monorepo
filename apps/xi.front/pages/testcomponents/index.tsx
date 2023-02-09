@@ -4,7 +4,13 @@ import { Select, SelectProps } from 'pkg.inputs.select';
 import { v4 } from 'uuid';
 import { Folder } from 'pkg.icons.folder';
 
-const items = ['Item1', 'Item2', 'Item3'];
+const items = [
+  { id: v4(), value: 'Item1' },
+  { id: v4(), value: 'Item2' },
+  { id: v4(), value: 'Item3' },
+  { id: v4(), value: 'Item4', isDisabled: true },
+  { id: v4(), value: 'Item5', isDefault: true },
+];
 
 const TestComponents = () => {
   const [value, setValue] = useState('');

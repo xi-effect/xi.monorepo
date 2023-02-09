@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { Arrow } from 'pkg.icons.arrow';
-import { SizesT, TypesT } from './types';
+import { SizesT, TypesT, ItemT } from './types';
 import {
   selectSizes,
   selectTypes,
@@ -16,7 +16,7 @@ export type SelectProps = {
   /* unique id */
   id: string;
   /* select items */
-  items: string[];
+  items: ItemT[];
   /* cancel your previus choose  */
   cancelItem?: string;
   /* select sized */
@@ -81,6 +81,15 @@ export const Select = ({
     setIsOpen((state) => !state);
   };
 
+  const getDefaultValue = () => {
+    const defaultItem = items.filter((item) => item.isDefault);
+    changeValue(defaultItem[0].value);
+  };
+
+  useEffect(() => {
+    getDefaultValue();
+  }, []);
+
   return (
     <FormControl sx={{ position: 'relative' }}>
       <MuiSelect
@@ -94,6 +103,7 @@ export const Select = ({
           ...selectClasses,
         }}
         disabled={type === 'disabled'}
+        tabIndex={type === 'disabled' ? -1 : 0}
         onChange={onChangeValue}
         value={value}
         MenuProps={{ sx: { ...MenuProps } }}
@@ -155,15 +165,16 @@ export const Select = ({
         )}
 
         {/* items list / dropdown menu  */}
-        {items.map((item, index) => (
+        {items.map((item) => (
           <MenuItem
-            value={item}
-            key={`${item}_${index}`}
+            value={item.value}
+            key={item.id}
+            disabled={item.isDisabled}
             sx={{
               ...menuItemStyles,
             }}
           >
-            {item}
+            {item.value}
           </MenuItem>
         ))}
       </MuiSelect>
