@@ -34,14 +34,21 @@ export type SelectProps = {
   changeValue: (newVal: string) => void;
 };
 
-const OpenIcon = (isOpen: boolean, size: SizesT) => (
-  <Arrow
-    sx={{
-      color: 'grayscale.80',
-      transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
-      fontSize: size === 'm' ? '14px' : '11px',
-    }}
-  />
+const OpenIcon = (isOpen: boolean, size: SizesT, onClick: () => void) => (
+  <Stack
+    justifyContent="center"
+    alignItems="center"
+    onClick={onClick}
+    sx={{ height: '100%', cursor: 'pointer' }}
+  >
+    <Arrow
+      sx={{
+        color: 'grayscale.80',
+        transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
+        fontSize: size === 'm' ? '14px' : '11px',
+      }}
+    />
+  </Stack>
 );
 
 export const Select = ({
@@ -71,6 +78,10 @@ export const Select = ({
     changeValue(newValue);
   };
 
+  const handleDropIconClick = () => {
+    setIsOpen((state) => !state);
+  };
+
   return (
     <FormControl sx={{ position: 'relative' }}>
       <MuiSelect
@@ -87,9 +98,8 @@ export const Select = ({
         onChange={onChangeValue}
         value={value}
         MenuProps={{ sx: { ...MenuProps } }}
-        inputProps={{ 'aria-label': 'Without label' }}
         displayEmpty
-        IconComponent={() => OpenIcon(isOpen, size)}
+        IconComponent={() => OpenIcon(isOpen, size, handleDropIconClick)}
         onClose={onCloseMenu}
         onOpen={onOpenMenu}
         open={isOpen}
