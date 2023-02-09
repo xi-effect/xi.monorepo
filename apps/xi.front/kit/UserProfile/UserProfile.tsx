@@ -181,7 +181,7 @@ const UserProfile = observer(() => {
           display: 'flex',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          p: mobile700 ? '8px 29px' : `${mobile1400 ? '16px 8px' : '64px 8px'}`,
+          p: mobile700 ? '8px 29px' : `${mobile1400 ? '16px 8px' : '32px 8px'}`,
           '&::-webkit-scrollbar': {
             display: 'none',
           },

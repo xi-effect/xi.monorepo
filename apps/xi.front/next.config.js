@@ -33,6 +33,7 @@ const nextConfig = {
   transpilePackages: [
     'pkg.theme.scheme',
     'pkg.components.loading',
+    'pkg.components.file',
     'pkg.data.avatar',
     'pkg.dialogs.exit',
     'pkg.forms.signin',
@@ -66,6 +67,7 @@ const nextConfig = {
     'pkg.icons.send',
     'pkg.icons.settings',
     'pkg.icons.task',
+    'pkg.icons.trash',
     'pkg.icons.users',
     'pkg.icons.copy',
     'pkg.icons.updates',
