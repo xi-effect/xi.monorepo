@@ -19,7 +19,9 @@ export const LayoutPages = ({ title, noIndex = false, children }: LayoutPagesT) 
     <>
       <Head>
         <title>{`xi.effect ${title ? `| ${title}` : ''}`}</title>
-        {(noIndex || hostname.includes('netlify')) && <meta name="robots" content="noindex" />}
+        {(noIndex || hostname.includes('vercel') || hostname.includes('netlify')) && (
+          <meta name="robots" content="noindex" />
+        )}
       </Head>
       {children}
     </>
