@@ -50,10 +50,10 @@ export const Checkbox = ({
     <Box
       sx={{
         ...defaultIconTypes[type],
+        ...checboxSizes[size],
         border: '1px solid',
         width: '100%',
         height: '100%',
-        borderRadius: '4px',
         transition: '0.3s',
         bgcolor: isHovered && type !== 'disabled' ? 'grayscale.5' : defaultIconTypes[type].bgcolor,
       }}
@@ -71,7 +71,7 @@ export const Checkbox = ({
     <MuiCheckbox
       sx={{
         ...checkboxTypes[type],
-        '&.Mui-checked': { ...checkedCheckboxTypes[type], borderRadius: '4px' },
+        '&.Mui-checked': { ...checkedCheckboxTypes[type] },
         ...checboxSizes[size],
         padding: 0,
       }}
