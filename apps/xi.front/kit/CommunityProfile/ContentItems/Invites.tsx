@@ -1,8 +1,32 @@
-import { Button, Grid, Stack, Typography } from '@mui/material';
+import { Button, Box, Grid, Tooltip, Stack, Typography } from '@mui/material';
 
 import { useStore } from 'store/connect';
 
 import { observer } from 'mobx-react';
+import { Avatar } from 'pkg.data.avatar';
+import { Copy } from 'pkg.icons.copy';
+
+const UserProfile = () => (
+  <Stack
+    direction="column"
+    justifyContent="center"
+    alignItems="flex-start"
+    sx={{
+      position: 'relative',
+      height: '38px',
+      width: '154px',
+      pl: 4,
+    }}
+  >
+    <Box sx={{ position: 'absolute', height: '24px', width: '24px', left: 0 }}>
+      <Avatar size={24} />
+    </Box>
+    <Typography variant="m">Иван Ковыляев</Typography>
+    <Typography variant="xs" sx={{ color: 'grayscale.60' }}>
+      ikovylyaev
+    </Typography>
+  </Stack>
+);
 
 const Invites = observer(() => {
   const rootStore = useStore();
@@ -64,87 +88,136 @@ const Invites = observer(() => {
           width: '100%',
           borderRadius: '8px',
         }}
-        spacing={4}
+        spacing={3}
       >
-        {[0, 0, 0, 0, 0, 0, 0, 0].map(() => (
+        {[0, 0, 0, 0, 0, 0, 0, 0].map((item, index) => (
           <Grid
+            key={index.toString()}
             container
             direction="row"
             justifyContent="flex-start"
-            alignItems="center"
+            alignItems="flex-start"
             sx={{
-              bgcolor: 'pink',
               width: '100%',
+              borderBottom: '1px solid',
             }}
           >
-            <Grid item sx={{ width: '100%', maxWidth: '176px' }}>
+            <Grid item sx={{ width: '100%', maxWidth: '176px', pb: 2 }}>
               <Stack
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={2}
+                spacing={1}
                 sx={{
                   mr: 2,
-                  bgcolor: 'greenyellow',
                 }}
               >
                 <Typography variant="xs">Создано:</Typography>
+                <UserProfile />
               </Stack>
             </Grid>
-            <Grid item sx={{ width: '100%', maxWidth: '176px' }}>
+            <Grid item sx={{ width: '100%', maxWidth: '176px', pb: 2 }}>
               <Stack
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={2}
+                spacing={1}
                 sx={{
                   mr: 2,
-                  bgcolor: 'greenyellow',
                 }}
               >
                 <Typography variant="xs">Код:</Typography>
+                <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={2}>
+                  <Typography variant="m">HPS012346</Typography>
+                  <Tooltip title="Скопировать">
+                    <Button
+                      sx={{
+                        width: '20px',
+                        minWidth: '20px',
+                        height: '20px',
+                        borderRadius: '4px',
+                        bgcolor: 'grayscale.10',
+                        '&:hover': {
+                          bgcolor: 'grayscale.10',
+                        },
+                        svg: {
+                          fill: '#000000',
+                        },
+                      }}
+                    >
+                      <Copy sx={{ width: '12px', height: '12px' }} />
+                    </Button>
+                  </Tooltip>
+                </Stack>
               </Stack>
             </Grid>
-            <Grid item sx={{ width: '100%', maxWidth: '176px' }}>
+            <Grid item sx={{ width: '100%', maxWidth: '176px', pb: 2 }}>
               <Stack
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={2}
+                spacing={1}
                 sx={{
                   mr: 2,
-                  bgcolor: 'greenyellow',
                 }}
               >
                 <Typography variant="xs">Использований:</Typography>
+                <Stack direction="row" justifyContent="flex-start" alignItems="flex-start">
+                  <Typography variant="m">10</Typography>
+                  <Typography sx={{ color: 'grayscale.40' }} variant="xs">
+                    /32
+                  </Typography>
+                </Stack>
               </Stack>
             </Grid>
-            <Grid item sx={{ width: '100%', maxWidth: '176px' }}>
+            <Grid item sx={{ width: '100%', maxWidth: '176px', pb: 2 }}>
               <Stack
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={2}
+                spacing={1}
                 sx={{
                   mr: 2,
-                  bgcolor: 'greenyellow',
                 }}
               >
                 <Typography variant="xs">Роли</Typography>
+                <Stack
+                  direction="row"
+                  justifyContent="flex-start"
+                  alignItems="center"
+                  sx={{
+                    p: '4px 8px',
+                    bgcolor: 'grayscale.5',
+                    color: 'grayscale.100',
+                    position: 'relative',
+                    borderRadius: '4px',
+                  }}
+                  spacing={1}
+                >
+                  <Box
+                    sx={{
+                      width: '12px',
+                      height: '12px',
+                      bgcolor: 'grayscale.100',
+                      borderRadius: '6px',
+                    }}
+                  />
+                  <Typography variant="xs">Администратор</Typography>
+                </Stack>
               </Stack>
             </Grid>
-            <Grid item sx={{ width: '100%', maxWidth: '176px' }}>
+            <Grid item sx={{ width: '100%', maxWidth: '176px', pb: 2 }}>
               <Stack
                 direction="column"
                 justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={2}
+                spacing={1}
                 sx={{
                   mr: 2,
-                  bgcolor: 'greenyellow',
                 }}
               >
                 <Typography variant="xs">Истекает через:</Typography>
+                <Typography variant="xs">1 день</Typography>
               </Stack>
             </Grid>
           </Grid>
