@@ -6,3 +6,8 @@ export type ItemT = {
   isDefault?: boolean;
   isDisabled?: boolean;
 };
+export type GroupT = {
+  id: string;
+  title?: string;
+  items: ItemT[];
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { Arrow } from 'pkg.icons.arrow';
-import { SizesT, TypesT, ItemT } from './types';
+import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,
   selectTypes,
@@ -16,7 +16,9 @@ export type SelectProps = {
   /* unique id */
   id: string;
   /* select items */
-  items: ItemT[];
+  items?: ItemT[];
+  /* select items divided by groups */
+  groups?: GroupT[];
   /* cancel your previus choose  */
   cancelItem?: string;
   /* select sized */
@@ -54,6 +56,7 @@ const OpenIcon = (isOpen: boolean, size: SizesT, onClick: () => void) => (
 export const Select = ({
   id,
   items,
+  groups,
   cancelItem,
   size,
   type = 'default',
@@ -81,13 +84,22 @@ export const Select = ({
     setIsOpen((state) => !state);
   };
 
-  const getDefaultValue = () => {
-    const defaultItem = items.filter((item) => item.isDefault);
+  const setDefaultValue = () => {
+    const ITEMS: ItemT[] = [];
+    if (groups) {
+      groups.forEach((group) => group.items.forEach((item) => ITEMS.push(item)));
+    }
+
+    if (items) {
+      ITEMS.push(...items);
+    }
+
+    const defaultItem = ITEMS.filter((item) => item.isDefault);
     changeValue(defaultItem[0].value);
   };
 
   useEffect(() => {
-    getDefaultValue();
+    setDefaultValue();
   }, []);
 
   return (
@@ -165,18 +177,35 @@ export const Select = ({
         )}
 
         {/* items list / dropdown menu  */}
-        {items.map((item) => (
-          <MenuItem
-            value={item.value}
-            key={item.id}
-            disabled={item.isDisabled}
-            sx={{
-              ...menuItemStyles,
-            }}
-          >
-            {item.value}
-          </MenuItem>
-        ))}
+        {items &&
+          items.map((item) => (
+            <MenuItem
+              value={item.value}
+              key={item.id}
+              disabled={item.isDisabled}
+              sx={{
+                ...menuItemStyles,
+              }}
+            >
+              {item.value}
+            </MenuItem>
+          ))}
+        {groups &&
+          groups.map((group) => [
+            <Typography>{group.title}</Typography>,
+            group.items.map((item) => (
+              <MenuItem
+                value={item.value}
+                key={item.id}
+                disabled={item.isDisabled}
+                sx={{
+                  ...menuItemStyles,
+                }}
+              >
+                {item.value}
+              </MenuItem>
+            )),
+          ])}
       </MuiSelect>
     </FormControl>
   );
