@@ -78,6 +78,20 @@ export const menuItemStyles = {
   p: '8px 12px',
 };
 
+export const dividerStyles = {
+  '&:after': {
+    content: "''",
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    bottom: '-3px',
+    disaply: 'inline-block',
+    width: '90%',
+    height: '1px',
+    bgcolor: 'grayscale.10',
+  },
+};
+
 /* change classes styles */
 export const selectClasses = {
   '& .MuiOutlinedInput-notchedOutline': {

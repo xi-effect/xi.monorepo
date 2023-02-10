@@ -9,6 +9,7 @@ import {
   selectClasses,
   placeholderIconSizes,
   placeholderTextSizes,
+  dividerStyles,
   menuItemStyles,
 } from './style';
 
@@ -157,19 +158,9 @@ export const Select = ({
             defaultChecked={false}
             sx={{
               ...menuItemStyles,
+              ...dividerStyles,
               position: 'relative',
               mb: '5px',
-              '&:after': {
-                content: "''",
-                position: 'absolute',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                bottom: '-3px',
-                disaply: 'inline-block',
-                width: '90%',
-                height: '1px',
-                bgcolor: 'grayscale.10',
-              },
             }}
           >
             {cancelItem}
@@ -192,19 +183,33 @@ export const Select = ({
           ))}
         {groups &&
           groups.map((group) => [
-            <Typography>{group.title}</Typography>,
-            group.items.map((item) => (
-              <MenuItem
-                value={item.value}
-                key={item.id}
-                disabled={item.isDisabled}
-                sx={{
-                  ...menuItemStyles,
-                }}
-              >
-                {item.value}
-              </MenuItem>
-            )),
+            <Typography
+              sx={{
+                fontSize: '10px',
+                lineHeight: '14px',
+                color: 'grayscale.40',
+                p: '4px 12px',
+                cursor: 'default',
+              }}
+            >
+              {group.title}
+            </Typography>,
+            group.items.map((item, index, array) => {
+              const divider = index === array.length - 1 ? dividerStyles : {};
+              return (
+                <MenuItem
+                  value={item.value}
+                  key={item.id}
+                  disabled={item.isDisabled}
+                  sx={{
+                    ...menuItemStyles,
+                    ...divider,
+                  }}
+                >
+                  {item.value}
+                </MenuItem>
+              );
+            }),
           ])}
       </MuiSelect>
     </FormControl>
