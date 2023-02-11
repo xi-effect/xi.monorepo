@@ -38,12 +38,12 @@ export type SelectProps = {
   changeValue: (newVal: string) => void;
 };
 
-const OpenIcon = (isOpen: boolean, size: SizesT, onClick: () => void) => (
+const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: () => void) => (
   <Stack
     justifyContent="center"
     alignItems="center"
     onClick={onClick}
-    sx={{ height: '100%', cursor: 'pointer' }}
+    sx={{ height: '100%', cursor: 'pointer', pointerEvents: isDisabled ? 'none' : '' }}
   >
     <Arrow
       sx={{
@@ -123,7 +123,7 @@ export const Select = ({
           value={value}
           MenuProps={{ sx: { ...MenuProps } }}
           displayEmpty
-          IconComponent={() => OpenIcon(isOpen, size, handleDropIconClick)}
+          IconComponent={() => OpenIcon(isOpen, size, type === 'disabled', handleDropIconClick)}
           onClose={onCloseMenu}
           onOpen={onOpenMenu}
           open={isOpen}
