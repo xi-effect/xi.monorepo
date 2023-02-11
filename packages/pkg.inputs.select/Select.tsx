@@ -68,35 +68,36 @@ export const Select = ({
   value,
   changeValue,
 }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
 
+  /* menu interactions */
   const onOpenMenu = () => {
-    setIsOpen(true);
+    setIsOpened(true);
   };
   const onCloseMenu = () => {
-    setIsOpen(false);
+    setIsOpened(false);
+  };
+  const handleDropIconClick = () => {
+    setIsOpened((state) => !state);
   };
 
+  /* select value state interactions */
   const onChangeValue = (e: any) => {
     const newValue = e.target.value;
     changeValue(newValue);
   };
 
-  const handleDropIconClick = () => {
-    setIsOpen((state) => !state);
-  };
-
   const setDefaultValue = () => {
-    const ITEMS: ItemT[] = [];
+    const getItems: ItemT[] = [];
     if (groups) {
-      groups.forEach((group) => group.items.forEach((item) => ITEMS.push(item)));
+      groups.forEach((group) => group.items.forEach((item) => getItems.push(item)));
     }
 
     if (items) {
-      ITEMS.push(...items);
+      getItems.push(...items);
     }
 
-    const defaultItem = ITEMS.filter((item) => item.isDefault);
+    const defaultItem = getItems.filter((item) => item.isDefault);
     changeValue(defaultItem[0].value);
   };
 
@@ -123,10 +124,10 @@ export const Select = ({
           value={value}
           MenuProps={{ sx: { ...MenuProps } }}
           displayEmpty
-          IconComponent={() => OpenIcon(isOpen, size, type === 'disabled', handleDropIconClick)}
+          IconComponent={() => OpenIcon(isOpened, size, type === 'disabled', handleDropIconClick)}
           onClose={onCloseMenu}
           onOpen={onOpenMenu}
-          open={isOpen}
+          open={isOpened}
         >
           {/* placeholder */}
           <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
