@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
+import { ClickAwayListener } from '@mui/base';
 import { Arrow } from 'pkg.icons.arrow';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
@@ -104,114 +105,116 @@ export const Select = ({
   }, []);
 
   return (
-    <FormControl sx={{ position: 'relative' }}>
-      <MuiSelect
-        labelId={id}
-        sx={{
-          ...selectSizes[size],
-          border: '1.5px solid',
-          ...selectTypes[type],
-          width,
-          transition: '0.3s',
-          ...selectClasses,
-        }}
-        disabled={type === 'disabled'}
-        tabIndex={type === 'disabled' ? -1 : 0}
-        onChange={onChangeValue}
-        value={value}
-        MenuProps={{ sx: { ...MenuProps } }}
-        displayEmpty
-        IconComponent={() => OpenIcon(isOpen, size, handleDropIconClick)}
-        onClose={onCloseMenu}
-        onOpen={onOpenMenu}
-        open={isOpen}
-      >
-        {/* placeholder */}
-        <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
-          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '110%' }}>
-            {Icon && (
-              <Icon
+    <ClickAwayListener onClickAway={onCloseMenu}>
+      <FormControl sx={{ position: 'relative' }}>
+        <MuiSelect
+          labelId={id}
+          sx={{
+            ...selectSizes[size],
+            border: '1.5px solid',
+            ...selectTypes[type],
+            width,
+            transition: '0.3s',
+            ...selectClasses,
+          }}
+          disabled={type === 'disabled'}
+          tabIndex={type === 'disabled' ? -1 : 0}
+          onChange={onChangeValue}
+          value={value}
+          MenuProps={{ sx: { ...MenuProps } }}
+          displayEmpty
+          IconComponent={() => OpenIcon(isOpen, size, handleDropIconClick)}
+          onClose={onCloseMenu}
+          onOpen={onOpenMenu}
+          open={isOpen}
+        >
+          {/* placeholder */}
+          <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
+            <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '110%' }}>
+              {Icon && (
+                <Icon
+                  sx={{
+                    ...placeholderIconSizes[size],
+                    color: 'grayscale.40',
+                  }}
+                />
+              )}
+              <Typography
                 sx={{
-                  ...placeholderIconSizes[size],
+                  ...placeholderTextSizes[size],
                   color: 'grayscale.40',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden',
                 }}
-              />
-            )}
-            <Typography
-              sx={{
-                ...placeholderTextSizes[size],
-                color: 'grayscale.40',
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
-              }}
-            >
-              {label}
-            </Typography>
-          </Stack>
-        </MenuItem>
-
-        {/* cancel choose item */}
-        {cancelItem && (
-          <MenuItem
-            key="cancel_item"
-            value={cancelItem}
-            defaultChecked={false}
-            sx={{
-              ...menuItemStyles,
-              ...dividerStyles,
-              position: 'relative',
-              mb: '5px',
-            }}
-          >
-            {cancelItem}
+              >
+                {label}
+              </Typography>
+            </Stack>
           </MenuItem>
-        )}
 
-        {/* items list / dropdown menu  */}
-        {items &&
-          items.map((item) => (
+          {/* cancel choose item */}
+          {cancelItem && (
             <MenuItem
-              value={item.value}
-              key={item.id}
-              disabled={item.isDisabled}
+              key="cancel_item"
+              value={cancelItem}
+              defaultChecked={false}
               sx={{
                 ...menuItemStyles,
+                ...dividerStyles,
+                position: 'relative',
+                mb: '5px',
               }}
             >
-              {item.value}
+              {cancelItem}
             </MenuItem>
-          ))}
-        {groups &&
-          groups.map((group) => [
-            <Typography
-              sx={{
-                fontSize: '10px',
-                lineHeight: '14px',
-                color: 'grayscale.40',
-                p: '4px 12px',
-                cursor: 'default',
-              }}
-            >
-              {group.title}
-            </Typography>,
-            group.items.map((item, index, array) => {
-              const divider = index === array.length - 1 ? dividerStyles : {};
-              return (
-                <MenuItem
-                  value={item.value}
-                  key={item.id}
-                  disabled={item.isDisabled}
-                  sx={{
-                    ...menuItemStyles,
-                    ...divider,
-                  }}
-                >
-                  {item.value}
-                </MenuItem>
-              );
-            }),
-          ])}
-      </MuiSelect>
-    </FormControl>
+          )}
+
+          {/* items list / dropdown menu  */}
+          {items &&
+            items.map((item) => (
+              <MenuItem
+                value={item.value}
+                key={item.id}
+                disabled={item.isDisabled}
+                sx={{
+                  ...menuItemStyles,
+                }}
+              >
+                {item.value}
+              </MenuItem>
+            ))}
+          {groups &&
+            groups.map((group) => [
+              <Typography
+                sx={{
+                  fontSize: '10px',
+                  lineHeight: '14px',
+                  color: 'grayscale.40',
+                  p: '4px 12px',
+                  cursor: 'default',
+                }}
+              >
+                {group.title}
+              </Typography>,
+              group.items.map((item, index, array) => {
+                const divider = index === array.length - 1 ? dividerStyles : {};
+                return (
+                  <MenuItem
+                    value={item.value}
+                    key={item.id}
+                    disabled={item.isDisabled}
+                    sx={{
+                      ...menuItemStyles,
+                      ...divider,
+                    }}
+                  >
+                    {item.value}
+                  </MenuItem>
+                );
+              }),
+            ])}
+        </MuiSelect>
+      </FormControl>
+    </ClickAwayListener>
   );
 };

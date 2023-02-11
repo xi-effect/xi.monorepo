@@ -65,6 +65,12 @@ export const MenuProps = {
   },
   '& .MuiBackdrop-root': {
     bgcolor: 'unset',
+    width: 0,
+    height: 0,
+  },
+  '&.MuiMenu-root': {
+    width: 0,
+    height: '100%',
   },
 };
 
