@@ -76,7 +76,11 @@ export const MenuProps = {
 
 export const menuItemStyles = {
   borderRadius: '4px',
-  '&.Mui-selected': { bgcolor: 'primary.pale', color: 'primary.dark' },
+  '&.Mui-selected': {
+    bgcolor: 'primary.pale',
+    color: 'primary.dark',
+    '&:hover': { bgcolor: 'grayscale.5', color: 'grayscale.100' },
+  },
   '&:hover': { bgcolor: 'grayscale.5' },
   transition: '0.3s',
   fontSize: '14px',
