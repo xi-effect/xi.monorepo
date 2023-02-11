@@ -14,20 +14,20 @@ const Overview = observer(() => {
       justifyContent="flex-start"
       alignItems="center"
       sx={{
-          bgcolor: 'grayscale.0',
-          width: '100%',
-          borderRadius: '8px',
-          padding: '24px 36px',
-        }}
+        bgcolor: 'grayscale.0',
+        width: '100%',
+        borderRadius: '8px',
+        padding: '24px 36px',
+      }}
     >
       <AvatarEditor letter={userSt.user.username[0]} filename={userSt?.user?.avatar?.filename} />
       <Typography
         sx={{
-            fontWeight: 600,
-            fontSize: '24px',
-            lineHeight: '32px',
-            ml: 2,
-          }}
+          fontWeight: 600,
+          fontSize: '24px',
+          lineHeight: '32px',
+          ml: 2,
+        }}
       >
         {userSt.user.username}
       </Typography>
