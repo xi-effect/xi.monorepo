@@ -17,6 +17,10 @@ import {
 export type SelectProps = {
   /* unique id */
   id: string;
+  /*
+    use items when linear array of items
+    or otherwise use groups
+  */
   /* select items */
   items?: ItemT[];
   /* select items divided by groups */
@@ -101,7 +105,7 @@ export const Select = ({
     }
 
     const defaultItem = getItems.filter((item) => item.isDefault);
-    changeValue(defaultItem[0].value);
+    changeValue(defaultItem[0]?.value || '');
   };
 
   useEffect(() => {
@@ -196,7 +200,7 @@ export const Select = ({
                   fontSize: '10px',
                   lineHeight: '14px',
                   color: 'grayscale.40',
-                  p: '4px 12px',
+                  p: !group.title ? '' : '4px 12px',
                   cursor: 'default',
                 }}
               >

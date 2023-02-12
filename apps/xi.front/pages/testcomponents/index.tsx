@@ -7,7 +7,7 @@ const TestComponents = () => (
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }}>
     <Stack spacing={2}>
       {selectTest.map((select) => (
-        <TestSelect {...select} />
+        <TestSelect {...select} key={select.id} />
       ))}
     </Stack>
     <Link href="https://github.com/">https://github.com/</Link>
