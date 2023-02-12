@@ -50,7 +50,7 @@ export const selectTypes: { [key in TypesT]: any } = {
   },
 };
 
-export const MenuProps = {
+export const MenuProps = (menuMaxHeight: string) => ({
   '& .MuiMenu-paper': {
     border: '1px solid',
     borderColor: 'grayscale.10',
@@ -58,6 +58,8 @@ export const MenuProps = {
     borderRadius: '8px',
     mt: '4px',
     width: '100%,',
+    maxHeight: menuMaxHeight,
+    overflowY: 'auto',
   },
   '& .MuiMenu-list': {
     p: '3px',
@@ -72,7 +74,7 @@ export const MenuProps = {
     width: 0,
     height: '100%',
   },
-};
+});
 
 export const menuItemStyles = {
   borderRadius: '4px',
@@ -89,6 +91,7 @@ export const menuItemStyles = {
 };
 
 export const dividerStyles = {
+  mb: '5px',
   '&:after': {
     content: "''",
     position: 'absolute',
@@ -103,7 +106,7 @@ export const dividerStyles = {
 };
 
 /* change classes styles */
-export const selectClasses = {
+export const selectOverrideClasses = {
   '& .MuiOutlinedInput-notchedOutline': {
     border: 'none',
   },

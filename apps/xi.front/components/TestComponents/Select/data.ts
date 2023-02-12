@@ -2,6 +2,7 @@ import { Folder } from 'pkg.icons.folder';
 import { v4 } from 'uuid';
 
 export const selectTest = [
+  /* groups */
   {
     id: v4(),
     // items,
@@ -10,6 +11,9 @@ export const selectTest = [
         id: v4(),
         title: 'Title',
         items: [
+          { id: v4(), value: 'Item1' },
+          { id: v4(), value: 'Item2' },
+          { id: v4(), value: 'Item3' },
           { id: v4(), value: 'Item1' },
           { id: v4(), value: 'Item2' },
           { id: v4(), value: 'Item3' },
@@ -76,7 +80,7 @@ export const selectTest = [
         ],
       },
     ],
-    cancelItem: 'Item',
+    // cancelItem: 'Item',
     size: 's',
     type: 'warning',
     Icon: Folder,
@@ -214,6 +218,38 @@ export const selectTest = [
     cancelItem: 'Item',
     size: 'm',
     type: 'disabled',
+    Icon: Folder,
+  },
+
+  /* items */
+  {
+    id: v4(),
+    // items,
+    items: [
+      { id: v4(), value: 'Item1' },
+      { id: v4(), value: 'Item2' },
+      { id: v4(), value: 'Item3' },
+
+      { id: v4(), value: 'Item4', isDisabled: true },
+      { id: v4(), value: 'Item5', isDefault: true },
+    ],
+    cancelItem: 'Item',
+    size: 's',
+    Icon: Folder,
+  },
+  {
+    id: v4(),
+    // items,
+    items: [
+      { id: v4(), value: 'Item1' },
+      { id: v4(), value: 'Item2' },
+      { id: v4(), value: 'Item3' },
+
+      { id: v4(), value: 'Item4', isDisabled: true },
+      { id: v4(), value: 'Item5', isDefault: true },
+    ],
+    cancelItem: 'Item',
+    size: 'm',
     Icon: Folder,
   },
 ];

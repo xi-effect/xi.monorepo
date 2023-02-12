@@ -7,7 +7,7 @@ import {
   selectSizes,
   selectTypes,
   MenuProps,
-  selectClasses,
+  selectOverrideClasses,
   placeholderIconSizes,
   placeholderTextSizes,
   dividerStyles,
@@ -31,6 +31,8 @@ export type SelectProps = {
   label?: string;
   /* Icon in placeholder */
   Icon?: any;
+  /* dropdown menu max height */
+  maxHeight?: string;
 
   /* selected value */
   value: string;
@@ -63,6 +65,7 @@ export const Select = ({
   size,
   type = 'default',
   width = '250px',
+  maxHeight = '300px',
   label = 'Выберите',
   Icon,
   value,
@@ -81,7 +84,7 @@ export const Select = ({
     setIsOpened((state) => !state);
   };
 
-  /* select value state interactions */
+  /* select value interactions */
   const onChangeValue = (e: any) => {
     const newValue = e.target.value;
     changeValue(newValue);
@@ -105,6 +108,8 @@ export const Select = ({
     setDefaultValue();
   }, []);
 
+  const isDisabled = type === 'disabled';
+
   return (
     <ClickAwayListener onClickAway={onCloseMenu}>
       <FormControl sx={{ position: 'relative' }}>
@@ -116,15 +121,16 @@ export const Select = ({
             ...selectTypes[type],
             width,
             transition: '0.3s',
-            ...selectClasses,
+            outline: 'none',
+            ...selectOverrideClasses,
           }}
-          disabled={type === 'disabled'}
-          tabIndex={type === 'disabled' ? -1 : 0}
+          disabled={isDisabled}
+          tabIndex={isDisabled ? -1 : 0}
           onChange={onChangeValue}
           value={value}
-          MenuProps={{ sx: { ...MenuProps } }}
+          MenuProps={{ sx: { ...MenuProps(maxHeight) } }}
           displayEmpty
-          IconComponent={() => OpenIcon(isOpened, size, type === 'disabled', handleDropIconClick)}
+          IconComponent={() => OpenIcon(isOpened, size, isDisabled, handleDropIconClick)}
           onClose={onCloseMenu}
           onOpen={onOpenMenu}
           open={isOpened}
@@ -163,7 +169,6 @@ export const Select = ({
                 ...menuItemStyles,
                 ...dividerStyles,
                 position: 'relative',
-                mb: '5px',
               }}
             >
               {cancelItem}
@@ -185,7 +190,7 @@ export const Select = ({
               </MenuItem>
             ))}
           {groups &&
-            groups.map((group) => [
+            groups.map((group, groupIndex, groupArray) => [
               <Typography
                 sx={{
                   fontSize: '10px',
@@ -198,7 +203,8 @@ export const Select = ({
                 {group.title}
               </Typography>,
               group.items.map((item, index, array) => {
-                const divider = index === array.length - 1 ? dividerStyles : {};
+                const isLastGroup = groupIndex === groupArray.length - 1;
+                const divider = index === array.length - 1 && !isLastGroup ? dividerStyles : {};
                 return (
                   <MenuItem
                     value={item.value}
