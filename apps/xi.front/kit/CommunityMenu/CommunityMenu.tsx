@@ -33,160 +33,150 @@ type CommunityMenuProps = {
   handleListKeyDown?: (e: KeyboardEvent<HTMLUListElement>) => void;
 };
 
-const CommunityMenu = observer(
-  ({ open, setOpen, handleClose, handleListKeyDown }: CommunityMenuProps) => {
-    const rootStore = useStore();
-    const { uiSt } = rootStore;
+const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) => {
+  const rootStore = useStore();
+  const { uiSt } = rootStore;
 
-    const onInviteClick = () => {
-      uiSt.setDialogs('invite', true);
-      if (setOpen) setOpen(false);
-    };
-
-    return (
-      <MenuList
-        autoFocusItem={open}
-        id="composition-menu"
-        aria-labelledby="composition-button"
-        onKeyDown={handleListKeyDown}
-        sx={{ width: '100%', p: 1 }}
+  return (
+    <MenuList id="composition-menu" aria-labelledby="composition-button" sx={{ width: '100%' }}>
+      <MenuItem
+        sx={{
+          ...menuListStyles,
+        }}
+        onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
+          uiSt.setDialogs('communityInvite', true);
+        }}
       >
-        <MenuItem
-          sx={{
-            ...menuListStyles,
-          }}
-          onClick={onInviteClick}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%' }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Пригласить людей
-            </Typography>
-            <Invite fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <MenuItem
-          sx={{
-            ...menuListStyles,
-          }}
-          onClick={() => {
-            uiSt.setDialogs('communitySettings', true);
-            uiSt.setDialogs('communityMenu', false);
-          }}
+            Пригласить людей
+          </Typography>
+          <Invite fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <MenuItem
+        sx={{
+          ...menuListStyles,
+        }}
+        onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
+          uiSt.setDialogs('communityProfile', true);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%' }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Настройки сообщества
-            </Typography>
-            <Settings fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <Divider flexItem sx={{ ...dividerStyles }} />
-        <MenuItem
-          sx={{
-            ...menuListStyles,
-          }}
-          onClick={() => {
-            uiSt.setDialogs('channelCreation', true);
-            if (setOpen) setOpen(false);
-          }}
+            Настройки сообщества
+          </Typography>
+          <Settings fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <Divider flexItem sx={{ ...dividerStyles }} />
+      <MenuItem
+        sx={{
+          ...menuListStyles,
+        }}
+        onClick={() => {
+          uiSt.setDialogs('channelCreation', true);
+          if (setOpen) setOpen(false);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%' }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Создать канал
-            </Typography>
-            <AddChannel fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <MenuItem
-          sx={{
-            ...menuListStyles,
-          }}
-          onClick={() => {
-            uiSt.setDialogs('categoryCreation', true);
-            if (setOpen) setOpen(false);
-          }}
+            Создать канал
+          </Typography>
+          <AddChannel fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <MenuItem
+        sx={{
+          ...menuListStyles,
+        }}
+        onClick={() => {
+          uiSt.setDialogs('categoryCreation', true);
+          if (setOpen) setOpen(false);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%' }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Создать категорию
-            </Typography>
-            <AddCategory fontSize="small" />
-          </Stack>
-        </MenuItem>
-        <Divider flexItem sx={{ ...dividerStyles }} />
-        <MenuItem
-          sx={{
-            ...menuListStyles,
-          }}
-          onClick={(e) => {
-            if (handleClose) handleClose(e);
-          }}
+            Создать категорию
+          </Typography>
+          <AddCategory fontSize="small" />
+        </Stack>
+      </MenuItem>
+      <Divider flexItem sx={{ ...dividerStyles }} />
+      <MenuItem
+        sx={{
+          ...menuListStyles,
+        }}
+        onClick={(e) => {
+          if (handleClose) handleClose(e);
+        }}
+      >
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ width: '100%', color: 'error.main' }}
         >
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ width: '100%', color: 'error.main' }}
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '18px',
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '14px',
-                lineHeight: '18px',
-              }}
-            >
-              Покинуть сообщество
-            </Typography>
-            <Exit sx={{ color: 'error.main' }} fontSize="small" />
-          </Stack>
-        </MenuItem>
-      </MenuList>
-    );
-  },
-);
+            Покинуть сообщество
+          </Typography>
+          <Exit sx={{ color: 'error.main' }} fontSize="small" />
+        </Stack>
+      </MenuItem>
+    </MenuList>
+  );
+});
 
 export default CommunityMenu;

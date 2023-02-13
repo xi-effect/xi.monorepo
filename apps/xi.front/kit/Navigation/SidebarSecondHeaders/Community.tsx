@@ -55,11 +55,10 @@ const Community = observer(() => {
         alignItems="center"
         sx={{
           borderBottom: '1px solid #ECEFFF',
-          borderRadius: '8px',
+          borderTopLeftRadius: '8px',
+          borderTopRightRadius: '8px',
           p: 1,
-          bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
           '&:hover': {
-            bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
             cursor: 'pointer',
           },
         }}
