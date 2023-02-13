@@ -52,11 +52,7 @@ const Transition = React.forwardRef(
 
 const CommunityProfile = observer(() => {
   const rootStore = useStore();
-  const {
-    uiSt,
-    profileSt,
-    userSt,
-  } = rootStore;
+  const { uiSt, profileSt, userSt } = rootStore;
   const { dialogs } = uiSt;
   const { profile } = profileSt;
   const { user } = userSt;
