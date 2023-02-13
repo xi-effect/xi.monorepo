@@ -39,6 +39,8 @@ const nextConfig = {
     'pkg.forms.signin',
     'pkg.layout.pages',
     'pkg.pages.error',
+    'pkg.icons.addchannel',
+    'pkg.icons.addcategory',
     'pkg.icons.account',
     'pkg.icons.add',
     'pkg.icons.announce',
