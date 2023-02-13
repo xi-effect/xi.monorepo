@@ -1,4 +1,5 @@
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
+import Link from 'next/link';
 import { Avatar } from 'pkg.data.avatar';
 
 const communities = [
@@ -22,68 +23,101 @@ const communities = [
     avatar: '2',
     categories: ['4Б-жд', '5Б-жд', '6Б-жд', '7Б-жд', '8Б-жд'],
   },
-  {
-    title: 'МИПК И.Федорова',
-    avatar: '2',
-    categories: ['4Б-жд', '5Б-жд', '6Б-жд', '7Б-жд', '8Б-жд'],
-  },
-  {
-    title: 'МИПК И.Федорова',
-    avatar: '2',
-    categories: ['4Б-жд', '5Б-жд', '6Б-жд', '7Б-жд', '8Б-жд'],
-  },
 ];
 
-const Communities = () => (
-  <Stack
-    direction="row"
-    justifyContent="flex-start"
-    alignItems="center"
-    spacing={4}
-    sx={{
-      width: '100%',
-      height: '248px',
-    }}
-  >
-    {communities.map((item, index) => (
-      <Stack
-        key={index.toString()}
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-        sx={{
-          width: '365px',
-          height: '248px',
-          bgcolor: 'grayscale.0',
-          borderRadius: '8px',
-          p: '16px 12px',
-        }}
-      >
+const Communities = () => {
+  const xl = useMediaQuery((theme: Theme) => theme.breakpoints.not('xl'));
+
+  return (
+    <Stack
+      direction="row"
+      spacing="32px"
+      alignItems="center"
+      flexWrap={xl ? 'wrap' : 'nowrap'}
+      sx={{
+        width: '100%',
+        height: '248px',
+        overflow: 'hidden',
+      }}
+      justifyContent="space-between"
+    >
+      {communities.map((item, index) => (
         <Stack
-          direction="row"
-          justifyContent="flex-start"
-          alignItems="center"
-          spacing={2}
+          key={index}
+          direction="column"
           sx={{
-            height: '64px',
-            width: '100%',
-            p: '8px 12px',
+            p: '16px 12px',
+            flex: '1 1 25%',
+            height: '248px',
+            minWidth: '302px',
+            borderRadius: '8px',
+            bgcolor: 'grayscale.0',
           }}
         >
-          <Avatar />
-          <Typography
+          <Stack
+            direction="row"
+            alignItems="center"
             sx={{
-              fontWeight: 500,
-              fontSize: '20px',
-              lineHeight: '28px',
+              mb: '8px',
+              p: '8px 12px',
+              borderRadius: '12px',
+              backgroundColor: 'transparent',
+              transition: 'background 0.2s ease-in',
+              '&:hover': { backgroundColor: 'grayscale.5' },
             }}
           >
-            {item.title}
-          </Typography>
+            <Box mr="12px" width="48px" height="48px" sx={{ div: { borderRadius: '12px' } }}>
+              <Avatar />
+            </Box>
+
+            <Typography fontSize="20px" fontWeight="500" component="span">
+              {item.title}
+            </Typography>
+          </Stack>
+
+          <Stack direction="row" flexWrap="wrap">
+            {item.categories.map((k, i) => (
+              <Box
+                key={i}
+                sx={{
+                  p: '8px 12px',
+                  flex: '0 0 50%',
+                  fontWeight: 500,
+                  fontSize: '18px',
+                  lineHeight: '24px',
+                  borderRadius: '12px',
+                  color: 'grayscale.100',
+                  backgroundColor: 'transparent',
+                  mb: i !== item.categories.length - 1 ? '12px' : 0,
+                  transition: 'background 0.2s ease-in, color 0.2s ease-in',
+                  '&:hover': { backgroundColor: 'primary.pale', color: 'primary.dark' },
+                }}
+              >
+                {k}
+              </Box>
+            ))}
+
+            <Link style={{ flex: '0 0 50%' }} href="/home">
+              <Box
+                sx={{
+                  p: '8px 12px',
+                  fontWeight: 500,
+                  fontSize: '18px',
+                  color: 'primary.dark',
+                  borderRadius: '12px',
+                  backgroundColor: 'transparent',
+                  transition: 'background 0.2s ease-in, color 0.2s ease-in',
+                  '&:hover': { backgroundColor: 'primary.dark', color: 'grayscale.0' },
+                }}
+              >
+                Перейти
+              </Box>
+            </Link>
+          </Stack>
         </Stack>
-      </Stack>
-    ))}
-  </Stack>
-);
+      ))}
+    </Stack>
+  );
+};
 
 export default Communities;
