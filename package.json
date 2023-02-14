@@ -15,10 +15,10 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "husky": "^8.0.3",
     "eslint-config-custom": "*",
+    "husky": "^8.0.3",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "^1.7.3"
   },
   "engines": {
     "node": ">=16.0.0"

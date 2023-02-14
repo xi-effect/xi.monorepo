@@ -1,6 +1,10 @@
 import { Stack, Typography } from '@mui/material';
 
-export const Avatar = () => {
+export type AvatarPropsT = {
+  size?: number;
+};
+
+export const Avatar = ({ size = 48 }: AvatarPropsT) => {
   const getBgcolor = (v: number) => {
     if (v === 1) return '#F5F0FF';
     return '#F5F0FF';
@@ -17,17 +21,17 @@ export const Avatar = () => {
       justifyContent="center"
       alignItems="center"
       sx={{
-        width: 48,
-        height: 48,
-        borderRadius: 24,
+        width: size,
+        height: size,
+        borderRadius: size * 0.5,
         bgcolor: getBgcolor(1),
       }}
     >
       <Typography
         sx={{
           fontWeight: 600,
-          fontSize: '20px',
-          lineHeight: '20px',
+          fontSize: size / 2.5,
+          lineHeight: size / 2.5,
           color: getTextColor(1),
         }}
       >
