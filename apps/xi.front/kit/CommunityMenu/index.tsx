@@ -106,7 +106,8 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
         sx={{ width: '100%' }}
         onClick={() => {
           uiSt.setDialogs('categoryCreation', true);
-          if (setOpen) setOpen(false);
+          uiSt.setDialogs('communityMenu', false);
+          // if (setOpen) setOpen(false);
         }}
       >
         <Stack

@@ -82,13 +82,25 @@ const DialogCategoryCreation = observer(() => {
   const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const onClose = () => uiSt.setDialogs('categoryCreation', false);
-  const { control, handleSubmit, trigger } = useForm<FormValues>({
+  const { control, handleSubmit, trigger, reset } = useForm<FormValues>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      name: '',
+      teacher: '',
+      privite: true,
+      channel: {
+        ads: true,
+        task: false,
+        videoconferencing: false,
+        chatWithStudiends: true,
+      },
+    },
   });
   const onSubmit = (data: FormValues) => {
+    console.log('data', data);
     trigger();
     uiSt.setDialogs('categoryCreation', false);
-    console.log('data', data);
+    reset();
   };
   return (
     <Dialog
@@ -106,8 +118,8 @@ const DialogCategoryCreation = observer(() => {
         alignItems="center"
         sx={{
           width: '100%',
-          p: 3,
-          pb: 2,
+          p: 4,
+          pb: 0,
         }}
       >
         <Typography
@@ -212,6 +224,7 @@ const DialogCategoryCreation = observer(() => {
           </Typography>
           {dataChannal.map((channel, index) => (
             <Stack
+              key={index.toString()}
               direction="row"
               justifyContent="flex-start"
               alignItems="center"
@@ -223,10 +236,12 @@ const DialogCategoryCreation = observer(() => {
               <FormControlLabel
                 control={
                   <Controller
-                    key={index.toString()}
                     name={channel.nameControl}
                     control={control}
-                    render={({ field }) => <Checkbox size="small" {...field} />}
+                    defaultValue={false}
+                    render={({ field: { onChange, value, ...restProps } }) => (
+                      <Checkbox size="small" {...restProps} onChange={onChange} checked={value} />
+                    )}
                   />
                 }
                 label={
@@ -250,12 +265,12 @@ const DialogCategoryCreation = observer(() => {
               backgroundColor: '#F5F5F5',
               p: 2,
               mt: 3,
+              mb: 2,
               borderRadius: 6,
             }}
           >
             <Typography
               sx={{
-                mt: 2,
                 mb: 1,
                 mr: 'auto',
                 width: '100%',
@@ -275,7 +290,7 @@ const DialogCategoryCreation = observer(() => {
             >
               <Typography
                 sx={{
-                  mb: 1,
+                  // mb: 1,
                   mr: 'auto',
                   fontSize: '16px',
                   fontWeight: 400,
@@ -286,15 +301,21 @@ const DialogCategoryCreation = observer(() => {
               <Controller
                 name="privite"
                 control={control}
-                render={({ field }) => <Switch size="medium" {...field} />}
+                render={({ field: { onChange, value, ...restProps } }) => (
+                  <Switch size="medium" {...restProps} onChange={onChange} checked={value} />
+                )}
               />
             </Stack>
           </Stack>
         </Stack>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleSubmit(onSubmit)} variant="contained">
-          Готово
+        <Button
+          sx={{ width: '100%', mx: 4, mb: 4, textTransform: 'capitalize' }}
+          onClick={handleSubmit(onSubmit)}
+          variant="contained"
+        >
+          Создать
         </Button>
       </DialogActions>
     </Dialog>
