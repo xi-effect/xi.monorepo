@@ -13,6 +13,7 @@ import {
   IconButton,
   Checkbox,
   FormControlLabel,
+  Switch,
 } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Close } from 'pkg.icons.close';
@@ -240,36 +241,55 @@ const DialogCategoryCreation = observer(() => {
               />
             </Stack>
           ))}
-          <Typography
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
             sx={{
-              mt: 5,
-              mb: 1,
-              mr: 'auto',
-              fontSize: '20px',
-              fontWeight: 600,
+              width: '100%',
+              backgroundColor: '#F5F5F5',
+              p: 2,
+              mt: 3,
+              borderRadius: 6,
             }}
           >
-            Приватная категория
-          </Typography>
-          <FormControlLabel
-            control={
+            <Typography
+              sx={{
+                mt: 2,
+                mb: 1,
+                mr: 'auto',
+                width: '100%',
+                fontSize: '20px',
+                fontWeight: 600,
+              }}
+            >
+              Приватная категория
+            </Typography>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                width: '100%',
+              }}
+            >
+              <Typography
+                sx={{
+                  mb: 1,
+                  mr: 'auto',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                }}
+              >
+                Контент в данной категории будет доступен только выбранным классам и ролям
+              </Typography>
               <Controller
                 name="privite"
                 control={control}
-                render={({ field }) => <Checkbox size="small" {...field} />}
+                render={({ field }) => <Switch size="medium" {...field} />}
               />
-            }
-            label={
-              <Box
-                sx={{
-                  fontSize: '18px',
-                }}
-              >
-                labal
-              </Box>
-            }
-          />
-
+            </Stack>
+          </Stack>
         </Stack>
       </DialogContent>
       <DialogActions>
