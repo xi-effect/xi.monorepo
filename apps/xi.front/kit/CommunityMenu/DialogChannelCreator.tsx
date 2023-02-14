@@ -3,23 +3,23 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import {
-  Button,
   Box,
-  Stack,
-  Typography,
-  Radio,
-  IconButton,
+  Button,
   Dialog,
   DialogContent,
-  useMediaQuery, Theme,
+  IconButton,
+  Radio,
+  Stack,
+  Theme,
+  Typography,
+  useMediaQuery,
 } from '@mui/material';
 
 import MobileDialog from 'kit/MobileDialog';
-import CloseIcon from '@mui/icons-material/Close';
 
 import { useStore } from 'store/connect';
 
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -32,6 +32,7 @@ import { Camera } from 'pkg.icons.camera';
 import { Chat } from 'pkg.icons.chat';
 import { Task } from 'pkg.icons.task';
 import RootStore from '../../store/rootStore';
+import { Close } from 'pkg.icons.close';
 
 // import TextFieldCustom from '../TextFieldCustom';
 
@@ -58,8 +59,7 @@ const BpIcon = styled('span')(({ theme }) => ({
   },
   'input:disabled ~ &': {
     boxShadow: 'none',
-    background:
-      theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
+    background: theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
   },
 }));
 const BpCheckedIcon = styled(BpIcon)({
@@ -77,13 +77,13 @@ const BpCheckedIcon = styled(BpIcon)({
   },
 });
 
-type ContentType={
-  label:string,
-  description:string,
-  icon:React.ReactNode
+type ContentType = {
+  label: string;
+  description: string;
+  icon: React.ReactNode;
 };
 
-const content:ContentType[] = [
+const content: ContentType[] = [
   {
     label: 'Объявления',
     description: 'Держите ваших студентов в курсе всех новостей по курсу',
@@ -97,7 +97,8 @@ const content:ContentType[] = [
   },
   {
     label: 'Видеоконференции',
-    description: 'Проводите уроки онлайн, проводите активности, работайте со студентами из любой точки мира',
+    description:
+      'Проводите уроки онлайн, проводите активности, работайте со студентами из любой точки мира',
     icon: <Camera sx={{ fontSize: 20 }} />,
   },
   {
@@ -115,7 +116,7 @@ const getType = (num) => {
   return 'announcement';
 };
 interface IFormInput {
- name:string
+  name: string;
 }
 
 const schema = yup
@@ -124,12 +125,12 @@ const schema = yup
   })
   .required();
 
-type ChannelSelectType=0|1|2|3;
+type ChannelSelectType = 0 | 1 | 2 | 3;
 
 const Content = observer((props) => {
   const { communityChannelsSt, uiSt } = props;
 
-  const mobile = useMediaQuery((theme:Theme) => theme.breakpoints.down('lg'));
+  const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
   const [channelSelect, setChannelSelect] = React.useState<ChannelSelectType>(2);
   const {
     control,
@@ -140,7 +141,7 @@ const Content = observer((props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data:IFormInput) => {
+  const onSubmit = (data: IFormInput) => {
     trigger();
     const type = getType(channelSelect);
     communityChannelsSt.pushNewChannel({ ...data, type });
@@ -158,7 +159,10 @@ const Content = observer((props) => {
       }}
       spacing={2}
     >
-      <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 500, lineHeight: '20px', pb: 0, mb: 0 }}>
+      <Typography
+        variant="subtitle2"
+        sx={{ fontSize: 16, fontWeight: 500, lineHeight: '20px', pb: 0, mb: 0 }}
+      >
         Название
       </Typography>
       <Controller
@@ -258,9 +262,10 @@ const Content = observer((props) => {
 });
 
 const DialogChannelCreation = observer(() => {
-  const rootStore:RootStore = useStore();
+  const rootStore: RootStore = useStore();
   const { communityChannelsSt, uiSt } = rootStore;
-  const fullScreen = useMediaQuery((theme:Theme) => theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+  const onClose = () => uiSt.setDialogs('channelCreation', false);
   return (
     <>
       {!fullScreen && (
@@ -292,8 +297,16 @@ const DialogChannelCreation = observer(() => {
             <Typography sx={{ pt: 2, m: '0 auto', textAlign: 'center', fontSize: 24 }} variant="h6">
               Создать канал
             </Typography>
-            <IconButton onClick={() => uiSt.setDialogs('channelCreation', false)} sx={{ mr: 2, p: 0 }}>
-              <CloseIcon sx={{ fontSize: 14, color: 'text.secondary' }} />
+            <IconButton
+              sx={{
+                color: 'text.secondary',
+                position: 'absolute',
+                top: '37px',
+                right: '12px',
+              }}
+              onClick={onClose}
+            >
+              <Close />
             </IconButton>
           </Stack>
           <DialogContent>

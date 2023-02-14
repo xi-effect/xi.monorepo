@@ -69,94 +69,96 @@ const Community = observer(() => {
   }, [open]);
 
   return (
-    <Stack
-      onClick={handleToggle}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      sx={{
-        borderBottom: '1px solid #ECEFFF',
-        borderRadius: '8px',
-        p: 1,
-        bgcolor: open ? 'primary.light' : 'grayscale.0',
-        '&:hover': {
-          bgcolor: open ? 'primary.light' : 'grayscale.0',
-          cursor: 'pointer',
-        },
-      }}
-    >
-      <Typography
-        noWrap
+    <>
+      <Stack
+        onClick={handleToggle}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
         sx={{
-          fontWeight: 500,
-          fontSize: 18,
-          lineHeight: '22px',
+          borderBottom: '1px solid #ECEFFF',
+          borderRadius: '8px',
+          p: 1,
+          bgcolor: open ? 'primary.light' : 'grayscale.0',
+          '&:hover': {
+            bgcolor: open ? 'primary.light' : 'grayscale.0',
+            cursor: 'pointer',
+          },
         }}
       >
-        {communitySt.meta.name || 'Тестовое сообщество'}
-      </Typography>
-      <Tooltip arrow title="Меню сообщества">
-        <IconButton
-          ref={anchorRef}
-          id="composition-button"
-          aria-controls={open ? 'composition-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
+        <Typography
+          noWrap
           sx={{
-            height: 36,
-            width: 36,
+            fontWeight: 500,
+            fontSize: 18,
+            lineHeight: '22px',
           }}
         >
-          {!open && <KeyboardArrowDownIcon />}
-          {open && <CloseIcon />}
-        </IconButton>
-      </Tooltip>
-      <Popper
-        open={open}
-        anchorEl={anchorRef.current}
-        placement="bottom-end"
-        transition
-        sx={{
-          height: 356,
-          width: 228,
-          left: 0,
-          zIndex: 10000,
-        }}
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom',
+          {communitySt.meta.name || 'Тестовое сообщество'}
+        </Typography>
+        <Tooltip arrow title="Меню сообщества">
+          <IconButton
+            ref={anchorRef}
+            id="composition-button"
+            aria-controls={open ? 'composition-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            sx={{
+              height: 36,
+              width: 36,
             }}
           >
-            <Paper
-              sx={{
-                position: 'absolute',
-                left: 4,
-                top: 12,
-                width: 228,
-                boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
-                borderRadius: '8px',
-                bgcolor: 'primary.pale',
+            {!open && <KeyboardArrowDownIcon />}
+            {open && <CloseIcon />}
+          </IconButton>
+        </Tooltip>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          placement="bottom-end"
+          transition
+          sx={{
+            height: 356,
+            width: 228,
+            left: 0,
+            zIndex: 10000,
+          }}
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom',
               }}
             >
-              <ClickAwayListener onClickAway={handleClose}>
-                <Box>
-                  <CommunityMenu
-                    open={open}
-                    setOpen={setOpen}
-                    handleListKeyDown={handleListKeyDown}
-                    handleClose={handleClose}
-                  />
-                  <DialogChannelCreation />
-                </Box>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
-    </Stack>
+              <Paper
+                sx={{
+                  position: 'absolute',
+                  left: 4,
+                  top: 12,
+                  width: 228,
+                  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
+                  borderRadius: '8px',
+                  bgcolor: 'primary.pale',
+                }}
+              >
+                <ClickAwayListener onClickAway={handleClose}>
+                  <Box>
+                    <CommunityMenu
+                      open={open}
+                      setOpen={setOpen}
+                      handleListKeyDown={handleListKeyDown}
+                      handleClose={handleClose}
+                    />
+                  </Box>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </Stack>
+      <DialogChannelCreation />
+    </>
   );
 });
 
