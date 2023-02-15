@@ -4,6 +4,7 @@ import { Breadcrumbs, BreadcrumbsProps } from 'pkg.navigation.breadcrumbs';
 
 const currentPageHistory: BreadcrumbsProps = {
   breadcrumbs: [{ name: 'breadcrumbs', link: 'http://localhost:3300/components/breadcrumbs' }],
+  size: 's',
 };
 
 const TestComponents = () => (

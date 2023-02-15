@@ -1,9 +1,11 @@
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
 import { Arrow } from 'pkg.icons.arrow';
-import { breadcrumbLink } from './types';
+import { breadcrumbLink, SizesT } from './types';
+import { breadcrumbSizes } from './styles';
 
 export type BreadcrumbsProps = {
   breadcrumbs: breadcrumbLink[];
+  size: SizesT;
   Separator?: any;
   /* breadcrumbs link color */
   color?: string;
@@ -11,34 +13,44 @@ export type BreadcrumbsProps = {
   lastItemColor?: string;
 };
 
-const DefaultSeparator = <Arrow sx={{ fontSize: '12px' }} />;
-
 export const Breadcrumbs = ({
   breadcrumbs,
-  Separator = DefaultSeparator,
+  size,
+  Separator,
   color = 'grayscale.100',
   lastItemColor = 'grayscale.40',
-}: BreadcrumbsProps) => (
-  <MuiBreadcrumbs separator={Separator}>
-    {breadcrumbs.map((item, index, breadcrumbsArray) => {
-      const isLastItem = index === breadcrumbsArray.length - 1;
-      const linkColor = !isLastItem ? lastItemColor : color;
+}: BreadcrumbsProps) => {
+  const DefaultSeparator = <Arrow sx={{ ...breadcrumbSizes[size] }} />;
 
-      return (
-        <Link
-          href={item.link}
-          sx={{
-            color: linkColor,
-            pointerEvents: isLastItem ? 'none' : '',
-            textDecoration: 'none',
-            '&:hover': {
-              textDecoration: isLastItem ? 'none' : 'underline',
-            },
-          }}
-        >
-          {item.name}
-        </Link>
-      );
-    })}
-  </MuiBreadcrumbs>
-);
+  return (
+    <MuiBreadcrumbs
+      separator={Separator || DefaultSeparator}
+      sx={{
+        alignItems: 'center',
+        '& .MuiBreadcrumbs-separator': { m: '2px 2px 0 2px' },
+      }}
+    >
+      {breadcrumbs.map((item, index, breadcrumbsArray) => {
+        const isLastItem = index === breadcrumbsArray.length - 1;
+        const linkColor = !isLastItem ? lastItemColor : color;
+
+        return (
+          <Link
+            href={item.link}
+            sx={{
+              ...breadcrumbSizes[size],
+              color: linkColor,
+              pointerEvents: isLastItem ? 'none' : '',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: isLastItem ? 'none' : 'underline',
+              },
+            }}
+          >
+            {item.name}
+          </Link>
+        );
+      })}
+    </MuiBreadcrumbs>
+  );
+};

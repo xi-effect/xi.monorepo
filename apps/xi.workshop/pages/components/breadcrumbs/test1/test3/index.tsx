@@ -4,10 +4,11 @@ import { Breadcrumbs, BreadcrumbsProps } from 'pkg.navigation.breadcrumbs';
 
 const currentPageHistory: BreadcrumbsProps = {
   breadcrumbs: [
-    { name: 'breadcrumbs', link: 'http://localhost:3300/components/breadcrumbs' },
-    { name: 'test 1', link: 'http://localhost:3300/components/breadcrumbs/test1' },
-    { name: 'test 3', link: 'http://localhost:3300/components/breadcrumbs/test1/test3' },
+    { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
+    { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/test1' },
+    { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/test1/test3' },
   ],
+  size: 'l',
 };
 
 const TestComponents = () => (
