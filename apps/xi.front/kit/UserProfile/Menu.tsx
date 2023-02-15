@@ -57,6 +57,8 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
       justifyContent="flex-start"
       alignItems="flex-start"
       sx={{
+        position: 'sticky',
+        top: 0,
         mt: 0,
         width: mobile700 ? '100%' : '220px',
         flexShrink: 0,
