@@ -7,6 +7,7 @@ const currentPageHistory: BreadcrumbsProps = {
     { name: 'breadcrumbs', link: 'http://localhost:3300/components/breadcrumbs' },
     { name: 'test 2', link: 'http://localhost:3300/components/breadcrumbs/test1' },
   ],
+  size: 'm',
 };
 
 const TestComponents = () => (
