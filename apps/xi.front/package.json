@@ -50,6 +50,7 @@
     "pkg.inputs.select": "*",
     "pkg.inputs.checkbox": "*",
     "pkg.layout.pages": "*",
+    "pkg.navigation.breadcrumbs": "*",
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
