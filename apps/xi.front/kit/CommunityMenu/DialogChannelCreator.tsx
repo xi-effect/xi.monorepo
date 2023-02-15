@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { observer } from 'mobx-react';
 
@@ -7,8 +6,10 @@ import {
   Button,
   Dialog,
   DialogContent,
+  FormControlLabel,
   IconButton,
   Radio,
+  RadioGroup,
   Stack,
   Theme,
   Typography,
@@ -20,21 +21,18 @@ import MobileDialog from 'kit/MobileDialog';
 import { useStore } from 'store/connect';
 
 import { Controller, useForm } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
 import { styled } from '@mui/material/styles';
 import { Announce } from 'pkg.icons.announce';
 import { Camera } from 'pkg.icons.camera';
 import { Chat } from 'pkg.icons.chat';
 import { Task } from 'pkg.icons.task';
-import RootStore from '../../store/rootStore';
 import { Close } from 'pkg.icons.close';
-
-// import TextFieldCustom from '../TextFieldCustom';
+import RootStore from '../../store/rootStore';
 
 // style checkbox
 const BpIcon = styled('span')(({ theme }) => ({
@@ -81,6 +79,7 @@ type ContentType = {
   label: string;
   description: string;
   icon: React.ReactNode;
+  currentType: RadioType;
 };
 
 const content: ContentType[] = [
@@ -88,50 +87,47 @@ const content: ContentType[] = [
     label: 'Объявления',
     description: 'Держите ваших студентов в курсе всех новостей по курсу',
     icon: <Announce sx={{ fontSize: 20 }} />,
+    currentType: 'announcement',
   },
   {
     label: 'Задания',
     description:
       'Создавайте задания, тесты, получайте ответы от учеников, оценивайте и улучшайте знания',
     icon: <Task sx={{ fontSize: 20 }} />,
+    currentType: 'task',
   },
   {
     label: 'Видеоконференции',
     description:
       'Проводите уроки онлайн, проводите активности, работайте со студентами из любой точки мира',
     icon: <Camera sx={{ fontSize: 20 }} />,
+    currentType: 'video',
   },
   {
     label: 'Чат со студентами',
     description: 'Общайтесь, отвечайте на вопросы, объясняйте непонятные моменты',
     icon: <Chat sx={{ fontSize: 20 }} />,
+    currentType: 'chat',
   },
 ];
 
-const getType = (num) => {
-  if (num === 0) return 'announcement';
-  if (num === 1) return 'task';
-  if (num === 2) return 'video';
-  if (num === 3) return 'chat';
-  return 'announcement';
-};
+type RadioType = 'announcement' | 'task' | 'video' | 'chat';
 interface IFormInput {
   name: string;
+  type: RadioType;
 }
 
 const schema = yup
   .object({
     name: yup.string().min(0).max(100).required(),
+    type: yup.string().min(0).max(100).required(),
   })
   .required();
-
-type ChannelSelectType = 0 | 1 | 2 | 3;
 
 const Content = observer((props) => {
   const { communityChannelsSt, uiSt } = props;
 
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
-  const [channelSelect, setChannelSelect] = React.useState<ChannelSelectType>(2);
   const {
     control,
     handleSubmit,
@@ -139,12 +135,17 @@ const Content = observer((props) => {
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      name: '',
+      type: 'announcement',
+    },
   });
 
   const onSubmit = (data: IFormInput) => {
     trigger();
-    const type = getType(channelSelect);
-    communityChannelsSt.pushNewChannel({ ...data, type });
+    // const type = getType(channelSelect);
+    console.log(data);
+    communityChannelsSt.pushNewChannel({ ...data });
     uiSt.setDialogs('channelCreation', false);
   };
 
@@ -178,58 +179,81 @@ const Content = observer((props) => {
             fullWidth
             {...field}
           />
-          // <TextFieldCustom
-          //   variant="outlined"
-          //   error={errors?.email?.type === 'email'}
-          //   type="text"
-          //   fullWidth
-          //   placeholder="Название канала"
-          //   {...field}
-          // />
         )}
       />
       <Typography variant="subtitle2" sx={{ fontSize: 16, fontWeight: 600, pt: 2 }}>
         Тип
       </Typography>
-      {content.map((item, index) => (
-        <Stack
-          key={index.toString()}
-          onClick={() => setChannelSelect(index as ChannelSelectType)}
-          direction="row"
-          justifyContent="center"
-          alignItems="start"
-          sx={{
-            p: 1,
-            minHeight: 96,
-            width: '100%',
-            border: 1,
-            borderRadius: 2,
-            cursor: 'pointer',
-          }}
-          spacing={1}
-        >
-          <Box sx={{ p: 1 }}>{item.icon}</Box>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={0.5}
-            sx={{
-              width: '100%',
-            }}
-          >
-            <Typography variant="h6" component="p" sx={{ fontSize: 20, fontWeight: 600 }}>
-              {item.label}
-            </Typography>
-            <Typography variant="subtitle1" component="p" sx={{ lineHeight: '1.35' }}>
-              {item.description}
-            </Typography>
-          </Stack>
-          <Box sx={{ p: 3, pr: 0 }}>
-            <Radio checked={channelSelect === index} checkedIcon={<BpCheckedIcon />} />
-          </Box>
-        </Stack>
-      ))}
+
+      <Controller
+        rules={{ required: true }}
+        control={control}
+        name="type"
+        render={({ field }) => (
+          <RadioGroup {...field}>
+            {content.map((item, index) => (
+              <FormControlLabel
+                sx={{
+                  position: 'relative',
+                  width: '100%',
+                  border: 1,
+                  minHeight: 96,
+                  borderRadius: 2,
+                  mb: 3,
+                  pr: 7,
+                }}
+                key={index.toString()}
+                value={item.currentType}
+                control={
+                  <Radio
+                    sx={{
+                      position: 'absolute',
+                      top: '50%',
+                      transform: 'translate(0,-50%)',
+                      right: '10px',
+                    }}
+                    checkedIcon={<BpCheckedIcon />}
+                  />
+                }
+                label={
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="start"
+                    sx={{
+                      m: 0,
+                      p: 2,
+                      width: '100%',
+                    }}
+                  >
+                    <Box sx={{ pt: 1, pr: 2 }}>{item.icon}</Box>
+                    <Stack
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="flex-start"
+                      spacing={0.5}
+                      sx={{
+                        width: '100%',
+                      }}
+                    >
+                      <Typography sx={{ fontSize: 20, fontWeight: 600 }}>{item.label}</Typography>
+                      <Typography sx={{ fontSize: 16, lineHeight: '1.35' }}>
+                        {item.description}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                }
+              />
+            ))}
+            {/* //   <FormControlLabel */}
+            {/* //     value="business" */}
+            {/* //     control={<Radio />} */}
+            {/* //     label={ } */}
+            {/* //   /> */}
+          </RadioGroup>
+        )}
+      />
+
       <Box sx={{ width: '100%' }}>
         <Stack
           direction="row"
@@ -244,6 +268,7 @@ const Content = observer((props) => {
             onClick={handleSubmit(onSubmit)}
             sx={{
               '&.MuiButton-root': {
+                m: 0,
                 fontSize: '15px',
                 lineHeight: '26px',
                 letterSpacing: '0.46000000834465027px',
