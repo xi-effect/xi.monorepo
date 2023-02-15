@@ -1,7 +1,7 @@
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
 import { Arrow } from 'pkg.icons.arrow';
 import { breadcrumbLink, SizesT } from './types';
-import { breadcrumbSizes } from './styles';
+import { breadcrumbSizes, separatorSizes } from './styles';
 
 export type BreadcrumbsProps = {
   breadcrumbs: breadcrumbLink[];
@@ -17,22 +17,26 @@ export const Breadcrumbs = ({
   breadcrumbs,
   size,
   Separator,
-  color = 'grayscale.100',
-  lastItemColor = 'grayscale.40',
+  color = 'grayscale.40',
+  lastItemColor = 'grayscale.100',
 }: BreadcrumbsProps) => {
-  const DefaultSeparator = <Arrow sx={{ ...breadcrumbSizes[size] }} />;
+  const CustomSeparator = Separator ? (
+    <Separator sx={{ ...separatorSizes[size], color }} />
+  ) : (
+    <Arrow sx={{ ...separatorSizes[size], color }} />
+  );
 
   return (
     <MuiBreadcrumbs
-      separator={Separator || DefaultSeparator}
+      separator={CustomSeparator}
       sx={{
         alignItems: 'center',
-        '& .MuiBreadcrumbs-separator': { m: '2px 2px 0 2px' },
+        '& .MuiBreadcrumbs-separator': { m: '0 3px' },
       }}
     >
       {breadcrumbs.map((item, index, breadcrumbsArray) => {
         const isLastItem = index === breadcrumbsArray.length - 1;
-        const linkColor = !isLastItem ? lastItemColor : color;
+        const linkColor = isLastItem ? lastItemColor : color;
 
         return (
           <Link
