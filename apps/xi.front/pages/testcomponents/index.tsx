@@ -1,5 +1,4 @@
 import React from 'react';
-import { TestComponentsData, TestComponent } from 'components/TestComponents';
 import { Stack, Typography, Box } from '@mui/material';
 import { Link, LinkProps } from 'pkg.navigation.link';
 import { Link as LinkIcon } from 'pkg.icons.link';
@@ -170,14 +169,6 @@ const TestFileData: FileProps = {
 
 const TestComponents = () => (
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} spacing={4}>
-    {TestComponentsData.map((group: any[]) => (
-      <Stack direction="row" spacing={2}>
-        {group.map((data) => (
-          <TestComponent {...data} />
-        ))}
-      </Stack>
-    ))}
-
     <Box sx={{ width: '100vw', height: '100vh', p: '50px' }}>
       <File {...TestFileData} />
     </Box>
