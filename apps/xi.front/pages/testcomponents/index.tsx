@@ -169,15 +169,15 @@ const TestFileData: FileProps = {
 };
 
 const TestComponents = () => (
-  {TestComponentsData.map((group: any[]) => (
-    <Stack direction="row" spacing={2}>
-      {group.map((data) => (
-        <TestComponent {...data} />
-      ))}
-    </Stack>
-  ))}
-
   <Stack sx={{ width: '100vw', height: '100vh', padding: '50px' }} spacing={4}>
+    {TestComponentsData.map((group: any[]) => (
+      <Stack direction="row" spacing={2}>
+        {group.map((data) => (
+          <TestComponent {...data} />
+        ))}
+      </Stack>
+    ))}
+
     <Box sx={{ width: '100vw', height: '100vh', p: '50px' }}>
       <File {...TestFileData} />
     </Box>
