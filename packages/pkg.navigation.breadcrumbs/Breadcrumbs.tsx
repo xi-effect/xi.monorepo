@@ -10,6 +10,7 @@ export type BreadcrumbsProps = {
   /* breadcrumbs link color */
   color?: string;
   /* breadcrumbs last link color */
+  hoverStyles?: any;
   lastItemColor?: string;
 };
 
@@ -18,6 +19,7 @@ export const Breadcrumbs = ({
   size,
   Separator,
   color = 'grayscale.40',
+  hoverStyles,
   lastItemColor = 'grayscale.100',
 }: BreadcrumbsProps) => {
   const CustomSeparator = Separator ? (
@@ -37,6 +39,7 @@ export const Breadcrumbs = ({
       {breadcrumbs.map((item, index, breadcrumbsArray) => {
         const isLastItem = index === breadcrumbsArray.length - 1;
         const linkColor = isLastItem ? lastItemColor : color;
+        const hover = hoverStyles || { textDecoration: isLastItem ? 'none' : 'underline' };
 
         return (
           <Link
@@ -46,8 +49,9 @@ export const Breadcrumbs = ({
               color: linkColor,
               pointerEvents: isLastItem ? 'none' : '',
               textDecoration: 'none',
+              transition: '0.3s',
               '&:hover': {
-                textDecoration: isLastItem ? 'none' : 'underline',
+                ...hover,
               },
             }}
           >

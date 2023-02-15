@@ -9,6 +9,9 @@ const currentPageHistory: BreadcrumbsProps = {
     { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/test1/test3' },
   ],
   size: 'l',
+  hoverStyles: {
+    color: 'grayscale.80',
+  },
 };
 
 const TestComponents = () => (
