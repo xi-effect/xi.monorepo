@@ -44,6 +44,7 @@ export const Breadcrumbs = ({
         return (
           <Link
             href={item.link}
+            tabIndex={isLastItem ? -1 : 0}
             sx={{
               ...breadcrumbSizes[size],
               color: linkColor,
@@ -52,6 +53,11 @@ export const Breadcrumbs = ({
               transition: '0.3s',
               '&:hover': {
                 ...hover,
+              },
+              '&:focus': {
+                ...hover,
+                outline: 'none',
+                textDecoration: 'underline',
               },
             }}
           >
