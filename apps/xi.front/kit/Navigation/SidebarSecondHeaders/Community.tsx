@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-
-import React, { KeyboardEvent, MouseEvent } from 'react';
+import React, { MouseEvent } from 'react';
 import { observer } from 'mobx-react';
 
 import {
@@ -19,7 +18,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import CommunityMenu from 'kit/CommunityMenu';
+import { CommunityMenu } from 'kit/CommunityMenu';
 import { useStore } from 'store/connect';
 import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
@@ -47,59 +46,50 @@ const Community = observer(() => {
     uiSt.setDialogs('communityMenu', false);
   };
 
-  const handleListKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      uiSt.setDialogs('communityMenu', false);
-    } else if (event.key === 'Escape') {
-      uiSt.setDialogs('communityMenu', false);
-    }
-  };
-
   return (
-    <Stack
-      onClick={handleToggle}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      sx={{
-        borderBottom: '1px solid #ECEFFF',
-        borderRadius: '8px',
-        p: 1,
-        bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
-        '&:hover': {
-          bgcolor: dialogs.communityMenu ? 'primary.light' : 'grayscale.0',
-          cursor: 'pointer',
-        },
-      }}
-    >
-      <DialogInvite />
-      <Typography
-        noWrap
+    <>
+      <Stack
+        onClick={handleToggle}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
         sx={{
-          fontWeight: 500,
-          fontSize: 18,
-          lineHeight: '22px',
+          borderBottom: '1px solid #ECEFFF',
+          borderTopLeftRadius: '8px',
+          borderTopRightRadius: '8px',
+          p: 1,
+          '&:hover': {
+            cursor: 'pointer',
+          },
         }}
       >
-        {communitySt.meta.name || 'Тестовое сообщество'}
-      </Typography>
-      <Tooltip arrow title="Меню сообщества">
-        <IconButton
-          ref={anchorRef}
-          id="composition-button"
-          aria-controls={dialogs.communityMenu ? 'composition-menu' : undefined}
-          aria-expanded={dialogs.communityMenu ? 'true' : undefined}
-          aria-haspopup="true"
+        <Typography
+          noWrap
           sx={{
-            height: 36,
-            width: 36,
+            fontWeight: 500,
+            fontSize: 18,
+            lineHeight: '22px',
           }}
         >
-          {!dialogs.communityMenu && <KeyboardArrowDownIcon />}
-          {dialogs.communityMenu && <CloseIcon />}
-        </IconButton>
-      </Tooltip>
+          {communitySt.meta.name || 'Тестовое сообщество'}
+        </Typography>
+        <Tooltip arrow title="Меню сообщества">
+          <IconButton
+            ref={anchorRef}
+            id="composition-button"
+            aria-controls={dialogs.communityMenu ? 'composition-menu' : undefined}
+            aria-expanded={dialogs.communityMenu ? 'true' : undefined}
+            aria-haspopup="true"
+            sx={{
+              height: 36,
+              width: 36,
+            }}
+          >
+            {!dialogs.communityMenu && <KeyboardArrowDownIcon />}
+            {dialogs.communityMenu && <CloseIcon />}
+          </IconButton>
+        </Tooltip>
+      </Stack>
       <Popper
         open={dialogs.communityMenu}
         anchorEl={anchorRef.current}
@@ -125,21 +115,24 @@ const Community = observer(() => {
                 left: 4,
                 top: 12,
                 width: 228,
-                boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.2)',
+                boxShadow: 24,
                 borderRadius: '8px',
-                bgcolor: 'primary.pale',
+                bgcolor: 'grayscale.0',
+                border: '1px solid',
+                borderColor: 'grayscale.40',
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Box>
-                  <CommunityMenu handleListKeyDown={handleListKeyDown} handleClose={handleClose} />
+                  <CommunityMenu handleClose={handleClose} />
                 </Box>
               </ClickAwayListener>
             </Paper>
           </Grow>
         )}
       </Popper>
-    </Stack>
+      <DialogInvite />
+    </>
   );
 });
 

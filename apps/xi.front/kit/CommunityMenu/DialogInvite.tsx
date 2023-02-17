@@ -164,7 +164,7 @@ const DialogInvite = observer(() => {
             )}
           />
         </Stack>
-        <Typography variant="m" textAlign="left" sx={{ mt: 3, width: '100%' }}>
+        <Typography variant="m" textAlign="left" sx={{ mt: 3, mb: 1, width: '100%' }}>
           Роль
         </Typography>
         <Controller
@@ -177,25 +177,53 @@ const DialogInvite = observer(() => {
             </Select>
           )}
         />
-        <Button
-          onClick={onClose}
-          variant="contained"
+        <Stack
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="center"
+          spacing={2}
           sx={{
-            mt: '32px',
-            width: '356px',
-            height: '48px',
-            boxShadow: 'none',
-            color: 'grayscale.0',
-            bgcolor: 'error.dark',
-            '&:hover': {
-              boxShadow: 'none',
-              color: 'grayscale.0',
-              bgcolor: 'error.dark',
-            },
+            width: '100%',
+            mt: 3,
           }}
         >
-          Выйти
-        </Button>
+          <Button
+            onClick={onClose}
+            variant="outlined"
+            sx={{
+              width: '132px',
+              height: '48px',
+              boxShadow: 'none',
+              borderRadius: 1,
+              color: 'grayscale.80',
+              '&:hover': {
+                boxShadow: 'none',
+                color: 'grayscale.80',
+              },
+            }}
+          >
+            Отмена
+          </Button>
+          <Button
+            onClick={onClose}
+            variant="contained"
+            sx={{
+              width: '140px',
+              height: '48px',
+              boxShadow: 'none',
+              borderRadius: 1,
+              color: 'grayscale.0',
+              fontSize: '18px',
+              textTransform: 'capitalize',
+              '&:hover': {
+                boxShadow: 'none',
+                color: 'grayscale.0',
+              },
+            }}
+          >
+            Создать
+          </Button>
+        </Stack>
       </Stack>
     </Dialog>
   );
