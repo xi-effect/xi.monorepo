@@ -6,6 +6,7 @@ const Header = () => (
     justifyContent="flex-start"
     alignItems="center"
     sx={{
+      mb: '32px',
       width: '100%',
       height: '40px',
     }}

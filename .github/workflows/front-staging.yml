@@ -6,8 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  prepare:
+    uses: ./.github/workflows/common-prepare.yml
+
   build:
-    # needs: prepare
+    needs: prepare
     uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
     with:
       tag: front-staging
