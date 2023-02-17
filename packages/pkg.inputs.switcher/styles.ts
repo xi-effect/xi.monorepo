@@ -1,15 +1,15 @@
 export const buttonSizes = {
   large: {
     height: '34px',
-    p: '0 16px',
+    p: '5px 16px 7px 16px',
   },
   medium: {
     height: '26px',
-    p: '0 12px',
+    p: '2px 12px 4px 12px',
   },
   small: {
     height: '20px',
-    p: '0 12px',
+    p: '1px 8px 3px 8px',
   },
 };
 
@@ -57,7 +57,7 @@ export const typographyVariants = {
 };
 
 export const groupSizes = {
-  large: { borderRadius: '8px' },
-  medium: { borderRadius: '8px' },
-  small: { borderRadius: '6px' },
+  large: { borderRadius: '8px', p: '1px' },
+  medium: { borderRadius: '8px', p: '1px' },
+  small: { borderRadius: '6px', p: '0px' },
 };

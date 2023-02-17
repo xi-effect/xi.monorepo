@@ -29,12 +29,19 @@ const TestComponents = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '10px' }}>
       <Switcher size="small" currentValue={value1} values={arr1} onChange={onChangeValue1} />
       <Switcher size="medium" currentValue={value2} values={arr1} onChange={onChangeValue2} />
-      <Switcher size="large" currentValue={value3} values={arr1} onChange={onChangeValue3} />
+      <Switcher
+        disabledValue={arr1[2]}
+        size="large"
+        currentValue={value3}
+        values={arr1}
+        onChange={onChangeValue3}
+      />
       <Switcher
         size="medium"
         currentValue={value4}
         groupBackgroundColor="grayscale.10"
         values={arr2}
+        disabledValue={arr2[2]}
         color="white"
         onChange={onChangeValue4}
         isError={isError}
