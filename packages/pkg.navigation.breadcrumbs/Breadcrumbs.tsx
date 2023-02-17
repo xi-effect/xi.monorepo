@@ -33,7 +33,7 @@ export const Breadcrumbs = ({
       separator={CustomSeparator}
       sx={{
         alignItems: 'center',
-        '& .MuiBreadcrumbs-separator': { m: '0 3px' },
+        '& .MuiBreadcrumbs-separator': { m: '0 3.3px' },
       }}
     >
       {breadcrumbs.map((item, index, breadcrumbsArray) => {
