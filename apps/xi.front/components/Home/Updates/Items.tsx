@@ -9,7 +9,6 @@ const contentArray: UpdateT[] = [
   {
     title: 'Большое обновление v0.1',
     description: 'Краткое описание обновления (Максимум 2 строки)',
-    user: 'Ivan',
     date: new Date(),
     content: Content,
   },

@@ -1,9 +1,8 @@
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { FunctionComponent } from 'react';
 
 export type UpdateT = {
   title: string;
   description: string;
-  user: any;
   date: Date;
-  content: () => EmotionJSX.Element;
+  content: FunctionComponent<any>;
 };
