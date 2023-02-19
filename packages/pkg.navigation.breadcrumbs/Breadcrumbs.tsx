@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
 import { Arrow } from 'pkg.icons.arrow';
 import { breadcrumbLink, SizesT } from './types';
@@ -6,11 +7,11 @@ import { breadcrumbSizes, separatorSizes } from './styles';
 export type BreadcrumbsProps = {
   breadcrumbs: breadcrumbLink[];
   size: SizesT;
-  Separator?: any;
+  Separator?: FunctionComponent<any>;
   /* breadcrumbs link color */
   color?: string;
   /* breadcrumbs last link color */
-  hoverStyles?: any;
+  hoverStyles?: { [key: string]: any };
   lastItemColor?: string;
 };
 
