@@ -2,33 +2,12 @@ import { observer } from 'mobx-react';
 import { Box, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 import { useStore } from 'store/connect';
 import Image from 'next/image';
+import dayjs from 'dayjs';
 import { UpdateT } from './types';
 
 import { titleSizes, descriptionSizes, infoSizes } from './breakpoints';
 
-const months = [
-  'января',
-  'февраля',
-  'марта',
-  'апрела',
-  'мая',
-  'июня',
-  'июля',
-  'августа',
-  'сентября',
-  'октября',
-  'ноября',
-  'декабря',
-];
-
-const formatDate = (date: Date): string => {
-  const day = date.getDay();
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-
-  return `${day} ${month} ${year}`;
-};
-
+const formatDate = (date: Date): string => dayjs(date).locale('ru').format('DD MMMM YYYY');
 const Item = observer((data: UpdateT) => {
   const rootStore = useStore();
   const { userSt } = rootStore;

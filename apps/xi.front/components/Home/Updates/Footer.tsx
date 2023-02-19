@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import { Link } from 'pkg.navigation.link';
 
 const footerItems = [
-  { item: '© xi.effect', link: '#' },
+  { item: '© xi.effect.ru', link: '#' },
   { item: 'Поддержка', link: '#' },
   { item: 'Политика конфиденциальности', link: 'https://xieffect.ru/policy' },
   { item: 'Пользовательское соглашение', link: '#' },
