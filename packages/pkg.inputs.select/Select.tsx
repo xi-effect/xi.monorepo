@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
 import { Arrow } from 'pkg.icons.arrow';
@@ -34,7 +34,7 @@ export type SelectProps = {
   width?: string;
   label?: string;
   /* Icon in placeholder */
-  Icon?: any;
+  Icon?: FunctionComponent<any>;
   /* dropdown menu max height */
   maxHeight?: string;
 
