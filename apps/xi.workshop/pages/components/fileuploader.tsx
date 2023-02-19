@@ -1,7 +1,7 @@
 import { Button, Stack } from '@mui/material';
+import { AsyncFileUploader, SyncFileUploader } from 'components/FileUploader';
+
 import { useState } from 'react';
-import { AsyncFileUploader } from './AsyncFileUploader';
-import { SyncFileUploader } from './SyncFileUploader';
 
 const TestComponents = () => {
   const [isAsync, setIsAsync] = useState(false);

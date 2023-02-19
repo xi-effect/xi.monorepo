@@ -40,7 +40,7 @@ export const SyncFileUploader = () => {
     setFiles2([...files2, ...files]);
   };
   const onChangeFiles3 = (files: File[]) => {
-    setFiles3([...files2, ...files]);
+    setFiles3([...files3, ...files]);
   };
 
   const onDeleteFiles1 = (_: string, index: number) => {
