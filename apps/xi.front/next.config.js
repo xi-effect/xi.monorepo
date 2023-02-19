@@ -32,6 +32,7 @@ const nextConfig = {
   },
   transpilePackages: [
     'pkg.theme.scheme',
+    'pkg.inputs.switcher',
     'pkg.components.loading',
     'pkg.components.file',
     'pkg.data.avatar',

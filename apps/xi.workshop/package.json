@@ -72,6 +72,7 @@
     "pkg.icons.trash": "*",
     "pkg.icons.updates": "*",
     "pkg.icons.users": "*",
+    "pkg.inputs.checkbox": "*",
     "pkg.layout.pages": "*",
     "pkg.inputs.select": "*",
     "pkg.navigation.link": "*",
@@ -109,3 +110,4 @@
     "typescript": "^4.5.3"
   }
 }
+
