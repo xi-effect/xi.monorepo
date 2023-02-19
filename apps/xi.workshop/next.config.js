@@ -18,6 +18,7 @@ const nextConfig = {
     'pkg.forms.signin',
     'pkg.layout.pages',
     'pkg.pages.error',
+    'pkg.inputs.fileuploader',
     'pkg.icons.account',
     'pkg.icons.add',
     'pkg.icons.announce',
