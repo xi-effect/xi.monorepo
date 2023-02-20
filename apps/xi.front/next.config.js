@@ -34,6 +34,7 @@ const nextConfig = {
     'pkg.theme.scheme',
     'pkg.inputs.switcher',
     'pkg.components.loading',
+    'pkg.components.badge',
     'pkg.components.file',
     'pkg.data.avatar',
     'pkg.dialogs.exit',

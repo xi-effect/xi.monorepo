@@ -31,6 +31,7 @@
     "framer-motion": "^7.10.2",
     "next": "^13.0.7",
     "notistack": "^3.0.0-alpha.11",
+    "pkg.components.badge": "*",
     "pkg.components.file": "*",
     "pkg.components.loading": "*",
     "pkg.components.scroll": "*",
@@ -108,4 +109,3 @@
     "typescript": "^4.5.3"
   }
 }
-

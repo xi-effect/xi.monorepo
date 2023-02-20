@@ -10,6 +10,7 @@ const nextConfig = {
   },
   transpilePackages: [
     'pkg.theme.scheme',
+    'pkg.components.badge',
     'pkg.components.loading',
     'pkg.components.file',
     'pkg.data.avatar',
