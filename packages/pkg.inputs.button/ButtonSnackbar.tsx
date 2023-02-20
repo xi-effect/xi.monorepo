@@ -40,7 +40,7 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
     if (snackbarPosition === 'top' || snackbarPosition === 'bottom') {
       setSnackbarSize(snackbarRef.current.clientHeight);
     }
-  }, [snackbarPosition, size]);
+  }, [snackbarPosition, size, snackbarText]);
 
   return (
     <Stack

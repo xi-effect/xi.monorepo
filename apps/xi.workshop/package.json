@@ -72,6 +72,7 @@
     "pkg.icons.trash": "*",
     "pkg.icons.updates": "*",
     "pkg.icons.users": "*",
+    "pkg.inputs.button": "*",
     "pkg.inputs.checkbox": "*",
     "pkg.layout.pages": "*",
     "pkg.navigation.link": "*",
