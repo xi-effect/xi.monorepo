@@ -3,7 +3,13 @@ import { ChangeEvent, FC } from 'react';
 import { Switch, Stack, Typography } from '@mui/material';
 import { colorStyle, sizeStyle, stackGap, typographyVariants } from './style';
 
-export const Toggle: FC<ToggleProps> = ({ size = 'large', checked, disabled, text, onChange }) => {
+export const Toggle: FC<ToggleProps> = ({
+  size = 'large',
+  checked,
+  disabled,
+  children,
+  onChange,
+}) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
     onChange(checked, event);
   };
@@ -49,12 +55,12 @@ export const Toggle: FC<ToggleProps> = ({ size = 'large', checked, disabled, tex
         disabled={disabled}
         onChange={handleChange}
       />
-      {text && (
+      {children && (
         <Typography
           variant={typographyVariants[size]}
           sx={{ fontWeight: 400, color: disabled ? 'grayscale.40' : 'grayscale.90' }}
         >
-          {text}
+          {children}
         </Typography>
       )}
     </Stack>
@@ -65,6 +71,6 @@ export type ToggleProps = {
   size?: 'small' | 'medium' | 'large';
   checked: boolean;
   disabled?: boolean;
-  text?: string;
+  children?: string;
   onChange: (checked: boolean, event?: ChangeEvent<HTMLInputElement>) => void;
 };

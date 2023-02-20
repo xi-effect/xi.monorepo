@@ -50,6 +50,7 @@ const nextConfig = {
     'pkg.icons.copy',
     'pkg.icons.updates',
     'pkg.icons.photo',
+    'pkg.inputs.toggle',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
