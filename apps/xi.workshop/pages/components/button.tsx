@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from 'pkg.inputs.button';
 import { Camera } from 'pkg.icons.camera';
 
-const TestComponent = () => {
+const TestComponents = () => {
   const [status, setStatus] = useState<'idle' | 'pending' | 'completed'>('idle');
 
   const onClickCompleted = () => {
@@ -109,4 +109,4 @@ const TestComponent = () => {
   );
 };
 
-export default TestComponent;
+export default TestComponents;
