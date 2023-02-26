@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/material';
 import { File, FileProps } from 'pkg.components.file';
 import { LayoutPages } from 'kit/LayoutPages';
 
@@ -13,9 +12,7 @@ const TestFileData: FileProps = {
 
 const TestComponents = () => (
   <LayoutPages>
-    <Box sx={{ minWidth: '400px', width: '100%', height: '100vh', p: '50px' }}>
-      <File {...TestFileData} />
-    </Box>
+    <File {...TestFileData} />
   </LayoutPages>
 );
 

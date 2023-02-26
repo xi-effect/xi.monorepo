@@ -161,18 +161,16 @@ const TestLinksData: TestLinksDataT[] = [
 
 const TestComponents = () => (
   <LayoutPages>
-    <Stack sx={{ width: '100%', height: '100vh', padding: '50px' }} spacing={4}>
-      {TestLinksData.map((group: TestLinksDataT) => (
-        <Stack spacing={1} key={group.id}>
-          <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
-          <Stack direction="row" spacing={2}>
-            {group.data.map((data: LinkProps) => (
-              <Link {...data} key={`${group.id}-${data.size}`} />
-            ))}
-          </Stack>
+    {TestLinksData.map((group: TestLinksDataT) => (
+      <Stack spacing={1} key={group.id}>
+        <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
+        <Stack direction="row" spacing={2}>
+          {group.data.map((data: LinkProps) => (
+            <Link {...data} key={`${group.id}-${data.size}`} />
+          ))}
         </Stack>
-      ))}
-    </Stack>
+      </Stack>
+    ))}
   </LayoutPages>
 );
 
