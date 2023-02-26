@@ -1,10 +1,11 @@
+import { LayoutPages } from 'kit/LayoutPages';
+
 const Main = () => {
   console.log('he-he');
   return (
-    <div>
+    <LayoutPages>
       <span>1</span>
-      <p>2</p>
-    </div>
+    </LayoutPages>
   );
 };
 
