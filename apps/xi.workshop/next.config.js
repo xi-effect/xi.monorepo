@@ -10,6 +10,7 @@ const nextConfig = {
   },
   transpilePackages: [
     'pkg.theme.scheme',
+    'pkg.components.badge',
     'pkg.components.loading',
     'pkg.components.file',
     'pkg.data.avatar',
@@ -50,6 +51,7 @@ const nextConfig = {
     'pkg.icons.copy',
     'pkg.icons.updates',
     'pkg.icons.photo',
+    'pkg.inputs.toggle',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

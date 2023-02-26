@@ -4,11 +4,12 @@ import { Scroll } from 'pkg.components.scroll';
 import { Announce } from 'pkg.icons.announce';
 import { Calendar } from 'pkg.icons.calendar';
 import { Updates } from 'pkg.icons.updates';
+import { useRouter } from 'next/router';
 
 const iconsDict = {
   posts: <Announce color="" />,
   schedule: <Calendar color="" />,
-  update: <Updates color="" />,
+  updates: <Updates color="" />,
 };
 
 type MenuItemT = {
@@ -30,14 +31,17 @@ const menuItems: MenuItemT[] = [
   },
   {
     id: 2,
-    type: 'update',
+    type: 'updates',
     name: 'Обновления',
   },
 ];
 
 const Channel: React.FC<{ menuItem: MenuItemT }> = ({ menuItem }) => {
+  const router = useRouter();
+
   const handleChannelClick = () => {
     console.log(`click ${menuItem.name} id: ${menuItem.id}`);
+    router.push(`/home/${menuItem.type}`);
   };
 
   const isSameChannel = false;
