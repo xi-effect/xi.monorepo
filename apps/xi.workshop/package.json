@@ -73,6 +73,7 @@
     "pkg.icons.updates": "*",
     "pkg.icons.users": "*",
     "pkg.inputs.checkbox": "*",
+    "pkg.inputs.toggle": "*",
     "pkg.layout.pages": "*",
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
