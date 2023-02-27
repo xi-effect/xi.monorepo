@@ -1,8 +1,9 @@
+import { LayoutPages } from 'kit/LayoutPages';
 import { Badge } from 'pkg.components.badge';
 import { Camera } from 'pkg.icons.camera';
 
 const TestComponents = () => (
-  <div style={{ padding: '30px', display: 'flex', gap: '30px' }}>
+  <LayoutPages>
     <Badge
       icon={Camera}
       bgColor="primary.dark"
@@ -23,7 +24,7 @@ const TestComponents = () => (
       text="Title"
       fontColor="error.dark"
     />
-  </div>
+  </LayoutPages>
 );
 
 export default TestComponents;

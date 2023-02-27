@@ -15,6 +15,7 @@ const Upbar = ({ setMenuPosition }: UpbarT) => {
     if (router.pathname.includes('tasks')) return 'Задания';
     if (router.pathname.includes('post')) return 'Объявление';
     if (router.pathname.includes('posts')) return 'Объявления';
+    if (router.pathname.includes('updates')) return 'Обновления';
     return 'Главная';
   };
 
