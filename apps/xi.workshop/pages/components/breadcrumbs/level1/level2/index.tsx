@@ -5,9 +5,9 @@ import { Breadcrumbs, BreadcrumbsProps } from 'pkg.navigation.breadcrumbs';
 const currentPageHistory: BreadcrumbsProps[] = [
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 'l',
     hoverStyles: {
@@ -16,9 +16,9 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 'm',
     hoverStyles: {
@@ -27,9 +27,9 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 's',
     hoverStyles: {
@@ -39,9 +39,9 @@ const currentPageHistory: BreadcrumbsProps[] = [
 
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 'l',
     hoverStyles: {
@@ -52,9 +52,9 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 'm',
     hoverStyles: {
@@ -65,9 +65,9 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
     ],
     size: 's',
     hoverStyles: {

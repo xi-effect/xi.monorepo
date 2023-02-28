@@ -5,12 +5,12 @@ import { Breadcrumbs, BreadcrumbsProps } from 'pkg.navigation.breadcrumbs';
 const currentPageHistory: BreadcrumbsProps[] = [
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 'l',
@@ -20,12 +20,12 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 'm',
@@ -35,12 +35,12 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 's',
@@ -51,12 +51,12 @@ const currentPageHistory: BreadcrumbsProps[] = [
 
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 'l',
@@ -68,12 +68,12 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 'm',
@@ -85,12 +85,12 @@ const currentPageHistory: BreadcrumbsProps[] = [
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
-      { name: 'Level 2', link: 'http://localhost:3300/components/breadcrumbs/level1/level2' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
+      { name: 'Level 2', link: '/components/breadcrumbs/level1/level2' },
       {
         name: 'Level 3',
-        link: 'http://localhost:3300/components/breadcrumbs/level1/level2/level3',
+        link: '/components/breadcrumbs/level1/level2/level3',
       },
     ],
     size: 's',
