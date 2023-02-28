@@ -5,22 +5,22 @@ import { Breadcrumbs, BreadcrumbsProps } from 'pkg.navigation.breadcrumbs';
 const currentPageHistory: BreadcrumbsProps[] = [
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
     ],
     size: 'l',
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
     ],
     size: 'm',
   },
   {
     breadcrumbs: [
-      { name: 'Home', link: 'http://localhost:3300/components/breadcrumbs' },
-      { name: 'Level 1', link: 'http://localhost:3300/components/breadcrumbs/level1' },
+      { name: 'Home', link: '/components/breadcrumbs' },
+      { name: 'Level 1', link: '/components/breadcrumbs/level1' },
     ],
     size: 's',
   },
