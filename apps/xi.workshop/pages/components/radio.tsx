@@ -1,4 +1,5 @@
 import RadioGroup from '@mui/material/RadioGroup';
+import { LayoutPages } from 'kit/LayoutPages';
 import { Radio } from 'pkg.inputs.radio';
 
 const TestGroup = ({ values, size, color, isLabel, isDefaultValue }: any) => (
@@ -20,21 +21,19 @@ const TestGroup = ({ values, size, color, isLabel, isDefaultValue }: any) => (
   </RadioGroup>
 );
 
-const TestComponent = () => {
-  const valuesWithDisabled = ['female', 'male', 'other', 'disabled'];
-  const values = ['female', 'male', 'other'];
+const valuesWithDisabled = ['female', 'male', 'other', 'disabled'];
+const values = ['female', 'male', 'other'];
 
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', padding: '20px', gap: '20px' }}>
-      <TestGroup values={valuesWithDisabled} size="large" color="primary" isLabel isDefaultValue />
-      <TestGroup values={values} size="medium" color="primary" isLabel />
-      <TestGroup values={values} size="small" color="primary" isLabel />
+const TestComponent = () => (
+  <LayoutPages>
+    <TestGroup values={valuesWithDisabled} size="large" color="primary" isLabel isDefaultValue />
+    <TestGroup values={values} size="medium" color="primary" isLabel />
+    <TestGroup values={values} size="small" color="primary" isLabel />
 
-      <TestGroup values={valuesWithDisabled} size="large" color="primary" />
-      <TestGroup values={values} size="medium" color="error" isDefaultValue />
-      <TestGroup values={values} size="small" color="warning" />
-    </div>
+    <TestGroup values={valuesWithDisabled} size="large" color="primary" />
+    <TestGroup values={values} size="medium" color="error" isDefaultValue />
+    <TestGroup values={values} size="small" color="warning" />
+  </LayoutPages>
   );
-};
 
 export default TestComponent;

@@ -13,6 +13,10 @@ const menuArray = [
     link: '/components/badge',
     label: 'Badge',
   },
+    {
+    link: '/components/button',
+    label: 'Button',
+  },
   {
     link: '/components/checkbox',
     label: 'Checkbox',
@@ -28,6 +32,18 @@ const menuArray = [
   {
     link: '/components/fileuploader',
     label: 'FileUploader',
+  },
+  {
+    link: '/components/radio',
+    label: 'Radio',
+  },
+    {
+    link: '/components/select',
+    label: 'Select',
+  },
+  {
+    link: '/components/toggle',
+    label: 'Toggle',
   },
 ];
 
