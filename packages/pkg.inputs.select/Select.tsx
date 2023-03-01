@@ -79,7 +79,8 @@ export const Select = ({
 
   /* menu interactions */
   const onOpenMenu = () => {
-    setIsOpened(true);
+    if (!isOpened) setIsOpened(true);
+    if (isOpened) setIsOpened(false);
   };
   const onCloseMenu = () => {
     setIsOpened(false);
