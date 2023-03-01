@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Button } from 'pkg.inputs.button';
 import { Camera } from 'pkg.icons.camera';
+import { LayoutPages } from 'kit/LayoutPages';
 
 const TestComponents = () => {
   const [status, setStatus] = useState<'idle' | 'pending' | 'completed'>('idle');
@@ -27,15 +28,7 @@ const TestComponents = () => {
   };
 
   return (
-    <div
-      style={{
-        padding: '30px',
-        gap: '30px',
-        display: 'flex',
-        flexDirection: 'column',
-        width: 'fit-content',
-      }}
-    >
+    <LayoutPages>
       <Button
         startIcon={Camera}
         status={status}
@@ -105,7 +98,7 @@ const TestComponents = () => {
       >
         Completed
       </Button>
-    </div>
+    </LayoutPages>
   );
 };
 

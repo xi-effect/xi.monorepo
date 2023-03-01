@@ -1,3 +1,4 @@
+import { LayoutPages } from 'kit/LayoutPages';
 import { Toggle } from 'pkg.inputs.toggle';
 import { useState } from 'react';
 
@@ -7,7 +8,7 @@ const TestComponents = () => {
   const [checked3, setChecked3] = useState(true);
 
   return (
-    <div style={{ padding: '10px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <LayoutPages>
       <Toggle checked={checked1} onChange={setChecked1}>
         {`${checked1}`}
       </Toggle>
@@ -20,7 +21,7 @@ const TestComponents = () => {
       <Toggle disabled checked={false} onChange={() => {}}>
         disabled
       </Toggle>
-    </div>
+    </LayoutPages>
   );
 };
 
