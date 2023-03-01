@@ -1,10 +1,12 @@
 import { Button, Stack } from '@mui/material';
-import { AsyncFileUploader, SyncFileUploader } from 'components/FileUploader';
+import AsyncFileUploader from 'components/FileUploader/AsyncFileUploader';
+import SyncFileUploader from 'components/FileUploader/SyncFileUploader';
 
 import { useState } from 'react';
 
 const TestComponents = () => {
   const [isAsync, setIsAsync] = useState(false);
+
   return (
     <Stack>
       <Button
@@ -19,4 +21,5 @@ const TestComponents = () => {
     </Stack>
   );
 };
+
 export default TestComponents;

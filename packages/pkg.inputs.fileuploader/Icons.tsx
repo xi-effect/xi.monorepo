@@ -5,7 +5,7 @@ import { Close } from 'pkg.icons.close';
 import { iconSizesStyle } from './styles/fileStyle';
 import { IconsProps } from './types';
 
-export const Icons: FC<IconsProps> = ({
+const Icons: FC<IconsProps> = ({
   size,
   color,
   isDeleteIcon,
@@ -63,3 +63,5 @@ export const Icons: FC<IconsProps> = ({
     )}
   </>
 );
+
+export default Icons;

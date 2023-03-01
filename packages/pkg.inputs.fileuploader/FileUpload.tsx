@@ -3,7 +3,7 @@ import { ChangeEvent, DragEvent, FC, useRef, useState } from 'react';
 import { Stack, Button, Typography, IconButton } from '@mui/material';
 import { Download } from 'pkg.icons.download';
 import { iconSizesStyle } from './styles/fileStyle';
-import { FileUploadProps } from './types';
+import File from './File';
 import {
   containerStyle,
   getActionContainerStyle,
@@ -11,14 +11,14 @@ import {
   textVariants,
   buttonTextVariants,
 } from './styles/fileUploadStyle';
-import { File } from './File';
+import { FileUploadProps } from './types';
 
 const stopDefaultEvents = (e: DragEvent<HTMLDivElement>) => {
   e.stopPropagation();
   e.preventDefault();
 };
 
-export const FileUpload: FC<FileUploadProps> = ({
+const FileUpload: FC<FileUploadProps> = ({
   size,
   file,
   multiple,
@@ -217,3 +217,5 @@ export const FileUpload: FC<FileUploadProps> = ({
     </Stack>
   );
 };
+
+export default FileUpload;

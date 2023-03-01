@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import { FileUploader } from 'pkg.inputs.fileuploader';
 import { useState } from 'react';
 
-export const SyncFileUploader = () => {
+const SyncFileUploader = () => {
   // single
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
@@ -52,9 +52,10 @@ export const SyncFileUploader = () => {
   const onDeleteFiles3 = (_: string, index: number) => {
     setFiles3(files3.filter((_, i) => i !== index));
   };
+
   return (
-    <Stack flexDirection="row" gap="20px">
-      <Stack flexDirection="column" width={500} gap="10px" p="10px">
+    <Stack direction="row" spacing={2}>
+      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
         Sync single:
         <FileUploader file={file1} onChange={onChangeFile1} onDeleteClick={onDeleteFile1} />
         <FileUploader
@@ -73,7 +74,7 @@ export const SyncFileUploader = () => {
         />
       </Stack>
 
-      <Stack flexDirection="column" width={500} gap="10px" p="10px">
+      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
         Sync multiple:
         <FileUploader
           multiple
@@ -102,3 +103,5 @@ export const SyncFileUploader = () => {
     </Stack>
   );
 };
+
+export default SyncFileUploader;

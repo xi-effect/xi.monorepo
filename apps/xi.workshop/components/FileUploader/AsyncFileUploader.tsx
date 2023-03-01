@@ -2,7 +2,20 @@ import { Stack } from '@mui/material';
 import { FileType, FileUploader, StatusType } from 'pkg.inputs.fileuploader';
 import { SetStateAction, useState } from 'react';
 
-export const AsyncFileUploader = () => {
+const awaitPromise = async () =>
+  new Promise((res) => {
+    setTimeout(() => {
+      res('');
+    }, 3000);
+  });
+
+const id = () => {
+  const dateString = Date.now().toString(36);
+  const randomness = Math.random().toString(36).substr(2);
+  return dateString + randomness;
+};
+
+const AsyncFileUploader = () => {
   // single
   const [file1, setFile1] = useState<FileType | null>(null);
   const [file2, setFile2] = useState<FileType | null>(null);
@@ -87,9 +100,10 @@ export const AsyncFileUploader = () => {
     // xhr.abort();
     setFiles1((state) => state.filter((file) => file.id !== id));
   };
+
   return (
-    <Stack flexDirection="row" gap="20px">
-      <Stack flexDirection="column" width={500} gap="10px" p="10px">
+    <Stack direction="row" spacing={2}>
+      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
         Async single:
         <FileUploader file={file1} onChange={onChangeFile1} onDeleteClick={onDeleteFile1} />
         <FileUploader
@@ -106,7 +120,7 @@ export const AsyncFileUploader = () => {
         />
       </Stack>
 
-      <Stack flexDirection="column" width={500} gap="10px" p="10px">
+      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
         Async multiple:
         <FileUploader
           multiple
@@ -134,14 +148,4 @@ export const AsyncFileUploader = () => {
   );
 };
 
-const awaitPromise = async () =>
-  new Promise((res) => {
-    setTimeout(() => {
-      res('');
-    }, 3000);
-  });
-const id = () => {
-  const dateString = Date.now().toString(36);
-  const randomness = Math.random().toString(36).substr(2);
-  return dateString + randomness;
-};
+export default AsyncFileUploader;

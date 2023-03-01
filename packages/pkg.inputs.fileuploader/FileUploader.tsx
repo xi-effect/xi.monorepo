@@ -1,10 +1,9 @@
 import 'pkg.config.muidts';
 import { FC } from 'react';
 import { Stack } from '@mui/material';
-
-import { FileUpload } from './FileUpload';
+import File from './File';
+import FileUpload from './FileUpload';
 import { FileUploaderProps } from './types';
-import { File } from './File';
 
 export const FileUploader: FC<FileUploaderProps> = ({
   size = 'large',

@@ -1,16 +1,16 @@
 import 'pkg.config.muidts';
 import { FC, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
-import { Icons } from './Icons';
-import { FileProps } from './types';
+import Icons from './Icons';
 import {
   containerStyle,
   getActionColorStyle,
   getActionContainerStyle,
   textVariants,
 } from './styles/fileStyle';
+import { FileProps } from './types';
 
-export const File: FC<FileProps> = ({
+const File: FC<FileProps> = ({
   fileSize,
   children,
   isDeleteIcon,
@@ -86,3 +86,5 @@ export const File: FC<FileProps> = ({
     </Stack>
   );
 };
+
+export default File;

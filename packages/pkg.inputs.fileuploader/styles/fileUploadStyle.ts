@@ -1,5 +1,4 @@
 import { SizeType } from '../types';
-// container style
 
 export const containerStyle = {
   default: {
@@ -37,6 +36,7 @@ export const containerStyle = {
     flexDirection: 'row',
   },
 };
+
 const actionContainerStyle = {
   dragOver: {
     boxShadow: '0px 0px 0px 4px #B4BDFF',
@@ -96,15 +96,11 @@ export const getActionContainerStyle = (
   return {};
 };
 
-// text styles
-
 export const textVariants = {
   large: 'xs' as 'xs',
   medium: 'm' as 'm',
   small: 's' as 's',
 };
-
-// button styles
 
 export const buttonTextVariants = {
   large: 's' as 's',
@@ -112,7 +108,6 @@ export const buttonTextVariants = {
   small: 's' as 's',
 };
 
-// button and text style
 export const getActionTextStyle = (
   size: SizeType,
   isDragOver: boolean,
