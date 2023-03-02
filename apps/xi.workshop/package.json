@@ -78,6 +78,7 @@
     "pkg.inputs.checkbox": "*",
     "pkg.inputs.radio": "*",
     "pkg.inputs.toggle": "*",
+    "pkg.inputs.switcher": "*",
     "pkg.layout.pages": "*",
     "pkg.inputs.select": "*",
     "pkg.navigation.link": "*",

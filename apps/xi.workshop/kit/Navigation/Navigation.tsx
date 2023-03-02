@@ -13,7 +13,7 @@ const menuArray = [
     link: '/components/badge',
     label: 'Badge',
   },
-    {
+  {
     link: '/components/button',
     label: 'Button',
   },
@@ -30,16 +30,16 @@ const menuArray = [
     label: 'Link',
   },
   {
-    link: '/components/fileuploader',
-    label: 'FileUploader',
-  },
-  {
     link: '/components/radio',
     label: 'Radio',
   },
-    {
+  {
     link: '/components/select',
     label: 'Select',
+  },
+  {
+    link: '/components/switcher',
+    label: 'Switcher',
   },
   {
     link: '/components/toggle',
