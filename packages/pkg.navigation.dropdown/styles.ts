@@ -1,3 +1,11 @@
+import { DropdownSizesT } from './types';
+
+export const dropdownSizes: { [key in DropdownSizesT]: any } = {
+  s: {},
+  m: {},
+  l: {},
+};
+
 export const MenuProps = {
   '&.Dropdown-root': {
     width: '100px',
