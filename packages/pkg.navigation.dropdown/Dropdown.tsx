@@ -1,7 +1,7 @@
 import { Button, Menu, MenuItem, ClickAwayListener, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Arrow } from 'pkg.icons.arrow';
-import { dropdownSizes, MenuProps } from './styles';
+import { dropdownSizes, dropdownIconSizes, MenuProps } from './styles';
 import { DropdownPropsT } from './types';
 
 export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
@@ -32,7 +32,6 @@ export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
             disaply: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            gap: '8px',
             p: '5px',
             border: '1px solid',
             borderColor: 'grayscale.0',
@@ -44,12 +43,12 @@ export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
             },
           }}
         >
-          <Typography>{name}</Typography>
+          <Typography sx={{ fontSize: 'inherit', lineHeight: 'inherit' }}>{name}</Typography>
           <Arrow
             sx={{
+              ...dropdownIconSizes[size],
               transform: `rotate(${isOpened ? '-' : ''}90deg)`,
               color: 'inherit',
-              width: '12px',
             }}
           />
         </Button>
