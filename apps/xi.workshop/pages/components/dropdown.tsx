@@ -1,13 +1,26 @@
-import { Dropdown } from 'pkg.navigation.dropdown';
+import { Dropdown, DropdownPropsT } from 'pkg.navigation.dropdown';
 import { LayoutPages } from 'kit/LayoutPages';
 
-const TestDropdown = {
-  name: 'Filled',
-};
+const TestDropdowns: DropdownPropsT[] = [
+  {
+    name: 'Filled',
+    size: 'l',
+  },
+  {
+    name: 'Filled',
+    size: 'm',
+  },
+  {
+    name: 'Filled',
+    size: 's',
+  },
+];
 
 const TestComponents = () => (
   <LayoutPages>
-    <Dropdown {...TestDropdown} />
+    {TestDropdowns.map((dropdown) => (
+      <Dropdown {...dropdown} />
+    ))}
   </LayoutPages>
 );
 

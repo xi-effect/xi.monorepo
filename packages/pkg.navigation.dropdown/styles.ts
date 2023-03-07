@@ -1,9 +1,32 @@
 import { DropdownSizesT } from './types';
 
 export const dropdownSizes: { [key in DropdownSizesT]: any } = {
-  s: {},
-  m: {},
-  l: {},
+  s: {
+    fontSize: '12px',
+    lineHeight: '16px',
+    gap: '6px',
+  },
+  m: {
+    fontSize: '14px',
+    lineHeight: '20px',
+    gap: '8px',
+  },
+  l: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    gap: '10px',
+  },
+};
+export const dropdownIconSizes: { [key in DropdownSizesT]: any } = {
+  s: {
+    fontSize: '10px',
+  },
+  m: {
+    fontSize: '12px',
+  },
+  l: {
+    fontSize: '14px',
+  },
 };
 
 export const MenuProps = {
