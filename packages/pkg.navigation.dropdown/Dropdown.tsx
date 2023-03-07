@@ -1,9 +1,10 @@
 import { Button, Menu, MenuItem, ClickAwayListener, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Arrow } from 'pkg.icons.arrow';
-import { MenuProps } from './styles';
+import { dropdownSizes, MenuProps } from './styles';
+import { DropdownPropsT } from './types';
 
-export const Dropdown = () => {
+export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
@@ -24,6 +25,7 @@ export const Dropdown = () => {
           variant="text"
           disableRipple
           sx={{
+            ...dropdownSizes[size],
             color: 'grayscale.80',
             textTransform: 'none',
             transition: '0.3s',
@@ -35,14 +37,14 @@ export const Dropdown = () => {
             border: '1px solid',
             borderColor: 'grayscale.0',
             '&:hover': { color: 'grayscale.100', bgcolor: 'unset' },
-            ':focus': {
+            '&:focus-visible': {
               bgcolor: 'unset',
               border: '1px solid',
               borderColor: 'grayscale.100',
             },
           }}
         >
-          <Typography>Filled</Typography>
+          <Typography>{name}</Typography>
           <Arrow
             sx={{
               transform: `rotate(${isOpened ? '-' : ''}90deg)`,
