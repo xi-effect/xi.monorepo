@@ -1,5 +1,6 @@
 import { Dropdown, DropdownPropsT } from 'pkg.navigation.dropdown';
 import { LayoutPages } from 'kit/LayoutPages';
+import { MenuItem } from '@mui/material';
 
 const TestDropdowns: DropdownPropsT[] = [
   {
@@ -19,7 +20,9 @@ const TestDropdowns: DropdownPropsT[] = [
 const TestComponents = () => (
   <LayoutPages>
     {TestDropdowns.map((dropdown) => (
-      <Dropdown {...dropdown} />
+      <Dropdown {...dropdown}>
+        <MenuItem>Item 1</MenuItem>
+      </Dropdown>
     ))}
   </LayoutPages>
 );
