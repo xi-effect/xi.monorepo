@@ -1,6 +1,7 @@
 import { Button, Menu, ClickAwayListener, Typography } from '@mui/material';
 import React, { useState, FC } from 'react';
 import { Arrow } from 'pkg.icons.arrow';
+import { v4 } from 'uuid';
 import { dropdownSizes, dropdownIconSizes, MenuProps } from './styles';
 import { DropdownPropsT } from './types';
 
@@ -16,11 +17,13 @@ export const Dropdown: FC<DropdownPropsT> = ({ name, size = 'l', children, ...pr
     setAnchorEl(null);
   };
 
+  const dropdownId = v4();
+
   return (
     <>
       <ClickAwayListener onClickAway={onCloseMenu}>
         <Button
-          aria-controls="dropdown"
+          aria-controls={dropdownId}
           onClick={onOpenMenu}
           variant="text"
           disableRipple
@@ -55,7 +58,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ name, size = 'l', children, ...pr
         </Button>
       </ClickAwayListener>
       <Menu
-        id="dropdown"
+        id={dropdownId}
         open={isOpened}
         onClick={onCloseMenu}
         onChange={(e) => console.log(e.target)}
@@ -67,7 +70,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ name, size = 'l', children, ...pr
           ...MenuProps,
         }}
       >
-        <div>{children}</div>
+        {children}
       </Menu>
     </>
   );
