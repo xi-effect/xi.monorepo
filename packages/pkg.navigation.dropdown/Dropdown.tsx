@@ -1,10 +1,10 @@
-import { Button, Menu, MenuItem, ClickAwayListener, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { Button, Menu, ClickAwayListener, Typography } from '@mui/material';
+import React, { useState, FC } from 'react';
 import { Arrow } from 'pkg.icons.arrow';
 import { dropdownSizes, dropdownIconSizes, MenuProps } from './styles';
 import { DropdownPropsT } from './types';
 
-export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
+export const Dropdown: FC<DropdownPropsT> = ({ name, size = 'l', children, ...props }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
@@ -42,6 +42,7 @@ export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
               borderColor: 'grayscale.100',
             },
           }}
+          {...props}
         >
           <Typography sx={{ fontSize: 'inherit', lineHeight: 'inherit' }}>{name}</Typography>
           <Arrow
@@ -66,7 +67,7 @@ export const Dropdown = ({ name, size = 'l' }: DropdownPropsT) => {
           ...MenuProps,
         }}
       >
-        <MenuItem>Item 1</MenuItem>
+        <div>{children}</div>
       </Menu>
     </>
   );
