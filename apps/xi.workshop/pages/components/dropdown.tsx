@@ -19,8 +19,8 @@ const TestDropdowns: DropdownPropsT[] = [
 
 const TestComponents = () => (
   <LayoutPages>
-    {TestDropdowns.map((dropdown) => (
-      <Dropdown {...dropdown}>
+    {TestDropdowns.map((dropdown, index) => (
+      <Dropdown {...dropdown} key={`dropdown_${index}`}>
         <MenuItem>Item 1</MenuItem>
       </Dropdown>
     ))}
