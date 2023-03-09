@@ -42,12 +42,18 @@ const TestComponents = () => {
         Test
       </Button>
 
+      <Button status={status} size="medium" onClick={onClickIdle} variant="contained" color="error">
+        Test
+      </Button>
+
       <Button
+        startIcon={Camera}
+        size="large"
         status={status}
-        size="medium"
-        onClick={onClickIdle}
-        variant="contained"
-        color="error"
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="outlined"
+        color="grayscale"
       >
         Test
       </Button>
@@ -83,6 +89,7 @@ const TestComponents = () => {
       >
         Test
       </Button>
+
       <Button
         startIcon={Camera}
         status="completed"

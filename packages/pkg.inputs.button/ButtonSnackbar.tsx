@@ -4,9 +4,10 @@ import { FC, useLayoutEffect, useRef, useState } from 'react';
 import {
   buttonSizes,
   typographyVariants,
-  buttonDisabled,
+  buttonDisabledStyle,
   getButtonPadding,
   getSnackbarCurrentPosition,
+  buttonBorderStyle,
 } from './styles';
 import { LoadingPosition, Size, SnackbarPosition, Status, Variant } from './types';
 import { IconContainer } from './IconContainer';
@@ -25,6 +26,8 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   const snackbarRef = useRef<HTMLDivElement>(null);
   const [snackbarSize, setSnackbarSize] = useState(0);
   const snackbarCurrentPosition = getSnackbarCurrentPosition(snackbarSize, snackbarPosition);
+
+  const buttonBorder = variant === 'outlined' ? buttonBorderStyle[size] : 'none';
 
   const snackbarPadding = getButtonPadding(
     !!snackbarText,
@@ -49,10 +52,11 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
       alignItems="center"
       sx={{
         position: 'absolute',
+        border: buttonBorder,
         ...snackbarCurrentPosition,
         ...buttonSizes[size],
         ...snackbarPadding[size],
-        ...buttonDisabled[variant],
+        ...buttonDisabledStyle[variant],
       }}
     >
       {status === 'pending' && snackbarLoadingPosition === 'center' && (
