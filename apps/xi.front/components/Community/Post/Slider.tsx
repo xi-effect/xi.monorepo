@@ -8,7 +8,7 @@ import { Arrow } from 'pkg.icons.arrow';
 const items = [0, 0, 0, 0, 0];
 
 const Slider = observer(() => {
-  const containerRef = React.useRef<HTMLDivElement>();
+  const containerRef = React.createRef<HTMLDivElement>();
 
   const [showLeft, setShowLeft] = React.useState(false);
 
