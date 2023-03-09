@@ -30,6 +30,10 @@ const menuArray = [
     label: 'Link',
   },
   {
+    link: '/components/modal',
+    label: 'Modal',
+  },
+  {
     link: '/components/radio',
     label: 'Radio',
   },

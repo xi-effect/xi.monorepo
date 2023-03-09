@@ -12,6 +12,7 @@ const nextConfig = {
     'pkg.theme.scheme',
     'pkg.components.badge',
     'pkg.components.loading',
+    'pkg.components.modal',
     'pkg.components.file',
     'pkg.data.avatar',
     'pkg.dialogs.exit',
