@@ -17,7 +17,7 @@
     "pkg.icons.close": "*"
   },
   "devDependencies": {
-    "@types/react": "^17.0.37",
+    "@types/react": "^18.0.22",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "pkg.config.typescript": "*",

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import 'pkg.config.muidts';
 import { Button, ButtonProps } from 'pkg.inputs.button';
 import { Close } from 'pkg.icons.close';
@@ -144,7 +143,7 @@ export const Modal: FC<ModalProps> = ({
           }}
           {...otherDialogContentProps}
         >
-          <>{children}</>
+          {children}
         </DialogContent>
       )}
 
