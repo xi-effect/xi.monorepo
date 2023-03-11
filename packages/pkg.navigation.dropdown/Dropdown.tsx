@@ -61,7 +61,6 @@ export const Dropdown: FC<DropdownPropsT> = ({ name, size = 'l', children, ...pr
         id={dropdownId}
         open={isOpened}
         onClick={onCloseMenu}
-        onChange={(e) => console.log(e.target)}
         anchorEl={anchorEl}
         PopoverClasses={{
           root: 'Dropdown-root',
