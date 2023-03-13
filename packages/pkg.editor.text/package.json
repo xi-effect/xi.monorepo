@@ -9,16 +9,21 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
+    "@mui/icons-material": "^5.11.11",
     "slate": "^0.91.4",
     "slate-react": "^0.91.10",
     "slate-history": "^0.86.0",
     "yjs": "^13.5.50",
     "@slate-yjs/core": "^0.3.1",  
     "@slate-yjs/react": "^0.3.0",
-    "pkg.config.muidts": "*"
+    "pkg.config.muidts": "*",
+    "randomcolor": "^0.6.2",
+    "@hocuspocus/provider": "1.1.1",
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
@@ -27,8 +32,7 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "pkg.config.typescript": "*",
-    "typescript": "^4.5.2",
-    "react": "^18.2.0"
+    "typescript": "^4.5.2"
   },
   "author": "",
   "description": ""
