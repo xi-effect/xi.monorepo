@@ -1,10 +1,5 @@
-import { faker } from '@faker-js/faker';
 import randomColor from 'randomcolor';
 import { CursorData } from './types';
-
-const {
-  name: { firstName, lastName },
-} = faker;
 
 export function randomCursorData(): CursorData {
   return {
@@ -13,7 +8,7 @@ export function randomCursorData(): CursorData {
       alpha: 1,
       format: 'hex',
     }),
-    name: `${firstName()} ${lastName()}`,
+    name: 'Гарри Поттер',
   };
 }
 
