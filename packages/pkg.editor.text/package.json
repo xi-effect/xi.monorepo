@@ -1,0 +1,35 @@
+{
+  "name": "pkg.editor.text",
+  "version": "1.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "slate": "^0.91.4",
+    "slate-react": "^0.91.10",
+    "slate-history": "^0.86.0",
+    "yjs": "^13.5.50",
+    "@slate-yjs/core": "^0.3.1",  
+    "@slate-yjs/react": "^0.3.0",
+    "pkg.config.muidts": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "pkg.config.typescript": "*",
+    "typescript": "^4.5.2",
+    "react": "^18.2.0"
+  },
+  "author": "",
+  "description": ""
+}

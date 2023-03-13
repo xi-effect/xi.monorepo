@@ -36,10 +36,12 @@ const EditorSample: React.FC<EditorT> = (props) => {
     <Draggable draggableId={`list-components-id-${current.id}`} index={index}>
       {(provided) => (
         <Stack
-          mb="10px"
           direction="row"
           alignItems="flex-start"
           justifyContent="flex-start"
+          sx={{
+            marginBottom: 1,
+          }}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >

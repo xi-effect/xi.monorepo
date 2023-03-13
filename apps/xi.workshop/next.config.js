@@ -56,6 +56,7 @@ const nextConfig = {
     'pkg.inputs.radio',
     'pkg.inputs.toggle',
     'pkg.inputs.switcher',
+    'pkg.editor.text',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

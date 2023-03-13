@@ -45,6 +45,10 @@ const menuArray = [
     link: '/components/toggle',
     label: 'Toggle',
   },
+  {
+    link: '/components/editor',
+    label: 'Editor',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {

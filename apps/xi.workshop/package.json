@@ -84,7 +84,7 @@
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
-    "prop-types": "^15.8.1",
+    "pkg.editor.text": "*",
     "react": "^18.2.0",
     "react-avatar-editor": "^13.0.0",
     "react-beautiful-dnd": "^13.1.1",
