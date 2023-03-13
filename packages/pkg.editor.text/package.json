@@ -23,7 +23,9 @@
     "pkg.config.muidts": "*",
     "randomcolor": "^0.6.2",
     "@hocuspocus/provider": "1.1.1",
-    "clsx": "^1.2.1"
+    "clsx": "^1.2.1",
+    "@juggle/resize-observer": "^3.4.0",
+    "ws": "8.13.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

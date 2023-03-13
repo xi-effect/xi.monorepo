@@ -2,10 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Box, Stack, Button } from '@mui/material';
-import Image from 'next/image';
 import { Arrow } from 'pkg.icons.arrow';
-
-const items = [0, 0, 0, 0, 0];
 
 const Slider = observer(() => {
   const containerRef = React.useRef<HTMLDivElement>();
@@ -106,41 +103,6 @@ const Slider = observer(() => {
         >
           <Arrow color="#445AFF" />
         </Button>
-      </Stack>
-      <Stack
-        ref={containerRef}
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="center"
-        spacing={2}
-        sx={{
-          padding: 0,
-          width: '100%',
-          height: '320px',
-          borderRadius: '8px',
-          overflowX: 'auto',
-          overflowY: 'none',
-          scrollBehavior: 'smooth',
-        }}
-      >
-        {items.map((item, index) => (
-          <Box
-            key={index.toString()}
-            sx={{
-              width: '508px',
-              height: '300px',
-              borderRadius: '8px',
-            }}
-          >
-            <Image
-              alt="alt"
-              style={{ borderRadius: '8px' }}
-              src="/assets/test-cat.jpg"
-              width={508}
-              height={300}
-            />
-          </Box>
-        ))}
       </Stack>
     </Box>
   );

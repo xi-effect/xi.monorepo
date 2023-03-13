@@ -1,5 +1,10 @@
 import { LayoutPages } from 'kit/LayoutPages';
-import { ContentEditor } from 'pkg.editor.text';
+
+import dynamic from 'next/dynamic';
+
+const ContentEditor = dynamic(() => import('components/ContentEditor' as string), {
+  ssr: false,
+});
 
 const TestComponents = () => (
   <LayoutPages>

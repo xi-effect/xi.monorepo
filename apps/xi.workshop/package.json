@@ -24,7 +24,6 @@
     "@mui/material": "^5.11.0",
     "@mui/utils": "^5.11.2",
     "@mui/x-date-pickers": "^5.0.11",
-    "@prezly/slate-lists": "^0.71.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
     "emoji-mart": "^5.4.0",
@@ -90,9 +89,6 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.0",
     "react-use": "^17.4.0",
-    "slate": "^0.87.0",
-    "slate-history": "^0.86.0",
-    "slate-react": "^0.88.2",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
