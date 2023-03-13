@@ -1,18 +1,32 @@
 import { Dropdown, DropdownPropsT } from 'pkg.navigation.dropdown';
 import { LayoutPages } from 'kit/LayoutPages';
-import { MenuItem } from '@mui/material';
+import { MenuItem, Typography } from '@mui/material';
+import { Arrow } from 'pkg.icons.arrow';
+
+const DropdownElement = ({ isOpened }: { isOpened: boolean }) => (
+  <>
+    <Typography sx={{ fontSize: 'inherit', lineHeight: 'inherit' }}>Filled</Typography>
+    <Arrow
+      sx={{
+        transform: `rotate(${isOpened ? '-' : ''}90deg)`,
+        color: 'inherit',
+        fontSize: 'inherit',
+      }}
+    />
+  </>
+);
 
 const TestDropdowns: DropdownPropsT[] = [
   {
-    name: 'Filled',
+    Element: DropdownElement,
     size: 'l',
   },
   {
-    name: 'Filled',
+    Element: DropdownElement,
     size: 'm',
   },
   {
-    name: 'Filled',
+    Element: DropdownElement,
     size: 's',
   },
 ];

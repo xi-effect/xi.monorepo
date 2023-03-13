@@ -4,28 +4,17 @@ export const dropdownSizes: { [key in DropdownSizesT]: any } = {
   s: {
     fontSize: '12px',
     lineHeight: '16px',
-    gap: '6px',
+    gap: '4px',
   },
   m: {
     fontSize: '14px',
     lineHeight: '20px',
-    gap: '8px',
+    gap: '6px',
   },
   l: {
     fontSize: '16px',
     lineHeight: '22px',
-    gap: '10px',
-  },
-};
-export const dropdownIconSizes: { [key in DropdownSizesT]: any } = {
-  s: {
-    fontSize: '10px',
-  },
-  m: {
-    fontSize: '12px',
-  },
-  l: {
-    fontSize: '14px',
+    gap: '8px',
   },
 };
 
