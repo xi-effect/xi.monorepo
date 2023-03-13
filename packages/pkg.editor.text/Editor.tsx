@@ -1,118 +1,73 @@
-/* eslint-disable default-case */
-import 'pkg.config.muidts';
+import { HocuspocusProvider } from '@hocuspocus/provider';
+import { withCursors, withYHistory, withYjs, YjsEditor } from '@slate-yjs/core';
+import React, { useEffect, useMemo, useState } from 'react';
+import type { Descendant } from 'slate';
+import { createEditor } from 'slate';
+import { Slate, withReact } from 'slate-react';
+import * as Y from 'yjs';
+import { CustomEditable } from './components/CustomEditable';
+import { FormatToolbar } from './components/FormatToolbar';
+import { withMarkdown } from './plugins/withMarkdown';
+import { withNormalize } from './plugins/withNormalize';
+import { randomCursorData } from './utils';
+import { RemoteCursorOverlay } from './components/Overlay';
 
-// Import React dependencies.
-import React, { useCallback, useState } from 'react';
-// Import the Slate editor factory.
-import { Editor, createEditor, Descendant, Transforms, Text } from 'slate';
+const HOCUSPOCUS_ENDPOINT_URL = '';
 
-// Import the Slate components and React plugin.
-import { Slate, Editable, withReact } from 'slate-react';
-import { Stack, Box } from '@mui/material';
+export function ContentEditor() {
+  const [value, setValue] = useState<Descendant[]>([]);
+  const [connected, setConnected] = useState(false);
+  console.log('connected', connected);
 
-const CodeElement = ({ attributes, children }: { attributes: object; children: any }) => (
-  <pre {...attributes}>
-    <code>{children}</code>
-  </pre>
-);
+  const provider = useMemo(
+    () =>
+      new HocuspocusProvider({
+        url: HOCUSPOCUS_ENDPOINT_URL,
+        name: 'slate-yjs-demo',
+        onConnect: () => setConnected(true),
+        onDisconnect: () => setConnected(false),
+        connect: false,
+      }),
+    [],
+  );
 
-const DefaultElement = ({ attributes, children }: { attributes: object; children: any }) => (
-  <p {...attributes}>{children}</p>
-);
+  const editor = useMemo(() => {
+    const sharedType = provider.document.get('content', Y.XmlText) as Y.XmlText;
 
-const initialValue: Descendant[] = [
-  {
-    type: 'paragraph',
-    children: [{ text: 'A line of text in a paragraph.' }],
-  },
-  {
-    type: 'code',
-    children: [{ text: 'A line of text in a paragraph.' }],
-  },
-];
+    return withMarkdown(
+      withNormalize(
+        withReact(
+          withYHistory(
+            withCursors(
+              withYjs(createEditor(), sharedType, { autoConnect: false }),
+              provider.awareness,
+              {
+                data: randomCursorData(),
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }, [provider.awareness, provider.document]);
 
-// Define a React component to render leaves with bold text.
-const Leaf = ({ attributes, leaf, children }: { attributes: object; children: any; leaf: any }) => (
-  <span {...attributes} style={{ fontWeight: leaf.bold ? 'bold' : 'normal' }}>
-    {children}
-  </span>
-);
-
-export const ContentEditor = () => {
-  const [editor] = useState(() => withReact(createEditor()));
-
-  const renderElement = useCallback((props: any) => {
-    switch (props.element.type) {
-      case 'code':
-        return <CodeElement {...props} />;
-      default:
-        return <DefaultElement {...props} />;
-    }
-  }, []);
-
-  // Define a leaf rendering function that is memoized with `useCallback`.
-  const renderLeaf = useCallback((props: any) => <Leaf {...props} />, []);
+  // Connect editor and provider in useEffect to comply with concurrent mode
+  // requirements.
+  useEffect(() => {
+    provider.connect();
+    return () => provider.disconnect();
+  }, [provider]);
+  useEffect(() => {
+    YjsEditor.connect(editor);
+    return () => YjsEditor.disconnect(editor);
+  }, [editor]);
 
   return (
-    <Stack
-      direction="column"
-      justifyContent="flex-start"
-      alignItems="center"
-      sx={{
-        height: '100vh',
-        width: '100%',
-        p: '8px 16px',
-        overflow: 'auto',
-      }}
-    >
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: '1060px',
-        }}
-      >
-        <Slate editor={editor} value={initialValue}>
-          <Editable
-            renderElement={renderElement}
-            // Pass in the `renderLeaf` function.
-            renderLeaf={renderLeaf}
-            onKeyDown={(event) => {
-              if (!event.ctrlKey) {
-                return;
-              }
-
-              switch (event.key) {
-                // When "`" is pressed, keep our existing code block logic.
-                case '`': {
-                  event.preventDefault();
-                  const [match] = Editor.nodes(editor, {
-                    match: (n: any) => n.type === 'code',
-                  });
-                  Transforms.setNodes(
-                    editor,
-                    { type: match ? 'paragraph' : 'code' },
-                    { match: (n: any) => Editor.isBlock(editor, n) },
-                  );
-                  break;
-                }
-
-                // When "B" is pressed, bold the text in the selection.
-                case 'b': {
-                  event.preventDefault();
-                  Transforms.setNodes(
-                    editor,
-                    { bold: true },
-                    // Apply it to text nodes, and split the text node up if the
-                    // selection is overlapping only part of it.
-                    { match: (n) => Text.isText(n), split: true },
-                  );
-                  break;
-                }
-              }
-            }}
-          />
-        </Slate>
-      </Box>
-    </Stack>
+    <Slate value={value} onChange={setValue} editor={editor}>
+      <RemoteCursorOverlay className="flex justify-center my-32 mx-10">
+        <FormatToolbar />
+        <CustomEditable className="max-w-4xl w-full flex-col break-words" />
+      </RemoteCursorOverlay>
+    </Slate>
   );
-};
+}
