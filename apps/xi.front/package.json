@@ -24,7 +24,6 @@
     "@mui/material": "^5.11.0",
     "@mui/utils": "^5.11.2",
     "@mui/x-date-pickers": "^5.0.11",
-    "@prezly/slate-lists": "^0.71.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
     "emoji-mart": "^5.4.0",

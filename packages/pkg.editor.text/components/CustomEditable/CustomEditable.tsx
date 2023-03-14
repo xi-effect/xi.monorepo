@@ -14,6 +14,7 @@ export function CustomEditable({
   return (
     <Editable
       placeholder="Write something ..."
+      style={{ display: 'flex', justifyContent: 'center', width: '100%', flexDirection: 'column' }}
       {...props}
       renderElement={renderElement}
       renderLeaf={renderLeaf}
