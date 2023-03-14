@@ -53,7 +53,7 @@ export function FormatToolbar() {
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         ref={ref}
-        className="absolute opacity-0 flex flex-row rounded bg-black overflow-hidden"
+        style={{ position: 'absolute', display: 'flex', flexDirection: 'row' }}
         onMouseDown={(e) => e.preventDefault()}
       >
         <FormatButton format="bold" icon="bold" />

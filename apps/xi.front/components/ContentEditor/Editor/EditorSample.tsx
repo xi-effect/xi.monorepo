@@ -3,7 +3,6 @@ import { createEditor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Draggable } from 'react-beautiful-dnd';
 import { ReactEditor, withReact } from 'slate-react';
-import { withListsReact } from '@prezly/slate-lists';
 import { EditorButtonS } from 'kit/Editor/common/styles';
 import { Add, DragIndicator } from '@mui/icons-material';
 import { IconButton, Stack, Tooltip } from '@mui/material';
@@ -26,7 +25,7 @@ const EditorSample: React.FC<EditorT> = (props) => {
   const [editAnchorEl, setEditAnchorEl] = useState<null | HTMLDivElement>(null);
   const [addAnchorEl, setAddAnchorEl] = useState<null | HTMLButtonElement>(null);
   const editor = React.useMemo(
-    () => withListsReact(withListsPlugin(withHistory(withReact(createEditor() as ReactEditor)))),
+    () => withListsPlugin(withHistory(withReact(createEditor() as ReactEditor))),
     [],
   );
 
