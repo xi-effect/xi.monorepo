@@ -127,6 +127,7 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
           ...menuListStyles,
         }}
         onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
           uiSt.setDialogs('categoryCreation', true);
           if (setOpen) setOpen(false);
         }}
