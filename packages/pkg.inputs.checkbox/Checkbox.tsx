@@ -25,7 +25,7 @@ export type CheckboxProps = {
   icon?: ChecboxIcons;
   /* default checked state */
   isChecked?: boolean;
-  handleChecboxChange: () => void;
+  onClick?: () => void;
 };
 
 export const Checkbox = ({
@@ -34,7 +34,7 @@ export const Checkbox = ({
   label = '',
   icon = 'check',
   isChecked = false,
-  handleChecboxChange,
+  onClick,
 }: CheckboxProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -78,7 +78,7 @@ export const Checkbox = ({
       icon={DefaultIcon}
       checkedIcon={CheckedIcon}
       checked={isChecked}
-      onChange={handleChecboxChange}
+      onChange={onClick}
       disabled={type === 'disabled'}
     />
   );

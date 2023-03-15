@@ -34,6 +34,6 @@ const TestComponent = () => (
     <TestGroup values={values} size="medium" color="error" isDefaultValue />
     <TestGroup values={values} size="small" color="warning" />
   </LayoutPages>
-  );
+);
 
 export default TestComponent;

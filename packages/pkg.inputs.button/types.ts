@@ -35,5 +35,7 @@ export type ButtonPropsType = {
   snackbarLoadingPosition?: LoadingPosition;
   // snackbar position: default right
   snackbarPosition?: SnackbarPosition;
+  // styles
+  sx?: any;
   // you can also pass default mui button attributes
 } & Omit<ButtonProps, 'startIcon' | 'endIcon'>;

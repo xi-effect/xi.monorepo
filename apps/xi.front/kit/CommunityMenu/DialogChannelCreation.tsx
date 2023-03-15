@@ -24,8 +24,10 @@ import { Controller, useForm } from 'react-hook-form';
 
 import * as yup from 'yup';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
 import { styled } from '@mui/material/styles';
 import { Announce } from 'pkg.icons.announce';
@@ -327,7 +329,7 @@ const DialogChannelCreation = observer(() => {
               sx={{
                 color: 'text.secondary',
                 position: 'absolute',
-                top: '37px',
+                top: '12px',
                 right: '12px',
               }}
               onClick={onClose}
