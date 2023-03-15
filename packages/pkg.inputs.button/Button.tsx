@@ -34,6 +34,7 @@ export const Button: FC<ButtonPropsType> = ({
   isSnackbarIconEnd,
   snackbarLoadingPosition,
   snackbarPosition,
+  sx,
   ...props
 }) => {
   const theme = useTheme();
@@ -70,6 +71,7 @@ export const Button: FC<ButtonPropsType> = ({
         ...buttonSizes[size],
         ...buttonVariantsColor[variant][color],
         ...buttonPadding[size],
+        ...sx,
       }}
       {...props}
     >

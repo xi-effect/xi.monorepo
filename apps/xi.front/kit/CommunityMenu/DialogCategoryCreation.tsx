@@ -3,17 +3,12 @@ import { observer } from 'mobx-react';
 
 import {
   Typography,
-  Button,
   Dialog,
-  DialogContent,
   Stack,
   useMediaQuery,
-  DialogActions,
   Theme,
   IconButton,
-  Checkbox,
   FormControlLabel,
-  Switch,
 } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Close } from 'pkg.icons.close';
@@ -23,17 +18,16 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
-import Box from '@mui/material/Box';
+import { Toggle } from 'pkg.inputs.toggle';
+import { Button } from 'pkg.inputs.button';
+import { Checkbox } from 'pkg.inputs.checkbox';
 
 type DataChannelType = {
   label: string;
-  nameControl:
-    | 'channel.ads'
-    | 'channel.task'
-    | 'channel.videoconferencing'
-    | 'channel.chatWithStudiends';
+  nameControl: 'channel.ads' | 'channel.task' | 'channel.video' | 'channel.chat';
 };
-const dataChannal: DataChannelType[] = [
+
+const types: DataChannelType[] = [
   {
     label: 'Объявления',
     nameControl: 'channel.ads',
@@ -44,24 +38,26 @@ const dataChannal: DataChannelType[] = [
   },
   {
     label: 'Видеоконференции',
-    nameControl: 'channel.videoconferencing',
+    nameControl: 'channel.video',
   },
   {
     label: 'Чат со студентами',
-    nameControl: 'channel.chatWithStudiends',
+    nameControl: 'channel.chat',
   },
 ];
+
 type ChannelType = {
   ads: boolean;
   task: boolean;
-  videoconferencing: boolean;
-  chatWithStudiends: boolean;
+  video: boolean;
+  chat: boolean;
 };
+
 type FormValues = {
   name: string;
   teacher: string;
   channel: ChannelType;
-  privite: boolean;
+  private: boolean;
 };
 
 const schema = yup
@@ -74,7 +70,7 @@ const schema = yup
       videoconferencing: yup.boolean(),
       chatWithStudiends: yup.boolean(),
     }),
-    privite: yup.boolean(),
+    private: yup.boolean(),
   })
   .required();
 
@@ -84,26 +80,29 @@ const DialogCategoryCreation = observer(() => {
   const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const onClose = () => uiSt.setDialogs('categoryCreation', false);
+
   const { control, handleSubmit, trigger, reset } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
       name: '',
       teacher: '',
-      privite: true,
+      private: true,
       channel: {
         ads: true,
         task: false,
-        videoconferencing: false,
-        chatWithStudiends: true,
+        video: false,
+        chat: true,
       },
     },
   });
+
   const onSubmit = (data: FormValues) => {
     console.log('data', data);
     trigger();
     uiSt.setDialogs('categoryCreation', false);
     reset();
   };
+
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -113,6 +112,18 @@ const DialogCategoryCreation = observer(() => {
       aria-describedby="alert-dialog-description"
       fullWidth
       maxWidth="md"
+      PaperProps={{
+        sx: {
+          p: 4,
+          width: '600px',
+          height: '748px',
+          borderRadius: '16px',
+          border: '1px solid #E6E6E6',
+          bgcolor: 'grayscale.0',
+          boxShadow: 'none',
+          position: 'relative',
+        },
+      }}
     >
       <Stack
         direction="row"
@@ -120,206 +131,189 @@ const DialogCategoryCreation = observer(() => {
         alignItems="center"
         sx={{
           width: '100%',
-          p: 4,
-          pb: 0,
         }}
       >
-        <Typography
-          sx={{
-            mt: 4,
-            ml: 2,
-            m: '0 auto',
-            fontSize: '24px',
-            fontWeight: 600,
-          }}
-        >
+        <Typography variant="xl" sx={{ fontWeight: 600 }}>
           Создать категорию
         </Typography>
         <IconButton
           sx={{
             color: 'text.secondary',
             position: 'absolute',
-            fontSize: 14,
-            top: '15px',
-            right: '14px',
+            top: '12px',
+            right: '12px',
           }}
           onClick={onClose}
         >
           <Close />
         </IconButton>
       </Stack>
-      <DialogContent>
-        <Stack
-          direction="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
+      <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        sx={{
+          width: '100%',
+        }}
+      >
+        <Typography variant="m" sx={{ mt: 3 }}>
+          Название
+        </Typography>
+        <Controller
+          name="name"
+          control={control}
+          render={({ field }) => (
+            <Input
+              variant="outlined"
+              type="text"
+              fullWidth
+              placeholder="Введите название"
+              autoComplete="on"
+              {...field}
+              sx={{
+                mt: 1,
+                backgroundColor: 'grayscale.0',
+              }}
+            />
+          )}
+        />
+        <Typography
+          variant="m"
           sx={{
-            width: '100%',
-            px: 2,
+            mt: 3,
           }}
         >
-          <Typography
-            sx={{
-              mb: 1,
-              mr: 'auto',
-              fontSize: '16px',
-              fontWeight: 500,
-            }}
-          >
-            Название
-          </Typography>
-          <Controller
-            name="name"
-            control={control}
-            render={({ field }) => (
-              <Input
-                variant="outlined"
-                type="text"
-                fullWidth
-                placeholder="Введите название"
-                autoComplete="on"
-                {...field}
-                sx={{
-                  backgroundColor: 'grayscale.0',
-                  mb: 3,
-                }}
-              />
-            )}
-          />
-          <Typography
-            sx={{
-              mb: 1,
-              mr: 'auto',
-              fontSize: '16px',
-              fontWeight: 500,
-            }}
-          >
-            Преподаватель
-          </Typography>
-          <Controller
-            name="teacher"
-            control={control}
-            render={({ field }) => (
-              <Input
-                variant="outlined"
-                type="text"
-                fullWidth
-                placeholder="Можно оставить пустым"
-                autoComplete="on"
-                {...field}
-                sx={{
-                  backgroundColor: 'grayscale.0',
-                  mb: 3,
-                }}
-              />
-            )}
-          />
-          <Typography
-            sx={{
-              mb: 1,
-              mr: 'auto',
-              fontSize: '16px',
-              fontWeight: 500,
-            }}
-          >
-            Каналы
-          </Typography>
-          {dataChannal.map((channel, index) => (
-            <Stack
-              key={index.toString()}
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="center"
+          Преподаватель
+        </Typography>
+        <Controller
+          name="teacher"
+          control={control}
+          render={({ field }) => (
+            <Input
+              variant="outlined"
+              type="text"
+              fullWidth
+              placeholder="Можно оставить пустым"
+              autoComplete="on"
+              {...field}
               sx={{
-                width: '100%',
-                px: 2,
+                mt: 1,
+                backgroundColor: 'grayscale.0',
               }}
-            >
-              <FormControlLabel
-                control={
-                  <Controller
-                    name={channel.nameControl}
-                    control={control}
-                    defaultValue={false}
-                    render={({ field: { onChange, value, ...restProps } }) => (
-                      <Checkbox size="small" {...restProps} onChange={onChange} checked={value} />
-                    )}
-                  />
-                }
-                label={
-                  <Box
-                    sx={{
-                      fontSize: '18px',
-                    }}
-                  >
-                    {channel.label}
-                  </Box>
-                }
-              />
-            </Stack>
-          ))}
+            />
+          )}
+        />
+        <Typography
+          variant="m"
+          sx={{
+            mt: 3,
+          }}
+        >
+          Каналы
+        </Typography>
+        <Typography
+          variant="s"
+          sx={{
+            mt: 0.5,
+          }}
+        >
+          Какие каналы будут созданы автоматически
+        </Typography>
+        {types.map((channel, index) => (
           <Stack
-            direction="column"
-            justifyContent="center"
+            key={index.toString()}
+            direction="row"
+            justifyContent="flex-start"
             alignItems="center"
             sx={{
+              mt: 1,
+              height: '32px',
               width: '100%',
-              backgroundColor: '#F5F5F5',
-              p: 2,
-              mt: 3,
-              mb: 2,
-              borderRadius: 6,
+            }}
+          >
+            <FormControlLabel
+              sx={{
+                ml: 0.5,
+              }}
+              control={
+                <Controller
+                  name={channel.nameControl}
+                  control={control}
+                  defaultValue={false}
+                  render={({ field: { onChange, value, ...restProps } }) => (
+                    <Checkbox size="m" {...restProps} onClick={onChange} isChecked={value} />
+                  )}
+                />
+              }
+              label={
+                <Typography variant="m" sx={{ ml: 1.5 }}>
+                  {channel.label}
+                </Typography>
+              }
+            />
+          </Stack>
+        ))}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{
+            width: '100%',
+            height: '112px',
+            backgroundColor: 'grayscale.5',
+            p: 2,
+            borderRadius: '6px',
+            mt: 3,
+          }}
+        >
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            sx={{
+              width: '100%',
             }}
           >
             <Typography
+              variant="l"
               sx={{
-                mb: 1,
-                mr: 'auto',
                 width: '100%',
-                fontSize: '20px',
                 fontWeight: 600,
               }}
             >
               Приватная категория
             </Typography>
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
+
+            <Typography
               sx={{
-                width: '100%',
+                fontSize: '16px',
+                fontWeight: 400,
               }}
             >
-              <Typography
-                sx={{
-                  // mb: 1,
-                  mr: 'auto',
-                  fontSize: '16px',
-                  fontWeight: 400,
-                }}
-              >
-                Контент в данной категории будет доступен только выбранным классам и ролям
-              </Typography>
-              <Controller
-                name="privite"
-                control={control}
-                render={({ field: { onChange, value, ...restProps } }) => (
-                  <Switch size="medium" {...restProps} onChange={onChange} checked={value} />
-                )}
-              />
-            </Stack>
+              Контент в данной категории будет доступен только выбранным классам и ролям
+            </Typography>
           </Stack>
+
+          <Controller
+            name="private"
+            control={control}
+            render={({ field: { onChange, value, ...restProps } }) => (
+              <Toggle size="large" {...restProps} onChange={onChange} checked={value} />
+            )}
+          />
         </Stack>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          sx={{ width: '100%', mx: 4, mb: 4, textTransform: 'capitalize' }}
-          onClick={handleSubmit(onSubmit)}
-          variant="contained"
-        >
-          Создать
-        </Button>
-      </DialogActions>
+      </Stack>
+      <Button
+        sx={{
+          width: '100%',
+          mt: 3,
+        }}
+        handleButtonClick={handleSubmit(onSubmit)}
+        variant="contained"
+        color="primary"
+      >
+        Создать
+      </Button>
     </Dialog>
   );
 });

@@ -21,8 +21,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CommunityMenu } from 'kit/CommunityMenu';
 import { useStore } from 'store/connect';
 import DialogInvite from 'kit/CommunityMenu/DialogInvite';
-import DialogChannelCreation from '../../CommunityMenu/DialogChannelCreation';
-import DialogCategoryCreation from '../../CommunityMenu/DialogCategoryCreation';
+
+import DialogCategoryCreation from 'kit/CommunityMenu/DialogCategoryCreation';
+import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
 
 const Community = observer(() => {
   const rootStore = useStore();
