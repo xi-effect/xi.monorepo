@@ -3,8 +3,16 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../store/createEmotionCache';
 
+function getHostname() {
+  // @ts-ignore
+  return typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : '';
+}
+
 export default class MyDocument extends Document {
   render() {
+    const hostname = getHostname();
+    const onSearch = !hostname.includes('vercel') && !hostname.includes('netlify');
+
     return (
       <Html lang="en">
         <Head>
@@ -15,13 +23,14 @@ export default class MyDocument extends Document {
             name="Keywords"
             content="xi.effect, effect, Образованиие, Эффект, Кси Эффект, Xi Effect, Effect"
           />
-          <meta name="yandex-verification" content="5896c9df498c0cd0" />
-          <meta
-            name="google-site-verification"
-            content="VAN7yVAfRqd5NWFpUJlz0MVL1wcv0mdhDY-16-d48-U"
-          />
+          {onSearch && <meta name="yandex-verification" content="5896c9df498c0cd0" />}
+          {onSearch && (
+            <meta
+              name="google-site-verification"
+              content="VAN7yVAfRqd5NWFpUJlz0MVL1wcv0mdhDY-16-d48-U"
+            />
+          )}
           <meta name="description" content="Всё, что нужно для вашего Образования" />
-
           <meta name="application-name" content="xi.effect" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -38,13 +47,12 @@ export default class MyDocument extends Document {
           />
           <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
           <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
           <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5d74a6" />
           <meta name="msapplication-TileColor" content="#5d74a6" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#5d74a6" />
-          {process.env.NODE_ENV === 'development' && (
+          {process.env.NODE_ENV !== 'development' && (
             <script
               async
               defer
