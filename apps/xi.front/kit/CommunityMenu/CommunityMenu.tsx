@@ -99,6 +99,7 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
           ...menuListStyles,
         }}
         onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
           uiSt.setDialogs('channelCreation', true);
           if (setOpen) setOpen(false);
         }}
