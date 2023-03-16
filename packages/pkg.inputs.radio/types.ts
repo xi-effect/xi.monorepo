@@ -7,9 +7,9 @@ export type RadioProps = {
   size?: SizeType;
   color?: ColorType;
   label?: string;
-  value: string;
+  value?: string;
   disabled?: boolean;
-  onChange: (checked: boolean, event?: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (checked: boolean, event?: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type IconProps = {

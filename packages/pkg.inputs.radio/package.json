@@ -22,5 +22,7 @@
     "eslint-config-custom": "*",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
-  }
+  },
+  "author": "",
+  "description": ""
 }
