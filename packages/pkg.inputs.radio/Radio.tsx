@@ -10,12 +10,14 @@ export const Radio: FC<RadioProps> = ({
   size = 'large',
   color = 'primary',
   label,
-  value,
+  value = null,
   disabled,
   onChange,
 }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    onChange(checked, event);
+    if (onChange) {
+      onChange(checked, event);
+    }
   };
 
   return (
@@ -39,7 +41,7 @@ export const Radio: FC<RadioProps> = ({
             sx={{ fontWeight: 400, color: disabled ? 'grayscale.40' : 'grayscale.90' }}
             variant={typographyVariants[size]}
           >
-            {value}
+            {label}
           </Typography>
         )
       }
