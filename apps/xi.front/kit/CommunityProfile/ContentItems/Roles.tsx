@@ -88,7 +88,7 @@ const Roles = observer(() => {
                 position: 'relative',
 
                 width: mobile700 ? '100%' : '220px',
-                mb: 2,
+                mb: 1,
                 borderRadius: '4px',
                 cursor: 'pointer',
                 backgroundColor: index === activeRole ? 'white' : 'transporent',
