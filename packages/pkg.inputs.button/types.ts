@@ -23,7 +23,7 @@ export type ButtonPropsType = {
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
   // button icon color
-  handleButtonClick: (e?: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
   // whether to display snackbar
   isSnackbar?: boolean;
   // snackbar text
