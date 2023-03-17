@@ -27,7 +27,7 @@ export const Button: FC<ButtonPropsType> = ({
   children,
   startIcon,
   endIcon,
-  handleButtonClick,
+  onClick,
   isSnackbar,
   snackbarText,
   isSnackbarIconStart,
@@ -44,7 +44,10 @@ export const Button: FC<ButtonPropsType> = ({
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
-    handleButtonClick(e);
+
+    if (onClick) {
+      onClick(e);
+    }
   };
 
   return (

@@ -308,7 +308,7 @@ const DialogCategoryCreation = observer(() => {
           width: '100%',
           mt: 3,
         }}
-        handleButtonClick={handleSubmit(onSubmit)}
+        onClick={handleSubmit(onSubmit)}
         variant="contained"
         color="primary"
       >

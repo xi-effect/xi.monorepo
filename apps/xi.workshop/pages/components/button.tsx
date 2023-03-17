@@ -33,7 +33,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status={status}
         size="small"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         variant="contained"
         color="primary"
         isSnackbar
@@ -45,7 +45,7 @@ const TestComponents = () => {
       <Button
         status={status}
         size="medium"
-        handleButtonClick={onClickIdle}
+        onClick={onClickIdle}
         variant="contained"
         color="error"
       >
@@ -56,7 +56,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status={status}
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"
@@ -72,7 +72,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status="pending"
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"
@@ -87,7 +87,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status="completed"
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"

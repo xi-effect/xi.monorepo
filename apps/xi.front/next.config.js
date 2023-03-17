@@ -79,6 +79,7 @@ const nextConfig = {
     'pkg.icons.copy',
     'pkg.icons.updates',
     'pkg.icons.photo',
+    'pkg.icons.search',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

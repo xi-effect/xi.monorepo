@@ -20,18 +20,18 @@ export type SignInT = {
   authorizationSt: any;
 };
 
+const schema = yup
+  .object({
+    email: yup.string().email().max(100).required(),
+    password: yup.string().required().min(6).max(100),
+  })
+  .required();
+
 export const SignIn = ({ authorizationSt }: SignInT) => {
   const {
     clickSigninButton,
     signin: { errorEmail, errorPassword },
   } = authorizationSt;
-
-  const schema = yup
-    .object({
-      email: yup.string().email().max(100).required(),
-      password: yup.string().required().min(6).max(100),
-    })
-    .required();
 
   const router: NextRouter = useRouter();
 

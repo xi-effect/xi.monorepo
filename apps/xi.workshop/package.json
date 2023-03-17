@@ -83,6 +83,7 @@
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
+    "pkg.icons.search": "*",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-avatar-editor": "^13.0.0",
