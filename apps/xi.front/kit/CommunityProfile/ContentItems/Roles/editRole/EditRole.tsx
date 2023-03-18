@@ -145,7 +145,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 0 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -210,9 +210,9 @@ const EditRole = observer(() => {
   return (
     <Paper
       sx={{
-        ml: 3,
-        width: mobile700 ? '100%' : '692px',
-        p: 3,
+        ml: mobile700 ? 0 : 3,
+        width: mobile700 ? '432px' : '692px',
+        p: mobile700 ? 2 : 3,
       }}
     >
       <Stack>
@@ -247,7 +247,7 @@ const EditRole = observer(() => {
               }}
             >
               <Tabs value={value} textColor="inherit" onChange={handleChange} variant="fullWidth">
-                <StyledTab sx={{}} label="Настройки" {...a11yProps(0)} />
+                <StyledTab label="Настройки" {...a11yProps(0)} />
                 <StyledTab label="Права доступа" {...a11yProps(1)} />
                 <StyledTab label="Участники" {...a11yProps(2)} />
               </Tabs>
@@ -258,6 +258,7 @@ const EditRole = observer(() => {
                   fontWeight: 500,
                   fontSize: '16px',
                   lineHeight: '20px',
+                  mt: 3,
                   mb: 1,
                 }}
               >
@@ -291,52 +292,74 @@ const EditRole = observer(() => {
               >
                 Цвет роли
               </Typography>
-              <Stack direction="row">
-                <div
-                  style={{
-                    backgroundColor: '#E6E6E6',
-                    width: '96px',
-                    height: '64px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: '8px',
-                    marginRight: '16px',
-                  }}
-                >
-                  <CheckIcon />
-                </div>
-                <div
-                  style={{
-                    border: '2px solid #E6E6E6 ',
-                    width: '96px',
-                    height: '64px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: '8px',
-                    marginRight: '24px',
-                  }}
-                />
+              <Stack
+                direction="row"
+                flexWrap="wrap"
+                width="100%"
+                justifyContent={mobile700 ? 'center' : 'flex-start'}
+              >
+                <Stack direction="row" justifyContent="space-between">
+                  <div
+                    style={{
+                      backgroundColor: '#E6E6E6',
+                      width: '96px',
+                      height: '64px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: '8px',
+                      marginRight: '16px',
+                    }}
+                  >
+                    <CheckIcon />
+                  </div>
+                  <div
+                    style={{
+                      border: '2px solid #E6E6E6 ',
+                      width: '96px',
+                      height: '64px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      borderRadius: '8px',
+                      marginRight: '24px',
+                      marginBottom: '16px',
+                    }}
+                  />
+                </Stack>
+
                 <Stack direction="row">
                   <Controller
                     name="colorRole"
                     control={control}
                     render={({ field }) => (
                       <RadioGroup defaultValue="#B4BDFF" {...field}>
-                        <Stack direction="row" flexWrap="wrap" sx={{ width: 300 }}>
-                          {roleColorData.map((r, index) => (
-                            <FormControlLabel
-                              key={index}
-                              value={r.color}
-                              control={
-                                <BpRadio
-                                  style={{ borderRadius: '8px', backgroundColor: r.color }}
-                                />
-                              }
-                              label=""
-                            />
-                          ))}
+                        <Stack
+                          direction="row"
+                          flexWrap="wrap"
+                          sx={{ width: mobile700 ? '100%' : 340, marginLeft: '16px' }}
+                          columnGap={0.5}
+                        >
+                          {roleColorData.map((r, index) => {
+                            const widthHeigth = mobile700 ? '35.5px' : '28px';
+                            return (
+                              <FormControlLabel
+                                key={index}
+                                value={r.color}
+                                control={
+                                  <BpRadio
+                                    style={{
+                                      borderRadius: '8px',
+                                      backgroundColor: r.color,
+                                      width: widthHeigth,
+                                      height: widthHeigth,
+                                    }}
+                                  />
+                                }
+                                label=""
+                              />
+                            );
+                          })}
                         </Stack>
                       </RadioGroup>
                     )}
@@ -359,7 +382,7 @@ const EditRole = observer(() => {
                 maxWidth: 960,
                 width: '100%',
                 position: 'fixed',
-                bottom: 30,
+                bottom: 32,
                 left: '50%',
                 transform: 'translate(-50%,0)',
                 backgroundColor: 'white',
