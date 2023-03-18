@@ -323,7 +323,7 @@ const EditRole = observer(() => {
                     name="colorRole"
                     control={control}
                     render={({ field }) => (
-                      <RadioGroup defaultValue="#E6E6E6" {...field}>
+                      <RadioGroup defaultValue="#B4BDFF" {...field}>
                         <Stack direction="row" flexWrap="wrap" sx={{ width: 300 }}>
                           {roleColorData.map((r, index) => (
                             <FormControlLabel
@@ -358,8 +358,8 @@ const EditRole = observer(() => {
               sx={{
                 maxWidth: 960,
                 width: '100%',
-                position: 'absolute',
-                bottom: 0,
+                position: 'fixed',
+                bottom: 30,
                 left: '50%',
                 transform: 'translate(-50%,0)',
                 backgroundColor: 'white',
