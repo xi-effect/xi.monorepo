@@ -24,7 +24,7 @@ const TestLinksData: TestLinksDataT[] = [
     data: [
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'l',
         Icon: LinkIcon,
         isDisabled: true,
@@ -34,7 +34,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'm',
         Icon: LinkIcon,
         isDisabled: true,
@@ -44,7 +44,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 's',
         Icon: LinkIcon,
         isDisabled: true,
@@ -60,7 +60,7 @@ const TestLinksData: TestLinksDataT[] = [
     data: [
       {
         action: testShortAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'l',
         color: 'primary.main',
         Icon: LinkIcon,
@@ -70,7 +70,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: testShortAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'm',
         color: 'primary.main',
         Icon: LinkIcon,
@@ -80,7 +80,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: testShortAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 's',
         color: 'primary.main',
         Icon: LinkIcon,
@@ -96,7 +96,7 @@ const TestLinksData: TestLinksDataT[] = [
     data: [
       {
         action: testLongAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'l',
         color: 'error.dark',
         Icon: Arrow,
@@ -104,7 +104,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: testLongAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'm',
         color: 'error.dark',
         Icon: Arrow,
@@ -112,7 +112,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: testLongAction,
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 's',
         color: 'error.dark',
         Icon: Arrow,
@@ -126,7 +126,7 @@ const TestLinksData: TestLinksDataT[] = [
     data: [
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'l',
         color: 'success.main',
         hideUnderline: true,
@@ -136,7 +136,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 'm',
         color: 'success.main',
         hideUnderline: true,
@@ -146,7 +146,7 @@ const TestLinksData: TestLinksDataT[] = [
       },
       {
         action: 'https://github.com/',
-        text: 'Ссылка',
+        children: 'Ссылка',
         size: 's',
         color: 'success.main',
         hideUnderline: true,
@@ -166,7 +166,9 @@ const TestComponents = () => (
         <Typography sx={{ textAlign: 'left' }}>{group.comments}</Typography>
         <Stack direction="row" spacing={2}>
           {group.data.map((data: LinkProps) => (
-            <Link {...data} key={`${group.id}-${data.size}`} />
+            <Link {...data} key={`${group.id}-${data.size}`}>
+              {data.children}
+            </Link>
           ))}
         </Stack>
       </Stack>
