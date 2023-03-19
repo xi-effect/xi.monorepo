@@ -144,11 +144,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 0 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
 }
@@ -184,6 +180,7 @@ const schema = yup
 
 const EditRole = observer(() => {
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
+  const mobile400: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(600));
 
   const [value, setValue] = React.useState(0);
 
@@ -211,7 +208,7 @@ const EditRole = observer(() => {
     <Paper
       sx={{
         ml: mobile700 ? 0 : 3,
-        width: mobile700 ? '432px' : '692px',
+        width: mobile700 ? '100%' : '692px',
         p: mobile700 ? 2 : 3,
       }}
     >
@@ -294,15 +291,15 @@ const EditRole = observer(() => {
               </Typography>
               <Stack
                 direction="row"
-                flexWrap="wrap"
+                flexWrap={mobile700 ? 'wrap' : 'nowrap'}
                 width="100%"
                 justifyContent={mobile700 ? 'center' : 'flex-start'}
               >
-                <Stack direction="row" justifyContent="space-between">
+                <Stack direction="row" width={mobile700 ? '100%' : '220px'}>
                   <div
                     style={{
                       backgroundColor: '#E6E6E6',
-                      width: '96px',
+                      width: mobile700 ? '50%' : '96px',
                       height: '64px',
                       display: 'flex',
                       justifyContent: 'center',
@@ -315,15 +312,12 @@ const EditRole = observer(() => {
                   </div>
                   <div
                     style={{
-                      border: '2px solid #E6E6E6 ',
-                      width: '96px',
+                      width: mobile700 ? '50%' : '96px',
                       height: '64px',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
+                      border: '2px solid rgb(230, 230, 230)',
                       borderRadius: '8px',
-                      marginRight: '24px',
-                      marginBottom: '16px',
+                      marginRight: '8px',
+                      marginBottom: mobile700 ? '16px' : 0,
                     }}
                   />
                 </Stack>
@@ -336,8 +330,9 @@ const EditRole = observer(() => {
                       <RadioGroup defaultValue="#B4BDFF" {...field}>
                         <Stack
                           direction="row"
+                          // justifyContent={mobile700 ?"space-between":"flex-start"}
                           flexWrap="wrap"
-                          sx={{ width: mobile700 ? '100%' : 340, marginLeft: '16px' }}
+                          sx={{ width: mobile700 ? '100%' : 340, marginLeft: '12px' }}
                           columnGap={0.5}
                         >
                           {roleColorData.map((r, index) => {
@@ -401,7 +396,11 @@ const EditRole = observer(() => {
               >
                 У вас есть несохраненные изменения
               </Typography>
-              <Stack direction="row">
+              <Stack
+                direction="row"
+                justifyContent={mobile400 ? 'space-around  ' : 'space-between'}
+                sx={{ maxWidth: mobile400 ? '100%' : '220px', width: '100%' }}
+              >
                 <Button variant="text">Сбросить</Button>
                 <Button variant="contained" type="submit" onClick={handleSubmit(onSubmit)}>
                   Сохранить
