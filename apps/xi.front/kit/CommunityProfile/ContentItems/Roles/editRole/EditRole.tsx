@@ -30,8 +30,16 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Users } from 'pkg.icons.users';
+import { Badge } from 'pkg.components.badge';
+import { Close } from 'pkg.icons.close';
 
-// root access
+// users data
+const users = [
+  { name: 'Константин Константинопольский', username: 'kkonstantynopolsky', avatar: '' },
+  { name: 'Михаил Морозов', username: 'kolipseazer', avatar: '' },
+];
+// root access data
 type rootAccessType = {
   title: string;
   text: string;
@@ -499,6 +507,49 @@ const EditRole = observer(() => {
                       Добавить участников
                     </Typography>
                   </Button>
+                </Stack>
+                <Stack gap={3} mt={3}>
+                  {users.map((u) => (
+                    <Stack direction="row" alignItems="center" justifyContent="space-between">
+                      <Stack direction="row" alignItems="center">
+                        <Badge bgColor="transporent" icon={Users} />
+                        <Stack>
+                          <Typography
+                            sx={{
+                              // mb: 1,
+                              mr: 'auto',
+                              fontSize: '16px',
+                              fontWeight: 500,
+                              lineHeight: '22px',
+                            }}
+                          >
+                            {u.name}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              // mb: 1,
+                              mr: 'auto',
+                              fontSize: '14px',
+                              fontWeight: 400,
+                              lineHeight: '20px',
+                            }}
+                          >
+                            {u.username}
+                          </Typography>
+                        </Stack>
+                      </Stack>
+                      <IconButton
+                        onClick={() => {}}
+                        sx={{
+                          width: '24px',
+                          height: '24px',
+                          bgcolor: 'grayscale.10',
+                        }}
+                      >
+                        <Close />
+                      </IconButton>
+                    </Stack>
+                  ))}
                 </Stack>
               </Stack>
             </TabPanel>
