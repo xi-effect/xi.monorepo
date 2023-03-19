@@ -7,9 +7,9 @@ import { LinkSizes } from './types';
 
 export type LinkProps = {
   /* action or link */
-  action: (() => any | Promise<any>) | string;
-  text: string;
-  size: LinkSizes;
+  action?: (() => any | Promise<any>) | string;
+  children: string | React.ReactNode;
+  size?: LinkSizes;
   isDisabled?: boolean;
   color?: string;
   Icon?: any;
@@ -18,18 +18,22 @@ export type LinkProps = {
   /* styles when link is hovered or focused */
   hoverStyles?: any;
   hideUnderline?: boolean;
+  onClick?: () => void;
+  sx?: any;
 };
 
 export const Link = ({
   action,
-  text,
-  size,
+  children,
+  size = 'm',
   isDisabled,
   color = 'grayscale.90',
   Icon,
   visitedStyles = '',
   hoverStyles = '',
   hideUnderline = false,
+  onClick,
+  sx,
 }: LinkProps) => {
   const [waitingAction, setWaitingAction] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -53,7 +57,11 @@ export const Link = ({
   const isLink = typeof action === 'string';
 
   const handleAction = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (!isLink) {
+    if (onClick) {
+      onClick();
+    }
+
+    if (!isLink && action) {
       event.preventDefault();
       setWaitingAction(true);
       await action();
@@ -82,6 +90,7 @@ export const Link = ({
         '&:hover': {
           ...hoverStyles,
         },
+        ...sx,
       }}
       href={isLink ? action : '#'}
       tabIndex={isDisabled ? -1 : 0}
@@ -111,7 +120,7 @@ export const Link = ({
             },
           }}
         >
-          {text}
+          {children}
         </Typography>
       </Stack>
     </MuiLink>
