@@ -459,9 +459,22 @@ const EditRole = observer(() => {
               </Stack>
             </TabPanel>
             <TabPanel value={value} index={2}>
-              <Stack>
-                <Stack direction="row">
+              <Stack p={1}>
+                <Stack
+                  direction={mobile700 ? 'column' : 'row'}
+                  justifyContent="space-between"
+                  mt={3}
+                >
                   <TextField
+                    sx={{
+                      width: '100%',
+                      maxWidth: mobile700 ? '100%' : '401px',
+                      fontWeight: 500,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      mr: 2,
+                      mb: mobile700 ? 1 : 0,
+                    }}
                     placeholder="Поиск по участникам"
                     InputProps={{
                       startAdornment: (
@@ -472,7 +485,20 @@ const EditRole = observer(() => {
                     }}
                     variant="outlined"
                   />
-                  <Button> Добавить участников</Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      textTransform: 'none',
+                      fontWeight: 500,
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      py: mobile700 ? 2 : 0,
+                    }}
+                  >
+                    <Typography component="span" justifyContent={mobile700 ? 'start' : 'center'}>
+                      Добавить участников
+                    </Typography>
+                  </Button>
                 </Stack>
               </Stack>
             </TabPanel>
