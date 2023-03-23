@@ -34,7 +34,6 @@ export const Button: FC<ButtonProps> = ({
   isSnackbarIconEnd,
   snackbarLoadingPosition,
   snackbarPosition,
-  sx,
   ...props
 }) => {
   const { sx, onClick, ...otherButtonProps } = props;
