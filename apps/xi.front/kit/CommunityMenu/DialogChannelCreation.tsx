@@ -87,11 +87,7 @@ const DialogChannelCreation = observer(() => {
   const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const onClose = () => uiSt.setDialogs('channelCreation', false);
 
-  const {
-    control,
-    handleSubmit,
-    trigger,
-  } = useForm<IFormInput>({
+  const { control, handleSubmit, trigger } = useForm<IFormInput>({
     resolver: yupResolver(schema),
     defaultValues: {
       name: '',
