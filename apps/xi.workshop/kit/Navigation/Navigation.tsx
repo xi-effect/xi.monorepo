@@ -25,6 +25,10 @@ const menuArray = [
     link: '/components/link',
     label: 'Link',
   },
+  {
+    link: '/components/fileuploader',
+    label: 'FileUploader',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
