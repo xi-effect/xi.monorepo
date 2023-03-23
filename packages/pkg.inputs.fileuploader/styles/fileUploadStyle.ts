@@ -24,13 +24,13 @@ export const containerStyle = {
   },
 
   medium: {
-    height: '48px',
+    minHeight: '48px',
     padding: '0 12px',
     flexDirection: 'row',
   },
 
   small: {
-    height: '32px',
+    minHeight: '32px',
     padding: '0 8px',
     borderRadius: '6px',
     flexDirection: 'row',
