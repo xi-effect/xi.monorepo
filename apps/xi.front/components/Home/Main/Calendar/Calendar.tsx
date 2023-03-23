@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Grid, Stack, Typography } from '@mui/material';
+import WeekDay from './WeekDay';
 import { CalendarT } from './types';
-import { data } from './data';
+import { data, weekDays } from './data';
 
 const Calendar = observer(() => {
   const [calendar, setCalendar] = useState<null | CalendarT>(null);
@@ -16,14 +17,14 @@ const Calendar = observer(() => {
         Календарь
       </Typography>
 
-      <Stack sx={{ bgcolor: 'grayscale.0' }}>
+      <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }}>
         <Typography variant="m">
           {calendar?.month}
           {calendar?.year}
         </Typography>
 
         <Grid container>
-          {calendar?.week.map((day) => (
+          {weekDays.map((day) => (
             <Grid item xs={1.714}>
               <Typography
                 variant="xs"
@@ -31,11 +32,17 @@ const Calendar = observer(() => {
                   color: 'grayscale.40',
                   textAlign: 'center',
                   width: '100%',
+                  height: '32px',
                   display: 'inline-block',
                 }}
               >
-                {day.name}
+                {day}
               </Typography>
+            </Grid>
+          ))}
+          {calendar?.week.map((day) => (
+            <Grid item xs={1.714}>
+              <WeekDay {...day} />
             </Grid>
           ))}
         </Grid>

@@ -53,3 +53,5 @@ export const data: CalendarT = {
   nextWeek: '',
   previousWeek: '',
 };
+
+export const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
