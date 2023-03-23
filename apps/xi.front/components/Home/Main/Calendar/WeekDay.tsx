@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Badge } from 'pkg.components.badge';
+import { Fire } from 'pkg.icons.fire';
 import { observer } from 'mobx-react';
 import { WeekDayT } from './types';
 
@@ -10,12 +11,18 @@ const WeekDay = observer(({ day, tasks }: WeekDayT) => (
     </Typography>
     {tasks.map((task) => (
       <Stack>
-        {task.type === 'conference' && (
+        {task.deadline && (
           <Badge
-            text="Конференция"
+            text="Дедлайн"
             bgColor="error.dark"
             fontColor="error.pale"
             iconColor="error.pale"
+            icon={Fire}
+            iconProps={{
+              sx: { width: '12px', height: '12px', fontSize: '12px' },
+              viewBox: '0 0 12px 12px',
+            }}
+            stackProps={{ sx: { width: 'max-content' } }}
           />
         )}
         <Typography variant="xs">{task.name}</Typography>
