@@ -135,7 +135,7 @@ export const Modal: FC<ModalProps> = ({
         <DialogContent
           sx={{
             '&.MuiDialogContent-root': {
-              paddingTop: size === 'large' ? '24px' : '0',
+              pt: size === 'large' ? '24px' : '0',
             },
             ...contentStyle.default,
             ...contentStyle[size],
