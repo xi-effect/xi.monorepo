@@ -62,8 +62,7 @@ const File: FC<FileProps> = ({
       <Typography
         variant={textVariants[fileSize]}
         sx={{
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
+          wordBreak: 'break-all',
           transition: 'all 0.1s ease-in',
           color: actionColorStyle.text,
           fontWeight: 400,

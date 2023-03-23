@@ -1,6 +1,6 @@
 export const containerStyle = {
   medium: {
-    height: '40px',
+    minHeight: '40px',
     p: '12px',
     borderRadius: '8px',
   },
