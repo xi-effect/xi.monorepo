@@ -102,8 +102,8 @@ const AsyncFileUploader = () => {
   };
 
   return (
-    <Stack direction="row" spacing={2}>
-      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
+    <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ gap: '10px' }}>
+      <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Async single:
         <FileUploader file={file1} onChange={onChangeFile1} onDeleteClick={onDeleteFile1} />
         <FileUploader
@@ -120,7 +120,7 @@ const AsyncFileUploader = () => {
         />
       </Stack>
 
-      <Stack direction="column" sx={{ width: '500px', p: '10px' }} spacing={2}>
+      <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Async multiple:
         <FileUploader
           multiple
