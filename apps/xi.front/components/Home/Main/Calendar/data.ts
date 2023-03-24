@@ -4,7 +4,6 @@ const deadlineTask: TaskT = { name: 'Название задания', descripti
 const conferenceTask: TaskT = {
   name: 'Название задания',
   description: '',
-  deadline: true,
   type: 'conference',
 };
 
@@ -27,7 +26,7 @@ const week: WeekDayT[] = [
   {
     name: 'чт',
     day: 27,
-    tasks: [{ name: '', description: '', deadline: true }],
+    tasks: [conferenceTask],
   },
   {
     name: 'пт',
@@ -42,7 +41,7 @@ const week: WeekDayT[] = [
   {
     name: 'вс',
     day: 30,
-    tasks: [deadlineTask, conferenceTask],
+    tasks: [],
   },
 ];
 

@@ -12,7 +12,7 @@ const Calendar = observer(() => {
   }, []);
 
   return (
-    <Stack>
+    <Stack sx={{ width: '100%', mt: '64px' }} spacing={2}>
       <Typography variant="xl" sx={{ fontWeight: 600 }}>
         Календарь
       </Typography>

@@ -1,6 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 import { Badge } from 'pkg.components.badge';
 import { Fire } from 'pkg.icons.fire';
+import { Camera } from 'pkg.icons.camera';
 import { observer } from 'mobx-react';
 import { WeekDayT } from './types';
 
@@ -10,7 +11,7 @@ const WeekDay = observer(({ day, tasks }: WeekDayT) => (
       {day}
     </Typography>
     {tasks.map((task) => (
-      <Stack>
+      <Stack spacing={0.5}>
         {task.deadline && (
           <Badge
             text="Дедлайн"
@@ -21,6 +22,19 @@ const WeekDay = observer(({ day, tasks }: WeekDayT) => (
             iconProps={{
               sx: { width: '12px', height: '12px', fontSize: '12px' },
               viewBox: '0 0 12px 12px',
+            }}
+            stackProps={{ sx: { width: 'max-content' } }}
+          />
+        )}
+        {task.type === 'conference' && (
+          <Badge
+            text="Конференция"
+            bgColor="primary.pale"
+            fontColor="primary.dark"
+            iconColor="primary.dark"
+            icon={Camera}
+            iconProps={{
+              sx: { width: '12px', height: '12px', fontSize: '12px' },
             }}
             stackProps={{ sx: { width: 'max-content' } }}
           />
