@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
 import WeekDay from './WeekDay';
 import { CalendarT } from './types';
 import { data } from './data';
 
 const Calendar = observer(() => {
+  const { breakpoints } = useTheme();
+
   const [calendar, setCalendar] = useState<null | CalendarT>(null);
   useEffect(() => {
     setCalendar(data);
   }, []);
+
+  const mobilelg: boolean = useMediaQuery(breakpoints.down('lg'));
 
   return (
     <Stack sx={{ width: '100%', mt: '64px' }} spacing={2}>
@@ -23,19 +27,25 @@ const Calendar = observer(() => {
           {calendar?.year}
         </Typography>
 
-        <Stack direction="row">
+        <Stack direction={mobilelg ? 'column' : 'row'}>
           {calendar?.week.map((day, index, array) => (
             <Grid
               container
-              direction="column"
+              direction={mobilelg ? 'row' : 'column'}
               sx={{
                 position: 'relative',
                 '&:after': {
                   content: "''",
-                  height: 'calc(100% - 32px)',
-                  width: '1px',
                   bgcolor: 'grayscale.10',
                   position: 'absolute',
+                  [breakpoints.up('lg')]: {
+                    height: 'calc(100% - 32px)',
+                    width: '1px',
+                  },
+                  [breakpoints.down('lg')]: {
+                    height: '1px',
+                    width: 'calc(100% - 48px)',
+                  },
                   bottom: 0,
                   right: 0,
                   display: index === array.length - 1 ? 'none' : 'block',
@@ -47,10 +57,13 @@ const Calendar = observer(() => {
                   variant="xs"
                   sx={{
                     color: 'grayscale.40',
-                    textAlign: 'center',
                     width: '100%',
-                    height: '32px',
-                    display: 'inline-block',
+                    height: '100%',
+                    minHeight: '32px',
+                    minWidth: '48px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   {day.name}
