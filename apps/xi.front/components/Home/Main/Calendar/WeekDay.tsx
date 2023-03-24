@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 import { WeekDayT } from './types';
 
 const WeekDay = observer(({ day, tasks }: WeekDayT) => (
-  <Stack sx={{ borderRight: '1px solid', borderColor: 'grayscale.10', p: '8px' }} spacing={1}>
+  <Stack sx={{ p: '8px' }} spacing={1}>
     <Typography variant="xs" sx={{ fontWeight: 400 }}>
       {day}
     </Typography>
