@@ -22,10 +22,14 @@ const Calendar = observer(() => {
       </Typography>
 
       <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }}>
-        <Typography variant="m">
-          {calendar?.month}
-          {calendar?.year}
-        </Typography>
+        <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
+          <Typography variant="l" sx={{ fontWeight: 600 }}>
+            {calendar?.month}
+          </Typography>
+          <Typography variant="m" sx={{ fontWeight: 400 }}>
+            {calendar?.year}
+          </Typography>
+        </Stack>
 
         <Stack direction={mobilelg ? 'column' : 'row'}>
           {calendar?.week.map((day, index, array) => (
