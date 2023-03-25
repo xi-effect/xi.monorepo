@@ -53,4 +53,4 @@ export const data: CalendarT = {
   previousWeek: '',
 };
 
-export const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+export const Weekends = ['сб', 'вс'];

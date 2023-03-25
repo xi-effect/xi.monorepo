@@ -4,10 +4,14 @@ import { Fire } from 'pkg.icons.fire';
 import { Camera } from 'pkg.icons.camera';
 import { observer } from 'mobx-react';
 import { WeekDayT } from './types';
+import { Weekends } from './data';
 
-const WeekDay = observer(({ day, tasks }: WeekDayT) => (
+const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
   <Stack sx={{ p: '8px' }} spacing={1}>
-    <Typography variant="xs" sx={{ fontWeight: 400 }}>
+    <Typography
+      variant="xs"
+      sx={{ fontWeight: 400, color: Weekends.includes(name) ? 'error.dark' : 'grayscale.100' }}
+    >
       {day}
     </Typography>
     {tasks.map((task) => (

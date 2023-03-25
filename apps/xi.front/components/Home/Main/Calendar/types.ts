@@ -7,8 +7,10 @@ export type TaskT = {
   type?: TaskType;
 };
 
+export type WeekendsNamesT = 'сб' | 'вс';
+export type WeekdayNamesT = 'пн' | 'вт' | 'ср' | 'чт' | 'пт';
 export type WeekDayT = {
-  name: string;
+  name: WeekendsNamesT | WeekdayNamesT;
   day: number;
   tasks: TaskT[];
 };
