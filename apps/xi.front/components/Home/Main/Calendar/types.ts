@@ -1,6 +1,7 @@
 export type TaskType = 'conference';
 
 export type TaskT = {
+  id: string;
   name: string;
   description: string;
   deadline?: boolean;

@@ -15,13 +15,14 @@ const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
       {day}
     </Typography>
     {tasks.map((task) => (
-      <Stack spacing={0.5}>
+      <Stack spacing={0.25} key={`${task.id}`}>
         {task.deadline && (
           <Badge
             text="Дедлайн"
             bgColor="error.dark"
             fontColor="error.pale"
             iconColor="error.pale"
+            size="small"
             icon={Fire}
             iconProps={{
               sx: { width: '12px', height: '12px', fontSize: '12px' },
@@ -36,6 +37,7 @@ const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
             bgColor="primary.pale"
             fontColor="primary.dark"
             iconColor="primary.dark"
+            size="small"
             icon={Camera}
             iconProps={{
               sx: { width: '12px', height: '12px', fontSize: '12px' },

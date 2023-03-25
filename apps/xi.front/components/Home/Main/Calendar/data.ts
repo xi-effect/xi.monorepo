@@ -1,42 +1,49 @@
+import { v4 } from 'uuid';
 import { CalendarT, TaskT, WeekDayT } from './types';
 
-const deadlineTask: TaskT = { name: 'Название задания', description: '', deadline: true };
-const conferenceTask: TaskT = {
+const deadlineTask: () => TaskT = () => ({
+  id: v4(),
   name: 'Название задания',
   description: '',
+  deadline: true,
+});
+const conferenceTask: () => TaskT = () => ({
+  id: v4(),
+  name: 'Название конференции',
+  description: '',
   type: 'conference',
-};
+});
 
 const week: WeekDayT[] = [
   {
     name: 'пн',
     day: 24,
-    tasks: [deadlineTask, conferenceTask],
+    tasks: [deadlineTask(), conferenceTask()],
   },
   {
     name: 'вт',
     day: 25,
-    tasks: [deadlineTask],
+    tasks: [deadlineTask()],
   },
   {
     name: 'ср',
     day: 26,
-    tasks: [deadlineTask, conferenceTask],
+    tasks: [deadlineTask(), conferenceTask()],
   },
   {
     name: 'чт',
     day: 27,
-    tasks: [conferenceTask],
+    tasks: [deadlineTask(), deadlineTask()],
   },
   {
     name: 'пт',
     day: 28,
-    tasks: [deadlineTask, deadlineTask],
+    tasks: [conferenceTask()],
   },
   {
     name: 'сб',
     day: 29,
-    tasks: [conferenceTask],
+    tasks: [deadlineTask(), conferenceTask()],
   },
   {
     name: 'вс',

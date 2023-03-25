@@ -21,9 +21,9 @@ const Calendar = observer(() => {
         Календарь
       </Typography>
 
-      <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }}>
+      <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }} spacing={1}>
         <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
-          <Typography variant="l" sx={{ fontWeight: 600 }}>
+          <Typography sx={{ fontSize: '18px', lineHeight: '24px', fontWeight: 600 }}>
             {calendar?.month}
           </Typography>
           <Typography variant="m" sx={{ fontWeight: 400 }}>
@@ -36,6 +36,7 @@ const Calendar = observer(() => {
             <Grid
               container
               direction={mobilelg ? 'row' : 'column'}
+              key={`${calendar?.month}_${day.day}`}
               sx={{
                 position: 'relative',
                 '&:after': {
@@ -63,7 +64,7 @@ const Calendar = observer(() => {
                     color: 'grayscale.40',
                     width: '100%',
                     height: '100%',
-                    minHeight: '32px',
+                    minHeight: '30px',
                     minWidth: '48px',
                     display: 'flex',
                     alignItems: 'center',
