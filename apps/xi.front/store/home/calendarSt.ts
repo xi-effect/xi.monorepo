@@ -1,5 +1,27 @@
 import { v4 } from 'uuid';
-import { CalendarT, TaskT, WeekDayT } from './types';
+
+import { action, observable, makeObservable } from 'mobx';
+import { CalendarT, TaskT, WeekDayT } from 'models/calendar';
+import RootStore from '../rootStore';
+
+class CalendarSt {
+  rootStore: RootStore;
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+    makeObservable(this);
+  }
+
+  @observable calendar: CalendarT | null = null;
+
+  @action setCalendar = (data: CalendarT) => {
+    this.calendar = data;
+  };
+
+  @action getCalendar = () => {
+    this.setCalendar(calendarDefault);
+  };
+}
 
 const deadlineTask: () => TaskT = () => ({
   id: v4(),
@@ -13,7 +35,6 @@ const conferenceTask: () => TaskT = () => ({
   description: '',
   type: 'conference',
 });
-
 const week: WeekDayT[] = [
   {
     name: 'пн',
@@ -51,13 +72,14 @@ const week: WeekDayT[] = [
     tasks: [],
   },
 ];
-
-export const data: CalendarT = {
+export const calendarDefault: CalendarT = {
   year: 2022,
   month: 'Октябрь',
   week,
   nextWeek: '',
-  previousWeek: '',
+  prevWeek: '',
+  nextMonth: '',
+  prevMonth: '',
 };
 
-export const Weekends = ['сб', 'вс'];
+export default CalendarSt;

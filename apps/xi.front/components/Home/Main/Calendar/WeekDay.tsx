@@ -3,8 +3,9 @@ import { Badge } from 'pkg.components.badge';
 import { Fire } from 'pkg.icons.fire';
 import { Camera } from 'pkg.icons.camera';
 import { observer } from 'mobx-react';
-import { WeekDayT } from './types';
-import { Weekends } from './data';
+import { WeekDayT } from 'models/calendar';
+
+const Weekends = ['сб', 'вс'];
 
 const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
   <Stack sx={{ p: '8px' }} spacing={1}>

@@ -15,6 +15,7 @@ import CommunitySt from './community/communitySt';
 import CommunityChannelsSt from './community/communityChannelsSt';
 import CommunityProfileSt from './community/communityProfileSt';
 import UserMediaSt from './user/userMediaSt';
+import CalendarSt from './home/calendarSt';
 
 enableStaticRendering(typeof window === 'undefined');
 
@@ -41,11 +42,14 @@ class RootStore {
 
   communityProfileSt: CommunityProfileSt;
 
+  calendarSt: CalendarSt;
+
   url = process.env.NEXT_PUBLIC_SERVER_URL;
 
   constructor() {
     this.uiSt = new UISt(this);
     this.homeSt = new HomeSt(this);
+    this.calendarSt = new CalendarSt(this);
 
     this.profileSt = new ProfileSt(this);
     this.userSt = new UserSt(this);

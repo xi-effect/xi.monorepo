@@ -22,5 +22,7 @@ export type CalendarT = {
   week: WeekDayT[];
   /* request to the next get next week */
   nextWeek: string;
-  previousWeek: string;
+  prevWeek: string;
+  nextMonth: string;
+  prevMonth: string;
 };

@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { useStore } from 'store/connect';
+import { Arrow } from 'pkg.icons.arrow';
 import WeekDay from './WeekDay';
-import { CalendarT } from './types';
-import { data } from './data';
 
 const Calendar = observer(() => {
   const { breakpoints } = useTheme();
 
-  const [calendar, setCalendar] = useState<null | CalendarT>(null);
+  const rootStore = useStore();
+  const { calendarSt } = rootStore;
+  const { calendar, getCalendar } = calendarSt;
+
   useEffect(() => {
-    setCalendar(data);
+    getCalendar();
+    console.log(calendar);
   }, []);
 
   const mobilelg: boolean = useMediaQuery(breakpoints.down('lg'));
@@ -22,13 +26,20 @@ const Calendar = observer(() => {
       </Typography>
 
       <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }} spacing={1}>
-        <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
-          <Typography sx={{ fontSize: '18px', lineHeight: '24px', fontWeight: 600 }}>
-            {calendar?.month}
-          </Typography>
-          <Typography variant="m" sx={{ fontWeight: 400 }}>
-            {calendar?.year}
-          </Typography>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
+            <Typography sx={{ fontSize: '18px', lineHeight: '24px', fontWeight: 600 }}>
+              {calendar?.month}
+            </Typography>
+            <Typography variant="m" sx={{ fontWeight: 400 }}>
+              {calendar?.year}
+            </Typography>
+          </Stack>
+
+          <Stack direction="row">
+            <Arrow sx={{ transform: 'rotate(180deg)' }} />
+            <Arrow />
+          </Stack>
         </Stack>
 
         <Stack direction={mobilelg ? 'column' : 'row'}>
