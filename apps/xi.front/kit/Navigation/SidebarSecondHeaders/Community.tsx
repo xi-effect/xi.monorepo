@@ -24,6 +24,7 @@ import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
 import DialogCategoryCreation from 'kit/CommunityMenu/DialogCategoryCreation';
 import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
+import DialogExit from 'kit/CommunityMenu/DialogExit';
 
 const Community = observer(() => {
   const rootStore = useStore();
@@ -137,6 +138,7 @@ const Community = observer(() => {
       <DialogChannelCreation />
       <DialogInvite />
       <DialogCategoryCreation />
+      <DialogExit />
     </>
   );
 });

@@ -12,6 +12,7 @@ type DialogsType = {
   userProfile: boolean;
   communitySettings: boolean;
   communityMenu: boolean;
+  communityExit: boolean;
   exit: boolean;
   passwordChange: boolean;
   emailChange: boolean;
@@ -79,6 +80,7 @@ class UISt {
     userProfile: false,
     communitySettings: false,
     communityMenu: false,
+    communityExit: false,
     exit: false,
     passwordChange: false,
     emailChange: false,
@@ -103,6 +105,7 @@ class UISt {
       userProfile: false,
       communitySettings: false,
       communityMenu: false,
+      communityExit: false,
       exit: false,
       passwordChange: false,
       emailChange: false,
