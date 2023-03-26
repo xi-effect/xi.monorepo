@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import { Grid, Stack, Typography, useTheme, useMediaQuery, Box } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Arrow } from 'pkg.icons.arrow';
+import { DoubleArrow } from 'pkg.icons.double_arrow';
 import WeekDay from './WeekDay';
 
 const Calendar = observer(() => {
@@ -36,12 +37,23 @@ const Calendar = observer(() => {
             </Typography>
           </Stack>
 
-          <Stack direction="row">
-            <Box onClick={() => getPrevWeek()} sx={{ cursor: 'pointer' }}>
-              <Arrow sx={{ transform: 'rotate(180deg)' }} />
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ width: '108px', mr: '6px' }}
+          >
+            <Box>
+              <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
             </Box>
-            <Box onClick={() => getNextWeek()} sx={{ cursor: 'pointer' }}>
-              <Arrow />
+            <Stack justifyContent="center" onClick={() => getPrevWeek()} sx={{ cursor: 'pointer' }}>
+              <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '18px' }} />
+            </Stack>
+            <Stack justifyContent="center" onClick={() => getNextWeek()} sx={{ cursor: 'pointer' }}>
+              <Arrow sx={{ fontSize: '18px' }} />
+            </Stack>
+            <Box>
+              <DoubleArrow sx={{ fontSize: '12px' }} />
             </Box>
           </Stack>
         </Stack>

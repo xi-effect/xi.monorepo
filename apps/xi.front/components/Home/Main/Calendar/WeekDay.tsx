@@ -27,7 +27,6 @@ const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
             icon={Fire}
             iconProps={{
               sx: { width: '12px', height: '12px', fontSize: '12px' },
-              viewBox: '0 0 12px 12px',
             }}
             stackProps={{ sx: { width: 'max-content' } }}
           />
