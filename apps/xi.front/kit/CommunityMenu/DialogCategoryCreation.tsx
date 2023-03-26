@@ -1,13 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import {
-  Typography,
-  Dialog,
-  Stack,
-  IconButton,
-  FormControlLabel,
-} from '@mui/material';
+import { Typography, Dialog, Stack, IconButton, FormControlLabel } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Close } from 'pkg.icons.close';
 // eslint-disable-next-line import/no-extraneous-dependencies
