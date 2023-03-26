@@ -42,13 +42,7 @@ const TestComponents = () => {
         Test
       </Button>
 
-      <Button
-        status={status}
-        size="medium"
-        onClick={onClickIdle}
-        variant="contained"
-        color="error"
-      >
+      <Button status={status} size="medium" onClick={onClickIdle} variant="contained" color="error">
         Test
       </Button>
 
