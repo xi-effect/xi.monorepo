@@ -29,6 +29,10 @@ class CalendarSt {
   @action getPrevWeek = () => {
     this.setCalendar(calendarData[this.calendar?.prevWeek || '']);
   };
+
+  @action getNextMonth = () => {
+    this.setCalendar(calendarData[this.calendar?.nextMonth || '']);
+  };
 }
 
 const deadlineTask: () => TaskT = () => ({
@@ -171,7 +175,7 @@ const calendarNextWeek: CalendarT = {
   week: weekNext,
   nextWeek: 'nextWeek',
   prevWeek: 'current',
-  nextMonth: '',
+  nextMonth: 'nextMonth',
   prevMonth: '',
 };
 const calendarPrevWeek: CalendarT = {
@@ -180,7 +184,7 @@ const calendarPrevWeek: CalendarT = {
   week: weekPrev,
   nextWeek: 'current',
   prevWeek: 'prevWeek',
-  nextMonth: '',
+  nextMonth: 'nextMonth',
   prevMonth: '',
 };
 
@@ -188,6 +192,7 @@ const calendarData = {
   current: calendarCurrent,
   nextWeek: calendarNextWeek,
   prevWeek: calendarPrevWeek,
+  nextMonth: calendarNextWeek,
 };
 
 export default CalendarSt;
