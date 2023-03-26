@@ -22,6 +22,10 @@ import { CommunityMenu } from 'kit/CommunityMenu';
 import { useStore } from 'store/connect';
 import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
+import DialogCategoryCreation from 'kit/CommunityMenu/DialogCategoryCreation';
+import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
+import DialogExit from 'kit/CommunityMenu/DialogExit';
+
 const Community = observer(() => {
   const rootStore = useStore();
   const { communitySt, uiSt } = rootStore;
@@ -131,7 +135,10 @@ const Community = observer(() => {
           </Grow>
         )}
       </Popper>
+      <DialogChannelCreation />
       <DialogInvite />
+      <DialogCategoryCreation />
+      <DialogExit />
     </>
   );
 });

@@ -99,6 +99,7 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
           ...menuListStyles,
         }}
         onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
           uiSt.setDialogs('channelCreation', true);
           if (setOpen) setOpen(false);
         }}
@@ -126,6 +127,7 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
           ...menuListStyles,
         }}
         onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
           uiSt.setDialogs('categoryCreation', true);
           if (setOpen) setOpen(false);
         }}
@@ -153,8 +155,10 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
         sx={{
           ...menuListStyles,
         }}
-        onClick={(e) => {
-          if (handleClose) handleClose(e);
+        onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
+          uiSt.setDialogs('communityExit', true);
+          if (setOpen) setOpen(false);
         }}
       >
         <Stack

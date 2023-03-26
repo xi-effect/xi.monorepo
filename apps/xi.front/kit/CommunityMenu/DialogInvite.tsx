@@ -47,11 +47,12 @@ const DialogInvite = observer(() => {
       open={uiSt.dialogs.communityInvite}
       onClose={onClose}
       fullWidth
-      maxWidth="md"
+      maxWidth={false}
       PaperProps={{
         sx: {
+          m: 2,
+          maxWidth: 'calc(100% - 16px)',
           width: '600px',
-          height: '520px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
           bgcolor: 'grayscale.0',
