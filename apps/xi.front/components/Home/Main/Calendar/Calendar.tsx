@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { Grid, Stack, Typography, useTheme, useMediaQuery, Box } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Arrow } from 'pkg.icons.arrow';
 import WeekDay from './WeekDay';
@@ -10,7 +10,7 @@ const Calendar = observer(() => {
 
   const rootStore = useStore();
   const { calendarSt } = rootStore;
-  const { calendar, getCalendar } = calendarSt;
+  const { calendar, getCalendar, getNextWeek, getPrevWeek } = calendarSt;
 
   useEffect(() => {
     getCalendar();
@@ -37,8 +37,12 @@ const Calendar = observer(() => {
           </Stack>
 
           <Stack direction="row">
-            <Arrow sx={{ transform: 'rotate(180deg)' }} />
-            <Arrow />
+            <Box onClick={() => getPrevWeek()} sx={{ cursor: 'pointer' }}>
+              <Arrow sx={{ transform: 'rotate(180deg)' }} />
+            </Box>
+            <Box onClick={() => getNextWeek()} sx={{ cursor: 'pointer' }}>
+              <Arrow />
+            </Box>
           </Stack>
         </Stack>
 

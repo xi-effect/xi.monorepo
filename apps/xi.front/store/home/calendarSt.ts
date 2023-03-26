@@ -19,7 +19,15 @@ class CalendarSt {
   };
 
   @action getCalendar = () => {
-    this.setCalendar(calendarDefault);
+    this.setCalendar(calendarData.current);
+  };
+
+  @action getNextWeek = () => {
+    this.setCalendar(calendarData[this.calendar?.nextWeek || '']);
+  };
+
+  @action getPrevWeek = () => {
+    this.setCalendar(calendarData[this.calendar?.prevWeek || '']);
   };
 }
 
@@ -35,7 +43,8 @@ const conferenceTask: () => TaskT = () => ({
   description: '',
   type: 'conference',
 });
-const week: WeekDayT[] = [
+
+const weekCurrent: WeekDayT[] = [
   {
     name: 'пн',
     day: 24,
@@ -72,14 +81,113 @@ const week: WeekDayT[] = [
     tasks: [],
   },
 ];
-export const calendarDefault: CalendarT = {
+const weekNext: WeekDayT[] = [
+  {
+    name: 'пн',
+    day: 1,
+    tasks: [deadlineTask(), conferenceTask()],
+  },
+  {
+    name: 'вт',
+    day: 2,
+    tasks: [deadlineTask()],
+  },
+  {
+    name: 'ср',
+    day: 3,
+    tasks: [deadlineTask(), deadlineTask()],
+  },
+  {
+    name: 'чт',
+    day: 4,
+    tasks: [],
+  },
+  {
+    name: 'пт',
+    day: 5,
+    tasks: [deadlineTask(), conferenceTask()],
+  },
+  {
+    name: 'сб',
+    day: 6,
+    tasks: [deadlineTask(), conferenceTask()],
+  },
+  {
+    name: 'вс',
+    day: 7,
+    tasks: [conferenceTask(), conferenceTask()],
+  },
+];
+const weekPrev: WeekDayT[] = [
+  {
+    name: 'пн',
+    day: 17,
+    tasks: [deadlineTask()],
+  },
+  {
+    name: 'вт',
+    day: 18,
+    tasks: [conferenceTask()],
+  },
+  {
+    name: 'ср',
+    day: 19,
+    tasks: [deadlineTask(), deadlineTask()],
+  },
+  {
+    name: 'чт',
+    day: 20,
+    tasks: [conferenceTask(), conferenceTask()],
+  },
+  {
+    name: 'пт',
+    day: 21,
+    tasks: [],
+  },
+  {
+    name: 'сб',
+    day: 22,
+    tasks: [conferenceTask()],
+  },
+  {
+    name: 'вс',
+    day: 23,
+    tasks: [conferenceTask(), conferenceTask()],
+  },
+];
+
+const calendarCurrent: CalendarT = {
   year: 2022,
   month: 'Октябрь',
-  week,
-  nextWeek: '',
-  prevWeek: '',
+  week: weekCurrent,
+  nextWeek: 'nextWeek',
+  prevWeek: 'prevWeek',
+  nextMonth: 'nextMonth',
+  prevMonth: 'prevMonth',
+};
+const calendarNextWeek: CalendarT = {
+  year: 2022,
+  month: 'Ноябрь',
+  week: weekNext,
+  nextWeek: 'nextWeek',
+  prevWeek: 'current',
   nextMonth: '',
   prevMonth: '',
+};
+const calendarPrevWeek: CalendarT = {
+  year: 2022,
+  month: 'Октябрь',
+  week: weekPrev,
+  nextWeek: 'current',
+  prevWeek: 'prevWeek',
+  nextMonth: '',
+  prevMonth: '',
+};
+
+const calendarData = {
+  current: calendarCurrent,
+  nextWeek: calendarNextWeek,
+  prevWeek: calendarPrevWeek,
 };
 
 export default CalendarSt;
