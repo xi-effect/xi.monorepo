@@ -11,7 +11,8 @@ const Calendar = observer(() => {
 
   const rootStore = useStore();
   const { calendarSt } = rootStore;
-  const { calendar, getCalendar, getNextWeek, getPrevWeek, getNextMonth } = calendarSt;
+  const { calendar, getCalendar, getNextWeek, getPrevWeek, getNextMonth, getPrevMonth } =
+    calendarSt;
 
   useEffect(() => {
     getCalendar();
@@ -43,7 +44,7 @@ const Calendar = observer(() => {
             alignItems="center"
             sx={{ width: '108px', mr: '6px' }}
           >
-            <Box>
+            <Box onClick={() => getPrevMonth()}>
               <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
             </Box>
             <Stack justifyContent="center" onClick={() => getPrevWeek()} sx={{ cursor: 'pointer' }}>
