@@ -155,8 +155,10 @@ const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) =>
         sx={{
           ...menuListStyles,
         }}
-        onClick={(e) => {
-          if (handleClose) handleClose(e);
+        onClick={() => {
+          uiSt.setDialogs('communityMenu', false);
+          uiSt.setDialogs('communityExit', true);
+          if (setOpen) setOpen(false);
         }}
       >
         <Stack

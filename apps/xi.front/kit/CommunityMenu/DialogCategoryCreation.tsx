@@ -5,8 +5,6 @@ import {
   Typography,
   Dialog,
   Stack,
-  useMediaQuery,
-  Theme,
   IconButton,
   FormControlLabel,
 } from '@mui/material';
@@ -77,7 +75,6 @@ const schema = yup
 const DialogCategoryCreation = observer(() => {
   const rootStore = useStore();
   const { uiSt } = rootStore;
-  const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const onClose = () => uiSt.setDialogs('categoryCreation', false);
 
@@ -105,7 +102,6 @@ const DialogCategoryCreation = observer(() => {
 
   return (
     <Dialog
-      fullScreen={fullScreen}
       open={uiSt.dialogs.categoryCreation}
       onClose={() => uiSt.setDialogs('categoryCreation', false)}
       aria-labelledby="alert-dialog-title"
@@ -115,8 +111,9 @@ const DialogCategoryCreation = observer(() => {
       PaperProps={{
         sx: {
           p: 4,
+          m: 2,
+          maxWidth: 'calc(100% - 16px)',
           width: '600px',
-          height: '748px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
           bgcolor: 'grayscale.0',
