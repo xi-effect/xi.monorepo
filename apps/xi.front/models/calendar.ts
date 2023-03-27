@@ -13,6 +13,8 @@ export type WeekdayNamesT = 'пн' | 'вт' | 'ср' | 'чт' | 'пт';
 export type WeekDayT = {
   name: WeekendsNamesT | WeekdayNamesT;
   day: number;
+  /* current date */
+  current?: boolean;
   tasks: TaskT[];
 };
 

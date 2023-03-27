@@ -7,11 +7,17 @@ import { WeekDayT } from 'models/calendar';
 
 const Weekends = ['сб', 'вс'];
 
-const WeekDay = observer(({ day, tasks, name }: WeekDayT) => (
+const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
   <Stack sx={{ p: '8px' }} spacing={1}>
     <Typography
       variant="xs"
-      sx={{ fontWeight: 400, color: Weekends.includes(name) ? 'error.dark' : 'grayscale.100' }}
+      sx={{
+        fontWeight: current ? 600 : 400,
+        color:
+          (current && 'primary.dark') ||
+          (Weekends.includes(name) && 'error.dark') ||
+          'grayscale.100',
+      }}
     >
       {day}
     </Typography>

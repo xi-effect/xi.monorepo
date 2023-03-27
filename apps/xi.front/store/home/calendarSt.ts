@@ -214,6 +214,7 @@ const octWeek4: WeekDayT[] = [
   {
     name: 'ср',
     day: 26,
+    current: true,
     tasks: [deadlineTask(), conferenceTask()],
   },
   {
@@ -281,7 +282,7 @@ const calendarSepWeek5: CalendarT = {
   week: sepWeek5,
   nextWeek: 'oct_1',
   prevWeek: 'sep_5',
-  nextMonth: 'oct_1',
+  nextMonth: 'nov_1',
   prevMonth: 'sep_5',
 };
 const calendarOctWeek1: CalendarT = {
@@ -327,7 +328,7 @@ const calendarNovWeek1: CalendarT = {
   nextWeek: 'nov_1',
   prevWeek: 'oct_4',
   nextMonth: 'nov_1',
-  prevMonth: 'oct_1',
+  prevMonth: 'sep_5',
 };
 
 const calendarData = {
