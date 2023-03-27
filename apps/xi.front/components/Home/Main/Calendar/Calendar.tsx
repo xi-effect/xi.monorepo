@@ -44,16 +44,16 @@ const Calendar = observer(() => {
             alignItems="center"
             sx={{ width: '108px', mr: '6px' }}
           >
-            <Box onClick={() => getPrevMonth()} sx={{ cursor: 'pointer' }}>
+            <Box onClick={getPrevMonth} sx={{ cursor: 'pointer' }}>
               <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
             </Box>
-            <Stack justifyContent="center" onClick={() => getPrevWeek()} sx={{ cursor: 'pointer' }}>
+            <Stack justifyContent="center" onClick={getPrevWeek} sx={{ cursor: 'pointer' }}>
               <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '18px' }} />
             </Stack>
-            <Stack justifyContent="center" onClick={() => getNextWeek()} sx={{ cursor: 'pointer' }}>
+            <Stack justifyContent="center" onClick={getNextWeek} sx={{ cursor: 'pointer' }}>
               <Arrow sx={{ fontSize: '18px' }} />
             </Stack>
-            <Box onClick={() => getNextMonth()} sx={{ cursor: 'pointer' }}>
+            <Box onClick={getNextMonth} sx={{ cursor: 'pointer' }}>
               <DoubleArrow sx={{ fontSize: '12px' }} />
             </Box>
           </Stack>
