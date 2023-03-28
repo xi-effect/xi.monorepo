@@ -30,8 +30,8 @@ export const Avatar = ({ size = 48 }: AvatarPropsT) => {
       <Typography
         sx={{
           fontWeight: 600,
-          fontSize: size / 2.5,
-          lineHeight: size / 2.5,
+          fontSize: `${size / 2.5}px`,
+          lineHeight: `${size / 2.5}px`,
           color: getTextColor(1),
         }}
       >
