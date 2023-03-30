@@ -1,5 +1,5 @@
 {
-  "name": "pkg.icons.double_arrow",
+  "name": "pkg.icons.doublearrow",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",

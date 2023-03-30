@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { Grid, Stack, Typography, useTheme, useMediaQuery, Box } from '@mui/material';
 import { useStore } from 'store/connect';
 import { Arrow } from 'pkg.icons.arrow';
-import { DoubleArrow } from 'pkg.icons.double_arrow';
+import { DoubleArrow } from 'pkg.icons.doublearrow';
 import WeekDay from './WeekDay';
 
 const Calendar = observer(() => {
