@@ -120,11 +120,11 @@ export const Modal: FC<ModalProps> = ({
         >
           {dialogTitleChildren}
 
-          <Typography variant="xl" component="h3" sx={{ fontWeight: 600 }}>
+          <Typography variant="xl" component="h3" sx={{ color: 'grayscale.100', fontWeight: 600 }}>
             {title}
           </Typography>
           {subtitle && (
-            <Typography variant="m" sx={{ fontWeight: 400 }}>
+            <Typography variant="m" sx={{ color: 'grayscale.80', fontWeight: 400 }}>
               {subtitle}
             </Typography>
           )}

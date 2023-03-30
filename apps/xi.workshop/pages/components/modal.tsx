@@ -21,8 +21,8 @@ const TestComponents = () => {
         title="Заголовок"
         subtitle="Подзаголовок"
         onClose={() => setIsOpenLarge(false)}
-        cancelButtonTitle="Отменить"
-        confirmButtonTitle="Подтвердить"
+        cancelButtonTitle="Кнопка"
+        confirmButtonTitle="Кнопка"
         onCloseIcon={() => setIsOpenLarge(false)}
         onConfirmButton={() => {
           alert('Подтвердить');
@@ -59,10 +59,15 @@ const TestComponents = () => {
         cancelButtonProps={{ variant: 'text', sx: { width: '100%' } }}
         hideLines
       >
-        <Button variant="contained" onClick={() => alert('1 действие')}>
+        <Button size="large" variant="contained" onClick={() => alert('1 действие')}>
           1 действие
         </Button>
-        <Button variant="outlined" color="grayscale" onClick={() => alert('2 действие')}>
+        <Button
+          size="large"
+          variant="outlined"
+          color="grayscale"
+          onClick={() => alert('2 действие')}
+        >
           2 действие
         </Button>
       </Modal>
