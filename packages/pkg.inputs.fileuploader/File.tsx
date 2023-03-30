@@ -2,23 +2,17 @@ import 'pkg.config.muidts';
 import { FC, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
 import Icons from './Icons';
-import {
-  containerStyle,
-  getActionColorStyle,
-  getActionContainerStyle,
-  textVariants,
-} from './styles/fileStyle';
+import { containerStyle, textVariants } from './styles/fileStyle';
 import { FileProps } from './types';
 
-const File: FC<FileProps> = ({
-  fileSize,
-  children,
-  isDeleteIcon,
-  isPendingIcon,
-  isSucceededIcon,
+export const File: FC<FileProps> = ({
+  size = 'medium',
+  isDeleteIcon = true,
+  isPending,
+  isSucceeded,
   isError,
-  id,
-  index,
+  children,
+  onClick,
   onDeleteClick,
   onAbortRequestClick,
   ...props
@@ -26,10 +20,7 @@ const File: FC<FileProps> = ({
   const [isHover, setIsHover] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
 
-  const actionContainerStyle = getActionContainerStyle(isHover, isFocus);
-  const actionColorStyle = getActionColorStyle(isHover, isFocus, !!isError);
-
-  const isAbortIcon = onAbortRequestClick && isPendingIcon && (isHover || isFocus);
+  const isAbortIcon = onAbortRequestClick && isPending && (isHover || isFocus);
 
   return (
     <Stack
@@ -37,11 +28,18 @@ const File: FC<FileProps> = ({
       alignItems="center"
       justifyContent="space-between"
       sx={{
-        maxWidth: '500px',
-        backgroundColor: 'grayscale.0',
+        backgroundColor: isFocus ? 'grayscale.5' : 'grayscale.0',
         transition: 'all 0.1s ease-in',
-        ...containerStyle[fileSize],
-        ...actionContainerStyle,
+        ...containerStyle[size],
+        '&:hover': {
+          backgroundColor: 'grayscale.5',
+
+          '& .MuiTypography-root': { color: isError ? 'error.dark' : 'grayscale.100' },
+
+          '& .MuiSvgIcon-root': { color: 'grayscale.80' },
+
+          '& .MuiCircularProgress-root': { color: 'grayscale.80' },
+        },
         ...props,
       }}
       onFocus={() => {
@@ -60,24 +58,26 @@ const File: FC<FileProps> = ({
       }}
     >
       <Typography
-        variant={textVariants[fileSize]}
+        variant={textVariants[size]}
         sx={{
           wordBreak: 'break-all',
           transition: 'all 0.1s ease-in',
-          color: actionColorStyle.text,
+          color: isError ? 'error.dark' : 'grayscale.90',
           fontWeight: 400,
+          cursor: onClick ? 'pointer' : 'default',
+          paddingRight: '10px',
         }}
+        onClick={onClick}
       >
         {children}
       </Typography>
+
       <Icons
-        id={id}
-        index={index}
-        size={fileSize}
-        color={actionColorStyle.icon}
-        isDeleteIcon={isDeleteIcon}
-        isLoadingIcon={!isAbortIcon && isPendingIcon}
-        isSucceededIcon={isSucceededIcon}
+        size={size}
+        color={isFocus ? 'grayscale.80' : 'grayscale.40'}
+        isDeleteIcon={isDeleteIcon && !isPending && !isSucceeded}
+        isLoadingIcon={!isAbortIcon && isPending}
+        isSucceededIcon={isSucceeded}
         isAbortIcon={isAbortIcon}
         onDeleteClick={onDeleteClick}
         onAbortRequestClick={onAbortRequestClick}
@@ -85,5 +85,3 @@ const File: FC<FileProps> = ({
     </Stack>
   );
 };
-
-export default File;

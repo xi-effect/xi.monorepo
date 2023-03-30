@@ -1,2 +1,3 @@
 export { FileUploader } from './FileUploader';
-export type { FileUploaderProps, FileType, StatusType } from './types';
+export { File } from './File';
+export type { FileUploaderProps, FileProps } from './types';

@@ -1,6 +1,6 @@
 {
   "extends": "pkg.config.typescript/react-library.json",
-  "include": ["*", "styles/fileUploadStyle.ts"],
+  "include": ["*", "styles/fileUploaderStyle.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable"]

@@ -1,6 +1,6 @@
-import { Stack } from '@mui/material';
-import { FileUploader } from 'pkg.inputs.fileuploader';
 import { useState } from 'react';
+import { Stack } from '@mui/material';
+import { FileUploader, File } from 'pkg.inputs.fileuploader';
 
 const SyncFileUploader = () => {
   // single
@@ -43,13 +43,13 @@ const SyncFileUploader = () => {
     setFiles3([...files3, ...files]);
   };
 
-  const onDeleteFiles1 = (_: string, index: number) => {
+  const onDeleteFiles1 = (index: number) => {
     setFiles1(files1.filter((_, i) => i !== index));
   };
-  const onDeleteFiles2 = (_: string, index: number) => {
+  const onDeleteFiles2 = (index: number) => {
     setFiles2(files2.filter((_, i) => i !== index));
   };
-  const onDeleteFiles3 = (_: string, index: number) => {
+  const onDeleteFiles3 = (index: number) => {
     setFiles3(files3.filter((_, i) => i !== index));
   };
 
@@ -57,18 +57,19 @@ const SyncFileUploader = () => {
     <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ gap: '10px' }}>
       <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Sync single:
-        <FileUploader file={file1} onChange={onChangeFile1} onDeleteClick={onDeleteFile1} />
+        {file1 && <File onDeleteClick={onDeleteFile1}>{file1.name}</File>}
+        <FileUploader onChange={onChangeFile1} />
         <FileUploader
           isError={!file2}
           size="medium"
-          file={file2}
+          fileName={file2?.name}
           onChange={onChangeFile2}
           onDeleteClick={onDeleteFile2}
         />
         <FileUploader
           isWarning={!file3}
           size="small"
-          file={file3}
+          fileName={file3?.name}
           onChange={onChangeFile3}
           onDeleteClick={onDeleteFile3}
         />
@@ -76,29 +77,30 @@ const SyncFileUploader = () => {
 
       <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Sync multiple:
-        <FileUploader
-          multiple
-          files={files1}
-          onChange={onChangeFiles1}
-          onDeleteClick={onDeleteFiles1}
-          filesPosition="bottom"
-        />
-        <FileUploader
-          multiple
-          size="medium"
-          files={files2}
-          onChange={onChangeFiles2}
-          onDeleteClick={onDeleteFiles2}
-          filesPosition="bottom"
-        />
-        <FileUploader
-          multiple
-          size="small"
-          files={files3}
-          onChange={onChangeFiles3}
-          onDeleteClick={onDeleteFiles3}
-          filesPosition="bottom"
-        />
+        <Stack>
+          {files1.map((file, i) => (
+            <File key={i} isDeleteIcon onDeleteClick={() => onDeleteFiles1(i)}>
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple onChange={onChangeFiles1} />
+        <Stack>
+          {files2.map((file, i) => (
+            <File key={i} isDeleteIcon onDeleteClick={() => onDeleteFiles2(i)}>
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple size="medium" onChange={onChangeFiles2} />
+        <Stack>
+          {files3.map((file, i) => (
+            <File size="small" key={i} isDeleteIcon onDeleteClick={() => onDeleteFiles3(i)}>
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple size="small" onChange={onChangeFiles3} />
       </Stack>
     </Stack>
   );

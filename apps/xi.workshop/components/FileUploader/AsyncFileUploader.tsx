@@ -1,6 +1,14 @@
-import { Stack } from '@mui/material';
-import { FileType, FileUploader, StatusType } from 'pkg.inputs.fileuploader';
 import { SetStateAction, useState } from 'react';
+import { Stack } from '@mui/material';
+import { FileUploader, File } from 'pkg.inputs.fileuploader';
+
+type StatusType = 'idle' | 'pending' | 'failed' | 'succeeded';
+
+type FileType = {
+  name: string;
+  status?: StatusType;
+  id?: string;
+} & Partial<File>;
 
 const awaitPromise = async () =>
   new Promise((res) => {
@@ -13,6 +21,29 @@ const id = () => {
   const dateString = Date.now().toString(36);
   const randomness = Math.random().toString(36).substr(2);
   return dateString + randomness;
+};
+
+const onChangeFiles = async (
+  initState: FileType[],
+  files: File[],
+  setState: (value: SetStateAction<FileType[]>) => void,
+  initStatus: StatusType,
+  completedStatus: StatusType,
+) => {
+  const loadedFiles = files.map((file) => ({
+    name: file.name,
+    status: initStatus,
+    id: id(),
+  }));
+  setState([...initState, ...loadedFiles]);
+  await awaitPromise();
+  setState((files) =>
+    files.map((file) => {
+      const foundFile = loadedFiles.find((el) => el.id === file.id);
+      if (foundFile) return { ...file, status: completedStatus };
+      return file;
+    }),
+  );
 };
 
 const AsyncFileUploader = () => {
@@ -29,7 +60,7 @@ const AsyncFileUploader = () => {
   const onChangeFile2 = async (file: File) => {
     setFile2({ name: file.name, status: 'pending' });
     await awaitPromise();
-    setFile2((file) => ({ name: file?.name, status: 'completed' }));
+    setFile2((file) => ({ name: file?.name, status: 'succeeded' }));
   };
   const onChangeFile3 = async (file: File) => {
     setFile3({ name: file.name, status: 'pending' });
@@ -52,29 +83,6 @@ const AsyncFileUploader = () => {
   const [files2, setFiles2] = useState<FileType[]>([]);
   const [files3, setFiles3] = useState<FileType[]>([]);
 
-  const onChangeFiles = async (
-    initState: FileType[],
-    files: File[],
-    setState: (value: SetStateAction<FileType[]>) => void,
-    initStatus: StatusType,
-    completedStatus: StatusType,
-  ) => {
-    const loadedFiles = files.map((file) => ({
-      name: file.name,
-      status: initStatus,
-      id: id(),
-    }));
-    setState([...initState, ...loadedFiles]);
-    await awaitPromise();
-    setState((files) =>
-      files.map((file) => {
-        const foundFile = loadedFiles.find((el) => el.id === file.id);
-        if (foundFile) return { ...file, status: completedStatus };
-        return file;
-      }),
-    );
-  };
-
   const onChangeFiles1 = async (files: File[]) => {
     onChangeFiles(files1, files, setFiles1, 'pending', 'succeeded');
   };
@@ -85,17 +93,17 @@ const AsyncFileUploader = () => {
     onChangeFiles(files3, files, setFiles3, 'pending', 'idle');
   };
 
-  const onDeleteFiles1 = (id: string) => {
+  const onDeleteFiles1 = (id?: string) => {
     setFiles1(files1.filter((file) => file.id !== id));
   };
-  const onDeleteFiles2 = (id: string) => {
+  const onDeleteFiles2 = (id?: string) => {
     setFiles2(files2.filter((file) => file.id !== id));
   };
-  const onDeleteFiles3 = (id: string) => {
+  const onDeleteFiles3 = (id?: string) => {
     setFiles3(files3.filter((file) => file.id !== id));
   };
 
-  const onAbort = (id: string) => {
+  const onAbort = (id?: string) => {
     // const xhr = new XMLHttpRequest()
     // xhr.abort();
     setFiles1((state) => state.filter((file) => file.id !== id));
@@ -105,16 +113,28 @@ const AsyncFileUploader = () => {
     <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ gap: '10px' }}>
       <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Async single:
-        <FileUploader file={file1} onChange={onChangeFile1} onDeleteClick={onDeleteFile1} />
+        {file1 && (
+          <File
+            onDeleteClick={onDeleteFile1}
+            isPending={file1.status === 'pending'}
+            isError={file1.status === 'failed'}
+          >
+            {file1.name}
+          </File>
+        )}
+        <FileUploader onChange={onChangeFile1} />
         <FileUploader
           size="medium"
-          file={file2}
+          fileName={file2?.name}
           onChange={onChangeFile2}
           onDeleteClick={onDeleteFile2}
+          isPending={file2?.status === 'pending'}
+          isSucceeded={file2?.status === 'succeeded'}
         />
         <FileUploader
           size="small"
-          file={file3}
+          fileName={file3?.name}
+          isPending={file3?.status === 'pending'}
           onChange={onChangeFile3}
           onDeleteClick={onDeleteFile3}
         />
@@ -122,27 +142,45 @@ const AsyncFileUploader = () => {
 
       <Stack direction="column" sx={{ maxWidth: '500px', width: '100%', p: '10px 0' }} spacing={2}>
         Async multiple:
-        <FileUploader
-          multiple
-          files={files1}
-          onChange={onChangeFiles1}
-          onDeleteClick={onDeleteFiles1}
-          onAbortRequestClick={onAbort}
-        />
-        <FileUploader
-          multiple
-          size="medium"
-          files={files2}
-          onChange={onChangeFiles2}
-          onDeleteClick={onDeleteFiles2}
-        />
-        <FileUploader
-          multiple
-          size="small"
-          files={files3}
-          onChange={onChangeFiles3}
-          onDeleteClick={onDeleteFiles3}
-        />
+        <Stack>
+          {files1.map((file) => (
+            <File
+              isPending={file.status === 'pending'}
+              isSucceeded={file.status === 'succeeded'}
+              key={file.id}
+              onDeleteClick={() => onDeleteFiles1(file.id)}
+              onAbortRequestClick={() => onAbort(file.id)}
+            >
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple onChange={onChangeFiles1} />
+        <Stack>
+          {files2.map((file) => (
+            <File
+              isPending={file.status === 'pending'}
+              isError={file.status === 'failed'}
+              key={file.id}
+              onDeleteClick={() => onDeleteFiles2(file.id)}
+            >
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple size="medium" onChange={onChangeFiles2} />
+        <Stack>
+          {files3.map((file) => (
+            <File
+              isPending={file.status === 'pending'}
+              key={file.id}
+              onDeleteClick={() => onDeleteFiles3(file.id)}
+            >
+              {file.name}
+            </File>
+          ))}
+        </Stack>
+        <FileUploader multiple size="small" onChange={onChangeFiles3} />
       </Stack>
     </Stack>
   );

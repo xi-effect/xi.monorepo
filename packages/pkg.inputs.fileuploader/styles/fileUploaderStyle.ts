@@ -69,6 +69,7 @@ const actionContainerStyle = {
     borderColor: 'grayscale.40',
     backgroundColor: 'grayscale.10',
     pointerEvents: 'none',
+    borderWidth: '2px',
   },
 };
 

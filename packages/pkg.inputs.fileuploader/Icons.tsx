@@ -12,14 +12,12 @@ const Icons: FC<IconsProps> = ({
   isLoadingIcon,
   isSucceededIcon,
   isAbortIcon,
-  id,
-  index,
   onDeleteClick,
   onAbortRequestClick,
 }) => (
   <>
     {isDeleteIcon && (
-      <IconButton disableRipple sx={{ p: 0 }} onClick={() => onDeleteClick(id, index)}>
+      <IconButton disableRipple sx={{ p: 0 }} onClick={onDeleteClick}>
         <Close
           sx={{
             transition: 'all 0.1s ease-in',
@@ -29,8 +27,9 @@ const Icons: FC<IconsProps> = ({
         />
       </IconButton>
     )}
-    {onAbortRequestClick && isAbortIcon && (
-      <IconButton disableRipple sx={{ p: 0 }} onClick={() => onAbortRequestClick(id, index)}>
+
+    {isAbortIcon && (
+      <IconButton disableRipple sx={{ p: 0 }} onClick={onAbortRequestClick}>
         <Close
           sx={{
             transition: 'all 0.1s ease-in',
@@ -40,6 +39,7 @@ const Icons: FC<IconsProps> = ({
         />
       </IconButton>
     )}
+
     {isLoadingIcon && (
       <CircularProgress
         size={iconSizesStyle[size].width}
@@ -51,6 +51,7 @@ const Icons: FC<IconsProps> = ({
         }}
       />
     )}
+
     {isSucceededIcon && (
       <Check
         sx={{

@@ -16,25 +16,6 @@ export const textVariants = {
   small: 's' as 's',
 };
 
-export const actionColorStyle = {
-  medium: {
-    text: 'grayscale.90',
-    icon: 'grayscale.40',
-  },
-  hover: {
-    text: 'grayscale.100',
-    icon: 'grayscale.80',
-  },
-  error: {
-    text: 'error.dark',
-    icon: 'grayscale.40',
-    hover: {
-      text: 'error.dark',
-      icon: 'grayscale.80',
-    },
-  },
-};
-
 export const iconSizesStyle = {
   medium: {
     width: '24px',
@@ -44,19 +25,4 @@ export const iconSizesStyle = {
     width: '16px',
     height: '16px',
   },
-};
-
-export const getActionContainerStyle = (isHover: boolean, isFocus: boolean) => {
-  if (isHover || isFocus) return { backgroundColor: 'grayscale.5' };
-  return {};
-};
-
-export const getActionColorStyle = (isHover: boolean, isFocus: boolean, isError: boolean) => {
-  if (isError && (isHover || isFocus)) return actionColorStyle.error.hover;
-
-  if (isHover || isFocus) return actionColorStyle.hover;
-
-  if (isError) return actionColorStyle.error;
-
-  return actionColorStyle.medium;
 };

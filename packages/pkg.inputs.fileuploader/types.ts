@@ -2,41 +2,33 @@ import { SxProps } from '@mui/material';
 
 export type SizeType = 'large' | 'medium' | 'small';
 export type FileSizeType = 'medium' | 'small';
-export type StatusType = 'idle' | 'pending' | 'succeeded' | 'failed';
-export type FileType = { name: string; status?: StatusType; id?: string } & Partial<File>;
 
 export type FileUploaderProps = {
   size?: SizeType;
-  fileSize?: FileSizeType;
-  files?: FileType[] | null;
-  filesPosition?: 'bottom';
-} & Omit<FileUploadProps, 'size'>;
-
-export type FileUploadProps = {
-  size: SizeType;
-  file?: FileType | null;
+  fileName?: string | null;
   multiple?: boolean;
   isError?: boolean;
   isWarning?: boolean;
+  isPending?: boolean;
+  isSucceeded?: boolean;
   disabled?: boolean;
   descriptionText?: string;
   buttonText?: string;
-  onDeleteClick: (id?: string, index?: number) => void;
   onChange: (files: File[] | File) => void;
-  onAbortRequestClick?: (id?: string, index?: number) => void;
+  onDeleteClick?: () => void;
+  onAbortRequestClick?: () => void;
 };
 
 export type FileProps = {
-  fileSize: FileSizeType;
+  size?: FileSizeType;
   children?: string;
   isDeleteIcon?: boolean;
-  isPendingIcon?: boolean;
-  isSucceededIcon?: boolean;
+  isPending?: boolean;
+  isSucceeded?: boolean;
   isError?: boolean;
-  id?: string;
-  index?: number;
-  onDeleteClick: (id?: string, index?: number) => void;
-  onAbortRequestClick?: (id?: string, index?: number) => void;
+  onClick?: () => void;
+  onDeleteClick?: () => void;
+  onAbortRequestClick?: () => void;
 } & SxProps;
 
 export type IconsProps = {
@@ -46,8 +38,6 @@ export type IconsProps = {
   isLoadingIcon?: boolean;
   isSucceededIcon?: boolean;
   isAbortIcon?: boolean;
-  id?: string;
-  index?: number;
-  onDeleteClick: (id?: string, index?: number) => void;
-  onAbortRequestClick?: (id?: string, index?: number) => void;
+  onDeleteClick?: () => void;
+  onAbortRequestClick?: () => void;
 };
