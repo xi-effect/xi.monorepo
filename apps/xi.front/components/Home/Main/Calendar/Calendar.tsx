@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { Grid, Stack, Typography, useTheme, useMediaQuery, Box } from '@mui/material';
+import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { Button } from 'pkg.inputs.button';
 import { useStore } from 'store/connect';
 import { Arrow } from 'pkg.icons.arrow';
 import { DoubleArrow } from 'pkg.icons.doublearrow';
@@ -42,20 +43,52 @@ const Calendar = observer(() => {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            sx={{ width: '108px', mr: '6px' }}
+            sx={{ width: '108px', height: '25px', mr: '6px' }}
           >
-            <Box onClick={getPrevMonth} sx={{ cursor: 'pointer' }}>
+            <Button
+              variant="text"
+              onClick={getPrevMonth}
+              sx={{
+                color: 'grayscale.80',
+                p: 0,
+                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+              }}
+            >
               <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
-            </Box>
-            <Stack justifyContent="center" onClick={getPrevWeek} sx={{ cursor: 'pointer' }}>
+            </Button>
+            <Button
+              variant="text"
+              onClick={getPrevWeek}
+              sx={{
+                color: 'grayscale.80',
+                p: 0,
+                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+              }}
+            >
               <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '18px' }} />
-            </Stack>
-            <Stack justifyContent="center" onClick={getNextWeek} sx={{ cursor: 'pointer' }}>
+            </Button>
+            <Button
+              variant="text"
+              onClick={getNextWeek}
+              sx={{
+                color: 'grayscale.80',
+                p: 0,
+                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+              }}
+            >
               <Arrow sx={{ fontSize: '18px' }} />
-            </Stack>
-            <Box onClick={getNextMonth} sx={{ cursor: 'pointer' }}>
+            </Button>
+            <Button
+              variant="text"
+              onClick={getNextMonth}
+              sx={{
+                color: 'grayscale.80',
+                p: 0,
+                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+              }}
+            >
               <DoubleArrow sx={{ fontSize: '12px' }} />
-            </Box>
+            </Button>
           </Stack>
         </Stack>
 
