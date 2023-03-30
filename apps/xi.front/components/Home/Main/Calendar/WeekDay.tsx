@@ -25,7 +25,6 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
       <Stack spacing={0.25} key={`${task.id}`}>
         {task.deadline && (
           <Badge
-            text="Дедлайн"
             bgColor="error.dark"
             fontColor="error.pale"
             iconColor="error.pale"
@@ -35,11 +34,12 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
               sx: { width: '12px', height: '12px', fontSize: '12px' },
             }}
             stackProps={{ sx: { width: 'max-content' } }}
-          />
+          >
+            Дедлайн
+          </Badge>
         )}
         {task.type === 'conference' && (
           <Badge
-            text="Конференция"
             bgColor="primary.pale"
             fontColor="primary.dark"
             iconColor="primary.dark"
@@ -49,7 +49,9 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
               sx: { width: '12px', height: '12px', fontSize: '12px' },
             }}
             stackProps={{ sx: { width: 'max-content' } }}
-          />
+          >
+            Конференция
+          </Badge>
         )}
         <Typography variant="xs">{task.name}</Typography>
       </Stack>
