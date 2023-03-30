@@ -78,8 +78,8 @@ export const Select = ({
   const [isOpened, setIsOpened] = useState(false);
 
   /* menu interactions */
-  const onOpenMenu = () => {
-    setIsOpened(true);
+  const onToggleMenu = () => {
+    setIsOpened((prev) => !prev);
   };
   const onCloseMenu = () => {
     setIsOpened(false);
@@ -136,7 +136,7 @@ export const Select = ({
           displayEmpty
           IconComponent={() => OpenIcon(isOpened, size, isDisabled, handleDropIconClick)}
           onClose={onCloseMenu}
-          onOpen={onOpenMenu}
+          onOpen={onToggleMenu}
           open={isOpened}
         >
           {/* placeholder */}
