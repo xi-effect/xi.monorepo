@@ -171,7 +171,7 @@ const Participants = observer(() => {
               spacing={2}
             >
               {item.roles.map((i, index) => (
-                <Badge key={index} size="small" bgColor="#EBFDF3" text={i} />
+                <Badge key={index} size="small" bgColor="#EBFDF3">{i}</Badge>
               ))}
             </Stack>
             <IconButton sx={{ width: '24px', height: '24px', ml: 2 }}>
