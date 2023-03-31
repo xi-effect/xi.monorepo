@@ -86,12 +86,16 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: [
       'cdn.discordapp.com',
       'localhost:3000',
       'localhost:5000',
       'xieffect.ru:5000',
       'xieffect.ru',
+      'avatar.vercel.sh',
     ],
   },
   output: 'standalone',

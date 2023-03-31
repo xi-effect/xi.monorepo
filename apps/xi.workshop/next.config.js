@@ -68,6 +68,7 @@ const nextConfig = {
       'localhost:5000',
       'xieffect.ru:5000',
       'xieffect.ru',
+      'avatar.vercel.sh',
     ],
   },
   output: 'standalone',
