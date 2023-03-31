@@ -1,42 +1,29 @@
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
+import Image from 'next/image';
 
 export type AvatarPropsT = {
   size?: number;
+  label?: string;
+  name?: string;
 };
 
-export const Avatar = ({ size = 48 }: AvatarPropsT) => {
-  const getBgcolor = (v: number) => {
-    if (v === 1) return '#F5F0FF';
-    return '#F5F0FF';
-  };
-
-  const getTextColor = (v: number) => {
-    if (v === 1) return '#9769FF';
-    return '#9769FF';
-  };
-
-  return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      sx={{
-        width: size,
-        height: size,
-        borderRadius: size * 0.5,
-        bgcolor: getBgcolor(1),
-      }}
-    >
-      <Typography
-        sx={{
-          fontWeight: 600,
-          fontSize: `${size / 2.5}px`,
-          lineHeight: `${size / 2.5}px`,
-          color: getTextColor(1),
-        }}
-      >
-        М
-      </Typography>
-    </Stack>
-  );
-};
+export const Avatar = ({ size = 48, label = 'L', name = 'rauchg' }: AvatarPropsT) => (
+  <Stack
+    direction="column"
+    justifyContent="center"
+    alignItems="center"
+    sx={{
+      width: size,
+      height: size,
+      borderRadius: size * 0.5,
+    }}
+  >
+    <Image
+      alt="User avatar"
+      height={size}
+      width={size}
+      style={{ borderRadius: '50%' }}
+      src={`https://avatar.vercel.sh/${name}.png?size=${size}&text=${label}`}
+    />
+  </Stack>
+);
