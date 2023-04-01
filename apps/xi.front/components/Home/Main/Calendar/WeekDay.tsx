@@ -30,9 +30,6 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
             iconColor="error.pale"
             size="small"
             icon={Fire}
-            iconProps={{
-              sx: { width: '12px', height: '12px', fontSize: '12px' },
-            }}
             stackProps={{ sx: { width: 'max-content' } }}
           >
             Дедлайн
@@ -45,9 +42,6 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
             iconColor="primary.dark"
             size="small"
             icon={Camera}
-            iconProps={{
-              sx: { width: '12px', height: '12px', fontSize: '12px' },
-            }}
             stackProps={{ sx: { width: 'max-content' } }}
           >
             Конференция
