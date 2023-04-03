@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Button, Dialog, IconButton, Stack, Typography } from '@mui/material';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { Link } from 'pkg.navigation.link';
 

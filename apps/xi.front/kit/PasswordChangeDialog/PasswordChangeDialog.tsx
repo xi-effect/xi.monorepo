@@ -9,7 +9,7 @@ import {
   Typography,
   Slide,
 } from '@mui/material';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 

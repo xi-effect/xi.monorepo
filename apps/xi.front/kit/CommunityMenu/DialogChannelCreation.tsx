@@ -15,11 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
-import { Announce } from 'pkg.icons.announce';
-import { Camera } from 'pkg.icons.camera';
-import { Chat } from 'pkg.icons.chat';
-import { Task } from 'pkg.icons.task';
-import { Close } from 'pkg.icons.close';
+import { Announce, Camera, Chat, Task, Close } from 'pkg.icons';
 import { Radio } from 'pkg.inputs.radio';
 import { Button } from 'pkg.inputs.button';
 import RootStore from 'store/rootStore';

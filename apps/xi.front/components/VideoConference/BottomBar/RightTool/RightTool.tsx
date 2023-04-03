@@ -1,5 +1,5 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Endcall } from 'pkg.icons.endcall';
+import { Endcall } from 'pkg.icons';
 
 const RightTool = () => (
   <Stack

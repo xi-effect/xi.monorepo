@@ -12,8 +12,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "next": "^13.0.7",
-    "pkg.icons.file": "*",
-    "pkg.icons.close": "*",
+    "pkg.icons": "*",
     "react": "^18.2.0"
   },
   "devDependencies": {

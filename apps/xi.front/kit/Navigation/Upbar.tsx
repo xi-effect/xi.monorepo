@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
 import { Stack, Typography } from '@mui/material';
-import { Burger } from 'pkg.icons.burger';
+import { Burger } from 'pkg.icons';
 
 type UpbarT = {
   setMenuPosition: (value) => void;
@@ -54,7 +54,7 @@ const Upbar = ({ setMenuPosition }: UpbarT) => {
           cursor: 'pointer',
         }}
       >
-        <Burger color="#333333" />
+        <Burger color="inherit" />
       </Stack>
       <Typography
         sx={{

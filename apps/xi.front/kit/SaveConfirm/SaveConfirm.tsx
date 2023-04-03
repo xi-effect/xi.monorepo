@@ -62,7 +62,6 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
         >
           <Typography
             sx={{
-              // width: isMobile ? '100%' : '',
               fontWeight: 500,
               fontSize: '18px',
               lineHeight: '24px',

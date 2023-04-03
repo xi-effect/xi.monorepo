@@ -128,7 +128,7 @@ const Community = observer(() => {
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Box>
-                  <CommunityMenu handleClose={handleClose} />
+                  <CommunityMenu />
                 </Box>
               </ClickAwayListener>
             </Paper>

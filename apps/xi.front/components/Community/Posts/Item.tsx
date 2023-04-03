@@ -3,7 +3,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Box, Typography, Stack } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 
 type ItemsT = {
   index: number;
@@ -113,7 +113,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
           right: '24px',
         }}
       >
-        <Arrow color="#445AFF" />
+        <Arrow color="primary" />
       </Box>
     </Stack>
   );

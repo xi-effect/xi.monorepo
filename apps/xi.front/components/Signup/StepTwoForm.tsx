@@ -5,8 +5,7 @@ import { Control, Controller, FieldErrors, FieldValues } from 'react-hook-form';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { useStore } from 'store/connect';
 
-import { Eyeoff } from 'pkg.icons.eyeoff';
-import { Eyeon } from 'pkg.icons.eyeon';
+import { Eyeoff, Eyeon } from 'pkg.icons';
 
 interface IStepTwoForm {
   control: Control<FieldValues, object> | undefined;
