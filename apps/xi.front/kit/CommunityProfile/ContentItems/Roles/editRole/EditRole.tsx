@@ -1,147 +1,21 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Box,
-  Button,
-  FormControlLabel,
-  IconButton,
-  InputAdornment,
-  Paper,
-  Radio,
-  RadioGroup,
-  Stack,
-  Switch,
-  TextField,
-  Theme,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, IconButton, Paper, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import SearchIcon from '@mui/icons-material/Search';
-import CheckIcon from '@mui/icons-material/Check';
 
 import { styled } from '@mui/material/styles';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Input } from 'pkg.inputs.input';
-
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Users } from 'pkg.icons.users';
-import { Badge } from 'pkg.components.badge';
-import { Close } from 'pkg.icons.close';
+import { Trash } from 'pkg.icons.trash';
+import SaveDataRole from './saveDataRole/SaveDataRole';
+import SettingRole from './settingRole/SettingRole';
+import RootAccess from './rootAccess/RootAccess';
+import Members from './members/Members';
 
-// users data
-const users = [
-  { name: 'Константин Константинопольский', username: 'kkonstantynopolsky', avatar: '' },
-  { name: 'Михаил Морозов', username: 'kolipseazer', avatar: '' },
-];
-// root access data
-type rootAccessType = {
-  title: string;
-  text: string;
-  name:
-    | 'viewAllChannel'
-    | 'manageRole'
-    | 'viewActivity'
-    | 'manageInvite'
-    | 'managePerson'
-    | 'manageChannels';
-};
-const rootAccess: rootAccessType[] = [
-  {
-    title: 'Просматривать все каналы',
-    text: 'Позволяет участникам просматривать все категории',
-    name: 'viewAllChannel',
-  },
-  {
-    title: 'Управлять ролями',
-    text: 'Позволяет участникам редактировать права ролей, которые ниже их самой роли',
-    name: 'manageRole',
-  },
-  {
-    title: 'Просматривать активность',
-    text: 'Позволяет участникам просматривать историю изменений этого сообщества',
-    name: 'viewActivity',
-  },
-  {
-    title: 'Управлять приглашениями',
-    text: 'Позволяет участникам удалять приглашения',
-    name: 'manageInvite',
-  },
-  {
-    title: 'Управлять участниками',
-    text: 'Позволяет участникам выгонять и банить других участников, которые ниже их самой роли',
-    name: 'managePerson',
-  },
-  {
-    title: 'Управление каналами',
-    text: 'Позволяет участникам создавать и редактировать объявления и задания',
-    name: 'manageChannels',
-  },
-];
-// ColorData
-const roleColorData = [
-  { color: '#B4BDFF' },
-  { color: '#EEE7FF' },
-  { color: '#B0F9CE' },
-  { color: '#FBABAB' },
-  { color: '#FBCAAD' },
-  { color: '#D4FBAD' },
-  { color: '#ADFBFB' },
-  { color: '#FBADE0' },
-  { color: '#999999' },
-  { color: '#445AFF' },
-  { color: '#9769FF' },
-  { color: '#11743A' },
-  { color: '#F42D2D' },
-  { color: '#E75223' },
-  { color: '#85E723' },
-  { color: '#23E7E7' },
-  { color: '#E723A5' },
-  { color: '#333333' },
-];
-// Custom Radio
-const BpIcon = styled('span')(({ theme }) => ({
-  borderRadius: '8px',
-  width: 28,
-  height: 28,
-  '.Mui-focusVisible &': {
-    outline: '2px auto rgba(19,124,189,.6)',
-    outlineOffset: 2,
-  },
-  'input:hover ~ &': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#30404d' : '#ebf1f5',
-  },
-  'input:disabled ~ &': {
-    boxShadow: 'none',
-    background: theme.palette.mode === 'dark' ? 'rgba(57,75,89,.5)' : 'rgba(206,217,224,.5)',
-  },
-}));
-
-const BpCheckedIcon = styled(BpIcon)({
-  backgroundColor: 'inherit',
-  border: '1px solid black',
-  'input:hover ~ &': {
-    backgroundColor: 'inherit',
-  },
-});
-
-// Inspired by blueprintjs
-function BpRadio(props: any) {
-  return (
-    <Radio
-      sx={{ p: 0, m: 0, mb: 1 }}
-      disableRipple
-      checkedIcon={<BpCheckedIcon />}
-      icon={<BpIcon />}
-      {...props}
-    />
-  );
-}
 // Custom Tabs
 interface StyledTabProps {
   label: string;
@@ -190,7 +64,7 @@ interface TabPanelProps {
   value: number;
 }
 
-function TabPanel(props: TabPanelProps) {
+export const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -204,7 +78,7 @@ function TabPanel(props: TabPanelProps) {
       {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
-}
+};
 
 function a11yProps(index: number) {
   return {
@@ -244,7 +118,7 @@ const EditRole = observer(() => {
   const { control, handleSubmit } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: '',
+      name: 'Администратор',
       colorRole: '#E6E6E6',
       viewAllChannel: false,
       manageRole: false,
@@ -289,7 +163,7 @@ const EditRole = observer(() => {
             Редактировать роль - Администратор
           </Typography>
           <IconButton>
-            <DeleteOutlineIcon />
+            <Trash />
           </IconButton>
         </Stack>
         <Box sx={{ width: '100%' }}>
@@ -306,292 +180,15 @@ const EditRole = observer(() => {
                 <StyledTab label="Участники" {...a11yProps(2)} />
               </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-              <Typography
-                sx={{
-                  fontWeight: 500,
-                  fontSize: '16px',
-                  lineHeight: '20px',
-                  mt: 3,
-                  mb: 1,
-                }}
-              >
-                Название роли
-              </Typography>
-              <Controller
-                name="name"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    variant="outlined"
-                    type="text"
-                    fullWidth
-                    placeholder="Введите название"
-                    autoComplete="on"
-                    {...field}
-                    sx={{
-                      backgroundColor: 'grayscale.0',
-                      mb: 3,
-                    }}
-                  />
-                )}
-              />
-              <Typography
-                sx={{
-                  fontWeight: 500,
-                  fontSize: '16px',
-                  lineHeight: '20px',
-                  mb: 1,
-                }}
-              >
-                Цвет роли
-              </Typography>
-              <Stack
-                direction="row"
-                flexWrap={mobile700 ? 'wrap' : 'nowrap'}
-                width="100%"
-                justifyContent={mobile700 ? 'center' : 'flex-start'}
-              >
-                <Stack direction="row" width={mobile700 ? '100%' : '220px'}>
-                  <div
-                    style={{
-                      backgroundColor: '#E6E6E6',
-                      width: mobile700 ? '50%' : '96px',
-                      height: '64px',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: '8px',
-                      marginRight: '16px',
-                    }}
-                  >
-                    <CheckIcon />
-                  </div>
-                  <div
-                    style={{
-                      width: mobile700 ? '50%' : '96px',
-                      height: '64px',
-                      border: '2px solid rgb(230, 230, 230)',
-                      borderRadius: '8px',
-                      marginRight: '8px',
-                      marginBottom: mobile700 ? '16px' : 0,
-                    }}
-                  />
-                </Stack>
-
-                <Stack direction="row">
-                  <Controller
-                    name="colorRole"
-                    control={control}
-                    render={({ field }) => (
-                      <RadioGroup defaultValue="#B4BDFF" {...field}>
-                        <Stack
-                          direction="row"
-                          flexWrap="wrap"
-                          sx={{ width: mobile700 ? '100%' : 340, marginLeft: '12px' }}
-                          columnGap={0.5}
-                        >
-                          {roleColorData.map((r, index) => {
-                            const widthHeigth = mobile700 ? '35.5px' : '28px';
-                            return (
-                              <FormControlLabel
-                                key={index}
-                                value={r.color}
-                                control={
-                                  <BpRadio
-                                    style={{
-                                      borderRadius: '8px',
-                                      backgroundColor: r.color,
-                                      width: widthHeigth,
-                                      height: widthHeigth,
-                                    }}
-                                  />
-                                }
-                                label=""
-                              />
-                            );
-                          })}
-                        </Stack>
-                      </RadioGroup>
-                    )}
-                  />
-                </Stack>
-              </Stack>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <Stack mt={3}>
-                {rootAccess.map((r, index) => (
-                  <Stack
-                    key={index}
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    sx={{
-                      width: '100%',
-                      mb: 3,
-                    }}
-                  >
-                    <Stack>
-                      <Typography
-                        sx={{
-                          // mb: 1,
-                          mr: 'auto',
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          lineHeight: '22px',
-                        }}
-                      >
-                        {r.title}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          // mb: 1,
-                          mr: 'auto',
-                          fontSize: '14px',
-                          fontWeight: 400,
-                          lineHeight: '20px',
-                        }}
-                      >
-                        {r.text}
-                      </Typography>
-                    </Stack>
-                    <Controller
-                      name={r.name}
-                      control={control}
-                      render={({ field: { onChange, value, ...restProps } }) => (
-                        <Switch size="medium" {...restProps} onChange={onChange} checked={value} />
-                      )}
-                    />
-                  </Stack>
-                ))}
-              </Stack>
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <Stack p={1}>
-                <Stack
-                  direction={mobile700 ? 'column' : 'row'}
-                  justifyContent="space-between"
-                  mt={3}
-                >
-                  <TextField
-                    sx={{
-                      width: '100%',
-                      maxWidth: mobile700 ? '100%' : '401px',
-                      fontWeight: 500,
-                      fontSize: '16px',
-                      lineHeight: '22px',
-                      mr: 2,
-                      mb: mobile700 ? 1 : 0,
-                    }}
-                    placeholder="Поиск по участникам"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  />
-                  <Button
-                    variant="contained"
-                    sx={{
-                      textTransform: 'none',
-                      fontWeight: 500,
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      py: mobile700 ? 2 : 0,
-                    }}
-                  >
-                    <Typography component="span" justifyContent={mobile700 ? 'start' : 'center'}>
-                      Добавить участников
-                    </Typography>
-                  </Button>
-                </Stack>
-                <Stack gap={3} mt={3}>
-                  {users.map((u) => (
-                    <Stack direction="row" alignItems="center" justifyContent="space-between">
-                      <Stack direction="row" alignItems="center">
-                        <Badge bgColor="transporent" icon={Users} />
-                        <Stack>
-                          <Typography
-                            sx={{
-                              // mb: 1,
-                              mr: 'auto',
-                              fontSize: '16px',
-                              fontWeight: 500,
-                              lineHeight: '22px',
-                            }}
-                          >
-                            {u.name}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              // mb: 1,
-                              mr: 'auto',
-                              fontSize: '14px',
-                              fontWeight: 400,
-                              lineHeight: '20px',
-                            }}
-                          >
-                            {u.username}
-                          </Typography>
-                        </Stack>
-                      </Stack>
-                      <IconButton
-                        onClick={() => {}}
-                        sx={{
-                          width: '24px',
-                          height: '24px',
-                          bgcolor: 'grayscale.10',
-                        }}
-                      >
-                        <Close />
-                      </IconButton>
-                    </Stack>
-                  ))}
-                </Stack>
-              </Stack>
-            </TabPanel>
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-              flexWrap="wrap"
-              sx={{
-                maxWidth: 960,
-                width: '100%',
-                position: 'fixed',
-                bottom: 32,
-                left: '50%',
-                transform: 'translate(-50%,0)',
-                backgroundColor: 'white',
-                borderRadius: '16px',
-                pr: 2,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontWeight: 500,
-                  fontSize: '18px',
-                  lineHeight: '24px',
-                  py: 2,
-                  pl: 5,
-                }}
-              >
-                У вас есть несохраненные изменения
-              </Typography>
-              <Stack
-                direction="row"
-                justifyContent={mobile400 ? 'space-around  ' : 'space-between'}
-                sx={{ maxWidth: mobile400 ? '100%' : '220px', width: '100%' }}
-              >
-                <Button variant="text">Сбросить</Button>
-                <Button variant="contained" type="submit" onClick={handleSubmit(onSubmit)}>
-                  Сохранить
-                </Button>
-              </Stack>
-            </Stack>
+            <SettingRole
+              mobile400={mobile400}
+              value={value}
+              mobile700={mobile700}
+              control={control}
+            />
+            <RootAccess value={value} control={control} />
+            <Members value={value} mobile700={mobile700} />
+            <SaveDataRole mobile400={mobile400} />
           </form>
         </Box>
       </Stack>
