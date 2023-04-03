@@ -8,7 +8,7 @@ import { TabPanel } from '../EditRole';
 //  data
 const members = [
   { name: 'Константин Константинопольский', username: 'kkonstantynopolsky', avatar: '' },
-  { name: 'Михаил Морозов', username: 'kolipseazer', avatar: '' },
+  { name: 'Михаил Морозов ', username: 'kolipseazer', avatar: '' },
 ];
 
 type MembersType = {
@@ -72,7 +72,6 @@ const Members: React.FC<MembersType> = ({ mobile700, value }) => (
                   }}
                 >
                   {u.name}
-                  {' '}
                   <Typography
                     component="span"
                     sx={{
