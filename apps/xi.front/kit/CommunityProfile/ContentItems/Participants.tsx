@@ -5,6 +5,7 @@ import { useStore } from 'store/connect';
 
 const Participants = observer(() => {
   const rootStore = useStore();
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { userSt } = rootStore;
 
