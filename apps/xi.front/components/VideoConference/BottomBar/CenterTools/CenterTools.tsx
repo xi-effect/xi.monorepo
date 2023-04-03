@@ -1,7 +1,5 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Users } from 'pkg.icons.users';
-import { Hand } from 'pkg.icons.hand';
-import { Chat } from 'pkg.icons.chat';
+import { Users, Hand, Chat } from 'pkg.icons';
 
 const BottomBar = () => (
   <Stack

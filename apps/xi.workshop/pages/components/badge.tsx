@@ -1,6 +1,6 @@
 import { LayoutPages } from 'kit/LayoutPages';
 import { Badge } from 'pkg.components.badge';
-import { Camera } from 'pkg.icons.camera';
+import { Camera } from 'pkg.icons';
 
 const TestComponents = () => (
   <LayoutPages>

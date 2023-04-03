@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react';
 import { Stack, Typography, Button, useMediaQuery, Theme } from '@mui/material';
-import { File } from 'pkg.icons.file';
-import { Clip } from 'pkg.icons.clip';
+import { File, Clip } from 'pkg.icons';
 
 const Files = observer(() => {
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));

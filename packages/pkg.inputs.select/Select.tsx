@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,

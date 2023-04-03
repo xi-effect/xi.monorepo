@@ -4,7 +4,7 @@ import { useStore } from 'store/connect';
 
 import { observer } from 'mobx-react';
 import { Avatar } from 'pkg.data.avatar';
-import { Copy } from 'pkg.icons.copy';
+import { Copy } from 'pkg.icons';
 
 const UserProfile = () => (
   <Stack

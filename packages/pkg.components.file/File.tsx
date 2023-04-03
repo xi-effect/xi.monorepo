@@ -1,5 +1,4 @@
-import { File as FileIcon } from 'pkg.icons.file';
-import { Close } from 'pkg.icons.close';
+import { File as FileIcon, Close } from 'pkg.icons';
 import { Box, Stack, Typography, Link } from '@mui/material';
 import Image from 'next/image';
 

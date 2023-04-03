@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import { observer } from 'mobx-react';
 import { Button, Stack, Typography } from '@mui/material';
-import { Add } from 'pkg.icons.add';
+import { Add } from 'pkg.icons';
 
 const Header = observer(() => (
   <Stack

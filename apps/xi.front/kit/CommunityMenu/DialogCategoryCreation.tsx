@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 
 import { Typography, Dialog, Stack, IconButton, FormControlLabel } from '@mui/material';
 import { useStore } from 'store/connect';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
 import { Controller, useForm } from 'react-hook-form';

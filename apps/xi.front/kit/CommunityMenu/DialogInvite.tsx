@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { observer } from 'mobx-react';
 import { Button, Dialog, IconButton, MenuItem, Select, Stack, Typography } from '@mui/material';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { Input } from 'pkg.inputs.input';
 import TextFieldCustom from 'kit/TextFieldCustom';

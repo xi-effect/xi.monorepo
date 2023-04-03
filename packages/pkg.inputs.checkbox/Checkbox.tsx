@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
-import { Check } from 'pkg.icons.check';
-import { Minus } from 'pkg.icons.minus';
+import { Check, Minus } from 'pkg.icons';
 
 import {
   containerTypes,

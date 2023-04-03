@@ -1,6 +1,6 @@
 import { Button, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 
-import { Copy } from 'pkg.icons.copy';
+import { Copy } from 'pkg.icons';
 import { useSnackbar } from 'notistack';
 
 import { observer } from 'mobx-react';
