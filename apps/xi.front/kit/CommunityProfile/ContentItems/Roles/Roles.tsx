@@ -4,8 +4,8 @@ import { Stack, Theme, useMediaQuery } from '@mui/material';
 
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
-import RolesSidebar from './rolesSidebar/RolesSidebar';
-import EditRole from './editRole/EditRole';
+import RolesSidebar from './RolesSidebar';
+import EditRole from './EditRole';
 
 const Roles = observer(() => {
   const rootStore = useStore();

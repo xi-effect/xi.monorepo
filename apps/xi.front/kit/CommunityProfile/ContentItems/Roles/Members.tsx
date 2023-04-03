@@ -3,7 +3,7 @@ import { Button, IconButton, InputAdornment, Stack, TextField, Typography } from
 import SearchIcon from '@mui/icons-material/Search';
 import { Avatar } from 'pkg.data.avatar';
 import { Close } from 'pkg.icons.close';
-import { TabPanel } from '../EditRole';
+import { TabPanel } from './EditRole';
 
 //  data
 const members = [

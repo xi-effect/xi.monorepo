@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack, Switch, Typography } from '@mui/material';
 import { Control, Controller } from 'react-hook-form';
-import { TabPanel } from '../EditRole';
+import { TabPanel } from './EditRole';
 
 // root access data
 type rootAccessType = {

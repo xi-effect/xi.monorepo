@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-key */
 import { Stack, useMediaQuery, Theme } from '@mui/material';
 import Overview from './ContentItems/Overview';
-import Roles from './ContentItems/Roles/Roles';
+
 import Participants from './ContentItems/Participants';
 import History from './ContentItems/History';
 import Categories from './ContentItems/Categories';
 import Invites from './ContentItems/Invites';
 import Classes from './ContentItems/Classes';
+import { Roles } from './ContentItems/Roles';
 
 type ContentProps = {
   activeContent: number;

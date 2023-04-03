@@ -11,10 +11,10 @@ import * as yup from 'yup';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Trash } from 'pkg.icons.trash';
-import SaveDataRole from './saveDataRole/SaveDataRole';
-import SettingRole from './settingRole/SettingRole';
-import RootAccess from './rootAccess/RootAccess';
-import Members from './members/Members';
+import SaveDataRole from './SaveDataRole';
+import SettingRole from './SettingRole';
+import RootAccess from './RootAccess';
+import Members from './Members';
 
 // Custom Tabs
 interface StyledTabProps {

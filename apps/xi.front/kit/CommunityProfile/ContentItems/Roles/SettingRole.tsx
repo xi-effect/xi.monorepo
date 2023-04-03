@@ -5,7 +5,7 @@ import { Control, Controller } from 'react-hook-form';
 import { Input } from 'pkg.inputs.input';
 import CheckIcon from '@mui/icons-material/Check';
 import { styled } from '@mui/material/styles';
-import { TabPanel } from '../EditRole';
+import { TabPanel } from './EditRole';
 
 // Custom Radio
 const BpIcon = styled('span')(({ theme }) => ({
