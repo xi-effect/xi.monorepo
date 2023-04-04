@@ -68,6 +68,7 @@ const schema = yup
 
 const Participants = observer(() => {
   const rootStore = useStore();
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { userSt } = rootStore;
 
