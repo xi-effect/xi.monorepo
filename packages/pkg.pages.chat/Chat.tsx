@@ -1,4 +1,5 @@
 import { Stack } from '@mui/material';
+import { Input } from 'pkg.inputs.input';
 import { DateBlock } from './DateBlock';
 import { ChatProps } from './types';
 
@@ -13,5 +14,7 @@ export const Chat = ({ name, body }: ChatProps) => (
     {body.map((data) => (
       <DateBlock {...data} />
     ))}
+
+    <Input />
   </Stack>
 );

@@ -15,7 +15,8 @@
     "react": "^18.2.0",
     "framer-motion": "^7.10.2",
     "dayjs": "^1.11.7",
-    "pkg.components.badge": "*"
+    "pkg.components.badge": "*",
+    "pkg.inputs.input": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
