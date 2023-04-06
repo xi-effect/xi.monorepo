@@ -1,10 +1,10 @@
 import { Stack } from '@mui/material';
 import dayjs from 'dayjs';
 import { Badge } from 'pkg.components.badge';
-import { Msg } from './Msg';
+import { Message } from './Message';
 import { ChatBodyT, MsgT } from './types';
 
-export const MsgsBlock = ({ date, msgs }: ChatBodyT) => {
+export const DateBlock = ({ date, msgs }: ChatBodyT) => {
   const blockDate = dayjs(date).locale('ru').format('DD MMMM');
 
   return (
@@ -15,7 +15,7 @@ export const MsgsBlock = ({ date, msgs }: ChatBodyT) => {
         </Badge>
       </Stack>
       {msgs.map((msg: MsgT) => (
-        <Msg {...msg} />
+        <Message {...msg} />
       ))}
     </Stack>
   );

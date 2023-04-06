@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { MsgT } from './types';
 
-export const Msg = ({ body, date, author }: MsgT) => {
+export const Message = ({ body, date, author }: MsgT) => {
   const { text } = body;
   const msgDate = dayjs(date).locale('ru').format('DD.MM.YYYY HH:mm');
 
