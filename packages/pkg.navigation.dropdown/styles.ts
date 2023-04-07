@@ -20,7 +20,7 @@ export const dropdownSizes: { [key in DropdownSizesT]: any } = {
 
 export const MenuProps = {
   '&.Dropdown-root': {
-    width: '100px',
+    width: 0,
     height: '100%',
 
     '& .MuiBackdrop-root': {
