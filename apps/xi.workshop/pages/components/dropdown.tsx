@@ -1,7 +1,7 @@
 import { Dropdown, DropdownPropsT } from 'pkg.navigation.dropdown';
 import { LayoutPages } from 'kit/LayoutPages';
 import { MenuItem, Typography } from '@mui/material';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 
 const DropdownElement = ({ isOpened }: { isOpened: boolean }) => (
   <>
