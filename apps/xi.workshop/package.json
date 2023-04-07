@@ -45,6 +45,7 @@
     "pkg.inputs.toggle": "*",
     "pkg.inputs.switcher": "*",
     "pkg.layout.pages": "*",
+    "pkg.navigation.breadcrumbs": "*",
     "pkg.inputs.select": "*",
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
@@ -81,3 +82,4 @@
     "typescript": "^4.5.3"
   }
 }
+
