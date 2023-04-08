@@ -25,6 +25,8 @@ const nextConfig = {
     'pkg.inputs.toggle',
     'pkg.inputs.switcher',
     'pkg.editor.text',
+    'pkg.hooks',
+    'pkg.utils',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import {
-  Divider, Stack, Button, Typography, useMediaQuery,
-} from '@mui/material';
+import { Divider, Stack, Button, Typography, useMediaQuery } from '@mui/material';
 import { observer } from 'mobx-react';
-import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
+import { getLastCodeFromURL } from 'pkg.utils';
 import { useRouter } from 'next/router';
 import { useStore } from 'store/connect';
 import XiLogo from 'kit/XiLogo';
@@ -28,7 +26,7 @@ const Email = observer(() => {
         setOk(false);
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getStatus = (value) => {
@@ -75,9 +73,7 @@ const Email = observer(() => {
               lineHeight: '32px',
             }}
           >
-            {' '}
             {getStatus(ok)}
-            {' '}
           </Typography>
           <Button
             onClick={() => router.push('/')}

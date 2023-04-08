@@ -9,7 +9,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
 import { useSnackbar } from 'notistack';
-import { isSameDate } from 'utils/isSameDates';
+import { isSameDates } from 'pkg.utils';
 
 const typographyStyles = {
   fontWeight: 400,
@@ -52,7 +52,7 @@ const Account = observer(() => {
           key === 'birthday' &&
           data.birthday !== null &&
           profile.birthday !== null &&
-          isSameDate(data.birthday, profile.birthday)
+          isSameDates(data.birthday, profile.birthday)
         ) {
           return;
         }

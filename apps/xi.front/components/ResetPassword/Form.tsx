@@ -10,7 +10,7 @@ import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
 
 import { Eyeoff, Eyeon } from 'pkg.icons';
 import { useStore } from 'store/connect';
-import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
+import { getLastCodeFromURL } from 'pkg.utils';
 
 const schema = yup
   .object({
