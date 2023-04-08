@@ -9,7 +9,7 @@ import { Stack, Typography, Paper, Skeleton } from '@mui/material';
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 
-import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
+import { getLastCodeFromURL } from 'pkg.utils';
 import { Avatar } from 'pkg.data.avatar';
 import { Badge } from 'pkg.components.badge';
 import { Button } from 'pkg.inputs.button';

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { Box, Button, Dialog, IconButton, Slider, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons';
 import AvatarEditor from 'react-avatar-editor';
-import { usePostFiles } from 'utils/useFiles';
+import { usePostFiles } from 'pkg.hooks';
 import { useStore } from 'store/connect';
 import { useSnackbar } from 'notistack';
 

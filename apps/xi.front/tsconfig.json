@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "extends": "pkg.config.typescript/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../../packages/pkg.hooks/useWebRTC.tsx"],
   "exclude": ["node_modules"]
 }

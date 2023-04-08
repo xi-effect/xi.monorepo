@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import { Box } from '@mui/material';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-import { handlingEditors } from 'utils/handlingEditors';
 import EditorSample from 'components/ContentEditor/Editor/EditorSample';
+import { handlingEditors } from './handlingEditors';
 import { Type } from './common/withListsPlugin';
 
 export type EditorsT = { id: string; type: Type };

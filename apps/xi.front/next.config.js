@@ -45,6 +45,8 @@ const nextConfig = {
     'pkg.inputs.radio',
     'pkg.inputs.toggle',
     'pkg.icons',
+    'pkg.hooks',
+    'pkg.utils',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
