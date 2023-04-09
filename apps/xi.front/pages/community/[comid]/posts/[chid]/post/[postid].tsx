@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import { observer } from 'mobx-react';
 import { LayoutPages } from 'pkg.layout.pages';
 import { Navigation } from 'kit/Navigation';
-import { Header, SubHeader, Content, Breadcrumbs, Slider } from 'components/Community/Post';
+import { Header, SubHeader, Content, Breadcrumbs } from 'components/Community/Post';
 
 const Post = observer(() => (
   <LayoutPages noIndex>
@@ -23,7 +23,6 @@ const Post = observer(() => (
         <Header />
         <SubHeader />
         <Content />
-        <Slider />
       </Stack>
     </Navigation>
   </LayoutPages>

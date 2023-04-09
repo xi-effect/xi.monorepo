@@ -1,12 +1,8 @@
-import React, { KeyboardEvent, MouseEvent } from 'react';
+import React, { KeyboardEvent } from 'react';
 import { MenuItem, Stack, MenuList, Divider, Typography } from '@mui/material';
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
-import { Settings } from 'pkg.icons.settings';
-import { Exit } from 'pkg.icons.exit';
-import { AddChannel } from 'pkg.icons.addchannel';
-import { AddCategory } from 'pkg.icons.addcategory';
-import { Invite } from 'pkg.icons.invite';
+import { Settings, Exit, AddChannel, AddCategory, Invite } from 'pkg.icons';
 
 const menuListStyles = {
   width: '100%',
@@ -14,7 +10,7 @@ const menuListStyles = {
   p: '9px 10px',
   borderRadius: '4px',
   '&:hover': {
-    bgcolor: 'grayscale.5',
+    bgcolor: 'petersburg.5',
   },
 };
 
@@ -29,11 +25,10 @@ const dividerStyles = {
 type CommunityMenuProps = {
   open?: boolean;
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  handleClose?: (e: MouseEvent<HTMLAnchorElement> | MouseEvent<HTMLLIElement>) => void;
   handleListKeyDown?: (e: KeyboardEvent<HTMLUListElement>) => void;
 };
 
-const CommunityMenu = observer(({ setOpen, handleClose }: CommunityMenuProps) => {
+const CommunityMenu = observer(({ setOpen }: CommunityMenuProps) => {
   const rootStore = useStore();
   const { uiSt } = rootStore;
 

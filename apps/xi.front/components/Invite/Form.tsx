@@ -3,40 +3,43 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { useRouter, NextRouter } from 'next/router';
-import Image from 'next/image';
 
-import {
-  Stack,
-  useMediaQuery,
-  Typography,
-  Box,
-  Paper,
-  Skeleton,
-  Breakpoint,
-  Theme,
-} from '@mui/material';
+import { Stack, Typography, Paper, Skeleton } from '@mui/material';
 
-import { motion } from 'framer-motion';
 import { observer } from 'mobx-react';
-import GreenButton from 'kit/GreenButton';
 import { useStore } from 'store/connect';
 
-import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
+import { getLastCodeFromURL } from 'pkg.utils';
+import { Avatar } from 'pkg.data.avatar';
+import { Badge } from 'pkg.components.badge';
+import { Button } from 'pkg.inputs.button';
 
 type CommunityInfo = {
   name: string;
-  description: string;
-  id: number;
+  id?: number;
 };
 
 type ContentProps = {
-  join: boolean;
-  auth: boolean;
+  join?: boolean;
+  auth?: boolean;
+  undef?: boolean;
   comm: CommunityInfo;
 };
 
-const Content = observer(({ comm, auth, join }: ContentProps) => {
+// const errors = [
+//   'У приглашения достигнут лимит использований',
+//   'Срок действия приглашения исчерпан',
+//   'Владелец сообщества удалил приглашение',
+//   'Код приглашения недействителен',
+// ];
+
+const Skelet = () => <Skeleton />;
+
+const Content = observer(({ comm, auth, join, undef }: ContentProps) => {
   const rootStore = useStore();
+  console.log('undef', undef);
+
+  const { name } = comm;
 
   const router: NextRouter = useRouter();
 
@@ -50,26 +53,12 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
   if (!auth) {
     return (
       <>
-        <Typography sx={{ mt: 2 }} variant="xl">
-          {comm.name}
-        </Typography>
         <Typography sx={{ mt: 1, color: 'text.secondary' }} variant="h6">
-          Вы не авторизованы
+          Приглашение недействительно
         </Typography>
         <Typography textAlign="center" sx={{ color: 'text.secondary' }} variant="subtitle1">
           войдите или зарегистрируйтесь, чтобы принять приглашение
         </Typography>
-        <GreenButton
-          sx={{
-            mt: 3,
-            borderRadius: 4,
-            width: 146,
-            height: 40,
-          }}
-          onClick={() => router.push('/')}
-        >
-          Войти
-        </GreenButton>
       </>
     );
   }
@@ -77,43 +66,86 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
   if (join) {
     return (
       <>
-        <Typography sx={{ mt: 2 }} variant="xl">
-          {comm.name}
-        </Typography>
-        <Typography sx={{ color: 'text.secondary' }} variant="subtitle1">
+        <Paper
+          elevation={8}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            mt: -8,
+            zIndex: 500,
+            bgcolor: 'petersburg.0',
+            borderRadius: '64px',
+            width: '128px',
+            height: '128px',
+          }}
+        >
+          <Avatar size={100} />
+        </Paper>
+        <Typography variant="m" sx={{ mt: 2 }}>
           Вы уже состоите в этом сообществе
         </Typography>
-        <GreenButton
-          sx={{
-            mt: 3,
-            borderRadius: 4,
-            width: 200,
-            height: 40,
+        <Typography variant="xl" sx={{ mt: 1 }}>
+          {name}
+        </Typography>
+        <Badge
+          stackProps={{
+            sx: {
+              mt: 2,
+            },
           }}
+          bgColor="petersburg.5"
+        >
+          1024 участника
+        </Badge>
+        <Button
           onClick={() => router.push(`/community/${comm.id}`)}
+          sx={{ mt: 4, width: '100%' }}
+          variant="contained"
         >
           Перейти к сообществу
-        </GreenButton>
+        </Button>
       </>
     );
   }
 
   return (
     <>
-      <Typography sx={{ mt: 2 }} variant="xl">
-        {comm.name}
-      </Typography>
-      <GreenButton
+      <Paper
+        elevation={8}
         sx={{
-          mt: 3,
-          borderRadius: 4,
-          width: 220,
-          height: 60,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mt: -8,
+          zIndex: 500,
+          bgcolor: 'petersburg.0',
+          borderRadius: '64px',
+          width: '128px',
+          height: '128px',
         }}
-        onClick={acceptInvite}
       >
-        Присоединиться к сообществу
-      </GreenButton>
+        <Avatar size={100} />
+      </Paper>
+      <Typography variant="m" sx={{ mt: 2 }}>
+        Вы были приглашены в
+      </Typography>
+      <Typography variant="xl" sx={{ mt: 1 }}>
+        {name}
+      </Typography>
+      <Badge
+        stackProps={{
+          sx: {
+            mt: 2,
+          },
+        }}
+        bgColor="petersburg.5"
+      >
+        1024 участника
+      </Badge>
+      <Button onClick={acceptInvite} sx={{ mt: 4, width: '100%' }} variant="contained">
+        Принять приглашение
+      </Button>
     </>
   );
 });
@@ -121,16 +153,9 @@ const Content = observer(({ comm, auth, join }: ContentProps) => {
 const Form = observer(() => {
   const rootStore = useStore();
 
-  const mobile: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('lg' as Breakpoint),
-  );
-  const mobileImage: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('md' as Breakpoint),
-  );
-
   const [join, setJoin] = React.useState<boolean | null>(null);
   const [auth, setAuth] = React.useState<boolean | null>(null);
-  const [comm, setComm] = React.useState<CommunityInfo | null>(null);
+  const [comm, setComm] = React.useState<CommunityInfo | null>({ name: 'МИПК И.Федорова' });
 
   const [undef, setUndef] = React.useState<boolean>(false);
 
@@ -146,7 +171,6 @@ const Form = observer(() => {
         setUndef(true);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -161,76 +185,29 @@ const Form = observer(() => {
         zIndex: 0,
       }}
     >
-      {!mobile && (
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '0px',
-            right: '-156px',
-            zIndex: -1,
-          }}
-        >
-          <Image alt="alt" src="/assets/landing/blob1.svg" quality={100} width={256} height={256} />
-        </Box>
-      )}
-      {!mobile && (
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '0px',
-            left: '-156px',
-            zIndex: -1,
-          }}
-        >
-          <Image alt="alt" src="/assets/landing/blob3.svg" quality={100} width={256} height={256} />
-        </Box>
-      )}
       <Paper
-        elevation={24}
+        elevation={0}
         sx={{
           mt: 4,
           zIndex: 500,
-          bgcolor: 'grey.800',
-          borderRadius: '20px',
+          bgcolor: 'petersburg.0',
+          borderRadius: 2,
+          width: '400px',
+          height: '298px',
         }}
       >
-        <Box>
-          <Stack
-            component={motion.div}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            sx={{ width: '100%' }}
-          >
-            <Image
-              alt="alt"
-              src="/assets/app/Invite.svg"
-              quality={100}
-              width={mobileImage ? 312 : 456}
-              height={mobileImage ? 312 : 456}
-            />
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              sx={{
-                width: '100%',
-                maxWidth: '386px',
-                mt: mobileImage ? '-16px' : '-32px',
-                p: 2,
-              }}
-            >
-              {!undef && join !== null && auth !== null && comm !== null ? (
-                <Content join={join} auth={auth} comm={comm} />
-              ) : (
-                <Skeleton sx={{ width: '100%', height: 64 }} />
-              )}
-            </Stack>
-          </Stack>
-        </Box>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ width: '100%', pl: 4, pr: 4 }}
+        >
+          {comm && auth && join ? (
+            <Content comm={comm} auth={auth} join={join} undef={undef} />
+          ) : (
+            <Skelet />
+          )}
+        </Stack>
       </Paper>
     </Stack>
   );

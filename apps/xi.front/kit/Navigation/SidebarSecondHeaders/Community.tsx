@@ -121,14 +121,14 @@ const Community = observer(() => {
                 width: 228,
                 boxShadow: 24,
                 borderRadius: '8px',
-                bgcolor: 'grayscale.0',
+                bgcolor: 'petersburg.0',
                 border: '1px solid',
-                borderColor: 'grayscale.40',
+                borderColor: 'petersburg.40',
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Box>
-                  <CommunityMenu handleClose={handleClose} />
+                  <CommunityMenu />
                 </Box>
               </ClickAwayListener>
             </Paper>

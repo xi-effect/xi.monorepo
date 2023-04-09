@@ -11,7 +11,7 @@ const Content = observer(() => (
     sx={{
       mt: '24px',
       position: 'relative',
-      backgroundColor: 'grayscale.0',
+      backgroundColor: 'petersburg.0',
       padding: 3,
       width: '100%',
       borderRadius: '8px',
@@ -22,7 +22,7 @@ const Content = observer(() => (
         fontWeight: 400,
         fontSize: '16px',
         lineHeight: '24px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       Учащиеся нашего колледжа, представители сборной Москвы в компетенции «Полиграфические

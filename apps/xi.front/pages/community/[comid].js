@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Navigation } from 'kit/Navigation';
 import { useStore } from 'store/connect';
 
-import { getLastCodeFromURL } from 'utils/getLastCodeFromURL';
+import { getLastCodeFromURL } from 'pkg.utils';
 import { LayoutPages } from 'pkg.layout.pages';
 
 const Community = observer(() => {

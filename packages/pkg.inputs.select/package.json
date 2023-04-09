@@ -14,7 +14,7 @@
     "@mui/material": "^5.11.0",
     "@mui/base": "5.0.0-alpha.113",
     "uuid": "^9.0.0",
-    "pkg.icons.arrow": "*"
+    "pkg.icons": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

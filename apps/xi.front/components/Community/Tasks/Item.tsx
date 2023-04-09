@@ -23,7 +23,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
       }
       sx={{
         height: '198px',
-        backgroundColor: 'grayscale.0',
+        backgroundColor: 'petersburg.0',
         textAlign: 'center',
         minWidth: mobile1336 ? '343px' : '504px',
         borderRadius: '8px',
@@ -134,7 +134,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
               fontWeight: 400,
               fontSize: '12px',
               lineHeight: '16px',
-              color: 'grayscale.40',
+              color: 'petersburg.40',
             }}
           >
             Создано:
@@ -144,7 +144,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
               fontWeight: 400,
               fontSize: '12px',
               lineHeight: '16px',
-              color: 'grayscale.80',
+              color: 'petersburg.80',
               pl: '2px',
             }}
           >
@@ -157,7 +157,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
               fontWeight: 400,
               fontSize: '12px',
               lineHeight: '16px',
-              color: 'grayscale.80',
+              color: 'petersburg.80',
             }}
           >
             Константин Константинопольский

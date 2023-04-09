@@ -5,7 +5,7 @@ import { getStyles } from './utils';
 
 export type BadgeProps = {
   icon?: FunctionComponent<SvgIconProps>;
-  text?: string;
+  children: string;
   bgColor: string;
   iconColor?: string;
   fontColor?: string;
@@ -17,7 +17,7 @@ export type BadgeProps = {
 
 export const Badge: FC<BadgeProps> = ({
   icon,
-  text,
+  children,
   bgColor,
   iconColor,
   fontColor,
@@ -51,18 +51,16 @@ export const Badge: FC<BadgeProps> = ({
         />
       )}
 
-      {text && (
-        <Typography
-          variant={styles.typography.variant}
-          component="span"
-          sx={{
-            color: fontColor,
-          }}
-          {...typographyProps}
-        >
-          {text}
-        </Typography>
-      )}
+      <Typography
+        variant={styles.typography.variant}
+        component="span"
+        sx={{
+          color: fontColor,
+        }}
+        {...typographyProps}
+      >
+        {children}
+      </Typography>
     </Stack>
   );
 };

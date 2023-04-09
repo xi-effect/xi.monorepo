@@ -1,8 +1,7 @@
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
 import { Link, LinkProps } from 'pkg.navigation.link';
-import { Link as LinkIcon } from 'pkg.icons.link';
-import { Arrow } from 'pkg.icons.arrow';
+import { Link as LinkIcon, Arrow } from 'pkg.icons';
 import { LayoutPages } from 'kit/LayoutPages';
 
 const testLongAction = () =>
@@ -29,7 +28,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
       {
@@ -39,7 +38,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
       {
@@ -49,7 +48,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
     ],

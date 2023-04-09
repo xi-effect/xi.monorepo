@@ -15,11 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
-import { Announce } from 'pkg.icons.announce';
-import { Camera } from 'pkg.icons.camera';
-import { Chat } from 'pkg.icons.chat';
-import { Task } from 'pkg.icons.task';
-import { Close } from 'pkg.icons.close';
+import { Announce, Camera, Chat, Task, Close } from 'pkg.icons';
 import { Radio } from 'pkg.inputs.radio';
 import { Button } from 'pkg.inputs.button';
 import RootStore from 'store/rootStore';
@@ -108,7 +104,7 @@ const DialogChannelCreation = observer(() => {
           width: '600px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -161,7 +157,7 @@ const DialogChannelCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -211,7 +207,7 @@ const DialogChannelCreation = observer(() => {
                   sx={{
                     cursor: 'pointer',
                     height: '100%',
-                    bgcolor: 'grayscale.5',
+                    bgcolor: 'petersburg.5',
                     borderRadius: '8px',
                     p: 2,
                   }}

@@ -86,13 +86,13 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
             key={index.toString()}
             sx={{
               mt: item.mt,
-              color: 'grayscale.100',
+              color: 'petersburg.100',
               pl: '16px',
               textTransform: 'none',
               backgroundColor:
-                index === activeContent && !mobile700 ? 'grayscale.0' : 'transparent',
+                index === activeContent && !mobile700 ? 'petersburg.0' : 'transparent',
               '&:hover': {
-                backgroundColor: !mobile700 ? 'grayscale.0' : '',
+                backgroundColor: !mobile700 ? 'petersburg.0' : '',
               },
             }}
           >
@@ -105,7 +105,7 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
           }}
           sx={{
             mt: '24px',
-            color: 'grayscale.100',
+            color: 'petersburg.100',
             backgroundColor: 'transparent',
             pl: '16px',
             '&:hover': {
