@@ -13,7 +13,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
-    "next": "^13.2.4",
+    "next": "13.2.4",
     "notistack": "^3.0.1",
     "pkg.icons": "*",
     "react": "^18.2.0"
