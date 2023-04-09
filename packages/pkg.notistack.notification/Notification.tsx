@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import * as React from 'react';
+import React from 'react';
 import { SnackbarContent, CustomContentProps } from 'notistack';
 import { Button, Paper, Stack, Typography, useMediaQuery, Theme } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
 interface ReportCompleteProps extends CustomContentProps {
   reset?: any;
+  bgcolor?: 'moscow.100' | 'ekaterinburg.100' | 'kungur.100' | 'petersburg.100';
 }
 
-const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
+export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
   const {
     // You have access to notistack props and options 👇🏼
     id,
@@ -21,6 +22,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
     persist,
     // as well as your own custom props 👇🏼,
     reset,
+    bgcolor,
     ...other
   } = props;
 
@@ -40,7 +42,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
         sx={{
           maxWidth: '960px',
           width: '100%',
-          height: isMobile ? '100%' : '96px',
+          height: '100%',
           borderRadius: '16px',
           boxShadow: 24,
           bgcolor: 'petersburg.0',
@@ -49,8 +51,8 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
         }}
       >
         <Stack
-          direction={isMobile ? 'column' : 'row'}
-          justifyContent="flex-start"
+          direction="row"
+          justifyContent="space-between"
           alignItems="center"
           sx={{
             p: 2,
@@ -123,6 +125,4 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
   );
 });
 
-SaveConfirm.displayName = 'SaveConfirm';
-
-export default SaveConfirm;
+Notification.displayName = 'Notification';
