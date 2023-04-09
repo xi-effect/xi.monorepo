@@ -21,7 +21,7 @@ import { useStoreInitialized } from 'store/rootStore';
 import createEmotionCache from 'store/createEmotionCache';
 import { getScheme } from 'pkg.theme.scheme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { SaveConfirm } from 'kit/SaveConfirm';
+import { SaveConfirm } from 'pkg.notistack.saveconfirm';
 
 config.autoAddCss = false;
 
