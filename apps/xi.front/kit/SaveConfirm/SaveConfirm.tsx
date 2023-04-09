@@ -65,6 +65,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
               fontWeight: 500,
               fontSize: '18px',
               lineHeight: '24px',
+              pl: 1,
             }}
           >
             У вас есть несохраненные изменения
