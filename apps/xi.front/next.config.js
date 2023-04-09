@@ -48,6 +48,7 @@ const nextConfig = {
     'pkg.icons',
     'pkg.hooks',
     'pkg.utils',
+    'pkg.notistack.saveconfirm',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
