@@ -16,7 +16,7 @@ const Header = observer(() => (
         fontWeight: 600,
         fontSize: '32px',
         lineHeight: '40px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       Задания

@@ -15,7 +15,7 @@ const Title = observer(() => (
         fontWeight: 600,
         fontSize: '24px',
         lineHeight: '32px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       4Д — БЖ
@@ -26,7 +26,7 @@ const Title = observer(() => (
         fontWeight: 400,
         fontSize: '16px',
         lineHeight: '24px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       Кастырин И.И.

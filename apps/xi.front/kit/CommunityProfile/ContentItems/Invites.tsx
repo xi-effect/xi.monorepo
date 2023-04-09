@@ -22,7 +22,7 @@ const UserProfile = () => (
       <Avatar size={24} />
     </Box>
     <Typography variant="m">Иван Ковыляев</Typography>
-    <Typography variant="xs" sx={{ color: 'grayscale.60' }}>
+    <Typography variant="xs" sx={{ color: 'petersburg.60' }}>
       ikovylyaev
     </Typography>
   </Stack>
@@ -84,7 +84,7 @@ const Invites = observer(() => {
         sx={{
           mt: 2,
           p: '24px',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
         }}
@@ -136,9 +136,9 @@ const Invites = observer(() => {
                         minWidth: '20px',
                         height: '20px',
                         borderRadius: '4px',
-                        bgcolor: 'grayscale.10',
+                        bgcolor: 'petersburg.10',
                         '&:hover': {
-                          bgcolor: 'grayscale.10',
+                          bgcolor: 'petersburg.10',
                         },
                         svg: {
                           fill: '#000000',
@@ -164,7 +164,7 @@ const Invites = observer(() => {
                 <Typography variant="xs">Использований:</Typography>
                 <Stack direction="row" justifyContent="flex-start" alignItems="flex-start">
                   <Typography variant="m">10</Typography>
-                  <Typography sx={{ color: 'grayscale.40' }} variant="xs">
+                  <Typography sx={{ color: 'petersburg.40' }} variant="xs">
                     /32
                   </Typography>
                 </Stack>
@@ -187,8 +187,8 @@ const Invites = observer(() => {
                   alignItems="center"
                   sx={{
                     p: '4px 8px',
-                    bgcolor: 'grayscale.5',
-                    color: 'grayscale.100',
+                    bgcolor: 'petersburg.5',
+                    color: 'petersburg.100',
                     position: 'relative',
                     borderRadius: '4px',
                   }}
@@ -198,7 +198,7 @@ const Invites = observer(() => {
                     sx={{
                       width: '12px',
                       height: '12px',
-                      bgcolor: 'grayscale.100',
+                      bgcolor: 'petersburg.100',
                       borderRadius: '6px',
                     }}
                   />

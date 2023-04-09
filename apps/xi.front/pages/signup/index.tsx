@@ -14,7 +14,7 @@ const Terms = () => (
       paddingTop="12px"
       paddingBottom="5px"
       sx={{
-        color: 'grayscale.40',
+        color: 'petersburg.40',
       }}
     >
       Нажимая «Регистрация», вы принимаете условия

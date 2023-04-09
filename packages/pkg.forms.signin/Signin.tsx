@@ -85,7 +85,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               helperText={getEmailError()}
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}

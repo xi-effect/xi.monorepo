@@ -73,15 +73,15 @@ export const Header = ({ logo }: HeaderProps) => {
           sx={{
             width: button1Width[deviceWidth],
             height: buttonsHeight[deviceWidth],
-            color: 'grayscale.100',
-            bgcolor: 'grayscale.0',
+            color: 'petersburg.100',
+            bgcolor: 'petersburg.0',
             borderRadius: '12px',
             fontWeight: '400',
             fontSize: buttonsFontSize[deviceWidth],
             lineHeight: buttonsLineHeight[deviceWidth],
             textTransform: 'capitalize',
             '&:hover': {
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               bgcolor: 'secondary.dark',
             },
           }}
@@ -93,15 +93,15 @@ export const Header = ({ logo }: HeaderProps) => {
           sx={{
             width: button2Width[deviceWidth],
             height: buttonsHeight[deviceWidth],
-            color: 'grayscale.100',
-            bgcolor: 'grayscale.0',
+            color: 'petersburg.100',
+            bgcolor: 'petersburg.0',
             borderRadius: '12px',
             fontWeight: '400',
             fontSize: buttonsFontSize[deviceWidth],
             lineHeight: buttonsLineHeight[deviceWidth],
             textTransform: 'capitalize',
             '&:hover': {
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               bgcolor: 'secondary.dark',
             },
           }}

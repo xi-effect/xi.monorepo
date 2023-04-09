@@ -28,7 +28,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
       {
@@ -38,7 +38,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
       {
@@ -48,7 +48,7 @@ const TestLinksData: TestLinksDataT[] = [
         Icon: LinkIcon,
         isDisabled: true,
         hoverStyles: {
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         },
       },
     ],

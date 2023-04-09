@@ -25,7 +25,7 @@ const Item = observer((data: UpdateT) => {
   };
 
   return (
-    <Stack sx={{ bgcolor: 'grayscale.0', borderRadius: '16px', p: '24px' }} spacing={2}>
+    <Stack sx={{ bgcolor: 'petersburg.0', borderRadius: '16px', p: '24px' }} spacing={2}>
       <Stack spacing={0.5}>
         <Typography sx={{ ...titleSizes[getScreenWidth()], fontWeight: 600 }}>
           {data.title}
@@ -33,7 +33,7 @@ const Item = observer((data: UpdateT) => {
         <Typography
           sx={{
             ...descriptionSizes[getScreenWidth()],
-            color: 'grayscale.80',
+            color: 'petersburg.80',
           }}
         >
           {data.description}

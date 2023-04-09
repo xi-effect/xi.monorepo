@@ -11,7 +11,7 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 'l',
     hoverStyles: {
-      color: 'grayscale.80',
+      color: 'petersburg.80',
     },
   },
   {
@@ -22,7 +22,7 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 'm',
     hoverStyles: {
-      color: 'grayscale.80',
+      color: 'petersburg.80',
     },
   },
   {
@@ -33,7 +33,7 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 's',
     hoverStyles: {
-      color: 'grayscale.80',
+      color: 'petersburg.80',
     },
   },
 

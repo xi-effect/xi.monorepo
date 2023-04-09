@@ -36,7 +36,7 @@ const Main = observer(() => {
         justifyContent="flex-start"
         alignItems="center"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           height: '204px',
           borderRadius: '8px',
@@ -61,7 +61,7 @@ const Main = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '25px 24px',
@@ -81,7 +81,7 @@ const Main = observer(() => {
           margin="0"
           mt="12px"
           sx={{
-            color: 'grayscale.40',
+            color: 'petersburg.40',
             fontWeight: 400,
             fontSize: mobile700 ? '16px' : '20px',
             lineHeight: mobile700 ? '20px' : '24px',
@@ -100,13 +100,13 @@ const Main = observer(() => {
             height: mobile700 ? '52px' : '64px',
             padding: `6px 6px 6px ${mobile700 ? '12px' : '20px'}`,
             borderRadius: '8px',
-            bgcolor: 'grayscale.5',
+            bgcolor: 'petersburg.5',
           }}
         >
           <Typography
             sx={{
               fontSize: mobile700 ? '15px' : '24px',
-              color: inviteId ? 'grayscale.100' : 'red',
+              color: inviteId ? 'petersburg.100' : 'red',
               lineHeight: '44px',
               width: '100%',
               mr: '20px',

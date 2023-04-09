@@ -15,7 +15,7 @@ const Terms = () => (
       paddingTop="12px"
       paddingBottom="5px"
       sx={{
-        color: 'grayscale.40',
+        color: 'petersburg.40',
       }}
     >
       Нажимая «Войти», вы принимаете условия
@@ -94,7 +94,7 @@ const Signin = observer(() => {
             width: isMobile ? '100%' : '420px',
             height: isMobile ? '395px' : '514px',
             borderRadius: '16px',
-            border: isMobile ? 'none' : '1px solid #E6E6E6', // grayscale.10
+            border: isMobile ? 'none' : '1px solid #E6E6E6', // petersburg.10
             position: 'relative',
           }}
         >

@@ -27,7 +27,7 @@ export const Link = ({
   children,
   size = 'm',
   isDisabled,
-  color = 'grayscale.90',
+  color = 'petersburg.90',
   Icon,
   visitedStyles = '',
   hoverStyles = '',
@@ -74,7 +74,7 @@ export const Link = ({
       sx={{
         ...linkSizes[size],
         pointerEvents: isDisabled ? 'none' : 'auto',
-        color: isDisabled ? 'grayscale.40' : color,
+        color: isDisabled ? 'petersburg.40' : color,
         textDecoration: 'none',
         width: 'max-content',
         height: 'max-content',

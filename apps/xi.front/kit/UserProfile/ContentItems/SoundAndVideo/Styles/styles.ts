@@ -31,14 +31,14 @@ export const contentTitle = {
   fontWeight: 500,
   fontSize: '24px',
   lineHeight: '32px',
-  color: 'grayscale.100',
+  color: 'petersburg.100',
 };
 
 export const contentSubTitle = {
   fontWeight: 400,
   fontSize: '16px',
   lineHeight: '24px',
-  color: 'grayscale.40',
+  color: 'petersburg.40',
 };
 
 export const SliderS = {
@@ -48,7 +48,7 @@ export const SliderS = {
   '& .MuiSlider-rail': {
     borderRadius: '8px',
     opacity: 1,
-    backgroundColor: 'grayscale.40',
+    backgroundColor: 'petersburg.40',
   },
   '& .MuiSlider-thumb': {
     height: '16px',

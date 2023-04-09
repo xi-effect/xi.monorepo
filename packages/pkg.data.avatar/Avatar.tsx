@@ -36,7 +36,7 @@ export const Avatar = ({ size = 48, name = 'xi.effect', label = 'М', sx }: Avat
         fontWeight: 600,
         fontSize: `${size / 2.5}px`,
         lineHeight: `${size / 2.5}px`,
-        color: 'grayscale.0',
+        color: 'petersburg.0',
       }}
     >
       {label}

@@ -50,7 +50,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
             width: '40px',
             height: '40px',
             transform: 'rotate(180deg)',
-            backgroundColor: 'grayscale.0',
+            backgroundColor: 'petersburg.0',
           }}
         >
           <Arrow />
@@ -85,7 +85,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
         sx={{
           width: '40px',
           height: '40px',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           position: 'absolute',
           right: 0,
         }}

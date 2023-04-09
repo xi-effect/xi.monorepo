@@ -26,7 +26,7 @@ const UserProfile = ({ name, nickname }: { name: string; nickname: string }) => 
       <Avatar size={24} />
     </Box>
     <Typography variant="m">{name}</Typography>
-    <Typography variant="xs" sx={{ color: 'grayscale.60' }}>
+    <Typography variant="xs" sx={{ color: 'petersburg.60' }}>
       {nickname}
     </Typography>
   </Stack>
@@ -123,7 +123,7 @@ const Participants = observer(() => {
               autoComplete="on"
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               InputProps={{
@@ -144,7 +144,7 @@ const Participants = observer(() => {
         sx={{
           mt: 2,
           p: '24px',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
         }}

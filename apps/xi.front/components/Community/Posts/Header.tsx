@@ -17,7 +17,7 @@ const Header = observer(() => (
         fontWeight: 600,
         fontSize: '32px',
         lineHeight: '40px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       Объявления
@@ -30,11 +30,11 @@ const Header = observer(() => (
         height: 40,
         boxShadow: 0,
         borderRadius: '8px',
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
 
         '&:hover': {
           boxShadow: 0,
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
         },
 
         svg: {
@@ -49,7 +49,7 @@ const Header = observer(() => (
           fontWeight: 500,
           fontSize: '16px',
           lineHeight: '20px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
           textTransform: 'capitalize',
         }}
       >

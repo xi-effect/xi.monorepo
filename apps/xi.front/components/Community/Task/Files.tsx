@@ -13,7 +13,7 @@ const Files = observer(() => {
       sx={{
         width: '100%',
         borderRadius: '8px',
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
         p: 3,
       }}
     >
@@ -31,7 +31,7 @@ const Files = observer(() => {
             fontWeight: 600,
             fontSize: '24px',
             lineHeight: '32px',
-            color: 'grayscale.100',
+            color: 'petersburg.100',
           }}
         >
           Решение
@@ -44,7 +44,7 @@ const Files = observer(() => {
               fontWeight: 400,
               fontSize: '14px',
               lineHeight: '16px',
-              color: 'grayscale.100',
+              color: 'petersburg.100',
             }}
           >
             до 14 сен 22
@@ -76,7 +76,7 @@ const Files = observer(() => {
             fontWeight: 400,
             fontSize: '14px',
             lineHeight: '16px',
-            color: 'grayscale.100',
+            color: 'petersburg.100',
           }}
         >
           до 14 сен 22

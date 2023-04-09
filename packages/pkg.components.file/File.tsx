@@ -44,12 +44,12 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
       width: '100%',
       height: '72px',
       border: '1px solid',
-      borderColor: 'grayscale.10',
+      borderColor: 'petersburg.10',
       borderRadius: '8px',
       transition: '0.3s',
-      backgroundColor: 'grayscale.0',
+      backgroundColor: 'petersburg.0',
       '&:hover': {
-        backgroundColor: 'grayscale.5',
+        backgroundColor: 'petersburg.5',
       },
     }}
     spacing={1}
@@ -102,12 +102,12 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
 
       <Box sx={{ textAlign: 'left', width: '100%' }}>
         <Typography
-          sx={{ fontSize: '16px', fontWeight: 500, lineHeight: '22px', color: 'grayscale.100' }}
+          sx={{ fontSize: '16px', fontWeight: 500, lineHeight: '22px', color: 'petersburg.100' }}
         >
           {name}
         </Typography>
         <Typography
-          sx={{ fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: 'grayscale.100' }}
+          sx={{ fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: 'petersburg.100' }}
         >
           {formatSize(size)}
         </Typography>
@@ -126,7 +126,7 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
           borderRadius: '50%',
           transition: '0.6s',
           cursor: 'pointer',
-          '&:hover': { backgroundColor: 'grayscale.0' },
+          '&:hover': { backgroundColor: 'petersburg.0' },
         }}
       >
         <Close />

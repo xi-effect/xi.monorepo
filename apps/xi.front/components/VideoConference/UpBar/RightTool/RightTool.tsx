@@ -17,8 +17,8 @@ const RightTool = () => (
           ml: '2px',
           height: '40px',
           width: '96px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -41,8 +41,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -55,8 +55,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -69,8 +69,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >

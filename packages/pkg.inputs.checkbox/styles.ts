@@ -1,20 +1,20 @@
 /* names created according to: component name + prop + style (S) */
 /* styles according to types */
 export const containerTypes = {
-  default: { bgcolor: 'grayscale.5' },
+  default: { bgcolor: 'petersburg.5' },
   warning: {
-    bgcolor: 'grayscale.5',
+    bgcolor: 'petersburg.5',
   },
-  error: { bgcolor: 'grayscale.5' },
-  disabled: { bgcolor: 'grayscale.10' },
+  error: { bgcolor: 'petersburg.5' },
+  disabled: { bgcolor: 'petersburg.10' },
 };
 export const checkboxTypes = {
-  default: { color: 'grayscale.40' },
+  default: { color: 'petersburg.40' },
   warning: {
     color: 'warning.dark',
   },
   error: { color: 'error.dark' },
-  disabled: { color: 'grayscale.10' },
+  disabled: { color: 'petersburg.10' },
 };
 export const checkedCheckboxTypes = {
   default: { bgcolor: 'primary.dark' },
@@ -22,24 +22,24 @@ export const checkedCheckboxTypes = {
     bgcolor: 'warning.dark',
   },
   error: { bgcolor: 'error.dark' },
-  disabled: { bgcolor: 'grayscale.10' },
+  disabled: { bgcolor: 'petersburg.10' },
 };
 export const checkedIconTypes = {
-  default: { color: 'grayscale.0' },
+  default: { color: 'petersburg.0' },
   warning: {
-    color: 'grayscale.0',
+    color: 'petersburg.0',
   },
-  error: { color: 'grayscale.0' },
-  disabled: { color: 'grayscale.40' },
+  error: { color: 'petersburg.0' },
+  disabled: { color: 'petersburg.40' },
 };
 export const defaultIconTypes = {
-  default: { borderColor: 'primary.dark', bgcolor: 'grayscale.0' },
+  default: { borderColor: 'primary.dark', bgcolor: 'petersburg.0' },
   warning: {
     borderColor: 'warning.dark',
-    bgcolor: 'grayscale.0',
+    bgcolor: 'petersburg.0',
   },
-  error: { borderColor: 'error.dark', bgcolor: 'grayscale.0' },
-  disabled: { borderColor: 'grayscale.10', bgcolor: 'grayscale.10', color: 'grayscale.10' },
+  error: { borderColor: 'error.dark', bgcolor: 'petersburg.0' },
+  disabled: { borderColor: 'petersburg.10', bgcolor: 'petersburg.10', color: 'petersburg.10' },
 };
 
 /* styles according to sizes */

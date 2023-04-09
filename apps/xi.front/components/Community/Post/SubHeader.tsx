@@ -20,7 +20,7 @@ const SubHeader = observer(() => (
         fontWeight: 500,
         fontSize: '12px',
         lineHeight: '16px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
       }}
     >
       4 мая 2022
@@ -33,10 +33,10 @@ const SubHeader = observer(() => (
         fontWeight: 500,
         fontSize: '12px',
         lineHeight: '16px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
         '&:before': {
           content: "''",
-          bgcolor: 'grayscale.100',
+          bgcolor: 'petersburg.100',
           position: 'absolute',
           left: '-7px',
           top: '7px',

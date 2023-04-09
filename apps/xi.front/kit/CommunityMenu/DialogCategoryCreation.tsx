@@ -110,7 +110,7 @@ const DialogCategoryCreation = observer(() => {
           width: '600px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -163,7 +163,7 @@ const DialogCategoryCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -189,7 +189,7 @@ const DialogCategoryCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -251,7 +251,7 @@ const DialogCategoryCreation = observer(() => {
           sx={{
             width: '100%',
             height: '112px',
-            backgroundColor: 'grayscale.5',
+            backgroundColor: 'petersburg.5',
             p: 2,
             borderRadius: '6px',
             mt: 3,

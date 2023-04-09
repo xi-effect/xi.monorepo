@@ -19,9 +19,9 @@ export const Breadcrumbs = ({
   breadcrumbs,
   size,
   Separator,
-  color = 'grayscale.40',
+  color = 'petersburg.40',
   hoverStyles,
-  lastItemColor = 'grayscale.100',
+  lastItemColor = 'petersburg.100',
 }: BreadcrumbsProps) => {
   const CustomSeparator = Separator ? (
     <Separator sx={{ ...separatorSizes[size], color }} />
