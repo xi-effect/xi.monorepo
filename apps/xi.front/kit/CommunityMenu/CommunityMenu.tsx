@@ -10,7 +10,7 @@ const menuListStyles = {
   p: '9px 10px',
   borderRadius: '4px',
   '&:hover': {
-    bgcolor: 'grayscale.5',
+    bgcolor: 'petersburg.5',
   },
 };
 

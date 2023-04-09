@@ -20,10 +20,10 @@ const Header = observer(() => (
         width: 173,
         height: 40,
         borderRadius: '4px',
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
 
         '&:hover': {
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
         },
       }}
     >
@@ -34,7 +34,7 @@ const Header = observer(() => (
           fontWeight: 500,
           fontSize: '16px',
           lineHeight: '20px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         }}
       >
         Редактировать
@@ -47,10 +47,10 @@ const Header = observer(() => (
         width: 118,
         height: 40,
         borderRadius: '4px',
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
 
         '&:hover': {
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
         },
       }}
     >
@@ -61,7 +61,7 @@ const Header = observer(() => (
           fontWeight: 500,
           fontSize: '16px',
           lineHeight: '20px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         }}
       >
         Удалить

@@ -115,7 +115,7 @@ const PasswordChangeDialog = observer(() => {
           height: '448px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -190,7 +190,7 @@ const PasswordChangeDialog = observer(() => {
               {...field}
               sx={{
                 mt: '16px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -225,7 +225,7 @@ const PasswordChangeDialog = observer(() => {
               {...field}
               sx={{
                 mt: '16px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -272,10 +272,10 @@ const PasswordChangeDialog = observer(() => {
             width: '356px',
             height: '48px',
             boxShadow: 'none',
-            color: 'grayscale.0',
+            color: 'petersburg.0',
             '&:hover': {
               boxShadow: 'none',
-              color: 'grayscale.0',
+              color: 'petersburg.0',
             },
           }}
         >

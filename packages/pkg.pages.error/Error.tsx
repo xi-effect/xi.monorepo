@@ -93,12 +93,12 @@ export function Error({ code, logo }: ErrorProps) {
           textTransform: 'none',
           fontWeight: 500,
           borderRadius: '8px',
-          color: 'grayscale.0',
+          color: 'petersburg.0',
           lineHeight: '22px',
           backgroundColor: 'primary.dark',
 
           '&:hover': {
-            color: 'grayscale.0',
+            color: 'petersburg.0',
             backgroundColor: 'primary.dark',
           },
         }}

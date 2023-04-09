@@ -14,7 +14,7 @@ const Overview = observer(() => {
       justifyContent="flex-start"
       alignItems="center"
       sx={{
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
         width: '100%',
         borderRadius: '8px',
         padding: '24px 36px',

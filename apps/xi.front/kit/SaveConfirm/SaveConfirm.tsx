@@ -43,9 +43,9 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
           height: isMobile ? '100%' : '96px',
           borderRadius: '16px',
           boxShadow: 24,
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           border: '1px solid',
-          borderColor: 'grayscale.40',
+          borderColor: 'petersburg.40',
         }}
       >
         <Stack
@@ -85,7 +85,7 @@ const SaveConfirm = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props
                 fontSize: '18px',
                 lineHeight: '22px',
                 borderRadius: '8px',
-                color: 'grayscale.80',
+                color: 'petersburg.80',
                 textTransform: 'capitalize',
                 boxShadow: 0,
                 '&:hover': {

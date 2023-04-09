@@ -52,7 +52,7 @@ const Email = observer(() => {
           justifyContent="center"
           alignItems="center"
           sx={{
-            backgroundColor: 'grayscale.0',
+            backgroundColor: 'petersburg.0',
             borderRadius: '16px',
             border: '1px solid rgba(230, 230, 230, 1)',
             height: '224px',
@@ -67,7 +67,7 @@ const Email = observer(() => {
           <Typography
             sx={{
               mt: '24px',
-              color: 'grayscale.100',
+              color: 'petersburg.100',
               fontWeight: 600,
               fontSize: '24px',
               lineHeight: '32px',
@@ -90,7 +90,7 @@ const Email = observer(() => {
               bottom: '8px',
               width: '134px',
               height: '5px',
-              backgroundColor: 'grayscale.100',
+              backgroundColor: 'petersburg.100',
               borderRadius: '100px',
             }}
           />

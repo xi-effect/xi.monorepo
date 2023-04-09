@@ -16,7 +16,7 @@ const RightTool = () => (
         sx={{
           height: '48px',
           width: '48px',
-          color: 'grayscale.0',
+          color: 'petersburg.0',
           bgcolor: 'error.dark',
           borderRadius: '24px',
 

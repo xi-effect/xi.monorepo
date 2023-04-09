@@ -55,7 +55,7 @@ const DialogInvite = observer(() => {
           width: '600px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -102,7 +102,7 @@ const DialogInvite = observer(() => {
               autoComplete="on"
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -113,7 +113,7 @@ const DialogInvite = observer(() => {
         <Typography
           variant="m"
           textAlign="left"
-          sx={{ mt: 0.5, mb: 1, fontWeight: 400, color: 'grayscale.60', width: '100%' }}
+          sx={{ mt: 0.5, mb: 1, fontWeight: 400, color: 'petersburg.60', width: '100%' }}
         >
           Для приглашения без ограничения оставить пустым
         </Typography>
@@ -196,10 +196,10 @@ const DialogInvite = observer(() => {
               height: '48px',
               boxShadow: 'none',
               borderRadius: 1,
-              color: 'grayscale.80',
+              color: 'petersburg.80',
               '&:hover': {
                 boxShadow: 'none',
-                color: 'grayscale.80',
+                color: 'petersburg.80',
               },
             }}
           >
@@ -213,12 +213,12 @@ const DialogInvite = observer(() => {
               height: '48px',
               boxShadow: 'none',
               borderRadius: 1,
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               fontSize: '18px',
               textTransform: 'capitalize',
               '&:hover': {
                 boxShadow: 'none',
-                color: 'grayscale.0',
+                color: 'petersburg.0',
               },
             }}
           >

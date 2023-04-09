@@ -77,8 +77,8 @@ const DialogCreateCommunity = observer(() => {
           maxWidth: '600px',
           borderRadius: '16px',
           border: '1px solid',
-          borderColor: 'grayscale.10',
-          bgcolor: 'grayscale.0',
+          borderColor: 'petersburg.10',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
           m: 1,
@@ -202,7 +202,7 @@ const DialogCreateCommunity = observer(() => {
               pb: 4,
               height: '156px',
               width: '100%',
-              bgcolor: 'grayscale.5',
+              bgcolor: 'petersburg.5',
             }}
           >
             <Typography

@@ -15,7 +15,7 @@ const typographyStyles = {
   fontWeight: 400,
   fontSize: '16px',
   lineHeight: '24px',
-  color: 'grayscale.40',
+  color: 'petersburg.40',
 };
 
 type FormValues = {
@@ -71,7 +71,7 @@ const Account = observer(() => {
         justifyContent="flex-start"
         alignItems="center"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           height: '204px',
           borderRadius: '8px',
@@ -99,7 +99,7 @@ const Account = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '24px',
@@ -126,7 +126,7 @@ const Account = observer(() => {
               {...field}
               sx={{
                 mt: '4px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -152,7 +152,7 @@ const Account = observer(() => {
               {...field}
               sx={{
                 mt: '4px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -178,7 +178,7 @@ const Account = observer(() => {
               {...field}
               sx={{
                 mt: '4px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -204,7 +204,7 @@ const Account = observer(() => {
               {...field}
               sx={{
                 mt: '4px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -230,7 +230,7 @@ const Account = observer(() => {
               {...field}
               sx={{
                 mt: '4px',
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}

@@ -138,7 +138,7 @@ const Items = observer(({ index }: ItemsT) => {
           sx={{
             width: '100%',
             cursor: 'pointer',
-            color: 'grayscale.80',
+            color: 'petersburg.80',
             zIndex: 1,
             pl: '14px',
             position: 'relative',

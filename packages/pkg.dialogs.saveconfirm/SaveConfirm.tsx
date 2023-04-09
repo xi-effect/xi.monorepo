@@ -33,7 +33,7 @@ export const SaveConfirm = observer(({ uiSt, rootStore }: SaveConfirmT) => {
           height: '176px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -71,11 +71,11 @@ export const SaveConfirm = observer(({ uiSt, rootStore }: SaveConfirmT) => {
             width: '356px',
             height: '48px',
             boxShadow: 'none',
-            color: 'grayscale.0',
+            color: 'petersburg.0',
             bgcolor: 'error.dark',
             '&:hover': {
               boxShadow: 'none',
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               bgcolor: 'error.dark',
             },
           }}

@@ -24,7 +24,7 @@ const DialogExit = observer(() => {
           width: '420px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -64,7 +64,7 @@ const DialogExit = observer(() => {
             height: '48px',
             boxShadow: 'none',
             borderRadius: 1,
-            color: 'grayscale.0',
+            color: 'petersburg.0',
             fontSize: '18px',
             textTransform: 'capitalize',
             '&:hover': {

@@ -18,7 +18,7 @@ const LeftTools = () => (
         fontWeight: 600,
         fontSize: '24px',
         lineHeight: '32px',
-        color: 'grayscale.0',
+        color: 'petersburg.0',
       }}
     >
       4Д — БЖ
@@ -30,7 +30,7 @@ const LeftTools = () => (
         fontWeight: 400,
         fontSize: '16px',
         lineHeight: '24px',
-        color: 'grayscale.0',
+        color: 'petersburg.0',
       }}
     >
       Кастырин И.И.

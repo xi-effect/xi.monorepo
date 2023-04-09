@@ -80,7 +80,7 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
           height: '496px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },

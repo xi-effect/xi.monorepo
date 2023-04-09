@@ -74,7 +74,7 @@ const Content = observer(({ comm, auth, join, undef }: ContentProps) => {
             alignItems: 'center',
             mt: -8,
             zIndex: 500,
-            bgcolor: 'grayscale.0',
+            bgcolor: 'petersburg.0',
             borderRadius: '64px',
             width: '128px',
             height: '128px',
@@ -94,7 +94,7 @@ const Content = observer(({ comm, auth, join, undef }: ContentProps) => {
               mt: 2,
             },
           }}
-          bgColor="grayscale.5"
+          bgColor="petersburg.5"
         >
           1024 участника
         </Badge>
@@ -119,7 +119,7 @@ const Content = observer(({ comm, auth, join, undef }: ContentProps) => {
           alignItems: 'center',
           mt: -8,
           zIndex: 500,
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           borderRadius: '64px',
           width: '128px',
           height: '128px',
@@ -139,7 +139,7 @@ const Content = observer(({ comm, auth, join, undef }: ContentProps) => {
             mt: 2,
           },
         }}
-        bgColor="grayscale.5"
+        bgColor="petersburg.5"
       >
         1024 участника
       </Badge>
@@ -190,7 +190,7 @@ const Form = observer(() => {
         sx={{
           mt: 4,
           zIndex: 500,
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           borderRadius: 2,
           width: '400px',
           height: '298px',

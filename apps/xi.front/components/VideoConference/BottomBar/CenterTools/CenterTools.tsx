@@ -9,7 +9,7 @@ const BottomBar = () => (
     sx={{
       width: '144px',
       height: '48px',
-      bgcolor: 'grayscale.100',
+      bgcolor: 'petersburg.100',
       borderRadius: '24px',
     }}
   >
@@ -19,8 +19,8 @@ const BottomBar = () => (
           ml: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >
@@ -33,8 +33,8 @@ const BottomBar = () => (
           mr: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >
@@ -47,8 +47,8 @@ const BottomBar = () => (
           mr: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >

@@ -104,7 +104,7 @@ const DialogChannelCreation = observer(() => {
           width: '600px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -157,7 +157,7 @@ const DialogChannelCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -207,7 +207,7 @@ const DialogChannelCreation = observer(() => {
                   sx={{
                     cursor: 'pointer',
                     height: '100%',
-                    bgcolor: 'grayscale.5',
+                    bgcolor: 'petersburg.5',
                     borderRadius: '8px',
                     p: 2,
                   }}
