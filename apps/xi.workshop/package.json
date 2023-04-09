@@ -47,6 +47,7 @@
     "pkg.layout.pages": "*",
     "pkg.navigation.breadcrumbs": "*",
     "pkg.inputs.select": "*",
+    "pkg.navigation.dropdown": "*",
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",

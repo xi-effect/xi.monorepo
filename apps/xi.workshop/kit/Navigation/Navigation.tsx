@@ -26,6 +26,10 @@ const menuArray = [
     label: 'File',
   },
   {
+    link: '/components/dropdown',
+    label: 'Dropdown',
+  },
+  {
     link: '/components/link',
     label: 'Link',
   },
