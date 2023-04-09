@@ -95,7 +95,8 @@ export const Checkbox = ({
           border: '1px solid',
           borderColor: isChecked && type === 'default' ? 'primary.dark' : 'petersburg.5',
           transition: '0.3s',
-          bgcolor: isHovered && type !== 'disabled' ? 'petersburg.10' : containerTypes[type].bgcolor,
+          bgcolor:
+            isHovered && type !== 'disabled' ? 'petersburg.10' : containerTypes[type].bgcolor,
           m: 0,
         }}
         label={CkecboxLabel}
