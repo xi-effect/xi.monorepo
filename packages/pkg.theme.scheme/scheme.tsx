@@ -138,37 +138,23 @@ export const getScheme = (mode: 'light' | 'dark') => ({
       ? {
           mode: 'light',
           primary: {
-            dark: '#445AFF', // blue.100
-            main: '#697BFF', // blue.80
-            light: '#B4BDFF', // blue.40
-            pale: '#ECEFFF', // blue.10
+            dark: '#445AFF',
+            main: '#697BFF',
+            light: '#B4BDFF',
+            pale: '#ECEFFF',
           },
+          // Старая палитра
           secondary: {
-            dark: '#9769FF', // purple.100
-            main: '#BD9FFF', // blue.80
-            light: '#EEE7FF', // blue.40
-            pale: '#F5F0FF', // blue.10
+            dark: '#9769FF',
+            main: '#BD9FFF',
+            light: '#EEE7FF',
+            pale: '#F5F0FF',
           },
-          // Старая палитра, не использовать, вместо неё - petersburg
           grayscale: {
             100: '#101010',
             90: '#282828',
             80: '#404040',
             40: '#9F9F9F',
-            10: '#E8E8E8',
-            5: '#F7F7F7',
-            0: '#FFFFFF',
-          },
-          petersburg: {
-            100: '#101010',
-            90: '#282828',
-            80: '#404040',
-            70: '#585858',
-            60: '#707070',
-            50: '#888888',
-            40: '#9F9F9F',
-            30: '#B8B8B8',
-            20: '#CFCFCF',
             10: '#E8E8E8',
             5: '#F7F7F7',
             0: '#FFFFFF',
@@ -190,6 +176,54 @@ export const getScheme = (mode: 'light' | 'dark') => ({
             main: '#F8955C',
             light: '#FBCAAD',
             pale: '#FEF2EB',
+          },
+
+          // Новая палитра
+          brand: {
+            100: '#3546BD',
+            80: '#445AFF',
+            60: '#697BFF',
+            40: '#697BFF',
+            20: '#B4BDFF',
+            0: '#EDEFFF',
+          },
+          petersburg: {
+            100: '#101010',
+            90: '#282828',
+            80: '#404040',
+            70: '#585858',
+            60: '#707070',
+            50: '#888888',
+            40: '#9F9F9F',
+            30: '#B8B8B8',
+            20: '#CFCFCF',
+            10: '#E8E8E8',
+            5: '#F7F7F7',
+            0: '#FFFFFF',
+          },
+          ekaterinburg: {
+            100: '#029127',
+            80: '#00A82C',
+            60: '#33B956',
+            40: '#33B956',
+            20: '#99DCAB',
+            0: '#CCEED5',
+          },
+          moscow: {
+            100: '#BE0D0C',
+            80: '#DD0D0C',
+            60: '#E43D3D',
+            40: '#E43D3D',
+            20: '#F19E9E',
+            0: '#F8CFCE',
+          },
+          kungur: {
+            100: '#CB4C0E',
+            80: '#EC570E',
+            60: '#F0793E',
+            40: '#F0793E',
+            20: '#F7BC9E',
+            0: '#FBDDCF',
           },
         }
       : {
@@ -200,32 +234,18 @@ export const getScheme = (mode: 'light' | 'dark') => ({
             light: '#B4BDFF',
             pale: '#ECEFFF',
           },
+          // Старая палитра
           secondary: {
             dark: '#9769FF',
             main: '#BD9FFF',
             light: '#EEE7FF',
             pale: '#F5F0FF',
           },
-          // Старая палитра, не использовать, вместо неё - petersburg
           grayscale: {
             100: '#101010',
             90: '#282828',
             80: '#404040',
             40: '#9F9F9F',
-            10: '#E8E8E8',
-            5: '#F7F7F7',
-            0: '#FFFFFF',
-          },
-          petersburg: {
-            100: '#101010',
-            90: '#282828',
-            80: '#404040',
-            70: '#585858',
-            60: '#707070',
-            50: '#888888',
-            40: '#9F9F9F',
-            30: '#B8B8B8',
-            20: '#CFCFCF',
             10: '#E8E8E8',
             5: '#F7F7F7',
             0: '#FFFFFF',
@@ -247,6 +267,54 @@ export const getScheme = (mode: 'light' | 'dark') => ({
             main: '#F8955C',
             light: '#FBCAAD',
             pale: '#FEF2EB',
+          },
+
+          // Новая палитра
+          brand: {
+            100: '#3546BD',
+            80: '#445AFF',
+            60: '#697BFF',
+            40: '#697BFF',
+            20: '#B4BDFF',
+            0: '#EDEFFF',
+          },
+          petersburg: {
+            100: '#101010',
+            90: '#282828',
+            80: '#404040',
+            70: '#585858',
+            60: '#707070',
+            50: '#888888',
+            40: '#9F9F9F',
+            30: '#B8B8B8',
+            20: '#CFCFCF',
+            10: '#E8E8E8',
+            5: '#F7F7F7',
+            0: '#FFFFFF',
+          },
+          ekaterinburg: {
+            100: '#029127',
+            80: '#00A82C',
+            60: '#33B956',
+            40: '#33B956',
+            20: '#99DCAB',
+            0: '#CCEED5',
+          },
+          moscow: {
+            100: '#BE0D0C',
+            80: '#DD0D0C',
+            60: '#E43D3D',
+            40: '#E43D3D',
+            20: '#F19E9E',
+            0: '#F8CFCE',
+          },
+          kungur: {
+            100: '#CB4C0E',
+            80: '#EC570E',
+            60: '#F0793E',
+            40: '#F0793E',
+            20: '#F7BC9E',
+            0: '#FBDDCF',
           },
         }),
   },
