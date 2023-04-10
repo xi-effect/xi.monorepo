@@ -4,6 +4,7 @@ import React from 'react';
 import { SnackbarContent, CustomContentProps } from 'notistack';
 import { Button, Paper, Stack, Typography, useMediaQuery, Theme } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { Close } from 'pkg.icons';
 
 interface ReportCompleteProps extends CustomContentProps {
   reset?: any;
@@ -22,7 +23,7 @@ export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps
     persist,
     // as well as your own custom props 👇🏼,
     reset,
-    bgcolor,
+    bgcolor = 'petersburg.100',
     ...other
   } = props;
 
@@ -45,80 +46,56 @@ export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps
           height: '100%',
           borderRadius: '16px',
           boxShadow: 24,
-          bgcolor: 'petersburg.0',
-          border: '1px solid',
+          bgcolor,
           borderColor: 'petersburg.40',
         }}
       >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
+        <Typography
           sx={{
-            p: 2,
-            maxWidth: '960px',
-            width: '100%',
-            height: isMobile ? '100%' : '96px',
+            fontWeight: 500,
+            fontSize: '18px',
+            lineHeight: '24px',
+            pl: 1,
           }}
+        >
+          У вас есть несохраненные изменения
+        </Typography>
+        <Stack
+          sx={{ width: isMobile ? '100%' : '296px' }}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
           spacing={2}
         >
-          <Typography
+          <Button
+            onClick={handleReset}
             sx={{
+              width: '120px',
+              height: '48px',
               fontWeight: 500,
               fontSize: '18px',
-              lineHeight: '24px',
-              pl: 1,
+              lineHeight: '22px',
+              borderRadius: '8px',
+              color: 'petersburg.80',
+              textTransform: 'capitalize',
+              boxShadow: 0,
+              '&:hover': {
+                boxShadow: 0,
+              },
             }}
           >
-            У вас есть несохраненные изменения
-          </Typography>
-          <Stack
-            sx={{ width: isMobile ? '100%' : '296px' }}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
+            Сбросить
+          </Button>
+          <Button
+            sx={{
+              width: '20px',
+              height: '20px',
+              fontWeight: 500,
+              bgcolor: 'transparent',
+            }}
           >
-            <Button
-              onClick={handleReset}
-              sx={{
-                width: '120px',
-                height: '48px',
-                fontWeight: 500,
-                fontSize: '18px',
-                lineHeight: '22px',
-                borderRadius: '8px',
-                color: 'petersburg.80',
-                textTransform: 'capitalize',
-                boxShadow: 0,
-                '&:hover': {
-                  boxShadow: 0,
-                },
-              }}
-            >
-              Сбросить
-            </Button>
-            <Button
-              type="submit"
-              form="hook-form"
-              variant="contained"
-              sx={{
-                width: '160px',
-                height: '48px',
-                fontWeight: 500,
-                fontSize: '18px',
-                lineHeight: '22px',
-                borderRadius: '8px',
-                textTransform: 'capitalize',
-                boxShadow: 0,
-                '&:hover': {
-                  boxShadow: 0,
-                },
-              }}
-            >
-              Сохранить
-            </Button>
-          </Stack>
+            <Close />
+          </Button>
         </Stack>
       </Paper>
     </SnackbarContent>
