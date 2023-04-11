@@ -172,7 +172,7 @@ const VideoDevice = observer((props) => {
           mb: '8px',
           fontWeight: 500,
           fontSize: '14px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         }}
       >
         Камера

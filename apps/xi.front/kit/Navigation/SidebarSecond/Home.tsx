@@ -1,15 +1,13 @@
 import React from 'react';
 import { ListItemIcon, ListItemText, MenuItem, MenuList } from '@mui/material';
 import { Scroll } from 'pkg.components.scroll';
-import { Announce } from 'pkg.icons.announce';
-import { Calendar } from 'pkg.icons.calendar';
-import { Updates } from 'pkg.icons.updates';
+import { Announce, Calendar, Updates } from 'pkg.icons';
 import { useRouter } from 'next/router';
 
 const iconsDict = {
-  posts: <Announce color="" />,
-  schedule: <Calendar color="" />,
-  updates: <Updates color="" />,
+  posts: <Announce />,
+  schedule: <Calendar />,
+  updates: <Updates />,
 };
 
 type MenuItemT = {

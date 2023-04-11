@@ -4,8 +4,7 @@ import { useRouter, NextRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
-import { Eyeoff } from 'pkg.icons.eyeoff';
-import { Eyeon } from 'pkg.icons.eyeon';
+import { Eyeoff, Eyeon } from 'pkg.icons';
 import { Input } from 'pkg.inputs.input';
 
 type FormValues = {
@@ -20,18 +19,18 @@ export type SignInT = {
   authorizationSt: any;
 };
 
+const schema = yup
+  .object({
+    email: yup.string().email().max(100).required(),
+    password: yup.string().required().min(6).max(100),
+  })
+  .required();
+
 export const SignIn = ({ authorizationSt }: SignInT) => {
   const {
     clickSigninButton,
     signin: { errorEmail, errorPassword },
   } = authorizationSt;
-
-  const schema = yup
-    .object({
-      email: yup.string().email().max(100).required(),
-      password: yup.string().required().min(6).max(100),
-    })
-    .required();
 
   const router: NextRouter = useRouter();
 
@@ -86,7 +85,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               helperText={getEmailError()}
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}

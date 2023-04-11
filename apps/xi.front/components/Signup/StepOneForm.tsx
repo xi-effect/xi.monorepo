@@ -32,7 +32,7 @@ const StepOneForm = observer(({ control, errors, nextStepHandler }: IStepOneForm
               placeholder="Имя пользователя"
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               autoComplete="on"
@@ -54,7 +54,7 @@ const StepOneForm = observer(({ control, errors, nextStepHandler }: IStepOneForm
               helperText={authorizationSt.signup.error}
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               autoComplete="on"

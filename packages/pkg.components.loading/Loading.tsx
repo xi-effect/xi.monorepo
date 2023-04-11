@@ -99,7 +99,7 @@ export const Loading = ({ loading }: LoadingProps) => {
                 variant="xl"
                 sx={{
                   width: '100%',
-                  color: 'grayscale.80',
+                  color: 'petersburg.80',
                   maxWidth: '540px',
                 }}
               >
@@ -111,7 +111,7 @@ export const Loading = ({ loading }: LoadingProps) => {
                 sx={{
                   width: '100%',
                   mt: '24px',
-                  color: 'grayscale.80',
+                  color: 'petersburg.80',
                 }}
               >
                 {`© ${quotes[randomValue ?? 0].author}`}

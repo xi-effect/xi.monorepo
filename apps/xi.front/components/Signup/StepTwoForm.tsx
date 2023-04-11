@@ -5,8 +5,7 @@ import { Control, Controller, FieldErrors, FieldValues } from 'react-hook-form';
 import TextFieldCustom from 'kit/TextFieldCustom';
 import { useStore } from 'store/connect';
 
-import { Eyeoff } from 'pkg.icons.eyeoff';
-import { Eyeon } from 'pkg.icons.eyeon';
+import { Eyeoff, Eyeon } from 'pkg.icons';
 
 interface IStepTwoForm {
   control: Control<FieldValues, object> | undefined;
@@ -37,7 +36,7 @@ const StepOneForm = observer(({ control, errors, prevStepHandler }: IStepTwoForm
               helperText={errors.email?.message ? 'Некорректный email' : ''}
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               autoComplete="on"
@@ -74,7 +73,7 @@ const StepOneForm = observer(({ control, errors, prevStepHandler }: IStepTwoForm
                 ),
               }}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               autoComplete="new-password"

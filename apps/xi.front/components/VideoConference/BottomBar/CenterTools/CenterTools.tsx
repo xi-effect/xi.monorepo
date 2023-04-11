@@ -1,7 +1,5 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Users } from 'pkg.icons.users';
-import { Hand } from 'pkg.icons.hand';
-import { Chat } from 'pkg.icons.chat';
+import { Users, Hand, Chat } from 'pkg.icons';
 
 const BottomBar = () => (
   <Stack
@@ -11,7 +9,7 @@ const BottomBar = () => (
     sx={{
       width: '144px',
       height: '48px',
-      bgcolor: 'grayscale.100',
+      bgcolor: 'petersburg.100',
       borderRadius: '24px',
     }}
   >
@@ -21,8 +19,8 @@ const BottomBar = () => (
           ml: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >
@@ -35,8 +33,8 @@ const BottomBar = () => (
           mr: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >
@@ -49,8 +47,8 @@ const BottomBar = () => (
           mr: '2px',
           height: '44px',
           width: '44px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '22px',
         }}
       >

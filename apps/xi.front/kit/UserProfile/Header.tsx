@@ -1,8 +1,6 @@
 import { observer } from 'mobx-react';
 import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
-import { Close } from 'pkg.icons.close';
-import { Arrow } from 'pkg.icons.arrow';
-import { Burger } from 'pkg.icons.burger';
+import { Close, Arrow, Burger } from 'pkg.icons';
 
 const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео'];
 
@@ -52,7 +50,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
             width: '40px',
             height: '40px',
             transform: 'rotate(180deg)',
-            backgroundColor: 'grayscale.0',
+            backgroundColor: 'petersburg.0',
           }}
         >
           <Arrow />
@@ -87,7 +85,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
         sx={{
           width: '40px',
           height: '40px',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           position: 'absolute',
           right: 0,
         }}

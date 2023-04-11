@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { Stack, Typography } from '@mui/material';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 
 const Breadcrumbs = observer(() => (
   <Stack
@@ -23,7 +23,7 @@ const Breadcrumbs = observer(() => (
     >
       4Д — БЖ
     </Typography>
-    <Arrow sx={{ fontSize: 12 }} color="#697BFF" />
+    <Arrow sx={{ fontSize: 12 }} color="primary" />
     <Typography
       sx={{
         fontWeight: 400,

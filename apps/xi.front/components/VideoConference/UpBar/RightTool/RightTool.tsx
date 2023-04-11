@@ -1,8 +1,5 @@
 import { IconButton, Stack, Tooltip, Typography } from '@mui/material';
-import { Grid } from 'pkg.icons.grid';
-import { Maximize } from 'pkg.icons.maximize';
-import { External } from 'pkg.icons.external';
-import { Settings } from 'pkg.icons.settings';
+import { Grid, Maximize, External, Settings } from 'pkg.icons';
 
 const RightTool = () => (
   <Stack
@@ -20,8 +17,8 @@ const RightTool = () => (
           ml: '2px',
           height: '40px',
           width: '96px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -44,8 +41,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -58,8 +55,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >
@@ -72,8 +69,8 @@ const RightTool = () => (
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '20px',
         }}
       >

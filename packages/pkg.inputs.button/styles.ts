@@ -22,15 +22,15 @@ export const buttonVariantsColor = {
   contained: {
     primary: {
       bgcolor: 'primary.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
     success: {
       bgcolor: 'success.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
     error: {
       bgcolor: 'error.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
   },
   outlined: {
@@ -59,16 +59,16 @@ export const buttonVariantsColor = {
 
 export const buttonDisabled = {
   contained: {
-    backgroundColor: 'grayscale.10',
-    color: 'grayscale.40',
+    backgroundColor: 'petersburg.10',
+    color: 'petersburg.40',
   },
   outlined: {
     border: '1px solid',
-    borderColor: 'grayscale.10',
-    color: 'grayscale.40',
+    borderColor: 'petersburg.10',
+    color: 'petersburg.40',
   },
   text: {
-    color: 'grayscale.40',
+    color: 'petersburg.40',
   },
 };
 
@@ -163,7 +163,7 @@ export const getSnackbarCurrentPosition = (snackbarSize: number, position: Snack
 export const getActionButtonStyle = (variant: Variant, color: string) => {
   switch (variant) {
     case 'contained':
-      return { bgcolor: color, color: 'grayscale.0' };
+      return { bgcolor: color, color: 'petersburg.0' };
     case 'outlined':
       return { borderColor: color, color };
     default:

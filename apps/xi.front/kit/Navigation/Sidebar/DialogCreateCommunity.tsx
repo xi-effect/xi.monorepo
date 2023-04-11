@@ -1,14 +1,6 @@
+import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Theme,
-  Button,
-  Dialog,
-  useMediaQuery,
-  IconButton,
-  Stack,
-  Typography,
-  Breakpoint,
-} from '@mui/material';
+import { Dialog, IconButton, Stack, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useStore } from 'store/connect';
 
@@ -19,21 +11,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import TextFieldCustom from 'kit/TextFieldCustom';
+import { Button } from 'pkg.inputs.button';
+import { Link } from 'pkg.navigation.link';
 
 const schema = yup
   .object({
-    name: yup.string().min(1).max(100).required(),
+    value: yup.string().min(1).max(100).required(),
   })
   .required();
 
 const DialogCreateCommunity = observer(() => {
   const rootStore = useStore();
   const { uiSt, userSt } = rootStore;
-
   const { dialogs, setDialogs } = uiSt;
-  const mobile: boolean = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('lg' as Breakpoint),
-  );
+
+  const [isAccept, setIsAccept] = React.useState(false);
 
   const {
     control,
@@ -61,27 +53,36 @@ const DialogCreateCommunity = observer(() => {
   };
 
   const onSubmit = (data) => {
-    rootStore.socket?.emit('new-community', { name: data.name }, addCtoMenu);
+    rootStore.socket?.emit('new-community', { name: data.value }, addCtoMenu);
+  };
+
+  const handleClose = () => {
+    setDialogs('communityCreation', false);
+    setTimeout(() => {
+      setIsAccept(false);
+    }, 1000);
   };
 
   return (
     <Dialog
       open={dialogs.communityCreation ?? false}
-      onClose={() => setDialogs('communityCreation', false)}
+      onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
       fullWidth
-      fullScreen={!!mobile}
       maxWidth="md"
       PaperProps={{
         sx: {
-          width: '420px',
-          height: '328px',
+          width: '100%',
+          maxWidth: '600px',
           borderRadius: '16px',
-          border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          border: '1px solid',
+          borderColor: 'petersburg.10',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
+          m: 1,
+          p: 0,
         },
       }}
     >
@@ -92,68 +93,144 @@ const DialogCreateCommunity = observer(() => {
           top: '12px',
           right: '12px',
         }}
-        onClick={() => setDialogs('communityCreation', false)}
+        onClick={handleClose}
       >
         <CloseIcon />
       </IconButton>
       <Stack
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
         sx={{
-          p: 4,
-          height: '100%',
           width: '100%',
         }}
       >
-        <Typography sx={{ fontWeight: 600, fontSize: '24px', lineHeight: '32px' }}>
-          Создать сообщество
-        </Typography>
-        <Typography
-          textAlign="center"
+        <Stack
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="center"
           sx={{
-            mt: '24px',
-            mb: '32px',
-            fontWeight: 400,
-            fontSize: '16px',
-            lineHeight: '20px',
+            pt: 4,
+            pl: 4,
+            pr: 4,
+            pb: isAccept ? 4 : 0,
+            width: '100%',
           }}
         >
-          Назовите сообщество. Изменить название можно в любой момент.
-        </Typography>
-        <Controller
-          name="name"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextFieldCustom
-              variant="outlined"
-              error={!!errors?.name?.type}
-              type="text"
-              fullWidth
-              placeholder="Название сообщества"
-              helperText={
-                errors?.name?.type === 'max' &&
-                'Максимальная длина названия сообщества - 100 символов'
-              }
-              {...field}
-            />
+          <Typography variant="xl" sx={{ fontWeight: 600 }}>
+            {isAccept ? 'Присоединиться к сообществу' : 'Создать сообщество'}
+          </Typography>
+          <Typography
+            textAlign="center"
+            variant="m"
+            sx={{
+              mt: 2,
+              height: '40px',
+              fontWeight: 400,
+              maxWidth: isAccept ? '100%' : '356px',
+            }}
+          >
+            {isAccept
+              ? 'Введите приглашение чтобы присоединиться к существующему\nсообществу'
+              : 'Назовите сообщество. Изменить название\nможно в любой момент'}
+          </Typography>
+          <Typography
+            textAlign="left"
+            variant="m"
+            sx={{
+              mt: 3,
+              fontWeight: 600,
+              width: '100%',
+            }}
+          >
+            {isAccept ? 'Ссылка приглашение' : 'Название'}
+          </Typography>
+          <Controller
+            name="value"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextFieldCustom
+                variant="outlined"
+                error={!!errors?.name?.type}
+                type="text"
+                fullWidth
+                placeholder={
+                  isAccept ? 'https://xieffect.ru/invite/HPS012345' : 'Название сообщества'
+                }
+                helperText={
+                  errors?.name?.type === 'max' &&
+                  'Максимальная длина названия сообщества - 100 символов'
+                }
+                sx={{
+                  mt: 1,
+                }}
+                {...field}
+              />
+            )}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              mt: 4,
+              width: '100%',
+              height: '48px',
+              boxShadow: 'none',
+            }}
+          >
+            {isAccept ? 'Присоединиться к сообществу' : 'Создать'}
+          </Button>
+          {isAccept && (
+            <Link sx={{ mt: 3, height: '32px' }} onClick={() => setIsAccept(false)}>
+              Отмена
+            </Link>
           )}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{
-            mt: '32px',
-            width: '356px',
-            height: '48px',
-            boxShadow: 'none',
-          }}
-        >
-          Создать
-        </Button>
+        </Stack>
+        {!isAccept && (
+          <Stack
+            direction="column"
+            justifyContent="flex-start"
+            alignItems="center"
+            sx={{
+              mt: 4,
+              pr: 4,
+              pl: 4,
+              pb: 4,
+              height: '156px',
+              width: '100%',
+              bgcolor: 'petersburg.5',
+            }}
+          >
+            <Typography
+              textAlign="center"
+              variant="l"
+              sx={{
+                mt: 3,
+                fontWeight: 600,
+                width: '100%',
+              }}
+            >
+              У вас есть приглашение?
+            </Typography>
+            <Button
+              onClick={() => setIsAccept(true)}
+              variant="outlined"
+              fullWidth
+              sx={{
+                mt: 2,
+                width: '100%',
+                height: '48px',
+                boxShadow: 'none',
+              }}
+            >
+              Присоединиться к сообществу
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </Dialog>
   );

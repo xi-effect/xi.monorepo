@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from 'pkg.inputs.button';
-import { Camera } from 'pkg.icons.camera';
+import { Camera } from 'pkg.icons';
 import { LayoutPages } from 'kit/LayoutPages';
 
 const TestComponents = () => {
@@ -33,7 +33,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status={status}
         size="small"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         variant="contained"
         color="primary"
         isSnackbar
@@ -42,13 +42,7 @@ const TestComponents = () => {
         Test
       </Button>
 
-      <Button
-        status={status}
-        size="medium"
-        handleButtonClick={onClickIdle}
-        variant="contained"
-        color="error"
-      >
+      <Button status={status} size="medium" onClick={onClickIdle} variant="contained" color="error">
         Test
       </Button>
 
@@ -56,7 +50,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status={status}
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"
@@ -72,7 +66,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status="pending"
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"
@@ -87,7 +81,7 @@ const TestComponents = () => {
         startIcon={Camera}
         status="completed"
         size="large"
-        handleButtonClick={onClickCompleted}
+        onClick={onClickCompleted}
         loadingPosition="icon"
         variant="contained"
         color="success"

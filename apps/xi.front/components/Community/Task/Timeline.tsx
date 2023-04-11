@@ -80,7 +80,7 @@ const Message = observer(() => (
         fontWeight: 500,
         fontSize: '18px',
         lineHeight: '22px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
         pl: '60px',
       }}
     >
@@ -91,7 +91,7 @@ const Message = observer(() => (
         fontWeight: 400,
         fontSize: '16px',
         lineHeight: '20px',
-        color: 'grayscale.100',
+        color: 'petersburg.100',
         pl: '60px',
       }}
     >
@@ -109,7 +109,7 @@ const Timeline = observer(() => (
     sx={{
       width: '100%',
       borderRadius: '8px',
-      bgcolor: 'grayscale.0',
+      bgcolor: 'petersburg.0',
       p: 3,
     }}
   >
@@ -127,7 +127,7 @@ const Timeline = observer(() => (
           fontWeight: 600,
           fontSize: '24px',
           lineHeight: '32px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         }}
       >
         Личные комментарии
@@ -138,7 +138,7 @@ const Timeline = observer(() => (
           fontWeight: 600,
           fontSize: '24px',
           lineHeight: '32px',
-          color: 'grayscale.40',
+          color: 'petersburg.40',
         }}
       >
         3
@@ -154,7 +154,7 @@ const Timeline = observer(() => (
       fullWidth
       placeholder="Напишите что-нибудь"
       sx={{
-        backgroundColor: 'grayscale.0',
+        backgroundColor: 'petersburg.0',
       }}
     />
   </Stack>

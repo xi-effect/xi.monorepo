@@ -60,6 +60,11 @@ class CommunityChannelsSt {
         },
         {
           id: 2,
+          type: 'chat',
+          name: 'Чат со студентами',
+        },
+        {
+          id: 2,
           type: 'page',
           name: 'Статья по биологии',
         },

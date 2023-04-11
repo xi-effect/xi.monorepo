@@ -12,7 +12,7 @@ import * as yup from 'yup';
 
 import { observer } from 'mobx-react';
 import { useSnackbar } from 'notistack';
-import { isSameDate } from 'utils/isSameDates';
+import { isSameDates } from 'pkg.utils';
 import Menu from './Menu';
 import Content from './Content';
 import Header from './Header';
@@ -120,7 +120,7 @@ const CommunityProfile = observer(() => {
         name !== profile.name ||
         surname !== profile.surname ||
         patronymic !== profile.patronymic ||
-        (birthday && profile.birthday && !isSameDate(new Date(birthday), profile.birthday)))
+        (birthday && profile.birthday && !isSameDates(new Date(birthday), profile.birthday)))
     ) {
       if (!isMobile) {
         return;

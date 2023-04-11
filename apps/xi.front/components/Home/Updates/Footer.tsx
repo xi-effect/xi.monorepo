@@ -15,7 +15,9 @@ const Footer = observer(() => {
     <Grid container sx={{ mt: 'auto' }} spacing={4}>
       {footerItems.map((item) => (
         <Grid item>
-          <Link action={item.link} text={item.item} size="s" hideUnderline={hideUnderline} />
+          <Link action={item.link} size="s" hideUnderline={hideUnderline}>
+            {item.item}
+          </Link>
         </Grid>
       ))}
     </Grid>

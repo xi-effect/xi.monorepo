@@ -11,9 +11,8 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
-    "next": "^13.0.7",
-    "pkg.icons.file": "*",
-    "pkg.icons.close": "*",
+    "next": "13.2.4",
+    "pkg.icons": "*",
     "react": "^18.2.0"
   },
   "devDependencies": {
@@ -22,7 +21,6 @@
     "@types/react-dom": "^18.0.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
-    "react": "^18.2.0",
     "pkg.config.typescript": "*",
     "typescript": "^4.5.2"
   },

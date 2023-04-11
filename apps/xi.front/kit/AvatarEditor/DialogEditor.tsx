@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { Box, Button, Dialog, IconButton, Slider, Stack, Typography } from '@mui/material';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 import AvatarEditor from 'react-avatar-editor';
-import { usePostFiles } from 'utils/useFiles';
+import { usePostFiles } from 'pkg.hooks';
 import { useStore } from 'store/connect';
 import { useSnackbar } from 'notistack';
 
@@ -80,7 +80,7 @@ const DialogEditor = observer(({ uiSt }: DialogEditorT) => {
           height: '496px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },

@@ -18,7 +18,7 @@ const Secure = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '24px',
@@ -37,7 +37,7 @@ const Secure = observer(() => {
         <Typography
           sx={{
             mt: '12px',
-            color: 'grayscale.40',
+            color: 'petersburg.40',
             fontWeight: 400,
             fontSize: '16px',
             lineHeight: '24px',
@@ -78,7 +78,7 @@ const Secure = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '24px',
@@ -96,7 +96,7 @@ const Secure = observer(() => {
         </Typography>
         <Typography
           sx={{
-            color: 'grayscale.100',
+            color: 'petersburg.100',
             fontWeight: 400,
             fontSize: '16px',
             lineHeight: '24px',
@@ -111,7 +111,7 @@ const Secure = observer(() => {
         <Typography
           sx={{
             mt: '12px',
-            color: 'grayscale.40',
+            color: 'petersburg.40',
             fontWeight: 400,
             fontSize: '16px',
             lineHeight: '24px',

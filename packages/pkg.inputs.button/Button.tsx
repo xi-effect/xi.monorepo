@@ -27,13 +27,14 @@ export const Button: FC<ButtonPropsType> = ({
   children,
   startIcon,
   endIcon,
-  handleButtonClick,
+  onClick,
   isSnackbar,
   snackbarText,
   isSnackbarIconStart,
   isSnackbarIconEnd,
   snackbarLoadingPosition,
   snackbarPosition,
+  sx,
   ...props
 }) => {
   const theme = useTheme();
@@ -43,7 +44,10 @@ export const Button: FC<ButtonPropsType> = ({
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
-    handleButtonClick(e);
+
+    if (onClick) {
+      onClick(e);
+    }
   };
 
   return (
@@ -70,6 +74,7 @@ export const Button: FC<ButtonPropsType> = ({
         ...buttonSizes[size],
         ...buttonVariantsColor[variant][color],
         ...buttonPadding[size],
+        ...sx,
       }}
       {...props}
     >

@@ -16,7 +16,7 @@ const Roles = observer(() => {
       justifyContent="flex-start"
       alignItems="center"
       sx={{
-        bgcolor: 'grayscale.0',
+        bgcolor: 'petersburg.0',
         width: '100%',
         height: '120px',
         borderRadius: '8px',

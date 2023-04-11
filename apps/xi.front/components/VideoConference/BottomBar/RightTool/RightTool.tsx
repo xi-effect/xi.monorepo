@@ -1,5 +1,5 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Endcall } from 'pkg.icons.endcall';
+import { Endcall } from 'pkg.icons';
 
 const RightTool = () => (
   <Stack
@@ -16,7 +16,7 @@ const RightTool = () => (
         sx={{
           height: '48px',
           width: '48px',
-          color: 'grayscale.0',
+          color: 'petersburg.0',
           bgcolor: 'error.dark',
           borderRadius: '24px',
 

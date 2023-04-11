@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
-import { Check } from 'pkg.icons.check';
-import { Minus } from 'pkg.icons.minus';
+import { Check, Minus } from 'pkg.icons';
 
 import {
   containerTypes,
@@ -25,7 +24,7 @@ export type CheckboxProps = {
   icon?: ChecboxIcons;
   /* default checked state */
   isChecked?: boolean;
-  handleChecboxChange: () => void;
+  onClick?: () => void;
 };
 
 export const Checkbox = ({
@@ -34,7 +33,7 @@ export const Checkbox = ({
   label = '',
   icon = 'check',
   isChecked = false,
-  handleChecboxChange,
+  onClick,
 }: CheckboxProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -55,7 +54,7 @@ export const Checkbox = ({
         width: '100%',
         height: '100%',
         transition: '0.3s',
-        bgcolor: isHovered && type !== 'disabled' ? 'grayscale.5' : defaultIconTypes[type].bgcolor,
+        bgcolor: isHovered && type !== 'disabled' ? 'petersburg.5' : defaultIconTypes[type].bgcolor,
       }}
     />
   );
@@ -78,7 +77,7 @@ export const Checkbox = ({
       icon={DefaultIcon}
       checkedIcon={CheckedIcon}
       checked={isChecked}
-      onChange={handleChecboxChange}
+      onChange={onClick}
       disabled={type === 'disabled'}
     />
   );
@@ -94,9 +93,10 @@ export const Checkbox = ({
           height: 'max-content',
           padding: '4px 8px 4px 4px',
           border: '1px solid',
-          borderColor: isChecked && type === 'default' ? 'primary.dark' : 'grayscale.5',
+          borderColor: isChecked && type === 'default' ? 'primary.dark' : 'petersburg.5',
           transition: '0.3s',
-          bgcolor: isHovered && type !== 'disabled' ? 'grayscale.10' : containerTypes[type].bgcolor,
+          bgcolor:
+            isHovered && type !== 'disabled' ? 'petersburg.10' : containerTypes[type].bgcolor,
           m: 0,
         }}
         label={CkecboxLabel}

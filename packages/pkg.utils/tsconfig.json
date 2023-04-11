@@ -1,0 +1,5 @@
+{
+  "extends": "pkg.config.typescript/react-library.json",
+  "include": ["*", "../../apps/xi.front/kit/Editor/handlingEditors.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}

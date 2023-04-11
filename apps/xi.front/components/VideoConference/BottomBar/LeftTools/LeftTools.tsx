@@ -1,7 +1,5 @@
 import { IconButton, Stack, Tooltip } from '@mui/material';
-import { Microphone } from 'pkg.icons.microphone';
-import { Camera } from 'pkg.icons.camera';
-import { Screenshare } from 'pkg.icons.screenshare';
+import { Microphone, Camera, Screenshare } from 'pkg.icons';
 
 const LeftTools = () => (
   <Stack
@@ -20,7 +18,7 @@ const LeftTools = () => (
       sx={{
         width: '96px',
         height: '48px',
-        bgcolor: 'grayscale.100',
+        bgcolor: 'petersburg.100',
         borderRadius: '24px',
       }}
     >
@@ -30,8 +28,8 @@ const LeftTools = () => (
             ml: '2px',
             height: '44px',
             width: '44px',
-            color: 'grayscale.0',
-            bgcolor: 'grayscale.100',
+            color: 'petersburg.0',
+            bgcolor: 'petersburg.100',
             border: '2px solid #39EF84',
             borderRadius: '22px',
           }}
@@ -45,8 +43,8 @@ const LeftTools = () => (
             mr: '2px',
             height: '44px',
             width: '44px',
-            color: 'grayscale.0',
-            bgcolor: 'grayscale.100',
+            color: 'petersburg.0',
+            bgcolor: 'petersburg.100',
             border: '2px solid #39EF84',
             borderRadius: '22px',
           }}
@@ -61,12 +59,12 @@ const LeftTools = () => (
           ml: '32px',
           height: '48px',
           width: '48px',
-          color: 'grayscale.0',
-          bgcolor: 'grayscale.100',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           borderRadius: '24px',
 
           '&:hover': {
-            bgcolor: 'grayscale.100',
+            bgcolor: 'petersburg.100',
           },
         }}
       >

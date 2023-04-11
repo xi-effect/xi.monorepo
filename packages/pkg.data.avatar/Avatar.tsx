@@ -2,41 +2,44 @@ import { Stack, Typography } from '@mui/material';
 
 export type AvatarPropsT = {
   size?: number;
+  name?: string;
+  label?: string;
+  sx?: object;
 };
 
-export const Avatar = ({ size = 48 }: AvatarPropsT) => {
-  const getBgcolor = (v: number) => {
-    if (v === 1) return '#F5F0FF';
-    return '#F5F0FF';
-  };
+function stringToHslColor(str: string, s: number, l: number) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    // eslint-disable-next-line no-bitwise
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
 
-  const getTextColor = (v: number) => {
-    if (v === 1) return '#9769FF';
-    return '#9769FF';
-  };
+  const h = hash % 360;
+  return `hsl(${h}, ${s}%, ${l}%)`;
+}
 
-  return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
+export const Avatar = ({ size = 48, name = 'xi.effect', label = 'М', sx }: AvatarPropsT) => (
+  <Stack
+    direction="column"
+    justifyContent="center"
+    alignItems="center"
+    sx={{
+      width: `${size}px`,
+      height: `${size}px`,
+      borderRadius: `${size / 0.5}px`,
+      bgcolor: stringToHslColor(name, 30, 80),
+      ...sx,
+    }}
+  >
+    <Typography
       sx={{
-        width: size,
-        height: size,
-        borderRadius: size * 0.5,
-        bgcolor: getBgcolor(1),
+        fontWeight: 600,
+        fontSize: `${size / 2.5}px`,
+        lineHeight: `${size / 2.5}px`,
+        color: 'petersburg.0',
       }}
     >
-      <Typography
-        sx={{
-          fontWeight: 600,
-          fontSize: size / 2.5,
-          lineHeight: size / 2.5,
-          color: getTextColor(1),
-        }}
-      >
-        М
-      </Typography>
-    </Stack>
-  );
-};
+      {label}
+    </Typography>
+  </Stack>
+);
