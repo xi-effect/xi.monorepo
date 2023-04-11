@@ -97,20 +97,24 @@ class ProfileSt {
             closeFn();
           }
           enqueueSnackbar('Данные успешно сохранены', {
-            variant: 'success',
-            autoHideDuration: 4000,
+            variant: 'notification',
+            autoHideDuration: 40000,
+            bgcolor: 'ekaterinburg.100',
+            title: 'Ваши данные успешно обновлены',
           });
         } else if (answer.a === 'Handle already in use') {
           enqueueSnackbar('Имя пользователя уже занято, используйте другое', {
-            variant: 'warn',
-            autoHideDuration: 4000,
+            variant: 'notification',
+            bgcolor: 'kurgur.100',
+            autoHideDuration: 40000,
           });
           setError('handle', { type: 'unique' }, { shouldFocus: true });
         } else {
           closeFn();
           enqueueSnackbar(answer.a, {
-            variant: 'error',
-            autoHideDuration: 4000,
+            variant: 'notification',
+            bgcolor: 'moscow.100',
+            autoHideDuration: 40000,
           });
           reset();
         }

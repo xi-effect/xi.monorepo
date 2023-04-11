@@ -11,6 +11,7 @@ import { Chat } from './Chat';
 import { Check } from './Check';
 import { Clip } from './Clip';
 import { Close } from './Close';
+import { Clock } from './Clock';
 import { Copy } from './Copy';
 import { Endcall } from './Endcall';
 import { Exit } from './Exit';
@@ -52,6 +53,7 @@ export {
   Check,
   Clip,
   Close,
+  Clock,
   Copy,
   Endcall,
   Exit,

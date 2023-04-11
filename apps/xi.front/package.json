@@ -55,6 +55,7 @@
     "pkg.navigation.breadcrumbs": "*",
     "pkg.navigation.link": "*",
     "pkg.notistack.saveconfirm": "*",
+    "pkg.notistack.notification": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
     "pkg.utils": "*",
