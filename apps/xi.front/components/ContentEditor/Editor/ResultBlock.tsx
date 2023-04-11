@@ -8,9 +8,7 @@ import H3 from 'components/ContentEditor/Blocks/H3';
 import { RenderElementProps } from 'slate-react';
 import { Type } from 'kit/Editor/common/withListsPlugin';
 import { CreationMenuConfigT } from 'kit/Editor/common/menuConfig';
-import Ol from '../Blocks/Ol';
 import ListItem from '../Blocks/ListItem';
-import Ul from '../Blocks/Ul';
 import File from '../Blocks/File';
 
 export type ResultBlockT = RenderElementProps & {
@@ -35,14 +33,6 @@ const ResultBlock: React.FC<ResultBlockT> = (props) => {
 
     case Type.DIVIDER:
       return <DividerComp />;
-
-    case Type.ORDERED_LIST:
-      // @ts-ignore
-      return <Ol>{children}</Ol>;
-
-    case Type.UNORDERED_LIST:
-      // @ts-ignore
-      return <Ul>{children}</Ul>;
 
     case Type.QUOTE:
       // @ts-ignore

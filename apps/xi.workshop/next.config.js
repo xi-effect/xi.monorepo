@@ -9,6 +9,7 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   transpilePackages: [
+    '@slate-yjs/react',
     'pkg.theme.scheme',
     'pkg.components.badge',
     'pkg.components.loading',

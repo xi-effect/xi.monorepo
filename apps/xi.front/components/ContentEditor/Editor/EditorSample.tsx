@@ -10,7 +10,6 @@ import { ChangeEditorsT, EditorsT } from 'kit/Editor/ContentEditor';
 import CreationMenu from 'components/ContentEditor/Menus/CreationMenu';
 import ChangesMenu from 'components/ContentEditor/Menus/ChangesMenu';
 import SlateSample from 'components/ContentEditor/Editor/SlateSample';
-import { withListsPlugin } from 'kit/Editor/common/withListsPlugin';
 
 type EditorT = {
   current: EditorsT;
@@ -24,10 +23,7 @@ const EditorSample: React.FC<EditorT> = (props) => {
 
   const [editAnchorEl, setEditAnchorEl] = useState<null | HTMLDivElement>(null);
   const [addAnchorEl, setAddAnchorEl] = useState<null | HTMLButtonElement>(null);
-  const editor = React.useMemo(
-    () => withListsPlugin(withHistory(withReact(createEditor() as ReactEditor))),
-    [],
-  );
+  const editor = React.useMemo(() => withHistory(withReact(createEditor() as ReactEditor)), []);
 
   const index = editors.findIndex((item) => item.id === current.id);
 
