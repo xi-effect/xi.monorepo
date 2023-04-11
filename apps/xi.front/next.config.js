@@ -50,6 +50,7 @@ const nextConfig = {
     'pkg.utils',
     'pkg.notistack.saveconfirm',
     'pkg.notistack.notification',
+    'pkg.editor.text',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
