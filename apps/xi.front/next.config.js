@@ -31,6 +31,7 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   transpilePackages: [
+    '@slate-yjs/react',
     'pkg.theme.scheme',
     'pkg.inputs.switcher',
     'pkg.components.loading',
@@ -48,6 +49,8 @@ const nextConfig = {
     'pkg.hooks',
     'pkg.utils',
     'pkg.notistack.saveconfirm',
+    'pkg.notistack.notification',
+    'pkg.editor.text',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

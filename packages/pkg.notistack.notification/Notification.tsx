@@ -1,13 +1,21 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import 'pkg.config.muidts';
+
 import React from 'react';
-import { SnackbarContent, CustomContentProps } from 'notistack';
-import { Button, Paper, Stack, Typography, useMediaQuery, Theme } from '@mui/material';
-import { useSnackbar } from 'notistack';
+import { SnackbarContent, CustomContentProps, useSnackbar } from 'notistack';
+import { Grid, Button, Paper, Stack, Box, Typography, useMediaQuery, Theme } from '@mui/material';
+import { Account, Close } from 'pkg.icons';
 
 interface ReportCompleteProps extends CustomContentProps {
-  reset?: any;
   bgcolor?: 'moscow.100' | 'ekaterinburg.100' | 'kungur.100' | 'petersburg.100';
+  title?: string;
+  subtitle?: string;
+  icon?: React.ReactNode;
+  buttonMain?: string;
+  buttonMainAction?: () => void;
+  buttonSecondary?: string;
+  buttonSecondaryAction?: () => void;
 }
 
 export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps>((props, ref) => {
@@ -21,8 +29,14 @@ export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps
     iconVariant,
     persist,
     // as well as your own custom props 👇🏼,
-    reset,
-    bgcolor,
+    title,
+    subtitle,
+    bgcolor = 'petersburg.100',
+    icon,
+    buttonMain,
+    buttonMainAction,
+    buttonSecondary,
+    buttonSecondaryAction,
     ...other
   } = props;
 
@@ -31,7 +45,6 @@ export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps
   const { closeSnackbar } = useSnackbar();
 
   const handleReset = () => {
-    reset();
     closeSnackbar();
   };
 
@@ -43,82 +56,101 @@ export const Notification = React.forwardRef<HTMLDivElement, ReportCompleteProps
           maxWidth: '960px',
           width: '100%',
           height: '100%',
-          borderRadius: '16px',
+          minHeight: '54px',
+          borderRadius: '8px',
           boxShadow: 24,
-          bgcolor: 'petersburg.0',
-          border: '1px solid',
-          borderColor: 'petersburg.40',
+          bgcolor,
+          p: 2,
         }}
       >
         <Stack
+          sx={{ width: '100%' }}
           direction="row"
           justifyContent="space-between"
-          alignItems="center"
-          sx={{
-            p: 2,
-            maxWidth: '960px',
-            width: '100%',
-            height: isMobile ? '100%' : '96px',
-          }}
+          alignItems="flex-start"
           spacing={2}
         >
-          <Typography
-            sx={{
-              fontWeight: 500,
-              fontSize: '18px',
-              lineHeight: '24px',
-              pl: 1,
-            }}
-          >
-            У вас есть несохраненные изменения
-          </Typography>
           <Stack
-            sx={{ width: isMobile ? '100%' : '296px' }}
-            direction="row"
             justifyContent="center"
             alignItems="center"
-            spacing={2}
+            sx={{
+              width: '20px',
+              height: '20px',
+              color: 'petersburg.0',
+            }}
           >
-            <Button
-              onClick={handleReset}
-              sx={{
-                width: '120px',
-                height: '48px',
-                fontWeight: 500,
-                fontSize: '18px',
-                lineHeight: '22px',
-                borderRadius: '8px',
-                color: 'petersburg.80',
-                textTransform: 'capitalize',
-                boxShadow: 0,
-                '&:hover': {
-                  boxShadow: 0,
-                },
-              }}
-            >
-              Сбросить
-            </Button>
-            <Button
-              type="submit"
-              form="hook-form"
-              variant="contained"
-              sx={{
-                width: '160px',
-                height: '48px',
-                fontWeight: 500,
-                fontSize: '18px',
-                lineHeight: '22px',
-                borderRadius: '8px',
-                textTransform: 'capitalize',
-                boxShadow: 0,
-                '&:hover': {
-                  boxShadow: 0,
-                },
-              }}
-            >
-              Сохранить
-            </Button>
+            {icon || <Account sx={{ fontSize: 20 }} />}
           </Stack>
+          <Grid container direction="row" justifyContent="center" alignItems="flex-start">
+            <Grid item sx={{ pr: 2 }}>
+              {title && (
+                <Typography
+                  variant="m"
+                  sx={{
+                    fontWeight: 600,
+                    color: 'petersburg.0',
+                  }}
+                >
+                  {title}
+                </Typography>
+              )}
+            </Grid>
+            <Grid item>
+              {subtitle && (
+                <Typography
+                  variant="s"
+                  sx={{
+                    fontWeight: 400,
+                    color: 'petersburg.0',
+                  }}
+                >
+                  {subtitle}
+                </Typography>
+              )}
+            </Grid>
+            <Grid item>
+              {buttonMain && (
+                <Button
+                  onClick={buttonMainAction}
+                  variant="outlined"
+                  sx={{
+                    mr: '16px',
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    color: 'petersburg.0',
+                  }}
+                >
+                  {buttonMain}
+                </Button>
+              )}
+              {buttonSecondary && (
+                <Button
+                  onClick={buttonSecondaryAction}
+                  variant="text"
+                  sx={{
+                    fontSize: '14px',
+                    lineHeight: '20px',
+                    color: 'petersburg.0',
+                  }}
+                >
+                  {buttonSecondary}
+                </Button>
+              )}
+            </Grid>
+          </Grid>
+          <Button
+            onClick={handleReset}
+            sx={{
+              width: '20px',
+              minWidth: '20px',
+              height: '20px',
+              fontWeight: 500,
+              bgcolor: 'transparent',
+              color: 'petersburg.0',
+            }}
+          >
+            <Close />
+          </Button>
         </Stack>
       </Paper>
     </SnackbarContent>
