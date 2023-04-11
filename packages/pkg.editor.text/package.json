@@ -1,0 +1,43 @@
+{
+  "name": "pkg.editor.text",
+  "version": "1.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/css": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "@mui/icons-material": "^5.11.11",
+    "slate": "^0.91.4",
+    "slate-react": "^0.91.10",
+    "slate-history": "^0.86.0",
+    "next": "^13.0.7",
+    "yjs": "^13.5.50",
+    "@slate-yjs/core": "^0.3.1",
+    "@slate-yjs/react": "^0.3.0",
+    "pkg.config.muidts": "*",
+    "randomcolor": "^0.6.2",
+    "@hocuspocus/provider": "1.1.1",
+    "clsx": "^1.2.1",
+    "@juggle/resize-observer": "^3.4.0",
+    "ws": "8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "pkg.config.typescript": "*",
+    "typescript": "^4.5.2"
+  },
+  "author": "",
+  "description": ""
+}

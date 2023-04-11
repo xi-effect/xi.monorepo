@@ -36,9 +36,8 @@ const ContentEditor = () => {
     <Box
       sx={{
         height: '100%',
-        padding: '30px',
-        borderRadius: '8px',
-        backgroundColor: '#fff',
+        padding: 1,
+        borderRadius: 1,
         overflowY: 'scroll',
       }}
     >
