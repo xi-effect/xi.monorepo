@@ -49,6 +49,7 @@ const nextConfig = {
     'pkg.hooks',
     'pkg.utils',
     'pkg.notistack.saveconfirm',
+    'pkg.notistack.notification',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
