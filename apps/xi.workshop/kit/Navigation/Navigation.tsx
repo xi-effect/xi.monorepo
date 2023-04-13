@@ -3,8 +3,6 @@ import { Stack, ListItem, ListItemButton, List } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
 
 export type NavigationT = {
-  title?: string;
-  noIndex?: boolean;
   children: ReactNode;
 };
 
@@ -48,6 +46,10 @@ const menuArray = [
   {
     link: '/components/editor',
     label: 'Editor',
+  },
+  {
+    link: '/components/icons',
+    label: 'Icons',
   },
 ];
 
