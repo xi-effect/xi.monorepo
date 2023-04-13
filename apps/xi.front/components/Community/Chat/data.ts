@@ -1,7 +1,7 @@
 import { ChatProps } from 'pkg.pages.chat';
 
 export const defaultChatData: ChatProps = {
-  name: '4Д-БЖ',
+  upbar: { name: '4Д-БЖ', host: 'Кастырин И.И.' },
   body: [
     {
       date: '2023-03-18',
