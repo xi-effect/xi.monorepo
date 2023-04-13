@@ -1,10 +1,51 @@
+/* eslint-disable no-nested-ternary */
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatStrikethroughIcon from '@mui/icons-material/FormatStrikethrough';
-
-import clsx from 'clsx';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+import StrikethroughSIcon from '@mui/icons-material/StrikethroughS';
+import CodeIcon from '@mui/icons-material/Code';
 import { Editor, Text, Transforms } from 'slate';
 import { useSlate } from 'slate-react';
+import { cx, css } from '@emotion/css';
+
+import React, { LegacyRef, PropsWithChildren } from 'react';
+
+interface BaseProps {
+  className: string;
+
+  [key: string]: unknown;
+}
+
+const Button = React.forwardRef(
+  (
+    {
+      className,
+      active,
+      reversed,
+      ...props
+    }: PropsWithChildren<
+      {
+        active: boolean;
+        reversed: boolean;
+      } & BaseProps
+    >,
+    ref: LegacyRef<HTMLSpanElement> | undefined,
+  ) => (
+    <span
+      {...props}
+      ref={ref}
+      className={cx(
+        className,
+        css`
+          cursor: pointer;
+          color: ${reversed ? (active ? 'white' : '#aaa') : active ? 'black' : '#ccc'};
+        `,
+      )}
+    />
+  ),
+);
+
+Button.displayName = 'Button';
 
 function isFormatActive(editor: Editor, format: string) {
   const [match] = Editor.nodes(editor, {
@@ -26,7 +67,7 @@ function toggleFormat(editor: Editor, format: string) {
 
 type FormatButtonProps = {
   format: string;
-  icon: 'bold' | 'italic' | 'strike';
+  icon: 'bold' | 'italic' | 'strike' | 'underlined' | 'code';
 };
 
 export function FormatButton({ format, icon }: FormatButtonProps) {
@@ -34,19 +75,24 @@ export function FormatButton({ format, icon }: FormatButtonProps) {
   const active = isFormatActive(editor, format);
 
   return (
-    <button
-      className={clsx('h-8 w-8 flex justify-center items-center hover:bg-gray-600')}
-      type="button"
-      onMouseDown={(event) => {
-        event.preventDefault();
-        toggleFormat(editor, format);
-      }}
+    <Button
+      reversed
+      active={isFormatActive(editor, format)}
+      onClick={() => toggleFormat(editor, format)}
     >
-      {icon === 'bold' && <FormatBoldIcon className={active ? 'text-primary' : 'text-white'} />}
-      {icon === 'italic' && <FormatItalicIcon className={active ? 'text-primary' : 'text-white'} />}
-      {icon === 'strike' && (
-        <FormatStrikethroughIcon className={active ? 'text-primary' : 'text-white'} />
+      {icon === 'bold' && (
+        <FormatBoldIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
       )}
-    </button>
+      {icon === 'italic' && (
+        <FormatItalicIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+      )}
+      {icon === 'underlined' && (
+        <FormatUnderlinedIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+      )}
+      {icon === 'strike' && (
+        <StrikethroughSIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+      )}
+      {icon === 'code' && <CodeIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />}
+    </Button>
   );
 }

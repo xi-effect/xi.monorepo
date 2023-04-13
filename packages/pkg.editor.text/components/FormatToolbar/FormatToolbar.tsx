@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { PropsWithChildren, ReactNode, LegacyRef, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { Editor, Range } from 'slate';
 import { useFocused, useSlate } from 'slate-react';
+import { cx, css } from '@emotion/css';
 import { FormatButton } from './FormatButton';
 
 type PortalProps = { children?: ReactNode };
@@ -11,6 +12,38 @@ function Portal({ children }: PortalProps) {
     ? ReactDOM.createPortal(children, document.body)
     : null;
 }
+
+interface BaseProps {
+  className: string;
+
+  [key: string]: unknown;
+}
+
+const Menu = React.forwardRef(
+  (
+    { className, ...props }: PropsWithChildren<BaseProps>,
+    ref: LegacyRef<HTMLDivElement> | undefined,
+  ) => (
+    <div
+      {...props}
+      ref={ref}
+      className={cx(
+        className,
+        css`
+          & > * {
+            display: inline-block;
+          }
+
+          & > * + * {
+            margin-left: 8px;
+          }
+        `,
+      )}
+    />
+  ),
+);
+
+Menu.displayName = 'Menu';
 
 export function FormatToolbar() {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,15 +84,31 @@ export function FormatToolbar() {
   return (
     <Portal>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <div
+      <Menu
         ref={ref}
-        style={{ position: 'absolute', display: 'flex', flexDirection: 'row' }}
-        onMouseDown={(e) => e.preventDefault()}
+        className={css`
+          padding: 8px 7px 2px;
+          position: absolute;
+          z-index: 1;
+          top: -10000px;
+          left: -10000px;
+          margin-top: 0px;
+          opacity: 0;
+          background-color: #757575;
+          border-radius: 4px;
+          transition: opacity 0.75s;
+        `}
+        onMouseDown={(e: React.MouseEvent) => {
+          // prevent toolbar from taking focus away from EditorSample
+          e.preventDefault();
+        }}
       >
         <FormatButton format="bold" icon="bold" />
         <FormatButton format="italic" icon="italic" />
         <FormatButton format="strikethrough" icon="strike" />
-      </div>
+        <FormatButton format="underlined" icon="underlined" />
+        <FormatButton format="code" icon="code" />
+      </Menu>
     </Portal>
   );
 }
