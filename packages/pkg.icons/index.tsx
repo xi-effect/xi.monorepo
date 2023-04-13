@@ -38,6 +38,7 @@ import { Task } from './Task';
 import { Trash } from './Trash';
 import { Updates } from './Updates';
 import { Users } from './Users';
+import { icons } from './config';
 
 export {
   Account,
@@ -80,6 +81,7 @@ export {
   Trash,
   Updates,
   Users,
+  icons,
 };
 
 export type { IconProps } from './types';

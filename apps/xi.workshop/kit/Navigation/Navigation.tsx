@@ -53,6 +53,10 @@ const menuArray = [
     link: '/components/editor',
     label: 'Editor',
   },
+  {
+    link: '/components/icons',
+    label: 'Icons',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
