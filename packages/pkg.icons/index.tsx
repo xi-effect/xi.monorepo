@@ -55,6 +55,7 @@ import { Screenshare } from './Screenshare';
 import { Search } from './Search';
 import { Send } from './Send';
 import { Settings } from './Settings';
+import { Shape } from './Shape';
 import { Stroke } from './Stroke';
 import { Task } from './Task';
 import { Text } from './Text';
@@ -123,6 +124,7 @@ export {
   Search,
   Send,
   Settings,
+  Shape,
   Stroke,
   Task,
   Text,
