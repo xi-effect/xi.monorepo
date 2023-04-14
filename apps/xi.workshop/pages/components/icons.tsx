@@ -8,6 +8,7 @@ import {
   AddChannel,
   Announce,
   Arrow,
+  Bold,
   Burger,
   Calendar,
   Camera,
@@ -17,6 +18,7 @@ import {
   Clock,
   Close,
   Copy,
+  Code,
   Emotions,
   Endcall,
   Exit,
@@ -31,6 +33,7 @@ import {
   Hand,
   Home,
   Invite,
+  Italic,
   Link,
   Maximize,
   Microphone,
@@ -44,8 +47,10 @@ import {
   Search,
   Send,
   Settings,
+  Stroke,
   Task,
   Trash,
+  Underline,
   Updates,
   Users,
   icons,
@@ -59,6 +64,7 @@ const iconsDict = {
   AddChannel,
   Announce,
   Arrow,
+  Bold,
   Burger,
   Calendar,
   Camera,
@@ -68,6 +74,7 @@ const iconsDict = {
   Clock,
   Close,
   Copy,
+  Code,
   Emotions,
   Endcall,
   Exit,
@@ -82,6 +89,7 @@ const iconsDict = {
   Hand,
   Home,
   Invite,
+  Italic,
   Link,
   Maximize,
   Microphone,
@@ -95,8 +103,10 @@ const iconsDict = {
   Search,
   Send,
   Settings,
+  Stroke,
   Task,
   Trash,
+  Underline,
   Updates,
   Users,
 };
@@ -107,7 +117,7 @@ const Icons = () => (
       {icons.map((icon) => {
         const Icon = iconsDict[icon];
         return (
-          <GridLayout item>
+          <GridLayout key={icon} item>
             <Stack
               direction="column"
               justifyContent="flex-start"
