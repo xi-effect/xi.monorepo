@@ -9,7 +9,13 @@ export const Chat = ({ upbar, body }: ChatProps) => (
     direction="column"
     spacing={3}
     justifyContent="flex-end"
-    sx={{ bgcolor: 'grayscale.0', height: '100%', overflow: 'auto', borderRadius: '8px' }}
+    sx={{
+      bgcolor: 'grayscale.0',
+      height: '100%',
+      overflow: 'auto',
+      borderRadius: '8px',
+      p: '16px',
+    }}
   >
     <Upbar {...upbar} />
     {body.map((data) => (
@@ -17,5 +23,7 @@ export const Chat = ({ upbar, body }: ChatProps) => (
     ))}
 
     <Input />
+
+    <Stack sx={{ height: '1000px', width: '100%' }} />
   </Stack>
 );

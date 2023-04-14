@@ -4,7 +4,7 @@ import { UpbarT } from './types';
 
 export const Upbar = ({ name, host }: UpbarT) => (
   <Stack
-    sx={{ position: 'relative', top: '16px', width: '100%' }}
+    sx={{ position: 'sticky', top: 0, width: '100%' }}
     justifyContent="space-between"
     direction="row"
   >
@@ -17,21 +17,18 @@ export const Upbar = ({ name, host }: UpbarT) => (
       </Typography>
     </Stack>
 
-    <Stack direction="row" spacing={0.5}>
-      <Stack>
-        <Search />
+    <Stack direction="row" spacing={2} sx={{ m: '6px 8px' }}>
+      <Stack sx={{ width: '20px' }}>
+        <Search sx={{ fontSize: '16px' }} />
       </Stack>
-
-      <Stack>
-        <Shape />
+      <Stack sx={{ width: '20px' }}>
+        <Shape sx={{ fontSize: '16px' }} />
       </Stack>
-
-      <Stack>
-        <File />
+      <Stack sx={{ width: '20px' }}>
+        <File sx={{ fontSize: '16px' }} />
       </Stack>
-
-      <Stack>
-        <Users />
+      <Stack sx={{ width: '20px' }}>
+        <Users sx={{ fontSize: '16px' }} />
       </Stack>
     </Stack>
   </Stack>
