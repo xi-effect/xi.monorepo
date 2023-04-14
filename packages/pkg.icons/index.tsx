@@ -5,14 +5,16 @@ import { AddCategory } from './AddCategory';
 import { AddChannel } from './AddChannel';
 import { Announce } from './Announce';
 import { Arrow } from './Arrow';
+import { Bold } from './Bold';
 import { Burger } from './Burger';
 import { Calendar } from './Calendar';
 import { Camera } from './Camera';
 import { Chat } from './Chat';
 import { Check } from './Check';
 import { Clip } from './Clip';
-import { Close } from './Close';
 import { Clock } from './Clock';
+import { Close } from './Close';
+import { Code } from './Code';
 import { Copy } from './Copy';
 import { Emotions } from './Emotions';
 import { Endcall } from './Endcall';
@@ -28,6 +30,7 @@ import { Grid } from './Grid';
 import { Hand } from './Hand';
 import { Home } from './Home';
 import { Invite } from './Invite';
+import { Italic } from './Italic';
 import { Link } from './Link';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
@@ -41,8 +44,10 @@ import { Screenshare } from './Screenshare';
 import { Search } from './Search';
 import { Send } from './Send';
 import { Settings } from './Settings';
+import { Stroke } from './Stroke';
 import { Task } from './Task';
 import { Trash } from './Trash';
+import { Underline } from './Underline';
 import { Updates } from './Updates';
 import { Users } from './Users';
 import { icons } from './config';
@@ -55,14 +60,16 @@ export {
   AddChannel,
   Announce,
   Arrow,
+  Bold,
   Burger,
   Calendar,
   Camera,
   Chat,
   Check,
   Clip,
-  Close,
   Clock,
+  Close,
+  Code,
   Copy,
   Emotions,
   Endcall,
@@ -78,6 +85,7 @@ export {
   Hand,
   Home,
   Invite,
+  Italic,
   Link,
   Maximize,
   Microphone,
@@ -91,8 +99,10 @@ export {
   Search,
   Send,
   Settings,
+  Stroke,
   Task,
   Trash,
+  Underline,
   Updates,
   Users,
   icons,
