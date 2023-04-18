@@ -1,3 +1,3 @@
-import { createSvg } from './createSvg';
+import { CreateEmoji } from './CreateEmoji';
 
-export { createSvg };
+export { CreateEmoji };

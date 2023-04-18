@@ -28,6 +28,7 @@ import { Folder } from './Folder';
 import { Food } from './Food';
 import { Grid } from './Grid';
 import { Hand } from './Hand';
+import { Heart } from './Heart';
 import { Home } from './Home';
 import { Invite } from './Invite';
 import { Italic } from './Italic';
@@ -83,6 +84,7 @@ export {
   Food,
   Grid,
   Hand,
+  Heart,
   Home,
   Invite,
   Italic,

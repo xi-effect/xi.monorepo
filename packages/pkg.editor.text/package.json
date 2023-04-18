@@ -23,6 +23,7 @@
     "@slate-yjs/core": "^0.3.1",
     "@slate-yjs/react": "^0.3.0",
     "pkg.config.muidts": "*",
+    "pkg.icons": "*",
     "randomcolor": "^0.6.2",
     "@hocuspocus/provider": "1.1.1",
     "clsx": "^1.2.1",

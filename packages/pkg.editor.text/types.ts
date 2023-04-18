@@ -11,7 +11,7 @@ export type CustomText = {
   bold?: boolean;
   italic?: boolean;
   underline?: boolean;
-  strikethrough?: boolean;
+  strike?: boolean;
   code?: boolean;
   text: string;
 };
