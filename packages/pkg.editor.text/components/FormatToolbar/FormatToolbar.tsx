@@ -1,8 +1,8 @@
-import React, { PropsWithChildren, ReactNode, LegacyRef, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { Editor, Range } from 'slate';
 import { useFocused, useSlate } from 'slate-react';
-import { cx, css } from '@emotion/css';
+import { Paper, Stack } from '@mui/material';
 import { FormatButton } from './FormatButton';
 
 type PortalProps = { children?: ReactNode };
@@ -12,38 +12,6 @@ function Portal({ children }: PortalProps) {
     ? ReactDOM.createPortal(children, document.body)
     : null;
 }
-
-interface BaseProps {
-  className: string;
-
-  [key: string]: unknown;
-}
-
-const Menu = React.forwardRef(
-  (
-    { className, ...props }: PropsWithChildren<BaseProps>,
-    ref: LegacyRef<HTMLDivElement> | undefined,
-  ) => (
-    <div
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          & > * {
-            display: inline-block;
-          }
-
-          & > * + * {
-            margin-left: 8px;
-          }
-        `,
-      )}
-    />
-  ),
-);
-
-Menu.displayName = 'Menu';
 
 export function FormatToolbar() {
   const ref = useRef<HTMLDivElement>(null);
@@ -84,31 +52,37 @@ export function FormatToolbar() {
   return (
     <Portal>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <Menu
+      <Paper
         ref={ref}
-        className={css`
-          padding: 8px 7px 2px;
-          position: absolute;
-          z-index: 1;
-          top: -10000px;
-          left: -10000px;
-          margin-top: 0px;
-          opacity: 0;
-          background-color: #757575;
-          border-radius: 4px;
-          transition: opacity 0.75s;
-        `}
+        sx={{
+          height: '40px',
+          padding: 1,
+          position: 'absolute',
+          zIndex: 1,
+          top: '-10000px',
+          left: '-10000px',
+          marginTop: '0px',
+          opacity: 0,
+          bgcolor: 'grayscale.0',
+          borderRadius: '8px',
+          border: '1px solid',
+          borderColor: 'grayscale.10',
+          transition: 'opacity 0.75s',
+          boxShadow: '0px 8px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
+        }}
         onMouseDown={(e: React.MouseEvent) => {
           // prevent toolbar from taking focus away from EditorSample
           e.preventDefault();
         }}
       >
-        <FormatButton format="bold" icon="bold" />
-        <FormatButton format="italic" icon="italic" />
-        <FormatButton format="strikethrough" icon="strike" />
-        <FormatButton format="underlined" icon="underlined" />
-        <FormatButton format="code" icon="code" />
-      </Menu>
+        <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={0.5}>
+          <FormatButton format="bold" icon="bold" />
+          <FormatButton format="italic" icon="italic" />
+          <FormatButton format="strike" icon="strike" />
+          <FormatButton format="underlined" icon="underlined" />
+          <FormatButton format="code" icon="code" />
+        </Stack>
+      </Paper>
     </Portal>
   );
 }

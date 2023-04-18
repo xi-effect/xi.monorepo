@@ -57,6 +57,10 @@ const menuArray = [
     link: '/components/icons',
     label: 'Icons',
   },
+  {
+    link: '/components/emoji',
+    label: 'Emoji',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {

@@ -103,7 +103,7 @@ const SHORTCUTS = [
   { trigger: inlineRegex('__'), apply: createSetMarkApply('bold') },
   { trigger: inlineRegex('*'), apply: createSetMarkApply('italic') },
   { trigger: inlineRegex('_'), apply: createSetMarkApply('italic') },
-  { trigger: inlineRegex('~~'), apply: createSetMarkApply('strikethrough') },
+  { trigger: inlineRegex('~~'), apply: createSetMarkApply('strike') },
 ];
 
 function before(editor: Editor, at: Point, stringOffset: number): Point | undefined {

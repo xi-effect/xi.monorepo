@@ -29,6 +29,7 @@ export const icons = [
   'Food',
   'Grid',
   'Hand',
+  'Heart',
   'Home',
   'Invite',
   'Italic',

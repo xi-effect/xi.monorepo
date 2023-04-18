@@ -1,51 +1,10 @@
 /* eslint-disable no-nested-ternary */
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
-import StrikethroughSIcon from '@mui/icons-material/StrikethroughS';
-import CodeIcon from '@mui/icons-material/Code';
+
 import { Editor, Text, Transforms } from 'slate';
 import { useSlate } from 'slate-react';
-import { cx, css } from '@emotion/css';
 
-import React, { LegacyRef, PropsWithChildren } from 'react';
-
-interface BaseProps {
-  className: string;
-
-  [key: string]: unknown;
-}
-
-const Button = React.forwardRef(
-  (
-    {
-      className,
-      active,
-      reversed,
-      ...props
-    }: PropsWithChildren<
-      {
-        active: boolean;
-        reversed: boolean;
-      } & BaseProps
-    >,
-    ref: LegacyRef<HTMLSpanElement> | undefined,
-  ) => (
-    <span
-      {...props}
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          cursor: pointer;
-          color: ${reversed ? (active ? 'white' : '#aaa') : active ? 'black' : '#ccc'};
-        `,
-      )}
-    />
-  ),
-);
-
-Button.displayName = 'Button';
+import { Bold, Stroke, Code, Underline, Italic } from 'pkg.icons';
+import { Button } from '@mui/material';
 
 function isFormatActive(editor: Editor, format: string) {
   const [match] = Editor.nodes(editor, {
@@ -73,26 +32,35 @@ type FormatButtonProps = {
 export function FormatButton({ format, icon }: FormatButtonProps) {
   const editor = useSlate();
   const active = isFormatActive(editor, format);
+  const bgcolor = active ? 'brand.20' : 'transparent';
+
+  const icons = {
+    bold: <Bold sx={{ color: 'petersburg.100' }} />,
+    italic: <Italic sx={{ color: 'petersburg.100' }} />,
+    underlined: <Underline sx={{ color: 'petersburg.100' }} />,
+    strike: <Stroke sx={{ color: 'petersburg.100' }} />,
+    code: <Code sx={{ color: 'petersburg.100' }} />,
+  };
 
   return (
     <Button
-      reversed
-      active={isFormatActive(editor, format)}
+      variant="text"
+      type="button"
+      sx={{
+        minWidth: '24px',
+        height: '24px',
+        width: '24px',
+        borderRadius: '4px',
+        boxShadow: 'none',
+        bgcolor,
+
+        '&:hover': {
+          bgcolor,
+        },
+      }}
       onClick={() => toggleFormat(editor, format)}
     >
-      {icon === 'bold' && (
-        <FormatBoldIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
-      )}
-      {icon === 'italic' && (
-        <FormatItalicIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
-      )}
-      {icon === 'underlined' && (
-        <FormatUnderlinedIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
-      )}
-      {icon === 'strike' && (
-        <StrikethroughSIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
-      )}
-      {icon === 'code' && <CodeIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />}
+      {icons[icon]}
     </Button>
   );
 }

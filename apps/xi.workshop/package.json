@@ -52,6 +52,7 @@
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
+    "pkg.emoji.picker": "*",
     "pkg.utils": "*",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
