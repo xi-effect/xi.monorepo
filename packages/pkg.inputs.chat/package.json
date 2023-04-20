@@ -1,0 +1,35 @@
+{
+  "name": "pkg.inputs.chat",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@emotion/css": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "slate": "^0.91.4",
+    "slate-react": "^0.91.10",
+    "slate-history": "^0.86.0",
+    "next": "13.2.4",
+    "pkg.icons": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "react": "^18.2.0",
+    "pkg.config.typescript": "*",
+    "typescript": "^4.5.2"
+  },
+  "author": "",
+  "description": ""
+}

@@ -61,6 +61,10 @@ const menuArray = [
     link: '/components/emoji',
     label: 'Emoji',
   },
+  {
+    link: '/components/chatinput',
+    label: 'ChatInput',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
