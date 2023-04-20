@@ -115,7 +115,7 @@ function ContentEditor() {
     );
   }, [provider.awareness, provider.document]);
 
-  // Connect editor and provider in useEffect to comply with concurrent mode
+  // Connect editor and provider in useEffect to comp ly with concurrent mode
   // requirements.
   useEffect(() => {
     provider.connect();

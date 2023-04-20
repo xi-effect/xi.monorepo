@@ -51,6 +51,7 @@ const nextConfig = {
     'pkg.notistack.saveconfirm',
     'pkg.notistack.notification',
     'pkg.editor.text',
+    'pkg.inputs.chat',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

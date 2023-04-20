@@ -29,6 +29,7 @@ const nextConfig = {
     'pkg.utils',
     'pkg.editor.text',
     'pkg.emoji.picker',
+    'pkg.inputs.chat',
   ],
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',

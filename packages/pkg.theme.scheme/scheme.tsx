@@ -12,6 +12,15 @@ export const getScheme = (mode: 'light' | 'dark') => ({
       },
     },
     MuiInputBase: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+
+          '&:hover': {
+            boxShadow: 'none',
+          },
+        },
+      },
       variants: [
         {
           props: { variant: 'filled' },
@@ -36,6 +45,15 @@ export const getScheme = (mode: 'light' | 'dark') => ({
       },
     },
     MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+
+          '&:hover': {
+            boxShadow: 'none',
+          },
+        },
+      },
       variants: [
         {
           props: { variant: 'contained' },

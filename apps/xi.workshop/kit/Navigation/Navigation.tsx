@@ -51,6 +51,10 @@ const menuArray = [
     link: '/components/icons',
     label: 'Icons',
   },
+  {
+    link: '/components/chatinput',
+    label: 'ChatInput',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
