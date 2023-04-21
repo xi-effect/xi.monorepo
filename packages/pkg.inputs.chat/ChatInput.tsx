@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createEditor } from 'slate';
+import { Descendant, createEditor } from 'slate';
 import { Slate, withReact } from 'slate-react';
 import dynamic from 'next/dynamic';
 import { FormControl, Stack, Button } from '@mui/material';
@@ -9,12 +9,7 @@ import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
 import { CustomEditable } from './components/CustomEditable';
 
-const initialValue = [
-  {
-    type: 'paragraph',
-    children: [{ text: 'sssssssss' }],
-  },
-];
+const initialValue = [] as Descendant[];
 
 const ChatInput = () => {
   const [editor] = useState(() => withReact(withMarkdown(withNormalize(createEditor()))));
