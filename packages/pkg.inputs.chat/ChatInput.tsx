@@ -9,7 +9,12 @@ import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
 import { CustomEditable } from './components/CustomEditable';
 
-const initialValue = [] as Descendant[];
+const initialValue: Descendant[] = [
+  {
+    type: 'paragraph',
+    children: [{ text: '' }],
+  },
+];
 
 const ChatInput = () => {
   const [editor] = useState(() => withReact(withMarkdown(withNormalize(createEditor()))));
