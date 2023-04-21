@@ -29,7 +29,11 @@ export type ChatBodyT = {
 
 export type UpbarT = { name: string; host: string };
 
-export type ChatProps = {
+export type ChatT = {
   upbar: UpbarT;
   body: ChatBodyT[];
+};
+
+export type ChatProps = {
+  id: string;
 };

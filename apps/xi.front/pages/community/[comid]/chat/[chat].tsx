@@ -2,7 +2,6 @@ import { Navigation } from 'kit/Navigation';
 import { observer } from 'mobx-react';
 import { LayoutPages } from 'pkg.layout.pages';
 import { Chat as ChatPkg } from 'pkg.pages.chat';
-import { defaultChatData } from 'components/Community/Chat/data';
 import { Stack } from '@mui/material';
 
 const Chat = observer(() => (
@@ -31,7 +30,7 @@ const Chat = observer(() => (
           overflow: 'auto',
         }}
       >
-        <ChatPkg {...defaultChatData} />
+        <ChatPkg id="chat_1" />
       </Stack>
     </Navigation>
   </LayoutPages>

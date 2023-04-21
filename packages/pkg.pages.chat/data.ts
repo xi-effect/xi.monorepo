@@ -1,6 +1,6 @@
-import { ChatProps } from 'pkg.pages.chat';
+import { ChatT } from './types';
 
-export const defaultChatData: ChatProps = {
+export const defaultChatData: ChatT = {
   upbar: { name: '4Д — БЖ', host: 'Кастырин И.И.' },
   body: [
     {
