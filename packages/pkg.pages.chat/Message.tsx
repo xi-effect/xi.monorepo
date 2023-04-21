@@ -1,10 +1,9 @@
 import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { MsgT } from './types';
+import { MessageT } from './types';
 
-export const Message = ({ body, date, author }: MsgT) => {
-  const { text } = body;
-  const msgDate = dayjs(date).locale('ru').format('DD.MM.YYYY HH:mm');
+export const Message = ({ text, type, createdTime, author }: MessageT) => {
+  const msgDate = dayjs(createdTime).locale('ru').format('DD.MM.YYYY HH:mm');
 
   return (
     <Stack spacing={0.5}>
@@ -14,7 +13,7 @@ export const Message = ({ body, date, author }: MsgT) => {
           {msgDate}
         </Typography>
       </Stack>
-      <Typography>{text}</Typography>
+      {type === 'text' && <Typography>{text}</Typography>}
     </Stack>
   );
 };

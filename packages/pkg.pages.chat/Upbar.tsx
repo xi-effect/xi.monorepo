@@ -1,8 +1,8 @@
 import { Stack, Typography } from '@mui/material';
 import { Search, Users, File, Shape } from 'pkg.icons';
-import { UpbarT } from './types';
+import { ChatInfoT } from './types';
 
-export const Upbar = ({ name, host }: UpbarT) => (
+export const Upbar = ({ name, host }: ChatInfoT) => (
   <Stack
     sx={{ position: 'sticky', top: 0, width: '100%' }}
     justifyContent="space-between"

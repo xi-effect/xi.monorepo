@@ -3,18 +3,20 @@ import { Stack } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
 import { Upbar } from './Upbar';
 import { DateBlock } from './DateBlock';
-import { ChatProps, ChatT } from './types';
-import { defaultChatData } from './data';
+import { ChatProps, ChatInfoT, ChatMessagesT } from './types';
+import { chatInfo as chatInfoDefault, chatMessages } from './data';
 
 export const Chat = ({ id }: ChatProps) => {
-  const [data, setData] = useState<ChatT>({} as ChatT);
-
-  const { body, upbar } = data;
+  /* res from response */
+  const [chatInfoRes, setChatInfoRes] = useState<ChatInfoT>({} as ChatInfoT);
+  const [messagesRes, setMessagesRes] = useState<ChatMessagesT>({} as ChatMessagesT);
+  // const [messages, setMessages] = useState<DateBlockT[]>([]);
 
   useEffect(() => {
-    // fetch request to get chat data by chatId
+    // fetch request to get chat info
     console.log(id);
-    setData(defaultChatData);
+    setChatInfoRes(chatInfoDefault);
+    setMessagesRes(chatMessages);
   }, []);
 
   return (
@@ -30,14 +32,12 @@ export const Chat = ({ id }: ChatProps) => {
         p: '16px',
       }}
     >
-      <Upbar {...upbar} />
-      {body?.map((data) => (
+      <Upbar {...chatInfoRes} />
+      {messagesRes.messages?.map((data) => (
         <DateBlock {...data} />
       ))}
 
       <Input />
-
-      <Stack sx={{ height: '1000px', width: '100%' }} />
     </Stack>
   );
 };
