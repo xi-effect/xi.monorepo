@@ -61,3 +61,60 @@ export const chatMessages: ChatMessagesT = {
   ],
   next: '',
 };
+
+export const chatMessagesHistory: ChatMessagesT = {
+  id: 'chat_1',
+  messages: [
+    {
+      date: '2023-03-15',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-15T15:03:00',
+          type: 'text',
+          text: 'Всем привет! Что задали?',
+          author: 'Игорь Букшев',
+        },
+      ],
+    },
+    {
+      date: '2023-03-16',
+      messages: [
+        {
+          id: 'message2',
+          createdTime: '2023-03-16T09:35:00',
+          type: 'text',
+          text: 'Привет! Нужна твоя помощь.',
+          author: 'Игорь Букшев',
+        },
+        {
+          id: 'message3',
+          createdTime: '2023-03-16T18:14:00',
+          type: 'text',
+          text: 'Окс',
+          author: 'Михаил Морозов',
+        },
+      ],
+    },
+    {
+      date: '2023-03-17',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-17T15:03:00',
+          type: 'text',
+          text: 'Всем привет! Что задали?',
+          author: 'Игорь Букшев',
+        },
+        {
+          id: 'message4',
+          createdTime: '2023-03-17T10:35:00',
+          type: 'file',
+          text: 'File',
+          author: 'Игорь Букшев',
+        },
+      ],
+    },
+  ],
+  next: '',
+};
