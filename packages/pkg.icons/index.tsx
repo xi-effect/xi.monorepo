@@ -36,10 +36,13 @@ import { Link } from './Link';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
 import { Minus } from './Minus';
+import { Movie } from './Movie';
+import { Music } from './Music';
 import { Nature } from './Nature';
 import { Notification } from './Notification';
 import { Objects } from './Objects';
 import { Photo } from './Photo';
+import { Picture } from './Picture';
 import { Places } from './Places';
 import { Screenshare } from './Screenshare';
 import { Search } from './Search';
@@ -92,10 +95,13 @@ export {
   Maximize,
   Microphone,
   Minus,
+  Movie,
+  Music,
   Nature,
   Notification,
   Objects,
   Photo,
+  Picture,
   Places,
   Screenshare,
   Search,

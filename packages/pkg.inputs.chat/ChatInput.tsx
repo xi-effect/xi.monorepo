@@ -1,9 +1,10 @@
+import 'pkg.config.muidts';
 import React, { useState } from 'react';
 import { Descendant, createEditor } from 'slate';
 import { Slate, withReact } from 'slate-react';
 import dynamic from 'next/dynamic';
-import { FormControl, Stack, Button } from '@mui/material';
-import { Clip, Emotions, Send } from 'pkg.icons';
+import { FormControl, Stack, Button, Typography, MenuItem, ListItemIcon } from '@mui/material';
+import { Clip, Emotions, File, Movie, Picture, Send } from 'pkg.icons';
 import { Dropdown } from 'pkg.navigation.dropdown';
 import { FormatToolbar } from './components/FormatToolbar';
 import { withMarkdown } from './plugins/withMarkdown';
@@ -16,6 +17,8 @@ const initialValue: Descendant[] = [
     children: [{ text: '' }],
   },
 ];
+
+const DropdownClip = () => <Clip sx={{ fontSize: '24px' }} />;
 
 const ChatInput = () => {
   const [editor] = useState(() => withReact(withMarkdown(withNormalize(createEditor()))));
@@ -44,13 +47,66 @@ const ChatInput = () => {
           sx={{ width: '100%', height: '100%' }}
         >
           <Dropdown
-            Element={
-              <Button sx={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '4px' }}>
-                <Clip sx={{ fontSize: '24px' }} />
-              </Button>
-            }
+            Element={DropdownClip}
+            menuProps={{
+              anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'left',
+              },
+              transformOrigin: {
+                vertical: 'bottom',
+                horizontal: 'left',
+              },
+            }}
+            buttonSx={{
+              width: '32px',
+              height: '32px',
+              minWidth: '32px',
+              borderRadius: '4px',
+              bgcolor: 'petersburg.0',
+              '&:hover': { bgcolor: 'petersburg.5' },
+              '&:focus-visible': {
+                bgcolor: 'petersburg.5',
+              },
+            }}
+            menuSx={{
+              '&.MuiMenu-paper': {
+                width: '130px',
+                minWidth: '130px',
+                height: '96px',
+                p: 0,
+              },
+              '&.MuiList-root': {
+                p: 0,
+              },
+            }}
           >
-            1
+            <>
+              <MenuItem sx={{ p: 0.5, height: '24px' }}>
+                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                  <Picture sx={{ fontSize: 16 }} />
+                </ListItemIcon>
+                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                  Изображение
+                </Typography>
+              </MenuItem>
+              <MenuItem sx={{ p: 0.5, height: '24px' }}>
+                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                  <Movie sx={{ fontSize: 16 }} />
+                </ListItemIcon>
+                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                  Видео
+                </Typography>
+              </MenuItem>
+              <MenuItem sx={{ p: 0.5, height: '24px' }}>
+                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                  <File sx={{ fontSize: 16 }} />
+                </ListItemIcon>
+                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                  Файл
+                </Typography>
+              </MenuItem>
+            </>
           </Dropdown>
           <Stack
             flexDirection="column"

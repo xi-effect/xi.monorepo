@@ -4,7 +4,7 @@ import { ChatInput } from 'pkg.inputs.chat';
 
 const ChatInputPage = () => (
   <LayoutPages>
-    <Stack sx={{ width: '600px', pt: 4 }}>
+    <Stack sx={{ width: '600px', pt: 40 }}>
       <ChatInput />
     </Stack>
   </LayoutPages>

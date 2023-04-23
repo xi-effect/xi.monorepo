@@ -4,7 +4,15 @@ import { v4 } from 'uuid';
 import { dropdownSizes, menuStyles } from './styles';
 import { DropdownPropsT } from './types';
 
-export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', menuProps, menuSx, children, ...props }) => {
+export const Dropdown: FC<DropdownPropsT> = ({
+  Element,
+  size = 'l',
+  menuProps,
+  menuSx,
+  buttonSx,
+  children,
+  ...props
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
@@ -33,7 +41,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', menuProps, m
             transition: '0.3s',
             disaply: 'flex',
             alignItems: 'center',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             p: '5px',
             border: '1px solid',
             borderColor: 'grayscale.0',
@@ -43,6 +51,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', menuProps, m
               border: '1px solid',
               borderColor: 'grayscale.100',
             },
+            ...buttonSx,
           }}
           {...props}
         >

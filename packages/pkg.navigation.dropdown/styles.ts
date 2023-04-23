@@ -30,7 +30,7 @@ export const menuStyles = {
     },
 
     '.MuiMenu-paper': {
-      minWidth: '242px',
+      minWidth: '128px',
       border: '1px solid',
       borderColor: 'grayscale.10',
       borderRadius: '8px',
