@@ -18,7 +18,7 @@ export const dropdownSizes: { [key in DropdownSizesT]: any } = {
   },
 };
 
-export const MenuProps = {
+export const menuStyles = {
   '&.Dropdown-root': {
     width: 0,
     height: '100%',

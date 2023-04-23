@@ -1,10 +1,10 @@
 import { Button, Menu, ClickAwayListener } from '@mui/material';
 import React, { useState, FC } from 'react';
 import { v4 } from 'uuid';
-import { dropdownSizes, MenuProps } from './styles';
+import { dropdownSizes, menuStyles } from './styles';
 import { DropdownPropsT } from './types';
 
-export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ...props }) => {
+export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', menuProps, menuSx, children, ...props }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
@@ -58,8 +58,10 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ..
           root: 'Dropdown-root',
         }}
         sx={{
-          ...MenuProps,
+          ...menuStyles,
+          ...menuSx,
         }}
+        {...menuProps}
       >
         {children}
       </Menu>
