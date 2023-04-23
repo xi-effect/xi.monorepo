@@ -4,6 +4,7 @@ import { Slate, withReact } from 'slate-react';
 import dynamic from 'next/dynamic';
 import { FormControl, Stack, Button } from '@mui/material';
 import { Clip, Emotions, Send } from 'pkg.icons';
+import { Dropdown } from 'pkg.navigation.dropdown';
 import { FormatToolbar } from './components/FormatToolbar';
 import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
@@ -42,9 +43,15 @@ const ChatInput = () => {
           alignItems="flex-end"
           sx={{ width: '100%', height: '100%' }}
         >
-          <Button sx={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '4px' }}>
-            <Clip sx={{ fontSize: '24px' }} />
-          </Button>
+          <Dropdown
+            Element={
+              <Button sx={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '4px' }}>
+                <Clip sx={{ fontSize: '24px' }} />
+              </Button>
+            }
+          >
+            1
+          </Dropdown>
           <Stack
             flexDirection="column"
             justifyContent="center"
