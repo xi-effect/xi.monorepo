@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Stack, List, ListItem } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { Upbar } from './Upbar';
 import { DateBlock } from './DateBlock';
 import { ChatProps, ChatInfoT, ChatMessagesT, DayMessagesT } from './types';
@@ -11,19 +11,68 @@ export const Chat = ({ id }: ChatProps) => {
   /* res from response */
   const [chatInfoRes, setChatInfoRes] = useState<ChatInfoT>({} as ChatInfoT);
   const [messagesRes, setMessagesRes] = useState<ChatMessagesT>({} as ChatMessagesT);
-  // const [messages, setMessages] = useState<DateBlockT[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
-  const fetchMoreMessages = () => {
-    const { messages } = messagesRes;
-    const updatedMessages: DayMessagesT[] = [...messages, ...chatMessagesHistory.messages];
-    setMessagesRes((data) => ({ ...data, messages: updatedMessages }));
+  const scrollableRootRef = useRef<any>(null);
+  const lastScrollDistanceToBottomRef = useRef<number>();
+
+  const fetchMoreMessages = async () => {
+    await setTimeout(() => {
+      const { messages } = messagesRes;
+      const updatedMessages: DayMessagesT[] = [...chatMessagesHistory.messages, ...messages];
+      setMessagesRes({ ...chatMessagesHistory, messages: updatedMessages });
+    }, 0);
   };
+  const setLoading = (loading: boolean) => setIsLoading(loading);
+  const loadMore = async () => {
+    await setLoading(true);
+    await fetchMoreMessages();
+    await setLoading(false);
+  };
+
+  const [infiniteRef, { rootRef }] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage: hasMore,
+    onLoadMore: loadMore,
+    rootMargin: '1000px 0px 0px 0px',
+  });
 
   useEffect(() => {
     // fetch request to get chat info
     console.log(id);
     setChatInfoRes(chatInfoDefault);
     setMessagesRes(chatMessages);
+  }, []);
+
+  useEffect(() => {
+    const scrollableRoot = scrollableRootRef.current;
+    const lastScrollDistanceToBottom = lastScrollDistanceToBottomRef.current ?? 0;
+    if (scrollableRoot) {
+      scrollableRoot.scrollTop = scrollableRoot.scrollHeight - lastScrollDistanceToBottom;
+    }
+  }, [messagesRes, rootRef]);
+
+  useEffect(() => {
+    const hasMoreMessages: boolean = 'next' in messagesRes;
+    console.log('update has more', hasMoreMessages);
+    setHasMore(hasMoreMessages);
+  }, [messagesRes]);
+
+  const rootRefSetter = useCallback(
+    (node: HTMLDivElement) => {
+      rootRef(node);
+      scrollableRootRef.current = node;
+    },
+    [rootRef],
+  );
+
+  const handleRootScroll = useCallback(() => {
+    const rootNode = scrollableRootRef.current;
+    if (rootNode) {
+      const scrollDistanceToBottom = rootNode.scrollHeight - rootNode.scrollTop;
+      lastScrollDistanceToBottomRef.current = scrollDistanceToBottom;
+    }
   }, []);
 
   return (
@@ -41,30 +90,28 @@ export const Chat = ({ id }: ChatProps) => {
     >
       <Upbar {...chatInfoRes} />
 
-      <div
-        id="scrollableDiv"
-        style={{
-          height: '50%',
+      <Stack
+        ref={rootRefSetter}
+        onScroll={handleRootScroll}
+        sx={{
+          height: '100%',
           overflow: 'auto',
-          display: 'flex',
-          flexDirection: 'column-reverse',
+          // display: 'flex',
+          // flexDirection: 'column-reverse',
         }}
       >
-        <InfiniteScroll
-          dataLength={messagesRes.messages ? messagesRes.messages.length - 2 : 0}
-          next={fetchMoreMessages}
-          style={{ display: 'flex', flexDirection: 'column-reverse' }}
-          inverse
-          hasMore
-          scrollThreshold={0.9}
-          loader={<h4>Loading...</h4>}
-          scrollableTarget="scrollableDiv"
-        >
+        <List>
+          {hasMore && (
+            <ListItem ref={infiniteRef} sx={{ width: '100%', height: '50px', bgcolor: 'red' }} />
+          )}
+
           {messagesRes.messages?.map((data) => (
-            <DateBlock {...data} />
+            <ListItem>
+              <DateBlock {...data} />
+            </ListItem>
           ))}
-        </InfiniteScroll>
-      </div>
+        </List>
+      </Stack>
 
       <Input />
     </Stack>
