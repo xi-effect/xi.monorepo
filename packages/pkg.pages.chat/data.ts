@@ -66,6 +66,32 @@ export const chatMessagesHistory: ChatMessagesT = {
   id: 'chat_1',
   messages: [
     {
+      date: '2023-03-14',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-14T15:03:00',
+          type: 'text',
+          text: 'Какое задание по физике?',
+          author: 'Игорь Букшев',
+        },
+        {
+          id: 'message5',
+          createdTime: '2023-03-14T15:05:05',
+          type: 'text',
+          text: 'Непрерывность тока и закон Кирхгофа. Надо решить несколько задач и ответить на несколько вопросов.',
+          author: 'Михаил Морозов',
+        },
+        {
+          id: 'message5',
+          createdTime: '2023-03-14T15:05:08',
+          type: 'text',
+          text: 'Спасибо',
+          author: 'Игорь Букшев',
+        },
+      ],
+    },
+    {
       date: '2023-03-15',
       messages: [
         {

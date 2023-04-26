@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Stack, List, ListItem } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
@@ -12,7 +12,12 @@ export const Chat = ({ id }: ChatProps) => {
   const [chatInfoRes, setChatInfoRes] = useState<ChatInfoT>({} as ChatInfoT);
   const [messagesRes, setMessagesRes] = useState<ChatMessagesT>({} as ChatMessagesT);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasMore, setHasMore] = useState<boolean>(true);
+
+  const hasMore = useMemo(() => {
+    const hasMoreMessages: boolean = 'next' in messagesRes;
+    console.log('update has more', messagesRes.id);
+    return hasMoreMessages;
+  }, [messagesRes]);
 
   const scrollableRootRef = useRef<any>(null);
   const lastScrollDistanceToBottomRef = useRef<number>();
@@ -52,12 +57,6 @@ export const Chat = ({ id }: ChatProps) => {
       scrollableRoot.scrollTop = scrollableRoot.scrollHeight - lastScrollDistanceToBottom;
     }
   }, [messagesRes, rootRef]);
-
-  useEffect(() => {
-    const hasMoreMessages: boolean = 'next' in messagesRes;
-    console.log('update has more', hasMoreMessages);
-    setHasMore(hasMoreMessages);
-  }, [messagesRes]);
 
   const rootRefSetter = useCallback(
     (node: HTMLDivElement) => {
@@ -102,7 +101,10 @@ export const Chat = ({ id }: ChatProps) => {
       >
         <List>
           {hasMore && (
-            <ListItem ref={infiniteRef} sx={{ width: '100%', height: '50px', bgcolor: 'red' }} />
+            <ListItem
+              ref={infiniteRef}
+              sx={{ width: '100%', height: '1200px', bgcolor: 'unset' }}
+            />
           )}
 
           {messagesRes.messages?.map((data) => (
