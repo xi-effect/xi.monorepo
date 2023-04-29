@@ -15,7 +15,8 @@
     "pkg.icons": "*",
     "pkg.inputs.input": "*",
     "pkg.emoji": "*",
-    "pkg.config.muidts": "*"
+    "pkg.config.muidts": "*",
+    "pkg.navigation.dropdown": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
