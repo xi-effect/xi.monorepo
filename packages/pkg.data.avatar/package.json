@@ -20,6 +20,6 @@
     "eslint-config-custom": "*",
     "react": "^18.2.0",
     "pkg.config.typescript": "*",
-    "typescript": "^4.5.2"
+    "typescript": "^4.6.4"
   }
 }

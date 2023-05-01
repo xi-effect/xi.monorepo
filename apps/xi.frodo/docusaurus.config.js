@@ -71,7 +71,7 @@ const config = {
             label: 'Components',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/xi-effect',
             label: 'GitHub',
             position: 'right',
           },
@@ -80,19 +80,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Продукт',
-                to: '/docs/product',
-              },
-              {
-                label: 'Репозитории',
-                to: '/docs/repo',
-              },
-            ],
-          },
           {
             title: 'Community',
             items: [
@@ -105,10 +92,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/xi-effect',
