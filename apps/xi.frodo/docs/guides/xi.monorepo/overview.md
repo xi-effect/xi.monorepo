@@ -19,8 +19,8 @@
 15. `Dockerfile` - конфиг для образа в Docker
 16. `next-env.d` - файлик Next JS, не трогать)))
 17. `next-sitemap` - генерация site-map
-18. `next.config` - конфиг Next JS 
+18. `next.config` - конфиг Next JS
 19. `package.json` - если вы не знаете, что это, то я не знаю, что вы тут делаете)))
 20. `package-lock.json`
 21. `server` - кастомный сервер (см NextJS)
-23. `tsconfig` - конфиг TS
+22. `tsconfig` - конфиг TS
