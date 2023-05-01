@@ -13,7 +13,7 @@ export const Upbar = ({ name, host }: ChatInfoT) => (
         {name}
       </Typography>
       <Typography variant="m" sx={{ color: 'grayscale.40', fontWeight: 400, lineHeight: '26px' }}>
-        {host}
+        {host?.username}
       </Typography>
     </Stack>
 

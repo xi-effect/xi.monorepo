@@ -1,4 +1,7 @@
-export type UserT = string;
+export type UserT = {
+  username: string;
+  avatar: FileT | null;
+};
 export type FileT = {
   id: string;
   filename: string;

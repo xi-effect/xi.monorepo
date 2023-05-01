@@ -8,7 +8,7 @@ export const DateBlock = ({ date, messages }: DayMessagesT) => {
   const blockDate = dayjs(date).locale('ru').format('DD MMMM');
 
   return (
-    <Stack sx={{ p: '8px' }} spacing={2}>
+    <Stack sx={{ p: '8px 0', width: '100%' }} spacing={2}>
       <Stack alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
         <Badge bgColor="grayscale.5" size="small">
           {blockDate}

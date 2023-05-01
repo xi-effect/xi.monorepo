@@ -3,7 +3,7 @@ import { ChatInfoT, ChatMessagesT } from './types';
 export const chatInfo: ChatInfoT = {
   id: 'chat_1',
   name: '4Д — БЖ',
-  host: 'Кастырин И.И.',
+  host: { username: 'Кастырин И.И.', avatar: null },
 };
 
 export const chatMessages: ChatMessagesT = {
@@ -23,7 +23,10 @@ export const chatMessages: ChatMessagesT = {
     термодинамических системах, описываются макроскопическими величинами (температура, давление, концентрации компонентов), 
     которые вводятся для описания систем, состоящих из большого числа частиц, и не применимы к отдельным молекулам и атомам, 
     в отличие, например, от величин, вводимых в механике или электродинамике.`,
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
       ],
     },
@@ -35,14 +38,20 @@ export const chatMessages: ChatMessagesT = {
           createdTime: '2023-03-19T09:35:00',
           type: 'text',
           text: 'Привет! Нужна твоя помощь.',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
         {
           id: 'message3',
           createdTime: '2023-03-19T18:14:00',
           type: 'text',
           text: 'Окс',
-          author: 'Михаил Морозов',
+          author: {
+            username: 'Михаил Морозов',
+            avatar: null,
+          },
         },
       ],
     },
@@ -54,7 +63,10 @@ export const chatMessages: ChatMessagesT = {
           createdTime: '2023-03-20T10:35:00',
           type: 'file',
           text: 'File',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
       ],
     },
@@ -73,21 +85,30 @@ export const chatMessagesHistory: ChatMessagesT = {
           createdTime: '2023-03-14T15:03:00',
           type: 'text',
           text: 'Какое задание по физике?',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
         {
           id: 'message5',
           createdTime: '2023-03-14T15:05:05',
           type: 'text',
           text: 'Непрерывность тока и закон Кирхгофа. Надо решить несколько задач и ответить на несколько вопросов.',
-          author: 'Михаил Морозов',
+          author: {
+            username: 'Михаил Морозов',
+            avatar: null,
+          },
         },
         {
           id: 'message5',
           createdTime: '2023-03-14T15:05:08',
           type: 'text',
           text: 'Спасибо',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
       ],
     },
@@ -99,7 +120,10 @@ export const chatMessagesHistory: ChatMessagesT = {
           createdTime: '2023-03-15T15:03:00',
           type: 'text',
           text: 'Всем привет! Что задали?',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
       ],
     },
@@ -111,14 +135,20 @@ export const chatMessagesHistory: ChatMessagesT = {
           createdTime: '2023-03-16T09:35:00',
           type: 'text',
           text: 'Привет! Нужна твоя помощь.',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
         {
           id: 'message3',
           createdTime: '2023-03-16T18:14:00',
           type: 'text',
           text: 'Окс',
-          author: 'Михаил Морозов',
+          author: {
+            username: 'Михаил Морозов',
+            avatar: null,
+          },
         },
       ],
     },
@@ -130,14 +160,20 @@ export const chatMessagesHistory: ChatMessagesT = {
           createdTime: '2023-03-17T15:03:00',
           type: 'text',
           text: 'Всем привет! Что задали?',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
         {
           id: 'message4',
           createdTime: '2023-03-17T10:35:00',
           type: 'file',
           text: 'File',
-          author: 'Игорь Букшев',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
         },
       ],
     },

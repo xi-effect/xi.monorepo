@@ -85,6 +85,7 @@ export const Chat = ({ id }: ChatProps) => {
         overflow: 'auto',
         borderRadius: '8px',
         p: '16px',
+        width: '100%',
       }}
     >
       <Upbar {...chatInfoRes} />
@@ -95,8 +96,6 @@ export const Chat = ({ id }: ChatProps) => {
         sx={{
           height: '100%',
           overflow: 'auto',
-          // display: 'flex',
-          // flexDirection: 'column-reverse',
         }}
       >
         <List>
@@ -108,7 +107,7 @@ export const Chat = ({ id }: ChatProps) => {
           )}
 
           {messagesRes.messages?.map((data) => (
-            <ListItem>
+            <ListItem sx={{ p: 0 }}>
               <DateBlock {...data} />
             </ListItem>
           ))}
