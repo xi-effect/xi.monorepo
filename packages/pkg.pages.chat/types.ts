@@ -1,8 +1,10 @@
+import { FileProps } from 'pkg.components.file';
+
 export type UserT = {
   username: string;
-  avatar: FileT | null;
+  avatar: AvatarT | null;
 };
-export type FileT = {
+export type AvatarT = {
   id: string;
   filename: string;
 };
@@ -30,7 +32,7 @@ export type MessageT = {
   createdTime: string;
   type: 'file' | 'text';
   text?: string;
-  file?: FileT;
+  file?: FileProps;
   author: UserT;
 };
 

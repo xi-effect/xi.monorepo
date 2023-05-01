@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
+import { File } from 'pkg.components.file';
 import Image from 'next/image';
 import { MessageT } from './types';
 
@@ -9,7 +10,7 @@ const getUserInitials = (username: string) => {
   return initials.join('');
 };
 
-export const Message = ({ text, type, createdTime, author }: MessageT) => {
+export const Message = ({ text, type, createdTime, author, file }: MessageT) => {
   const msgDate = dayjs(createdTime).locale('ru').format('DD.MM.YYYY HH:mm');
 
   return (
@@ -44,7 +45,8 @@ export const Message = ({ text, type, createdTime, author }: MessageT) => {
             {msgDate}
           </Typography>
         </Stack>
-        {type === 'text' && <Typography>{text}</Typography>}
+        {type === 'text' && text && <Typography>{text}</Typography>}
+        {type === 'file' && file && <File {...file} hideCloseIcon style={{ maxWidth: '256px' }} />}
       </Stack>
     </Stack>
   );

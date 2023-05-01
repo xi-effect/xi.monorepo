@@ -62,7 +62,11 @@ export const chatMessages: ChatMessagesT = {
           id: 'message4',
           createdTime: '2023-03-20T10:35:00',
           type: 'file',
-          text: 'File',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
           author: {
             username: 'Игорь Букшев',
             avatar: null,
@@ -169,7 +173,11 @@ export const chatMessagesHistory: ChatMessagesT = {
           id: 'message4',
           createdTime: '2023-03-17T10:35:00',
           type: 'file',
-          text: 'File',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
           author: {
             username: 'Игорь Букшев',
             avatar: null,
