@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Stack, List, ListItem } from '@mui/material';
-import { Input } from 'pkg.inputs.input';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
+import { ChatInput } from 'pkg.inputs.chat';
 import { Upbar } from './Upbar';
 import { DateBlock } from './DateBlock';
 import { ChatProps, ChatInfoT, ChatMessagesT, DayMessagesT } from './types';
@@ -114,7 +114,7 @@ export const Chat = ({ id }: ChatProps) => {
         </List>
       </Stack>
 
-      <Input />
+      <ChatInput />
     </Stack>
   );
 };
