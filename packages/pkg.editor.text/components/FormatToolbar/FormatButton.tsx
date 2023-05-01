@@ -1,10 +1,10 @@
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatStrikethroughIcon from '@mui/icons-material/FormatStrikethrough';
+/* eslint-disable no-nested-ternary */
 
-import clsx from 'clsx';
 import { Editor, Text, Transforms } from 'slate';
 import { useSlate } from 'slate-react';
+
+import { Bold, Stroke, Code, Underline, Italic } from 'pkg.icons';
+import { Button } from '@mui/material';
 
 function isFormatActive(editor: Editor, format: string) {
   const [match] = Editor.nodes(editor, {
@@ -26,27 +26,41 @@ function toggleFormat(editor: Editor, format: string) {
 
 type FormatButtonProps = {
   format: string;
-  icon: 'bold' | 'italic' | 'strike';
+  icon: 'bold' | 'italic' | 'strike' | 'underlined' | 'code';
 };
 
 export function FormatButton({ format, icon }: FormatButtonProps) {
   const editor = useSlate();
   const active = isFormatActive(editor, format);
+  const bgcolor = active ? 'brand.20' : 'transparent';
+
+  const icons = {
+    bold: <Bold sx={{ color: 'petersburg.100' }} />,
+    italic: <Italic sx={{ color: 'petersburg.100' }} />,
+    underlined: <Underline sx={{ color: 'petersburg.100' }} />,
+    strike: <Stroke sx={{ color: 'petersburg.100' }} />,
+    code: <Code sx={{ color: 'petersburg.100' }} />,
+  };
 
   return (
-    <button
-      className={clsx('h-8 w-8 flex justify-center items-center hover:bg-gray-600')}
+    <Button
+      variant="text"
       type="button"
-      onMouseDown={(event) => {
-        event.preventDefault();
-        toggleFormat(editor, format);
+      sx={{
+        minWidth: '24px',
+        height: '24px',
+        width: '24px',
+        borderRadius: '4px',
+        boxShadow: 'none',
+        bgcolor,
+
+        '&:hover': {
+          bgcolor,
+        },
       }}
+      onClick={() => toggleFormat(editor, format)}
     >
-      {icon === 'bold' && <FormatBoldIcon className={active ? 'text-primary' : 'text-white'} />}
-      {icon === 'italic' && <FormatItalicIcon className={active ? 'text-primary' : 'text-white'} />}
-      {icon === 'strike' && (
-        <FormatStrikethroughIcon className={active ? 'text-primary' : 'text-white'} />
-      )}
-    </button>
+      {icons[icon]}
+    </Button>
   );
 }

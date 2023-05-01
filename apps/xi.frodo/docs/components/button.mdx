@@ -1,0 +1,56 @@
+---
+sidebar_position: 4
+---
+
+# Button
+
+**[Figma](https://www.figma.com/file/Kj2qDdyHNRhnJXbzz0kkJV/%F0%9F%96%8D%EF%B8%8F-Components?node-id=21-1631&t=pURu06dOC73EDQ36-4)** • **[Code](https://github.com/xi-effect/xi.monorepo/tree/main/packages/pkg.inputs.button)**
+
+Кнопки позволяют пользователям выполнять действия и делать выбор одним нажатием.
+
+## Базовая кнопка
+
+```jsx live
+function BaseButton(props) {
+  const handleClick = () => {
+    console.log('alert');
+  };
+
+  return (
+    <>
+      <Button onClick={handleClick}>Click me</Button>
+    </>
+  );
+}
+```
+
+## Кнопка с загрузкой
+
+```jsx live
+function LoadingButton(props) {
+  return (
+    <div>
+      <Button
+        status="idle"
+        size="large"
+        loadingPosition="icon"
+        variant="contained"
+        color="success"
+        isSnackbar
+        isSnackbarIconStart
+        snackbarLoadingPosition="icon"
+        snackbarText="WAIT...."
+      >
+        Test
+      </Button>
+    </div>
+  );
+}
+```
+
+## API
+
+| Name      | Type | Default     | Description     |
+| :---        |    :----:   |          ---: |          ---: |
+| size      | Title       | Here's this   | Here's this   |
+| Paragraph   | Text        | And more      | And more      |

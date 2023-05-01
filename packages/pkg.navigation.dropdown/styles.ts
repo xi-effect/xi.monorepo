@@ -18,7 +18,7 @@ export const dropdownSizes: { [key in DropdownSizesT]: any } = {
   },
 };
 
-export const MenuProps = {
+export const menuStyles = {
   '&.Dropdown-root': {
     width: 0,
     height: '100%',
@@ -30,7 +30,7 @@ export const MenuProps = {
     },
 
     '.MuiMenu-paper': {
-      minWidth: '242px',
+      minWidth: '128px',
       border: '1px solid',
       borderColor: 'grayscale.10',
       borderRadius: '8px',

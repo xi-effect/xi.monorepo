@@ -1,10 +1,18 @@
 import { Button, Menu, ClickAwayListener } from '@mui/material';
 import React, { useState, FC } from 'react';
 import { v4 } from 'uuid';
-import { dropdownSizes, MenuProps } from './styles';
+import { dropdownSizes, menuStyles } from './styles';
 import { DropdownPropsT } from './types';
 
-export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ...props }) => {
+export const Dropdown: FC<DropdownPropsT> = ({
+  Element,
+  size = 'l',
+  menuProps,
+  menuSx,
+  buttonSx,
+  children,
+  ...props
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
@@ -33,7 +41,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ..
             transition: '0.3s',
             disaply: 'flex',
             alignItems: 'center',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             p: '5px',
             border: '1px solid',
             borderColor: 'grayscale.0',
@@ -43,6 +51,7 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ..
               border: '1px solid',
               borderColor: 'grayscale.100',
             },
+            ...buttonSx,
           }}
           {...props}
         >
@@ -58,8 +67,10 @@ export const Dropdown: FC<DropdownPropsT> = ({ Element, size = 'l', children, ..
           root: 'Dropdown-root',
         }}
         sx={{
-          ...MenuProps,
+          ...menuStyles,
+          ...menuSx,
         }}
+        {...menuProps}
       >
         {children}
       </Menu>

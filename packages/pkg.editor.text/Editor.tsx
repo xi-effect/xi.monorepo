@@ -11,6 +11,7 @@ import {
   useDecorateRemoteCursors,
 } from '@slate-yjs/react';
 import dynamic from 'next/dynamic';
+import { Input, Stack } from '@mui/material';
 import { CustomEditable } from './components/CustomEditable';
 import { FormatToolbar } from './components/FormatToolbar';
 import { withMarkdown } from './plugins/withMarkdown';
@@ -114,7 +115,7 @@ function ContentEditor() {
     );
   }, [provider.awareness, provider.document]);
 
-  // Connect editor and provider in useEffect to comply with concurrent mode
+  // Connect editor and provider in useEffect to comp ly with concurrent mode
   // requirements.
   useEffect(() => {
     provider.connect();
@@ -126,14 +127,26 @@ function ContentEditor() {
   }, [editor]);
 
   return (
-    <div
-      style={{ display: 'flex', justifyContent: 'center', width: '100%', flexDirection: 'column' }}
+    <Stack
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      sx={{ display: 'flex', width: '100%' }}
     >
-      <Slate value={value} onChange={setValue} editor={editor}>
-        <FormatToolbar />
-        <DecoratedEditable />
-      </Slate>
-    </div>
+      <Stack
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ maxWidth: '960px', width: '100%' }}
+      >
+        <Input value="Заголовок" />
+
+        <Slate value={value} onChange={setValue} editor={editor}>
+          <FormatToolbar />
+          <DecoratedEditable />
+        </Slate>
+      </Stack>
+    </Stack>
   );
 }
 

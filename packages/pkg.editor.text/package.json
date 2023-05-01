@@ -15,14 +15,15 @@
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.0",
     "@mui/icons-material": "^5.11.11",
-    "slate": "^0.91.4",
-    "slate-react": "^0.91.10",
+    "slate": "^0.93.0",
+    "slate-react": "^0.93.0",
     "slate-history": "^0.86.0",
     "next": "13.2.4",
     "yjs": "^13.5.50",
     "@slate-yjs/core": "^0.3.1",
     "@slate-yjs/react": "^0.3.0",
     "pkg.config.muidts": "*",
+    "pkg.icons": "*",
     "randomcolor": "^0.6.2",
     "@hocuspocus/provider": "1.1.1",
     "clsx": "^1.2.1",
@@ -36,7 +37,7 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "pkg.config.typescript": "*",
-    "typescript": "^4.5.2"
+    "typescript": "^4.6.4"
   },
   "author": "",
   "description": ""
