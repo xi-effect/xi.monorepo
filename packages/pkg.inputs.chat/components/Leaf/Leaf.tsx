@@ -23,7 +23,7 @@ export const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
           <code
             className={css`
               font-style: IBM Plex Mono;
-              background-color: #E8E8E8;
+              background-color: #e8e8e8;
               padding: 0 2px;
               border-radius: 2px;
             `}
