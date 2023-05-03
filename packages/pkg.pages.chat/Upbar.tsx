@@ -17,7 +17,13 @@ export const Upbar = ({ name, host, openMenu, menuType }: UpbarProps) => (
       </Typography>
     </Stack>
 
-    <Stack direction="row" spacing={0.5} sx={{ m: '6px 8px' }}>
+    <Stack
+      direction="row"
+      spacing={0.5}
+      sx={{
+        m: '6px 8px',
+      }}
+    >
       <Stack
         justifyContent="center"
         alignItems="center"
