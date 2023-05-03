@@ -1,4 +1,5 @@
 import { FileProps } from 'pkg.components.file';
+import { ReactNode } from 'react';
 
 export type UserT = {
   username: string;
@@ -7,6 +8,13 @@ export type UserT = {
 export type AvatarT = {
   id: string;
   filename: string;
+};
+
+export type MenuT = 'participants' | 'files' | 'pinned' | null;
+export type LayoutChatProps = {
+  chosenMenu: MenuT;
+  MenuWidth?: string;
+  children: ReactNode;
 };
 
 export type ChatProps = {

@@ -2,9 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Stack, List, ListItem } from '@mui/material';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { ChatInput } from 'pkg.inputs.chat';
+import { LayoutChat } from './LayoutChat';
 import { Upbar } from './Upbar';
 import { DateBlock } from './DateBlock';
-import { ChatProps, ChatInfoT, ChatMessagesT, DayMessagesT } from './types';
+import { ChatProps, ChatInfoT, ChatMessagesT, DayMessagesT, MenuT } from './types';
 import { chatInfo as chatInfoDefault, chatMessages, chatMessagesHistory } from './data';
 
 export const Chat = ({ id }: ChatProps) => {
@@ -12,6 +13,12 @@ export const Chat = ({ id }: ChatProps) => {
   const [chatInfoRes, setChatInfoRes] = useState<ChatInfoT>({} as ChatInfoT);
   const [messagesRes, setMessagesRes] = useState<ChatMessagesT>({} as ChatMessagesT);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [chosenMenu, setChosenMenu] = useState<MenuT>(null);
+
+  const openMenu = (type: MenuT) => {
+    setChosenMenu((prev) => (prev === type ? null : type));
+  };
 
   const hasMore = useMemo(() => {
     const hasMoreMessages: boolean = 'next' in messagesRes;
@@ -75,46 +82,48 @@ export const Chat = ({ id }: ChatProps) => {
   }, []);
 
   return (
-    <Stack
-      direction="column"
-      spacing={3}
-      justifyContent="flex-end"
-      sx={{
-        bgcolor: 'grayscale.0',
-        height: '100%',
-        overflow: 'auto',
-        borderRadius: '8px',
-        p: '16px',
-        width: '100%',
-      }}
-    >
-      <Upbar {...chatInfoRes} />
-
+    <LayoutChat chosenMenu={chosenMenu}>
       <Stack
-        ref={rootRefSetter}
-        onScroll={handleRootScroll}
+        direction="column"
+        spacing={3}
+        justifyContent="flex-end"
         sx={{
+          bgcolor: 'grayscale.0',
           height: '100%',
           overflow: 'auto',
+          borderRadius: '8px',
+          p: '16px',
+          width: '100%',
         }}
       >
-        <List>
-          {hasMore && (
-            <ListItem
-              ref={infiniteRef}
-              sx={{ width: '100%', height: '1200px', bgcolor: 'unset' }}
-            />
-          )}
+        <Upbar {...chatInfoRes} openMenu={openMenu} />
 
-          {messagesRes.messages?.map((data) => (
-            <ListItem sx={{ p: 0 }}>
-              <DateBlock {...data} />
-            </ListItem>
-          ))}
-        </List>
+        <Stack
+          ref={rootRefSetter}
+          onScroll={handleRootScroll}
+          sx={{
+            height: '100%',
+            overflow: 'auto',
+          }}
+        >
+          <List>
+            {hasMore && (
+              <ListItem
+                ref={infiniteRef}
+                sx={{ width: '100%', height: '1200px', bgcolor: 'unset' }}
+              />
+            )}
+
+            {messagesRes.messages?.map((data) => (
+              <ListItem sx={{ p: 0 }}>
+                <DateBlock {...data} />
+              </ListItem>
+            ))}
+          </List>
+        </Stack>
+
+        <ChatInput />
       </Stack>
-
-      <ChatInput />
-    </Stack>
+    </LayoutChat>
   );
 };
