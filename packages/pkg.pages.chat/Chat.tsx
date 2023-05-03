@@ -96,7 +96,7 @@ export const Chat = ({ id }: ChatProps) => {
           width: '100%',
         }}
       >
-        <Upbar {...chatInfoRes} openMenu={openMenu} />
+        <Upbar {...chatInfoRes} openMenu={openMenu} menuType={chosenMenu} />
 
         <Stack
           ref={rootRefSetter}

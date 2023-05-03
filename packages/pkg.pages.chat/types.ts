@@ -48,3 +48,8 @@ export type DayMessagesT = {
   date: string;
   messages: MessageT[];
 };
+
+export type UpbarProps = ChatInfoT & {
+  openMenu: (type: MenuT) => void;
+  menuType: MenuT;
+};

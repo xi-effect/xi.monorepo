@@ -1,12 +1,8 @@
 import { Stack, Typography } from '@mui/material';
 import { Search, Users, File, Shape } from 'pkg.icons';
-import { ChatInfoT, MenuT } from './types';
+import { UpbarProps } from './types';
 
-export const Upbar = ({
-  name,
-  host,
-  openMenu,
-}: ChatInfoT & { openMenu: (type: MenuT) => void }) => (
+export const Upbar = ({ name, host, openMenu, menuType }: UpbarProps) => (
   <Stack
     sx={{ position: 'sticky', top: 0, width: '100%' }}
     justifyContent="space-between"
@@ -21,18 +17,57 @@ export const Upbar = ({
       </Typography>
     </Stack>
 
-    <Stack direction="row" spacing={2} sx={{ m: '6px 8px' }}>
-      <Stack sx={{ width: '20px' }}>
+    <Stack direction="row" spacing={0.5} sx={{ m: '6px 8px' }}>
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        sx={{ width: '32px', height: '32px', borderRadius: '4px', cursor: 'pointer' }}
+      >
         <Search sx={{ fontSize: '16px' }} />
       </Stack>
-      <Stack sx={{ width: '20px' }} onClick={() => openMenu('participants')}>
-        <Shape sx={{ fontSize: '16px' }} />
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          bgcolor: menuType === 'pinned' ? 'primary.pale' : '',
+        }}
+        onClick={() => openMenu('pinned')}
+      >
+        <Shape sx={{ fontSize: '16px', color: menuType === 'pinned' ? 'primary.dark' : '' }} />
       </Stack>
-      <Stack sx={{ width: '20px' }} onClick={() => openMenu('files')}>
-        <File sx={{ fontSize: '16px' }} />
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          bgcolor: menuType === 'files' ? 'primary.pale' : '',
+        }}
+        onClick={() => openMenu('files')}
+      >
+        <File sx={{ fontSize: '16px', color: menuType === 'files' ? 'primary.dark' : '' }} />
       </Stack>
-      <Stack sx={{ width: '20px' }} onClick={() => openMenu('pinned')}>
-        <Users sx={{ fontSize: '16px' }} />
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          bgcolor: menuType === 'participants' ? 'primary.pale' : '',
+        }}
+        onClick={() => openMenu('participants')}
+      >
+        <Users
+          sx={{ fontSize: '16px', color: menuType === 'participants' ? 'primary.dark' : '' }}
+        />
       </Stack>
     </Stack>
   </Stack>
