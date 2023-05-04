@@ -1,14 +1,14 @@
-import { ButtonProps } from '@mui/material';
-import { FunctionComponent, MouseEvent } from 'react';
+import { ButtonProps as MuiButtonProps } from '@mui/material';
+import { FunctionComponent } from 'react';
 
 export type Status = 'idle' | 'pending' | 'completed';
 export type Size = 'small' | 'medium' | 'large';
 export type Variant = 'contained' | 'outlined' | 'text';
-export type Color = 'primary' | 'success' | 'error';
+export type Color = 'primary' | 'success' | 'error' | 'grayscale';
 export type LoadingPosition = 'icon' | 'center';
 export type SnackbarPosition = 'left' | 'right' | 'top' | 'bottom';
 
-export type ButtonPropsType = {
+export type ButtonProps = {
   // button status: pending = spinner appears, completed button disabled with active color
   // completed and startIcon or endIcon or only icon without text appears check
   status?: Status;
@@ -22,8 +22,6 @@ export type ButtonPropsType = {
   // start or end button icon if icon without text, icon position will be center
   startIcon?: FunctionComponent<any>;
   endIcon?: FunctionComponent<any>;
-  // button icon color
-  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
   // whether to display snackbar
   isSnackbar?: boolean;
   // snackbar text
@@ -38,4 +36,4 @@ export type ButtonPropsType = {
   // styles
   sx?: any;
   // you can also pass default mui button attributes
-} & Omit<ButtonProps, 'startIcon' | 'endIcon'>;
+} & Omit<MuiButtonProps, 'startIcon' | 'endIcon' | 'color'>;

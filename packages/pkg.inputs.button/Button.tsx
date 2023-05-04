@@ -3,22 +3,23 @@ import 'pkg.config.muidts';
 import { Typography, Button as MuiButton, darken, useTheme } from '@mui/material';
 import React, { FC, MouseEvent } from 'react';
 
-import { ButtonPropsType } from './types';
+import { ButtonProps } from './types';
 
 import {
   buttonVariantsColor,
   buttonSizes,
   getButtonPadding,
-  buttonDisabled,
+  buttonDisabledStyle,
   getActionButtonStyle,
   typographyVariants,
   clickedPadding,
+  buttonBorderStyle,
 } from './styles';
 import { ButtonSnackbar } from './ButtonSnackbar';
 import { IconContainer } from './IconContainer';
 import { Loading } from './Loading';
 
-export const Button: FC<ButtonPropsType> = ({
+export const Button: FC<ButtonProps> = ({
   status = 'idle',
   size = 'medium',
   loadingPosition = 'center',
@@ -27,20 +28,27 @@ export const Button: FC<ButtonPropsType> = ({
   children,
   startIcon,
   endIcon,
-  onClick,
   isSnackbar,
   snackbarText,
   isSnackbarIconStart,
   isSnackbarIconEnd,
   snackbarLoadingPosition,
   snackbarPosition,
-  sx,
   ...props
 }) => {
+  const { sx, onClick, ...otherButtonProps } = props;
+
   const theme = useTheme();
 
-  const actionButtonStyle = getActionButtonStyle(variant, darken(theme.palette[color].dark, 0.2));
+  const actionButtonStyle = getActionButtonStyle(
+    variant,
+    color === 'grayscale' ? 'grayscale' : darken(theme.palette[color].dark, 0.2),
+  );
+
   const buttonPadding = getButtonPadding(!!children, !!startIcon, !!endIcon);
+
+  const buttonBorder = variant === 'outlined' ? buttonBorderStyle[size] : 'none';
+  const buttonDisabled = status !== 'completed' ? buttonDisabledStyle[variant] : actionButtonStyle;
 
   const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (status === 'completed') return;
@@ -61,11 +69,13 @@ export const Button: FC<ButtonPropsType> = ({
         textTransform: 'none',
         position: 'relative',
         minWidth: 0,
-        width: 'fit-content',
+        border: buttonBorder,
         '&:hover': {
           ...actionButtonStyle,
         },
-        '&:disabled': status !== 'completed' ? buttonDisabled[variant] : actionButtonStyle,
+        '&:disabled': {
+          ...buttonDisabled,
+        },
         '&:active': {
           ...actionButtonStyle,
           pt: clickedPadding[size].pt,
@@ -76,7 +86,7 @@ export const Button: FC<ButtonPropsType> = ({
         ...buttonPadding[size],
         ...sx,
       }}
-      {...props}
+      {...otherButtonProps}
     >
       {startIcon && (
         <IconContainer

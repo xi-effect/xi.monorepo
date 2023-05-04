@@ -33,6 +33,7 @@
     "pkg.components.badge": "*",
     "pkg.components.file": "*",
     "pkg.components.loading": "*",
+    "pkg.components.modal": "*",
     "pkg.components.scroll": "*",
     "pkg.data.avatar": "*",
     "pkg.dialogs.exit": "*",

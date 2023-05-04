@@ -1,0 +1,5 @@
+{
+  "extends": "pkg.config.typescript/react-library.json",
+  "include": ["*", "styles/fileUploadStyle.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}

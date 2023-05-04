@@ -48,6 +48,18 @@ const TestComponents = () => {
 
       <Button
         startIcon={Camera}
+        size="large"
+        status={status}
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="outlined"
+        color="grayscale"
+      >
+        Test
+      </Button>
+
+      <Button
+        startIcon={Camera}
         status={status}
         size="large"
         onClick={onClickCompleted}
@@ -77,6 +89,7 @@ const TestComponents = () => {
       >
         Test
       </Button>
+
       <Button
         startIcon={Camera}
         status="completed"
