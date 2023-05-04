@@ -3,7 +3,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { Box, Typography, Stack } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 
 type ItemsT = {
   index: number;
@@ -23,7 +23,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
       sx={{
         position: 'relative',
         height: '224px',
-        backgroundColor: 'grayscale.0',
+        backgroundColor: 'petersburg.0',
         padding: 3,
         textAlign: 'center',
         width: '100%',
@@ -37,7 +37,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
           fontWeight: 600,
           fontSize: '20px',
           lineHeight: '24px',
-          color: 'grayscale.100',
+          color: 'petersburg.100',
         }}
       >
         Театральная постановка
@@ -54,7 +54,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
             fontWeight: 400,
             fontSize: '16px',
             lineHeight: '20px',
-            color: 'grayscale.80',
+            color: 'petersburg.80',
           }}
         >
           23 мая в актовом зале состоится театральная постановка.
@@ -75,7 +75,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
             fontWeight: 500,
             fontSize: '12px',
             lineHeight: '16px',
-            color: 'grayscale.100',
+            color: 'petersburg.100',
           }}
         >
           3 мая 2022
@@ -88,10 +88,10 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
             fontWeight: 500,
             fontSize: '12px',
             lineHeight: '16px',
-            color: 'grayscale.100',
+            color: 'petersburg.100',
             '&:before': {
               content: "''",
-              bgcolor: 'grayscale.100',
+              bgcolor: 'petersburg.100',
               position: 'absolute',
               left: '-7px',
               top: '7px',
@@ -113,7 +113,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
           right: '24px',
         }}
       >
-        <Arrow color="#445AFF" />
+        <Arrow color="primary" />
       </Box>
     </Stack>
   );

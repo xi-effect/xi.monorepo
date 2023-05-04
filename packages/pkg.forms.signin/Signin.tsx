@@ -4,8 +4,7 @@ import { useRouter, NextRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Stack, Link, InputAdornment, Box } from '@mui/material';
-import { Eyeoff } from 'pkg.icons.eyeoff';
-import { Eyeon } from 'pkg.icons.eyeon';
+import { Eyeoff, Eyeon } from 'pkg.icons';
 import { Input } from 'pkg.inputs.input';
 
 type FormValues = {
@@ -86,7 +85,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
               helperText={getEmailError()}
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}

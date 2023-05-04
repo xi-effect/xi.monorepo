@@ -24,6 +24,7 @@ import DialogInvite from 'kit/CommunityMenu/DialogInvite';
 
 import DialogCategoryCreation from 'kit/CommunityMenu/DialogCategoryCreation';
 import DialogChannelCreation from 'kit/CommunityMenu/DialogChannelCreation';
+import DialogExit from 'kit/CommunityMenu/DialogExit';
 
 const Community = observer(() => {
   const rootStore = useStore();
@@ -120,14 +121,14 @@ const Community = observer(() => {
                 width: 228,
                 boxShadow: 24,
                 borderRadius: '8px',
-                bgcolor: 'grayscale.0',
+                bgcolor: 'petersburg.0',
                 border: '1px solid',
-                borderColor: 'grayscale.40',
+                borderColor: 'petersburg.40',
               }}
             >
               <ClickAwayListener onClickAway={handleClose}>
                 <Box>
-                  <CommunityMenu handleClose={handleClose} />
+                  <CommunityMenu />
                 </Box>
               </ClickAwayListener>
             </Paper>
@@ -137,6 +138,7 @@ const Community = observer(() => {
       <DialogChannelCreation />
       <DialogInvite />
       <DialogCategoryCreation />
+      <DialogExit />
     </>
   );
 });

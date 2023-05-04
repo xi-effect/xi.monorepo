@@ -21,7 +21,7 @@ const SidebarSecond = observer(() => {
         p: 0,
         width: 236,
         borderRadius: '8px',
-        backgroundColor: 'grayscale.0',
+        backgroundColor: 'petersburg.0',
         height: 'calc(100vh - 16px)',
         boxShadow: 0,
       }}

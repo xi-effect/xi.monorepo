@@ -5,12 +5,11 @@ import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 import { Avatar } from 'pkg.data.avatar';
 import { Input } from 'pkg.inputs.input';
-import { Search } from 'pkg.icons.search';
+import { Search, Add } from 'pkg.icons';
 
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Badge } from 'pkg.components.badge';
-import { Add } from 'pkg.icons.add';
 
 const UserProfile = ({ name, nickname }: { name: string; nickname: string }) => (
   <Stack
@@ -27,7 +26,7 @@ const UserProfile = ({ name, nickname }: { name: string; nickname: string }) => 
       <Avatar size={24} />
     </Box>
     <Typography variant="m">{name}</Typography>
-    <Typography variant="xs" sx={{ color: 'grayscale.60' }}>
+    <Typography variant="xs" sx={{ color: 'petersburg.60' }}>
       {nickname}
     </Typography>
   </Stack>
@@ -124,7 +123,7 @@ const Participants = observer(() => {
               autoComplete="on"
               {...field}
               sx={{
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
                 borderRadius: '8px',
               }}
               InputProps={{
@@ -145,7 +144,7 @@ const Participants = observer(() => {
         sx={{
           mt: 2,
           p: '24px',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
         }}
@@ -171,7 +170,9 @@ const Participants = observer(() => {
               spacing={2}
             >
               {item.roles.map((i, index) => (
-                <Badge key={index} size="small" bgColor="#EBFDF3" text={i} />
+                <Badge key={index} size="small" bgColor="#EBFDF3">
+                  {i}
+                </Badge>
               ))}
             </Stack>
             <IconButton sx={{ width: '24px', height: '24px', ml: 2 }}>

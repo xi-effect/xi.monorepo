@@ -3,12 +3,8 @@ import { observer } from 'mobx-react';
 import { Stack, Tooltip, Divider, IconButton } from '@mui/material';
 
 import dynamic from 'next/dynamic';
-import useListen from 'utils/useListen';
-import { Account } from 'pkg.icons.account';
-import { Add } from 'pkg.icons.add';
-import { Notification } from 'pkg.icons.notification';
-import { Home } from 'pkg.icons.home';
-import { Exit } from 'pkg.icons.exit';
+import { useListen } from 'pkg.hooks';
+import { Account, Add, Notification, Home, Exit } from 'pkg.icons';
 import { Scroll } from 'pkg.components.scroll';
 import { RegCommunityT } from 'models/dataProfileStore';
 import { useStore } from 'store/connect';
@@ -268,7 +264,7 @@ const Sidebar = observer(() => {
               },
             }}
           >
-            <Exit color="" />
+            <Exit color="error" />
           </IconButton>
         </Tooltip>
       </Stack>

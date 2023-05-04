@@ -3,8 +3,6 @@ import { Stack, ListItem, ListItemButton, List } from '@mui/material';
 import { useRouter, NextRouter } from 'next/router';
 
 export type NavigationT = {
-  title?: string;
-  noIndex?: boolean;
   children: ReactNode;
 };
 
@@ -26,12 +24,12 @@ const menuArray = [
     label: 'File',
   },
   {
-    link: '/components/link',
-    label: 'Link',
+    link: '/components/dropdown',
+    label: 'Dropdown',
   },
   {
-    link: '/components/modal',
-    label: 'Modal',
+    link: '/components/link',
+    label: 'Link',
   },
   {
     link: '/components/radio',
@@ -48,6 +46,22 @@ const menuArray = [
   {
     link: '/components/toggle',
     label: 'Toggle',
+  },
+  {
+    link: '/components/editor',
+    label: 'Editor',
+  },
+  {
+    link: '/components/icons',
+    label: 'Icons',
+  },
+  {
+    link: '/components/emoji',
+    label: 'Emoji',
+  },
+  {
+    link: '/components/chatinput',
+    label: 'ChatInput',
   },
 ];
 

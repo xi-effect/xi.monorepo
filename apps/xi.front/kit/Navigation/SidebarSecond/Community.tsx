@@ -16,11 +16,7 @@ import { useStore } from 'store/connect';
 
 import { useLocalStorage } from 'react-use';
 import { Scroll } from 'pkg.components.scroll';
-import { Announce } from 'pkg.icons.announce';
-import { Task } from 'pkg.icons.task';
-import { Chat } from 'kit/MyIcon/Chat';
-import { Camera } from 'pkg.icons.camera';
-import { Calendar } from 'pkg.icons.calendar';
+import { Announce, Task, Chat, Camera, Calendar } from 'pkg.icons';
 
 import Image from 'next/image';
 import { ChannelsType } from 'store/community/communityChannelsSt';
@@ -142,7 +138,7 @@ const Items = observer(({ index }: ItemsT) => {
           sx={{
             width: '100%',
             cursor: 'pointer',
-            color: 'grayscale.80',
+            color: 'petersburg.80',
             zIndex: 1,
             pl: '14px',
             position: 'relative',

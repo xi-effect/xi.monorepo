@@ -22,7 +22,6 @@ export const Input = React.forwardRef<HTMLInputElement, TextFieldProps & InputPr
           },
           '& .MuiInputBase-input::placeholder': {
             opacity: 1,
-            paddingLeft: '1px',
             color: `${error ? '#F42D2D' : '#999'}`,
           },
           '& .MuiFormHelperText-root': {

@@ -1,17 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import {
-  Typography,
-  Dialog,
-  Stack,
-  useMediaQuery,
-  Theme,
-  IconButton,
-  FormControlLabel,
-} from '@mui/material';
+import { Typography, Dialog, Stack, IconButton, FormControlLabel } from '@mui/material';
 import { useStore } from 'store/connect';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
 import { Controller, useForm } from 'react-hook-form';
@@ -77,7 +69,6 @@ const schema = yup
 const DialogCategoryCreation = observer(() => {
   const rootStore = useStore();
   const { uiSt } = rootStore;
-  const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const onClose = () => uiSt.setDialogs('categoryCreation', false);
 
@@ -105,7 +96,6 @@ const DialogCategoryCreation = observer(() => {
 
   return (
     <Dialog
-      fullScreen={fullScreen}
       open={uiSt.dialogs.categoryCreation}
       onClose={() => uiSt.setDialogs('categoryCreation', false)}
       aria-labelledby="alert-dialog-title"
@@ -115,11 +105,12 @@ const DialogCategoryCreation = observer(() => {
       PaperProps={{
         sx: {
           p: 4,
+          m: 2,
+          maxWidth: 'calc(100% - 16px)',
           width: '600px',
-          height: '748px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -172,7 +163,7 @@ const DialogCategoryCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -198,7 +189,7 @@ const DialogCategoryCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -260,7 +251,7 @@ const DialogCategoryCreation = observer(() => {
           sx={{
             width: '100%',
             height: '112px',
-            backgroundColor: 'grayscale.5',
+            backgroundColor: 'petersburg.5',
             p: 2,
             borderRadius: '6px',
             mt: 3,

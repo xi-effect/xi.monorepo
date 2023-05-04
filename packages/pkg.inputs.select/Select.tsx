@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { Arrow } from 'pkg.icons.arrow';
+import { Arrow } from 'pkg.icons';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,
@@ -53,7 +53,7 @@ const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: (
   >
     <Arrow
       sx={{
-        color: 'grayscale.80',
+        color: 'petersburg.80',
         transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
         fontSize: size === 'm' ? '14px' : '11px',
       }}
@@ -78,8 +78,8 @@ export const Select = ({
   const [isOpened, setIsOpened] = useState(false);
 
   /* menu interactions */
-  const onOpenMenu = () => {
-    setIsOpened(true);
+  const onToggleMenu = () => {
+    setIsOpened((prev) => !prev);
   };
   const onCloseMenu = () => {
     setIsOpened(false);
@@ -136,7 +136,7 @@ export const Select = ({
           displayEmpty
           IconComponent={() => OpenIcon(isOpened, size, isDisabled, handleDropIconClick)}
           onClose={onCloseMenu}
-          onOpen={onOpenMenu}
+          onOpen={onToggleMenu}
           open={isOpened}
         >
           {/* placeholder */}
@@ -146,14 +146,14 @@ export const Select = ({
                 <Icon
                   sx={{
                     ...placeholderIconSizes[size],
-                    color: 'grayscale.40',
+                    color: 'petersburg.40',
                   }}
                 />
               )}
               <Typography
                 sx={{
                   ...placeholderTextSizes[size],
-                  color: 'grayscale.40',
+                  color: 'petersburg.40',
                   textOverflow: 'ellipsis',
                   overflow: 'hidden',
                 }}
@@ -199,7 +199,7 @@ export const Select = ({
                 sx={{
                   fontSize: '10px',
                   lineHeight: '14px',
-                  color: 'grayscale.40',
+                  color: 'petersburg.40',
                   p: !group.title ? '' : '4px 12px',
                   cursor: 'default',
                 }}

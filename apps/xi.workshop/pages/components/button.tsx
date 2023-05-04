@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from 'pkg.inputs.button';
-import { Camera } from 'pkg.icons.camera';
+import { Camera } from 'pkg.icons';
 import { LayoutPages } from 'kit/LayoutPages';
 
 const TestComponents = () => {

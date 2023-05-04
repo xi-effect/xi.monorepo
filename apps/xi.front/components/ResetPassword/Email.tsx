@@ -79,7 +79,7 @@ const Email = observer(() => {
                 fontWeight: 400,
                 fontSize: '14px',
                 lineHeight: '16px',
-                color: 'grayscale.40',
+                color: 'petersburg.40',
                 width: '100%',
                 textAlign: !passwordReset.emailResetOk ? 'left' : 'center',
               }}
@@ -94,7 +94,7 @@ const Email = observer(() => {
               fontWeight: 400,
               fontSize: '16px',
               lineHeight: '20px',
-              color: 'grayscale.100',
+              color: 'petersburg.100',
             }}
           >
             {`Ссылка на восстановление пароля отправлена на ${email}`}

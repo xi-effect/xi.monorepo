@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import { Check } from 'pkg.icons.check';
+import { Check } from 'pkg.icons';
 import { FC, FunctionComponent } from 'react';
 import { Loading } from './Loading';
 import { iconSizes } from './styles';

@@ -2,15 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import {
-  Dialog,
-  IconButton,
-  RadioGroup,
-  Stack,
-  Theme,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Dialog, IconButton, RadioGroup, Stack, Typography } from '@mui/material';
 
 import { useStore } from 'store/connect';
 
@@ -23,11 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Input } from 'pkg.inputs.input';
-import { Announce } from 'pkg.icons.announce';
-import { Camera } from 'pkg.icons.camera';
-import { Chat } from 'pkg.icons.chat';
-import { Task } from 'pkg.icons.task';
-import { Close } from 'pkg.icons.close';
+import { Announce, Camera, Chat, Task, Close } from 'pkg.icons';
 import { Radio } from 'pkg.inputs.radio';
 import { Button } from 'pkg.inputs.button';
 import RootStore from 'store/rootStore';
@@ -42,7 +30,7 @@ type ContentType = {
 const content: ContentType[] = [
   {
     label: 'Объявления',
-    description: 'Держите ваших студентов в курсе всех новостей по\u00A0курсу',
+    description: 'Держите ваших студентов в курсе всех новостей вашего\u00A0сообщества',
     icon: <Announce sx={{ fontSize: 24 }} />,
     currentType: 'announcement',
   },
@@ -84,7 +72,6 @@ const schema = yup
 const DialogChannelCreation = observer(() => {
   const rootStore: RootStore = useStore();
   const { communityChannelsSt, uiSt } = rootStore;
-  const fullScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const onClose = () => uiSt.setDialogs('channelCreation', false);
 
   const { control, handleSubmit, trigger } = useForm<IFormInput>({
@@ -103,20 +90,21 @@ const DialogChannelCreation = observer(() => {
 
   return (
     <Dialog
-      fullScreen={fullScreen}
       open={uiSt.dialogs.channelCreation}
       onClose={() => uiSt.setDialogs('channelCreation', false)}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
       fullWidth
-      maxWidth="md"
+      maxWidth={false}
       PaperProps={{
         sx: {
           p: 4,
+          m: 2,
+          maxWidth: 'calc(100% - 16px)',
           width: '600px',
           borderRadius: '16px',
           border: '1px solid #E6E6E6',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           boxShadow: 'none',
           position: 'relative',
         },
@@ -169,7 +157,7 @@ const DialogChannelCreation = observer(() => {
               {...field}
               sx={{
                 mt: 1,
-                backgroundColor: 'grayscale.0',
+                backgroundColor: 'petersburg.0',
               }}
             />
           )}
@@ -186,7 +174,17 @@ const DialogChannelCreation = observer(() => {
           name="type"
           control={control}
           render={({ field }) => (
-            <RadioGroup {...field}>
+            <RadioGroup
+              sx={{
+                overflowY: 'scroll',
+                height: '388px',
+                flexWrap: 'nowrap',
+                mt: 2,
+                gap: '16px',
+                flexDirection: 'column',
+              }}
+              {...field}
+            >
               {content.map((item, index) => (
                 <Stack
                   key={index.toString()}
@@ -208,11 +206,10 @@ const DialogChannelCreation = observer(() => {
                   spacing={2}
                   sx={{
                     cursor: 'pointer',
-                    height: '108px',
-                    bgcolor: 'grayscale.5',
+                    height: '100%',
+                    bgcolor: 'petersburg.5',
                     borderRadius: '8px',
                     p: 2,
-                    mt: 2,
                   }}
                 >
                   <Stack

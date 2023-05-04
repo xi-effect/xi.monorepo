@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { Avatar as Av, Stack } from '@mui/material';
 import Image from 'next/image';
-import { Photo } from 'pkg.icons.photo';
-import { Trash } from 'pkg.icons.trash';
+import { Photo, Trash } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import DialogEditor from './DialogEditor';
 

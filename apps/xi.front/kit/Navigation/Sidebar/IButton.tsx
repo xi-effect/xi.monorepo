@@ -60,7 +60,7 @@ const IButton: React.FC<Props> = (props) => {
         id="community-menu"
         onClick={handleClick}
         sx={{
-          bgcolor: isActive ? 'primary.dark' : 'grayscale.0',
+          bgcolor: isActive ? 'primary.dark' : 'petersburg.0',
           width: 48,
           height: 48,
           borderRadius: isActive ? '16px' : 24,
@@ -74,7 +74,7 @@ const IButton: React.FC<Props> = (props) => {
             borderRadius: '16px',
 
             '.MuiTypography-root': {
-              color: !disableHover ? 'grayscale.0' : '',
+              color: !disableHover ? 'petersburg.0' : '',
             },
             svg: {
               fill: getSvgFillHover(),
@@ -87,7 +87,7 @@ const IButton: React.FC<Props> = (props) => {
             position: 'absolute',
             top: '12px',
             left: '-8px',
-            bgcolor: 'grayscale.80',
+            bgcolor: 'petersburg.80',
             content: '""',
             width: '4px',
             height: '26px',
@@ -99,7 +99,7 @@ const IButton: React.FC<Props> = (props) => {
         {typography && (
           <Typography
             sx={{
-              color: isActive ? 'grayscale.0' : 'grayscale.100',
+              color: isActive ? 'petersburg.0' : 'petersburg.100',
               fontWeight: 600,
               fontSize: '20px',
               lineHeight: '20px',

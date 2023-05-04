@@ -1,5 +1,5 @@
 import { Typography, Stack } from '@mui/material';
-import { FC, useLayoutEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 
 import {
   buttonSizes,
@@ -23,8 +23,8 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
   snackbarLoadingPosition = 'center',
   snackbarPosition = 'right',
 }) => {
-  const snackbarRef = useRef<HTMLDivElement>(null);
-  const [snackbarSize, setSnackbarSize] = useState(0);
+  const snackbarRef = React.useRef<HTMLDivElement | null>(null);
+  const [snackbarSize, setSnackbarSize] = React.useState(0);
   const snackbarCurrentPosition = getSnackbarCurrentPosition(snackbarSize, snackbarPosition);
 
   const buttonBorder = variant === 'outlined' ? buttonBorderStyle[size] : 'none';
@@ -35,8 +35,8 @@ export const ButtonSnackbar: FC<ButtonSnackbarProps> = ({
     !!isSnackbarIconEnd,
   );
 
-  useLayoutEffect(() => {
-    if (!snackbarRef.current) return;
+  React.useLayoutEffect(() => {
+    if (!snackbarRef?.current) return;
     if (snackbarPosition === 'left' || snackbarPosition === 'right') {
       setSnackbarSize(snackbarRef.current.clientWidth);
     }

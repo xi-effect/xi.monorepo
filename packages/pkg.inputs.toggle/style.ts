@@ -60,9 +60,9 @@ export const sizeStyle = {
 };
 
 export const colorStyle = {
-  initial: { backgroundColor: 'grayscale.40' },
-  disabled: { backgroundColor: 'grayscale.10', color: 'grayscale.40' },
-  checked: { color: 'grayscale.0', backgroundColor: 'primary.dark' },
+  initial: { backgroundColor: 'petersburg.40' },
+  disabled: { backgroundColor: 'petersburg.10', color: 'petersburg.40' },
+  checked: { color: 'petersburg.0', backgroundColor: 'primary.dark' },
 };
 
 export const typographyVariants = {

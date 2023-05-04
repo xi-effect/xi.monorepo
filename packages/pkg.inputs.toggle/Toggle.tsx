@@ -58,7 +58,7 @@ export const Toggle: FC<ToggleProps> = ({
       {children && (
         <Typography
           variant={typographyVariants[size]}
-          sx={{ fontWeight: 400, color: disabled ? 'grayscale.40' : 'grayscale.90' }}
+          sx={{ fontWeight: 400, color: disabled ? 'petersburg.40' : 'petersburg.90' }}
         >
           {children}
         </Typography>

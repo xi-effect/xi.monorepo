@@ -16,7 +16,7 @@ const SoundAndVideo = () => {
           p: '24px',
           width: '100%',
           borderRadius: '8px',
-          backgroundColor: 'grayscale.0',
+          backgroundColor: 'petersburg.0',
         }}
       >
         <Typography
@@ -56,7 +56,7 @@ const SoundAndVideo = () => {
           p: '24px',
           width: '100%',
           borderRadius: '8px',
-          backgroundColor: 'grayscale.0',
+          backgroundColor: 'petersburg.0',
         }}
       >
         <Typography

@@ -22,15 +22,15 @@ export const buttonVariantsColor = {
   contained: {
     primary: {
       bgcolor: 'primary.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
     success: {
       bgcolor: 'success.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
     error: {
       bgcolor: 'error.dark',
-      color: 'grayscale.0',
+      color: 'petersburg.0',
     },
     grayscale: {
       bgcolor: 'grayscale.40',
@@ -65,15 +65,16 @@ export const buttonVariantsColor = {
 
 export const buttonDisabledStyle = {
   contained: {
-    backgroundColor: 'grayscale.10',
-    color: 'grayscale.40',
+    backgroundColor: 'petersburg.10',
+    color: 'petersburg.40',
   },
   outlined: {
-    borderColor: 'grayscale.10',
-    color: 'grayscale.40',
+    border: '1px solid',
+    borderColor: 'petersburg.10',
+    color: 'petersburg.40',
   },
   text: {
-    color: 'grayscale.40',
+    color: 'petersburg.40',
   },
 };
 
@@ -178,7 +179,7 @@ export const getActionButtonStyle = (variant: Variant, color: string) => {
 
   switch (variant) {
     case 'contained':
-      return { bgcolor: color, color: 'grayscale.0' };
+      return { bgcolor: color, color: 'petersburg.0' };
     case 'outlined':
       return { bgcolor: 'grayscale.5', borderColor: color, color };
     default:
