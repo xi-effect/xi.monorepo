@@ -1,154 +1,177 @@
-import { HocuspocusProvider } from '@hocuspocus/provider';
-import { withCursors, withYHistory, withYjs, YjsEditor } from '@slate-yjs/core';
-import React, { useEffect, useMemo, useState } from 'react';
-import type { Descendant } from 'slate';
-import { createEditor, Text } from 'slate';
-import { RenderLeafProps, Slate, withReact } from 'slate-react';
-import * as Y from 'yjs';
-import {
-  getRemoteCaretsOnLeaf,
-  getRemoteCursorsOnLeaf,
-  useDecorateRemoteCursors,
-} from '@slate-yjs/react';
+/* eslint-disable no-undef */
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { createEditor, Transforms } from 'slate';
+import { Slate, withReact, Editable, ReactEditor, DefaultElement } from 'slate-react';
+import { withHistory } from 'slate-history';
+import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
+import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { createPortal } from 'react-dom';
 import dynamic from 'next/dynamic';
-import { Input, Stack } from '@mui/material';
-import { CustomEditable } from './components/CustomEditable';
-import { FormatToolbar } from './components/FormatToolbar';
-import { withMarkdown } from './plugins/withMarkdown';
-import { withNormalize } from './plugins/withNormalize';
-import { randomCursorData, addAlpha } from './utils';
+import { Add, DragIndicator } from '@mui/icons-material';
 
-import { CursorData } from './types';
+import './styles.css';
+
+import { IconButton } from '@mui/material';
+import { makeNodeId, withNodeId } from './plugins/withNodeId';
+import { FormatToolbar } from './components/FormatToolbar';
 import { Leaf } from './components/Leaf';
 
-function renderDecoratedLeaf(props: RenderLeafProps) {
-  let newChild = props.children;
+const initialValue = [
+  {
+    id: makeNodeId(),
+    children: [
+      {
+        text: 'In music theory, an interval is a difference in pitch between two sounds. An interval may be described as horizontal, linear, or melodic if it refers to successively sounding tones, such as two adjacent pitches in a melody, and vertical or harmonic if it pertains to simultaneously sounding tones, such as in a chord.',
+      },
+    ],
+  },
+];
 
-  getRemoteCursorsOnLeaf<CursorData, Text>(props.leaf).forEach((cursor) => {
-    if (cursor.data) {
-      newChild = (
-        <span style={{ backgroundColor: addAlpha(cursor.data.color, 0.5) }}>{props.children}</span>
-      );
+const toPx = (value: any) => (value ? `${Math.round(value)}px` : undefined);
+const useEditor = () => useMemo(() => withNodeId(withHistory(withReact(createEditor()))), []);
+
+const ContentEditor = () => {
+  const editor = useEditor();
+
+  const [value, setValue] = useState(initialValue);
+  const [activeId, setActiveId] = useState(null);
+  const activeElement = editor.children.find((x: any) => x.id === activeId);
+
+  const handleDragStart = (event: DragStartEvent) => {
+    if (event.active) {
+      clearSelection();
+      // @ts-ignore
+      setActiveId(event.active.id);
     }
-  });
+  };
 
-  getRemoteCaretsOnLeaf<CursorData, Text>(props.leaf).forEach((caret) => {
-    if (caret.data) {
-      newChild = (
-        <span style={{ position: 'relative' }}>
-          <span
-            contentEditable={false}
-            style={{ position: 'absolute', top: 0, bottom: 0, backgroundColor: caret.data.color }}
-          />
-          <span
-            contentEditable={false}
-            style={{
-              position: 'absolute',
-              backgroundColor: caret.data.color,
-              transform: 'translateY(-100%)',
-              userSelect: 'none',
-              fontSize: '12px',
-              textDecoration: 'none',
-              textTransform: 'none',
-              fontStyle: 'normal',
-              borderRadius: '4px',
-              color: '#fafafa',
-              padding: '4px',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {caret.data.name}
-          </span>
-          {props.children}
-        </span>
-      );
+  const handleDragEnd = (event: DragEndEvent) => {
+    const overId = event.over?.id;
+    const overIndex = editor.children.findIndex((x: any) => x.id === overId);
+
+    if (overId !== activeId && overIndex !== -1) {
+      Transforms.moveNodes(editor, {
+        at: [],
+        // @ts-ignore
+        match: (node) => node.id === activeId,
+        to: [overIndex],
+      });
     }
-  });
 
-  return <Leaf {...props}>{newChild}</Leaf>;
-}
+    setActiveId(null);
+  };
 
-function DecoratedEditable() {
-  const decorate = useDecorateRemoteCursors();
-  return <CustomEditable decorate={decorate} renderLeaf={renderDecoratedLeaf} />;
-}
+  const handleDragCancel = () => {
+    setActiveId(null);
+  };
 
-const urlWS = 'ws://127.0.0.1:1234';
+  const clearSelection = () => {
+    ReactEditor.blur(editor);
+    Transforms.deselect(editor);
+    window.getSelection()?.empty();
+  };
 
-function ContentEditor() {
-  const [value, setValue] = useState<Descendant[]>([
-    {
-      type: 'paragraph',
-      children: [{ text: '' }],
-    },
-  ]);
-  const [connected, setConnected] = useState(false);
-  console.log('connected', connected);
+  const renderElement = useCallback((props: any) => {
+    const isTopLevel = ReactEditor.findPath(editor, props.element).length === 1;
 
-  const provider = useMemo(
-    () =>
-      new HocuspocusProvider({
-        url: urlWS,
-        name: 'slate-yjs-demo',
-        onConnect: () => setConnected(true),
-        onDisconnect: () => setConnected(false),
-        connect: false,
-      }),
-    [],
-  );
-
-  const editor = useMemo(() => {
-    const sharedType = provider.document.get('content', Y.XmlText) as Y.XmlText;
-
-    return withMarkdown(
-      withNormalize(
-        withReact(
-          withCursors(
-            withYHistory(withYjs(createEditor(), sharedType, { autoConnect: false })),
-            provider.awareness,
-            {
-              data: randomCursorData(),
-            },
-          ),
-        ),
-      ),
+    return isTopLevel ? (
+      <SortableElement {...props} renderElement={renderElementContent} />
+    ) : (
+      renderElementContent(props)
     );
-  }, [provider.awareness, provider.document]);
+  }, []);
 
-  // Connect editor and provider in useEffect to comp ly with concurrent mode
-  // requirements.
-  useEffect(() => {
-    provider.connect();
-    return () => provider.disconnect();
-  }, [provider]);
-  useEffect(() => {
-    YjsEditor.connect(editor);
-    return () => YjsEditor.disconnect(editor);
-  }, [editor]);
+  const items = useMemo(() => editor.children.map((element: any) => element.id), [editor.children]);
 
   return (
-    <Stack
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      sx={{ display: 'flex', width: '100%' }}
-    >
-      <Stack
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ maxWidth: '960px', width: '100%' }}
+    // @ts-ignore
+    <Slate editor={editor} value={value} onChange={setValue}>
+      <FormatToolbar />
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
       >
-        <Input value="Заголовок" />
-
-        <Slate value={value} onChange={setValue} editor={editor}>
-          <FormatToolbar />
-          <DecoratedEditable />
-        </Slate>
-      </Stack>
-    </Stack>
+        <SortableContext items={items} strategy={verticalListSortingStrategy}>
+          <Editable className="editor" renderElement={renderElement} renderLeaf={Leaf} />
+        </SortableContext>
+        {createPortal(
+          <DragOverlay adjustScale={false}>
+            {activeElement && <DragOverlayContent element={activeElement} />}
+          </DragOverlay>,
+          document.body,
+        )}
+      </DndContext>
+    </Slate>
   );
-}
+};
+
+const renderElementContent = (props: any) => <DefaultElement {...props} />;
+
+const SortableElement = ({ attributes, element, children, renderElement }: any) => {
+  const sortable = useSortable({
+    id: element.id,
+    transition: {
+      duration: 350,
+      easing: 'ease',
+    },
+  });
+
+  return (
+    <div {...attributes}>
+      <Sortable sortable={sortable}>
+        <IconButton aria-label="Добавить элемент" contentEditable={false}>
+          <Add sx={{ color: '#333' }} />
+        </IconButton>
+        <IconButton aria-label="Перетащить элемент" contentEditable={false} {...sortable.listeners}>
+          <DragIndicator sx={{ color: '#333' }} />
+        </IconButton>
+        <div>{renderElement({ element, children })}</div>
+      </Sortable>
+    </div>
+  );
+};
+
+const Sortable = ({ sortable, children }: any) => (
+  <div
+    className="sortable"
+    {...sortable.attributes}
+    ref={sortable.setNodeRef}
+    style={{
+      transition: sortable.transition,
+      '--translate-y': toPx(sortable.transform?.y),
+      pointerEvents: sortable.isSorting ? 'none' : undefined,
+      opacity: sortable.isDragging ? 0 : 1,
+    }}
+  >
+    {children}
+  </div>
+);
+
+const DragOverlayContent = ({ element }: any) => {
+  const editor = useEditor();
+  const [value] = useState([JSON.parse(JSON.stringify(element))]); // clone
+
+  useEffect(() => {
+    document.body.classList.add('dragging');
+
+    return () => document.body.classList.remove('dragging');
+  }, []);
+
+  return (
+    <div className="drag-overlay">
+      <IconButton aria-label="Добавить элемент" contentEditable={false}>
+        <Add sx={{ color: '#333' }} />
+      </IconButton>
+      <IconButton aria-label="Перетащить элемент" contentEditable={false}>
+        <DragIndicator sx={{ color: '#333' }} />
+      </IconButton>
+      <Slate editor={editor} value={value}>
+        <Editable readOnly renderElement={renderElementContent} />
+      </Slate>
+    </div>
+  );
+};
 
 const withNoSSR = (Component: React.FunctionComponent) =>
   dynamic(() => Promise.resolve(Component), { ssr: false });
