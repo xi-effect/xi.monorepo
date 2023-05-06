@@ -90,7 +90,7 @@ export const Button: FC<ButtonProps> = ({
     >
       {startIcon && (
         <IconContainer
-          icon={startIcon}
+          Icon={startIcon}
           size={size}
           order={0}
           status={status}
@@ -99,7 +99,7 @@ export const Button: FC<ButtonProps> = ({
       )}
       {endIcon && (
         <IconContainer
-          icon={endIcon}
+          Icon={endIcon}
           size={size}
           order={2}
           status={status}

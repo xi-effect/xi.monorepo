@@ -7,11 +7,12 @@ import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
 import dynamic from 'next/dynamic';
-import { Add, DragIndicator } from '@mui/icons-material';
 
 import './styles.css';
 
-import { IconButton } from '@mui/material';
+import { Add, Move } from 'pkg.icons';
+import { Button } from 'pkg.inputs.button';
+import { Stack } from '@mui/material';
 import { makeNodeId, withNodeId } from './plugins/withNodeId';
 import { FormatToolbar } from './components/FormatToolbar';
 import { Leaf } from './components/Leaf';
@@ -118,17 +119,43 @@ const SortableElement = ({ attributes, element, children, renderElement }: any) 
   });
 
   return (
-    <div {...attributes}>
-      <Sortable sortable={sortable}>
-        <IconButton aria-label="Добавить элемент" contentEditable={false}>
-          <Add sx={{ color: '#333' }} />
-        </IconButton>
-        <IconButton aria-label="Перетащить элемент" contentEditable={false} {...sortable.listeners}>
-          <DragIndicator sx={{ color: '#333' }} />
-        </IconButton>
-        <div>{renderElement({ element, children })}</div>
-      </Sortable>
-    </div>
+    <Sortable sortable={sortable}>
+      <Stack direction="row" spacing={1} {...attributes}>
+        <Stack sx={{ pr: 1, pt: '4px', width: '48px' }} direction="row" spacing={1}>
+          <Button
+            variant="text"
+            size="small"
+            sx={{
+              width: '20px',
+              height: '20px',
+              minWidth: '20px',
+              p: '3px',
+              '&:active': { p: '3px' },
+            }}
+            aria-label="Добавить элемент"
+            contentEditable={false}
+            startIcon={Add}
+          />
+          <Button
+            variant="text"
+            size="small"
+            sx={{
+              width: '20px',
+              height: '20px',
+              minWidth: '20px',
+              p: '3px',
+              cursor: 'grab',
+            }}
+            aria-label="Перетащить элемент"
+            contentEditable={false}
+            startIcon={Move}
+            {...sortable.listeners}
+          />
+        </Stack>
+
+        <Stack>{renderElement({ element, children })}</Stack>
+      </Stack>
+    </Sortable>
   );
 };
 
@@ -159,17 +186,37 @@ const DragOverlayContent = ({ element }: any) => {
   }, []);
 
   return (
-    <div className="drag-overlay">
-      <IconButton aria-label="Добавить элемент" contentEditable={false}>
-        <Add sx={{ color: '#333' }} />
-      </IconButton>
-      <IconButton aria-label="Перетащить элемент" contentEditable={false}>
-        <DragIndicator sx={{ color: '#333' }} />
-      </IconButton>
-      <Slate editor={editor} value={value}>
-        <Editable readOnly renderElement={renderElementContent} />
-      </Slate>
-    </div>
+    <Stack direction="row" spacing={1}>
+      <Stack sx={{ pr: 1, pt: '4px', width: '48px' }} direction="row" spacing={1}>
+        <Button
+          variant="text"
+          size="small"
+          sx={{ width: '20px', height: '20px', minWidth: '20px', p: '3px' }}
+          aria-label="Добавить элемент"
+          contentEditable={false}
+          startIcon={Add}
+        />
+        <Button
+          variant="text"
+          size="small"
+          sx={{
+            width: '20px',
+            height: '20px',
+            minWidth: '20px',
+            p: '3px',
+            cursor: 'grab',
+           }}
+          aria-label="Перетащить элемент"
+          contentEditable={false}
+          startIcon={Move}
+        />
+      </Stack>
+      <Stack>
+        <Slate editor={editor} value={value}>
+          <Editable readOnly renderElement={renderElementContent} />
+        </Slate>
+      </Stack>
+    </Stack>
   );
 };
 

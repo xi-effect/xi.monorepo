@@ -1,6 +1,6 @@
 import 'pkg.config.muidts';
 import { Button, ButtonProps } from 'pkg.inputs.button';
-import { Close } from 'pkg.icons.close';
+import { Close } from 'pkg.icons';
 import { FC, MouseEvent, ReactNode } from 'react';
 import {
   useTheme,

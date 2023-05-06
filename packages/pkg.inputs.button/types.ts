@@ -1,5 +1,4 @@
 import { ButtonProps as MuiButtonProps } from '@mui/material';
-import { FunctionComponent } from 'react';
 
 export type Status = 'idle' | 'pending' | 'completed';
 export type Size = 'small' | 'medium' | 'large';
@@ -20,8 +19,8 @@ export type ButtonProps = {
   // button color
   color?: Color;
   // start or end button icon if icon without text, icon position will be center
-  startIcon?: FunctionComponent<any>;
-  endIcon?: FunctionComponent<any>;
+  startIcon?: any;
+  endIcon?: any;
   // whether to display snackbar
   isSnackbar?: boolean;
   // snackbar text

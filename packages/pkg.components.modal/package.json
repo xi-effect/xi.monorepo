@@ -14,7 +14,7 @@
     "@mui/material": "^5.11.0",
     "pkg.config.muidts": "*",
     "pkg.inputs.button": "*",
-    "pkg.icons.close": "*"
+    "pkg.icons": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",

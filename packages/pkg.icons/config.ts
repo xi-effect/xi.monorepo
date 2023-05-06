@@ -39,6 +39,7 @@ export const icons = [
   'Minus',
   'Movie',
   'Music',
+  'Move',
   'Nature',
   'Notification',
   'Objects',

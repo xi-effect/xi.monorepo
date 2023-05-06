@@ -1,23 +1,23 @@
 import { Stack } from '@mui/material';
 import { Check } from 'pkg.icons';
-import { FC, FunctionComponent } from 'react';
+import { FC } from 'react';
 import { Loading } from './Loading';
 import { iconSizes } from './styles';
 import { Size, Status } from './types';
 
 export const IconContainer: FC<IconComponentProps> = ({
   order,
-  icon,
+  Icon,
   size,
   status,
   isLoadingIcon,
 }) => {
-  const IconComponent = icon as FunctionComponent<any>;
+  console.log('');
 
   return (
     <Stack order={order} sx={{ position: 'relative', ...iconSizes[size] }}>
-      {icon && (
-        <IconComponent
+      {!!Icon && (
+        <Icon
           sx={{
             opacity: status === 'idle' ? 1 : 0,
             color: 'inherit',
@@ -48,7 +48,7 @@ export const IconContainer: FC<IconComponentProps> = ({
 };
 
 type IconComponentProps = {
-  icon?: FunctionComponent<any>;
+  Icon?: any;
   order: number;
   size: Size;
   status: Status;

@@ -36,6 +36,7 @@ import { Link } from './Link';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
 import { Minus } from './Minus';
+import { Move } from './Move';
 import { Movie } from './Movie';
 import { Music } from './Music';
 import { Nature } from './Nature';
@@ -95,6 +96,7 @@ export {
   Maximize,
   Microphone,
   Minus,
+  Move,
   Movie,
   Music,
   Nature,
