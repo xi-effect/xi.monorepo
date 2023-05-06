@@ -5,6 +5,7 @@ import { ChatInput } from 'pkg.inputs.chat';
 import { LayoutChat } from './LayoutChat';
 import { Upbar } from './Upbar';
 import { DateBlock } from './DateBlock';
+import { Loading } from './Loading';
 import { ChatProps, ChatInfoT, ChatMessagesT, DayMessagesT, MenuT } from './types';
 import { chatInfo as chatInfoDefault, chatMessages, chatMessagesHistory } from './data';
 
@@ -110,8 +111,16 @@ export const Chat = ({ id }: ChatProps) => {
             {hasMore && (
               <ListItem
                 ref={infiniteRef}
-                sx={{ width: '100%', height: '1200px', bgcolor: 'unset' }}
-              />
+                sx={{
+                  width: '100%',
+                  height: '1200px',
+                  bgcolor: 'unset',
+                  overflow: 'hidden',
+                  m: '16px 0',
+                }}
+              >
+                <Loading />
+              </ListItem>
             )}
 
             {messagesRes.messages?.map((data) => (
