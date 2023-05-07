@@ -16,7 +16,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
-  ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js'],
+  ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
     semi: 'off',

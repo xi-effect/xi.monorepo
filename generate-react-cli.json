@@ -4,26 +4,23 @@
   "cssPreprocessor": null,
   "testLibrary": null,
   "component": {
-    "default": {
-      "path": "src/components",
-      "withLazy": false,
-      "withStory": false,
-      "withStyle": true,
-      "withTest": true
-    },
-    "page": {
-      "path": "src/pages",
-      "withLazy": true,
-      "withStory": false,
-      "withStyle": true,
-      "withTest": true
-    },
-    "layout": {
-      "path": "src/layout",
+    "icon": {
+      "customTemplates": {
+        "component": "templates/icons/TemplateName.tsx"
+      },
+      "path": "packages/pkg.icons",
       "withLazy": false,
       "withStory": false,
       "withStyle": false,
-      "withTest": true
+      "withTest": false
+    },
+    "default": {
+      "path": "n",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false
     }
-  }
+  },
+  "usesStyledComponents": false
 }

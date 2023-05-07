@@ -11,6 +11,7 @@ import { Calendar } from './Calendar';
 import { Camera } from './Camera';
 import { Chat } from './Chat';
 import { Check } from './Check';
+import { Cite } from './Cite';
 import { Clip } from './Clip';
 import { Clock } from './Clock';
 import { Close } from './Close';
@@ -27,6 +28,7 @@ import { Flag } from './Flag';
 import { Folder } from './Folder';
 import { Food } from './Food';
 import { Grid } from './Grid';
+import { H1 } from './H1';
 import { Hand } from './Hand';
 import { Heart } from './Heart';
 import { Home } from './Home';
@@ -42,6 +44,7 @@ import { Music } from './Music';
 import { Nature } from './Nature';
 import { Notification } from './Notification';
 import { Objects } from './Objects';
+import { Ol } from './Ol';
 import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
@@ -52,6 +55,7 @@ import { Settings } from './Settings';
 import { Stroke } from './Stroke';
 import { Task } from './Task';
 import { Trash } from './Trash';
+import { Ul } from './Ul';
 import { Underline } from './Underline';
 import { Updates } from './Updates';
 import { Users } from './Users';
@@ -71,6 +75,7 @@ export {
   Camera,
   Chat,
   Check,
+  Cite,
   Clip,
   Clock,
   Close,
@@ -87,6 +92,7 @@ export {
   Folder,
   Food,
   Grid,
+  H1,
   Hand,
   Heart,
   Home,
@@ -102,6 +108,7 @@ export {
   Nature,
   Notification,
   Objects,
+  Ol,
   Photo,
   Picture,
   Places,
@@ -112,6 +119,7 @@ export {
   Stroke,
   Task,
   Trash,
+  Ul,
   Underline,
   Updates,
   Users,
