@@ -29,6 +29,8 @@ import { Folder } from './Folder';
 import { Food } from './Food';
 import { Grid } from './Grid';
 import { H1 } from './H1';
+import { H2 } from './H2';
+import { H3 } from './H3';
 import { Hand } from './Hand';
 import { Heart } from './Heart';
 import { Home } from './Home';
@@ -54,6 +56,7 @@ import { Send } from './Send';
 import { Settings } from './Settings';
 import { Stroke } from './Stroke';
 import { Task } from './Task';
+import { Text } from './Text';
 import { Trash } from './Trash';
 import { Ul } from './Ul';
 import { Underline } from './Underline';
@@ -93,6 +96,8 @@ export {
   Food,
   Grid,
   H1,
+  H2,
+  H3,
   Hand,
   Heart,
   Home,
@@ -118,6 +123,7 @@ export {
   Settings,
   Stroke,
   Task,
+  Text,
   Trash,
   Ul,
   Underline,
