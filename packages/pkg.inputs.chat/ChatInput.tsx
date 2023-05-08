@@ -1,6 +1,6 @@
 import 'pkg.config.muidts';
 import React, { useState } from 'react';
-import { Descendant, createEditor } from 'slate';
+import { createEditor } from 'slate';
 import { Slate, withReact } from 'slate-react';
 import dynamic from 'next/dynamic';
 import { FormControl, Stack, Button, Typography, MenuItem, ListItemIcon } from '@mui/material';
@@ -11,7 +11,7 @@ import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
 import { CustomEditable } from './components/CustomEditable';
 
-const initialValue: Descendant[] = [
+const initialValue: any = [
   {
     type: 'paragraph',
     children: [{ text: '' }],

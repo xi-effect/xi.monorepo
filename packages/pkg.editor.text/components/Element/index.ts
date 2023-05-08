@@ -1,1 +1,1 @@
-export { SortableElement } from './Element';
+export { Element } from './Element';

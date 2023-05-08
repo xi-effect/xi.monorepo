@@ -1,13 +1,13 @@
 import React, { ComponentProps } from 'react';
 import { Editable } from 'slate-react';
-import { SortableElement } from '../Element';
+import { Element } from '../Element';
 import { Leaf } from '../Leaf';
 
 type CustomEditableProps = Omit<ComponentProps<typeof Editable>, 'renderElement' | 'renderLeaf'> &
   Partial<Pick<ComponentProps<typeof Editable>, 'renderElement' | 'renderLeaf'>>;
 
 export function CustomEditable({
-  renderElement = SortableElement,
+  renderElement = Element,
   renderLeaf = Leaf,
   ...props
 }: CustomEditableProps) {

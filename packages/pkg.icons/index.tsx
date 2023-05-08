@@ -50,6 +50,7 @@ import { Ol } from './Ol';
 import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
+import { Play } from './Play';
 import { Screenshare } from './Screenshare';
 import { Search } from './Search';
 import { Send } from './Send';
@@ -117,6 +118,7 @@ export {
   Photo,
   Picture,
   Places,
+  Play,
   Screenshare,
   Search,
   Send,

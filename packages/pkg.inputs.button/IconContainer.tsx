@@ -11,41 +11,37 @@ export const IconContainer: FC<IconComponentProps> = ({
   size,
   status,
   isLoadingIcon,
-}) => {
-  console.log('');
-
-  return (
-    <Stack order={order} sx={{ position: 'relative', ...iconSizes[size] }}>
-      {!!Icon && (
-        <Icon
-          sx={{
-            opacity: status === 'idle' ? 1 : 0,
-            color: 'inherit',
-            ...iconSizes[size],
-          }}
-        />
-      )}
-      <Check
+}) => (
+  <Stack order={order} sx={{ position: 'relative', ...iconSizes[size] }}>
+    {!!Icon && (
+      <Icon
         sx={{
-          opacity: status === 'completed' ? 1 : 0,
-          position: 'absolute',
-          top: '50%',
-          transform: 'translateY(-50%)',
+          opacity: status === 'idle' ? 1 : 0,
           color: 'inherit',
           ...iconSizes[size],
         }}
       />
-      {isLoadingIcon && (
-        <Loading
-          size={size}
-          top="50%"
-          transform="translateY(-50%)"
-          opacity={status === 'pending' ? 1 : 0}
-        />
-      )}
-    </Stack>
-  );
-};
+    )}
+    <Check
+      sx={{
+        opacity: status === 'completed' ? 1 : 0,
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        color: 'inherit',
+        ...iconSizes[size],
+      }}
+    />
+    {isLoadingIcon && (
+      <Loading
+        size={size}
+        top="50%"
+        transform="translateY(-50%)"
+        opacity={status === 'pending' ? 1 : 0}
+      />
+    )}
+  </Stack>
+);
 
 type IconComponentProps = {
   Icon?: any;

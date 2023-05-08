@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { createEditor, Transforms } from 'slate';
-import { Slate, withReact, Editable, ReactEditor, DefaultElement } from 'slate-react';
+import { Slate, withReact, Editable, ReactEditor } from 'slate-react';
 import { withHistory } from 'slate-history';
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
@@ -16,6 +16,10 @@ import { Stack } from '@mui/material';
 import { makeNodeId, withNodeId } from './plugins/withNodeId';
 import { FormatToolbar } from './components/FormatToolbar';
 import { Leaf } from './components/Leaf';
+
+import { CreationMenu } from './components/CreationMenu';
+
+import { Element } from './components/Element';
 
 const initialValue = [
   {
@@ -107,7 +111,7 @@ const ContentEditor = () => {
   );
 };
 
-const renderElementContent = (props: any) => <DefaultElement {...props} />;
+const renderElementContent = (props: any) => <Element {...props} />;
 
 const SortableElement = ({ attributes, element, children, renderElement }: any) => {
   const sortable = useSortable({
@@ -117,6 +121,9 @@ const SortableElement = ({ attributes, element, children, renderElement }: any) 
       easing: 'ease',
     },
   });
+
+  // const [editAnchorEl, setEditAnchorEl] = useState<null | HTMLDivElement>(null);
+  const [addAnchorEl, setAddAnchorEl] = useState<null | HTMLButtonElement>(null);
 
   return (
     <Sortable sortable={sortable}>
@@ -135,6 +142,7 @@ const SortableElement = ({ attributes, element, children, renderElement }: any) 
             aria-label="Добавить элемент"
             contentEditable={false}
             startIcon={Add}
+            onClick={(e) => setAddAnchorEl(e.currentTarget)}
           />
           <Button
             variant="text"
@@ -152,7 +160,11 @@ const SortableElement = ({ attributes, element, children, renderElement }: any) 
             {...sortable.listeners}
           />
         </Stack>
-
+        <CreationMenu
+          id={element.id}
+          anchorEl={addAnchorEl}
+          closeMenu={() => setAddAnchorEl(null)}
+        />
         <Stack>{renderElement({ element, children })}</Stack>
       </Stack>
     </Sortable>
@@ -205,7 +217,7 @@ const DragOverlayContent = ({ element }: any) => {
             minWidth: '20px',
             p: '3px',
             cursor: 'grab',
-           }}
+          }}
           aria-label="Перетащить элемент"
           contentEditable={false}
           startIcon={Move}
@@ -213,7 +225,7 @@ const DragOverlayContent = ({ element }: any) => {
       </Stack>
       <Stack>
         <Slate editor={editor} value={value}>
-          <Editable readOnly renderElement={renderElementContent} />
+          <Editable readOnly renderElement={renderElementContent} renderLeaf={Leaf} />
         </Slate>
       </Stack>
     </Stack>

@@ -3,19 +3,15 @@ import Menu from '@mui/material/Menu';
 import { creationMenuConfig } from './menuConfig';
 import { menuStyles } from './styles';
 import Item from './Item';
-import { Type } from '../../config';
-
-type EditorsT = { id: string; type: Type };
 
 type NewItemMenuProps = {
-  index: number;
+  id: number;
   closeMenu: () => void;
   anchorEl: Element | null;
-  setEditors: React.Dispatch<React.SetStateAction<EditorsT[]>>;
 };
 
 export const CreationMenu = React.memo((props: NewItemMenuProps) => {
-  const { index, anchorEl, closeMenu, setEditors } = props;
+  const { id, anchorEl, closeMenu } = props;
 
   return (
     <Menu
@@ -29,7 +25,7 @@ export const CreationMenu = React.memo((props: NewItemMenuProps) => {
       sx={menuStyles}
     >
       {creationMenuConfig.map((elem, i) => (
-        <Item key={i} index={index} elem={elem} closeMenu={closeMenu} setEditors={setEditors} />
+        <Item id={id} key={i} elem={elem} closeMenu={closeMenu} />
       ))}
     </Menu>
   );

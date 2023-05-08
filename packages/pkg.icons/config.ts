@@ -51,6 +51,7 @@ export const icons = [
   'Photo',
   'Picture',
   'Places',
+  'Play',
   'Screenshare',
   'Search',
   'Send',
