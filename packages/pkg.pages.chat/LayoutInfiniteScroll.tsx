@@ -26,23 +26,31 @@ export const LayoutInfiniteScroll = ({
     return hasMoreMessages;
   }, [messagesRes]);
 
-  const fetchMoreMessages = async () => {
-    if (!isLoading) {
-      await setTimeout(() => {
-        const { messages } = messagesRes;
-        const updatedMessages: DayMessagesT[] = [...chatMessagesHistory.messages, ...messages];
-        setMessagesRes({ ...chatMessagesHistory, messages: updatedMessages });
+  const fetchMoreMessages = async () =>
+    new Promise((resolve) => {
+      const { messages } = messagesRes;
+      const updatedMessages: DayMessagesT[] = [...chatMessagesHistory.messages, ...messages];
+      setMessagesRes({ ...chatMessagesHistory, messages: updatedMessages });
+      setTimeout(() => {
+        resolve(true);
       }, 1300);
-    }
-  };
+    });
+
   const setLoading = (loading: boolean) => {
     setIsLoading(loading);
   };
   const loadMore = async () => {
     await setLoading(true);
-    await fetchMoreMessages();
-    await setLoading(false);
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      (async () => {
+        await fetchMoreMessages();
+        await setLoading(false);
+      })();
+    }
+  }, [isLoading]);
 
   const [infiniteRef, { rootRef }] = useInfiniteScroll({
     loading: isLoading,
