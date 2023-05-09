@@ -1,1 +1,1 @@
-export { Leaf } from './Leaf';
+export { Leaf, renderDecoratedLeaf } from './Leaf';

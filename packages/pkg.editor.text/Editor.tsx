@@ -1,25 +1,33 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-undef */
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { createEditor, Transforms } from 'slate';
+import { createEditor, Editor, Transforms } from 'slate';
 import { Slate, withReact, Editable, ReactEditor } from 'slate-react';
-import { withHistory } from 'slate-history';
 import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { createPortal } from 'react-dom';
 import dynamic from 'next/dynamic';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
-import './styles.css';
-
+import * as Y from 'yjs';
 import { Add, Move } from 'pkg.icons';
 import { Button } from 'pkg.inputs.button';
 import { Stack } from '@mui/material';
+import { HocuspocusProvider } from '@hocuspocus/provider';
+import { withCursors, withYHistory, withYjs, YjsEditor } from '@slate-yjs/core';
+import { useDecorateRemoteCursors } from '@slate-yjs/react';
 import { makeNodeId, withNodeId } from './plugins/withNodeId';
 import { FormatToolbar } from './components/FormatToolbar';
-import { Leaf } from './components/Leaf';
+import { Leaf, renderDecoratedLeaf } from './components/Leaf';
 
 import { CreationMenu } from './components/CreationMenu';
 
 import { Element } from './components/Element';
+
+import './styles.css';
+import { randomCursorData } from './utils';
+
+const urlWS = 'ws://127.0.0.1:1234';
 
 const initialValue = [
   {
@@ -33,10 +41,73 @@ const initialValue = [
 ];
 
 const toPx = (value: any) => (value ? `${Math.round(value)}px` : undefined);
-const useEditor = () => useMemo(() => withNodeId(withHistory(withReact(createEditor()))), []);
+
+function DecoratedEditable({ ...props }) {
+  const decorate = useDecorateRemoteCursors();
+  return <Editable decorate={decorate} {...props} />;
+}
 
 const ContentEditor = () => {
-  const editor = useEditor();
+  const [connected, setConnected] = useState(false);
+  console.log('connected', connected);
+
+  const provider = useMemo(
+    () =>
+      new HocuspocusProvider({
+        url: urlWS,
+        name: 'slate-yjs-demo',
+        onConnect: () => setConnected(true),
+        onDisconnect: () => setConnected(false),
+        connect: false,
+        forceSyncInterval: 4000,
+        delay: 2000,
+      }),
+    [],
+  );
+
+  const editor = useMemo(() => {
+    const sharedType = provider.document.get('content', Y.XmlText) as Y.XmlText;
+
+    const e = withNodeId(
+      withReact(
+        withCursors(
+          withYHistory(withYjs(createEditor(), sharedType, { autoConnect: false })),
+          provider.awareness,
+          {
+            data: randomCursorData(),
+          },
+        ),
+      ),
+    );
+
+    const { normalizeNode } = e;
+    e.normalizeNode = (entry: [any]) => {
+      const [node] = entry;
+      if (!Editor.isEditor(node) || node.children.length > 0) {
+        return normalizeNode(entry);
+      }
+
+      Transforms.insertNodes(
+        editor,
+        {
+          type: 'paragraph',
+          children: [{ text: '' }],
+        },
+        { at: [0] },
+      );
+    };
+
+    return e;
+  }, [provider.awareness, provider.document]);
+
+  useEffect(() => {
+    provider.connect();
+    return () => provider.disconnect();
+  }, [provider]);
+  useEffect(() => {
+    YjsEditor.connect(editor);
+    return () => YjsEditor.disconnect(editor);
+  }, [editor]);
 
   const [value, setValue] = useState(initialValue);
   const [activeId, setActiveId] = useState(null);
@@ -52,9 +123,16 @@ const ContentEditor = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const overId = event.over?.id;
+    console.log('editor.children', editor.children);
     const overIndex = editor.children.findIndex((x: any) => x.id === overId);
 
     if (overId !== activeId && overIndex !== -1) {
+      // Transforms.insertNodes(
+      //   editor,
+      //   // @ts-ignore
+      //   { type, children: [{ text: 'rrrr' }] },
+      //   { at: [overIndex] },
+      // );
       Transforms.moveNodes(editor, {
         at: [],
         // @ts-ignore
@@ -87,6 +165,7 @@ const ContentEditor = () => {
   }, []);
 
   const items = useMemo(() => editor.children.map((element: any) => element.id), [editor.children]);
+  console.log('items', items);
 
   return (
     // @ts-ignore
@@ -96,9 +175,14 @@ const ContentEditor = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
+        modifiers={[restrictToVerticalAxis]}
       >
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          <Editable className="editor" renderElement={renderElement} renderLeaf={Leaf} />
+          <DecoratedEditable
+            className="editor"
+            renderElement={renderElement}
+            renderLeaf={renderDecoratedLeaf}
+          />
         </SortableContext>
         {createPortal(
           <DragOverlay adjustScale={false}>
@@ -188,7 +272,7 @@ const Sortable = ({ sortable, children }: any) => (
 );
 
 const DragOverlayContent = ({ element }: any) => {
-  const editor = useEditor();
+  const editor = createEditor();
   const [value] = useState([JSON.parse(JSON.stringify(element))]); // clone
 
   useEffect(() => {
