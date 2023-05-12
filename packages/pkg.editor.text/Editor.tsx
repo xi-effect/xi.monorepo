@@ -59,8 +59,8 @@ const ContentEditor = () => {
         onConnect: () => setConnected(true),
         onDisconnect: () => setConnected(false),
         connect: false,
-        forceSyncInterval: 4000,
-        delay: 2000,
+        jitter: true,
+        minDelay: 20000,
       }),
     [],
   );

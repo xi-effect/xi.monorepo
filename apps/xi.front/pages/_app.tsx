@@ -23,6 +23,8 @@ import { getScheme } from 'pkg.theme.scheme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'pkg.notistack.saveconfirm';
 import { Notification } from 'pkg.notistack.notification';
+// import { useCookie, useThemeDetector } from 'pkg.hooks';
+// import { useMemo } from 'react';
 
 config.autoAddCss = false;
 
@@ -35,8 +37,11 @@ const MyApp = observer((props) => {
 
   const rootStore = useStoreInitialized(pageProps.initialState);
 
+  // const [userTheme] = useCookie('xi.user-theme');
   // @ts-ignore
-  const theme = createTheme(getScheme('light')); // Только светлая тема;
+  // const theme = useMemo(() => createTheme(getScheme(userTheme)), [userTheme]);
+
+  const theme = () => createTheme(getScheme('light'));
 
   return (
     <CacheProvider value={emotionCache}>
