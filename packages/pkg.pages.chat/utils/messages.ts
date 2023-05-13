@@ -23,7 +23,6 @@ export const useMessages = () => {
     try {
       const { messages, next } = await loadMessages(nextUrl);
       setMessages((current) => [...messages, ...current]);
-      console.log('set next page', next, next ?? null);
       setNextPage(next ?? null);
     } catch (err: any) {
       setError(err);
@@ -33,12 +32,10 @@ export const useMessages = () => {
   };
 
   const loadMore = async () => {
-    console.log('loading more messages', nextPage);
     fetchMessages(nextPage);
   };
 
   const initializeMessagesHistory = (nextUrl: string) => {
-    console.log('initialize messages history', nextUrl);
     setNextPage(nextUrl);
     fetchMessages(nextUrl);
   };

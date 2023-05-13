@@ -19,19 +19,16 @@ export const LayoutInfiniteScroll = ({
   messages,
   children,
 }: LayoutInfiniteScrollProps) => {
-  const hasMore = useMemo(() => !nextPage, [nextPage]);
+  const hasMore = useMemo(() => !!nextPage, [nextPage]);
 
   const scrollableRootRef = useRef<any>(null);
   const lastScrollDistanceToBottomRef = useRef<number>();
 
   const onLoadMore = () => {
-    console.log('next page to load more', nextPage);
     loadMore();
   };
 
-  useEffect(() => {
-    console.log('update messages', messages);
-  }, [messages]);
+  useEffect(() => {}, [hasMore]);
 
   const [infiniteRef, { rootRef }] = useInfiniteScroll({
     loading,
