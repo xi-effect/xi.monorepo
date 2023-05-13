@@ -50,8 +50,7 @@ export type DayMessagesT = {
   messages: MessageT[];
 };
 
-export type UpbarProps = {
-  chatId: string;
+export type UpbarProps = ChatInfoT & {
   openMenu: (type: MenuT) => void;
   menuType: MenuT;
 };
