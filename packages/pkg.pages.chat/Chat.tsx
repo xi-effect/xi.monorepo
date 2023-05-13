@@ -5,14 +5,12 @@ import { LayoutChat } from './LayoutChat';
 import { Upbar } from './Upbar';
 import { LayoutInfiniteScroll } from './LayoutInfiniteScroll';
 import { DateBlock } from './DateBlock';
-import { ChatProps, ChatInfoT, ChatMessagesT, MenuT } from './types';
-import { chatInfo as chatInfoDefault, chatMessages } from './data';
+import { ChatProps, MenuT } from './types';
+import { useLoadMessages, useLoadChat } from './utils/index';
 
 export const Chat = ({ id }: ChatProps) => {
-  /* res from response */
-  const [chatInfoRes, setChatInfoRes] = useState<ChatInfoT>({} as ChatInfoT);
-  const [messagesRes, setMessagesRes] = useState<ChatMessagesT>({} as ChatMessagesT);
-
+  const { messages, initializeMessagesHistory } = useLoadMessages();
+  const { loadChat, initializeMessages } = useLoadChat();
   const [chosenMenu, setChosenMenu] = useState<MenuT>(null);
 
   const openMenu = (type: MenuT) => {
@@ -20,11 +18,13 @@ export const Chat = ({ id }: ChatProps) => {
   };
 
   useEffect(() => {
-    // fetch request to get chat info
-    console.log('chat is', id);
-    setChatInfoRes(chatInfoDefault);
-    setMessagesRes(chatMessages);
+    loadChat(id);
   }, []);
+
+  useEffect(() => {
+    console.log('initialize messages', initializeMessages);
+    if (initializeMessages) initializeMessagesHistory(initializeMessages);
+  }, [initializeMessages]);
 
   return (
     <LayoutChat chosenMenu={chosenMenu}>
@@ -41,10 +41,10 @@ export const Chat = ({ id }: ChatProps) => {
           width: '100%',
         }}
       >
-        <Upbar {...chatInfoRes} openMenu={openMenu} menuType={chosenMenu} />
+        <Upbar openMenu={openMenu} menuType={chosenMenu} />
 
-        <LayoutInfiniteScroll messagesRes={messagesRes} setMessagesRes={setMessagesRes}>
-          {messagesRes.messages?.map((data) => (
+        <LayoutInfiniteScroll>
+          {messages?.map((data) => (
             <ListItem sx={{ p: 0 }}>
               <DateBlock {...data} />
             </ListItem>

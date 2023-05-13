@@ -82,6 +82,7 @@ const ChatInput = () => {
             }}
           >
             <>
+              [
               <MenuItem sx={{ p: 0.5, height: '24px' }}>
                 <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
                   <Picture sx={{ fontSize: 16 }} />
@@ -106,6 +107,7 @@ const ChatInput = () => {
                   Файл
                 </Typography>
               </MenuItem>
+              ]
             </>
           </Dropdown>
           <Stack

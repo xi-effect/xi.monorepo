@@ -25,6 +25,7 @@ export type ChatInfoT = {
   id: string;
   name: string;
   host: UserT;
+  messages: string;
 };
 
 export type ChatMessagesT = {
@@ -49,7 +50,7 @@ export type DayMessagesT = {
   messages: MessageT[];
 };
 
-export type UpbarProps = ChatInfoT & {
+export type UpbarProps = {
   openMenu: (type: MenuT) => void;
   menuType: MenuT;
 };

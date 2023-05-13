@@ -1,61 +1,34 @@
 import { List, ListItem, Stack } from '@mui/material';
-import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useRef, useMemo } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { Loading } from './Loading';
-import { ChatMessagesT, DayMessagesT } from './types';
-import { chatMessagesHistory } from './data';
+import { useLoadMessages } from './utils';
 
 type LayoutInfiniteScrollProps = {
-  messagesRes: ChatMessagesT;
-  setMessagesRes: (updatedMessages: ChatMessagesT) => void;
   children: ReactNode;
 };
 
-export const LayoutInfiniteScroll = ({
-  messagesRes,
-  setMessagesRes,
-  children,
-}: LayoutInfiniteScrollProps) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const LayoutInfiniteScroll = ({ children }: LayoutInfiniteScrollProps) => {
+  const { loading, nextPage, loadMore, messages } = useLoadMessages();
+
+  const hasMore = useMemo(() => !nextPage, [nextPage]);
 
   const scrollableRootRef = useRef<any>(null);
   const lastScrollDistanceToBottomRef = useRef<number>();
 
-  const hasMore = useMemo(() => {
-    const hasMoreMessages: boolean = 'next' in messagesRes;
-    return hasMoreMessages;
-  }, [messagesRes]);
-
-  const fetchMoreMessages = async () =>
-    new Promise((resolve) => {
-      const { messages } = messagesRes;
-      const updatedMessages: DayMessagesT[] = [...chatMessagesHistory.messages, ...messages];
-      setMessagesRes({ ...chatMessagesHistory, messages: updatedMessages });
-      setTimeout(() => {
-        resolve(true);
-      }, 1300);
-    });
-
-  const setLoading = (loading: boolean) => {
-    setIsLoading(loading);
-  };
-  const loadMore = async () => {
-    await setLoading(true);
+  const onLoadMore = () => {
+    console.log('next page to load more', nextPage);
+    loadMore(nextPage);
   };
 
   useEffect(() => {
-    if (isLoading) {
-      (async () => {
-        await fetchMoreMessages();
-        await setLoading(false);
-      })();
-    }
-  }, [isLoading]);
+    console.log('update messages', messages);
+  }, [messages]);
 
   const [infiniteRef, { rootRef }] = useInfiniteScroll({
-    loading: isLoading,
+    loading,
     hasNextPage: hasMore,
-    onLoadMore: loadMore,
+    onLoadMore,
     rootMargin: '0px 0px 0px 0px',
   });
 
@@ -80,7 +53,7 @@ export const LayoutInfiniteScroll = ({
     if (scrollableRoot) {
       scrollableRoot.scrollTop = scrollableRoot.scrollHeight - lastScrollDistanceToBottom;
     }
-  }, [messagesRes, rootRef]);
+  }, [messages, rootRef]);
 
   return (
     <Stack

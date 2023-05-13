@@ -4,6 +4,8 @@ export const chatInfo: ChatInfoT = {
   id: 'chat_1',
   name: '4Д — БЖ',
   host: { username: 'Кастырин И.И.', avatar: null },
+  // link to first page of messages
+  messages: 'page_0',
 };
 
 export const chatMessages: ChatMessagesT = {
@@ -74,8 +76,84 @@ export const chatMessages: ChatMessagesT = {
         },
       ],
     },
+    {
+      date: '2023-03-20',
+      messages: [
+        {
+          id: 'message4',
+          createdTime: '2023-03-20T10:35:00',
+          type: 'file',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-20',
+      messages: [
+        {
+          id: 'message4',
+          createdTime: '2023-03-20T10:35:00',
+          type: 'file',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-20',
+      messages: [
+        {
+          id: 'message4',
+          createdTime: '2023-03-20T10:35:00',
+          type: 'file',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-20',
+      messages: [
+        {
+          id: 'message4',
+          createdTime: '2023-03-20T10:35:00',
+          type: 'file',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
   ],
-  next: '',
+  next: 'page_1',
 };
 
 export const chatMessagesHistory: ChatMessagesT = {
@@ -186,5 +264,10 @@ export const chatMessagesHistory: ChatMessagesT = {
       ],
     },
   ],
-  next: '',
+  next: 'page_1',
+};
+
+export const testMessages: { [pageId: string]: ChatMessagesT } = {
+  page_0: chatMessages,
+  page_1: chatMessagesHistory,
 };
