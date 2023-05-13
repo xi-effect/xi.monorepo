@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { ListItem, Stack } from '@mui/material';
 import { ChatInput } from 'pkg.inputs.chat';
 import { LayoutChat } from './LayoutChat';
 import { Upbar } from './Upbar';
 import { ChatProps, MenuT, UserT } from './types';
-import { useChat } from './utils';
+import { useChat, useMessages } from './utils';
+import { LayoutInfiniteScroll } from './LayoutInfiniteScroll';
+import { DateBlock } from './DateBlock';
 
 export const Chat = ({ id }: ChatProps) => {
   const [chosenMenu, setChosenMenu] = useState<MenuT>(null);
 
   const { chatName, chatHost, initializeMessages, chatId, loadChat } = useChat();
+  const { messages, initializeMessagesHistory, ...messagesData } = useMessages();
 
   const openMenu = (type: MenuT) => {
     setChosenMenu((prev) => (prev === type ? null : type));
@@ -18,6 +21,10 @@ export const Chat = ({ id }: ChatProps) => {
   useEffect(() => {
     loadChat(id);
   }, []);
+
+  useEffect(() => {
+    if (initializeMessages) initializeMessagesHistory(initializeMessages);
+  }, [initializeMessages]);
 
   return (
     <LayoutChat chosenMenu={chosenMenu}>
@@ -43,14 +50,14 @@ export const Chat = ({ id }: ChatProps) => {
           messages={initializeMessages ?? ''}
         />
 
-        {/* <LayoutInfiniteScroll>
+        <LayoutInfiniteScroll {...messagesData} messages={messages}>
           {messages?.map((data, index) => (
             // change key
             <ListItem sx={{ p: 0 }} key={`dateBlock_${data.date}_${index}`}>
               <DateBlock {...data} />
             </ListItem>
           ))}
-        </LayoutInfiniteScroll> */}
+        </LayoutInfiniteScroll>
 
         <ChatInput />
       </Stack>

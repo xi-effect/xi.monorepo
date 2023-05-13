@@ -1,4 +1,4 @@
 import { useChat } from './chat';
-import { useLoadMessages } from './messages';
+import { useMessages } from './messages';
 
-export { useChat, useLoadMessages };
+export { useChat, useMessages };

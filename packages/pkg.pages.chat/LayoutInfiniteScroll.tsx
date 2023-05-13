@@ -2,15 +2,23 @@ import { List, ListItem, Stack } from '@mui/material';
 import { ReactNode, useCallback, useEffect, useRef, useMemo } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { Loading } from './Loading';
-import { useLoadMessages } from './utils';
+import { DayMessagesT } from './types';
 
 type LayoutInfiniteScrollProps = {
   children: ReactNode;
+  loading: boolean;
+  nextPage: string | null;
+  loadMore: () => void;
+  messages: DayMessagesT[];
 };
 
-export const LayoutInfiniteScroll = ({ children }: LayoutInfiniteScrollProps) => {
-  const { loading, nextPage, loadMore, messages } = useLoadMessages();
-
+export const LayoutInfiniteScroll = ({
+  loading,
+  nextPage,
+  loadMore,
+  messages,
+  children,
+}: LayoutInfiniteScrollProps) => {
   const hasMore = useMemo(() => !nextPage, [nextPage]);
 
   const scrollableRootRef = useRef<any>(null);
@@ -18,7 +26,7 @@ export const LayoutInfiniteScroll = ({ children }: LayoutInfiniteScrollProps) =>
 
   const onLoadMore = () => {
     console.log('next page to load more', nextPage);
-    loadMore(nextPage);
+    loadMore();
   };
 
   useEffect(() => {
