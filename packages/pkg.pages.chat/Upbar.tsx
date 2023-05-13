@@ -1,10 +1,15 @@
+import { useEffect } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { Search, Users, File, Shape } from 'pkg.icons';
 import { UpbarProps } from './types';
-import { useLoadChat } from './utils';
+import { useChat } from './utils';
 
-export const Upbar = ({ openMenu, menuType }: UpbarProps) => {
-  const { chatName, chatHost } = useLoadChat();
+export const Upbar = ({ openMenu, menuType, chatId }: UpbarProps) => {
+  const { chatName, chatHost, loadChat } = useChat();
+
+  useEffect(() => {
+    loadChat(chatId);
+  }, []);
 
   return (
     <Stack

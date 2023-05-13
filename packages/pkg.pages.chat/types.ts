@@ -51,6 +51,7 @@ export type DayMessagesT = {
 };
 
 export type UpbarProps = {
+  chatId: string;
   openMenu: (type: MenuT) => void;
   menuType: MenuT;
 };

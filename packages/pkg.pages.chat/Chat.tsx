@@ -1,30 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Stack, ListItem } from '@mui/material';
+import { useState } from 'react';
+import { Stack } from '@mui/material';
 import { ChatInput } from 'pkg.inputs.chat';
 import { LayoutChat } from './LayoutChat';
 import { Upbar } from './Upbar';
-import { LayoutInfiniteScroll } from './LayoutInfiniteScroll';
-import { DateBlock } from './DateBlock';
 import { ChatProps, MenuT } from './types';
-import { useLoadMessages, useLoadChat } from './utils/index';
 
 export const Chat = ({ id }: ChatProps) => {
-  const { messages, initializeMessagesHistory } = useLoadMessages();
-  const { loadChat, initializeMessages } = useLoadChat();
   const [chosenMenu, setChosenMenu] = useState<MenuT>(null);
 
   const openMenu = (type: MenuT) => {
     setChosenMenu((prev) => (prev === type ? null : type));
   };
-
-  useEffect(() => {
-    loadChat(id);
-  }, []);
-
-  useEffect(() => {
-    console.log('initialize messages', initializeMessages);
-    if (initializeMessages) initializeMessagesHistory(initializeMessages);
-  }, [initializeMessages]);
 
   return (
     <LayoutChat chosenMenu={chosenMenu}>
@@ -41,16 +27,16 @@ export const Chat = ({ id }: ChatProps) => {
           width: '100%',
         }}
       >
-        <Upbar openMenu={openMenu} menuType={chosenMenu} />
+        <Upbar openMenu={openMenu} menuType={chosenMenu} chatId={id} />
 
-        <LayoutInfiniteScroll>
+        {/* <LayoutInfiniteScroll>
           {messages?.map((data, index) => (
             // change key
             <ListItem sx={{ p: 0 }} key={`dateBlock_${data.date}_${index}`}>
               <DateBlock {...data} />
             </ListItem>
           ))}
-        </LayoutInfiniteScroll>
+        </LayoutInfiniteScroll> */}
 
         <ChatInput />
       </Stack>

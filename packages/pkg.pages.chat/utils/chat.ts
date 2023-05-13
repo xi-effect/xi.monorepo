@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { UserT } from '../types';
 import { chatInfo } from '../data';
 
-export const useLoadChat = () => {
+export const useChat = () => {
   const [chatId, setChatId] = useState<string | null>(null);
   const [chatName, setChatName] = useState<string | null>(null);
   const [chatHost, setChatHost] = useState<UserT | null>(null);
