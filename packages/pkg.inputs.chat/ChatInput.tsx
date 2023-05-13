@@ -81,34 +81,30 @@ const ChatInput = () => {
               },
             }}
           >
-            <>
-              [
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <Picture sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Изображение
-                </Typography>
-              </MenuItem>
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <Movie sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Видео
-                </Typography>
-              </MenuItem>
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <File sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Файл
-                </Typography>
-              </MenuItem>
-              ]
-            </>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <Picture sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Изображение
+              </Typography>
+            </MenuItem>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <Movie sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Видео
+              </Typography>
+            </MenuItem>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <File sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Файл
+              </Typography>
+            </MenuItem>
           </Dropdown>
           <Stack
             flexDirection="column"

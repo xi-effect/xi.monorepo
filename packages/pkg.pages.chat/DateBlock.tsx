@@ -14,8 +14,9 @@ export const DateBlock = ({ date, messages }: DayMessagesT) => {
           {blockDate}
         </Badge>
       </Stack>
-      {messages.map((msg: MessageT) => (
-        <Message {...msg} />
+      {messages.map((msg: MessageT, index) => (
+        // change key
+        <Message {...msg} key={`$msg_${msg.id}_${index}`} />
       ))}
     </Stack>
   );

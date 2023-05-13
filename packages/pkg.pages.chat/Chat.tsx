@@ -44,8 +44,9 @@ export const Chat = ({ id }: ChatProps) => {
         <Upbar openMenu={openMenu} menuType={chosenMenu} />
 
         <LayoutInfiniteScroll>
-          {messages?.map((data) => (
-            <ListItem sx={{ p: 0 }}>
+          {messages?.map((data, index) => (
+            // change key
+            <ListItem sx={{ p: 0 }} key={`dateBlock_${data.date}_${index}`}>
               <DateBlock {...data} />
             </ListItem>
           ))}
