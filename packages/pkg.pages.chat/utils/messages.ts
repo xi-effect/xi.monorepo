@@ -7,7 +7,7 @@ const loadMessages = async (nextUrl: string | null): Promise<ChatMessagesT> =>
     if (nextUrl) {
       setTimeout(() => {
         resolve(testMessages[nextUrl]);
-      }, 0);
+      }, 1500);
     }
   });
 
@@ -22,11 +22,15 @@ export const useMessages = () => {
   };
 
   useEffect(() => {
+    console.log('update loading', loading);
     (async () => {
       try {
         const { messages, next } = await loadMessages(nextPage);
-        console.log('got messages');
-        setMessages((current) => [...messages, ...current]);
+        setMessages((current) => {
+          const updated = [...messages, ...current];
+          console.log('got messages', updated);
+          return updated;
+        });
         setNextPage(next ?? null);
       } catch (err: any) {
         setError(err);

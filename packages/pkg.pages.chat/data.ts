@@ -156,7 +156,7 @@ export const chatMessages: ChatMessagesT = {
   next: 'page_1',
 };
 
-export const chatMessagesHistory: ChatMessagesT = {
+export const chatMessagesHistory1: ChatMessagesT = {
   id: 'chat_1',
   messages: [
     {
@@ -264,10 +264,122 @@ export const chatMessagesHistory: ChatMessagesT = {
       ],
     },
   ],
-  next: 'page_1',
+  next: 'page_2',
+};
+export const chatMessagesHistory2: ChatMessagesT = {
+  id: 'chat_1',
+  messages: [
+    {
+      date: '2023-03-10',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-10T15:03:00',
+          type: 'text',
+          text: 'Какое задание по физике?',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+        {
+          id: 'message5',
+          createdTime: '2023-03-10T15:05:05',
+          type: 'text',
+          text: 'Непрерывность тока и закон Кирхгофа. Надо решить несколько задач и ответить на несколько вопросов.',
+          author: {
+            username: 'Михаил Морозов',
+            avatar: null,
+          },
+        },
+        {
+          id: 'message5',
+          createdTime: '2023-03-10T15:05:08',
+          type: 'text',
+          text: 'Спасибо',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-11',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-11T15:03:00',
+          type: 'text',
+          text: 'Всем привет! Что задали?',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-12',
+      messages: [
+        {
+          id: 'message2',
+          createdTime: '2023-03-12T09:35:00',
+          type: 'text',
+          text: 'Привет! Нужна твоя помощь.',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+        {
+          id: 'message3',
+          createdTime: '2023-03-12T18:14:00',
+          type: 'text',
+          text: 'Окс',
+          author: {
+            username: 'Михаил Морозов',
+            avatar: null,
+          },
+        },
+      ],
+    },
+    {
+      date: '2023-03-13',
+      messages: [
+        {
+          id: 'message5',
+          createdTime: '2023-03-13T15:03:00',
+          type: 'text',
+          text: 'Всем привет! Что задали?',
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+        {
+          id: 'message4',
+          createdTime: '2023-03-13T10:35:00',
+          type: 'file',
+          file: {
+            name: 'Filename.jpeg',
+            url: '',
+            size: 12000000,
+          },
+          author: {
+            username: 'Игорь Букшев',
+            avatar: null,
+          },
+        },
+      ],
+    },
+  ],
+
+  next: 'page_2',
 };
 
 export const testMessages: { [pageId: string]: ChatMessagesT } = {
   page_0: chatMessages,
-  page_1: chatMessagesHistory,
+  page_1: chatMessagesHistory1,
+  page_2: chatMessagesHistory2,
 };
