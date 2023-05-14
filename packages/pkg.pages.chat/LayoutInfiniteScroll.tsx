@@ -34,7 +34,7 @@ export const LayoutInfiniteScroll = ({
     loading,
     hasNextPage: hasMore,
     onLoadMore,
-    rootMargin: '0px 0px 0px 0px',
+    rootMargin: '600px 0px 0px 0px',
   });
 
   const rootRefSetter = useCallback(

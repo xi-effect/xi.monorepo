@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DayMessagesT, ChatMessagesT } from '../types';
 import { testMessages } from '../data';
 
@@ -7,7 +7,7 @@ const loadMessages = async (nextUrl: string | null): Promise<ChatMessagesT> =>
     if (nextUrl) {
       setTimeout(() => {
         resolve(testMessages[nextUrl]);
-      }, 1300);
+      }, 0);
     }
   });
 
@@ -17,27 +17,33 @@ export const useMessages = () => {
   const [nextPage, setNextPage] = useState<string | null>(null);
   const [error, setError] = useState<Error>();
 
-  const fetchMessages = async (nextUrl: string | null) => {
+  const fetchMessages = async () => {
     setLoading(true);
-
-    try {
-      const { messages, next } = await loadMessages(nextUrl);
-      setMessages((current) => [...messages, ...current]);
-      setNextPage(next ?? null);
-    } catch (err: any) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
   };
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const { messages, next } = await loadMessages(nextPage);
+        console.log('got messages');
+        setMessages((current) => [...messages, ...current]);
+        setNextPage(next ?? null);
+      } catch (err: any) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [loading]);
+
   const loadMore = async () => {
-    fetchMessages(nextPage);
+    console.log('load more messages', loading);
+    fetchMessages();
   };
 
   const initializeMessagesHistory = (nextUrl: string) => {
     setNextPage(nextUrl);
-    fetchMessages(nextUrl);
+    fetchMessages();
   };
 
   return { loading, messages, nextPage, error, loadMore, initializeMessagesHistory };
