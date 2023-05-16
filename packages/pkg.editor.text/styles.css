@@ -2,21 +2,11 @@
   cursor: grabbing;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-
-  margin: 0 auto;
-  max-width: 680px;
-  min-height: calc(100vh - 50px);
-  padding: 25px;
-  position: relative;
-}
-
 .editor {
   background-color: rgba(255, 255, 255, 0.43);
   padding: 10px;
   border-radius: 20px;
+  width: 100%;
 }
 
 .sortable {

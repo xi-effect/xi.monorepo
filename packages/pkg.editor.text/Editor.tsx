@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-undef */
+// @ts-nocheck
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { createEditor, Editor, Transforms } from 'slate';
 import { Slate, withReact, Editable, ReactEditor } from 'slate-react';
@@ -12,7 +13,7 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import * as Y from 'yjs';
 import { Add, Move } from 'pkg.icons';
 import { Button } from 'pkg.inputs.button';
-import { Stack } from '@mui/material';
+import { Stack, Box } from '@mui/material';
 import { HocuspocusProvider } from '@hocuspocus/provider';
 import { withCursors, withYHistory, withYjs, YjsEditor } from '@slate-yjs/core';
 import { useDecorateRemoteCursors } from '@slate-yjs/react';
@@ -24,7 +25,7 @@ import { CreationMenu } from './components/CreationMenu';
 
 import { Element } from './components/Element';
 
-import './styles.css';
+// import './styles.css';
 import { randomCursorData } from './utils';
 
 const urlWS = 'ws://127.0.0.1:1234';
@@ -60,7 +61,10 @@ const ContentEditor = () => {
         onDisconnect: () => setConnected(false),
         connect: false,
         jitter: true,
+        delay: 20000,
         minDelay: 20000,
+        broadcast: false,
+        forceSyncInterval: 20000,
       }),
     [],
   );
@@ -168,30 +172,32 @@ const ContentEditor = () => {
   console.log('items', items);
 
   return (
-    // @ts-ignore
-    <Slate editor={editor} value={value} onChange={setValue}>
-      <FormatToolbar />
-      <DndContext
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragCancel={handleDragCancel}
-        modifiers={[restrictToVerticalAxis]}
-      >
-        <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          <DecoratedEditable
-            className="editor"
-            renderElement={renderElement}
-            renderLeaf={renderDecoratedLeaf}
-          />
-        </SortableContext>
-        {createPortal(
-          <DragOverlay adjustScale={false}>
-            {activeElement && <DragOverlayContent element={activeElement} />}
-          </DragOverlay>,
-          document.body,
-        )}
-      </DndContext>
-    </Slate>
+    <Stack direction="row" sx={{ p: 1 }}>
+      <Slate editor={editor} value={value} onChange={setValue}>
+        <FormatToolbar />
+        <DndContext
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragCancel={handleDragCancel}
+          modifiers={[restrictToVerticalAxis]}
+        >
+          <SortableContext items={items} strategy={verticalListSortingStrategy}>
+            <DecoratedEditable
+              placeholder="Начните что-нибудь вводить"
+              className="editor"
+              renderElement={renderElement}
+              renderLeaf={renderDecoratedLeaf}
+            />
+          </SortableContext>
+          {createPortal(
+            <DragOverlay adjustScale={false}>
+              {activeElement && <DragOverlayContent element={activeElement} />}
+            </DragOverlay>,
+            document.body,
+          )}
+        </DndContext>
+      </Slate>
+    </Stack>
   );
 };
 
@@ -249,7 +255,7 @@ const SortableElement = ({ attributes, element, children, renderElement }: any) 
           anchorEl={addAnchorEl}
           closeMenu={() => setAddAnchorEl(null)}
         />
-        <Stack>{renderElement({ element, children })}</Stack>
+        <Box sx={{ width: '100%', minWidth: '200px' }}>{renderElement({ element, children })}</Box>
       </Stack>
     </Sortable>
   );

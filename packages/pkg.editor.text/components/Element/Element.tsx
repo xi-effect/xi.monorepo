@@ -40,7 +40,7 @@ const getElement = (type: string, children: React.ReactNode, props: any) => {
 
 export function Element({ element, children, ...props }: any) {
   return (
-    <Stack direction="row" sx={{ width: '100%' }}>
+    <Stack sx={{ width: '100%' }} direction="row">
       {getElement(element.type, children, props)}
     </Stack>
   );
