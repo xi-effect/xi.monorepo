@@ -2,7 +2,7 @@ import { List, ListItem, Stack } from '@mui/material';
 import { ReactNode, useCallback, useEffect, useRef, useMemo } from 'react';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import { Loading } from './Loading';
-import { DayMessagesT } from './types';
+import { DayMessagesT } from '../types';
 
 type LayoutInfiniteScrollProps = {
   children: ReactNode;

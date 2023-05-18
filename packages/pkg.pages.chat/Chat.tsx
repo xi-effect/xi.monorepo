@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ListItem, Stack } from '@mui/material';
 import { ChatInput } from 'pkg.inputs.chat';
-import { LayoutChat } from './LayoutChat';
-import { Upbar } from './Upbar';
+import { LayoutChat } from './Rendering/LayoutChat';
+import { Upbar } from './Components/Upbar';
 import { ChatProps, MenuT, UserT } from './types';
 import { useChat, useMessages } from './utils';
-import { LayoutInfiniteScroll } from './LayoutInfiniteScroll';
-import { DateBlock } from './DateBlock';
+import { LayoutInfiniteScroll } from './Rendering';
+import { DateBlock } from './Components/DateBlock';
 
 export const Chat = ({ id }: ChatProps) => {
   const [chosenMenu, setChosenMenu] = useState<MenuT>(null);

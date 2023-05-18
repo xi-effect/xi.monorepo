@@ -7,7 +7,7 @@ const loadMessages = async (nextUrl: string | null): Promise<ChatMessagesT> =>
     if (nextUrl) {
       setTimeout(() => {
         resolve(testMessages[nextUrl]);
-      }, 1500);
+      }, 200);
     }
   });
 

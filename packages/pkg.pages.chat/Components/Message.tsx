@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { File } from 'pkg.components.file';
 import Image from 'next/image';
-import { MessageT } from './types';
+import { MessageT } from '../types';
 
 const getUserInitials = (username: string) => {
   const names = username.split(' ');

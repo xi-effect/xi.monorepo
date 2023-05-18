@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import dayjs from 'dayjs';
 import { Badge } from 'pkg.components.badge';
 import { Message } from './Message';
-import { MessageT, DayMessagesT } from './types';
+import { MessageT, DayMessagesT } from '../types';
 
 export const DateBlock = ({ date, messages }: DayMessagesT) => {
   const blockDate = dayjs(date).locale('ru').format('DD MMMM');

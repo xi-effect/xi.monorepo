@@ -1,5 +1,12 @@
 {
   "extends": "pkg.config.typescript/react-library.json",
-  "include": ["*"],
+  "include": [
+    "*",
+    "Rendering/LayoutChat.tsx",
+    "Components/DateBlock.tsx",
+    "Rendering/EmptyMessage.tsx",
+    "Components/Message.tsx",
+    "Components/Upbar.tsx"
+  ],
   "exclude": ["dist", "build", "node_modules"]
 }

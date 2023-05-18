@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Stack } from '@mui/material';
-import { Participants, Files, Pinned } from './Menu';
-import { LayoutChatProps } from './types';
+import { Participants, Files, Pinned } from '../Menu';
+import { LayoutChatProps } from '../types';
 
 export const LayoutChat = ({ chosenMenu, MenuWidth = '450px', children }: LayoutChatProps) => {
   const isOpened = useMemo(() => !!chosenMenu, [chosenMenu]);

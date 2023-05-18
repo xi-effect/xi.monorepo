@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Search, Users, File, Shape } from 'pkg.icons';
-import { UpbarProps } from './types';
+import { UpbarProps } from '../types';
 
 export const Upbar = ({ openMenu, menuType, name, host }: UpbarProps) => (
   <Stack
