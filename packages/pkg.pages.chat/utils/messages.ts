@@ -23,25 +23,26 @@ export const useMessages = () => {
 
   useEffect(() => {
     console.log('update loading', loading);
-    (async () => {
-      try {
-        const { messages, next } = await loadMessages(nextPage);
-        setMessages((current) => {
-          const updated = [...messages, ...current];
-          console.log('got messages', updated);
-          return updated;
-        });
-        setNextPage(next ?? null);
-      } catch (err: any) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    })();
+    if (loading) {
+      (async () => {
+        try {
+          const { messages, next } = await loadMessages(nextPage);
+          setMessages((current) => {
+            const updated = [...messages, ...current];
+            console.log('got messages', updated);
+            return updated;
+          });
+          setNextPage(next ?? null);
+        } catch (err: any) {
+          setError(err);
+        } finally {
+          setLoading(false);
+        }
+      })();
+    }
   }, [loading]);
 
   const loadMore = async () => {
-    console.log('load more messages', loading);
     fetchMessages();
   };
 

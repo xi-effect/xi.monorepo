@@ -24,10 +24,6 @@ export const LayoutInfiniteScroll = ({
   const scrollableRootRef = useRef<any>(null);
   const lastScrollDistanceToBottomRef = useRef<number>();
 
-  useEffect(() => {
-    console.log('loading loading loading', loading);
-  }, [loading]);
-
   const [infiniteRef, { rootRef }] = useInfiniteScroll({
     loading,
     hasNextPage: hasMore,
