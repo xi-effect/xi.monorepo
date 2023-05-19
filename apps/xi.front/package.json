@@ -56,6 +56,7 @@
     "pkg.navigation.link": "*",
     "pkg.notistack.saveconfirm": "*",
     "pkg.notistack.notification": "*",
+    "pkg.pages.chat": "*",
     "pkg.pages.error": "*",
     "pkg.theme.scheme": "*",
     "pkg.editor.text": "*",

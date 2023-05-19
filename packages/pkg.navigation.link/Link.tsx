@@ -1,42 +1,28 @@
 import { Link as MuiLink, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { linkSizes, iconSizes, textSizes } from './styles';
-import { LinkSizes } from './types';
+import { LinkProps, LinkTypesT } from './types';
 
-export type LinkProps = {
-  /* action or link */
-  action?: (() => any | Promise<any>) | string;
-  children: string | React.ReactNode;
-  size?: LinkSizes;
-  isDisabled?: boolean;
-  color?: string;
-  Icon?: any;
-  /* styles when link was visited */
-  visitedStyles?: any;
-  /* styles when link is hovered or focused */
-  hoverStyles?: any;
-  hideUnderline?: boolean;
-  onClick?: () => void;
-  sx?: any;
-};
-
-export const Link = ({
-  action,
+export const Link: FC<LinkProps> = ({
   children,
-  size = 'm',
-  isDisabled,
-  color = 'petersburg.90',
-  Icon,
-  visitedStyles = '',
-  hoverStyles = '',
-  hideUnderline = false,
+  href,
   onClick,
+  color = 'grayscale.90',
+  size = 'm',
+  disabled = false,
+  icon,
+  visitedStyles,
+  hoverStyles,
+  underline = true,
   sx,
+  ...props
 }: LinkProps) => {
   const [waitingAction, setWaitingAction] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const type: LinkTypesT = (onClick && 'action') || 'link';
 
   /* add styles when link is hovered or focused */
   const onHover = () => {
@@ -47,6 +33,7 @@ export const Link = ({
     setIsHovered(false);
   };
 
+  const Icon = icon;
   const CustomIcon =
     (!!Icon && waitingAction && (
       <CircularProgress sx={{ color }} size={iconSizes[size].fontSize} />
@@ -54,17 +41,11 @@ export const Link = ({
     (!!Icon && <Icon sx={{ ...iconSizes[size] }} />) ||
     '';
 
-  const isLink = typeof action === 'string';
-
   const handleAction = async (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (onClick) {
-      onClick();
-    }
-
-    if (!isLink && action) {
+    if (type === 'action' && onClick) {
       event.preventDefault();
       setWaitingAction(true);
-      await action();
+      await onClick(event);
       setWaitingAction(false);
     }
   };
@@ -73,8 +54,8 @@ export const Link = ({
     <MuiLink
       sx={{
         ...linkSizes[size],
-        pointerEvents: isDisabled ? 'none' : 'auto',
-        color: isDisabled ? 'petersburg.40' : color,
+        pointerEvents: disabled ? 'none' : 'auto',
+        color: disabled ? 'grayscale.40' : color,
         textDecoration: 'none',
         width: 'max-content',
         height: 'max-content',
@@ -91,11 +72,12 @@ export const Link = ({
           ...hoverStyles,
         },
         ...sx,
+        ...props,
       }}
-      href={isLink ? action : '#'}
-      tabIndex={isDisabled ? -1 : 0}
-      target={isLink ? '_blank' : ''}
-      onClick={(e) => handleAction(e)}
+      href={href}
+      tabIndex={disabled ? -1 : 0}
+      target={type === 'link' && href !== '#' ? '_blank' : ''}
+      onClick={handleAction}
       onMouseEnter={onHover}
       onFocus={onHover}
       onMouseLeave={onOutOfHover}
@@ -113,7 +95,7 @@ export const Link = ({
               right: 0,
               bottom: 0,
               bgcolor: color,
-              display: (hideUnderline && !isHovered) || isDisabled ? 'none' : 'inline-block',
+              display: (!underline && !isHovered) || disabled ? 'none' : 'inline-block',
               width: '100%',
               height: '1px',
               opacity: isHovered ? '1' : '0.4',

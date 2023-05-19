@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
-import { Editor, Transforms } from 'slate';
+import { Editor, Node, Transforms } from 'slate';
 
 export function withNormalize(editor: Editor) {
   const { normalizeNode } = editor;
@@ -17,7 +17,7 @@ export function withNormalize(editor: Editor) {
       {
         type: 'paragraph',
         children: [{ text: '' }],
-      },
+      } as Node,
       { at: [0] },
     );
   };

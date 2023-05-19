@@ -10,12 +10,12 @@ const footerItems = [
 ];
 
 const Footer = observer(() => {
-  const hideUnderline = true;
+  const underline = false;
   return (
     <Grid container sx={{ mt: 'auto' }} spacing={4}>
       {footerItems.map((item) => (
         <Grid item>
-          <Link action={item.link} size="s" hideUnderline={hideUnderline}>
+          <Link href={item.link} size="s" underline={underline}>
             {item.item}
           </Link>
         </Grid>

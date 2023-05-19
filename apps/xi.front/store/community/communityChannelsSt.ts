@@ -73,6 +73,11 @@ class CommunityChannelsSt {
           type: 'room',
           name: 'Видеоконференция',
         },
+        {
+          id: 2,
+          type: 'chat',
+          name: 'Чат со студентами',
+        },
       ],
     },
   ];
