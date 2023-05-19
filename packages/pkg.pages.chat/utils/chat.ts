@@ -7,7 +7,7 @@ export const useChat = () => {
   const [chatName, setChatName] = useState<string | null>(null);
   const [chatHost, setChatHost] = useState<UserT | null>(null);
   // url to get first portion of chat messages
-  const [initializeMessages, setInitializeMessages] = useState<string | null>(null);
+  const [messagesUrl, setMessagesUrl] = useState<string | null>(null);
 
   const loadChat = (id: string) => {
     setChatId(id);
@@ -16,8 +16,8 @@ export const useChat = () => {
     const { host, name, messages } = chatInfo;
     setChatName(name);
     setChatHost(host);
-    setInitializeMessages(messages);
+    setMessagesUrl(messages);
   };
 
-  return { chatId, chatName, chatHost, initializeMessages, loadChat };
+  return { chatId, chatName, chatHost, messagesUrl, loadChat };
 };

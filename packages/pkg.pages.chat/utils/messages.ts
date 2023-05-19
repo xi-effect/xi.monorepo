@@ -46,10 +46,10 @@ export const useMessages = () => {
     fetchMessages();
   };
 
-  const initializeMessagesHistory = (nextUrl: string) => {
+  const initializeMessages = (nextUrl: string) => {
     setNextPage(nextUrl);
     fetchMessages();
   };
 
-  return { loading, messages, nextPage, error, loadMore, initializeMessagesHistory };
+  return { loading, messages, nextPage, error, loadMore, initializeMessages };
 };

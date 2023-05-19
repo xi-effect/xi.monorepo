@@ -11,8 +11,8 @@ import { DateBlock } from './Components/DateBlock';
 export const Chat = ({ id }: ChatProps) => {
   const [chosenMenu, setChosenMenu] = useState<MenuT>(null);
 
-  const { chatName, chatHost, initializeMessages, chatId, loadChat } = useChat();
-  const { messages, initializeMessagesHistory, ...messagesData } = useMessages();
+  const { chatName, chatHost, messagesUrl, chatId, loadChat } = useChat();
+  const { messages, initializeMessages, ...messagesData } = useMessages();
 
   const openMenu = (type: MenuT) => {
     setChosenMenu((prev) => (prev === type ? null : type));
@@ -23,8 +23,8 @@ export const Chat = ({ id }: ChatProps) => {
   }, []);
 
   useEffect(() => {
-    if (initializeMessages) initializeMessagesHistory(initializeMessages);
-  }, [initializeMessages]);
+    if (messagesUrl) initializeMessages(messagesUrl);
+  }, [messagesUrl]);
 
   return (
     <LayoutChat chosenMenu={chosenMenu}>
@@ -47,7 +47,7 @@ export const Chat = ({ id }: ChatProps) => {
           id={chatId ?? ''}
           name={chatName ?? ''}
           host={chatHost ?? ({} as UserT)}
-          messages={initializeMessages ?? ''}
+          messages={messagesUrl ?? ''}
         />
 
         <LayoutInfiniteScroll {...messagesData} messages={messages}>
