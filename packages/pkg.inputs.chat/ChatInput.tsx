@@ -7,7 +7,6 @@ import { FormControl, Stack, Button, Typography, MenuItem, ListItemIcon } from '
 import { Clip, Emotions, File, Movie, Picture, Send } from 'pkg.icons';
 import { Dropdown } from 'pkg.navigation.dropdown';
 import { FormatToolbar } from './components/FormatToolbar';
-import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
 import { CustomEditable } from './components/CustomEditable';
 
@@ -21,7 +20,7 @@ const initialValue: any = [
 const DropdownClip = () => <Clip sx={{ fontSize: '24px' }} />;
 
 const ChatInput = () => {
-  const [editor] = useState(() => withReact(withMarkdown(withNormalize(createEditor()))));
+  const [editor] = useState(() => withReact(withNormalize(createEditor())));
 
   return (
     <Stack

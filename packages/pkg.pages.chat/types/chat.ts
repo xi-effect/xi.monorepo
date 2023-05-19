@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { MenuT } from './Menu';
+import { MenuT } from './menu';
 import { UserT } from './externals';
 
 export type LayoutChatProps = {
