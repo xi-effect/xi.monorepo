@@ -1,24 +1,27 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Box, Checkbox, FormControlLabel, IconButton, Stack, Typography } from '@mui/material';
 import { Close, Check } from '@mui/icons-material';
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 import DeviceMenu from './DeviceMenu';
-import Btn from './Btn';
 import { DeviceUnderTestT } from '../SoundAndVideo';
+import Btn from './Btn';
 
 type VideoDeviceT = {
-  deviceUnderTest: DeviceUnderTestT;
-  setDeviceUnderTest: React.Dispatch<React.SetStateAction<DeviceUnderTestT>>;
+  colorScheme?: 'light' | 'dark';
+  stateDeviceUnderTest: [DeviceUnderTestT, Dispatch<SetStateAction<DeviceUnderTestT>>];
 };
 
 const VideoDevice = observer((props) => {
-  const { deviceUnderTest, setDeviceUnderTest }: VideoDeviceT = props;
+  const {
+    colorScheme = 'light',
+    stateDeviceUnderTest: [deviceUnderTest, setDeviceUnderTest],
+  }: VideoDeviceT = props;
 
   const rootStore = useStore();
   const {
-    userMediaSt: {
+    mediaSt: {
       stopStream,
       startStream,
       mediaInfo: { devices, error, stream },
@@ -26,10 +29,11 @@ const VideoDevice = observer((props) => {
   } = rootStore;
 
   const elementRef = useRef<HTMLVideoElement | null>(null);
+
   const mediaElement = elementRef.current;
 
-  const [activeDevice, setActiveDevice] = useState<string>('');
   const [showStream, setShowStream] = useState<boolean>(false);
+
   const [mirrorVideo, setMirrorVideo] = useState<boolean>(true);
 
   const playMediaDevice = () => {
@@ -48,8 +52,6 @@ const VideoDevice = observer((props) => {
 
   const deviceControl = async (id: string) => {
     await startStream({ videoId: id });
-
-    setActiveDevice(devices.filter((d) => d.deviceId === id)[0].label);
   };
 
   useEffect(() => {
@@ -67,15 +69,16 @@ const VideoDevice = observer((props) => {
   }, [stream, error]);
 
   return (
-    <Box>
+    <Stack>
       <Stack
         sx={{
-          mb: '10px',
           width: '100%',
-          height: '300px',
           borderRadius: '8px',
           position: 'relative',
           backgroundColor: '#E6E6E6',
+          mb: colorScheme === 'light' ? '10px' : '16px',
+          height:
+            colorScheme === 'light' ? '300px' : (((window.innerWidth / 100) * 30 - 32) / 16) * 9,
         }}
         alignItems="center"
         justifyContent="center"
@@ -110,7 +113,12 @@ const VideoDevice = observer((props) => {
         )}
       </Stack>
 
-      <Stack direction="row" alignItems="center" mb="26px">
+      <Stack
+        direction="row"
+        alignItems="center"
+        order={colorScheme === 'light' ? 1 : 2}
+        m={colorScheme === 'light' ? '0 0 26px 0' : '16px 0 0 0'}
+      >
         <FormControlLabel
           sx={{
             m: 0,
@@ -121,10 +129,19 @@ const VideoDevice = observer((props) => {
           }}
           label={
             <Typography
-              sx={{
-                fontWeight: 400,
-                fontSize: '12px',
-              }}
+              sx={
+                colorScheme === 'light'
+                  ? {
+                      fontWeight: 400,
+                      fontSize: '12px',
+                      color: 'grayscale.100',
+                    }
+                  : {
+                      fontWeight: 500,
+                      fontSize: '14px',
+                      color: 'grayscale.0',
+                    }
+              }
             >
               Отразить зеркально
             </Typography>
@@ -151,7 +168,8 @@ const VideoDevice = observer((props) => {
                     width: '20px',
                     height: '20px',
                     borderRadius: '3px',
-                    border: '1px solid #E6E6E6',
+                    background: colorScheme === 'light' ? 'transparent' : '#B4BDFF',
+                    border: `1px solid  ${colorScheme === 'light' ? '#E6E6E6' : '#B4BDFF'}`,
                   }}
                 >
                   <Check
@@ -167,24 +185,26 @@ const VideoDevice = observer((props) => {
         />
       </Stack>
 
-      <Typography
-        sx={{
-          mb: '8px',
-          fontWeight: 500,
-          fontSize: '14px',
-          color: 'petersburg.100',
-        }}
-      >
-        Камера
-      </Typography>
+      <Stack order={colorScheme === 'light' ? 2 : 1}>
+        <Typography
+          sx={{
+            mb: '8px',
+            fontWeight: 500,
+            fontSize: '14px',
+            color: colorScheme === 'light' ? 'grayscale.100' : 'grayscale.0',
+          }}
+        >
+          Камера
+        </Typography>
 
-      <DeviceMenu
-        device="videoinput"
-        activeDevice={activeDevice}
-        deviceControl={deviceControl}
-        devices={devices.filter((d) => d.kind === 'videoinput')}
-      />
-    </Box>
+        <DeviceMenu
+          device="videoinput"
+          colorScheme={colorScheme}
+          deviceControl={deviceControl}
+          devices={devices.filter((d) => d.kind === 'videoinput')}
+        />
+      </Stack>
+    </Stack>
   );
 });
 
