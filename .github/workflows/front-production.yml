@@ -12,6 +12,7 @@ jobs:
 
   build-deploy:
     needs: prepare
+    if: needs.prepare.outputs.xi_front_files == 'true'
     uses: xi-effect/xieffect-actions/.github/workflows/docker-full.yml@main
     with:
       tag: front
@@ -20,6 +21,7 @@ jobs:
 
   build-frodo:
     needs: prepare
+    if: needs.prepare.outputs.xi_frodo_files == 'true'
     uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
     with:
       tag: frodo
@@ -53,5 +55,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: ${{ steps.extract.outputs.destination }}/*
           target: ~/xieffect-core/docusaurus/frodo/
-          strip_components: 2
+          strip_components: 1
           rm: true

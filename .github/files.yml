@@ -1,0 +1,26 @@
+config_files: &config_files
+  - ".github/workflows/*"
+  - "package.json"
+  - "package-lock.json"
+  - "**/package.json"
+  - "**/package-lock.json"
+
+app_common_files: &app_common_files
+  - *config_files
+  - "packages/**"
+  - "Dockerfile"
+  - "turbo.json"
+
+xi_front_files:
+  - *app_common_files
+  - "apps/xi.front/**"
+
+xi_frodo_files:
+  - *app_common_files
+  - "apps/xi.frodo/**"
+
+lintable_files:
+  - *config_files
+  - "**.[jt]s"
+  - "**.[jt]sx"
+  - "**.md"
