@@ -56,7 +56,7 @@ const UserProfile = observer(() => {
     uiSt,
     profileSt,
     userSt,
-    userMediaSt: { stopStream },
+    mediaSt: { stopStream },
   } = rootStore;
   const { dialogs } = uiSt;
   const { profile } = profileSt;

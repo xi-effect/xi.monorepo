@@ -14,7 +14,7 @@ import AuthorizationSt from './user/authorizationSt';
 import CommunitySt from './community/communitySt';
 import CommunityChannelsSt from './community/communityChannelsSt';
 import CommunityProfileSt from './community/communityProfileSt';
-import UserMediaSt from './user/userMediaSt';
+import MediaSt from './media/mediaSt';
 
 enableStaticRendering(typeof window === 'undefined');
 
@@ -31,7 +31,7 @@ class RootStore {
 
   userSt: UserSt;
 
-  userMediaSt: UserMediaSt;
+  mediaSt: MediaSt;
 
   communitySt: CommunitySt;
 
@@ -49,7 +49,7 @@ class RootStore {
 
     this.profileSt = new ProfileSt(this);
     this.userSt = new UserSt(this);
-    this.userMediaSt = new UserMediaSt(this);
+    this.mediaSt = new MediaSt(this);
     this.authorizationSt = new AuthorizationSt(this);
 
     // Community Stores

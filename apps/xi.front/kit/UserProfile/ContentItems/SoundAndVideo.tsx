@@ -7,7 +7,7 @@ import VideoDevice from './SoundAndVideo/VideoDevice';
 export type DeviceUnderTestT = 'audiooutput' | 'audioinput' | 'videoinput' | null;
 
 const SoundAndVideo = () => {
-  const [deviceUnderTest, setDeviceUnderTest] = useState<DeviceUnderTestT>(null);
+  const stateDeviceUnderTest = useState<DeviceUnderTestT>(null);
 
   return (
     <>
@@ -38,18 +38,10 @@ const SoundAndVideo = () => {
         </Typography>
 
         <Box mb="24px">
-          <SoundDevice
-            device="audioinput"
-            deviceUnderTest={deviceUnderTest}
-            setDeviceUnderTest={setDeviceUnderTest}
-          />
+          <SoundDevice device="audioinput" stateDeviceUnderTest={stateDeviceUnderTest} />
         </Box>
 
-        <SoundDevice
-          device="audiooutput"
-          deviceUnderTest={deviceUnderTest}
-          setDeviceUnderTest={setDeviceUnderTest}
-        />
+        <SoundDevice device="audiooutput" stateDeviceUnderTest={stateDeviceUnderTest} />
       </Box>
       <Box
         sx={{
@@ -77,7 +69,7 @@ const SoundAndVideo = () => {
           Настройте камеру для видеоконференций
         </Typography>
 
-        <VideoDevice deviceUnderTest={deviceUnderTest} setDeviceUnderTest={setDeviceUnderTest} />
+        <VideoDevice stateDeviceUnderTest={stateDeviceUnderTest} />
       </Box>
     </>
   );

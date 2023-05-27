@@ -51,7 +51,7 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
   const rootStore = useStore();
   const {
     uiSt: { setDialogs },
-    userMediaSt: { stopStream },
+    mediaSt: { stopStream },
   } = rootStore;
 
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));

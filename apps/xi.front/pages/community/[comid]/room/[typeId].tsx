@@ -19,7 +19,6 @@ const RoomPage = observer(() => (
         sx={{
           height: '100vh',
           width: '100%',
-          p: '8px 16px',
           overflow: 'auto',
         }}
       >
