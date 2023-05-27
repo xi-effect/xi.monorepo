@@ -2,7 +2,8 @@ name: Development
 
 on:
   pull_request:
-    branches: [ staging ]
+    branches:
+      - staging
   workflow_dispatch:
 
 jobs:
