@@ -1,8 +1,9 @@
 name: Development
 
 on:
-  pull_request:
-    branches:
+  push:
+    branches-ignore:
+      - main
       - staging
   workflow_dispatch:
 

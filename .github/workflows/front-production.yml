@@ -22,7 +22,7 @@ jobs:
   build-frodo:
     needs: prepare
     if: needs.prepare.outputs.xi_frodo_files == 'true'
-    uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
     with:
       tag: frodo
       target: builder

@@ -1,9 +1,9 @@
 name: Staging
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - staging
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
   build-frodo:
     needs: prepare
     if: needs.prepare.outputs.xi_frodo_files == 'true'
-    uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
     with:
       tag: frodo-staging
       target: builder
