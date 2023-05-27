@@ -18,7 +18,7 @@ const Secure = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'petersburg.0',
+          backgroundColor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '24px',
@@ -45,8 +45,7 @@ const Secure = observer(() => {
           }}
         >
           Шифр, используемый для входа
-          <br />
-          в аккаунт и подтверждения данных
+          <span style={{ display: 'block' }}> в аккаунт и подтверждения данных</span>
         </Typography>
         <Button
           onClick={() => uiSt.setDialogs('passwordChange', true)}
