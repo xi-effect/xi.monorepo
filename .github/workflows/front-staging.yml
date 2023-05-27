@@ -16,3 +16,12 @@ jobs:
     with:
       tag: front-staging
     secrets: inherit
+
+  build-frodo:
+    needs: prepare
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+    with:
+      tag: frodo-staging
+      target: builder
+      arguments: "APP_NAME=xi.frodo"
+    secrets: inherit
