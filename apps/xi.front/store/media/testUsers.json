@@ -1,0 +1,243 @@
+[
+  {
+    "id":1,
+    "admin": true,
+    "stream":null,
+    "speaker":true,
+    "name":"User 1",
+    "raiseHand": false,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":2,
+    "stream":null,
+    "speaker":false,
+    "name":"User 2",
+    "raiseHand": true,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":3,
+    "stream":null,
+    "speaker":false,
+    "name":"User 3",
+    "raiseHand": false,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":4,
+    "stream":null,
+    "speaker":false,
+    "name":"User 4",
+    "raiseHand": false,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":5,
+    "stream":null,
+    "speaker":false,
+    "name":"User 5",
+    "raiseHand": false,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  "default"
+    }
+  },
+  {
+    "id":6,
+    "stream":null,
+    "speaker":false,
+    "name":"User 6",
+    "raiseHand": true,
+    "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":7,
+    "stream":null,
+    "speaker":false,
+    "name":"User 7",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":8,
+    "stream":null,
+    "speaker":false,
+    "name":"User 8",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":   "default"
+    }
+  },
+  {
+    "id":9,
+    "stream":null,
+    "speaker":false,
+    "name":"User 9",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":10,
+    "stream":null,
+    "speaker":false,
+    "name":"User 10",
+    "raiseHand": true,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":11,
+    "stream":null,
+    "speaker":false,
+    "name":"User 11",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":12,
+    "stream":null,
+    "speaker":false,
+    "name":"User 12",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":     "default"
+    }
+  },
+  {
+    "id":13,
+    "stream":null,
+    "speaker":false,
+    "name":"User 13",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":14,
+    "stream":null,
+    "speaker":false,
+    "name":"User 14",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":15,
+    "stream":null,
+    "speaker":false,
+    "name":"User 15",
+    "raiseHand": true,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":16,
+    "stream":null,
+    "speaker":false,
+    "name":"User 16",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  "default"
+    }
+  },
+  {
+    "id":17,
+    "stream":null,
+    "speaker":false,
+    "name":"User 17",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":18,
+    "stream":null,
+    "speaker":false,
+    "name":"User 18",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":19,
+    "stream":null,
+    "speaker":false,
+    "name":"User 19",
+    "raiseHand": true,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  null
+    }
+  },
+  {
+    "id":20,
+    "stream":null,
+    "speaker":false,
+    "name":"User 20",
+    "raiseHand": false,
+     "device": {
+      "audiooutput":  null,
+      "audioinput":  null,
+      "videoinput":  "default"
+    }
+  }
+]
