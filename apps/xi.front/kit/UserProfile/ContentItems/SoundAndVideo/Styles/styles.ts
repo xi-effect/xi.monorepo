@@ -1,14 +1,14 @@
-export const menuStyles = (width?: number) => ({
+export const menuStyles = (width?: number, colorScheme: 'light' | 'dark' = 'light') => ({
   mt: '8px',
   '& .MuiBackdrop-invisible': {
     backgroundColor: 'rgba(0,0,0,0)',
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: 'primary.pale',
+    backgroundColor: colorScheme === 'light' ? 'primary.pale' : '#333333',
     color: 'primary.dark',
   },
   '& .MuiMenuItem-root.active': {
-    backgroundColor: 'primary.pale',
+    backgroundColor: colorScheme === 'light' ? 'primary.pale' : '#333333',
     color: 'primary.dark',
   },
   '& .MuiPaper-elevation': {
@@ -24,6 +24,7 @@ export const menuStyles = (width?: number) => ({
   '& .MuiMenu-list': {
     p: 0,
     width,
+    backgroundColor: colorScheme === 'light' ? 'grayscale.0' : 'grayscale.100',
   },
 });
 
