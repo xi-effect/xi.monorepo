@@ -5,26 +5,40 @@ const RexExpValidation = (password: string, validation: string) =>
 
 const MIN_PASSWORD_LENGTH = 6;
 const VALIDATIONS = (password: string) => [
-  RexExpValidation(password, '\\W'),
-  RexExpValidation(password, '[0-9]'),
-  RexExpValidation(password, '[a-z]'),
-  RexExpValidation(password, '[A-Z]'),
-  password.length >= MIN_PASSWORD_LENGTH,
+  {
+    passed: RexExpValidation(password, '\\W'),
+    helper: 'Пароль должен содержать хотя бы один спуциальный символ',
+  },
+  {
+    passed: RexExpValidation(password, '[0-9]'),
+    helper: 'Пароль должен содержать хотя бы одну цифру',
+  },
+  {
+    passed: RexExpValidation(password, '[A-Z]'),
+    helper: 'Пароль должен содержать хотя бы одну прописную букву',
+  },
+  {
+    passed: RexExpValidation(password, '[a-z]'),
+    helper: 'Пароль должен содержать хотя бы одну строчную букву',
+  },
+  {
+    passed: password.length >= MIN_PASSWORD_LENGTH,
+    helper: 'Слишком короткий пароль, добавьте символов',
+  },
 ];
 
 export const usePasswordStrength = () => {
   const [strengthValue, setStrengthValue] = useState<number>(0);
-  // const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [password, setPassword] = useState<null | string>(null);
 
   const checkStrength = () => {
     if (password) {
       const validations = VALIDATIONS(password);
 
-      const passedValidation = validations.filter((validation, index) => {
-        const validationResult = validation;
-        console.log('validationResult', index, validationResult);
-        return validationResult;
+      const passedValidation = validations.filter((validation) => {
+        if (!validation.passed) setError(validation.helper);
+        return validation.passed;
       });
 
       const strengthCoefficient = passedValidation.length / validations.length;
@@ -37,9 +51,8 @@ export const usePasswordStrength = () => {
   const updatePassword = (value: string) => setPassword(value);
 
   useEffect(() => {
-    console.log('updatePassword', password);
     checkStrength();
   }, [password]);
 
-  return { password, updatePassword, strengthValue };
+  return { password, updatePassword, strengthValue, error };
 };

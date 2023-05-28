@@ -1,4 +1,11 @@
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
+import {
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+} from '@mui/material';
 import { useState, MouseEvent, ChangeEvent } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -8,10 +15,9 @@ import { usePasswordStrength } from './PasswordStrength';
 export const Password = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { password, updatePassword, strengthValue } = usePasswordStrength();
+  const { password, updatePassword, strengthValue, error } = usePasswordStrength();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -43,7 +49,9 @@ export const Password = () => {
         label="Password"
         onChange={handlePasswordChange}
       />
+
       <StrengthProgress progress={strengthValue} />
+      <FormHelperText>{error}</FormHelperText>
     </FormControl>
   );
 };
