@@ -1,16 +1,24 @@
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, ChangeEvent } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { StrengthProgress } from './StrengthProgress';
+import { usePasswordStrength } from './PasswordStrength';
 
 export const Password = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const { password, updatePassword, strengthValue } = usePasswordStrength();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const input: any = e.target as HTMLInputElement;
+    updatePassword(input.value);
   };
 
   return (
@@ -19,6 +27,7 @@ export const Password = () => {
       <OutlinedInput
         id="outlined-adornment-password"
         type={showPassword ? 'text' : 'password'}
+        value={password ?? ''}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -32,8 +41,9 @@ export const Password = () => {
           </InputAdornment>
         }
         label="Password"
+        onChange={handlePasswordChange}
       />
-      <StrengthProgress progress={90} />
+      <StrengthProgress progress={strengthValue} />
     </FormControl>
   );
 };
