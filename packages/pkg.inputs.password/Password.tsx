@@ -2,6 +2,7 @@ import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } fr
 import { useState, MouseEvent } from 'react';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { StrengthProgress } from './StrengthProgress';
 
 export const Password = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,6 +33,7 @@ export const Password = () => {
         }
         label="Password"
       />
+      <StrengthProgress progress={90} />
     </FormControl>
   );
 };
