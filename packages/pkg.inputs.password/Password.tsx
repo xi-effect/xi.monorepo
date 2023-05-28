@@ -1,8 +1,7 @@
 import { useState, MouseEvent, ChangeEvent } from 'react';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Eyeoff, Eyeon } from 'pkg.icons';
 import { StrengthProgress } from './StrengthProgress';
 import { usePasswordStrength } from './PasswordStrength';
 
@@ -35,7 +34,7 @@ export const Password = () => {
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
+                {showPassword ? <Eyeoff /> : <Eyeon />}
               </IconButton>
             </InputAdornment>
           ),
