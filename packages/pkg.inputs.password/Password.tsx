@@ -9,7 +9,7 @@ import { usePasswordStrength } from './PasswordStrength';
 export const Password = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { password, updatePassword, strengthValue, error } = usePasswordStrength();
+  const { password, updatePassword, strengthValue, error, color } = usePasswordStrength();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
@@ -43,9 +43,14 @@ export const Password = () => {
         label="Password"
         onChange={handlePasswordChange}
       />
-
-      <StrengthProgress progress={strengthValue} />
-      <FormHelperText>{error}</FormHelperText>
+      {!!strengthValue && (
+        <>
+          <StrengthProgress progress={strengthValue} color={color} />
+          <FormHelperText sx={{ color }}>
+            {strengthValue < 80 ? error : 'Надежный пароль'}
+          </FormHelperText>
+        </>
+      )}
     </FormControl>
   );
 };

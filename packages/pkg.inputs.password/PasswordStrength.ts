@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const RexExpValidation = (password: string, validation: string) =>
   new RegExp(validation).test(password);
@@ -32,6 +32,12 @@ export const usePasswordStrength = () => {
   const [error, setError] = useState<string | null>(null);
   const [password, setPassword] = useState<null | string>(null);
 
+  const color = useMemo(() => {
+    if (strengthValue < 20) return 'moscow.100';
+    if (strengthValue >= 20 && strengthValue < 80) return 'kungur.100';
+    return 'ekaterinburg.100';
+  }, [strengthValue]);
+
   const checkStrength = () => {
     if (password) {
       const validations = VALIDATIONS(password);
@@ -54,5 +60,5 @@ export const usePasswordStrength = () => {
     checkStrength();
   }, [password]);
 
-  return { password, updatePassword, strengthValue, error };
+  return { password, updatePassword, strengthValue, error, color };
 };
