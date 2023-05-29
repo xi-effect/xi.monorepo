@@ -1,8 +1,9 @@
-name: Production Pipeline
+name: Production
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -11,8 +12,48 @@ jobs:
 
   build-deploy:
     needs: prepare
+    if: needs.prepare.outputs.xi_front_files == 'true'
     uses: xi-effect/xieffect-actions/.github/workflows/docker-full.yml@main
     with:
       tag: front
       images: front
     secrets: inherit
+
+  build-frodo:
+    needs: prepare
+    if: needs.prepare.outputs.xi_frodo_files == 'true'
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
+    with:
+      tag: frodo
+      target: builder
+      arguments: "APP_NAME=xi.frodo"
+    secrets: inherit
+
+  deploy-frodo:
+    needs: build-frodo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Extract docs from the container
+        uses: shrink/actions-docker-extract@v2
+        id: extract
+        with:
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_USERNAME }}:frodo
+          path: /app/apps/xi.frodo/build/.
+
+      - name: Push files via SCP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          port: 22
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: ${{ steps.extract.outputs.destination }}/*
+          target: ~/xieffect-core/docusaurus/frodo/
+          strip_components: 1
+          rm: true
