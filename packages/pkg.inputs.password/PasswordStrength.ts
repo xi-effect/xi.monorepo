@@ -51,6 +51,9 @@ export const usePasswordStrength = () => {
       const strength = Math.round(strengthCoefficient * 100);
 
       setStrengthValue(strength);
+    } else {
+      setStrengthValue(0);
+      setError(null);
     }
   };
 

@@ -6,7 +6,7 @@ export type StrengthProgressProps = {
   color: string;
 };
 
-export const StrengthProgress = ({ progress, color }: StrengthProgressProps) => (
+export const StrengthBar = ({ progress, color }: StrengthProgressProps) => (
   <LinearProgress
     value={progress}
     valueBuffer={progress}

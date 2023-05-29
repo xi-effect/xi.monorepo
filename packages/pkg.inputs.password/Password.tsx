@@ -2,7 +2,7 @@ import { useState, MouseEvent, ChangeEvent } from 'react';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
 import { Eyeoff, Eyeon } from 'pkg.icons';
-import { StrengthProgress } from './StrengthProgress';
+import { StrengthBar } from './StrengthBar';
 import { usePasswordStrength } from './PasswordStrength';
 
 export const Password = () => {
@@ -17,7 +17,7 @@ export const Password = () => {
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     const input: any = e.target as HTMLInputElement;
-    updatePassword(input.value);
+    updatePassword(input.value || null);
   };
 
   return (
@@ -44,7 +44,7 @@ export const Password = () => {
       />
       {!!strengthValue && (
         <>
-          <StrengthProgress progress={strengthValue} color={color} />
+          <StrengthBar progress={strengthValue} color={color} />
           <FormHelperText sx={{ color }}>
             {strengthValue < 80 ? error : 'Надежный пароль'}
           </FormHelperText>
