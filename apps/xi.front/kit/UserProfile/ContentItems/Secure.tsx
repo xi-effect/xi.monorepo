@@ -44,9 +44,8 @@ const Secure = observer(() => {
             width: '360px',
           }}
         >
-          Шифр, используемый для входа
-          <br />
-          в аккаунт и подтверждения данных
+          {`Шифр, используемый для входа \n
+          в аккаунт и подтверждения данных`}
         </Typography>
         <Button
           onClick={() => uiSt.setDialogs('passwordChange', true)}
