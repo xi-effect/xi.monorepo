@@ -1,8 +1,10 @@
 name: Development
 
 on:
-  pull_request:
-    branches: [ staging ]
+  push:
+    branches-ignore:
+      - main
+      - staging
   workflow_dispatch:
 
 jobs:
@@ -11,7 +13,18 @@ jobs:
 
   build:
     needs: prepare
+    if: needs.prepare.outputs.xi_front_files == 'true'
     uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
     with:
       tag: front-${{ github.run_id }}
+    secrets: inherit
+
+  build-frodo:
+    needs: prepare
+    if: needs.prepare.outputs.xi_frodo_files == 'true'
+    uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+    with:
+      tag: frodo-${{ github.run_id }}
+      target: builder
+      arguments: "APP_NAME=xi.frodo"
     secrets: inherit
