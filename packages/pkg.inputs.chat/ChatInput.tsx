@@ -1,17 +1,16 @@
 import 'pkg.config.muidts';
 import React, { useState } from 'react';
-import { Descendant, createEditor } from 'slate';
+import { createEditor } from 'slate';
 import { Slate, withReact } from 'slate-react';
 import dynamic from 'next/dynamic';
 import { FormControl, Stack, Button, Typography, MenuItem, ListItemIcon } from '@mui/material';
 import { Clip, Emotions, File, Movie, Picture, Send } from 'pkg.icons';
 import { Dropdown } from 'pkg.navigation.dropdown';
 import { FormatToolbar } from './components/FormatToolbar';
-import { withMarkdown } from './plugins/withMarkdown';
 import { withNormalize } from './plugins/withNormalize';
 import { CustomEditable } from './components/CustomEditable';
 
-const initialValue: Descendant[] = [
+const initialValue: any = [
   {
     type: 'paragraph',
     children: [{ text: '' }],
@@ -21,7 +20,7 @@ const initialValue: Descendant[] = [
 const DropdownClip = () => <Clip sx={{ fontSize: '24px' }} />;
 
 const ChatInput = () => {
-  const [editor] = useState(() => withReact(withMarkdown(withNormalize(createEditor()))));
+  const [editor] = useState(() => withReact(withNormalize(createEditor())));
 
   return (
     <Stack
@@ -81,32 +80,30 @@ const ChatInput = () => {
               },
             }}
           >
-            <>
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <Picture sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Изображение
-                </Typography>
-              </MenuItem>
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <Movie sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Видео
-                </Typography>
-              </MenuItem>
-              <MenuItem sx={{ p: 0.5, height: '24px' }}>
-                <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
-                  <File sx={{ fontSize: 16 }} />
-                </ListItemIcon>
-                <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
-                  Файл
-                </Typography>
-              </MenuItem>
-            </>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <Picture sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Изображение
+              </Typography>
+            </MenuItem>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <Movie sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Видео
+              </Typography>
+            </MenuItem>
+            <MenuItem sx={{ p: 0.5, height: '24px' }}>
+              <ListItemIcon sx={{ '&.MuiListItemIcon-root': { minWidth: '24px' } }}>
+                <File sx={{ fontSize: 16 }} />
+              </ListItemIcon>
+              <Typography sx={{ color: 'petersburg.80', fontWeight: 400 }} variant="xs">
+                Файл
+              </Typography>
+            </MenuItem>
           </Dropdown>
           <Stack
             flexDirection="column"

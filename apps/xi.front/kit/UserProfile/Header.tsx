@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
 import { Close, Arrow, Burger } from 'pkg.icons';
 
-const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео'];
+const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Звук и видео']; // 'Внешний вид'
 
 type HeaderProps = {
   activeContent: number | null;

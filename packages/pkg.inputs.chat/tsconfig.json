@@ -1,5 +1,5 @@
 {
   "extends": "pkg.config.typescript/react-library.json",
-  "include": ["*"],
+  "include": ["*", "../pkg.pages.chat/LayoutChat.tsx", "Menu/Participants.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }

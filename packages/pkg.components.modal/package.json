@@ -1,0 +1,27 @@
+{
+  "name": "pkg.components.modal",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "pkg.config.muidts": "*",
+    "pkg.inputs.button": "*",
+    "pkg.icons": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "pkg.config.typescript": "*",
+    "react": "^18.2.0",
+    "typescript": "^4.5.2"
+  }
+}

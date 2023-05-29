@@ -32,32 +32,38 @@ export const buttonVariantsColor = {
       bgcolor: 'error.dark',
       color: 'petersburg.0',
     },
+    grayscale: {
+      bgcolor: 'grayscale.40',
+      color: 'grayscale.100',
+    },
   },
   outlined: {
     primary: {
-      border: '1px solid',
       borderColor: 'primary.dark',
       color: 'primary.dark',
     },
     success: {
-      border: '1px solid',
       borderColor: 'success.dark',
       color: 'success.dark',
     },
     error: {
-      border: '1px solid',
       borderColor: 'error.dark',
       color: 'error.dark',
+    },
+    grayscale: {
+      color: 'grayscale.100',
+      borderColor: 'grayscale.40',
     },
   },
   text: {
     primary: { color: 'primary.dark' },
     success: { color: 'success.dark' },
     error: { color: 'error.dark' },
+    grayscale: { color: 'grayscale.100' },
   },
 };
 
-export const buttonDisabled = {
+export const buttonDisabledStyle = {
   contained: {
     backgroundColor: 'petersburg.10',
     color: 'petersburg.40',
@@ -70,6 +76,12 @@ export const buttonDisabled = {
   text: {
     color: 'petersburg.40',
   },
+};
+
+export const buttonBorderStyle = {
+  large: '2px solid',
+  medium: '2px solid',
+  small: '1px solid',
 };
 
 export const clickedPadding = {
@@ -161,13 +173,18 @@ export const getSnackbarCurrentPosition = (snackbarSize: number, position: Snack
 };
 
 export const getActionButtonStyle = (variant: Variant, color: string) => {
+  if (color === 'grayscale') {
+    return { bgcolor: 'grayscale.5', color: 'grayscale.100' };
+  }
+
   switch (variant) {
     case 'contained':
       return { bgcolor: color, color: 'petersburg.0' };
     case 'outlined':
-      return { borderColor: color, color };
+      return { bgcolor: 'grayscale.5', borderColor: color, color };
     default:
       return {
+        bgcolor: 'grayscale.5',
         color,
       };
   }

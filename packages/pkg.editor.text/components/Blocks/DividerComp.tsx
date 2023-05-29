@@ -6,9 +6,9 @@ const DividerComp = () => (
     <Divider
       sx={{
         mt: '14px',
-        height: '1px',
+        height: '2px',
         width: '100%',
-        backgroundColor: '#D9D9D9',
+        backgroundColor: 'petersburg.30',
       }}
     />
   </div>

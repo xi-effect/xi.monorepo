@@ -12,6 +12,7 @@ export type FileProps = {
   /* File icon (screenshot/image) url */
   icon?: string;
   hideCloseIcon?: boolean;
+  style?: any;
 };
 
 const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
@@ -36,7 +37,7 @@ const formatSize = (size: number): string => {
   return formattedSize;
 };
 
-export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
+export const File = ({ name, url, size, icon, hideCloseIcon, style }: FileProps) => (
   <Stack
     sx={{
       position: 'relative',
@@ -51,6 +52,7 @@ export const File = ({ name, url, size, icon, hideCloseIcon }: FileProps) => (
       '&:hover': {
         backgroundColor: 'petersburg.5',
       },
+      ...style,
     }}
     spacing={1}
     direction="row"

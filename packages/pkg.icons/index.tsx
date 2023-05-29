@@ -11,6 +11,7 @@ import { Calendar } from './Calendar';
 import { Camera } from './Camera';
 import { Chat } from './Chat';
 import { Check } from './Check';
+import { Cite } from './Cite';
 import { Clip } from './Clip';
 import { Clock } from './Clock';
 import { Close } from './Close';
@@ -27,6 +28,9 @@ import { Flag } from './Flag';
 import { Folder } from './Folder';
 import { Food } from './Food';
 import { Grid } from './Grid';
+import { H1 } from './H1';
+import { H2 } from './H2';
+import { H3 } from './H3';
 import { Hand } from './Hand';
 import { Heart } from './Heart';
 import { Home } from './Home';
@@ -36,21 +40,27 @@ import { Link } from './Link';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
 import { Minus } from './Minus';
+import { Move } from './Move';
 import { Movie } from './Movie';
 import { Music } from './Music';
 import { Nature } from './Nature';
 import { Notification } from './Notification';
 import { Objects } from './Objects';
+import { Ol } from './Ol';
 import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
+import { Play } from './Play';
 import { Screenshare } from './Screenshare';
 import { Search } from './Search';
 import { Send } from './Send';
 import { Settings } from './Settings';
+import { Shape } from './Shape';
 import { Stroke } from './Stroke';
 import { Task } from './Task';
+import { Text } from './Text';
 import { Trash } from './Trash';
+import { Ul } from './Ul';
 import { Underline } from './Underline';
 import { Updates } from './Updates';
 import { Users } from './Users';
@@ -70,6 +80,7 @@ export {
   Camera,
   Chat,
   Check,
+  Cite,
   Clip,
   Clock,
   Close,
@@ -86,6 +97,9 @@ export {
   Folder,
   Food,
   Grid,
+  H1,
+  H2,
+  H3,
   Hand,
   Heart,
   Home,
@@ -95,21 +109,27 @@ export {
   Maximize,
   Microphone,
   Minus,
+  Move,
   Movie,
   Music,
   Nature,
   Notification,
   Objects,
+  Ol,
   Photo,
   Picture,
   Places,
+  Play,
   Screenshare,
   Search,
   Send,
   Settings,
+  Shape,
   Stroke,
   Task,
+  Text,
   Trash,
+  Ul,
   Underline,
   Updates,
   Users,
