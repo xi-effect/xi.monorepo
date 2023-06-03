@@ -48,6 +48,7 @@ export const icons = [
   'Notification',
   'Objects',
   'Ol',
+  'Palette',
   'Photo',
   'Picture',
   'Places',

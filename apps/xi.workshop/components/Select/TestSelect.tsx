@@ -4,14 +4,14 @@ import { Select } from 'pkg.inputs.select';
 export const TestSelect = (staticData: any) => {
   const [value, setValue] = useState('');
 
-  const changeValue = (newVal: string) => {
+  const onChange = (newVal: string) => {
     setValue(newVal);
   };
 
   const testData = {
     ...staticData,
     value,
-    changeValue,
+    onChange,
   };
 
   return <Select {...testData} />;

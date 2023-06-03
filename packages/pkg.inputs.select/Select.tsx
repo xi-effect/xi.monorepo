@@ -41,7 +41,7 @@ export type SelectProps = {
   /* selected value */
   value: string;
   /* change selected value */
-  changeValue: (newVal: string) => void;
+  onChange: (newVal: string) => void;
 };
 
 const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: () => void) => (
@@ -73,7 +73,7 @@ export const Select = ({
   label = 'Выберите',
   Icon,
   value,
-  changeValue,
+  onChange,
 }: SelectProps) => {
   const [isOpened, setIsOpened] = useState(false);
 
@@ -91,7 +91,7 @@ export const Select = ({
   /* select value interactions */
   const onChangeValue = (e: any) => {
     const newValue = e.target.value;
-    changeValue(newValue);
+    onChange(newValue);
   };
 
   const setDefaultValue = () => {
@@ -105,7 +105,7 @@ export const Select = ({
     }
 
     const defaultItem = getItems.filter((item) => item.isDefault);
-    changeValue(defaultItem[0]?.value || '');
+    onChange(defaultItem[0]?.value || '');
   };
 
   useEffect(() => {

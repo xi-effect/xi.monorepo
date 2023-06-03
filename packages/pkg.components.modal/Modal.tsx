@@ -86,7 +86,7 @@ export const Modal: FC<ModalProps> = ({
       scroll="body"
       sx={{
         '& .MuiBackdrop-root': {
-          backgroundColor: alpha(theme.palette.grayscale[100], 0.4),
+          backgroundColor: alpha(theme.palette.petersburg[100], 0.4),
         },
         ...dialogSx,
       }}

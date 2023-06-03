@@ -23,8 +23,12 @@ import { getScheme } from 'pkg.theme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'pkg.notistack.saveconfirm';
 import { Notification } from 'pkg.notistack.notification';
-// import { useCookie, useThemeDetector } from 'pkg.hooks';
+import { useCookie } from 'pkg.hooks'; // useThemeDetector
+// import { useEffect } from 'react';
 // import { useMemo } from 'react';
+
+import { useMediaQuery } from '@mui/material';
+import React from 'react';
 
 config.autoAddCss = false;
 
@@ -32,16 +36,27 @@ config.autoAddCss = false;
 const clientSideEmotionCache = createEmotionCache();
 // Binding events.
 
+const darkTheme = getScheme('dark');
+
+const lightTheme = getScheme('light');
+
 const MyApp = observer((props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const rootStore = useStoreInitialized(pageProps.initialState);
+  const { profileSt } = rootStore;
+  const { profile } = profileSt;
 
-  // const [userTheme] = useCookie('xi.user-theme');
-  // @ts-ignore
-  // const theme = useMemo(() => createTheme(getScheme(userTheme)), [userTheme]);
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const theme = getScheme('light');
+  const distTheme = {
+    system: prefersDarkMode ? darkTheme : lightTheme,
+    dark: darkTheme,
+    light: lightTheme,
+  };
+
+  const [cookieTheme] = useCookie('xi.user-theme');
+  const theme = distTheme[cookieTheme ?? profile.theme];
 
   return (
     <CacheProvider value={emotionCache}>

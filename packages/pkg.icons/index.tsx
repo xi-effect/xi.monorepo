@@ -47,6 +47,7 @@ import { Nature } from './Nature';
 import { Notification } from './Notification';
 import { Objects } from './Objects';
 import { Ol } from './Ol';
+import { Palette } from './Palette';
 import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
@@ -116,6 +117,7 @@ export {
   Notification,
   Objects,
   Ol,
+  Palette,
   Photo,
   Picture,
   Places,

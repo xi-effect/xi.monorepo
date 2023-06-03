@@ -2,6 +2,7 @@ import { action, observable, makeObservable } from 'mobx';
 import { ResponseDataRegT } from 'models/dataProfileStore';
 import { ProfileT } from 'models/profile';
 import Router from 'next/router';
+import Cookies from 'js-cookie';
 import RootStore from '../rootStore';
 
 class ProfileSt {
@@ -24,6 +25,7 @@ class ProfileSt {
     surname: '',
     patronymic: '',
     birthday: null,
+    theme: (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ?? 'system',
   };
 
   @action setProfile = (item: string, value: string | number | boolean | null | Date) => {
@@ -81,6 +83,7 @@ class ProfileSt {
       surname: '',
       patronymic: '',
       birthday: null,
+      theme: (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ?? 'system',
     };
   };
 

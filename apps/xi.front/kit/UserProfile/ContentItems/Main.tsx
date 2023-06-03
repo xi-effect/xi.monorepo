@@ -1,13 +1,29 @@
-import { Button, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 
-import { Copy } from 'pkg.icons';
+import { Copy, Palette } from 'pkg.icons';
 import { useSnackbar } from 'notistack';
 
 import { observer } from 'mobx-react';
 import { useStore } from 'store/connect';
 import { AvatarEditor } from 'kit/AvatarEditor';
+import { Select } from 'pkg.inputs.select';
+import React from 'react';
+// import { useThemeDetector } from 'pkg.hooks';
+import Cookies from 'js-cookie';
 
 const msgDuration = 1700;
+
+const paletteSelectItems = [
+  { id: 'system', value: 'Как в системе', isDefault: true },
+  { id: 'light', value: 'Светлая' },
+  { id: 'dark', value: 'Тёмная' },
+];
+
+const dict = {
+  'Как в системе': 'system',
+  Светлая: 'light',
+  Тёмная: 'dark',
+};
 
 const Main = observer(() => {
   const rootStore = useStore();
@@ -28,6 +44,18 @@ const Main = observer(() => {
   };
 
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(700));
+
+  const [value, setValue] = React.useState('Как в системе');
+
+  // const [theme, setTheme] = useThemeDetector();
+
+  const handleChange = (value) => {
+    console.log('value', value);
+
+    Cookies.set('xi.user-theme', dict[value]);
+    profileSt.setProfile('theme', dict[value]);
+    setValue(value);
+  };
 
   return (
     <>
@@ -145,6 +173,69 @@ const Main = observer(() => {
           >
             <Copy fontSize="inherit" viewBox="0 0 26 26" />
           </Button>
+        </Stack>
+      </Stack>
+      <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        sx={{
+          bgcolor: 'bg.block',
+          width: '100%',
+          borderRadius: '8px',
+          padding: 0.5,
+          mt: mobile700 ? '24px' : '32px',
+        }}
+        spacing={1}
+      >
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="flex-start"
+          sx={{
+            p: 1.5,
+            width: '100%',
+            height: '52px',
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 600,
+            }}
+            variant="l"
+          >
+            Внешний вид
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          sx={{
+            p: 1.5,
+            width: '100%',
+            height: '72px',
+          }}
+        >
+          <Palette sx={{ fontSize: 32 }} />
+          <Typography
+            sx={{
+              ml: 2,
+              fontWeight: 600,
+            }}
+            variant="m"
+          >
+            Тема оформления
+          </Typography>
+          <Box sx={{ ml: 'auto' }}>
+            <Select
+              value={value}
+              onChange={handleChange}
+              size="m"
+              id="system"
+              items={paletteSelectItems}
+            />
+          </Box>
         </Stack>
       </Stack>
     </>

@@ -6,4 +6,5 @@ export type ProfileT = {
   surname: string;
   patronymic: string;
   birthday: Date | null; // "2011-12-19T15:28:46.493Z" date.toISOString();
+  theme: 'system' | 'dark' | 'light';
 };
