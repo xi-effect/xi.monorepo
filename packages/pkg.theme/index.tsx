@@ -1,0 +1,1 @@
+export { getScheme } from './theme';

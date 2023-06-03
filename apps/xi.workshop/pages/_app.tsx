@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import Head from 'next/head';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
@@ -10,7 +10,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'styles/globals.css';
 
-import { getScheme } from 'pkg.theme.scheme';
+import { getScheme } from 'pkg.theme';
 import createEmotionCache from 'utils/createEmotionCache';
 
 config.autoAddCss = false;
@@ -23,7 +23,7 @@ const MyApp = (props) => {
   // eslint-disable-next-line react/prop-types
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   // @ts-ignore
-  const theme = createTheme(getScheme('light')); // Только светлая тема;
+  const theme = getScheme('light'); // Только светлая тема;
 
   return (
     <CacheProvider value={emotionCache}>

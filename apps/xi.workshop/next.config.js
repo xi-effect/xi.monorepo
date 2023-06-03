@@ -10,7 +10,7 @@ const nextConfig = {
   },
   transpilePackages: [
     '@slate-yjs/react',
-    'pkg.theme.scheme',
+    'pkg.theme',
     'pkg.components.badge',
     'pkg.components.loading',
     'pkg.components.modal',

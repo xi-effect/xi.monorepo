@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import Head from 'next/head';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { observer } from 'mobx-react';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,7 +19,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Loading } from 'pkg.components.loading';
 import { useStoreInitialized } from 'store/rootStore';
 import createEmotionCache from 'store/createEmotionCache';
-import { getScheme } from 'pkg.theme.scheme';
+import { getScheme } from 'pkg.theme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'pkg.notistack.saveconfirm';
 import { Notification } from 'pkg.notistack.notification';
@@ -41,7 +41,7 @@ const MyApp = observer((props) => {
   // @ts-ignore
   // const theme = useMemo(() => createTheme(getScheme(userTheme)), [userTheme]);
 
-  const theme = () => createTheme(getScheme('light'));
+  const theme = getScheme('light');
 
   return (
     <CacheProvider value={emotionCache}>

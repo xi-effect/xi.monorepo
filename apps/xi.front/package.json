@@ -58,7 +58,7 @@
     "pkg.notistack.notification": "*",
     "pkg.pages.chat": "*",
     "pkg.pages.error": "*",
-    "pkg.theme.scheme": "*",
+    "pkg.theme": "*",
     "pkg.editor.text": "*",
     "pkg.utils": "*",
     "pkg.inputs.chat": "*",
