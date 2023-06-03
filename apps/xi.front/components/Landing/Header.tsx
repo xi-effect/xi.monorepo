@@ -96,7 +96,7 @@ const Header = () => {
             textTransform: 'capitalize',
             '&:hover': {
               color: 'petersburg.0',
-              bgcolor: 'secondary.dark',
+              bgcolor: 'vladivostok.100',
             },
           }}
         >
@@ -116,7 +116,7 @@ const Header = () => {
             textTransform: 'capitalize',
             '&:hover': {
               color: 'petersburg.0',
-              bgcolor: 'secondary.dark',
+              bgcolor: 'vladivostok.100',
             },
           }}
         >

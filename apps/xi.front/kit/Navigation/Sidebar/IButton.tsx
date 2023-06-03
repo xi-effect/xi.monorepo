@@ -60,7 +60,7 @@ const IButton: React.FC<Props> = (props) => {
         id="community-menu"
         onClick={handleClick}
         sx={{
-          bgcolor: isActive ? 'primary.dark' : 'petersburg.0',
+          bgcolor: isActive ? 'brand.80' : 'petersburg.0',
           width: 48,
           height: 48,
           borderRadius: isActive ? '16px' : 24,
@@ -70,7 +70,7 @@ const IButton: React.FC<Props> = (props) => {
           },
 
           '&:hover': {
-            bgcolor: !disableHover ? 'primary.dark' : '',
+            bgcolor: !disableHover ? 'brand.80' : '',
             borderRadius: '16px',
 
             '.MuiTypography-root': {

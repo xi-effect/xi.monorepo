@@ -164,7 +164,7 @@ const Sidebar = observer(() => {
               height: '1px',
               width: '40px',
               borderRadius: '5px',
-              backgroundColor: 'primary.light',
+              backgroundColor: 'brand.20',
             }}
           />
         </Stack>
@@ -222,7 +222,7 @@ const Sidebar = observer(() => {
             height: '1px',
             width: '40px',
             borderRadius: '5px',
-            backgroundColor: 'primary.light',
+            backgroundColor: 'brand.20',
           }}
         />
         <IButton

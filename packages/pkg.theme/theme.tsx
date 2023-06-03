@@ -28,6 +28,7 @@ export const getScheme = (mode: 'light' | 'dark') =>
         },
         variants: [
           {
+            // @ts-ignore
             props: { variant: 'filled' },
             style: {
               height: '56px',
@@ -160,48 +161,6 @@ export const getScheme = (mode: 'light' | 'dark') =>
       ...(mode === 'light'
         ? {
             mode: 'light',
-            primary: {
-              dark: '#445AFF',
-              main: '#697BFF',
-              light: '#B4BDFF',
-              pale: '#ECEFFF',
-            },
-            // Старая палитра
-            secondary: {
-              dark: '#9769FF',
-              main: '#BD9FFF',
-              light: '#EEE7FF',
-              pale: '#F5F0FF',
-            },
-            grayscale: {
-              100: '#101010',
-              90: '#282828',
-              80: '#404040',
-              40: '#9F9F9F',
-              10: '#E8E8E8',
-              5: '#F7F7F7',
-              0: '#FFFFFF',
-            },
-            success: {
-              dark: '#39EF84',
-              main: '#61F29D',
-              light: '#B0F9CE',
-              pale: '#EBFDF3',
-            },
-            error: {
-              dark: '#F42D2D',
-              main: '#F65757',
-              light: '#FBABAB',
-              pale: '#FEEAEA',
-            },
-            warning: {
-              dark: '#F67A33',
-              main: '#F8955C',
-              light: '#FBCAAD',
-              pale: '#FEF2EB',
-            },
-
-            // Новая палитра
             petersburg: {
               100: '#101010',
               90: '#282828',
@@ -223,6 +182,10 @@ export const getScheme = (mode: 'light' | 'dark') =>
               40: '#8F9CFF',
               20: '#B4BDFF',
               0: '#EDEFFF',
+            },
+            bg: {
+              main: '#EDEFFF',
+              block: '#FFFFFF',
             },
             moscow: {
               100: '#BE0D0C',
@@ -275,48 +238,6 @@ export const getScheme = (mode: 'light' | 'dark') =>
           }
         : {
             mode: 'dark',
-            primary: {
-              dark: '#445AFF',
-              main: '#697BFF',
-              light: '#B4BDFF',
-              pale: '#ECEFFF',
-            },
-            // Старая палитра
-            secondary: {
-              dark: '#9769FF',
-              main: '#BD9FFF',
-              light: '#EEE7FF',
-              pale: '#F5F0FF',
-            },
-            grayscale: {
-              100: '#101010',
-              90: '#282828',
-              80: '#404040',
-              40: '#9F9F9F',
-              10: '#E8E8E8',
-              5: '#F7F7F7',
-              0: '#FFFFFF',
-            },
-            success: {
-              dark: '#39EF84',
-              main: '#61F29D',
-              light: '#B0F9CE',
-              pale: '#EBFDF3',
-            },
-            error: {
-              dark: '#F42D2D',
-              main: '#F65757',
-              light: '#FBABAB',
-              pale: '#FEEAEA',
-            },
-            warning: {
-              dark: '#F67A33',
-              main: '#F8955C',
-              light: '#FBCAAD',
-              pale: '#FEF2EB',
-            },
-
-            // Новая палитра
             petersburg: {
               100: '#E6E6E6',
               90: '#D1D1D1',
@@ -338,6 +259,10 @@ export const getScheme = (mode: 'light' | 'dark') =>
               40: '#5B639D',
               20: '#393D5A',
               0: '#21222C',
+            },
+            bg: {
+              main: '#151515',
+              block: '#1F1F1F',
             },
             moscow: {
               100: '#E15251',

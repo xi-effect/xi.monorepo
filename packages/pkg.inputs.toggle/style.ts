@@ -62,7 +62,7 @@ export const sizeStyle = {
 export const colorStyle = {
   initial: { backgroundColor: 'petersburg.40' },
   disabled: { backgroundColor: 'petersburg.10', color: 'petersburg.40' },
-  checked: { color: 'petersburg.0', backgroundColor: 'primary.dark' },
+  checked: { color: 'petersburg.0', backgroundColor: 'brand.80' },
 };
 
 export const typographyVariants = {

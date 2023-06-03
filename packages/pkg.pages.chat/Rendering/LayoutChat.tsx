@@ -17,7 +17,7 @@ export const LayoutChat = ({ chosenMenu, MenuWidth = '450px', children }: Layout
       <Stack
         sx={{
           height: '100%',
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           transition: '0.5s',
           width: isOpened ? MenuWidth : 0,
         }}

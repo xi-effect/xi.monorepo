@@ -136,7 +136,7 @@ const Form = observer(() => {
           underline="none"
           sx={{
             cursor: 'pointer',
-            color: 'primary.dark',
+            color: 'brand.80',
             fontWeight: 500,
             fontSize: 16,
             lineHeight: '20px',

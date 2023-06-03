@@ -11,17 +11,17 @@ export const containerTypes = {
 export const checkboxTypes = {
   default: { color: 'petersburg.40' },
   warning: {
-    color: 'warning.dark',
+    color: 'kungur.80',
   },
-  error: { color: 'error.dark' },
+  error: { color: 'moscow.80' },
   disabled: { color: 'petersburg.10' },
 };
 export const checkedCheckboxTypes = {
-  default: { bgcolor: 'primary.dark' },
+  default: { bgcolor: 'brand.80' },
   warning: {
-    bgcolor: 'warning.dark',
+    bgcolor: 'kungur.80',
   },
-  error: { bgcolor: 'error.dark' },
+  error: { bgcolor: 'moscow.80' },
   disabled: { bgcolor: 'petersburg.10' },
 };
 export const checkedIconTypes = {
@@ -33,12 +33,12 @@ export const checkedIconTypes = {
   disabled: { color: 'petersburg.40' },
 };
 export const defaultIconTypes = {
-  default: { borderColor: 'primary.dark', bgcolor: 'petersburg.0' },
+  default: { borderColor: 'brand.80', bgcolor: 'petersburg.0' },
   warning: {
-    borderColor: 'warning.dark',
+    borderColor: 'kungur.80',
     bgcolor: 'petersburg.0',
   },
-  error: { borderColor: 'error.dark', bgcolor: 'petersburg.0' },
+  error: { borderColor: 'moscow.80', bgcolor: 'petersburg.0' },
   disabled: { borderColor: 'petersburg.10', bgcolor: 'petersburg.10', color: 'petersburg.10' },
 };
 

@@ -15,7 +15,7 @@ const menuListStyles = {
 };
 
 const dividerStyles = {
-  bgcolor: 'primary.light',
+  bgcolor: 'brand.20',
   mt: '4px',
   mb: '4px',
   ml: '6px',
@@ -160,7 +160,7 @@ const CommunityMenu = observer(({ setOpen }: CommunityMenuProps) => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          sx={{ width: '100%', color: 'error.main' }}
+          sx={{ width: '100%', color: 'moscow.60' }}
         >
           <Typography
             sx={{
@@ -171,7 +171,7 @@ const CommunityMenu = observer(({ setOpen }: CommunityMenuProps) => {
           >
             Покинуть сообщество
           </Typography>
-          <Exit sx={{ color: 'error.main' }} fontSize="small" />
+          <Exit sx={{ color: 'moscow.60' }} fontSize="small" />
         </Stack>
       </MenuItem>
     </MenuList>

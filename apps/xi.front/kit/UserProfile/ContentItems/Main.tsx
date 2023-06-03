@@ -129,10 +129,10 @@ const Main = observer(() => {
               width: mobile700 ? '40px' : '52px',
               minWidth: mobile700 ? '40px' : '52px',
               height: '100%',
-              bgcolor: 'primary.dark',
+              bgcolor: 'brand.80',
               borderRadius: '4px',
               '&:hover': {
-                bgcolor: 'primary.main',
+                bgcolor: 'brand.60',
               },
               display: 'flex',
               alignItems: 'center',

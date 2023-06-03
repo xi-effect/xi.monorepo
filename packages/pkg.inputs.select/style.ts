@@ -39,10 +39,10 @@ export const selectTypes: { [key in TypesT]: any } = {
     },
   },
   warning: {
-    borderColor: 'warning.dark',
+    borderColor: 'kungur.80',
   },
   error: {
-    borderColor: 'error.main',
+    borderColor: 'moscow.60',
   },
   disabled: {
     borderColor: 'petersburg.10',
@@ -79,8 +79,8 @@ export const MenuProps = (menuMaxHeight: string) => ({
 export const menuItemStyles = {
   borderRadius: '4px',
   '&.Mui-selected': {
-    bgcolor: 'primary.pale',
-    color: 'primary.dark',
+    bgcolor: 'brand.0',
+    color: 'brand.80',
     '&:hover': { bgcolor: 'petersburg.5', color: 'petersburg.100' },
   },
   '&:hover': { bgcolor: 'petersburg.5' },

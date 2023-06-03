@@ -18,7 +18,7 @@ const Breadcrumbs = observer(() => (
         fontWeight: 400,
         fontSize: '14px',
         lineHeight: '16px',
-        color: 'primary.main',
+        color: 'brand.60',
       }}
     >
       4Д — БЖ
@@ -29,7 +29,7 @@ const Breadcrumbs = observer(() => (
         fontWeight: 400,
         fontSize: '14px',
         lineHeight: '16px',
-        color: 'primary.main',
+        color: 'brand.60',
       }}
     >
       Задания

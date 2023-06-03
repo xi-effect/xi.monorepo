@@ -5,9 +5,9 @@ const Content = observer(() => (
   <Stack
     alignItems="center"
     justifyContent="center"
-    sx={{ height: '80%', p: '186px 0', bgcolor: 'secondary.pale', borderRadius: '16px' }}
+    sx={{ height: '80%', p: '186px 0', bgcolor: 'brand.0', borderRadius: '16px' }}
   >
-    <Typography variant="l" sx={{ color: 'secondary.dark' }}>
+    <Typography variant="l" sx={{ color: 'vladivostok.100' }}>
       Content
     </Typography>
   </Stack>

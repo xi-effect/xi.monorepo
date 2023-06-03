@@ -4,12 +4,12 @@ export const menuStyles = (width?: number) => ({
     backgroundColor: 'rgba(0,0,0,0)',
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: 'primary.pale',
-    color: 'primary.dark',
+    backgroundColor: 'brand.0',
+    color: 'brand.80',
   },
   '& .MuiMenuItem-root.active': {
-    backgroundColor: 'primary.pale',
-    color: 'primary.dark',
+    backgroundColor: 'brand.0',
+    color: 'brand.80',
   },
   '& .MuiPaper-elevation': {
     borderRadius: '4px',
@@ -43,7 +43,7 @@ export const contentSubTitle = {
 
 export const SliderS = {
   m: '0 12px',
-  color: 'primary.dark',
+  color: 'brand.80',
   borderRadius: '8px',
   '& .MuiSlider-rail': {
     borderRadius: '8px',

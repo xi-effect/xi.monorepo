@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
+          {/* <meta name="theme-color" content={theme.palette.brand.60} /> */}
           <meta charSet="utf-8" />
           <meta
             name="Keywords"

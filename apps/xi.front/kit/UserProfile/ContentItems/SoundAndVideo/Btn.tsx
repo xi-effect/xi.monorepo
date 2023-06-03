@@ -18,7 +18,7 @@ const Btn: React.FC<BtnT> = ({ children, onClick, sx }) => (
       fontSize: '18px',
       borderRadius: '8px',
       textTransform: 'none',
-      backgroundColor: 'primary.dark',
+      backgroundColor: 'brand.80',
       ...sx,
     }}
   >

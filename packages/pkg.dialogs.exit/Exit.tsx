@@ -72,11 +72,11 @@ export const ExitDialog = observer(({ uiSt, rootStore }: ExitDialogT) => {
             height: '48px',
             boxShadow: 'none',
             color: 'petersburg.0',
-            bgcolor: 'error.dark',
+            bgcolor: 'moscow.80',
             '&:hover': {
               boxShadow: 'none',
               color: 'petersburg.0',
-              bgcolor: 'error.dark',
+              bgcolor: 'moscow.80',
             },
           }}
         >

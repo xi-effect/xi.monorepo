@@ -12,7 +12,7 @@ export const Upbar = ({ openMenu, menuType, name, host }: UpbarProps) => (
       <Typography variant="xl" sx={{ fontWeight: 600 }}>
         {name}
       </Typography>
-      <Typography variant="m" sx={{ color: 'grayscale.40', fontWeight: 400, lineHeight: '26px' }}>
+      <Typography variant="m" sx={{ color: 'petersburg.40', fontWeight: 400, lineHeight: '26px' }}>
         {host?.username}
       </Typography>
     </Stack>
@@ -39,11 +39,11 @@ export const Upbar = ({ openMenu, menuType, name, host }: UpbarProps) => (
           height: '32px',
           borderRadius: '4px',
           cursor: 'pointer',
-          bgcolor: menuType === 'pinned' ? 'primary.pale' : '',
+          bgcolor: menuType === 'pinned' ? 'brand.0' : '',
         }}
         onClick={() => openMenu('pinned')}
       >
-        <Shape sx={{ fontSize: '16px', color: menuType === 'pinned' ? 'primary.dark' : '' }} />
+        <Shape sx={{ fontSize: '16px', color: menuType === 'pinned' ? 'brand.80' : '' }} />
       </Stack>
       <Stack
         justifyContent="center"
@@ -53,11 +53,11 @@ export const Upbar = ({ openMenu, menuType, name, host }: UpbarProps) => (
           height: '32px',
           borderRadius: '4px',
           cursor: 'pointer',
-          bgcolor: menuType === 'files' ? 'primary.pale' : '',
+          bgcolor: menuType === 'files' ? 'brand.0' : '',
         }}
         onClick={() => openMenu('files')}
       >
-        <File sx={{ fontSize: '16px', color: menuType === 'files' ? 'primary.dark' : '' }} />
+        <File sx={{ fontSize: '16px', color: menuType === 'files' ? 'brand.80' : '' }} />
       </Stack>
       <Stack
         justifyContent="center"
@@ -67,13 +67,11 @@ export const Upbar = ({ openMenu, menuType, name, host }: UpbarProps) => (
           height: '32px',
           borderRadius: '4px',
           cursor: 'pointer',
-          bgcolor: menuType === 'participants' ? 'primary.pale' : '',
+          bgcolor: menuType === 'participants' ? 'brand.0' : '',
         }}
         onClick={() => openMenu('participants')}
       >
-        <Users
-          sx={{ fontSize: '16px', color: menuType === 'participants' ? 'primary.dark' : '' }}
-        />
+        <Users sx={{ fontSize: '16px', color: menuType === 'participants' ? 'brand.80' : '' }} />
       </Stack>
     </Stack>
   </Stack>

@@ -173,11 +173,11 @@ const UserProfile = observer(() => {
   return (
     <Dialog
       sx={{
-        backgroundColor: 'primary.pale',
+        backgroundColor: 'brand.0',
       }}
       PaperProps={{
         sx: {
-          backgroundColor: 'primary.pale',
+          backgroundColor: 'brand.0',
           display: 'flex',
           justifyContent: 'flex-start',
           alignItems: 'center',

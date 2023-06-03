@@ -31,12 +31,12 @@ export const buttonStyle = {
   primary: {
     '&.Mui-selected': {
       color: 'petersburg.0',
-      bgcolor: 'primary.dark',
+      bgcolor: 'brand.80',
       '&:hover': {
-        bgcolor: 'primary.dark',
+        bgcolor: 'brand.80',
       },
     },
-    '&:disabled': { border: 'none', color: 'petersburg.0', bgcolor: 'primary.light' },
+    '&:disabled': { border: 'none', color: 'petersburg.0', bgcolor: 'brand.20' },
   },
   white: {
     '&.Mui-selected': {

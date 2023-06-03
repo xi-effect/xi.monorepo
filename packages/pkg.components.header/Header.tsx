@@ -82,7 +82,7 @@ export const Header = ({ logo }: HeaderProps) => {
             textTransform: 'capitalize',
             '&:hover': {
               color: 'petersburg.0',
-              bgcolor: 'secondary.dark',
+              bgcolor: 'vladivostok.100',
             },
           }}
         >
@@ -102,7 +102,7 @@ export const Header = ({ logo }: HeaderProps) => {
             textTransform: 'capitalize',
             '&:hover': {
               color: 'petersburg.0',
-              bgcolor: 'secondary.dark',
+              bgcolor: 'vladivostok.100',
             },
           }}
         >

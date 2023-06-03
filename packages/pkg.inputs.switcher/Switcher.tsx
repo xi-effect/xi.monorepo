@@ -41,7 +41,7 @@ export const Switcher: FC<SwitcherProps> = ({
       sx={{
         width: 'fit-content',
         border: '2px solid',
-        borderColor: isError ? 'error.dark' : 'transparent',
+        borderColor: isError ? 'moscow.80' : 'transparent',
         backgroundColor: groupBackgroundColor || 'transparent',
         ...groupSizes[size],
       }}

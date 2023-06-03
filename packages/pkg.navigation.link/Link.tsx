@@ -9,7 +9,7 @@ export const Link: FC<LinkProps> = ({
   children,
   href,
   onClick,
-  color = 'grayscale.90',
+  color = 'petersburg.90',
   size = 'm',
   disabled = false,
   icon,
@@ -55,7 +55,7 @@ export const Link: FC<LinkProps> = ({
       sx={{
         ...linkSizes[size],
         pointerEvents: disabled ? 'none' : 'auto',
-        color: disabled ? 'grayscale.40' : color,
+        color: disabled ? 'petersburg.40' : color,
         textDecoration: 'none',
         width: 'max-content',
         height: 'max-content',

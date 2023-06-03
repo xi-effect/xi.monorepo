@@ -17,11 +17,11 @@ const RightTool = () => (
           height: '48px',
           width: '48px',
           color: 'petersburg.0',
-          bgcolor: 'error.dark',
+          bgcolor: 'moscow.80',
           borderRadius: '24px',
 
           '&:hover': {
-            bgcolor: 'error.dark',
+            bgcolor: 'moscow.80',
           },
         }}
       >

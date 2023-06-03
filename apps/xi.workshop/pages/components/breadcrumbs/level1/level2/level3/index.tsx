@@ -61,10 +61,10 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 'l',
     hoverStyles: {
-      color: 'primary.main',
+      color: 'brand.60',
     },
-    color: 'primary.light',
-    lastItemColor: 'primary.dark',
+    color: 'brand.20',
+    lastItemColor: 'brand.80',
   },
   {
     breadcrumbs: [
@@ -78,10 +78,10 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 'm',
     hoverStyles: {
-      color: 'primary.main',
+      color: 'brand.60',
     },
-    color: 'primary.light',
-    lastItemColor: 'primary.dark',
+    color: 'brand.20',
+    lastItemColor: 'brand.80',
   },
   {
     breadcrumbs: [
@@ -95,10 +95,10 @@ const currentPageHistory: BreadcrumbsProps[] = [
     ],
     size: 's',
     hoverStyles: {
-      color: 'primary.main',
+      color: 'brand.60',
     },
-    color: 'primary.light',
-    lastItemColor: 'primary.dark',
+    color: 'brand.20',
+    lastItemColor: 'brand.80',
   },
 ];
 

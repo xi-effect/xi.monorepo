@@ -33,7 +33,7 @@ export const Chat = ({ id }: ChatProps) => {
         spacing={3}
         justifyContent="flex-end"
         sx={{
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           height: '100%',
           overflow: 'auto',
           borderRadius: '8px',

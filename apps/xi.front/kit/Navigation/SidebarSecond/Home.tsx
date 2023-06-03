@@ -55,10 +55,10 @@ const Channel: React.FC<{ menuItem: MenuItemT }> = ({ menuItem }) => {
         mr: 1,
         pl: '6px',
         pr: '6px',
-        bgcolor: isSameChannel ? 'primary.pale' : null,
+        bgcolor: isSameChannel ? 'brand.0' : null,
 
         '.MuiListItemText-root': {
-          color: isSameChannel ? 'primary.dark' : null,
+          color: isSameChannel ? 'brand.80' : null,
         },
 
         svg: {
@@ -66,10 +66,10 @@ const Channel: React.FC<{ menuItem: MenuItemT }> = ({ menuItem }) => {
         },
 
         '&:hover': {
-          bgcolor: 'primary.pale',
+          bgcolor: 'brand.0',
 
           '.MuiListItemText-root': {
-            color: 'primary.dark',
+            color: 'brand.80',
           },
 
           svg: {
