@@ -99,7 +99,7 @@ const Mobile = observer(({ children }: MobileT) => {
       sx={{
         position: 'relative',
         zIndex: 0,
-        backgroundColor: 'brand.0',
+        backgroundColor: 'bg.main',
         overflow: 'hidden',
       }}
     >

@@ -22,8 +22,7 @@ import createEmotionCache from 'store/createEmotionCache';
 import { getScheme } from 'pkg.theme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'pkg.notistack.saveconfirm';
-import { Notification } from 'pkg.notistack.notification';
-import { useCookie } from 'pkg.hooks'; // useThemeDetector
+import { Notification } from 'pkg.notistack.notification'; // useThemeDetector
 // import { useEffect } from 'react';
 // import { useMemo } from 'react';
 
@@ -55,8 +54,7 @@ const MyApp = observer((props) => {
     light: lightTheme,
   };
 
-  const [cookieTheme] = useCookie('xi.user-theme');
-  const theme = distTheme[cookieTheme ?? profile.theme];
+  const theme = distTheme[profile.theme];
 
   return (
     <CacheProvider value={emotionCache}>

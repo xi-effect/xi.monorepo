@@ -4,7 +4,7 @@ import Main from './ContentItems/Main';
 import Account from './ContentItems/Account';
 import Secure from './ContentItems/Secure';
 import SoundAndVideo from './ContentItems/SoundAndVideo';
-// import Appearance from './ContentItems/Appearance';
+import Appearance from './ContentItems/Appearance';
 
 type ContentProps = {
   activeContent: number;
@@ -30,7 +30,7 @@ const Content = ({ activeContent }: ContentProps) => {
         mb: '120px',
       }}
     >
-      {[<Main />, <Account />, <Secure />, <SoundAndVideo />][activeContent]}
+      {[<Main />, <Account />, <Secure />, <Appearance />, <SoundAndVideo />][activeContent]}
     </Stack>
   );
 };

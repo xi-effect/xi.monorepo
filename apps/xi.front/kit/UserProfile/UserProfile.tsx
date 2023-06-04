@@ -29,6 +29,7 @@ const schema = yup
     surname: yup.string().max(100),
     patronymic: yup.string().max(100),
     birthday: yup.date(),
+    theme: yup.string(),
   })
   .required();
 
@@ -39,6 +40,7 @@ type FormValues = {
   surname: string;
   patronymic: string;
   birthday: Date | null;
+  theme: string;
 };
 
 const Transition = React.forwardRef(
@@ -104,13 +106,14 @@ const UserProfile = observer(() => {
   };
 
   const handleCloseProfile = () => {
-    const [handle, username, name, surname, patronymic, birthday] = getValues([
+    const [handle, username, name, surname, patronymic, birthday, theme] = getValues([
       'handle',
       'username',
       'name',
       'surname',
       'patronymic',
       'birthday',
+      'theme',
     ]);
 
     if (
@@ -120,6 +123,7 @@ const UserProfile = observer(() => {
       name &&
       surname &&
       patronymic &&
+      theme &&
       (handle !== user.handle ||
         username !== user.username ||
         name !== profile.name ||
@@ -140,12 +144,14 @@ const UserProfile = observer(() => {
 
   watch((data) => {
     if (
-      data.handle !== user.handle ||
-      data.username !== user.username ||
-      data.name !== profile.name ||
-      data.surname !== profile.surname ||
-      data.patronymic !== profile.patronymic ||
-      data.birthday !== profile.birthday
+      data &&
+      (data.handle !== user.handle ||
+        data.username !== user.username ||
+        data.name !== profile.name ||
+        data.surname !== profile.surname ||
+        data.patronymic !== profile.patronymic ||
+        data.birthday !== profile.birthday ||
+        data.theme !== profile.theme)
     ) {
       if (isMobile) {
         return;
@@ -160,7 +166,8 @@ const UserProfile = observer(() => {
       data.name === profile.name &&
       data.surname === profile.surname &&
       data.patronymic === profile.patronymic &&
-      data.birthday === profile.birthday
+      data.birthday === profile.birthday &&
+      data.theme === profile.theme
     ) {
       if (isMobile) {
         return;

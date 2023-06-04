@@ -2,7 +2,6 @@ import { action, observable, makeObservable } from 'mobx';
 import { ResponseDataRegT } from 'models/dataProfileStore';
 import { ProfileT } from 'models/profile';
 import Router from 'next/router';
-import Cookies from 'js-cookie';
 import RootStore from '../rootStore';
 
 class ProfileSt {
@@ -25,7 +24,7 @@ class ProfileSt {
     surname: '',
     patronymic: '',
     birthday: null,
-    theme: (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ?? 'system',
+    theme: 'system',
   };
 
   @action setProfile = (item: string, value: string | number | boolean | null | Date) => {
@@ -83,12 +82,11 @@ class ProfileSt {
       surname: '',
       patronymic: '',
       birthday: null,
-      theme: (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ?? 'system',
+      theme: 'system', // (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ??
     };
   };
 
   @action postProfile = (data, enqueueSnackbar, closeFn, reset, setError) => {
-    console.log('postProfile', data);
     this.rootStore
       .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
       .then((answer: ResponseDataRegT) => {
