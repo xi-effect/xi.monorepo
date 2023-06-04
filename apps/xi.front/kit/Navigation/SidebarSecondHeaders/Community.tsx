@@ -58,9 +58,6 @@ const Community = observer(() => {
         justifyContent="space-between"
         alignItems="center"
         sx={{
-          borderBottom: '1px solid #ECEFFF',
-          borderTopLeftRadius: '8px',
-          borderTopRightRadius: '8px',
           p: 1,
           '&:hover': {
             cursor: 'pointer',

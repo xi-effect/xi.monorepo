@@ -94,7 +94,8 @@ const Signin = observer(() => {
             width: isMobile ? '100%' : '420px',
             height: isMobile ? '395px' : '514px',
             borderRadius: '16px',
-            border: isMobile ? 'none' : '1px solid #E6E6E6', // petersburg.10
+            border: isMobile ? 'none' : '1px solid',
+            borderColor: isMobile ? 'none' : 'petersburg.10',
             position: 'relative',
           }}
         >
