@@ -1,11 +1,12 @@
 import { useState, MouseEvent, ChangeEvent } from 'react';
-import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
+import { FormControl, FormHelperText, IconButton, InputAdornment, Typography } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
 import { Eyeoff, Eyeon } from 'pkg.icons';
 import { StrengthBar } from './StrengthBar';
 import { usePasswordStrength } from './PasswordStrength';
+import { PasswordProps } from './types';
 
-export const Password = () => {
+export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { password, updatePassword, strengthValue, error, color } = usePasswordStrength();
@@ -21,7 +22,7 @@ export const Password = () => {
   };
 
   return (
-    <FormControl variant="outlined">
+    <FormControl variant="outlined" sx={{ width }}>
       <Input
         type={showPassword ? 'text' : 'password'}
         value={password ?? ''}
@@ -39,17 +40,31 @@ export const Password = () => {
             </InputAdornment>
           ),
         }}
-        label="Password"
+        label={
+          <Typography
+            sx={{
+              fontSize: size === 's' ? '14px' : '16px',
+              lineHeight: size === 's' ? '20px' : '22px',
+            }}
+          >
+            Password
+          </Typography>
+        }
         onChange={handlePasswordChange}
+        sx={{
+          height: size === 'm' ? '48px' : '32px',
+          mb: '8px',
+          '.MuiInputBase-root': {
+            height: '100%',
+            fontSize: size === 's' ? '14px' : '16px',
+            lineHeight: size === 's' ? '20px' : '22px',
+          },
+        }}
       />
-      {!!strengthValue && (
-        <>
-          <StrengthBar progress={strengthValue} color={color} />
-          <FormHelperText sx={{ color }}>
-            {strengthValue < 80 ? error : 'Надежный пароль'}
-          </FormHelperText>
-        </>
-      )}
+      <StrengthBar progress={strengthValue} color={color} />
+      <FormHelperText sx={{ color }}>
+        {strengthValue < 80 ? error : 'Надежный пароль'}
+      </FormHelperText>
     </FormControl>
   );
 };
