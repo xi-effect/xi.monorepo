@@ -1,6 +1,13 @@
 import React from 'react';
 
 declare module '@mui/material/styles' {
+  interface PaletteColor {
+    light?: string;
+    main?: string;
+    dark?: string;
+    pale?: string;
+  }
+
   interface TypographyVariants {
     xl: React.CSSProperties;
     l: React.CSSProperties;
@@ -32,3 +39,9 @@ declare module '@mui/material/Typography' {
     xxs: true;
   }
 }
+
+// declare module '@mui/material/InputBase' {
+//   interface InputBasePropsVariantOverrides {
+//     filled: true;
+//   }
+// }

@@ -21,45 +21,45 @@ export const buttonSizes = {
 export const buttonVariantsColor = {
   contained: {
     primary: {
-      bgcolor: 'primary.dark',
+      bgcolor: 'brand.80',
       color: 'petersburg.0',
     },
     success: {
-      bgcolor: 'success.dark',
+      bgcolor: 'ekaterinburg.80',
       color: 'petersburg.0',
     },
     error: {
-      bgcolor: 'error.dark',
+      bgcolor: 'moscow.80',
       color: 'petersburg.0',
     },
     grayscale: {
-      bgcolor: 'grayscale.40',
-      color: 'grayscale.100',
+      bgcolor: 'petersburg.40',
+      color: 'petersburg.100',
     },
   },
   outlined: {
     primary: {
-      borderColor: 'primary.dark',
-      color: 'primary.dark',
+      borderColor: 'brand.80',
+      color: 'brand.80',
     },
     success: {
-      borderColor: 'success.dark',
-      color: 'success.dark',
+      borderColor: 'ekaterinburg.80',
+      color: 'ekaterinburg.80',
     },
     error: {
-      borderColor: 'error.dark',
-      color: 'error.dark',
+      borderColor: 'moscow.80',
+      color: 'moscow.80',
     },
     grayscale: {
-      color: 'grayscale.100',
-      borderColor: 'grayscale.40',
+      color: 'petersburg.100',
+      borderColor: 'petersburg.40',
     },
   },
   text: {
-    primary: { color: 'primary.dark' },
-    success: { color: 'success.dark' },
-    error: { color: 'error.dark' },
-    grayscale: { color: 'grayscale.100' },
+    primary: { color: 'brand.80' },
+    success: { color: 'ekaterinburg.80' },
+    error: { color: 'moscow.80' },
+    grayscale: { color: 'petersburg.100' },
   },
 };
 
@@ -174,17 +174,17 @@ export const getSnackbarCurrentPosition = (snackbarSize: number, position: Snack
 
 export const getActionButtonStyle = (variant: Variant, color: string) => {
   if (color === 'grayscale') {
-    return { bgcolor: 'grayscale.5', color: 'grayscale.100' };
+    return { bgcolor: 'petersburg.5', color: 'petersburg.100' };
   }
 
   switch (variant) {
     case 'contained':
       return { bgcolor: color, color: 'petersburg.0' };
     case 'outlined':
-      return { bgcolor: 'grayscale.5', borderColor: color, color };
+      return { bgcolor: 'petersburg.5', borderColor: color, color };
     default:
       return {
-        bgcolor: 'grayscale.5',
+        bgcolor: 'petersburg.5',
         color,
       };
   }

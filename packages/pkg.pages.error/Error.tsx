@@ -55,7 +55,7 @@ export function Error({ code, logo }: ErrorProps) {
         overflow: 'auto',
         minHeight: mobilesm ? 'calc(100vh - 14px)' : '100vh',
         height: '100%',
-        bgcolor: 'primary.pale',
+        bgcolor: 'brand.0',
         p: mobile1336 ? '20px 16px 20px 16px' : '16px 84px 64px 84px',
       }}
     >
@@ -95,11 +95,11 @@ export function Error({ code, logo }: ErrorProps) {
           borderRadius: '8px',
           color: 'petersburg.0',
           lineHeight: '22px',
-          backgroundColor: 'primary.dark',
+          backgroundColor: 'brand.80',
 
           '&:hover': {
             color: 'petersburg.0',
-            backgroundColor: 'primary.dark',
+            backgroundColor: 'brand.80',
           },
         }}
       >

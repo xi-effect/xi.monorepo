@@ -28,17 +28,17 @@ export const File: FC<FileProps> = ({
       alignItems="center"
       justifyContent="space-between"
       sx={{
-        backgroundColor: isFocus ? 'grayscale.5' : 'grayscale.0',
+        backgroundColor: isFocus ? 'petersburg.5' : 'petersburg.0',
         transition: 'all 0.1s ease-in',
         ...containerStyle[size],
         '&:hover': {
-          backgroundColor: 'grayscale.5',
+          backgroundColor: 'petersburg.5',
 
-          '& .MuiTypography-root': { color: isError ? 'error.dark' : 'grayscale.100' },
+          '& .MuiTypography-root': { color: isError ? 'moscow.80' : 'petersburg.100' },
 
-          '& .MuiSvgIcon-root': { color: 'grayscale.80' },
+          '& .MuiSvgIcon-root': { color: 'petersburg.80' },
 
-          '& .MuiCircularProgress-root': { color: 'grayscale.80' },
+          '& .MuiCircularProgress-root': { color: 'petersburg.80' },
         },
         ...props,
       }}
@@ -62,7 +62,7 @@ export const File: FC<FileProps> = ({
         sx={{
           wordBreak: 'break-all',
           transition: 'all 0.1s ease-in',
-          color: isError ? 'error.dark' : 'grayscale.90',
+          color: isError ? 'moscow.80' : 'petersburg.90',
           fontWeight: 400,
           cursor: onClick ? 'pointer' : 'default',
           paddingRight: '10px',
@@ -74,7 +74,7 @@ export const File: FC<FileProps> = ({
 
       <Icons
         size={size}
-        color={isFocus ? 'grayscale.80' : 'grayscale.40'}
+        color={isFocus ? 'petersburg.80' : 'petersburg.40'}
         isDeleteIcon={isDeleteIcon && !isPending && !isSucceeded}
         isLoadingIcon={!isAbortIcon && isPending}
         isSucceededIcon={isSucceeded}

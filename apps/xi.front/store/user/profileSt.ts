@@ -24,6 +24,7 @@ class ProfileSt {
     surname: '',
     patronymic: '',
     birthday: null,
+    theme: 'system',
   };
 
   @action setProfile = (item: string, value: string | number | boolean | null | Date) => {
@@ -81,11 +82,11 @@ class ProfileSt {
       surname: '',
       patronymic: '',
       birthday: null,
+      theme: 'system', // (Cookies.get('xi.user-theme') as 'light' | 'dark' | 'system') ??
     };
   };
 
   @action postProfile = (data, enqueueSnackbar, closeFn, reset, setError) => {
-    console.log('postProfile', data);
     this.rootStore
       .fetchData(`${this.rootStore.url}/users/me/profile/`, 'POST', data)
       .then((answer: ResponseDataRegT) => {

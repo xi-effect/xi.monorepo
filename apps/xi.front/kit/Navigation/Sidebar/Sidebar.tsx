@@ -147,7 +147,7 @@ const Sidebar = observer(() => {
           <IButton
             tooltip="Главная"
             href="/home"
-            icon={<Home color="primary" />}
+            icon={<Home />}
             iconColor="#445AFF"
             iconColorHover="#FFFFFF"
             isBefore
@@ -164,7 +164,7 @@ const Sidebar = observer(() => {
               height: '1px',
               width: '40px',
               borderRadius: '5px',
-              backgroundColor: 'primary.light',
+              backgroundColor: 'brand.20',
             }}
           />
         </Stack>
@@ -222,7 +222,7 @@ const Sidebar = observer(() => {
             height: '1px',
             width: '40px',
             borderRadius: '5px',
-            backgroundColor: 'primary.light',
+            backgroundColor: 'brand.20',
           }}
         />
         <IButton

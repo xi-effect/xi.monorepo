@@ -25,7 +25,7 @@ const Terms = () => (
       sx={{
         cursor: 'pointer',
         mt: '-4px',
-        color: 'primary.main',
+        color: 'brand.60',
         fontWeight: 400,
         fontSize: 12,
         lineHeight: '16px',
@@ -64,13 +64,13 @@ const Signin = observer(() => {
             width: '311px',
             height: '32px',
             borderRadius: '8px',
-            backgroundColor: 'error.pale',
+            backgroundColor: 'moscow.0',
             pt: '5px',
             m: 'auto',
             top: isMobile ? '4px' : '32px',
             left: 0,
             right: 0,
-            color: 'error.dark',
+            color: 'moscow.80',
             textAlign: 'center',
           }}
         >
@@ -94,7 +94,8 @@ const Signin = observer(() => {
             width: isMobile ? '100%' : '420px',
             height: isMobile ? '395px' : '514px',
             borderRadius: '16px',
-            border: isMobile ? 'none' : '1px solid #E6E6E6', // petersburg.10
+            border: isMobile ? 'none' : '1px solid',
+            borderColor: isMobile ? 'none' : 'petersburg.10',
             position: 'relative',
           }}
         >

@@ -23,7 +23,7 @@ export const Message = ({ text, type, createdTime, author, file }: MessageT) => 
             minWidth: '48px',
             height: '48px',
             borderRadius: '50%',
-            backgroundColor: 'warning.main',
+            backgroundColor: 'kungur.60',
           }}
         />
       )}
@@ -31,9 +31,9 @@ export const Message = ({ text, type, createdTime, author, file }: MessageT) => 
         <Stack
           alignItems="center"
           justifyContent="center"
-          sx={{ minWidth: '48px', height: '48px', borderRadius: '50%', bgcolor: 'warning.pale' }}
+          sx={{ minWidth: '48px', height: '48px', borderRadius: '50%', bgcolor: 'kungur.0' }}
         >
-          <Typography variant="m" sx={{ textTransform: 'uppercase', color: 'warning.main' }}>
+          <Typography variant="m" sx={{ textTransform: 'uppercase', color: 'kungur.60' }}>
             {getUserInitials(author.username)}
           </Typography>
         </Stack>
@@ -41,7 +41,7 @@ export const Message = ({ text, type, createdTime, author, file }: MessageT) => 
       <Stack spacing={0.5} sx={{ width: '100%', maxWidth: '600px' }}>
         <Stack direction="row" alignItems="center" spacing={1}>
           <Typography variant="m">{author.username}</Typography>
-          <Typography variant="s" sx={{ fontWeight: 400, color: 'grayscale.40' }}>
+          <Typography variant="s" sx={{ fontWeight: 400, color: 'petersburg.40' }}>
             {msgDate}
           </Typography>
         </Stack>

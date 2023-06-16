@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import Head from 'next/head';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { observer } from 'mobx-react';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,12 +19,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Loading } from 'pkg.components.loading';
 import { useStoreInitialized } from 'store/rootStore';
 import createEmotionCache from 'store/createEmotionCache';
-import { getScheme } from 'pkg.theme.scheme';
+import { getScheme } from 'pkg.theme';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { SaveConfirm } from 'pkg.notistack.saveconfirm';
-import { Notification } from 'pkg.notistack.notification';
-// import { useCookie, useThemeDetector } from 'pkg.hooks';
+import { Notification } from 'pkg.notistack.notification'; // useThemeDetector
+// import { useEffect } from 'react';
 // import { useMemo } from 'react';
+
+import { useMediaQuery } from '@mui/material';
+import React from 'react';
 
 config.autoAddCss = false;
 
@@ -32,16 +35,26 @@ config.autoAddCss = false;
 const clientSideEmotionCache = createEmotionCache();
 // Binding events.
 
+const darkTheme = getScheme('dark');
+
+const lightTheme = getScheme('light');
+
 const MyApp = observer((props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   const rootStore = useStoreInitialized(pageProps.initialState);
+  const { profileSt } = rootStore;
+  const { profile } = profileSt;
 
-  // const [userTheme] = useCookie('xi.user-theme');
-  // @ts-ignore
-  // const theme = useMemo(() => createTheme(getScheme(userTheme)), [userTheme]);
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-  const theme = () => createTheme(getScheme('light'));
+  const distTheme = {
+    system: prefersDarkMode ? darkTheme : lightTheme,
+    dark: darkTheme,
+    light: lightTheme,
+  };
+
+  const theme = distTheme[profile.theme];
 
   return (
     <CacheProvider value={emotionCache}>

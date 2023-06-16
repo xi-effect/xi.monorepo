@@ -5,6 +5,7 @@ export type ItemT = {
   value: string;
   isDefault?: boolean;
   isDisabled?: boolean;
+  label?: string;
 };
 export type GroupT = {
   id: string;

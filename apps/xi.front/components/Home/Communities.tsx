@@ -90,7 +90,7 @@ const Communities = () => {
                   backgroundColor: 'transparent',
                   mb: i !== item.categories.length - 1 ? '12px' : 0,
                   transition: 'background 0.2s ease-in, color 0.2s ease-in',
-                  '&:hover': { backgroundColor: 'primary.pale', color: 'primary.dark' },
+                  '&:hover': { backgroundColor: 'brand.0', color: 'brand.80' },
                 }}
               >
                 {k}
@@ -103,11 +103,11 @@ const Communities = () => {
                   p: '8px 12px',
                   fontWeight: 500,
                   fontSize: '18px',
-                  color: 'primary.dark',
+                  color: 'brand.80',
                   borderRadius: '12px',
                   backgroundColor: 'transparent',
                   transition: 'background 0.2s ease-in, color 0.2s ease-in',
-                  '&:hover': { backgroundColor: 'primary.dark', color: 'petersburg.0' },
+                  '&:hover': { backgroundColor: 'brand.80', color: 'petersburg.0' },
                 }}
               >
                 Перейти

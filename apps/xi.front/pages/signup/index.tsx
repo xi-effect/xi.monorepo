@@ -24,7 +24,7 @@ const Terms = () => (
       sx={{
         cursor: 'pointer',
         mt: '-4px',
-        color: 'primary.main',
+        color: 'brand.60',
         fontWeight: 400,
         fontSize: 12,
         lineHeight: '16px',

@@ -6,8 +6,8 @@ export const containerStyle = {
     alignItems: 'center',
     borderRadius: '8px',
     border: '1px dashed',
-    borderColor: 'grayscale.40',
-    backgroundColor: 'grayscale.0',
+    borderColor: 'petersburg.40',
+    backgroundColor: 'petersburg.0',
     transition: 'all 0.1s ease-in',
     padding: '0 8px',
     maxWidth: '500px',
@@ -19,8 +19,8 @@ export const containerStyle = {
     justifyContent: 'center',
     flexDirection: 'column',
     gap: '8px',
-    borderColor: 'primary.main',
-    backgroundColor: 'primary.pale',
+    borderColor: 'brand.60',
+    backgroundColor: 'brand.0',
   },
 
   medium: {
@@ -41,33 +41,33 @@ const actionContainerStyle = {
   dragOver: {
     boxShadow: '0px 0px 0px 4px #B4BDFF',
     border: '4px solid',
-    borderColor: 'primary.dark',
+    borderColor: 'brand.80',
   },
 
   hover: {
-    large: { borderColor: 'primary.dark' },
-    medium: { borderColor: 'transparent', backgroundColor: 'grayscale.5' },
-    small: { borderColor: 'transparent', backgroundColor: 'grayscale.5' },
+    large: { borderColor: 'brand.80' },
+    medium: { borderColor: 'transparent', backgroundColor: 'petersburg.5' },
+    small: { borderColor: 'transparent', backgroundColor: 'petersburg.5' },
   },
 
   focus: {
     border: '2px solid',
-    borderColor: 'grayscale.80',
+    borderColor: 'petersburg.80',
   },
 
   warning: {
     border: '2px solid',
-    borderColor: 'warning.dark',
+    borderColor: 'kungur.80',
   },
 
   error: {
     border: '2px solid',
-    borderColor: 'error.main',
+    borderColor: 'moscow.60',
   },
 
   disabled: {
-    borderColor: 'grayscale.40',
-    backgroundColor: 'grayscale.10',
+    borderColor: 'petersburg.40',
+    backgroundColor: 'petersburg.10',
     pointerEvents: 'none',
     borderWidth: '2px',
   },
@@ -129,16 +129,16 @@ export const getActionTextStyle = (
 
 const textColorStyle = {
   default: {
-    large: { button: { color: 'primary.main' }, description: { color: 'primary.light' } },
-    medium: { button: { color: 'grayscale.90' }, description: { color: 'grayscale.40' } },
-    small: { button: { color: 'grayscale.90' }, description: { color: 'grayscale.40' } },
+    large: { button: { color: 'brand.60' }, description: { color: 'brand.20' } },
+    medium: { button: { color: 'petersburg.90' }, description: { color: 'petersburg.40' } },
+    small: { button: { color: 'petersburg.90' }, description: { color: 'petersburg.40' } },
   },
 
   active: {
-    large: { button: { color: 'primary.dark' }, description: { color: 'primary.main' } },
-    medium: { description: { color: 'grayscale.80' }, button: { color: 'grayscale.100' } },
-    small: { description: { color: 'grayscale.80' }, button: { color: 'grayscale.100' } },
+    large: { button: { color: 'brand.80' }, description: { color: 'brand.60' } },
+    medium: { description: { color: 'petersburg.80' }, button: { color: 'petersburg.100' } },
+    small: { description: { color: 'petersburg.80' }, button: { color: 'petersburg.100' } },
   },
 
-  disabled: { button: { color: 'grayscale.40' }, description: { color: 'grayscale.40' } },
+  disabled: { button: { color: 'petersburg.40' }, description: { color: 'petersburg.40' } },
 };

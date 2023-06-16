@@ -20,7 +20,7 @@ const Breadcrumbs = observer(() => (
         fontWeight: 400,
         fontSize: '14px',
         lineHeight: '16px',
-        color: 'primary.main',
+        color: 'brand.60',
       }}
     >
       МИПК И.Федорова
@@ -31,7 +31,7 @@ const Breadcrumbs = observer(() => (
         fontWeight: 400,
         fontSize: '14px',
         lineHeight: '16px',
-        color: 'primary.main',
+        color: 'brand.60',
       }}
     >
       Объявления

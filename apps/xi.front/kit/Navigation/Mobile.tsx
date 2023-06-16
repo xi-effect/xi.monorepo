@@ -99,7 +99,7 @@ const Mobile = observer(({ children }: MobileT) => {
       sx={{
         position: 'relative',
         zIndex: 0,
-        backgroundColor: 'primary.pale',
+        backgroundColor: 'bg.main',
         overflow: 'hidden',
       }}
     >
@@ -124,7 +124,7 @@ const Mobile = observer(({ children }: MobileT) => {
       <Stack
         sx={{
           position: 'absolute',
-          bgcolor: 'primary.pale',
+          bgcolor: 'brand.0',
           height: '100vh',
           width: '100vw',
           zIndex: 20001,

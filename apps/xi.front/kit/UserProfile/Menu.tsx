@@ -31,10 +31,10 @@ const menu = [
     mt: '4px',
     name: 'Безопасность',
   },
-  // {
-  //   mt: '4px',
-  //   name: 'Внешний вид',
-  // },
+  {
+    mt: '4px',
+    name: 'Внешний вид',
+  },
   {
     mt: '4px',
     name: 'Звук и видео',
@@ -102,8 +102,8 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
             backgroundColor: 'transparent',
             pl: '16px',
             '&:hover': {
-              color: 'error.dark',
-              backgroundColor: 'error.pale',
+              color: 'moscow.80',
+              backgroundColor: 'moscow.0',
             },
           }}
         >

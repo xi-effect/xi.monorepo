@@ -4,15 +4,15 @@ import { Camera } from 'pkg.icons';
 
 const TestComponents = () => (
   <LayoutPages>
-    <Badge icon={Camera} bgColor="primary.dark" iconColor="petersburg.0" fontColor="petersburg.0">
+    <Badge icon={Camera} bgColor="brand.80" iconColor="petersburg.0" fontColor="petersburg.0">
       Title
     </Badge>
 
-    <Badge icon={Camera} bgColor="primary.dark" iconColor="petersburg.0">
+    <Badge icon={Camera} bgColor="brand.80" iconColor="petersburg.0">
       Title
     </Badge>
 
-    <Badge size="small" icon={Camera} bgColor="petersburg.10" iconColor="error.dark">
+    <Badge size="small" icon={Camera} bgColor="petersburg.10" iconColor="moscow.80">
       Title
     </Badge>
 
@@ -20,8 +20,8 @@ const TestComponents = () => (
       size="small"
       icon={Camera}
       bgColor="petersburg.10"
-      iconColor="error.dark"
-      fontColor="error.dark"
+      iconColor="moscow.80"
+      fontColor="moscow.80"
     >
       Title
     </Badge>

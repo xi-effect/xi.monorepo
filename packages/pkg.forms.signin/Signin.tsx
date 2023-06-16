@@ -126,7 +126,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
           underline="none"
           sx={{
             cursor: 'pointer',
-            color: 'primary.dark',
+            color: 'brand.80',
             fontWeight: 500,
             fontSize: 14,
             lineHeight: '18px',
@@ -142,7 +142,7 @@ export const SignIn = ({ authorizationSt }: SignInT) => {
           underline="none"
           sx={{
             cursor: 'pointer',
-            color: 'primary.dark',
+            color: 'brand.80',
             fontWeight: 500,
             fontSize: 16,
             lineHeight: '20px',

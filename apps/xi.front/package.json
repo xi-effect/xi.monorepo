@@ -58,7 +58,7 @@
     "pkg.notistack.notification": "*",
     "pkg.pages.chat": "*",
     "pkg.pages.error": "*",
-    "pkg.theme.scheme": "*",
+    "pkg.theme": "*",
     "pkg.editor.text": "*",
     "pkg.utils": "*",
     "pkg.inputs.chat": "*",
@@ -81,7 +81,8 @@
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
     "worker-loader": "^3.0.8",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "js-cookie": "^3.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

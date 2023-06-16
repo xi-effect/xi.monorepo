@@ -109,8 +109,8 @@ const Menu = observer(({ activeContent, setActiveContent, changeMenuStatus }: Me
             backgroundColor: 'transparent',
             pl: '16px',
             '&:hover': {
-              color: 'error.dark',
-              backgroundColor: 'error.pale',
+              color: 'moscow.80',
+              backgroundColor: 'moscow.0',
             },
           }}
         >

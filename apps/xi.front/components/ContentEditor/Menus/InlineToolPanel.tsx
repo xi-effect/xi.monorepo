@@ -167,19 +167,19 @@ const FormatButton = ({ format, icon }) => {
       onClick={() => toggleFormat(editor, format)}
     >
       {icon === 'format_bold' && (
-        <FormatBoldIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+        <FormatBoldIcon sx={{ color: active ? 'vladivostok.60' : 'text.main' }} />
       )}
       {icon === 'format_italic' && (
-        <FormatItalicIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+        <FormatItalicIcon sx={{ color: active ? 'vladivostok.60' : 'text.main' }} />
       )}
       {icon === 'format_underlined' && (
-        <FormatUnderlinedIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+        <FormatUnderlinedIcon sx={{ color: active ? 'vladivostok.60' : 'text.main' }} />
       )}
       {icon === 'format_strike' && (
-        <StrikethroughSIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+        <StrikethroughSIcon sx={{ color: active ? 'vladivostok.60' : 'text.main' }} />
       )}
       {icon === 'format_code' && (
-        <CodeIcon sx={{ color: active ? 'secondary.main' : 'text.main' }} />
+        <CodeIcon sx={{ color: active ? 'vladivostok.60' : 'text.main' }} />
       )}
     </Button>
   );

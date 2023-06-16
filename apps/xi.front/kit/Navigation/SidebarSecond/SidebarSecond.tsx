@@ -21,7 +21,7 @@ const SidebarSecond = observer(() => {
         p: 0,
         width: 236,
         borderRadius: '8px',
-        backgroundColor: 'petersburg.0',
+        backgroundColor: 'bg.block',
         height: 'calc(100vh - 16px)',
         boxShadow: 0,
       }}
@@ -41,8 +41,9 @@ const SidebarSecond = observer(() => {
             height: '52px',
             zIndex: 100,
             p: 0,
-            borderBottom: '1px solid #ECEFFF',
-            borderRadius: '8px',
+            borderBottom: '1px solid',
+            borderColor: 'bg.main',
+            borderRadiusTop: '8px',
           }}
         >
           {router.pathname.includes('/home') && <Home />}

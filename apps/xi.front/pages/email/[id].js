@@ -44,7 +44,7 @@ const Email = observer(() => {
         position="relative"
         sx={{
           minHeight: '100vh',
-          backgroundColor: 'primary.pale', // Цвета есть в файле theme.js и в дефолтной теме в MUI
+          backgroundColor: 'brand.0', // Цвета есть в файле theme.js и в дефолтной теме в MUI
         }}
       >
         <Stack

@@ -10,7 +10,7 @@ export const DateBlock = ({ date, messages }: DayMessagesT) => {
   return (
     <Stack sx={{ p: '8px 0', width: '100%' }} spacing={2}>
       <Stack alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
-        <Badge bgColor="grayscale.5" size="small">
+        <Badge bgColor="petersburg.5" size="small">
           {blockDate}
         </Badge>
       </Stack>

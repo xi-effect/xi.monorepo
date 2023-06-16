@@ -55,7 +55,7 @@ export const EmojiPicker = () => (
 
         '.MuiMenu-paper': {
           border: '1px solid',
-          borderColor: 'grayscale.10',
+          borderColor: 'petersburg.10',
           borderRadius: '8px',
           boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
           p: 0,

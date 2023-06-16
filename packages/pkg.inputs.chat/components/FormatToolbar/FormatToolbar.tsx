@@ -63,10 +63,10 @@ export function FormatToolbar() {
           left: '-10000px',
           marginTop: '0px',
           opacity: 0,
-          bgcolor: 'grayscale.0',
+          bgcolor: 'petersburg.0',
           borderRadius: '8px',
           border: '1px solid',
-          borderColor: 'grayscale.10',
+          borderColor: 'petersburg.10',
           transition: 'opacity 0.75s',
           boxShadow: '0px 8px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
         }}

@@ -33,7 +33,7 @@ export const useThemeDetector = (): [
   }, []);
 
   const setTheme = useCallback((value: 'dark' | 'light' | 'system') => {
-    if (value === 'system') deleteCookie('user-theme');
+    if (value === 'system') deleteCookie('xi.user-theme');
     updateCookie(value);
     setThemeV(value);
   }, []);

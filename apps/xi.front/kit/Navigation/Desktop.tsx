@@ -26,7 +26,7 @@ const Desktop = observer(({ children }: DesktopT) => {
       alignItems="center"
       sx={{
         zIndex: 0,
-        backgroundColor: 'primary.pale',
+        backgroundColor: 'bg.main',
         overflow: 'hidden',
       }}
     >

@@ -37,7 +37,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
         alignItems="center"
         sx={{
           position: 'absolute',
-          bgcolor: 'error.pale',
+          bgcolor: 'moscow.0',
           width: '80px',
           height: '100%',
           borderTopLeftRadius: '8px',
@@ -46,7 +46,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
       >
         <Typography
           sx={{
-            color: 'error.dark',
+            color: 'moscow.80',
             fontWeight: 400,
             fontSize: '12px',
             lineHeight: '16px',
@@ -56,7 +56,7 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
         </Typography>
         <Typography
           sx={{
-            color: 'error.dark',
+            color: 'moscow.80',
             fontWeight: 500,
             fontSize: '16px',
             lineHeight: '22px',
@@ -79,8 +79,8 @@ const Item: React.FC<ItemsT> = observer(({ index }) => {
         <Box
           sx={{
             p: '4px 8px',
-            bgcolor: 'error.pale',
-            color: 'error.dark',
+            bgcolor: 'moscow.0',
+            color: 'moscow.80',
             fontWeight: 500,
             fontSize: '12px',
             lineHeight: '16px',

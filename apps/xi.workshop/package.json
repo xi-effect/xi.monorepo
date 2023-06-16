@@ -52,7 +52,7 @@
     "pkg.navigation.dropdown": "*",
     "pkg.navigation.link": "*",
     "pkg.pages.error": "*",
-    "pkg.theme.scheme": "*",
+    "pkg.theme": "*",
     "pkg.emoji.picker": "*",
     "pkg.utils": "*",
     "pkg.inputs.chat": "*",

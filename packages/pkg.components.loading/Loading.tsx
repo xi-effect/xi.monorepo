@@ -63,7 +63,7 @@ export const Loading = ({ loading }: LoadingProps) => {
             height: '100vh',
             width: '100vw',
             zIndex: 99999,
-            bgcolor: 'primary.pale',
+            bgcolor: 'brand.0',
             overflow: 'hidden',
           }}
           initial={{ opacity: 1 }}
