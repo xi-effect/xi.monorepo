@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { FormControl, MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { Arrow } from 'pkg.icons';
+import { Chevron } from 'pkg.icons';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,
@@ -51,7 +51,7 @@ const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: (
     onClick={onClick}
     sx={{ height: '100%', cursor: 'pointer', pointerEvents: isDisabled ? 'none' : '' }}
   >
-    <Arrow
+    <Chevron
       sx={{
         color: 'petersburg.80',
         transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',

@@ -16,6 +16,7 @@ const AccessCheckbox = forwardRef<HTMLButtonElement, AccessCheckboxT>((props, re
   return (
     <Tooltip title={disabled ? disabledText : ''} placement="left">
       <FormControlLabel
+        className="popper-btn"
         labelPlacement="start"
         sx={{
           '&.MuiFormControlLabel-root': {
@@ -35,7 +36,7 @@ const AccessCheckbox = forwardRef<HTMLButtonElement, AccessCheckboxT>((props, re
         }}
         control={
           <Checkbox
-            icon={<Box width="12px" sx={{ height: '8px', width: '12px' }} />}
+            icon={<Box sx={{ height: '8px', width: '12px' }} />}
             checkedIcon={
               <svg
                 width="12"

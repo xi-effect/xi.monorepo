@@ -1,12 +1,12 @@
 import { Dropdown, DropdownPropsT } from 'pkg.navigation.dropdown';
 import { LayoutPages } from 'kit/LayoutPages';
 import { MenuItem, Typography } from '@mui/material';
-import { Arrow } from 'pkg.icons';
+import { Chevron } from 'pkg.icons';
 
 const DropdownElement = ({ isOpened }: { isOpened: boolean }) => (
   <>
     <Typography sx={{ fontSize: 'inherit', lineHeight: 'inherit' }}>Filled</Typography>
-    <Arrow
+    <Chevron
       sx={{
         transform: `rotate(${isOpened ? '-' : ''}90deg)`,
         color: 'inherit',

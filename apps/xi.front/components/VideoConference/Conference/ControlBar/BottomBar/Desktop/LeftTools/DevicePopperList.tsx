@@ -1,10 +1,7 @@
 import React from 'react';
 import { Box, Button, Menu, MenuItem, Typography } from '@mui/material';
 import { DeviceUnderTestT } from 'kit/UserProfile/ContentItems/SoundAndVideo';
-import { ArrowList } from 'components/VideoConference/Icons/ArrowList';
-import { Camera } from 'components/VideoConference/Icons/Camera';
-import { Microphone } from 'components/VideoConference/Icons/Microphone';
-import { Speaker } from 'components/VideoConference/Icons/Speaker';
+import { ChevronBottom, Camera, Microphone, Sound } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { observer } from 'mobx-react';
 
@@ -47,7 +44,7 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
 
         {device === 'audioinput' && <Microphone />}
 
-        {device === 'audiooutput' && <Speaker />}
+        {device === 'audiooutput' && <Sound />}
 
         <Box component="span" display="inline-block" m="0 auto 0 14px">
           {device === 'videoinput' && 'Встроенная камера'}
@@ -57,10 +54,15 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
           {device === 'audiooutput' && 'Встроенные динамики'}
         </Box>
 
-        <ArrowList
-          transition="transform 0.3s ease"
-          transform={anchorEl ? 'rotate(180deg)' : 'rotate(0)'}
-        />
+        <Box
+          sx={{
+            height: '8px',
+            transition: 'transform 0.3s ease',
+            transform: anchorEl ? 'rotate(180deg)' : 'rotate(0)',
+          }}
+        >
+          <ChevronBottom />
+        </Box>
       </Button>
 
       <Menu

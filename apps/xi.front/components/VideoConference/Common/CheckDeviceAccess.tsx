@@ -15,7 +15,14 @@ const CheckDeviceAccess = observer(() => {
   return stream ? (
     <Conference />
   ) : (
-    <Stack alignItems="center" justifyContent="center" width="100%" height="100%">
+    <Stack
+      alignItems="center"
+      justifyContent="center"
+      sx={{
+        width: '100%',
+        height: '100%',
+      }}
+    >
       <CircularProgress size={80} />
     </Stack>
   );

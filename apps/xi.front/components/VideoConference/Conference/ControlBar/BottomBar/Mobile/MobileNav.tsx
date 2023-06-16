@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Stack, useMediaQuery } from '@mui/material';
-import { Chat, Microphone, Endcall, Camera } from 'pkg.icons';
+import { Chat, Microphone, Endcall, Camera, More } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { observer } from 'mobx-react';
 import ConferenceButton from 'components/VideoConference/Common/ConferenceButton';
-import { More } from 'components/VideoConference/Icons/More';
 import MorePopper from './MorePopper';
 
 const MobileNav = observer(() => {

@@ -17,8 +17,8 @@ const DevicesController: React.FC<DevicesControllerT> = (props) => {
   return (
     <Stack
       direction="row"
-      justifyContent="space-between"
       alignItems="center"
+      justifyContent="space-between"
       sx={{
         height: '48px',
         borderRadius: '24px',

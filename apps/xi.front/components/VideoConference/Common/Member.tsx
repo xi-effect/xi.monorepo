@@ -1,12 +1,8 @@
 import React from 'react';
 import { ConferenceUserT } from 'store/media/mediaSt';
-import { Box, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { Avatar } from 'pkg.data.avatar';
-import { MicrophoneMute } from '../Icons/MicrophoneMute';
-import { Microphone } from '../Icons/Microphone';
-import Hand from '../Icons/Hand';
-import { Camera } from '../Icons/Camera';
-import { CameraMute } from '../Icons/CameraMute';
+import { Camera, Hand, Microphone } from 'pkg.icons';
 
 type MemberT = {
   user: ConferenceUserT;
@@ -40,11 +36,11 @@ const Member: React.FC<MemberT> = (props) => {
       </Stack>
 
       <Stack mb="8px" direction="row" alignItems="center">
-        {raiseHand && <Hand />}
+        {raiseHand && <Hand active />}
 
-        <Box m="0 10px">{audioinput ? <Microphone /> : <MicrophoneMute />}</Box>
+        {audioinput ? <Microphone sx={{ m: '0 5px' }} /> : <Microphone mute sx={{ m: '0 5px' }} />}
 
-        {videoinput ? <Camera /> : <CameraMute />}
+        {videoinput ? <Camera /> : <Camera mute />}
       </Stack>
     </Stack>
   );

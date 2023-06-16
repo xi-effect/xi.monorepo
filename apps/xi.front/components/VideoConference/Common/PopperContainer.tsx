@@ -6,13 +6,12 @@ export type PopperContainerT = {
   open?: boolean;
   className?: string;
   closeMenu: () => void;
-
   anchorEl: null | HTMLElement;
   placement?: PopperPlacementType;
 };
 
 const PopperContainer: React.FC<PropsWithChildren<PopperContainerT>> = (props) => {
-  const { closeMenu, anchorEl, sx, children, placement, open, className } = props;
+  const { closeMenu, anchorEl, sx, children, placement, open, className = 'popper' } = props;
 
   const listener = (e) => {
     const target = e.target as HTMLElement;

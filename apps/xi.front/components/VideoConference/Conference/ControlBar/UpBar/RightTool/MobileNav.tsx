@@ -1,8 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
 import ConferenceButton from 'components/VideoConference/Common/ConferenceButton';
-import { Bluetooth } from 'components/VideoConference/Icons/Bluetooth';
-import { Flip } from 'components/VideoConference/Icons/Flip';
+import { Bluetooth, FlipCamera } from 'pkg.icons';
 
 const MobileNav = () => {
   const btnStyles = {
@@ -14,6 +13,7 @@ const MobileNav = () => {
   return (
     <Stack
       direction="row"
+      alignItems="center"
       justifyContent="space-between"
       sx={{
         width: '72px',
@@ -27,7 +27,7 @@ const MobileNav = () => {
       </ConferenceButton>
 
       <ConferenceButton sx={btnStyles} title="Перевернуть камеру" onClick={() => {}}>
-        <Flip />
+        <FlipCamera />
       </ConferenceButton>
     </Stack>
   );

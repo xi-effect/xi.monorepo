@@ -5,8 +5,7 @@ import { Avatar } from 'pkg.data.avatar';
 import { observer } from 'mobx-react';
 import { ConferenceUserT } from 'store/media/mediaSt';
 import { useStore } from 'store/connect';
-import { Microphone } from 'components/VideoConference/Icons/Microphone';
-import { MicrophoneMute } from '../../Icons/MicrophoneMute';
+import { Microphone } from 'pkg.icons';
 import { StateViewT } from '../Conference';
 
 type UserT = {
@@ -110,7 +109,15 @@ const User: React.FC<UserT & StateViewT> = observer((props) => {
           backgroundColor: admin ? 'success.main' : 'grayscale.100',
         }}
       >
-        {audioinput ? <Microphone mr="7.5px" /> : <MicrophoneMute color="#999" mr="7.5px" />}
+        <Microphone
+          mute={!audioinput}
+          fill="#999"
+          sx={{
+            width: '15px',
+            height: '15px',
+            mr: '7.5px',
+          }}
+        />
 
         <Typography
           fontSize={12}

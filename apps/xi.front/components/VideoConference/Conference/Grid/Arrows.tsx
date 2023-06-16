@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Box, IconButton, Tooltip } from '@mui/material';
-import { Arrow } from '../../Icons/Arrow';
+import { ArrowLeft, ArrowRight } from 'pkg.icons';
 
 type ArrowsT = {
   maxPage: number;
@@ -46,8 +46,13 @@ const Arrows: React.FC<ArrowsT> = (props) => {
             pointerEvents: buttonStates.left ? 'none' : 'default',
           }}
         >
-          <Box width="16px" height="16px">
-            <Arrow />
+          <Box
+            sx={{
+              width: '16px',
+              height: '16px',
+            }}
+          >
+            <ArrowLeft />
           </Box>
         </IconButton>
       </Tooltip>
@@ -62,8 +67,13 @@ const Arrows: React.FC<ArrowsT> = (props) => {
             pointerEvents: buttonStates.right ? 'none' : 'default',
           }}
         >
-          <Box sx={{ transform: 'rotate(180deg)' }} width="16px" height="16px">
-            <Arrow />
+          <Box
+            sx={{
+              width: '16px',
+              height: '16px',
+            }}
+          >
+            <ArrowRight />
           </Box>
         </IconButton>
       </Tooltip>

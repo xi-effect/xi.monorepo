@@ -1,10 +1,9 @@
 import { IconButton, Stack, Typography, useMediaQuery } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import { useStore } from 'store/connect';
-import { Send, Close } from 'pkg.icons';
+import { Send, Close, Clip } from 'pkg.icons';
 import { observer } from 'mobx-react';
 import UserChat from '../../Common/UserChat';
-import { File } from '../../Icons/File';
 
 export type ChatUserT = {
   author: string;
@@ -102,7 +101,7 @@ const Chat = observer(() => {
 
       <Stack p="10px 16px 0 0" height="28px" direction="row" alignItems="center">
         <IconButton onClick={() => fileRef.current?.click()} sx={{ p: 0, color: '#E6E6E6' }}>
-          <File />
+          <Clip />
 
           <input ref={fileRef} type="file" style={{ display: 'none' }} />
         </IconButton>

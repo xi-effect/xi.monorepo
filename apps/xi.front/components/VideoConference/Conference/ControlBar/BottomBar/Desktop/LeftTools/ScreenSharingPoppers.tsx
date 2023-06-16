@@ -3,8 +3,7 @@ import PopperContainer, {
   PopperContainerT,
 } from 'components/VideoConference/Common/PopperContainer';
 import { Button, Typography } from '@mui/material';
-import { Screen } from 'components/VideoConference/Icons/Screen';
-import { Window } from 'components/VideoConference/Icons/Window';
+import { ShareScreen, Window } from 'pkg.icons';
 
 const ScreenSharingPoppers: React.FC<PopperContainerT> = (props) => {
   const { anchorEl, closeMenu } = props;
@@ -40,17 +39,23 @@ const ScreenSharingPoppers: React.FC<PopperContainerT> = (props) => {
       anchorEl={anchorEl}
       closeMenu={closeMenu}
     >
-      <Typography fontSize="20px" fontWeight={500} p="8px">
+      <Typography
+        sx={{
+          p: '8px',
+          fontSize: '20px',
+          fontWeight: 500,
+        }}
+      >
         Показать
       </Typography>
 
       <Button sx={{ ...btnStyles, mb: '8px' }}>
-        <Screen mr="15px" />
+        <ShareScreen sx={{ mr: '15px' }} />
         Весь ваш экран
       </Button>
 
       <Button sx={btnStyles}>
-        <Window mr="15px" />
+        <Window sx={{ mr: '15px' }} />
         Отдельное окно
       </Button>
     </PopperContainer>
