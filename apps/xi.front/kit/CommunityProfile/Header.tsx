@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
-import { Close, Arrow, Burger } from 'pkg.icons';
+import { Close, Chevron, Burger } from 'pkg.icons';
 
 const settingsTitles = [
   'Обзор',
@@ -60,7 +60,7 @@ const Header = observer(({ activeContent, changeMenuStatus, handleCloseProfile }
             backgroundColor: 'petersburg.0',
           }}
         >
-          <Arrow />
+          <Chevron />
         </IconButton>
         <Typography
           sx={{
