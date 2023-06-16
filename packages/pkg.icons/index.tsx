@@ -4,7 +4,7 @@ import { Add } from './Add';
 import { AddCategory } from './AddCategory';
 import { AddChannel } from './AddChannel';
 import { Announce } from './Announce';
-import { Arrow } from './Arrow';
+import { Chevron } from './Chevron';
 import { Bold } from './Bold';
 import { Burger } from './Burger';
 import { Calendar } from './Calendar';
@@ -64,6 +64,15 @@ import { Ul } from './Ul';
 import { Underline } from './Underline';
 import { Updates } from './Updates';
 import { Users } from './Users';
+import { ArrowLeft } from './ArrowLeft';
+import { ArrowRight } from './ArrowRight';
+import { ChevronBottom } from './ChevronBottom';
+import { Bluetooth } from './Bluetooth';
+import { FlipCamera } from './FlipCamera';
+import { More } from './More';
+import { ShareScreen } from './ShareScreen';
+import { Sound } from './Sound';
+import { Window } from './Window';
 import { icons } from './config';
 
 export {
@@ -73,7 +82,7 @@ export {
   AddCategory,
   AddChannel,
   Announce,
-  Arrow,
+  Chevron,
   Bold,
   Burger,
   Calendar,
@@ -133,6 +142,15 @@ export {
   Underline,
   Updates,
   Users,
+  ArrowLeft,
+  ArrowRight,
+  ChevronBottom,
+  Bluetooth,
+  FlipCamera,
+  Sound,
+  ShareScreen,
+  More,
+  Window,
   icons,
 };
 
