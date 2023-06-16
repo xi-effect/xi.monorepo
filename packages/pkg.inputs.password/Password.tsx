@@ -77,14 +77,37 @@ export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
         sx={{
           height: size === 'm' ? '48px' : '32px',
           mb: '8px',
+          outline: 'none',
           '.MuiInputBase-root': {
             height: '100%',
             pr: size === 's' ? '12px' : '16px',
+            '&:hover': {
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'petersburg.50',
+              },
+              '& .MuiSvgIcon-root': {
+                color: 'petersburg.50',
+              },
+            },
+            '&.Mui-focused': {
+              borderColor: 'petersburg.80',
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'petersburg.80',
+              },
+              '& .MuiSvgIcon-root': {
+                color: 'petersburg.80',
+              },
+            },
           },
           '.MuiOutlinedInput-notchedOutline': {
             border: '2px solid',
             borderColor: 'petersburg.30',
             borderRadius: size === 's' ? '6px' : '8px',
+          },
+          '.MuiFormLabel-root': {
+            '&.Mui-focused': {
+              color: 'petersburg.80',
+            },
           },
         }}
       />
