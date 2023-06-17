@@ -112,20 +112,22 @@ export const Password = ({ size = 'm', type = 'default', width = '250px' }: Pass
           '.MuiInputBase-root': {
             height: '100%',
             pr: size === 's' ? '12px' : '16px',
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: inputColor,
-            },
+            border: '2px solid',
+            borderRadius: size === 's' ? '6px' : '8px',
+            borderColor: inputColor,
+            transition: '0.3s',
             '& .MuiSvgIcon-root': {
               color: inputColor,
             },
           },
           '.MuiOutlinedInput-notchedOutline': {
-            border: '2px solid',
-            borderColor: inputColor,
-            borderRadius: size === 's' ? '6px' : '8px',
+            border: 'none',
           },
           '.MuiFormLabel-root': {
             color: inputColor,
+            '&.Mui-focused': {
+              display: 'none',
+            },
           },
         }}
       />
