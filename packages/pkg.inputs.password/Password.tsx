@@ -44,8 +44,9 @@ export const Password = ({
 
   const inputColor = useMemo(() => {
     if (fieldType === 'login') {
-      if (type === 'error') return 'mocsow.80';
+      if (type === 'error') return 'moscow.80';
       if (type === 'warning') return 'kungur.80';
+      if (type === 'disabled') return 'petersburg.10';
     }
 
     if (focus) return 'petersburg.80';
@@ -80,28 +81,35 @@ export const Password = ({
   }, [size]);
 
   return (
-    <FormControl variant="outlined" sx={{ width }}>
+    <FormControl sx={{ width }}>
       <Input
         type={showPassword ? 'text' : 'password'}
         value={password ?? ''}
+        variant={type === 'disabled' ? 'filled' : 'outlined'}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <Eyeoff sx={{ ...IconSizes }} /> : <Eyeon sx={{ ...IconSizes }} />}
-              </IconButton>
+              {type !== 'disabled' && (
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? (
+                    <Eyeoff sx={{ ...IconSizes }} />
+                  ) : (
+                    <Eyeon sx={{ ...IconSizes }} />
+                  )}
+                </IconButton>
+              )}
             </InputAdornment>
           ),
         }}
         label="Пароль"
         InputLabelProps={{
           style: {
-            color: inputColor,
+            color: type === 'disabled' ? 'petersburg.30' : inputColor,
             ...LabelSizes,
           },
         }}
@@ -110,13 +118,14 @@ export const Password = ({
         onMouseLeave={onMouseOut}
         onFocus={onFocus}
         onBlur={outFocus}
+        disabled={type === 'disabled'}
         sx={{
           height: size === 'm' ? '48px' : '32px',
           mb: '8px',
           outline: 'none',
           '.MuiInputBase-root': {
             height: '100%',
-            pr: size === 's' ? '12px' : '16px',
+            pr: size === 's' ? '10px' : '14px',
             border: '2px solid',
             borderRadius: size === 's' ? '6px' : '8px',
             borderColor: inputColor,
@@ -124,6 +133,12 @@ export const Password = ({
             '& .MuiSvgIcon-root': {
               color: inputColor,
             },
+            '&::before': {
+              display: 'none',
+            },
+          },
+          '& .MuiOutlinedInput-input': {
+            pl: size === 's' ? '8px' : '12px',
           },
           '.MuiOutlinedInput-notchedOutline': {
             border: 'none',
