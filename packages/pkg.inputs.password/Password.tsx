@@ -6,8 +6,10 @@ import { StrengthBar } from './StrengthBar';
 import { usePasswordStrength } from './PasswordStrength';
 import { PasswordProps } from './types';
 
-export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
+export const Password = ({ size = 'm', type = 'default', width = '250px' }: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [focus, setFocus] = useState(false);
 
   const { password, updatePassword, strengthValue, error, color } = usePasswordStrength();
 
@@ -20,6 +22,31 @@ export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
     const input: any = e.target as HTMLInputElement;
     updatePassword(input.value || null);
   };
+
+  const onMouseOn = () => {
+    setHover(true);
+  };
+  const onMouseOut = () => {
+    setHover(false);
+  };
+
+  const onFocus = () => {
+    setFocus(true);
+  };
+  const outFocus = () => {
+    setFocus(false);
+  };
+
+  const inputColor = useMemo(() => {
+    if (type !== 'default') {
+      if (type === 'error') return 'mocsow.80';
+      if (type === 'warning') return 'kungur.80';
+    }
+    if (error) return color;
+    if (focus) return 'petersburg.80';
+    if (hover) return 'petersburg.50';
+    return color;
+  }, [hover, focus, color]);
 
   const IconSizes = useMemo(() => {
     if (size === 's') {
@@ -69,11 +96,15 @@ export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
         label="Пароль"
         InputLabelProps={{
           style: {
-            color: 'petersburg.60',
+            color: inputColor,
             ...LabelSizes,
           },
         }}
         onChange={handlePasswordChange}
+        onMouseEnter={onMouseOn}
+        onMouseLeave={onMouseOut}
+        onFocus={onFocus}
+        onBlur={outFocus}
         sx={{
           height: size === 'm' ? '48px' : '32px',
           mb: '8px',
@@ -81,33 +112,20 @@ export const Password = ({ size = 'm', width = '250px' }: PasswordProps) => {
           '.MuiInputBase-root': {
             height: '100%',
             pr: size === 's' ? '12px' : '16px',
-            '&:hover': {
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'petersburg.50',
-              },
-              '& .MuiSvgIcon-root': {
-                color: 'petersburg.50',
-              },
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: inputColor,
             },
-            '&.Mui-focused': {
-              borderColor: 'petersburg.80',
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'petersburg.80',
-              },
-              '& .MuiSvgIcon-root': {
-                color: 'petersburg.80',
-              },
+            '& .MuiSvgIcon-root': {
+              color: inputColor,
             },
           },
           '.MuiOutlinedInput-notchedOutline': {
             border: '2px solid',
-            borderColor: 'petersburg.30',
+            borderColor: inputColor,
             borderRadius: size === 's' ? '6px' : '8px',
           },
           '.MuiFormLabel-root': {
-            '&.Mui-focused': {
-              color: 'petersburg.80',
-            },
+            color: inputColor,
           },
         }}
       />

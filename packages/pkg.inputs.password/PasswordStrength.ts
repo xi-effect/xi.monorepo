@@ -33,6 +33,7 @@ export const usePasswordStrength = () => {
   const [password, setPassword] = useState<null | string>(null);
 
   const color = useMemo(() => {
+    if (strengthValue === 0) return 'petersburg.30';
     if (strengthValue < 20) return 'moscow.100';
     if (strengthValue >= 20 && strengthValue < 80) return 'kungur.100';
     return 'ekaterinburg.100';
