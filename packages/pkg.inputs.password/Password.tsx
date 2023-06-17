@@ -2,6 +2,7 @@ import { useState, MouseEvent, ChangeEvent, useMemo } from 'react';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
 import { Eyeoff, Eyeon } from 'pkg.icons';
+import { WeakPasswordTooltip } from './WeakPasswordTooltip';
 import { StrengthBar } from './StrengthBar';
 import { usePasswordStrength } from './PasswordStrength';
 import { PasswordProps } from './types';
@@ -160,7 +161,7 @@ export const Password = ({
           <StrengthBar progress={strengthValue} color={color} />
           <FormHelperText sx={{ color, fontSize: '12px', lineHeight: '16px' }}>
             {strengthValue < 80 || weakPassword ? error : 'Надежный пароль'}
-            {weakPassword}
+            {weakPassword && <WeakPasswordTooltip />}
           </FormHelperText>
         </>
       )}

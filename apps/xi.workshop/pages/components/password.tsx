@@ -4,51 +4,51 @@ import { Password, PasswordProps } from 'pkg.inputs.password';
 
 const passwords: PasswordProps[] = [
   {
-    fieldType: 'login',
+    fieldType: 'setup',
     size: 's',
   },
   {
-    fieldType: 'login',
+    fieldType: 'setup',
     size: 'm',
-  },
-  {
-    fieldType: 'login',
-    size: 's',
-    type: 'warning',
-  },
-  {
-    fieldType: 'login',
-    size: 'm',
-    type: 'warning',
-  },
-  {
-    fieldType: 'login',
-    size: 's',
-    type: 'error',
-  },
-  {
-    fieldType: 'login',
-    size: 'm',
-    type: 'error',
-  },
-  {
-    fieldType: 'login',
-    size: 's',
-    type: 'disabled',
-  },
-  {
-    fieldType: 'login',
-    size: 'm',
-    type: 'disabled',
   },
 
   {
-    fieldType: 'setup',
+    fieldType: 'login',
     size: 's',
   },
   {
-    fieldType: 'setup',
+    fieldType: 'login',
     size: 'm',
+  },
+  {
+    fieldType: 'login',
+    size: 's',
+    type: 'warning',
+  },
+  {
+    fieldType: 'login',
+    size: 'm',
+    type: 'warning',
+  },
+  {
+    fieldType: 'login',
+    size: 's',
+    type: 'error',
+  },
+  {
+    fieldType: 'login',
+    size: 'm',
+    type: 'error',
+  },
+  {
+    fieldType: 'login',
+    size: 's',
+    type: 'disabled',
+  },
+  {
+    fieldType: 'login',
+    size: 'm',
+    type: 'disabled',
   },
 ];
 

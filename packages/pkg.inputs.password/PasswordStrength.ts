@@ -69,7 +69,7 @@ export const usePasswordStrength = () => {
       if (isWeak) {
         setWeakPassword(true);
         setError('Такой пароль легко вломать');
-        setStrengthValue(20);
+        setStrengthValue(10);
       } else {
         setWeakPassword(false);
       }
