@@ -6,7 +6,12 @@ import { StrengthBar } from './StrengthBar';
 import { usePasswordStrength } from './PasswordStrength';
 import { PasswordProps } from './types';
 
-export const Password = ({ size = 'm', type = 'default', width = '250px' }: PasswordProps) => {
+export const Password = ({
+  size = 'm',
+  type = 'default',
+  fieldType = 'login',
+  width = '250px',
+}: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [hover, setHover] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -38,14 +43,14 @@ export const Password = ({ size = 'm', type = 'default', width = '250px' }: Pass
   };
 
   const inputColor = useMemo(() => {
-    if (type !== 'default') {
+    if (fieldType === 'login') {
       if (type === 'error') return 'mocsow.80';
       if (type === 'warning') return 'kungur.80';
     }
-    if (error) return color;
+
     if (focus) return 'petersburg.80';
     if (hover) return 'petersburg.50';
-    return color;
+    return 'petersburg.30';
   }, [hover, focus, color]);
 
   const IconSizes = useMemo(() => {
@@ -125,16 +130,23 @@ export const Password = ({ size = 'm', type = 'default', width = '250px' }: Pass
           },
           '.MuiFormLabel-root': {
             color: inputColor,
+            '&.MuiFormLabel-filled': {
+              display: 'none',
+            },
             '&.Mui-focused': {
               display: 'none',
             },
           },
         }}
       />
-      <StrengthBar progress={strengthValue} color={color} />
-      <FormHelperText sx={{ color, fontSize: '12px', lineHeight: '16px' }}>
-        {strengthValue < 80 ? error : 'Надежный пароль'}
-      </FormHelperText>
+      {fieldType === 'setup' && (
+        <>
+          <StrengthBar progress={strengthValue} color={color} />
+          <FormHelperText sx={{ color, fontSize: '12px', lineHeight: '16px' }}>
+            {strengthValue < 80 ? error : 'Надежный пароль'}
+          </FormHelperText>
+        </>
+      )}
     </FormControl>
   );
 };
