@@ -27,9 +27,12 @@ const VALIDATIONS = (password: string) => [
   },
 ];
 
+const WEAK_PASS = ['Test1234', 'Qwerty1234'];
+
 export const usePasswordStrength = () => {
   const [strengthValue, setStrengthValue] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
+  const [weakPassword, setWeakPassword] = useState<boolean>(false);
   const [password, setPassword] = useState<null | string>(null);
 
   const color = useMemo(() => {
@@ -60,9 +63,23 @@ export const usePasswordStrength = () => {
 
   const updatePassword = (value: string) => setPassword(value);
 
+  const checkWeakPass = () => {
+    if (strengthValue >= 80) {
+      const isWeak = WEAK_PASS.includes(password ?? '');
+      if (isWeak) {
+        setWeakPassword(true);
+        setError('Такой пароль легко вломать');
+        setStrengthValue(20);
+      } else {
+        setWeakPassword(false);
+      }
+    }
+  };
+
   useEffect(() => {
     checkStrength();
+    checkWeakPass();
   }, [password]);
 
-  return { password, updatePassword, strengthValue, error, color };
+  return { password, updatePassword, strengthValue, error, color, weakPassword };
 };

@@ -16,7 +16,8 @@ export const Password = ({
   const [hover, setHover] = useState(false);
   const [focus, setFocus] = useState(false);
 
-  const { password, updatePassword, strengthValue, error, color } = usePasswordStrength();
+  const { password, updatePassword, strengthValue, error, color, weakPassword } =
+    usePasswordStrength();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
@@ -158,7 +159,8 @@ export const Password = ({
         <>
           <StrengthBar progress={strengthValue} color={color} />
           <FormHelperText sx={{ color, fontSize: '12px', lineHeight: '16px' }}>
-            {strengthValue < 80 ? error : 'Надежный пароль'}
+            {strengthValue < 80 || weakPassword ? error : 'Надежный пароль'}
+            {weakPassword}
           </FormHelperText>
         </>
       )}
