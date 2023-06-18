@@ -12,6 +12,7 @@ export const Password = ({
   type = 'default',
   fieldType = 'login',
   width = '250px',
+  ...props
 }: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [hover, setHover] = useState(false);
@@ -48,19 +49,18 @@ export const Password = ({
     if (fieldType === 'login') {
       if (type === 'error') return 'moscow.80';
       if (type === 'warning') return 'kungur.80';
-      if (type === 'disabled') return 'petersburg.10';
+      if (type === 'disabled') return 'petersburg.30';
     }
 
     if (focus) return 'petersburg.80';
     if (hover) return 'petersburg.50';
-    return 'petersburg.30';
+    return 'petersburg.60';
   }, [hover, focus, color]);
 
   const IconSizes = useMemo(() => {
     if (size === 's') {
       return { fontSize: '16px' };
     }
-
     return { fontSize: '24px' };
   }, [size]);
 
@@ -110,7 +110,7 @@ export const Password = ({
         }}
         label="Пароль"
         InputLabelProps={{
-          style: {
+          sx: {
             color: type === 'disabled' ? 'petersburg.30' : inputColor,
             ...LabelSizes,
           },
@@ -130,8 +130,9 @@ export const Password = ({
             pr: size === 's' ? '10px' : '14px',
             border: '2px solid',
             borderRadius: size === 's' ? '6px' : '8px',
-            borderColor: inputColor,
+            borderColor: type === 'disabled' ? 'petersburg.10' : inputColor,
             transition: '0.3s',
+            bgcolor: type === 'disabled' ? 'petersburg.10' : 'unset',
             '& .MuiSvgIcon-root': {
               color: inputColor,
             },
@@ -155,11 +156,21 @@ export const Password = ({
             },
           },
         }}
+        {...props}
       />
       {fieldType === 'setup' && (
         <>
           <StrengthBar progress={strengthValue} color={color} />
-          <FormHelperText sx={{ color, fontSize: '12px', lineHeight: '16px' }}>
+          <FormHelperText
+            sx={{
+              color,
+              fontSize: '12px',
+              lineHeight: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
             {strengthValue < 80 || weakPassword ? error : 'Надежный пароль'}
             {weakPassword && <WeakPasswordTooltip />}
           </FormHelperText>

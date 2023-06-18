@@ -37,12 +37,13 @@ export const usePasswordStrength = () => {
 
   const color = useMemo(() => {
     if (strengthValue === 0) return 'petersburg.30';
-    if (strengthValue < 20) return 'moscow.100';
-    if (strengthValue >= 20 && strengthValue < 80) return 'kungur.100';
+    if (strengthValue <= 25) return 'moscow.100';
+    if (strengthValue > 25 && strengthValue < 80) return 'kungur.100';
     return 'ekaterinburg.100';
   }, [strengthValue]);
 
   const checkStrength = () => {
+    setWeakPassword(false);
     if (password) {
       const validations = VALIDATIONS(password);
 
@@ -69,7 +70,7 @@ export const usePasswordStrength = () => {
       if (isWeak) {
         setWeakPassword(true);
         setError('Такой пароль легко вломать');
-        setStrengthValue(10);
+        setStrengthValue(25);
       } else {
         setWeakPassword(false);
       }

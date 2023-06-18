@@ -63,6 +63,9 @@ export const WeakPasswordTooltip = () => {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '50%',
+          padding: '3px',
+          fontSize: '7px',
+          fontWeight: 600,
         }}
       >
         ?
