@@ -13,7 +13,7 @@ const ScreenSharingPoppers: React.FC<PopperContainerT> = (props) => {
     width: '100%',
     fontWeight: 500,
     fontSize: '12px',
-    color: 'grayscale.0',
+    color: 'petersburg.0',
     borderRadius: '12px',
     alignItems: 'center',
     textTransform: 'none',
@@ -22,7 +22,7 @@ const ScreenSharingPoppers: React.FC<PopperContainerT> = (props) => {
     transition: 'background 0.3s ease',
 
     '&:hover': {
-      backgroundColor: 'grayscale.90',
+      backgroundColor: 'petersburg.90',
     },
   };
 
@@ -32,8 +32,8 @@ const ScreenSharingPoppers: React.FC<PopperContainerT> = (props) => {
         p: '8px',
         width: '350px',
         borderRadius: '20px',
-        color: 'grayscale.0',
-        backgroundColor: 'grayscale.100',
+        color: 'petersburg.0',
+        backgroundColor: 'petersburg.100',
       }}
       placement="top"
       anchorEl={anchorEl}

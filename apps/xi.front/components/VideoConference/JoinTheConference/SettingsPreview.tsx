@@ -53,7 +53,7 @@ const SettingsPreview = observer((props) => {
         m: '16px',
         flex: '0 1 50%',
         borderRadius: '8px',
-        backgroundColor: 'grayscale.0',
+        backgroundColor: 'petersburg.0',
       }}
     >
       <Box
@@ -61,20 +61,39 @@ const SettingsPreview = observer((props) => {
           p: '12px',
           mb: '32px',
           borderRadius: '8px',
-          backgroundColor: 'grayscale.5',
+          backgroundColor: 'petersburg.5',
         }}
       >
-        <Typography lineHeight="24px" fontWeight={500} fontSize="20px" mb="8px">
+        <Typography
+          sx={{
+            mb: '8px',
+            fontWeight: 500,
+            fontSize: '20px',
+            lineHeight: '24px',
+          }}
+        >
           Конференция не началась
         </Typography>
 
-        <Typography lineHeight="20px" fontSize="16px">
+        <Typography
+          sx={{
+            fontSize: '16px',
+            lineHeight: '20px',
+          }}
+        >
           Дождитесь организатора
         </Typography>
       </Box>
 
-      <Box mb="32px">
-        <Typography lineHeight="18px" fontWeight={500} fontSize="14px" mb="4px">
+      <Box sx={{ mb: '32px' }}>
+        <Typography
+          sx={{
+            mb: '4px',
+            fontWeight: 500,
+            fontSize: '14px',
+            lineHeight: '18px',
+          }}
+        >
           Камера
         </Typography>
 
@@ -85,12 +104,19 @@ const SettingsPreview = observer((props) => {
         />
       </Box>
 
-      <Box mb="32px">
-        <Typography lineHeight="18px" fontWeight={500} fontSize="14px" mb="4px">
+      <Box sx={{ mb: '32px' }}>
+        <Typography
+          sx={{
+            mb: '4px',
+            fontWeight: 500,
+            fontSize: '14px',
+            lineHeight: '18px',
+          }}
+        >
           Звук
         </Typography>
 
-        <Box mb="8px">
+        <Box sx={{ mb: '8px' }}>
           <DeviceMenu
             device="audioinput"
             deviceControl={changeAudioInput}

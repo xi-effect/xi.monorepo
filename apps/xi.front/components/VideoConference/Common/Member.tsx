@@ -18,24 +18,54 @@ const Member: React.FC<MemberT> = (props) => {
   } = props;
 
   return (
-    <Stack direction="row" alignItems="center" flexWrap="wrap" justifyContent="space-between">
-      <Stack mb="8px" direction="row" alignItems="center">
+    <Stack
+      sx={{
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Stack
+        sx={{
+          mb: '8px',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
         <div>
           <Avatar size={24} />
         </div>
 
-        <Typography fontWeight={500} fontSize={14} m="0 6px">
+        <Typography
+          sx={{
+            m: '0 6px',
+            fontWeight: 500,
+            fontSize: '14px',
+          }}
+        >
           {name}
         </Typography>
 
         {admin && (
-          <Typography fontSize={14} color="grayscale.40">
+          <Typography
+            sx={{
+              fontSize: '14px',
+              color: 'petersburg.40',
+            }}
+          >
             Хост
           </Typography>
         )}
       </Stack>
 
-      <Stack mb="8px" direction="row" alignItems="center">
+      <Stack
+        sx={{
+          mb: '8px',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
         {raiseHand && <Hand active />}
 
         {audioinput ? <Microphone sx={{ m: '0 5px' }} /> : <Microphone mute sx={{ m: '0 5px' }} />}

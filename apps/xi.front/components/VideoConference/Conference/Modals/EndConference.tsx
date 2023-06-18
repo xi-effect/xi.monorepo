@@ -21,16 +21,16 @@ const EndConference = observer(() => {
     lineHeight: '22px',
     borderRadius: '8px',
     textTransform: 'none ',
-    color: 'grayscale.40',
+    color: 'petersburg.40',
     border: '1px solid #999',
     fontSize: sm ? '14px' : '18px',
     backgroundColor: 'transparent',
     transition: 'background 0.3s ease, color 0.3s ease, border 0.3s ease,',
 
     '&:hover': {
-      color: 'grayscale.0',
+      color: 'petersburg.0',
       border: '1px solid #F42D2D',
-      backgroundColor: 'error.dark',
+      backgroundColor: 'moscow.100',
     },
   };
 
@@ -53,7 +53,7 @@ const EndConference = observer(() => {
             borderRadius: '16px',
             position: 'relative',
             width: sm ? '95%' : '425px',
-            backgroundColor: 'grayscale.100',
+            backgroundColor: 'petersburg.100',
             transform: 'translate(-50%, -50%)',
           }}
         >

@@ -6,24 +6,26 @@ const NoUsers = () => {
 
   return (
     <Stack
-      alignItems="center"
-      justifyContent="center"
       sx={{
         m: '8px',
         p: '20px',
         height: '47%',
         textAlign: 'center',
         borderRadius: '8px',
-        bgcolor: 'grayscale.80',
+        bgcolor: 'petersburg.80',
+        alignItems: 'center',
+        justifyContent: 'center',
         flex: tablet ? '1 1 90%' : '1 1 40%',
       }}
     >
       <Typography
-        maxWidth="400px"
-        mb={tablet ? '32px' : 0}
-        color="grayscale.0"
-        fontSize={24}
-        fontWeight={600}
+        sx={{
+          fontWeight: 600,
+          maxWidth: '400px',
+          fontSize: '24px',
+          color: 'petersburg.0',
+          mb: tablet ? '32px' : 0,
+        }}
       >
         {tablet
           ? 'Пригласите других участников, отправив ссылку на встречу'
@@ -36,12 +38,12 @@ const NoUsers = () => {
           sx={{
             height: '56px',
             maxWidth: '312px',
-            color: 'grayscale.0',
-            backgroundColor: 'primary.dark',
+            color: 'petersburg.0',
+            backgroundColor: 'brand.80',
 
             '&:hover': {
-              color: 'grayscale.40',
-              backgroundColor: 'grayscale.10',
+              color: 'petersburg.40',
+              backgroundColor: 'petersburg.10',
             },
           }}
         >

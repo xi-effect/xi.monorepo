@@ -49,12 +49,19 @@ const MembersSettingsMorePopper: React.FC<MemberSettingsPopperT> = (props) => {
             left: '50%',
             width: '100%',
             position: 'absolute',
-            bgcolor: 'grayscale.100',
+            bgcolor: 'petersburg.100',
             transform: 'translateX(-50%)',
             borderRadius: '16px 16px 0px 0px',
           }}
         >
-          <Typography color="grayscale.0" fontWeight={600} fontSize="20px" mb="16px">
+          <Typography
+            sx={{
+              mb: '16px',
+              fontWeight: 600,
+              fontSize: '20px',
+              color: 'petersburg.0',
+            }}
+          >
             Разрешения участников:
           </Typography>
 
@@ -64,8 +71,8 @@ const MembersSettingsMorePopper: React.FC<MemberSettingsPopperT> = (props) => {
               width: '100%',
               p: '12px 16px',
               borderRadius: '8px',
-              color: 'grayscale.0',
-              backgroundColor: 'grayscale.80',
+              color: 'petersburg.0',
+              backgroundColor: 'petersburg.80',
             }}
           >
             {memberOptions}
@@ -78,7 +85,7 @@ const MembersSettingsMorePopper: React.FC<MemberSettingsPopperT> = (props) => {
               p: '12px 16px',
               fontWeight: 500,
               fontSize: '16px',
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               alignItems: 'center',
               textTransform: 'none',
               borderRadius: '8px',
@@ -87,7 +94,7 @@ const MembersSettingsMorePopper: React.FC<MemberSettingsPopperT> = (props) => {
               transition: 'background 0.3s ease',
 
               '&:hover': {
-                backgroundColor: 'grayscale.90',
+                backgroundColor: 'petersburg.90',
               },
             }}
           >
@@ -104,13 +111,19 @@ const MembersSettingsMorePopper: React.FC<MemberSettingsPopperT> = (props) => {
         p: '8px 16px',
         width: '240px',
         borderRadius: '8px',
-        color: 'grayscale.0',
-        backgroundColor: 'grayscale.80',
+        color: 'petersburg.0',
+        backgroundColor: 'petersburg.80',
       }}
       anchorEl={anchorEl}
       closeMenu={onClosePopper}
     >
-      <Typography fontWeight={700} fontSize="14px" mb="17px">
+      <Typography
+        sx={{
+          mb: '17px',
+          fontWeight: 700,
+          fontSize: '14px',
+        }}
+      >
         Разрешения участников:
       </Typography>
 

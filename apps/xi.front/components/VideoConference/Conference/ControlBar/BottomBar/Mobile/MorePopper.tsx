@@ -28,16 +28,16 @@ const MoreModal: React.FC<MoreModalT> = observer((props) => {
     p: '12px 16px',
     fontWeight: 500,
     fontSize: '16px',
-    color: 'grayscale.0',
+    color: 'petersburg.0',
     alignItems: 'center',
     textTransform: 'none',
     justifyContent: 'space-between',
-    backgroundColor: 'grayscale.90',
+    backgroundColor: 'petersburg.90',
     transition: 'background 0.3s ease',
     borderRadius: '16px 16px 0px 0px',
 
     '&:hover': {
-      backgroundColor: 'grayscale.80',
+      backgroundColor: 'petersburg.80',
     },
   };
 
@@ -48,7 +48,7 @@ const MoreModal: React.FC<MoreModalT> = observer((props) => {
     backgroundColor: 'transparent',
 
     '&:hover': {
-      backgroundColor: 'grayscale.90',
+      backgroundColor: 'petersburg.90',
     },
   };
 
@@ -82,7 +82,7 @@ const MoreModal: React.FC<MoreModalT> = observer((props) => {
             bottom: 0,
             left: '50%',
             position: 'absolute',
-            bgcolor: 'grayscale.100',
+            bgcolor: 'petersburg.100',
             transform: 'translateX(-50%)',
             width: mobile ? '100%' : '70%',
             borderRadius: '16px 16px 0px 0px',
@@ -115,7 +115,7 @@ const MoreModal: React.FC<MoreModalT> = observer((props) => {
             sx={{
               ...differentBtnStyles,
               mb: '16px',
-              backgroundColor: raiseHand ? 'grayscale.90' : 'transparent',
+              backgroundColor: raiseHand ? 'petersburg.90' : 'transparent',
             }}
           >
             ✋ Поднять руку

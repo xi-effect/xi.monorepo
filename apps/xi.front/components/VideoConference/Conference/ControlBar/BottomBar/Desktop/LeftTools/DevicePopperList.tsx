@@ -36,7 +36,7 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
           justifyContent: 'flex-start',
           backgroundColor: 'transparent',
           pointerEvents: !currentDevice.length ? 'none' : 'default',
-          color: !currentDevice.length ? 'grayscale.80' : 'grayscale.0',
+          color: !currentDevice.length ? 'petersburg.80' : 'petersburg.0',
         }}
         onClick={(e) => setAnchorEl(e.currentTarget)}
       >
@@ -46,7 +46,13 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
 
         {device === 'audiooutput' && <Sound />}
 
-        <Box component="span" display="inline-block" m="0 auto 0 14px">
+        <Box
+          component="span"
+          sx={{
+            m: '0 auto 0 14px',
+            display: 'inline-block',
+          }}
+        >
           {device === 'videoinput' && 'Встроенная камера'}
 
           {device === 'audioinput' && 'Встроенный микрофон'}
@@ -74,7 +80,7 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
 
           '& .MuiPaper-root': {
             width: '318px',
-            backgroundColor: 'grayscale.80',
+            backgroundColor: 'petersburg.80',
           },
 
           '& .MuiButtonBase-root': {
@@ -92,7 +98,7 @@ const DevicePopperList: React.FC<DevicePopperListT> = observer((props) => {
                 fontWeight: 500,
                 fontSize: '13px',
                 overflow: 'hidden',
-                color: 'grayscale.0',
+                color: 'petersburg.0',
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
                 maxWidth: 'calc(100% - 10px)',

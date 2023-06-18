@@ -239,17 +239,18 @@ const UsersGridContainer: React.FC<UsersLayoutT & StateViewT> = observer((props)
 
   return (
     <Stack
-      height="100%"
-      direction="row"
-      flexWrap="wrap"
-      position="relative"
-      justifyContent="center"
-      alignContent={tablet ? 'baseline' : 'center'}
       sx={{
         p: tablet ? '0 8px' : '0 48px',
         transition: 'width 0.3s linear',
         overflowY: tablet ? 'scroll' : 'initial',
         width: !tablet && (members || chat) ? '70%' : '100%',
+
+        height: '100%',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        position: 'relative',
+        justifyContent: 'center',
+        alignContent: tablet ? 'baseline' : 'center',
       }}
     >
       {!tablet && (

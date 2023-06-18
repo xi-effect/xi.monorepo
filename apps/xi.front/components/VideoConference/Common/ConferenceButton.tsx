@@ -18,11 +18,13 @@ const ConferenceButton: React.FC<ConferenceButtonT> = (props) => {
           ml: '8px',
           height: '40px',
           width: '40px',
-          color: 'grayscale.0',
           borderRadius: '20px',
-          bgcolor: 'grayscale.100',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          color: 'petersburg.0',
+          bgcolor: 'petersburg.100',
           transition: 'border 0.3s ease',
-          border: active ? '2px solid #445AFF' : '2px solid transparent',
+          borderColor: active ? 'brand.80' : 'transparent',
           ...sx,
         }}
         {...restProps}

@@ -64,17 +64,19 @@ const VideoPreview = observer((props) => {
 
   return (
     <Stack
-      alignItems="center"
-      justifyContent="center"
       sx={{
         m: '16px',
         borderRadius: '8px',
         minHeight: '300px',
         position: 'relative',
-        border: '10px solid #333333',
-        backgroundColor: 'grayscale.90',
-        width: dl ? '50%' : 'fill-available',
+        borderWidth: '10px',
+        borderStyle: 'solid',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'petersburg.90',
         height: dl ? 'auto' : '100%',
+        backgroundColor: 'petersburg.90',
+        width: dl ? '50%' : 'fill-available',
       }}
     >
       {toggleCamera ? (
@@ -84,19 +86,28 @@ const VideoPreview = observer((props) => {
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       ) : (
-        <Typography textAlign="center" fontWeight={500} fontSize="24px" color="grayscale.10">
+        <Typography
+          sx={{
+            fontWeight: 500,
+            fontSize: '24px',
+            textAlign: 'center',
+            color: 'petersburg.10',
+          }}
+        >
           {error ? 'Проверьте ваши устройства' : 'Камера выключена'}
         </Typography>
       )}
 
       <Stack
-        p="20px"
-        left="0"
-        bottom="0"
-        width="100%"
-        direction="row"
-        position="absolute"
-        justifyContent="space-between"
+        sx={{
+          p: '20px',
+          left: '0',
+          bottom: '0',
+          width: '100%',
+          flexDirection: 'row',
+          position: 'absolute',
+          justifyContent: 'space-between',
+        }}
       >
         <DevicesController
           toggleMicro={toggleMicro}

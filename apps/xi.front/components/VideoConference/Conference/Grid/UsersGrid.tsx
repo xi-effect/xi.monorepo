@@ -117,12 +117,28 @@ const UsersGrid: React.FC<UsersGridT & StateViewT> = observer((props) => {
         {usersCount === 1 && <NoUsers />}
       </>
     ) : (
-      <Stack justifyContent="flex-start" width="100%" height="100%">
-        <Stack direction="row" justifyContent="center">
+      <Stack
+        sx={{
+          height: '100%',
+          width: '100%',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+        >
           {currentUsers}
         </Stack>
 
-        <Stack height="100%" justifyContent="center">
+        <Stack
+          sx={{
+            height: '100%',
+            justifyContent: 'center',
+          }}
+        >
           {currentSpeaker}
         </Stack>
       </Stack>

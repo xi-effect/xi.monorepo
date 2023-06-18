@@ -12,16 +12,36 @@ const UserChat: React.FC<{ userChat: ChatUserT }> = (props) => {
 
   return (
     <Box mb="16px">
-      <Stack mb="4px" direction="row" alignItems="center">
+      <Stack
+        sx={{
+          mb: '4px',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
         <div>
           <Avatar size={16} />
         </div>
 
-        <Typography sx={{ wordBreak: 'break-all' }} fontWeight={500} fontSize={12} m="0 4px">
+        <Typography
+          sx={{
+            m: '0 4px',
+            fontSize: '12px',
+            fontWeight: 500,
+            wordBreak: 'break-all',
+          }}
+        >
           {author}
         </Typography>
 
-        <Typography color="#666" textTransform="uppercase" fontSize={12} m="0 4px">
+        <Typography
+          sx={{
+            m: '0 4px',
+            fontSize: '12px',
+            color: 'petersburg.60',
+            textTransform: 'uppercase',
+          }}
+        >
           {time || `${date.getHours()}:${date.getMinutes()}`}
         </Typography>
       </Stack>
@@ -35,7 +55,7 @@ const UserChat: React.FC<{ userChat: ChatUserT }> = (props) => {
           lineHeight: '18px',
           wordBreak: 'break-all',
           display: 'inline-block',
-          backgroundColor: 'grayscale.80',
+          backgroundColor: 'petersburg.80',
         }}
       >
         {message}

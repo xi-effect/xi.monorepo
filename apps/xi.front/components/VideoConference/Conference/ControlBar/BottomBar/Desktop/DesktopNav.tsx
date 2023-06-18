@@ -6,15 +6,15 @@ import { RightTool } from './RightTool';
 
 const DesktopNav = () => (
   <>
-    <Stack width="176px">
+    <Stack sx={{ width: '176px' }}>
       <LeftTools />
     </Stack>
 
-    <Stack width="176px" alignItems="center">
+    <Stack sx={{ width: '176px', alignItems: 'center' }}>
       <CenterTools />
     </Stack>
 
-    <Stack width="176px">
+    <Stack sx={{ width: '176px' }}>
       <RightTool />
     </Stack>
   </>

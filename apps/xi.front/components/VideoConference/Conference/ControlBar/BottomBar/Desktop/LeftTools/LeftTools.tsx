@@ -58,23 +58,25 @@ const LeftTools = () => {
   });
 
   return (
-    <Stack direction="row" justifyContent="flex-start" alignItems="center" width="100%">
+    <Stack sx={{ width: '100%' }} direction="row" justifyContent="flex-start" alignItems="center">
       <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
         sx={{
           width: '96px',
           height: '48px',
           borderRadius: '24px',
-          bgcolor: 'grayscale.100',
+          bgcolor: 'petersburg.100',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
         <ConferenceButton
           sx={{
             ml: '4px',
             borderRadius: '24px',
-            border: '2px solid #39EF84',
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            borderColor: 'ekaterinburg.100',
           }}
           title="Включить микрофон"
           active
@@ -89,7 +91,9 @@ const LeftTools = () => {
             ml: 0,
             mr: '4px',
             borderRadius: '24px',
-            border: '2px solid #39EF84',
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            borderColor: 'ekaterinburg.100',
           }}
           active
           title="Включить камеру"

@@ -12,14 +12,14 @@ const MobileNav = () => {
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
       sx={{
         width: '72px',
         height: '32px',
         borderRadius: '32px',
-        bgcolor: 'grayscale.100',
+        flexDirection: 'row',
+        alignItems: 'center',
+        bgcolor: 'petersburg.100',
+        justifyContent: 'space-between',
       }}
     >
       <ConferenceButton sx={btnStyles} title="Воспроизведение " onClick={() => {}}>

@@ -30,7 +30,7 @@ const MembersSettings = observer(() => {
   const btnStyle = {
     fontSize: '12px',
     fontWeight: 500,
-    color: 'grayscale.40',
+    color: 'petersburg.40',
     textTransform: 'none ',
   };
 
@@ -66,16 +66,22 @@ const MembersSettings = observer(() => {
     <Stack
       sx={{
         p: '16px 0 16px 16px',
-        color: 'grayscale.0',
+        color: 'petersburg.0',
         transition: 'right 0.3s linear',
-        backgroundColor: 'grayscale.100',
+        backgroundColor: 'petersburg.100',
         ...optionalSx,
       }}
     >
-      <Stack pr="16px" mb="16px" alignItems="center" direction="row" justifyContent="space-between">
-        <Typography fontSize={18} fontWeight={700}>
-          Участники
-        </Typography>
+      <Stack
+        sx={{
+          pr: '16px',
+          mb: '16px',
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Участники</Typography>
 
         {tablet && (
           <IconButton
@@ -94,16 +100,24 @@ const MembersSettings = observer(() => {
         )}
       </Stack>
 
-      <Stack pr="16px" sx={{ overflowY: 'scroll' }} flex="1 1 auto">
+      <Stack
+        sx={{
+          pr: '16px',
+          flex: '1 1 auto',
+          overflowY: 'scroll',
+        }}
+      >
         {currentMembers}
       </Stack>
 
       <Stack
-        pr="16px"
-        direction="row"
-        flexWrap="wrap"
-        alignItems="center"
-        justifyContent={tablet ? 'space-between' : 'space-around'}
+        sx={{
+          pr: '16px',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: tablet ? 'space-between' : 'space-around',
+        }}
       >
         <Button sx={btnStyle}>Пригласить участника</Button>
 
@@ -116,9 +130,9 @@ const MembersSettings = observer(() => {
             width: '20px',
             height: '20px',
             borderRadius: '4px',
-            color: 'grayscale.0',
+            color: 'petersburg.0',
             position: 'relative',
-            backgroundColor: 'grayscale.80',
+            backgroundColor: 'petersburg.80',
 
             '&::before': {
               content: '"..."',
@@ -131,7 +145,7 @@ const MembersSettings = observer(() => {
             },
 
             '&:hover': {
-              backgroundColor: 'grayscale.90',
+              backgroundColor: 'petersburg.90',
             },
           }}
         />

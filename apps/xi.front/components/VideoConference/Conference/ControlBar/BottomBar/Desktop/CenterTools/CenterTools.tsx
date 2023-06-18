@@ -19,14 +19,14 @@ const BottomBar = observer(() => {
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
       sx={{
         width: '144px',
         height: '48px',
         borderRadius: '24px',
-        bgcolor: 'grayscale.100',
+        bgcolor: 'petersburg.100',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
       }}
     >
       <ConferenceButton

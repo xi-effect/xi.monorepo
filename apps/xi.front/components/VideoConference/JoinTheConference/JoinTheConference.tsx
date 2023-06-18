@@ -19,9 +19,21 @@ const JoinTheConference: React.FC<JoinTheConferenceT> = ({ setJoinConference }) 
   const md = useMediaQuery('(min-width:900px)');
 
   return (
-    <Stack p={md ? '32px' : '50px 16px'} width="100%" height="100%">
+    <Stack
+      sx={{
+        width: '100%',
+        height: '100%',
+        p: md ? '32px' : '50px 16px',
+      }}
+    >
       {md && (
-        <Typography fontWeight={600} fontSize="32px" m="0 0 32px 0">
+        <Typography
+          sx={{
+            fontWeight: 600,
+            fontSize: '32px',
+            m: '0 0 32px 0',
+          }}
+        >
           Присоедениться к конференции
         </Typography>
       )}
@@ -32,20 +44,38 @@ const JoinTheConference: React.FC<JoinTheConferenceT> = ({ setJoinConference }) 
             p: '12px',
             mb: '16px',
             borderRadius: '8px',
-            backgroundColor: 'grayscale.5',
+            backgroundColor: 'petersburg.5',
           }}
         >
-          <Typography lineHeight="24px" fontWeight={500} fontSize="20px" mb="8px">
+          <Typography
+            sx={{
+              mb: '8px',
+              fontWeight: 500,
+              fontSize: '20px',
+              lineHeight: '24px',
+            }}
+          >
             Конференция не началась
           </Typography>
 
-          <Typography lineHeight="20px" fontSize="16px">
+          <Typography
+            sx={{
+              fontSize: '16px',
+              lineHeight: '20px',
+            }}
+          >
             Дождись организатора, либо проверь свое расписание
           </Typography>
         </Box>
       )}
 
-      <Stack flex={dl ? '0 0 auto' : '1 1 auto'} m="-16px" direction={dl ? 'row' : 'column'}>
+      <Stack
+        sx={{
+          m: '-16px',
+          flex: dl ? '0 0 auto' : '1 1 auto',
+          flexDirection: dl ? 'row' : 'column',
+        }}
+      >
         <VideoPreview elementRef={elementRef} setShowSettings={setShowSettings} />
 
         {md && showSettings && (
@@ -54,7 +84,7 @@ const JoinTheConference: React.FC<JoinTheConferenceT> = ({ setJoinConference }) 
       </Stack>
 
       {!md && (
-        <Box mt="16px">
+        <Box sx={{ mt: '16px' }}>
           <JoinButton setJoinConference={setJoinConference} />
         </Box>
       )}

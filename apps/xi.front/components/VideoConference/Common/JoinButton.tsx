@@ -30,11 +30,11 @@ const JoinButton = observer((props) => {
       onClick={joinTheConference}
       sx={{
         height: '48px',
-        color: 'grayscale.0',
-        backgroundColor: 'primary.dark',
+        color: 'petersburg.0',
+        backgroundColor: 'brand.80',
         '&:hover': {
-          color: 'grayscale.40',
-          backgroundColor: 'grayscale.10',
+          color: 'petersburg.40',
+          backgroundColor: 'petersburg.10',
         },
       }}
     >

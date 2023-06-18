@@ -75,13 +75,13 @@ const User: React.FC<UserT & StateViewT> = observer((props) => {
           setConferenceSpeaker(id);
         }
       }}
-      position="relative"
-      alignItems="center"
-      justifyContent="center"
       sx={{
         m: '8px',
         borderRadius: '8px',
-        backgroundColor: 'grayscale.80',
+        position: 'relative',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'petersburg.80',
         ...styles,
       }}
     >
@@ -98,15 +98,15 @@ const User: React.FC<UserT & StateViewT> = observer((props) => {
       )}
 
       <Stack
-        direction="row"
-        alignItems="center"
         sx={{
           bottom: '8px',
           left: '8px',
           p: '4px 7px',
           borderRadius: '4px',
+          flexDirection: 'row',
+          alignItems: 'center',
           position: 'absolute',
-          backgroundColor: admin ? 'success.main' : 'grayscale.100',
+          backgroundColor: admin ? 'ekaterinburg.100' : 'petersburg.100',
         }}
       >
         <Microphone
@@ -123,7 +123,7 @@ const User: React.FC<UserT & StateViewT> = observer((props) => {
           fontSize={12}
           fontWeight={500}
           lineHeight="16px"
-          color={admin ? 'grayscale.100' : 'grayscale.0'}
+          color={admin ? 'petersburg.100' : 'petersburg.0'}
         >
           {name}
         </Typography>

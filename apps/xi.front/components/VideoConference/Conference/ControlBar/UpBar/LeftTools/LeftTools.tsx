@@ -11,7 +11,14 @@ const LeftTools = () => {
   const logoSize = sm ? 32 : 40;
 
   return (
-    <Stack width="100%" direction="row" alignItems="center" justifyContent="flex-start">
+    <Stack
+      sx={{
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}
+    >
       <Image alt="alt" src="/RoundedLogo.svg" quality={100} width={logoSize} height={logoSize} />
 
       {!removeName && !sm && (
@@ -19,7 +26,7 @@ const LeftTools = () => {
           <Typography
             sx={{
               fontWeight: 600,
-              color: 'grayscale.0',
+              color: 'petersburg.0',
               ml: sm || md ? '8px' : '32px',
               fontSize: sm || md ? '20px' : '24px',
             }}
@@ -32,7 +39,7 @@ const LeftTools = () => {
               ml: '8px',
               mt: '6px',
               fontWeight: 400,
-              color: 'grayscale.40',
+              color: 'petersburg.40',
               fontSize: sm || md ? '14px' : '16px',
             }}
           >

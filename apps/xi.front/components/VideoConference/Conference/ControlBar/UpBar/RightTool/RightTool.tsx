@@ -9,7 +9,14 @@ const RightTool: React.FC<StateViewT> = observer(({ stateView }) => {
   const tablet = useMediaQuery('(max-width:700px)');
 
   return (
-    <Stack direction="row" justifyContent="flex-start" alignItems="center" width="100%">
+    <Stack
+      sx={{
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}
+    >
       {tablet ? <MobileNav /> : <DesktopNav stateView={stateView} />}
     </Stack>
   );

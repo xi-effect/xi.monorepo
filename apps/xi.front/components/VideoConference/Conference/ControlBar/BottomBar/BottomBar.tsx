@@ -7,15 +7,15 @@ const BottomBar = () => {
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
       sx={{
         left: 0,
         p: '0 16px',
         width: '100%',
         bottom: '16px',
         position: 'absolute',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
       }}
     >
       {sm ? <MobileNav /> : <DesktopNav />}

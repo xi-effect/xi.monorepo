@@ -28,7 +28,13 @@ const MobileNav = observer(() => {
   };
 
   return (
-    <Stack width="100%" direction="row" justifyContent="center">
+    <Stack
+      sx={{
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+      }}
+    >
       <ConferenceButton sx={btnStyles} title="Включить микрофон">
         <Microphone />
       </ConferenceButton>
@@ -62,11 +68,11 @@ const MobileNav = observer(() => {
       <ConferenceButton
         sx={{
           ...btnStyles,
-          bgcolor: 'error.dark',
+          bgcolor: 'moscow.80',
           m: 0,
 
           '&:hover': {
-            bgcolor: 'error.light',
+            bgcolor: 'moscow.40',
           },
         }}
         title="Выйти из конференции"

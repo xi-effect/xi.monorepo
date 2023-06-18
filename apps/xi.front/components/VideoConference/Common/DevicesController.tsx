@@ -16,14 +16,14 @@ const DevicesController: React.FC<DevicesControllerT> = (props) => {
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
       sx={{
         height: '48px',
         borderRadius: '24px',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         width: md ? '96px' : 'calc(50% + 22px)',
-        bgcolor: md ? 'grayscale.100' : 'transparent',
+        bgcolor: md ? 'petersburg.100' : 'transparent',
       }}
     >
       <Tooltip title={`${toggleMicro ? 'Выключить' : 'Включить'} микрофон`}>
@@ -33,11 +33,13 @@ const DevicesController: React.FC<DevicesControllerT> = (props) => {
             ml: '2px',
             height: '44px',
             width: '44px',
-            color: 'grayscale.0',
-            bgcolor: 'grayscale.100',
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            color: 'petersburg.0',
             borderRadius: '22px',
+            bgcolor: 'petersburg.100',
             transition: 'border 0.5s ease',
-            border: toggleMicro ? '2px solid #39EF84' : '2px solid #000',
+            borderColor: toggleMicro ? 'ekaterinburg.100' : 'petersburg.100',
           }}
         >
           <Microphone />
@@ -50,11 +52,13 @@ const DevicesController: React.FC<DevicesControllerT> = (props) => {
             mr: '2px',
             height: '44px',
             width: '44px',
+            borderWidth: '2px',
+            borderStyle: 'solid',
             borderRadius: '22px',
-            color: 'grayscale.0',
-            bgcolor: 'grayscale.100',
+            color: 'petersburg.0',
+            bgcolor: 'petersburg.100',
             transition: 'border 0.5s ease',
-            border: toggleCamera ? '2px solid #39EF84' : '2px solid #000',
+            borderColor: toggleCamera ? 'ekaterinburg.100' : 'petersburg.100',
           }}
         >
           <Camera />

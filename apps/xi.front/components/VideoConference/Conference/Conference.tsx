@@ -43,7 +43,13 @@ const Conference = observer(() => {
   };
 
   return (
-    <Box width="100%" height="100%" p={sm ? 0 : '8px 16px'}>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        p: sm ? 0 : '8px 16px',
+      }}
+    >
       <Stack
         sx={{
           top: 0,
@@ -53,14 +59,20 @@ const Conference = observer(() => {
           height: '100%',
           p: calcPadding(),
           overflow: 'hidden',
-          backgroundColor: 'grayscale.90',
+          backgroundColor: 'petersburg.90',
           borderRadius: fullScreen || sm ? 0 : '8px',
           position: fullScreen ? 'fixed' : 'relative',
         }}
       >
         <UpBar stateView={stateView} />
 
-        <Box ref={boxRef} width="100%" height="100%">
+        <Box
+          ref={boxRef}
+          sx={{
+            width: '100%',
+            height: '100%',
+          }}
+        >
           <UsersGridContainer stateView={stateView} boxRef={boxRef} />
         </Box>
 

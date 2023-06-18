@@ -64,17 +64,23 @@ const Chat = observer(() => {
   return (
     <Stack
       sx={{
-        color: 'grayscale.0',
+        color: 'petersburg.0',
         p: '16px 0 16px 16px',
         transition: 'right 0.4s linear',
-        backgroundColor: 'grayscale.100',
+        backgroundColor: 'petersburg.100',
         ...optionalSx,
       }}
     >
-      <Stack pr="16px" mb="16px" alignItems="center" direction="row" justifyContent="space-between">
-        <Typography fontSize={18} fontWeight={700}>
-          Участники
-        </Typography>
+      <Stack
+        sx={{
+          pr: '16px',
+          mb: '16px',
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Участники</Typography>
 
         {tablet && (
           <IconButton
@@ -85,7 +91,7 @@ const Chat = observer(() => {
             }}
             sx={{
               p: '0',
-              color: 'grayscale.0',
+              color: 'petersburg.0',
             }}
           >
             <Close />
@@ -93,14 +99,27 @@ const Chat = observer(() => {
         )}
       </Stack>
 
-      <Stack pr="16px" sx={{ overflowY: 'scroll' }} flex="1 1 auto">
+      <Stack
+        sx={{
+          pr: '16px',
+          flex: '1 1 auto',
+          overflowY: 'scroll',
+        }}
+      >
         {usersChat.map((u) => (
           <UserChat userChat={u} />
         ))}
       </Stack>
 
-      <Stack p="10px 16px 0 0" height="28px" direction="row" alignItems="center">
-        <IconButton onClick={() => fileRef.current?.click()} sx={{ p: 0, color: '#E6E6E6' }}>
+      <Stack
+        sx={{
+          height: '28px',
+          p: '10px 16px 0 0',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
+        <IconButton onClick={() => fileRef.current?.click()} sx={{ p: 0, color: 'petersburg.100' }}>
           <Clip />
 
           <input ref={fileRef} type="file" style={{ display: 'none' }} />
@@ -117,13 +136,13 @@ const Chat = observer(() => {
             width: '100%',
             border: 'none',
             outline: 'none',
-            color: '#E6E6E6',
             margin: '0 15.4px',
+            color: 'petersburg.100',
             backgroundColor: 'transparent',
           }}
         />
 
-        <IconButton onClick={sendMessage} sx={{ p: 0, color: '#E6E6E6' }}>
+        <IconButton onClick={sendMessage} sx={{ p: 0, color: 'petersburg.100' }}>
           <Send />
         </IconButton>
       </Stack>

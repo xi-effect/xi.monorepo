@@ -40,8 +40,8 @@ const DevicesPopper: React.FC<PopperContainerT> = observer((props) => {
         p: '16px',
         width: '350px',
         borderRadius: '20px',
-        color: 'grayscale.0',
-        backgroundColor: 'grayscale.100',
+        color: 'petersburg.0',
+        backgroundColor: 'petersburg.100',
       }}
       open={open}
       placement="top"
@@ -50,13 +50,13 @@ const DevicesPopper: React.FC<PopperContainerT> = observer((props) => {
       className="devices-popper"
     >
       <Stack
-        alignItems="center"
-        justifyContent="center"
         sx={{
           mb: '17px',
           height: '165px',
+          alignItems: 'center',
           borderRadius: '12px',
-          backgroundColor: 'grayscale.90',
+          justifyContent: 'center',
+          backgroundColor: 'petersburg.90',
         }}
       >
         {error ? (

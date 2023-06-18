@@ -11,19 +11,19 @@ const RightTool = observer(() => {
   } = rootStore;
 
   return (
-    <Stack direction="row" alignItems="center" justifyContent="flex-end" width="100%">
+    <Stack sx={{ width: '100%' }} direction="row" alignItems="center" justifyContent="flex-end">
       <Tooltip title="Выйти из конференции">
         <IconButton
           onClick={() => setConferenceControlBar('endConference', true)}
           sx={{
             height: '48px',
             width: '48px',
-            color: 'grayscale.0',
-            bgcolor: 'error.dark',
+            color: 'petersburg.0',
+            bgcolor: 'moscow.80',
             borderRadius: '24px',
 
             '&:hover': {
-              bgcolor: 'error.light',
+              bgcolor: 'moscow.40',
             },
           }}
         >

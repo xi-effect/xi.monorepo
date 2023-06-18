@@ -6,21 +6,34 @@ import { StateViewT } from '../../Conference';
 
 const UpBar: React.FC<StateViewT> = ({ stateView }) => (
   <Stack
-    direction="row"
-    justifyContent="space-between"
-    alignItems="center"
     sx={{
       left: 0,
       p: '0 16px',
       top: '16px',
       width: '100%',
       position: 'absolute',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
     }}
   >
-    <Stack direction="row" justifyContent="flex-start" alignItems="center">
+    <Stack
+      sx={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}
+    >
       <LeftTools />
     </Stack>
-    <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={2}>
+    <Stack
+      spacing={2}
+      sx={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      }}
+    >
       <RightTool stateView={stateView} />
     </Stack>
   </Stack>

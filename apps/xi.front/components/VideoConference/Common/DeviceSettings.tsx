@@ -28,9 +28,9 @@ const DeviceSettings = observer((props) => {
     ml: '8px',
     height: '40px',
     width: '40px',
-    color: 'grayscale.0',
-    bgcolor: 'grayscale.100',
     borderRadius: '20px',
+    color: 'petersburg.0',
+    bgcolor: 'petersburg.100',
   };
 
   useEffect(() => {
@@ -60,7 +60,9 @@ const DeviceSettings = observer((props) => {
         onClick={() => setVolume((v) => !v)}
         sx={{
           ...styles,
-          border: volume ? '2px solid #39EF84' : '2px solid #000',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: volume ? 'ekaterinburg.100' : 'petersburg.100',
         }}
       >
         <VolumeUp />

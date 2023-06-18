@@ -30,30 +30,35 @@ const Settings = observer(() => {
             marginLeft: 'auto',
             overflowY: 'scroll',
             borderRadius: '8px 0 0 8px',
-            backgroundColor: 'grayscale.100',
+            backgroundColor: 'petersburg.100',
           }}
         >
           <Stack>
-            <Stack mb="25px" direction="row" alignItems="center" justifyContent="space-between">
-              <Typography color="grayscale.0">Настройки</Typography>
+            <Stack
+              sx={{
+                mb: '25px',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Typography sx={{ color: 'petersburg.0' }}>Настройки</Typography>
 
               <IconButton
-                sx={{ color: 'grayscale.0' }}
+                sx={{ color: 'petersburg.0' }}
                 onClick={() => setConferenceControlBar('settings', false)}
               >
                 <Close />
               </IconButton>
             </Stack>
 
-            <Box mb="33px">
-              <Typography mb="16px" color="grayscale.0">
-                Камера
-              </Typography>
+            <Box sx={{ mb: '33px' }}>
+              <Typography sx={{ mb: '16px', color: 'petersburg.0' }}>Камера</Typography>
 
               <VideoDevice colorScheme="dark" stateDeviceUnderTest={stateDeviceUnderTest} />
             </Box>
 
-            <Box mb="32px">
+            <Box sx={{ mb: '33px' }}>
               <SoundDevice
                 colorScheme="dark"
                 device="audioinput"
