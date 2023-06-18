@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack, Typography } from '@mui/material';
 import { Link, LinkProps } from 'pkg.navigation.link';
-import { Link as LinkIcon, Arrow } from 'pkg.icons';
+import { Link as LinkIcon, Chevron } from 'pkg.icons';
 import { LayoutPages } from 'kit/LayoutPages';
 
 const testLongAction = () =>
@@ -98,7 +98,7 @@ const TestLinksData: TestLinksDataT[] = [
         children: 'Ссылка',
         size: 'l',
         color: 'moscow.80',
-        icon: Arrow,
+        icon: Chevron,
         underline: false,
       },
       {
@@ -106,7 +106,7 @@ const TestLinksData: TestLinksDataT[] = [
         children: 'Ссылка',
         size: 'm',
         color: 'moscow.80',
-        icon: Arrow,
+        icon: Chevron,
         underline: false,
       },
       {
@@ -114,7 +114,7 @@ const TestLinksData: TestLinksDataT[] = [
         children: 'Ссылка',
         size: 's',
         color: 'moscow.80',
-        icon: Arrow,
+        icon: Chevron,
         underline: false,
       },
     ],
