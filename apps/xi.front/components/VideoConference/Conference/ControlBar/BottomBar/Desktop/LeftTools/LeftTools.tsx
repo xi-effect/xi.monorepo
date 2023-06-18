@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
-import { Microphone, Camera, Screenshare } from 'pkg.icons';
+import { Microphone, Camera, ScreenShare } from 'pkg.icons';
 import ConferenceButton from 'components/VideoConference/Common/ConferenceButton';
 import ScreenSharingPoppers from './ScreenSharingPoppers';
 import DevicesPopper from './DevicesPopper';
@@ -115,7 +115,7 @@ const LeftTools = () => {
         className="popper-btn"
         onClick={(e) => setScreenSharingAnchorEl(e.currentTarget)}
       >
-        <Screenshare />
+        <ScreenShare />
       </ConferenceButton>
 
       <DevicesPopper

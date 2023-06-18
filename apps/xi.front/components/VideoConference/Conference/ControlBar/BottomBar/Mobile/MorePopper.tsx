@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Backdrop, Box, Button, Fade, Modal, useMediaQuery } from '@mui/material';
-import { Users, ShareScreen } from 'pkg.icons';
+import { Users, ScreenShare } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { observer } from 'mobx-react';
 
@@ -107,7 +107,7 @@ const MoreModal: React.FC<MoreModalT> = observer((props) => {
             }}
           >
             Показать экран
-            <ShareScreen />
+            <ScreenShare />
           </Button>
 
           <Button

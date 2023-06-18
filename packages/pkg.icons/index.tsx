@@ -52,7 +52,7 @@ import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
 import { Play } from './Play';
-import { Screenshare } from './Screenshare';
+import { ScreenShare } from './ScreenShare';
 import { Search } from './Search';
 import { Send } from './Send';
 import { Settings } from './Settings';
@@ -71,7 +71,6 @@ import { ChevronBottom } from './ChevronBottom';
 import { Bluetooth } from './Bluetooth';
 import { FlipCamera } from './FlipCamera';
 import { More } from './More';
-import { ShareScreen } from './ShareScreen';
 import { Sound } from './Sound';
 import { Window } from './Window';
 import { icons } from './config';
@@ -131,7 +130,7 @@ export {
   Picture,
   Places,
   Play,
-  Screenshare,
+  ScreenShare,
   Search,
   Send,
   Settings,
@@ -150,7 +149,6 @@ export {
   Bluetooth,
   FlipCamera,
   Sound,
-  ShareScreen,
   More,
   Window,
   icons,
