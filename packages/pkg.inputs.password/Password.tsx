@@ -1,9 +1,8 @@
-import { useState, MouseEvent, ChangeEvent, useMemo } from 'react';
-import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
+import { useState, ChangeEvent, useMemo } from 'react';
+import { FormControl } from '@mui/material';
 import { Input } from 'pkg.inputs.input';
-import { Eyeoff, Eyeon } from 'pkg.icons';
-import { WeakPasswordTooltip } from './WeakPasswordTooltip';
-import { StrengthBar } from './StrengthBar';
+import { Adornment } from './components/Adornment';
+import { PasswordHelper } from './components/PasswordHelper';
 import { usePasswordStrength } from './PasswordStrength';
 import { PasswordProps } from './types';
 
@@ -21,14 +20,13 @@ export const Password = ({
   const { password, updatePassword, strengthValue, error, color, weakPassword } =
     usePasswordStrength();
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     const input: any = e.target as HTMLInputElement;
     updatePassword(input.value || null);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword((show) => !show);
   };
 
   const onMouseOn = () => {
@@ -57,13 +55,6 @@ export const Password = ({
     return 'petersburg.60';
   }, [hover, focus, color]);
 
-  const IconSizes = useMemo(() => {
-    if (size === 's') {
-      return { fontSize: '16px' };
-    }
-    return { fontSize: '24px' };
-  }, [size]);
-
   const LabelSizes = useMemo(() => {
     if (size === 's') {
       return {
@@ -90,22 +81,12 @@ export const Password = ({
         variant={type === 'disabled' ? 'filled' : 'outlined'}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
-              {type !== 'disabled' && (
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? (
-                    <Eyeoff sx={{ ...IconSizes }} />
-                  ) : (
-                    <Eyeon sx={{ ...IconSizes }} />
-                  )}
-                </IconButton>
-              )}
-            </InputAdornment>
+            <Adornment
+              size={size}
+              toggleShowPassword={toggleShowPassword}
+              type={type}
+              showPassword={showPassword}
+            />
           ),
         }}
         label="Пароль"
@@ -159,22 +140,12 @@ export const Password = ({
         {...props}
       />
       {fieldType === 'setup' && (
-        <>
-          <StrengthBar progress={strengthValue} color={color} />
-          <FormHelperText
-            sx={{
-              color,
-              fontSize: '12px',
-              lineHeight: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-            }}
-          >
-            {strengthValue < 80 || weakPassword ? error : 'Надежный пароль'}
-            {weakPassword && <WeakPasswordTooltip />}
-          </FormHelperText>
-        </>
+        <PasswordHelper
+          color={color}
+          strengthValue={strengthValue}
+          weakPassword={weakPassword}
+          error={error}
+        />
       )}
     </FormControl>
   );
