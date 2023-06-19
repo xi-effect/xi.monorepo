@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
@@ -40,31 +41,11 @@ export default class MyDocument extends Document {
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
 
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/assets/icons/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/assets/icons/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
-            href="/assets/icons/icon-192x192.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/assets/icons/favicon-16x16.png"
-          />
-          {/* <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> */}
-          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192x192.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+          <link rel="shortcut icon" type="image/x-icon" href="/favicon-for-white.svg" id="faviconTag" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#445AFF" />
           <meta name="msapplication-TileColor" content="#445AFF" />
@@ -90,6 +71,20 @@ export default class MyDocument extends Document {
             />
           )}
           {this.props.emotionStyleTags}
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+                    const faviconTag = document.getElementById('faviconTag');
+                    const isDark = window.matchMedia('(prefers-color-scheme: dark)');
+                    const changeFavicon = () => {
+                      if (faviconTag && faviconTag.href) {
+                        if (isDark.matches) faviconTag.href = './favicon-for-dark.svg';
+                        else faviconTag.href = './favicon-for-light.svg';
+                      } }; 
+                      changeFavicon(); setInterval(changeFavicon, 3000);`,
+            }}
+          />
         </Head>
         <body>
           <Main />
