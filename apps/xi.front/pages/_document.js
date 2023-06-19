@@ -55,7 +55,7 @@ export default class MyDocument extends Document {
             rel="icon"
             type="image/png"
             sizes="192x192"
-            href="/assets/icons/android-chrome-192x192.png"
+            href="/assets/icons/icon-192x192.png"
           />
           <link
             rel="icon"
