@@ -43,32 +43,32 @@ export default class MyDocument extends Document {
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/assets/apps-icons/apple-touch-icon.png"
+            href="/assets/icons/apple-touch-icon.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/assets/apps-icons/favicon-32x32.png"
+            href="/assets/icons/favicon-32x32.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="192x192"
-            href="/assets/apps-icons/android-chrome-192x192.png"
+            href="/assets/icons/android-chrome-192x192.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/assets/apps-icons/favicon-16x16.png"
+            href="/assets/icons/favicon-16x16.png"
           />
           {/* <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> */}
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/assets/apps-icons/safari-pinned-tab.svg" color="#445AFF" />
+          <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#445AFF" />
           <meta name="msapplication-TileColor" content="#445AFF" />
-          <meta name="msapplication-TileImage" content="/assets/apps-icons/mstile-144x144.png" />
+          <meta name="msapplication-TileImage" content="/assets/icons/mstile-144x144.png" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#445AFF" />
 
