@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta
             name="Keywords"
-            content="xi.effect, effect, Образованиие, Эффект, Кси Эффект, Xi Effect, Effect"
+            content="xi.effect, effect, xieffect, чшуааусе, Образование, Эффект, Кси Эффект, Xi Effect, Effect"
           />
           {onSearch && <meta name="yandex-verification" content="5896c9df498c0cd0" />}
           {onSearch && (
@@ -30,28 +30,56 @@ export default class MyDocument extends Document {
               content="VAN7yVAfRqd5NWFpUJlz0MVL1wcv0mdhDY-16-d48-U"
             />
           )}
+
           <meta name="description" content="Всё, что нужно для вашего Образования" />
           <meta name="application-name" content="xi.effect" />
+
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="xi.effect" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="msapplication-config" content="/browserconfig.xml" />
+
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/assets/apps-icons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/assets/apps-icons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/assets/apps-icons/android-chrome-192x192.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/assets/apps-icons/favicon-16x16.png"
+          />
+          {/* <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> */}
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="mask-icon" href="/assets/apps-icons/safari-pinned-tab.svg" color="#445AFF" />
+          <meta name="msapplication-TileColor" content="#445AFF" />
+          <meta name="msapplication-TileImage" content="/assets/apps-icons/mstile-144x144.png" />
+          <meta name="msapplication-tap-highlight" content="no" />
+          <meta name="theme-color" content="#445AFF" />
+
           <meta name="format-detection" content="telephone=no" />
           <meta name="format-detection" content="address=no" />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital@1&display=swap"
             rel="stylesheet"
           />
-          <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5d74a6" />
-          <meta name="msapplication-TileColor" content="#5d74a6" />
-          <meta name="msapplication-tap-highlight" content="no" />
-          <meta name="theme-color" content="#5d74a6" />
           {process.env.NODE_ENV !== 'development' && (
             <script
               async
