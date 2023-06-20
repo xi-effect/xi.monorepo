@@ -2,7 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { Stack, Typography } from '@mui/material';
-import { Arrow } from 'pkg.icons';
+import { Chevron } from 'pkg.icons';
 
 const Breadcrumbs = observer(() => (
   <Stack
@@ -25,7 +25,7 @@ const Breadcrumbs = observer(() => (
     >
       МИПК И.Федорова
     </Typography>
-    <Arrow sx={{ fontSize: 12 }} color="primary" />
+    <Chevron sx={{ fontSize: 12 }} color="primary" />
     <Typography
       sx={{
         fontWeight: 400,

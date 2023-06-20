@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
-import { Arrow } from 'pkg.icons';
+import { Chevron } from 'pkg.icons';
 import { breadcrumbLink, SizesT } from './types';
 import { breadcrumbSizes, separatorSizes } from './styles';
 
@@ -26,7 +26,7 @@ export const Breadcrumbs = ({
   const CustomSeparator = Separator ? (
     <Separator sx={{ ...separatorSizes[size], color }} />
   ) : (
-    <Arrow sx={{ ...separatorSizes[size], color }} />
+    <Chevron sx={{ ...separatorSizes[size], color }} />
   );
 
   return (

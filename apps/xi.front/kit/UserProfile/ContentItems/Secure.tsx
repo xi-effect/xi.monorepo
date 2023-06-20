@@ -18,7 +18,7 @@ const Secure = observer(() => {
         justifyContent="flex-start"
         alignItems="flex-start"
         sx={{
-          bgcolor: 'petersburg.0',
+          backgroundColor: 'petersburg.0',
           width: '100%',
           borderRadius: '8px',
           padding: '24px',

@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Box, Slider, Stack, Typography } from '@mui/material';
 import { observer } from 'mobx-react';
-import { MediaElement } from 'store/user/userMediaSt';
+import { MediaElement } from 'store/media/mediaSt';
 import { useStore } from 'store/connect';
-import Btn from './Btn';
 import { SliderS } from './Styles/styles';
 import MinVolume from './Icons/MinVolume';
 import MaxVolume from './Icons/MaxVolume';
 import DeviceMenu from './DeviceMenu';
 import SoundMeter from './SoundMeter';
 import { DeviceUnderTestT } from '../SoundAndVideo';
+import Btn from './Btn';
 
 type DeviceVolumeT = {
   volume: number | null;
@@ -18,17 +18,21 @@ type DeviceVolumeT = {
 };
 
 type SoundDeviceT = {
-  deviceUnderTest: DeviceUnderTestT;
+  colorScheme: 'light' | 'dark';
   device: 'audiooutput' | 'audioinput';
-  setDeviceUnderTest: React.Dispatch<React.SetStateAction<DeviceUnderTestT>>;
+  stateDeviceUnderTest: [DeviceUnderTestT, Dispatch<SetStateAction<DeviceUnderTestT>>];
 };
 
 const SoundDevice = observer((props) => {
-  const { device, deviceUnderTest, setDeviceUnderTest }: SoundDeviceT = props;
+  const {
+    device,
+    colorScheme = 'light',
+    stateDeviceUnderTest: [deviceUnderTest, setDeviceUnderTest],
+  }: SoundDeviceT = props;
 
   const rootStore = useStore();
   const {
-    userMediaSt: {
+    mediaSt: {
       startStream,
       stopStream,
       mediaInfo: { devices, stream, error },
@@ -38,7 +42,6 @@ const SoundDevice = observer((props) => {
   const elementRef = useRef<HTMLAudioElement | null>(null);
   const mediaElement = elementRef.current;
 
-  const [activeDevice, setActiveDevice] = useState<string>('');
   const [mediaStream, setMediaStream] = useState<'play' | 'stop'>('stop');
   const [deviceVolume, setDeviceVolume] = useState<DeviceVolumeT>({
     defaultVolume: 0.1,
@@ -64,8 +67,6 @@ const SoundDevice = observer((props) => {
   const deviceControl = (id: string) => {
     changeDevice(id);
 
-    setActiveDevice(devices.filter((d) => d.deviceId === id)[0].label);
-
     if (mediaStream === 'stop') setMediaStream('play');
   };
 
@@ -77,10 +78,21 @@ const SoundDevice = observer((props) => {
     startStream({});
   };
 
-  const stopMediaDevice = async () => {
+  const stopMediaDevice = () => {
     stopStream();
     setMediaStream('stop');
   };
+
+  const checkButton =
+    mediaStream === 'stop' ? (
+      <Btn colorScheme={colorScheme} onClick={playMediaDevice}>
+        Проверить
+      </Btn>
+    ) : (
+      <Btn colorScheme={colorScheme} sx={{ backgroundColor: '#ff6a6a' }} onClick={stopMediaDevice}>
+        Прекратить
+      </Btn>
+    );
 
   useEffect(() => {
     if (error) {
@@ -101,33 +113,31 @@ const SoundDevice = observer((props) => {
     <Box>
       <Typography
         sx={{
-          mb: '8px',
           fontWeight: 500,
           fontSize: '14px',
-          color: 'petersburg.100',
+          mb: colorScheme === 'light' ? '8px' : '16px',
+          color: colorScheme === 'light' ? 'grayscale.100' : 'grayscale.0',
         }}
       >
         {device === 'audioinput' ? 'Микрофон' : 'Динамик'}
       </Typography>
 
-      <Stack mb="8px" direction="row" alignItems="center">
+      <Stack mb={colorScheme === 'light' ? '8px' : '16px'} direction="row" alignItems="center">
         <DeviceMenu
           device={device}
-          activeDevice={activeDevice}
+          colorScheme={colorScheme}
           deviceControl={deviceControl}
           devices={devices.filter((d) => d.kind === device)}
         />
 
-        {mediaStream === 'stop' ? (
-          <Btn onClick={playMediaDevice}>Проверить</Btn>
-        ) : (
-          <Btn sx={{ backgroundColor: '#ff6a6a' }} onClick={stopMediaDevice}>
-            Прекратить
-          </Btn>
-        )}
+        {colorScheme === 'light' && checkButton}
       </Stack>
 
-      <SoundMeter animate={device === deviceUnderTest} />
+      <Stack direction="row" alignItems="center">
+        {colorScheme === 'dark' && checkButton}
+
+        <SoundMeter colorScheme={colorScheme} animate={device === deviceUnderTest} />
+      </Stack>
 
       <Stack mt="10px" direction="row" alignItems="center">
         <Typography
@@ -136,14 +146,14 @@ const SoundDevice = observer((props) => {
             width: '200px',
             fontWeight: 400,
             fontSize: '14px',
-            color: 'petersburg.100',
+            color: colorScheme === 'light' ? 'grayscale.100' : 'grayscale.0',
           }}
         >
           Громкость
         </Typography>
 
         <Stack sx={{ width: '100%' }} direction="row" alignItems="center">
-          <MinVolume />
+          <MinVolume fill={colorScheme === 'light' ? '#000' : '#fff'} />
 
           <Slider
             max={1}
@@ -154,7 +164,7 @@ const SoundDevice = observer((props) => {
             value={deviceVolume.volume === null ? deviceVolume.defaultVolume : deviceVolume.volume}
           />
 
-          <MaxVolume />
+          <MaxVolume fill={colorScheme === 'light' ? '#000' : '#fff'} />
         </Stack>
       </Stack>
 

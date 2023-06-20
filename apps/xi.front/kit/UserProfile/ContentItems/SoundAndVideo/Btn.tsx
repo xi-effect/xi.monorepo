@@ -5,20 +5,23 @@ type BtnT = {
   children: any;
   onClick?: () => void;
   sx?: SxProps<Theme>;
+  colorScheme?: 'light' | 'dark';
 };
 
-const Btn: React.FC<BtnT> = ({ children, onClick, sx }) => (
+const Btn: React.FC<BtnT> = ({ children, onClick, colorScheme = 'light', sx }) => (
   <Button
     onClick={onClick}
     variant="contained"
     sx={{
-      height: '48px',
       width: '160px',
       fontWeight: 500,
-      fontSize: '18px',
       borderRadius: '8px',
       textTransform: 'none',
-      backgroundColor: 'brand.80',
+      mr: colorScheme === 'light' ? 0 : '16px',
+      height: colorScheme === 'light' ? '48px' : '30px',
+      fontSize: colorScheme === 'light' ? '18px' : '12px',
+      border: colorScheme === 'light' ? 'none' : '1px solid #E6E6E6',
+      backgroundColor: colorScheme === 'light' ? 'primary.dark' : 'transparent',
       ...sx,
     }}
   >

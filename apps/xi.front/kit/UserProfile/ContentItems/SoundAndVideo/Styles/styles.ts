@@ -1,29 +1,32 @@
-export const menuStyles = (width?: number) => ({
+export const menuStyles = (width?: number, colorScheme: 'light' | 'dark' = 'light') => ({
   mt: '8px',
   '& .MuiBackdrop-invisible': {
     backgroundColor: 'rgba(0,0,0,0)',
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: 'brand.0',
+    backgroundColor: colorScheme === 'light' ? 'brand.0' : 'petersburg.90',
     color: 'brand.80',
   },
   '& .MuiMenuItem-root.active': {
-    backgroundColor: 'brand.0',
+    backgroundColor: colorScheme === 'light' ? 'brand.0' : 'petersburg.90',
     color: 'brand.80',
   },
   '& .MuiPaper-elevation': {
     borderRadius: '4px',
-    border: '1px solid #E6E6E6',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: '#E6E6E6',
   },
   '& .MuiMenuItem-root': {
     fontSize: '16px',
     fontWeight: 500,
-    color: '#1B1B1B',
+    color: 'petersburg.10',
     transition: 'background-color 0.2s ease-in, color 0.2s ease-in ',
   },
   '& .MuiMenu-list': {
     p: 0,
     width,
+    backgroundColor: colorScheme === 'light' ? 'petersburg.0' : 'petersburg.100',
   },
 });
 

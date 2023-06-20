@@ -102,7 +102,7 @@ const Appearance = observer(() => {
               render={({ field: { onChange, value } }) => (
                 <Select
                   value={value}
-                  onChange={onChange}
+                  changeValue={onChange}
                   size="m"
                   id="system"
                   items={paletteSelectItems}
