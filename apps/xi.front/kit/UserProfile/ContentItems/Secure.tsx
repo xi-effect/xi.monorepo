@@ -1,10 +1,11 @@
-import { Stack, Typography, Button, useMediaQuery, Theme } from '@mui/material';
+import { Box, IconButton, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 
 import { useStore } from 'store/connect';
 
-import { observer } from 'mobx-react';
-import { PasswordChangeDialog } from 'kit/PasswordChangeDialog';
 import { EmailChangeDialog } from 'kit/EmailChangeDialog';
+import { PasswordChangeDialog } from 'kit/PasswordChangeDialog';
+import { observer } from 'mobx-react';
+import { Arrow, Trash } from 'pkg.icons';
 
 const Secure = observer(() => {
   const rootStore = useStore();
@@ -13,7 +14,277 @@ const Secure = observer(() => {
 
   return (
     <>
+      {/* profile data */}
       <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        sx={{
+          bgcolor: 'petersburg.0',
+          width: '100%',
+          borderRadius: '8px',
+          padding: '4px',
+          position: 'relative',
+          gap: '8px',
+        }}
+      >
+        {/* header */}
+        <Stack
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          sx={{
+            width: '100%',
+            padding: '12px',
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: '20px',
+              lineHeight: '28px',
+            }}
+          >
+            Данные аккаунта
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: '14px',
+              lineHeight: '20px',
+            }}
+          >
+            Видны только вам
+          </Typography>
+        </Stack>
+        {/* password button */}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          onClick={() => uiSt.setDialogs('passwordChange', true)}
+          sx={{
+            cursor: 'pointer',
+            width: '100%',
+            borderRadius: '8px',
+            padding: '12px',
+            backgroundColor: 'transparent',
+            transition: 'background 0.2s ease-in',
+            '&:hover': { backgroundColor: 'petersburg.5' },
+          }}
+        >
+          <Stack direction="row" alignItems="center" gap="16px">
+            <IconButton
+              sx={{
+                width: '32px',
+                height: '32px',
+                color: '#445AFF',
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <Arrow />
+            </IconButton>
+            <Box>
+              <Typography
+                marginBottom="4px"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  lineHeight: '22px',
+                }}
+              >
+                Пароль
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                }}
+              >
+                Обновлен год назад
+              </Typography>
+            </Box>
+          </Stack>
+          <IconButton
+            sx={{
+              width: '24px',
+              height: '24px',
+              backgroundColor: 'transparent',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }}
+          >
+            <Arrow />
+          </IconButton>
+        </Stack>
+        {/* mail button */}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          onClick={() => uiSt.setDialogs('emailChange', true)}
+          sx={{
+            cursor: 'pointer',
+            width: '100%',
+            borderRadius: '8px',
+            padding: '12px',
+            backgroundColor: 'transparent',
+            transition: 'background 0.2s ease-in',
+            '&:hover': { backgroundColor: 'petersburg.5' },
+          }}
+        >
+          <Stack direction="row" alignItems="center" gap="16px">
+            <IconButton
+              sx={{
+                width: '32px',
+                height: '32px',
+                color: '#445AFF',
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <Arrow />
+            </IconButton>
+            <Box>
+              <Typography
+                marginBottom="4px"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  lineHeight: '22px',
+                }}
+              >
+                Почта
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                }}
+              >
+                {profileSt.profile.email}
+              </Typography>
+            </Box>
+          </Stack>
+          <IconButton
+            sx={{
+              width: '24px',
+              height: '24px',
+              backgroundColor: 'transparent',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }}
+          >
+            <Arrow />
+          </IconButton>
+        </Stack>
+      </Stack>
+      {/* profile actions */}
+      <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        sx={{
+          bgcolor: 'petersburg.0',
+          width: '100%',
+          borderRadius: '8px',
+          padding: '4px',
+          position: 'relative',
+          gap: '8px',
+        }}
+      >
+        {/* header */}
+        <Stack
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          sx={{
+            width: '100%',
+            padding: '12px',
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: '20px',
+              lineHeight: '28px',
+            }}
+          >
+            Действия с аккаунтом
+          </Typography>
+        </Stack>
+        {/* delete button */}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{
+            cursor: 'pointer',
+            width: '100%',
+            borderRadius: '8px',
+            padding: '12px',
+            backgroundColor: 'transparent',
+            transition: 'background 0.2s ease-in',
+            '&:hover': { backgroundColor: 'petersburg.5' },
+          }}
+        >
+          <Stack direction="row" alignItems="center" gap="16px">
+            <IconButton
+              sx={{
+                width: '32px',
+                height: '32px',
+                color: '#445AFF',
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <Trash />
+            </IconButton>
+            <Box>
+              <Typography
+                marginBottom="4px"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  lineHeight: '22px',
+                }}
+              >
+                Удаление аккаунта
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                }}
+              >
+                Вы можете полностью удалить аккаунт Xi.ID и данные в нём.
+              </Typography>
+            </Box>
+          </Stack>
+          <IconButton
+            sx={{
+              width: '24px',
+              height: '24px',
+              backgroundColor: 'transparent',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }}
+          >
+            <Arrow />
+          </IconButton>
+        </Stack>
+      </Stack>
+
+      {/* <Stack
         direction="column"
         justifyContent="flex-start"
         alignItems="flex-start"
@@ -71,9 +342,9 @@ const Secure = observer(() => {
         >
           Изменить
         </Button>
-      </Stack>
+      </Stack> */}
 
-      <Stack
+      {/* <Stack
         direction="column"
         justifyContent="flex-start"
         alignItems="flex-start"
@@ -146,7 +417,7 @@ const Secure = observer(() => {
         >
           Изменить
         </Button>
-      </Stack>
+      </Stack> */}
       <PasswordChangeDialog />
       <EmailChangeDialog />
     </>

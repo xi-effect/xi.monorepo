@@ -1,10 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
-import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import { observer } from 'mobx-react';
+import Head from 'next/head';
 
-import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
 import 'dayjs/locale/ru';
 
 import { StoreProvider } from 'store/connect';
@@ -15,17 +15,16 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import 'styles/globals.css';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Loading } from 'pkg.components.loading';
-import { useStoreInitialized } from 'store/rootStore';
-import createEmotionCache from 'store/createEmotionCache';
-import { getScheme } from 'pkg.theme';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { SaveConfirm } from 'pkg.notistack.saveconfirm';
 import { Notification } from 'pkg.notistack.notification'; // useThemeDetector
+import { SaveConfirm } from 'pkg.notistack.saveconfirm';
+import { getScheme } from 'pkg.theme';
+import createEmotionCache from 'store/createEmotionCache';
+import { useStoreInitialized } from 'store/rootStore';
 
 import { useMediaQuery } from '@mui/material';
-import React from 'react';
 
 config.autoAddCss = false;
 

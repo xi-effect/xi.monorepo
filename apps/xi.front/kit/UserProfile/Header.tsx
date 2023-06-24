@@ -1,6 +1,6 @@
+import { IconButton, Stack, Theme, Typography, useMediaQuery } from '@mui/material';
 import { observer } from 'mobx-react';
-import { useMediaQuery, Theme, Stack, IconButton, Typography } from '@mui/material';
-import { Close, Arrow, Burger } from 'pkg.icons';
+import { Arrow, Burger, Close } from 'pkg.icons';
 
 const settingsTitles = ['Главная', 'Личные данные', 'Безопасность', 'Внешний вид', 'Звук и видео']; // 'Внешний вид'
 
