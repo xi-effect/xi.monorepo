@@ -1,6 +1,13 @@
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { LayoutPages } from 'kit/LayoutPages';
 import { Password, PasswordProps } from 'pkg.inputs.password';
+
+const Error = (
+  <Stack>
+    <Typography variant="xs">Неверный пароль.</Typography>
+    <Typography variant="xs">Попробуйте ввести ещё раз или создайте новый</Typography>
+  </Stack>
+);
 
 const passwords: PasswordProps[] = [
   {
@@ -34,11 +41,15 @@ const passwords: PasswordProps[] = [
     fieldType: 'login',
     size: 's',
     type: 'error',
+    errorWindow: true,
+    errorWindowContent: Error,
   },
   {
     fieldType: 'login',
     size: 'm',
     type: 'error',
+    errorWindow: true,
+    errorWindowContent: Error,
   },
   {
     fieldType: 'login',

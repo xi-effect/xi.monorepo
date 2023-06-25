@@ -4,6 +4,7 @@ import { Input } from 'pkg.inputs.input';
 import { Adornment } from './components/Adornment';
 import { PasswordHelper } from './components/PasswordHelper';
 import { usePasswordStrength } from './PasswordStrength';
+import { ErrorWindow } from './components/ErrorWindow';
 import { PasswordProps } from './types';
 
 export const Password = ({
@@ -11,6 +12,8 @@ export const Password = ({
   type = 'default',
   fieldType = 'login',
   width = '250px',
+  errorWindow,
+  errorWindowContent,
   ...props
 }: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -74,7 +77,7 @@ export const Password = ({
   }, [size]);
 
   return (
-    <FormControl sx={{ width }}>
+    <FormControl sx={{ width, position: 'relative' }}>
       <Input
         type={showPassword ? 'text' : 'password'}
         value={password ?? ''}
@@ -147,6 +150,8 @@ export const Password = ({
           error={error}
         />
       )}
+
+      <ErrorWindow open={!!errorWindow}>{errorWindowContent}</ErrorWindow>
     </FormControl>
   );
 };

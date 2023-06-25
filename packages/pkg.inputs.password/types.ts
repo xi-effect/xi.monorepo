@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type PasswordSizeT = 's' | 'm';
 export type PasswordTypesT = 'error' | 'warning' | 'disabled' | 'default';
 /*
@@ -11,4 +13,6 @@ export type PasswordProps = {
   type?: PasswordTypesT;
   fieldType?: FiledTypeT;
   width?: string;
+  errorWindow?: boolean;
+  errorWindowContent?: string | ReactNode;
 };
