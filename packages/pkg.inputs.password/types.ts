@@ -15,4 +15,5 @@ export type PasswordProps = {
   width?: string;
   errorWindow?: boolean;
   errorWindowContent?: string | ReactNode;
+  sx?: any;
 };

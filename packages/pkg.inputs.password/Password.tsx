@@ -14,6 +14,7 @@ export const Password = ({
   width = '250px',
   errorWindow,
   errorWindowContent,
+  sx,
   ...props
 }: PasswordProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -139,6 +140,7 @@ export const Password = ({
               display: 'none',
             },
           },
+          ...sx,
         }}
         {...props}
       />
