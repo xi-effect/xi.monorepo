@@ -30,7 +30,7 @@ const Calendar = observer(() => {
       <Stack sx={{ bgcolor: 'petersburg.0', p: '24px', borderRadius: '8px' }} spacing={1}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
-            <Typography sx={{ fontSize: '18px', lineHeight: '24px', fontWeight: 600 }}>
+            <Typography sx={{ fontSize: '20px', lineHeight: '30px', fontWeight: 600 }}>
               {calendar?.month}
             </Typography>
             <Typography variant="m" sx={{ fontWeight: 400 }}>
