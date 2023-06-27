@@ -3,8 +3,7 @@ import { observer } from 'mobx-react';
 import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { Button } from 'pkg.inputs.button';
 import { useStore } from 'store/connect';
-import { Arrow } from 'pkg.icons.arrow';
-import { DoubleArrow } from 'pkg.icons.doublearrow';
+import { Arrow, DoubleArrow } from 'pkg.icons';
 import WeekDay from './WeekDay';
 
 const Calendar = observer(() => {
@@ -28,7 +27,7 @@ const Calendar = observer(() => {
         Календарь
       </Typography>
 
-      <Stack sx={{ bgcolor: 'grayscale.0', p: '24px', borderRadius: '8px' }} spacing={1}>
+      <Stack sx={{ bgcolor: 'petersburg.0', p: '24px', borderRadius: '8px' }} spacing={1}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
             <Typography sx={{ fontSize: '18px', lineHeight: '24px', fontWeight: 600 }}>
@@ -49,9 +48,9 @@ const Calendar = observer(() => {
               variant="text"
               onClick={getPrevMonth}
               sx={{
-                color: 'grayscale.80',
+                color: 'petersburg.80',
                 p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
               }}
             >
               <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
@@ -60,9 +59,9 @@ const Calendar = observer(() => {
               variant="text"
               onClick={getPrevWeek}
               sx={{
-                color: 'grayscale.80',
+                color: 'petersburg.80',
                 p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
               }}
             >
               <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '18px' }} />
@@ -71,9 +70,9 @@ const Calendar = observer(() => {
               variant="text"
               onClick={getNextWeek}
               sx={{
-                color: 'grayscale.80',
+                color: 'petersburg.80',
                 p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
               }}
             >
               <Arrow sx={{ fontSize: '18px' }} />
@@ -82,9 +81,9 @@ const Calendar = observer(() => {
               variant="text"
               onClick={getNextMonth}
               sx={{
-                color: 'grayscale.80',
+                color: 'petersburg.80',
                 p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'grayscale.100' },
+                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
               }}
             >
               <DoubleArrow sx={{ fontSize: '12px' }} />
@@ -102,7 +101,7 @@ const Calendar = observer(() => {
                 position: 'relative',
                 '&:after': {
                   content: "''",
-                  bgcolor: 'grayscale.10',
+                  bgcolor: 'petersburg.10',
                   position: 'absolute',
                   [breakpoints.up('lg')]: {
                     height: 'calc(100% - 32px)',
@@ -122,7 +121,7 @@ const Calendar = observer(() => {
                 <Typography
                   variant="xs"
                   sx={{
-                    color: 'grayscale.40',
+                    color: 'petersburg.40',
                     width: '100%',
                     height: '100%',
                     minHeight: '30px',

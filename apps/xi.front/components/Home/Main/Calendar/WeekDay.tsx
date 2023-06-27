@@ -1,7 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Badge } from 'pkg.components.badge';
-import { Fire } from 'pkg.icons.fire';
-import { Camera } from 'pkg.icons.camera';
+import { Camera, Fire } from 'pkg.icons';
 import { observer } from 'mobx-react';
 import { WeekDayT } from 'models/calendar';
 
@@ -14,9 +13,7 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
       sx={{
         fontWeight: current ? 600 : 400,
         color:
-          (current && 'primary.dark') ||
-          (Weekends.includes(name) && 'error.dark') ||
-          'grayscale.100',
+          (current && 'brand.80') || (Weekends.includes(name) && 'moscow.80') || 'petersburg.100',
       }}
     >
       {day}
@@ -25,9 +22,9 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
       <Stack spacing={0.25} key={`${task.id}`}>
         {task.deadline && (
           <Badge
-            bgColor="error.dark"
-            fontColor="error.pale"
-            iconColor="error.pale"
+            bgColor="moscow.80"
+            fontColor="moscow.0"
+            iconColor="moscow.0"
             size="small"
             icon={Fire}
             stackProps={{ sx: { width: 'max-content' } }}
@@ -37,9 +34,9 @@ const WeekDay = observer(({ day, tasks, name, current = false }: WeekDayT) => (
         )}
         {task.type === 'conference' && (
           <Badge
-            bgColor="primary.pale"
-            fontColor="primary.dark"
-            iconColor="primary.dark"
+            bgColor="brand.0"
+            fontColor="brand.80"
+            iconColor="brand.80"
             size="small"
             icon={Camera}
             stackProps={{ sx: { width: 'max-content' } }}
