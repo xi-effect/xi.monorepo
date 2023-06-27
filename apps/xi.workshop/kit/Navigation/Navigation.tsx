@@ -63,6 +63,10 @@ const menuArray = [
     link: '/components/chatinput',
     label: 'ChatInput',
   },
+  {
+    link: '/components/videoplayer',
+    label: 'VideoPlayer',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
