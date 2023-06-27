@@ -1,4 +1,6 @@
-FROM node:16-alpine AS pruner
+FROM node:16-alpine AS base
+
+FROM base AS pruner
 ARG APP_NAME=xi.front
 
 # Install system-level components
@@ -15,8 +17,7 @@ COPY . .
 # Prune everything but xi.front
 RUN turbo prune --scope=${APP_NAME} --docker
 
-# Add lockfile and package.json's of isolated subworkspace
-FROM node:16-alpine AS builder
+FROM base AS builder
 ARG APP_NAME=xi.front
 
 # Install system-level components
@@ -37,7 +38,7 @@ COPY --from=pruner /app/out/full/ .
 COPY turbo.json turbo.json
 RUN npm run build --filter=${APP_NAME}...
 
-FROM node:16-alpine AS runner
+FROM base AS runner
 ARG APP_NAME=xi.front
 
 # Install system-level components
