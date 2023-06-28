@@ -11,7 +11,7 @@ export const Dropdown: FC<DropdownPropsT> = ({
   menuSx,
   buttonSx,
   children,
-  hover,
+  // hover,
   ...props
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

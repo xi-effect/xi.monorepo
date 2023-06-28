@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Avatar as Av, Stack, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Trash, Edit, Account } from 'pkg.icons';
@@ -89,7 +89,7 @@ type AvatarEditorT = {
 };
 
 const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
-  const [hover, setHover] = useState(true);
+  // const [hover, setHover] = useState(true);
   const rootStore = useStore();
   const { uiSt, userSt } = rootStore;
 
@@ -110,7 +110,7 @@ const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
         Element={createAvatar}
         menuSx={{ '.MuiMenu-paper': { maxWidth: '500px' } }}
         buttonSx={{ width: '144px', height: '144px' }}
-        hover={hover}
+        // hover={hover}
       >
         <MenuItem sx={menuItemsStyles} onClick={() => uiSt.setDialogs('avatarEditor', true)}>
           <Stack direction="row" alignItems="center" sx={{ width: '100%', gap: '8px' }}>
