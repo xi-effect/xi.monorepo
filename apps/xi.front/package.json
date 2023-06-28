@@ -38,7 +38,6 @@
     "npm": "^9.2.0",
     "pkg.components.badge": "*",
     "pkg.components.file": "*",
-    "pkg.icons.fire": "*",
     "pkg.components.loading": "*",
     "pkg.components.scroll": "*",
     "pkg.data.avatar": "*",
