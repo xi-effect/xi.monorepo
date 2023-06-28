@@ -11,12 +11,14 @@ export const Dropdown: FC<DropdownPropsT> = ({
   menuSx,
   buttonSx,
   children,
+  hover,
   ...props
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isOpened = Boolean(anchorEl);
 
   const onOpenMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // if (hover) setAnchorEl(null);
     if (isOpened) setAnchorEl(null);
     if (!isOpened) setAnchorEl(e.currentTarget);
   };
@@ -32,6 +34,8 @@ export const Dropdown: FC<DropdownPropsT> = ({
         <Button
           aria-controls={dropdownId}
           onClick={onOpenMenu}
+          // onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
+          // onMouseLeave={() => setAnchorEl(null)}
           variant="text"
           disableRipple
           sx={{
@@ -62,6 +66,12 @@ export const Dropdown: FC<DropdownPropsT> = ({
         id={dropdownId}
         open={isOpened}
         onClick={onCloseMenu}
+        // MenuListProps={{
+        //   onMouseEnter: () => isOpened === true,
+        //   onMouseLeave: () => isOpened === false,
+        // }}
+        // onMouseEnter={isOpened === true}
+        // onMouseleave={isOpened === false}
         anchorEl={anchorEl}
         PopoverClasses={{
           root: 'Dropdown-root',
