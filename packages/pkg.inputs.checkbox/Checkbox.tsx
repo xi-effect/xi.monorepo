@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
 import { Check, Minus } from 'pkg.icons';
 
@@ -24,7 +24,7 @@ export type CheckboxProps = {
   icon?: ChecboxIcons;
   /* default checked state */
   isChecked?: boolean;
-  onClick?: () => void;
+  onClick?: (event: ChangeEvent) => void;
 };
 
 export const Checkbox = ({
