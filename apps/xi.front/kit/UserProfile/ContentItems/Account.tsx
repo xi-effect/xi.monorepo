@@ -73,7 +73,6 @@ const Account = observer(() => {
         sx={{
           bgcolor: 'petersburg.0',
           width: '100%',
-          height: '204px',
           borderRadius: '8px',
           padding: '24px 36px',
         }}
