@@ -5,6 +5,7 @@ import { useStore } from 'store/connect';
 import { observer } from 'mobx-react';
 import { PasswordChangeDialog } from 'kit/PasswordChangeDialog';
 import { EmailChangeDialog } from 'kit/EmailChangeDialog';
+// import { Mail } from 'pkg.icons';
 
 const Secure = observer(() => {
   const rootStore = useStore();
@@ -13,6 +14,84 @@ const Secure = observer(() => {
 
   return (
     <>
+      <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        sx={{
+          bgcolor: 'moscow.0',
+          width: '100%',
+          borderRadius: '8px',
+          padding: '16px',
+          position: 'relative',
+          gap: '16px',
+        }}
+      >
+        <Stack
+          sx={{
+            gap: '4px',
+          }}
+        >
+          <Typography
+            sx={{
+              color: 'moscow.100',
+              fontWeight: 600,
+              fontSize: '14px',
+              lineHeight: '20px',
+            }}
+          >
+            Почта не подтверждена
+          </Typography>
+          <Typography
+            sx={{
+              color: 'moscow.100',
+              fontWeight: 400,
+              fontSize: '12px',
+              lineHeight: '16px',
+            }}
+          >
+            Подтверждение адреса электронной почты требуется для защиты аккаунта и восстановления
+            доступа
+          </Typography>
+        </Stack>
+        <Stack
+          sx={{
+            gap: '4px',
+          }}
+        >
+          <Typography
+            sx={{
+              color: 'moscow.100',
+              fontWeight: 400,
+              fontSize: '12px',
+              lineHeight: '16px',
+            }}
+          >
+            Письмо не пришло?
+          </Typography>
+          <Button
+            variant="outlined"
+            size="large"
+            sx={{
+              borderRadius: '6px',
+              border: '1px',
+              borderColor: 'moscow.100',
+              padding: '5px 16px',
+              gap: '6px',
+              bgcolor: 'moscow.0',
+              fontWeight: 500,
+              fontSize: '14px',
+              lineHeight: '20px',
+              textTransform: 'none',
+              color: 'moscow.100',
+            }}
+          >
+            Отправить повторно
+          </Button>
+          {/* <Mail fontSize="small" /> */}
+        </Stack>
+      </Stack>
+
       <Stack
         direction="column"
         justifyContent="flex-start"
