@@ -16,7 +16,7 @@ export const Dropdown: FC<DropdownPropsT> = ({
   hover,
   ...props
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement | EventTarget>(null);
   const isOpened = Boolean(anchorEl);
   const anchorTimer = useRef<AnchorTimerT>({ opened: null, closed: null });
 
