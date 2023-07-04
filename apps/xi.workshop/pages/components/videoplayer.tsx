@@ -1,4 +1,3 @@
-import { Typography } from '@mui/material';
 import { VideoPlayer } from 'pkg.components.videoplayer';
 import { Button } from 'pkg.inputs.button';
 import { useState } from 'react';
@@ -23,11 +22,6 @@ const TestComponents = () => {
 
   return (
     <>
-      <Typography>
-        video number:
-        <b>{selectedVideo + 1}</b>
-      </Typography>
-
       {!open && (
         <>
           <Button onClick={handleOpen}>Open video</Button>
