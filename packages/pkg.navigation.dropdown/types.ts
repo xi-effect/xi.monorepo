@@ -9,5 +9,5 @@ export type DropdownPropsT = {
   menuProps?: any;
   menuSx?: any;
   buttonSx?: any;
-  hover?: Boolean;
+  hover?: boolean;
 };

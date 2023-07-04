@@ -38,6 +38,11 @@ export const Dropdown: FC<DropdownPropsT> = ({
       setAnchorEl(e.target);
     }, 500);
   };
+  const persistMenuOpen = () => {
+    if (anchorTimer.current.closed !== null) {
+      clearTimeout(anchorTimer.current.closed);
+    }
+  };
 
   const dropdownId = v4();
 
@@ -79,11 +84,7 @@ export const Dropdown: FC<DropdownPropsT> = ({
         id={dropdownId}
         open={isOpened}
         onClick={hover ? undefined : closeMenu}
-        onMouseEnter={() => {
-          if (anchorTimer.current.closed !== null) {
-            clearTimeout(anchorTimer.current.closed);
-          }
-        }}
+        onMouseEnter={persistMenuOpen}
         onMouseLeave={hover && closeMenu}
         anchorEl={anchorEl}
         PopoverClasses={{

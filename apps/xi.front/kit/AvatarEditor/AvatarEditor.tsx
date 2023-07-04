@@ -94,6 +94,9 @@ const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
 
   const createAvatar = () => <Avatar letter={letter} filename={filename} />;
 
+  const editAvatar = () => uiSt.setDialogs('avatarEditor', true);
+  const deleteAvatar = () => userSt.deleteAvatar();
+
   return (
     <Stack direction="row" justifyContent="center" alignItems="center">
       <Dropdown
@@ -102,13 +105,12 @@ const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
         buttonSx={{ width: '156px', height: '156px' }}
         hover={hover}
       >
-        <MenuItem sx={menuItemsStyles} onClick={() => uiSt.setDialogs('avatarEditor', true)}>
-          <Stack direction="row" alignItems="center" sx={{ width: '100%', gap: '8px' }}>
+        <MenuItem sx={menuItemsStyles} onClick={editAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
             <Edit fontSize="small" />
             <Typography
+              variant="body2"
               sx={{
-                fontWeight: 400,
-                fontSize: '14px',
                 lineHeight: '20px',
               }}
             >
@@ -116,13 +118,12 @@ const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
             </Typography>
           </Stack>
         </MenuItem>
-        <MenuItem sx={menuItemsStyles} onClick={() => uiSt.setDialogs('avatarEditor', true)}>
-          <Stack direction="row" alignItems="center" sx={{ width: '100%', gap: '8px' }}>
+        <MenuItem sx={menuItemsStyles} onClick={editAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
             <Account fontSize="small" />
             <Typography
+              variant="body2"
               sx={{
-                fontWeight: 400,
-                fontSize: '14px',
                 lineHeight: '20px',
               }}
             >
@@ -130,13 +131,12 @@ const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
             </Typography>
           </Stack>
         </MenuItem>
-        <MenuItem sx={menuItemsStyles} onClick={() => userSt.deleteAvatar()}>
-          <Stack direction="row" alignItems="center" sx={{ width: '100%', gap: '8px' }}>
+        <MenuItem sx={menuItemsStyles} onClick={deleteAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
             <Trash fontSize="small" />
             <Typography
+              variant="body2"
               sx={{
-                fontWeight: 400,
-                fontSize: '14px',
                 lineHeight: '20px',
               }}
             >
