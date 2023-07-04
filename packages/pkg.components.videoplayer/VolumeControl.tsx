@@ -1,89 +1,38 @@
-import { Box, IconButton, Stack } from '@mui/material';
-import { FC, useRef, useState } from 'react';
-import { SoundOnIcon, VolumeOffIcon } from './TempIcons';
+import { Box, IconButton } from '@mui/material';
+import { FC, useState } from 'react';
+import { SoundOff, SoundOn } from 'pkg.icons';
 import { Range } from './Range';
+import { iconButtonStyle, iconStyle, rangeContainerStyle } from './style';
 
 type VolumeControlProps = {
-  muted: boolean;
   volume: number;
   onChange: (event: Event, value: number | number[]) => void;
-  onMute: () => void;
-  onUnmute: () => void;
 };
 
-export const VolumeControl: FC<VolumeControlProps> = ({
-  muted,
-  volume,
-  onChange,
-  onMute,
-  onUnmute,
-}) => {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-
+export const VolumeControl: FC<VolumeControlProps> = ({ volume, onChange }) => {
   const [isShow, setIsShow] = useState(false);
 
-  return (
-    <Box
-      sx={{ position: 'relative', maxWidth: 'max-content', ml: 'auto' }}
-      onMouseEnter={() => {
-        setIsShow(true);
-      }}
-      onMouseLeave={() => {
-        setIsShow(false);
-      }}
-    >
-      {!muted && (
-        <IconButton onClick={onMute} sx={{ width: '24px', height: '24px', p: 0 }}>
-          <SoundOnIcon />
-        </IconButton>
-      )}
+  const handleIconClick = () => {
+    setIsShow((prev) => !prev);
+  };
 
-      {muted && (
-        <IconButton onClick={onUnmute} sx={{ width: '24px', height: '24px', p: 0 }}>
-          <VolumeOffIcon />
-        </IconButton>
-      )}
+  return (
+    <Box sx={{ position: 'relative', maxWidth: 'max-content', ml: 'auto' }}>
+      <IconButton onClick={handleIconClick} sx={iconButtonStyle}>
+        {volume > 0 && <SoundOn sx={iconStyle} />}
+        {volume === 0 && <SoundOff sx={iconStyle} />}
+      </IconButton>
 
       {isShow && (
-        <Box
-          onMouseOver={() => {
-            setIsShow(true);
-          }}
-          sx={{
-            position: 'absolute',
-            top: '-190px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            height: '190px',
-            width: '36px',
-            bgcolor: 'transparent',
-            borderRadius: '8px',
-          }}
-        >
-          <Stack
-            alignItems="center"
-            ref={sliderRef}
-            sx={{
-              position: 'absolute',
-              top: '0',
-              p: '16px 0',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              height: '182px',
-              width: '36px',
-              bgcolor: 'rgba(16, 16, 16, 0.40);',
-              borderRadius: '8px',
-            }}
-          >
-            <Range
-              orientation="vertical"
-              min={0}
-              max={1}
-              value={volume}
-              step={0.01}
-              onChange={onChange}
-            />
-          </Stack>
+        <Box sx={rangeContainerStyle}>
+          <Range
+            orientation="vertical"
+            min={0}
+            max={1}
+            value={volume}
+            step={0.01}
+            onChange={onChange}
+          />
         </Box>
       )}
     </Box>
