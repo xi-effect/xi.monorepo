@@ -38,7 +38,6 @@ export const icons = [
   'Invite',
   'Italic',
   'Link',
-  'Mail',
   'Maximize',
   'Microphone',
   'Minus',

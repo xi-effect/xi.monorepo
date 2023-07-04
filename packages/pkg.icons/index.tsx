@@ -37,7 +37,6 @@ import { Home } from './Home';
 import { Invite } from './Invite';
 import { Italic } from './Italic';
 import { Link } from './Link';
-import { Mail } from './Mail';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
 import { Minus } from './Minus';
@@ -108,7 +107,6 @@ export {
   Invite,
   Italic,
   Link,
-  Mail,
   Maximize,
   Microphone,
   Minus,

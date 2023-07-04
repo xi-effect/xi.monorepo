@@ -1,94 +1,95 @@
 import { Stack, Typography, Button, useMediaQuery, Theme } from '@mui/material';
+import Image from 'next/image';
 
 import { useStore } from 'store/connect';
 
 import { observer } from 'mobx-react';
 import { PasswordChangeDialog } from 'kit/PasswordChangeDialog';
 import { EmailChangeDialog } from 'kit/EmailChangeDialog';
-// import { Mail } from 'pkg.icons';
+import mail from 'public/icons/mail.png';
+import { Button as PkgButton } from 'pkg.inputs.button';
 
 const Secure = observer(() => {
   const rootStore = useStore();
   const { profileSt, uiSt } = rootStore;
   const mobile700: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(1400));
+  const upTo800: boolean = useMediaQuery((theme: Theme) => theme.breakpoints.down(800));
 
   return (
     <>
       <Stack
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
+        direction="row"
+        justifyContent="space-between"
+        spacing={2}
         sx={{
           bgcolor: 'moscow.0',
           width: '100%',
-          borderRadius: '8px',
-          padding: '16px',
+          borderRadius: '16px',
           position: 'relative',
-          gap: '16px',
         }}
       >
         <Stack
-          sx={{
-            gap: '4px',
-          }}
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          spacing={2}
+          sx={{ padding: '16px' }}
         >
-          <Typography
-            sx={{
-              color: 'moscow.100',
-              fontWeight: 600,
-              fontSize: '14px',
-              lineHeight: '20px',
-            }}
-          >
-            Почта не подтверждена
-          </Typography>
-          <Typography
-            sx={{
-              color: 'moscow.100',
-              fontWeight: 400,
-              fontSize: '12px',
-              lineHeight: '16px',
-            }}
-          >
-            Подтверждение адреса электронной почты требуется для защиты аккаунта и восстановления
-            доступа
-          </Typography>
+          <Stack spacing={0.5} sx={{ maxWidth: upTo800 ? 'auto' : '460px' }}>
+            <Typography
+              sx={{
+                color: 'moscow.100',
+                fontWeight: 600,
+                fontSize: '14px',
+                lineHeight: '20px',
+              }}
+            >
+              Почта не подтверждена
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'moscow.100',
+                lineHeight: '16px',
+              }}
+            >
+              Подтверждение адреса электронной почты требуется для защиты аккаунта и восстановления
+              доступа
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5}>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'moscow.100',
+                lineHeight: '16px',
+              }}
+            >
+              Письмо не пришло?
+            </Typography>
+            <PkgButton
+              variant="outlined"
+              size="small"
+              sx={{
+                borderColor: 'moscow.100',
+                padding: '5px 16px',
+                lineHeight: '20px',
+                color: 'moscow.100',
+                '&:hover': {
+                  bgColor: 'moscow.100',
+                  textColor: 'moscow.0',
+                },
+              }}
+            >
+              Отправить повторно
+            </PkgButton>
+          </Stack>
         </Stack>
         <Stack
-          sx={{
-            gap: '4px',
-          }}
+          justifyContent="flex-end"
+          alignItems="flex-end"
+          sx={{ display: upTo800 ? 'none' : '' }}
         >
-          <Typography
-            sx={{
-              color: 'moscow.100',
-              fontWeight: 400,
-              fontSize: '12px',
-              lineHeight: '16px',
-            }}
-          >
-            Письмо не пришло?
-          </Typography>
-          <Button
-            variant="outlined"
-            size="large"
-            sx={{
-              borderRadius: '6px',
-              border: '1px',
-              borderColor: 'moscow.100',
-              padding: '5px 16px',
-              gap: '6px',
-              bgcolor: 'moscow.0',
-              fontWeight: 500,
-              fontSize: '14px',
-              lineHeight: '20px',
-              textTransform: 'none',
-              color: 'moscow.100',
-            }}
-          >
-            Отправить повторно
-          </Button>
-          {/* <Mail fontSize="small" /> */}
+          <Image src={mail} alt="mail" style={{ color: 'moscow.20', marginRight: '32px' }} />
         </Stack>
       </Stack>
 
