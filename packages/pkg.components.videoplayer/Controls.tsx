@@ -3,8 +3,15 @@ import { FC } from 'react';
 import { Maximize, Minimize, Pause, Play } from 'pkg.icons';
 import { VolumeControl } from './VolumeControl';
 import { Range } from './Range';
-import { controlsContainerStyle, iconButtonStyle, iconStyle, textStyle } from './style';
+import {
+  controlsContainerStyle,
+  controlsRowStyle,
+  iconButtonStyle,
+  iconStyle,
+  textStyle,
+} from './style';
 import { formatTime } from './helpers';
+import 'pkg.config.muidts';
 
 type ControlsProps = {
   isFullScreen: boolean;
@@ -37,8 +44,15 @@ export const Controls: FC<ControlsProps> = ({
   const formattedMovieDuration = formatTime(movieDuration);
 
   return (
-    <Stack sx={controlsContainerStyle}>
-      <Stack direction="row" sx={{ gap: '16px' }}>
+    <Stack
+      sx={(theme) => ({
+        ...controlsContainerStyle,
+        [theme.breakpoints.down('md')]: {
+          maxWidth: '327px',
+        },
+      })}
+    >
+      <Stack direction="row" alignItems="center" sx={controlsRowStyle}>
         {!playing && (
           <IconButton sx={iconButtonStyle} onClick={onPlay}>
             <Play sx={iconStyle} />
@@ -59,8 +73,10 @@ export const Controls: FC<ControlsProps> = ({
         </IconButton>
       </Stack>
 
-      <Stack direction="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Typography sx={textStyle}>{formattedCurrentPlayerTime}</Typography>
+      <Stack direction="row" alignItems="center" sx={controlsRowStyle}>
+        <Typography variant="s" sx={textStyle}>
+          {formattedCurrentPlayerTime}
+        </Typography>
 
         <Range
           min={0}
@@ -71,7 +87,9 @@ export const Controls: FC<ControlsProps> = ({
           onChangeCommitted={onPlayerTimeChangeCommitted}
         />
 
-        <Typography sx={textStyle}>{formattedMovieDuration}</Typography>
+        <Typography variant="s" sx={textStyle}>
+          {formattedMovieDuration}
+        </Typography>
       </Stack>
     </Stack>
   );

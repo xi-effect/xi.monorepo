@@ -101,7 +101,7 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
       justifyContent="center"
       sx={(theme) => ({
         ...mainContainerStyle,
-        [theme.breakpoints.down('md')]: { p: '24px' },
+        [theme.breakpoints.down('md')]: { p: '12px' },
       })}
       ref={mainContainerRef}
     >

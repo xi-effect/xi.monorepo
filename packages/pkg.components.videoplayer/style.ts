@@ -4,7 +4,7 @@ const mainContainerBgColor = 'rgba(27, 27, 27, 0.4)';
 export const mainColor = 'petersburg.0';
 
 export const iconStyle = { color: mainColor };
-export const textStyle = { color: mainColor };
+export const textStyle = { color: mainColor, fontWeight: 400, minWidth: '37px' };
 
 export const iconButtonStyle = { width: '24px', height: '24px', p: 0 };
 
@@ -38,19 +38,21 @@ export const playerStyle = {
 
 export const controlsContainerStyle = {
   bgcolor: controlsBgColor,
-  p: '16px',
+  p: '8px 16px',
   position: 'fixed',
   bottom: '32px',
   left: '50%',
   transform: 'translateX(-50%)',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
   zIndex: 1,
-  gap: '8px',
+  gap: '4px',
   borderRadius: '8px',
   maxWidth: '638px',
   width: '100%',
+};
+
+export const controlsRowStyle = {
+  gap: '16px',
+  minHeight: '36px',
 };
 
 export const rangeContainerStyle = {
@@ -81,17 +83,30 @@ export const closeButtonStyle = {
 };
 
 export const rangeStyle = {
-  '& .MuiSlider-thumb': {
-    color: mainColor,
-    '&:hover': {
-      boxShadow: 'none',
+  default: {
+    '& .MuiSlider-thumb': {
+      color: mainColor,
+      '&:hover': {
+        boxShadow: 'none',
+      },
+    },
+    '& .MuiSlider-track': {
+      bgcolor: mainColor,
+    },
+    '& .MuiSlider-rail': {
+      bgcolor: mainColor,
+      opacity: 0.3,
     },
   },
-  '& .MuiSlider-track': {
-    bgcolor: mainColor,
+
+  vertical: {
+    '&.MuiSlider-root': {
+      p: '0 13px',
+    },
   },
-  '& .MuiSlider-rail': {
-    bgcolor: mainColor,
-    opacity: 0.3,
+  horizontal: {
+    '&.MuiSlider-root': {
+      p: '15px 0',
+    },
   },
 };

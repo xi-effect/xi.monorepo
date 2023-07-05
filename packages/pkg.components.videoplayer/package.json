@@ -15,7 +15,8 @@
     "pkg.icons": "*",
     "react": "^18.2.0",
     "react-player": "^2.12.0",
-    "screenfull": "^6.0.2"
+    "screenfull": "^6.0.2",
+    "pkg.config.muidts": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",

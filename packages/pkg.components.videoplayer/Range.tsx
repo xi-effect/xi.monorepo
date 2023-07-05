@@ -17,12 +17,12 @@ export const Range: FC<RangeProps> = ({
   max,
   value,
   step,
-  orientation,
+  orientation = 'horizontal',
   onChange,
   onChangeCommitted,
 }) => (
   <Slider
-    sx={rangeStyle}
+    sx={{ ...rangeStyle.default, ...rangeStyle[orientation] }}
     min={min}
     max={max}
     value={value}
