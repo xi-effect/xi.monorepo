@@ -27,7 +27,7 @@ const initialPlayerState = {
   volume: 0.5,
   playing: false,
   playerTime: 0,
-  currentPlayerTime: 0,
+  currentVideoTime: 0,
   seeking: false,
 };
 
@@ -40,9 +40,9 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
   const scale = getScale(screenfull.isFullscreen, mainContainerRef, playerScaleContainerRef);
   const maxWidthPlayer = screenfull.isFullscreen ? '100%' : '1250px';
 
-  const movieDuration = reactPlayerRef.current ? reactPlayerRef.current.getDuration() : 0;
+  const videoDuration = reactPlayerRef.current ? reactPlayerRef.current.getDuration() : 0;
 
-  const [{ volume, playing, currentPlayerTime, seeking }, setPlayerState] =
+  const [{ volume, playing, currentVideoTime, seeking }, setPlayerState] =
     useState(initialPlayerState);
 
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -65,16 +65,14 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
     }
   };
 
-  const handlePlay = () => {
-    setPlayerState((prev) => ({ ...prev, playing: true }));
-  };
-
-  const handlePause = () => {
-    setPlayerState((prev) => ({ ...prev, playing: false }));
+  const handleTogglePlay = () => {
+    setPlayerState((prev) => ({ ...prev, playing: !prev.playing }));
   };
 
   const handleVolumeChange = (event: Event, value: number | number[]) => {
-    setPlayerState((prev) => ({ ...prev, volume: value as number }));
+    const currentValue = Array.isArray(value) ? value[0] : value;
+
+    setPlayerState((prev) => ({ ...prev, volume: currentValue }));
   };
 
   const handlePlayerTimeChangeCommitted = () => {
@@ -82,15 +80,23 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
   };
 
   const handlePlayerTimeChange = (event: Event, value: number | number[]) => {
-    reactPlayerRef.current?.seekTo((value as number) - 0.01);
-    setPlayerState((prev) => ({ ...prev, currentPlayerTime: value as number, seeking: true }));
+    const currentValue = Array.isArray(value) ? value[0] : value;
+
+    reactPlayerRef.current?.seekTo(currentValue - 0.01);
+    setPlayerState((prev) => ({ ...prev, currentVideoTime: currentValue, seeking: true }));
   };
 
   const handlePlayerProgress = (player: OnProgressProps) => {
+    const currentTime = reactPlayerRef.current?.getCurrentTime();
+
+    if (currentTime === videoDuration) {
+      setPlayerState((prev) => ({ ...prev, playing: false }));
+    }
+
     if (!seeking) {
       setPlayerState((prev) => ({
         ...prev,
-        currentPlayerTime: player.playedSeconds,
+        currentVideoTime: player.playedSeconds,
       }));
     }
   };
@@ -132,8 +138,6 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
                 playing={playing}
                 volume={volume}
                 onProgress={handlePlayerProgress}
-                onPlay={handlePlay}
-                onPause={handlePause}
                 loop={loop}
                 width="100%"
                 height="100%"
@@ -147,10 +151,9 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, loop, onClose }) => {
           isFullScreen={isFullScreen}
           playing={playing}
           volume={volume}
-          movieDuration={movieDuration}
-          currentPlayerTime={currentPlayerTime}
-          onPlay={handlePlay}
-          onPause={handlePause}
+          videoDuration={videoDuration}
+          currentVideoTime={currentVideoTime}
+          onTogglePlay={handleTogglePlay}
           onToggleScreenMode={handleToggleScreenMode}
           onVolumeChange={handleVolumeChange}
           onPlayerTimeChange={handlePlayerTimeChange}

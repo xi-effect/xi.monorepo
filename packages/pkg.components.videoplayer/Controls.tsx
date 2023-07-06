@@ -17,10 +17,9 @@ type ControlsProps = {
   isFullScreen: boolean;
   playing: boolean;
   volume: number;
-  movieDuration: number;
-  currentPlayerTime: number;
-  onPlay: () => void;
-  onPause: () => void;
+  videoDuration: number;
+  currentVideoTime: number;
+  onTogglePlay: () => void;
   onToggleScreenMode: () => void;
   onVolumeChange: (event: Event, value: number | number[]) => void;
   onPlayerTimeChange: (event: Event, value: number | number[]) => void;
@@ -28,20 +27,29 @@ type ControlsProps = {
 };
 
 export const Controls: FC<ControlsProps> = ({
+  /** video open in full screen */
   isFullScreen,
+  /** video is playing */
   playing,
+  /** sound volume, min 0 - max 1 */
   volume,
-  movieDuration,
-  currentPlayerTime,
-  onPlay,
-  onPause,
+  /** video duration in seconds */
+  videoDuration,
+  /** current video time in seconds */
+  currentVideoTime,
+  /** changes play or pause video. this changes playing */
+  onTogglePlay,
+  /** changes full screen mode or not. this changes  isFullScreen */
   onToggleScreenMode,
+  /** changes the volume, min 0 - max 1 */
   onVolumeChange,
+  /** changes the current time of the video. this change currentVideoTime */
   onPlayerTimeChange,
+  /** handle  video time change is over */
   onPlayerTimeChangeCommitted,
 }) => {
-  const formattedCurrentPlayerTime = formatTime(currentPlayerTime);
-  const formattedMovieDuration = formatTime(movieDuration);
+  const formattedCurrentVideoTime = formatTime(currentVideoTime);
+  const formattedVideoDuration = formatTime(videoDuration);
 
   return (
     <Stack
@@ -53,42 +61,33 @@ export const Controls: FC<ControlsProps> = ({
       })}
     >
       <Stack direction="row" alignItems="center" sx={controlsRowStyle}>
-        {!playing && (
-          <IconButton sx={iconButtonStyle} onClick={onPlay}>
-            <Play sx={iconStyle} />
-          </IconButton>
-        )}
-
-        {playing && (
-          <IconButton sx={iconButtonStyle} onClick={onPause}>
-            <Pause sx={iconStyle} />
-          </IconButton>
-        )}
+        <IconButton sx={iconButtonStyle} onClick={onTogglePlay}>
+          {playing ? <Pause sx={iconStyle} /> : <Play sx={iconStyle} />}
+        </IconButton>
 
         <VolumeControl volume={volume} onChange={onVolumeChange} />
 
         <IconButton sx={iconButtonStyle} onClick={onToggleScreenMode}>
-          {isFullScreen && <Minimize sx={iconStyle} />}
-          {!isFullScreen && <Maximize sx={iconStyle} />}
+          {isFullScreen ? <Minimize sx={iconStyle} /> : <Maximize sx={iconStyle} />}
         </IconButton>
       </Stack>
 
       <Stack direction="row" alignItems="center" sx={controlsRowStyle}>
         <Typography variant="s" sx={textStyle}>
-          {formattedCurrentPlayerTime}
+          {formattedCurrentVideoTime}
         </Typography>
 
         <Range
           min={0}
-          max={movieDuration}
-          value={currentPlayerTime}
+          max={videoDuration}
+          value={currentVideoTime}
           step={0.01}
           onChange={onPlayerTimeChange}
           onChangeCommitted={onPlayerTimeChangeCommitted}
         />
 
         <Typography variant="s" sx={textStyle}>
-          {formattedMovieDuration}
+          {formattedVideoDuration}
         </Typography>
       </Stack>
     </Stack>

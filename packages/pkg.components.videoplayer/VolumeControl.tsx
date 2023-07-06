@@ -19,8 +19,7 @@ export const VolumeControl: FC<VolumeControlProps> = ({ volume, onChange }) => {
   return (
     <Box sx={{ position: 'relative', ml: 'auto' }}>
       <IconButton onClick={handleIconClick} sx={iconButtonStyle}>
-        {volume > 0 && <SoundOn sx={iconStyle} />}
-        {volume === 0 && <SoundOff sx={iconStyle} />}
+        {volume > 0 ? <SoundOn sx={iconStyle} /> : <SoundOff sx={iconStyle} />}
       </IconButton>
 
       {isShow && (
