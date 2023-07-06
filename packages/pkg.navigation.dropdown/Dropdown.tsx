@@ -21,15 +21,10 @@ export const Dropdown: FC<DropdownPropsT> = ({
   const anchorTimer = useRef<AnchorTimerT>({ opened: null, closed: null });
 
   const onOpenMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (hover) return;
     if (isOpened) setAnchorEl(null);
     if (!isOpened) setAnchorEl(e.currentTarget);
   };
   const closeMenu = () => {
-    setAnchorEl(null);
-  };
-  const closeMenuWithClick = () => {
-    if (hover) return;
     setAnchorEl(null);
   };
   const onCloseMenu = () => {
@@ -55,10 +50,11 @@ export const Dropdown: FC<DropdownPropsT> = ({
     <>
       <ClickAwayListener onClickAway={closeMenu}>
         <Button
+          component="button"
           aria-controls={dropdownId}
-          onClick={onOpenMenu}
-          onMouseEnter={hover && onOpenedMenu}
-          onMouseLeave={hover && onCloseMenu}
+          onClick={hover ? undefined : onOpenMenu}
+          onMouseEnter={hover ? onOpenedMenu : undefined}
+          onMouseLeave={hover ? onCloseMenu : undefined}
           variant="text"
           disableRipple
           sx={{
@@ -88,7 +84,7 @@ export const Dropdown: FC<DropdownPropsT> = ({
       <Menu
         id={dropdownId}
         open={isOpened}
-        onClick={closeMenuWithClick}
+        onClick={hover ? undefined : closeMenu}
         onMouseEnter={persistMenuOpen}
         onMouseLeave={hover && closeMenu}
         anchorEl={anchorEl}
