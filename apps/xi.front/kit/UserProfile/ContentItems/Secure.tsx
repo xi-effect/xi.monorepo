@@ -89,7 +89,7 @@ const Secure = observer(() => {
           alignItems="flex-end"
           sx={{ display: upTo800 ? 'none' : '' }}
         >
-          <Image src={mail} alt="mail" style={{ color: 'moscow.20', marginRight: '32px' }} />
+          <Image src={mail} alt="mail" style={{ color: 'moscow.20', marginRight: '36px' }} />
         </Stack>
       </Stack>
 
