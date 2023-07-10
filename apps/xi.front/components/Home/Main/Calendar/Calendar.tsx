@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { Grid, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
-import { Button } from 'pkg.inputs.button';
+import { Button, ButtonProps } from 'pkg.inputs.button';
 import { useStore } from 'store/connect';
 import { Arrow, DoubleArrow } from 'pkg.icons';
+import { styled } from '@mui/material/styles';
 import WeekDay from './WeekDay';
 
 const Calendar = observer(() => {
@@ -20,6 +21,21 @@ const Calendar = observer(() => {
   }, []);
 
   const mobilelg: boolean = useMediaQuery(breakpoints.down('lg'));
+
+  const NavBtn = styled(Button)<ButtonProps & any>(({ theme }: any) => ({
+    height: '24px',
+    width: '24px',
+    color: theme.palette.petersburg[80],
+    padding: 0,
+    '&:hover': { bgcolor: 'unset', color: theme.palette.petersburg[100] },
+    '& .MuiTypography-root': {
+      height: '100%',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  }));
 
   return (
     <Stack sx={{ width: '100%', mt: '64px' }} spacing={2}>
@@ -42,52 +58,26 @@ const Calendar = observer(() => {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            sx={{ width: '108px', height: '25px', mr: '6px' }}
+            sx={{ width: '120px', height: '24px', gap: '8px' }}
           >
-            <Button
-              variant="text"
-              onClick={getPrevMonth}
-              sx={{
-                color: 'petersburg.80',
-                p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
-              }}
-            >
-              <DoubleArrow sx={{ transform: 'rotate(180deg)', fontSize: '12px' }} />
-            </Button>
-            <Button
-              variant="text"
-              onClick={getPrevWeek}
-              sx={{
-                color: 'petersburg.80',
-                p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
-              }}
-            >
-              <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '18px' }} />
-            </Button>
-            <Button
-              variant="text"
-              onClick={getNextWeek}
-              sx={{
-                color: 'petersburg.80',
-                p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
-              }}
-            >
-              <Arrow sx={{ fontSize: '18px' }} />
-            </Button>
-            <Button
-              variant="text"
-              onClick={getNextMonth}
-              sx={{
-                color: 'petersburg.80',
-                p: 0,
-                '&:hover': { bgcolor: 'unset', color: 'petersburg.100' },
-              }}
-            >
-              <DoubleArrow sx={{ fontSize: '12px' }} />
-            </Button>
+            <NavBtn variant="text" onClick={getPrevMonth}>
+              <DoubleArrow
+                sx={{
+                  transform: 'rotate(180deg)',
+                  fontSize: '24px',
+                  width: '100%',
+                }}
+              />
+            </NavBtn>
+            <NavBtn variant="text" onClick={getPrevWeek}>
+              <Arrow sx={{ transform: 'rotate(180deg)', fontSize: '20px', width: '100%' }} />
+            </NavBtn>
+            <NavBtn variant="text" onClick={getNextWeek}>
+              <Arrow sx={{ fontSize: '20px', width: '100%' }} />
+            </NavBtn>
+            <NavBtn variant="text" onClick={getNextMonth}>
+              <DoubleArrow sx={{ fontSize: '24px', width: '100%' }} />
+            </NavBtn>
           </Stack>
         </Stack>
 
