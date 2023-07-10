@@ -72,6 +72,7 @@ const Secure = observer(() => {
               sx={{
                 borderColor: 'moscow.100',
                 padding: '5px 16px',
+                width: '178px',
                 lineHeight: '20px',
                 color: 'moscow.100',
                 '&:hover': {
