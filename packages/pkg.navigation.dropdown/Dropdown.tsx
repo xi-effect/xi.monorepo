@@ -21,19 +21,27 @@ export const Dropdown: FC<DropdownPropsT> = ({
   const anchorTimer = useRef<AnchorTimerT>({ opened: null, closed: null });
 
   const onOpenMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (hover) return;
     if (isOpened) setAnchorEl(null);
     if (!isOpened) setAnchorEl(e.currentTarget);
   };
-  const closeMenu = () => {
+  const closeMenuWithHover = () => {
+    if (!hover) return;
+    setAnchorEl(null);
+  };
+  const closeMenuWithClick = () => {
+    if (hover) return;
     setAnchorEl(null);
   };
   const onCloseMenu = () => {
-    anchorTimer.current.closed = setTimeout(closeMenu, 500);
+    if (!hover) return;
+    anchorTimer.current.closed = setTimeout(closeMenuWithHover, 500);
     if (anchorTimer.current.opened !== null) {
       clearTimeout(anchorTimer.current.opened);
     }
   };
   const onOpenedMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (!hover) return;
     anchorTimer.current.opened = setTimeout(() => {
       setAnchorEl(e.target);
     }, 500);
@@ -48,13 +56,13 @@ export const Dropdown: FC<DropdownPropsT> = ({
 
   return (
     <>
-      <ClickAwayListener onClickAway={closeMenu}>
+      <ClickAwayListener onClickAway={closeMenuWithClick}>
         <Button
           component="button"
           aria-controls={dropdownId}
-          onClick={hover ? undefined : onOpenMenu}
-          onMouseEnter={hover ? onOpenedMenu : undefined}
-          onMouseLeave={hover ? onCloseMenu : undefined}
+          onClick={onOpenMenu}
+          onMouseEnter={onOpenedMenu}
+          onMouseLeave={onCloseMenu}
           variant="text"
           disableRipple
           sx={{
@@ -84,9 +92,9 @@ export const Dropdown: FC<DropdownPropsT> = ({
       <Menu
         id={dropdownId}
         open={isOpened}
-        onClick={hover ? undefined : closeMenu}
+        onClick={closeMenuWithClick}
         onMouseEnter={persistMenuOpen}
-        onMouseLeave={hover && closeMenu}
+        onMouseLeave={closeMenuWithHover}
         anchorEl={anchorEl}
         PopoverClasses={{
           root: 'Dropdown-root',
