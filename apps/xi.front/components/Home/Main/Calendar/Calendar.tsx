@@ -39,17 +39,20 @@ const Calendar = observer(() => {
 
   return (
     <Stack sx={{ width: '100%', mt: '64px' }} spacing={2}>
-      <Typography variant="xl" sx={{ fontWeight: 600 }}>
+      <Typography variant="xl" sx={{ fontWeight: 600, letterSpacing: '0.073px' }}>
         Календарь
       </Typography>
 
       <Stack sx={{ bgcolor: 'petersburg.0', p: '24px', borderRadius: '8px' }} spacing={1}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack spacing={1} direction="row" justifyContent="flex-start" alignItems="center">
-            <Typography sx={{ fontSize: '20px', lineHeight: '30px', fontWeight: 600 }}>
+            <Typography sx={{ fontSize: '20px', lineHeight: '28px', fontWeight: 600 }}>
               {calendar?.month}
             </Typography>
-            <Typography variant="m" sx={{ fontWeight: 400 }}>
+            <Typography
+              variant="m"
+              sx={{ fontWeight: 400, lineHeight: '22px', letterSpacing: '0.237px' }}
+            >
               {calendar?.year}
             </Typography>
           </Stack>
