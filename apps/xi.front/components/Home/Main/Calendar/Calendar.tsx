@@ -117,7 +117,7 @@ const Calendar = observer(() => {
                     color: 'petersburg.40',
                     width: '100%',
                     height: '100%',
-                    minHeight: '30px',
+                    minHeight: '32px',
                     minWidth: '48px',
                     display: 'flex',
                     alignItems: 'center',
