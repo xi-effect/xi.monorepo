@@ -1,4 +1,4 @@
-import { SyntheticEvent, FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState, FC, ChangeEvent } from 'react';
 import { MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
 import { Arrow } from 'pkg.icons';
@@ -28,7 +28,7 @@ export type SelectProps = {
   /* cancel your previus choose  */
   cancelItem?: string;
   /* select sized */
-  size: SizesT;
+  size?: SizesT;
   type?: TypesT;
   /* select custom width */
   width?: string;
@@ -39,9 +39,10 @@ export type SelectProps = {
   maxHeight?: string;
 
   /* selected value */
-  value: string;
+  value: string[];
   /* change selected value */
-  onChange: (e: SyntheticEvent) => void;
+  onChange: (e: ChangeEvent<Element>) => void;
+  sx?: any;
 };
 
 const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: () => void) => (
@@ -61,12 +62,12 @@ const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: (
   </Stack>
 );
 
-export const Select = ({
+export const Select: FC<SelectProps> = ({
   id,
   items,
   groups,
   cancelItem,
-  size,
+  size = 'm',
   type = 'default',
   width = '250px',
   maxHeight = '300px',
@@ -74,6 +75,7 @@ export const Select = ({
   Icon,
   value,
   onChange,
+  sx,
 }: SelectProps) => {
   const [isOpened, setIsOpened] = useState(false);
 
@@ -109,11 +111,12 @@ export const Select = ({
           transition: '0.3s',
           outline: 'none',
           ...selectOverrideClasses,
+          ...sx,
         }}
         disabled={isDisabled}
         tabIndex={isDisabled ? -1 : 0}
         onChange={onChangeValue}
-        value={value}
+        value={value[0]}
         MenuProps={{ sx: { ...MenuProps(maxHeight) } }}
         displayEmpty
         IconComponent={() => OpenIcon(isOpened, size, isDisabled, handleDropIconClick)}

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { observer } from 'mobx-react';
 
 import { Dialog, IconButton, RadioGroup, Stack, Typography } from '@mui/material';
@@ -191,7 +191,7 @@ const DialogChannelCreation = observer(() => {
                   onClick={(e) => {
                     const event = e as React.MouseEvent<HTMLDivElement, MouseEvent>;
 
-                    const newEvent = {
+                    const newEvent: ChangeEvent<any> = {
                       ...event,
                       target: {
                         value: item.currentType,

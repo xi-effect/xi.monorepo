@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { observer } from 'mobx-react';
-import { Button, Dialog, IconButton, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Button, Dialog, IconButton, Stack, Typography } from '@mui/material';
 import { Close } from 'pkg.icons';
 import { useStore } from 'store/connect';
 import { Input } from 'pkg.inputs.input';
+import { Select } from 'pkg.inputs.select';
 import TextFieldCustom from 'kit/TextFieldCustom';
 
 type FormValues = {
@@ -151,7 +152,7 @@ const DialogInvite = observer(() => {
             render={({ field: { onChange, value } }) => (
               <TimePicker
                 value={value}
-                onChange={(event) => {
+                onChange={(event: string | ChangeEvent<Element>) => {
                   onChange(event);
                 }}
                 renderInput={(params) => (
@@ -172,10 +173,15 @@ const DialogInvite = observer(() => {
           name="roles"
           control={control}
           render={({ field }) => (
-            <Select labelId="level-label" {...field} sx={{ width: '100%' }}>
-              <MenuItem value={0}>0</MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-            </Select>
+            <Select
+              id="level-label"
+              {...field}
+              sx={{ width: '100%' }}
+              items={[
+                { id: '0', value: '0' },
+                { id: '1', value: '1' },
+              ]}
+            />
           )}
         />
         <Stack

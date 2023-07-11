@@ -17,6 +17,7 @@ import { Clock } from './Clock';
 import { Close } from './Close';
 import { Code } from './Code';
 import { Copy } from './Copy';
+import { DoubleArrow } from './DoubleArrow';
 import { Emotions } from './Emotions';
 import { Endcall } from './Endcall';
 import { Exit } from './Exit';
@@ -24,6 +25,7 @@ import { External } from './External';
 import { Eyeoff } from './Eyeoff';
 import { Eyeon } from './Eyeon';
 import { File } from './File';
+import { Fire } from './Fire';
 import { Flag } from './Flag';
 import { Folder } from './Folder';
 import { Food } from './Food';
@@ -87,6 +89,7 @@ export {
   Close,
   Code,
   Copy,
+  DoubleArrow,
   Emotions,
   Endcall,
   Exit,
@@ -94,6 +97,7 @@ export {
   Eyeoff,
   Eyeon,
   File,
+  Fire,
   Flag,
   Folder,
   Food,

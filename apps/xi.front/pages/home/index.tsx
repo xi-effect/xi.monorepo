@@ -16,6 +16,9 @@ const Home = observer(() => (
           width: '100%',
           p: 4,
           overflow: 'auto',
+          '& > *': {
+            flexShrink: 0,
+          },
         }}
       >
         <HomePage />
