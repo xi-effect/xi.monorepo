@@ -7,7 +7,7 @@ const MIN_PASSWORD_LENGTH = 6;
 const VALIDATIONS = (password: string) => [
   {
     passed: RexExpValidation(password, '\\W'),
-    helper: 'Пароль должен содержать хотя бы один спуциальный символ',
+    helper: 'Пароль должен содержать хотя бы один специальный символ',
   },
   {
     passed: RexExpValidation(password, '[0-9]'),
