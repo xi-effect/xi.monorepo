@@ -28,6 +28,7 @@ export const PasswordHelper = ({
         gap: '4px',
       }}
     >
+      {!strengthValue && 'Минимум 6 символов'}
       {strengthValue < 80 || weakPassword ? error : 'Надежный пароль'}
       {weakPassword && <WeakPasswordTooltip />}
     </FormHelperText>
