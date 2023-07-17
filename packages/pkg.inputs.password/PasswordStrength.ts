@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { commonPasswords } from './CommonPasswords';
 
 const RexExpValidation = (password: string, validation: string) =>
   new RegExp(validation).test(password);
@@ -26,8 +27,6 @@ const VALIDATIONS = (password: string) => [
     helper: 'Слишком короткий пароль, добавьте символов',
   },
 ];
-
-const WEAK_PASS = ['Test1234', 'Qwerty1234'];
 
 export const usePasswordStrength = () => {
   const [strengthValue, setStrengthValue] = useState<number>(0);
@@ -65,11 +64,16 @@ export const usePasswordStrength = () => {
   const updatePassword = (value: string) => setPassword(value);
 
   const checkWeakPass = () => {
-    if (strengthValue >= 80) {
-      const isWeak = WEAK_PASS.includes(password ?? '');
+    if (strengthValue >= 80 || weakPassword) {
+      const isWeak = commonPasswords.some((commonPass) => {
+        const lowerCommonPass = commonPass.toLowerCase();
+        const lowerPassword = password?.toLowerCase() || '';
+        return lowerPassword.includes(lowerCommonPass);
+      });
+
       if (isWeak) {
         setWeakPassword(true);
-        setError('Такой пароль легко вломать');
+        setError('Такой пароль легко взломать');
         setStrengthValue(25);
       } else {
         setWeakPassword(false);
