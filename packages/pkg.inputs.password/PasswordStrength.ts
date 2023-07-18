@@ -85,8 +85,11 @@ export const usePasswordStrength = () => {
 
   useEffect(() => {
     checkStrength();
-    checkWeakPass();
   }, [password]);
+
+  useEffect(() => {
+    checkWeakPass();
+  }, [strengthValue, password]);
 
   return { password, updatePassword, strengthValue, error, color, weakPassword };
 };
