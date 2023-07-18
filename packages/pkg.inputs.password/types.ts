@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 export type PasswordSizeT = 's' | 'm';
 export type PasswordTypesT = 'error' | 'warning' | 'disabled' | 'default';
 /*
-  login: enter password
-  setup: setup password
+  sign_in: enter password
+  sign_up: setup password
 */
-export type FiledTypeT = 'login' | 'setup';
+export type FiledTypeT = 'sign_in' | 'sign_up';
 
 export type PasswordProps = {
   size?: PasswordSizeT;

@@ -11,53 +11,53 @@ const Error = (
 
 const passwords: PasswordProps[] = [
   {
-    fieldType: 'setup',
+    fieldType: 'sign_up',
     size: 's',
   },
   {
-    fieldType: 'setup',
+    fieldType: 'sign_up',
     size: 'm',
   },
 
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 's',
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 'm',
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 's',
     type: 'warning',
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 'm',
     type: 'warning',
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 's',
     type: 'error',
     errorWindow: true,
     errorWindowContent: Error,
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 'm',
     type: 'error',
     errorWindow: true,
     errorWindowContent: Error,
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 's',
     type: 'disabled',
   },
   {
-    fieldType: 'login',
+    fieldType: 'sign_in',
     size: 'm',
     type: 'disabled',
   },

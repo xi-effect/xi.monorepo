@@ -35,10 +35,12 @@ export const usePasswordStrength = () => {
   const [password, setPassword] = useState<null | string>(null);
 
   const color = useMemo(() => {
-    if (strengthValue === 0) return 'petersburg.30';
-    if (strengthValue <= 25) return 'moscow.100';
-    if (strengthValue > 25 && strengthValue < 80) return 'kungur.100';
-    return 'ekaterinburg.100';
+    if (strengthValue === 0) return { bar: 'petersburg.30', text: 'petersburg.60' };
+    if (strengthValue <= 25) {
+      return { bar: 'moscow.100', text: `${weakPassword ? 'moscow.100' : 'petersburg.60'}` };
+    }
+    if (strengthValue > 25 && strengthValue < 80) return { bar: 'kungur.100', text: 'kungur.100' };
+    return { bar: 'ekaterinburg.100', text: 'ekaterinburg.100' };
   }, [strengthValue]);
 
   const checkStrength = () => {

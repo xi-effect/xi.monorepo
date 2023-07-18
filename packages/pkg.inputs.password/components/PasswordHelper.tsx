@@ -5,7 +5,7 @@ import { StrengthBar } from './StrengthBar';
 
 export type PasswordHelperProps = {
   strengthValue: number;
-  color: string;
+  color: { bar: string; text: string };
   weakPassword: boolean;
   error: string | null;
 };
@@ -17,10 +17,10 @@ export const PasswordHelper = ({
   error,
 }: PasswordHelperProps) => (
   <>
-    <StrengthBar progress={strengthValue} color={color} />
+    <StrengthBar progress={strengthValue} color={color.bar} />
     <FormHelperText
       sx={{
-        color,
+        color: color.text,
         fontSize: '12px',
         lineHeight: '16px',
         display: 'flex',

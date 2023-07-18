@@ -10,7 +10,7 @@ import { PasswordProps } from './types';
 export const Password = ({
   size = 'm',
   type = 'default',
-  fieldType = 'login',
+  fieldType = 'sign_in',
   width = '250px',
   errorWindow,
   errorWindowContent,
@@ -48,7 +48,7 @@ export const Password = ({
   };
 
   const inputColor = useMemo(() => {
-    if (fieldType === 'login') {
+    if (fieldType === 'sign_in') {
       if (type === 'error') return 'moscow.80';
       if (type === 'warning') return 'kungur.80';
       if (type === 'disabled') return 'petersburg.30';
@@ -144,7 +144,7 @@ export const Password = ({
         }}
         {...props}
       />
-      {fieldType === 'setup' && (
+      {fieldType === 'sign_up' && (
         <PasswordHelper
           color={color}
           strengthValue={strengthValue}
