@@ -1,8 +1,10 @@
 import { Button, Menu, ClickAwayListener } from '@mui/material';
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useRef } from 'react';
 import { v4 } from 'uuid';
 import { dropdownSizes, menuStyles } from './styles';
 import { DropdownPropsT } from './types';
+
+type AnchorTimerT = Record<'opened' | 'closed', ReturnType<typeof setTimeout> | null>;
 
 export const Dropdown: FC<DropdownPropsT> = ({
   Element,
@@ -11,27 +13,56 @@ export const Dropdown: FC<DropdownPropsT> = ({
   menuSx,
   buttonSx,
   children,
+  hover,
   ...props
 }) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement | EventTarget>(null);
   const isOpened = Boolean(anchorEl);
+  const anchorTimer = useRef<AnchorTimerT>({ opened: null, closed: null });
 
   const onOpenMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (hover) return;
     if (isOpened) setAnchorEl(null);
     if (!isOpened) setAnchorEl(e.currentTarget);
   };
-  const onCloseMenu = () => {
+  const closeMenuWithHover = () => {
+    if (!hover) return;
     setAnchorEl(null);
+  };
+  const closeMenuWithClick = () => {
+    if (hover) return;
+    setAnchorEl(null);
+  };
+  const onCloseMenu = () => {
+    if (!hover) return;
+    anchorTimer.current.closed = setTimeout(closeMenuWithHover, 500);
+    if (anchorTimer.current.opened !== null) {
+      clearTimeout(anchorTimer.current.opened);
+    }
+  };
+  const onOpenedMenu: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    if (!hover) return;
+    anchorTimer.current.opened = setTimeout(() => {
+      setAnchorEl(e.target);
+    }, 500);
+  };
+  const persistMenuOpen = () => {
+    if (anchorTimer.current.closed !== null) {
+      clearTimeout(anchorTimer.current.closed);
+    }
   };
 
   const dropdownId = v4();
 
   return (
     <>
-      <ClickAwayListener onClickAway={onCloseMenu}>
+      <ClickAwayListener onClickAway={closeMenuWithClick}>
         <Button
+          component="button"
           aria-controls={dropdownId}
           onClick={onOpenMenu}
+          onMouseEnter={onOpenedMenu}
+          onMouseLeave={onCloseMenu}
           variant="text"
           disableRipple
           sx={{
@@ -61,7 +92,9 @@ export const Dropdown: FC<DropdownPropsT> = ({
       <Menu
         id={dropdownId}
         open={isOpened}
-        onClick={onCloseMenu}
+        onClick={closeMenuWithClick}
+        onMouseEnter={persistMenuOpen}
+        onMouseLeave={closeMenuWithHover}
         anchorEl={anchorEl}
         PopoverClasses={{
           root: 'Dropdown-root',

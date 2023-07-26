@@ -1,9 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import { Avatar as Av, Stack } from '@mui/material';
+import { Avatar as Av, Stack, MenuItem, Typography } from '@mui/material';
 import Image from 'next/image';
-import { Photo, Trash } from 'pkg.icons';
+import { Trash, Edit, Account } from 'pkg.icons';
+import { Dropdown } from 'pkg.navigation.dropdown';
 import { useStore } from 'store/connect';
 import DialogEditor from './DialogEditor';
+
+const menuItemsStyles = {
+  width: '100%',
+  p: '8px 12px',
+  borderRadius: '4px',
+};
 
 type AvatarT = {
   letter?: string;
@@ -81,67 +88,63 @@ type AvatarEditorT = {
 };
 
 const AvatarEditor = ({ letter, filename }: AvatarEditorT) => {
+  const hover = true;
   const rootStore = useStore();
   const { uiSt, userSt } = rootStore;
 
+  const createAvatar = () => <Avatar letter={letter} filename={filename} />;
+
+  const editAvatar = () => uiSt.setDialogs('avatarEditor', true);
+  const deleteAvatar = () => userSt.deleteAvatar();
+
   return (
-    <Stack
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      sx={{
-        width: 128,
-        height: 128,
-        position: 'relative',
-      }}
-    >
-      <Avatar letter={letter} filename={filename} />
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          cursor: 'pointer',
-          width: 36,
-          height: 36,
-          border: '2px solid white',
-          position: 'absolute',
-          bgcolor: 'brand.80',
-          borderRadius: 18,
-          bottom: -4,
-          left: -4,
-          svg: {
-            fill: '#FFF',
-          },
-          fontSize: 20,
-        }}
-        onClick={() => uiSt.setDialogs('avatarEditor', true)}
+    <Stack direction="row" justifyContent="center" alignItems="center">
+      <Dropdown
+        Element={createAvatar}
+        menuSx={{ '.MuiMenu-paper': { maxWidth: '500px' } }}
+        buttonSx={{ width: '156px', height: '156px' }}
+        hover={hover}
       >
-        <Photo fontSize="inherit" />
-      </Stack>
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          cursor: 'pointer',
-          width: 36,
-          height: 36,
-          border: '2px solid white',
-          position: 'absolute',
-          bgcolor: 'moscow.80',
-          borderRadius: 18,
-          bottom: -4,
-          right: -4,
-          svg: {
-            fill: '#FFF',
-          },
-          fontSize: 20,
-        }}
-        onClick={() => userSt.deleteAvatar()}
-      >
-        <Trash fontSize="inherit" />
-      </Stack>
+        <MenuItem sx={menuItemsStyles} onClick={editAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
+            <Edit fontSize="small" />
+            <Typography
+              variant="body2"
+              sx={{
+                lineHeight: '20px',
+              }}
+            >
+              Обновить фотографию
+            </Typography>
+          </Stack>
+        </MenuItem>
+        <MenuItem sx={menuItemsStyles} onClick={editAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
+            <Account fontSize="small" />
+            <Typography
+              variant="body2"
+              sx={{
+                lineHeight: '20px',
+              }}
+            >
+              Изменить миниатюру
+            </Typography>
+          </Stack>
+        </MenuItem>
+        <MenuItem sx={menuItemsStyles} onClick={deleteAvatar}>
+          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '100%' }}>
+            <Trash fontSize="small" />
+            <Typography
+              variant="body2"
+              sx={{
+                lineHeight: '20px',
+              }}
+            >
+              Удалить
+            </Typography>
+          </Stack>
+        </MenuItem>
+      </Dropdown>
       <DialogEditor uiSt={uiSt} />
     </Stack>
   );

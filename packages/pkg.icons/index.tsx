@@ -17,6 +17,7 @@ import { Clock } from './Clock';
 import { Close } from './Close';
 import { Code } from './Code';
 import { Copy } from './Copy';
+import { Edit } from './Edit';
 import { Emotions } from './Emotions';
 import { Endcall } from './Endcall';
 import { Exit } from './Exit';
@@ -87,6 +88,7 @@ export {
   Close,
   Code,
   Copy,
+  Edit,
   Emotions,
   Endcall,
   Exit,
