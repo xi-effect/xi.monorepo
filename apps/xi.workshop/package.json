@@ -43,6 +43,7 @@
     "pkg.icons": "*",
     "pkg.inputs.button": "*",
     "pkg.inputs.checkbox": "*",
+    "pkg.inputs.password": "*",
     "pkg.inputs.radio": "*",
     "pkg.inputs.select": "*",
     "pkg.inputs.switcher": "*",

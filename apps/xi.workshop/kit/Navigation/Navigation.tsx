@@ -32,6 +32,10 @@ const menuArray = [
     label: 'Link',
   },
   {
+    link: '/components/password',
+    label: 'Password',
+  },
+  {
     link: '/components/radio',
     label: 'Radio',
   },
