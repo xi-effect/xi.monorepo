@@ -8,21 +8,52 @@ on:
 
 jobs:
   prepare:
+    if: contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
     uses: ./.github/workflows/common-prepare.yml
 
-  build-deploy:
+  build:
     needs: prepare
-    if: needs.prepare.outputs.xi_front_files == 'true'
-    uses: xi-effect/xieffect-actions/.github/workflows/docker-full.yml@main
+    if: >-
+      contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
+      && needs.prepare.outputs.xi_front_files == 'true'
+
+    uses: xi-effect/xi.actions/.github/workflows/docker-build.yml@main
     with:
       tag: front
-      images: front
     secrets: inherit
+
+  deploy:
+    needs: build
+    if: >-
+      contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
+      && needs.prepare.outputs.xi_front_files == 'true'
+
+    runs-on: ubuntu-latest
+    environment: xi-production
+
+    steps:
+      - name: Run SSH commands
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          username: ${{ secrets.SSH_USER }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_KEY_PASSWORD }}
+          script: |-
+            cd ~/xieffect-core
+            docker compose pull front
+            docker compose up -d
+            docker image prune -f
+          script_stop: true
 
   build-frodo:
     needs: prepare
-    if: needs.prepare.outputs.xi_frodo_files == 'true'
-    uses: xi-effect/xieffect-actions/.github/workflows/docker-build.yml@main
+    if: >-
+      contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
+      && needs.prepare.outputs.xi_frodo_files == 'true'
+
+    uses: xi-effect/xi.actions/.github/workflows/docker-build.yml@main
     with:
       tag: frodo
       target: builder
@@ -31,7 +62,11 @@ jobs:
 
   deploy-frodo:
     needs: build-frodo
+    if: contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
+
     runs-on: ubuntu-latest
+    environment: xi-production
+
     steps:
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -49,10 +84,11 @@ jobs:
       - name: Push files via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.SERVER_IP }}
-          port: 22
-          username: root
+          username: ${{ secrets.SSH_USER }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_KEY_PASSWORD }}
           source: ${{ steps.extract.outputs.destination }}/*
           target: ~/xieffect-core/docusaurus/frodo/
           strip_components: 1
