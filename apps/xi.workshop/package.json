@@ -35,6 +35,7 @@
     "pkg.components.loading": "*",
     "pkg.components.modal": "*",
     "pkg.components.scroll": "*",
+    "pkg.components.videoplayer": "*",
     "pkg.data.avatar": "*",
     "pkg.dialogs.exit": "*",
     "pkg.editor.text": "*",

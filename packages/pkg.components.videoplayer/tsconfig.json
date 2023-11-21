@@ -1,0 +1,6 @@
+{
+  "extends": "pkg.config.typescript/react-library.json",
+  "include": ["*"],
+  "exclude": ["dist", "build", "node_modules"],
+  "compilerOptions": { "lib": ["es2018", "DOM"] }
+}

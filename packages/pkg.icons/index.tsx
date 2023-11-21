@@ -40,6 +40,7 @@ import { Italic } from './Italic';
 import { Link } from './Link';
 import { Maximize } from './Maximize';
 import { Microphone } from './Microphone';
+import { Minimize } from './Minimize';
 import { Minus } from './Minus';
 import { Move } from './Move';
 import { Movie } from './Movie';
@@ -49,6 +50,7 @@ import { Notification } from './Notification';
 import { Objects } from './Objects';
 import { Ol } from './Ol';
 import { Palette } from './Palette';
+import { Pause } from './Pause';
 import { Photo } from './Photo';
 import { Picture } from './Picture';
 import { Places } from './Places';
@@ -58,6 +60,8 @@ import { Search } from './Search';
 import { Send } from './Send';
 import { Settings } from './Settings';
 import { Shape } from './Shape';
+import { SoundOff } from './SoundOff';
+import { SoundOn } from './SoundOn';
 import { Stroke } from './Stroke';
 import { Task } from './Task';
 import { Text } from './Text';
@@ -111,6 +115,7 @@ export {
   Link,
   Maximize,
   Microphone,
+  Minimize,
   Minus,
   Move,
   Movie,
@@ -120,6 +125,7 @@ export {
   Objects,
   Ol,
   Palette,
+  Pause,
   Photo,
   Picture,
   Places,
@@ -129,6 +135,8 @@ export {
   Send,
   Settings,
   Shape,
+  SoundOff,
+  SoundOn,
   Stroke,
   Task,
   Text,
